@@ -88,8 +88,10 @@ years and wondering where to go next.
     chapters in Einbech's mine (90-105), in the New World beyond the
     rift under Morroc (118-129), in Mora (147-150), Eclage (151-158) and
     Verus (160-171), and the Chapter 3 and 4 hunts moved to monsters of
-    the right level. The way through the rift is RO's own: the Cat Paw
-    Agent in the Eden Group (Lv 70, 50,000 zeny), as the Journal shows.
+    the right level. Chapter 8 is Episode 13.1, RO's own story: the
+    Journal guides "Onward to the Other World" step by step, and RO's
+    own people give its rewards (RO's Cat Paw Agent in the Eden Group
+    counts too).
     The Side Quests and the MVP Ledger follow Renewal's levels and
     places too. Episodes 16 to 21 are in development, coming soon. The
     Renewal route is new and not yet played through.
@@ -112,7 +114,7 @@ years and wondering where to go next.
     Odin's Temple (the Boatman in Hugel). See "How to get there" in the
     Journal and the quest window.
   - Uses item IDs 50100-50144 and quest IDs 77001-77040 and 77111-77199;
-    Renewal also 50900-50917 and 77901-77930.
+    Renewal also 50900-50917 and 77901-77935.
   - The Ayothaya Side Quest is RO's own quest. Nafisa's courier hands you a pouch
     with most of what its shaman asks for (some of it is very rare at
     that level); you still gather 2 Fabric and 2 Nine Tails yourself.

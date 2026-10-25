@@ -107,21 +107,16 @@ Body:
     Title: "Chronicle 7-4: The Core"
   - Id: 77030
     Title: "Chronicle 7-5: The Guardians' Purpose"
-  - Id: 77906
-    Title: "Chronicle 8-1: Through the Rift"
-  - Id: 77907
-    Title: "Chronicle 8-2: The Wild Fields"
-    Targets:
-      - Mob: NAGA
-        Count: 30
-      - Mob: CORNUS
-        Count: 20
-  - Id: 77908
-    Title: "Chronicle 8-3: Proof of Good Faith"
-  - Id: 77909
-    Title: "Chronicle 8-4: The Rift-Mad Beast"
-  - Id: 77910
-    Title: "Chronicle 8-5: A Word from the Sapha"
+  - Id: 77931
+    Title: "Chronicle 8-1: The Recruiter for the Brave"
+  - Id: 77932
+    Title: "Chronicle 8-2: The Promotional Staff"
+  - Id: 77933
+    Title: "Chronicle 8-3: Sikaiz of the Alliance"
+  - Id: 77934
+    Title: "Chronicle 8-4: Errands of the Alliance"
+  - Id: 77935
+    Title: "Chronicle 8-5: Through the Rift"
   - Id: 77911
     Title: "Chronicle 9-1: The Warden of El Dicastes"
   - Id: 77912
@@ -212,6 +207,16 @@ Body:
     Title: "Chronicle 14-4: The Excavator Prime"
   - Id: 77930
     Title: "Chronicle 14-5: Champion of Rune-Midgard"
+  - Id: 77906
+    Title: "Chronicle 8-1: Through the Rift"
+  - Id: 77907
+    Title: "Chronicle 8-2: The Wild Fields"
+  - Id: 77908
+    Title: "Chronicle 8-3: Proof of Good Faith"
+  - Id: 77909
+    Title: "Chronicle 8-4: The Rift-Mad Beast"
+  - Id: 77910
+    Title: "Chronicle 8-5: A Word from the Sapha"
   - Id: 77111
     Title: "Side Quest 1-1: The Harbour Master"
   - Id: 77112

@@ -81,6 +81,7 @@ OnTick:
 	// Side Quests run beside the main road (and after it is finished).
 	callfunc "F_ChronSideTick", .@map$;
 	//@@GUIDE_TICK@@
+	//@@MAIN_RO_TICK@@
 	.@g = CHRON_STEP;
 	if (.@g < 1 || .@g > $@chr_steps)
 		end;
@@ -287,7 +288,7 @@ OnCmd:
 				.@fail = callfunc("F_ChronSideFail", .@i);
 			.@sq$ += (.@i > 1 ? ";" : "") + .@k + ":" + .@h + ":" + .@hv$ + ":" + .@ro + ":" + (.@fail ? 1 : 0);
 		}
-		dispbottom "@@reply " + .@atcmd_parameters$[0] + " 1/1 " + .@g + "|" + BaseLevel + "|" + getarraysize(NPCP_WM$) + "|" + CHRON_SKIP + "|" + .@hunt + "|" + .@have$ + "|" + @chr_watch$ + "|" + callfunc("F_ChronCapped") + "|" + .@sq$ + "|" + CHRON_MVPK/*@@GUIDE_STATE@@*/;
+		dispbottom "@@reply " + .@atcmd_parameters$[0] + " 1/1 " + .@g + "|" + BaseLevel + "|" + getarraysize(NPCP_WM$) + "|" + CHRON_SKIP + "|" + .@hunt + "|" + .@have$ + "|" + @chr_watch$ + "|" + callfunc("F_ChronCapped") + "|" + .@sq$ + "|" + CHRON_MVPK/*@@GUIDE_STATE@@*//*@@MAIN_RO_STATE@@*/;
 		end;
 	}
 	dispbottom "@@event chronicle open";
@@ -361,6 +362,7 @@ function	script	F_ChronFix	{
 		.@id = 0 - .@id;
 		.@past = 1;
 	}
+	//@@MAIN_RO_FIX@@
 	for (.@p = 1; .@p <= $@chr_steps; .@p++)
 		if ($@chr_sid[.@p] == .@id)
 			break;

@@ -210,35 +210,35 @@ QuestInfoList = {
 		IconName = "ico_nq.bmp",
 		Description = { "Report to Sage Elisha in Juno (156, 47).<br><br>Route: <NAVI>[Sage Elisha]<INFO>yuno,156,47,0,000,0</INFO></NAVI>" },
 	},
-	[77906] = {
-		Title = "Chronicle 8-1: Through the Rift",
-		Summary = "Go through the rift under Morroc the Cat Paw way, to the Allied Forces Post, and find Captain Varrick in the camp (200, 282).",
+	[77931] = {
+		Title = "Chronicle 8-1: The Recruiter for the Brave",
+		Summary = "RO quest: in Prontera Castle, the Recruiter for the Brave (prt_cas, 207, 165) signs up adventurers for the expedition through the rift. Talk to him and choose Yes, I am interested.",
 		IconName = "ico_nq.bmp",
-		Description = { "Go through the rift under Morroc the Cat Paw way, to the Allied Forces Post, and find Captain Varrick in the camp (200, 282).<br><br>How to get there:<br>1. RO quest: the Cat Paw Agent. The Eden Teleport Officer in Juno (144, 189), or in most other towns, takes you to the Eden Group: choose Move to Eden Group.<br>2. In the Eden Group, Agent Geck stands near where you arrive (44, 19). Choose Why don't you collect it yourself?, then I also want to go and help the merchants., type any name to sign, then choose Pay 50,000 zeny. Bring 50,000 zeny; the other answers only end the talk, nothing is lost. He sends you to the Sograt Desert by the rift (moc_fild20).<br>3. There, a small Cat Paw cat sits by the wall (368, 197): choose Let's do this! and climb over on its back. Beyond the wall, Tat (moc_fild22b, 182, 179) asks if you are ready: choose To the other world!.<br>4. You arrive at the Allied Forces Post (mid_camp). Captain Varrick stands near the arrival spot (200, 282). The rift guards by the gorge only let in those who did the long Onward to the Other World quest; you do not need it.<br>5. Later, the way back in is free: Geck in the Eden Group (Send me back), or the cat on moc_fild20 straight away.<br><br>Route: <NAVI>[Eden Teleport Officer: yuno]<INFO>yuno,144,189,0,000,0</INFO></NAVI>" },
+		Description = { "RO quest: in Prontera Castle, the Recruiter for the Brave (prt_cas, 207, 165) signs up adventurers for the expedition through the rift. Talk to him and choose Yes, I am interested.<br><br>How to get there:<br>1. The castle gate is at the north end of Prontera (156, 358). The Recruiter stands a few steps inside, to the north-west.<br>2. The quest window (Alt+U) follows it as Onward to the Other World.<br><br>Route: <NAVI>[Gate of Prontera Castle]<INFO>prontera,156,358,0,000,0</INFO></NAVI>" },
 	},
-	[77907] = {
-		Title = "Chronicle 8-2: The Wild Fields",
-		Summary = "Hunt 30 Naga and 20 Cornus in the fields north of Splendide (spl_fild01).",
+	[77932] = {
+		Title = "Chronicle 8-2: The Promotional Staff",
+		Summary = "RO quest: the Alliance's Promotional Staff spread the word in three towns. Visit each in turn and bring what they ask for.",
 		IconName = "ico_nq.bmp",
-		Description = { "Hunt 30 Naga and 20 Cornus in the fields north of Splendide (spl_fild01).<br><br>How to get there:<br>1. The camp's gate guards only let the Expedition's own people out. Take the Teleport Cat in the camp (207, 234) to Near Splendide (10,000 zeny).<br>2. You arrive on spl_fild02. Its way north (293, 379) leads to spl_fild01, the hunting ground.<br><br>Route: <NAVI>[Hunting ground: spl_fild01]<INFO>spl_fild01,289,30,0,000,0</INFO></NAVI>" },
+		Description = { "RO quest: the Alliance's Promotional Staff spread the word in three towns. Visit each in turn and bring what they ask for.<br><br>How to get there:<br>1. Emerald and Ruby: the Jewelers of Morroc (154, 55 and 166, 54) and of Lighthalzen sell them. Jellopy drops from Porings and most small monsters.<br>2. The Staff in Izlude only lets level 70 and up go on; under 70, come back when you get there.<br>3. The Journal counts the items in your bag; the Staff take them.<br><br>Route: <NAVI>[Promotional Staff]<INFO>aldebaran,127,138,0,000,0</INFO></NAVI>" },
 	},
-	[77908] = {
-		Title = "Chronicle 8-3: Proof of Good Faith",
-		Summary = "Varrick wants proof to show the Laphine. Bring him 8 Scale Shells from the Naga and 8 Mystic Horns from the Cornus, in the Allied camp (200, 282).",
+	[77933] = {
+		Title = "Chronicle 8-3: Sikaiz of the Alliance",
+		Summary = "RO quest: report back to the Recruiter in Prontera Castle, then meet Sikaiz, who leads the Alliance from the Rekenber building in Lighthalzen. Talk to him until he has told you everything.",
 		IconName = "ico_nq.bmp",
-		Description = { "Varrick wants proof to show the Laphine. Bring him 8 Scale Shells from the Naga and 8 Mystic Horns from the Cornus, in the Allied camp (200, 282).<br><br>How to get there:<br>1. From spl_fild01, the way south (289, 28) leads back to spl_fild02. Its east edge (382, 143) leads into the camp.<br><br>Route: <NAVI>[Captain Varrick]<INFO>mid_camp,200,282,0,000,0</INFO></NAVI>" },
+		Description = { "RO quest: report back to the Recruiter in Prontera Castle, then meet Sikaiz, who leads the Alliance from the Rekenber building in Lighthalzen. Talk to him until he has told you everything.<br><br>How to get there:<br>1. Prontera Castle: the gate is at the north end of Prontera (156, 358).<br>2. Lighthalzen: the Rekenber building is in the north-west of the city (door at 101, 248); RO's Guide says Sikaiz is on its 2nd floor. The Route link draws the way through the building.<br><br>Route: <NAVI>[Recruiter for the Brave]<INFO>prt_cas,207,165,0,000,0</INFO></NAVI>" },
 	},
-	[77909] = {
-		Title = "Chronicle 8-4: The Rift-Mad Beast",
-		Summary = "Go to Manuk Field (man_fild02), the Sapha's land, and put down the Rift-Mad Tatacho.",
+	[77934] = {
+		Title = "Chronicle 8-4: Errands of the Alliance",
+		Summary = "RO quest: carry the Alliance's messages between its seats: Prontera Castle, Sikaiz in Lighthalzen, and the temple of Rachel.",
 		IconName = "ico_nq.bmp",
-		Description = { "Go to Manuk Field (man_fild02), the Sapha's land, and put down the Rift-Mad Tatacho.<br><br>How to get there:<br>1. Take the Teleport Cat in the camp (207, 234) to Manuk Field (10,000 zeny). The Rift-Mad Tatacho appears a few seconds after you arrive.<br><br>Route: <NAVI>[Rift-Mad Tatacho: man_fild02]<INFO>man_fild02,133,47,0,000,0</INFO></NAVI>" },
+		Description = { "RO quest: carry the Alliance's messages between its seats: Prontera Castle, Sikaiz in Lighthalzen, and the temple of Rachel.<br><br>How to get there:<br>1. In Prontera Castle, the Alliance Manager is in the west of the castle (19, 98): the Route link draws the way from the gate.<br>2. Rachel: the Airship from Juno or Izlude. The Alliance Manager is inside the great temple (ra_temple, 119, 113; door at rachel 150, 249).<br>3. At the end Sikaiz asks for your name: type your character's name exactly as it is spelled, capitals too. A wrong one only ends the talk; ask him again.<br><br>Route: <NAVI>[Alliance Manager]<INFO>prt_cas,19,98,0,000,0</INFO></NAVI>" },
 	},
-	[77910] = {
-		Title = "Chronicle 8-5: A Word from the Sapha",
-		Summary = "Return to Captain Varrick in the Allied camp (200, 282).",
+	[77935] = {
+		Title = "Chronicle 8-5: Through the Rift",
+		Summary = "RO quest: two officers of the Alliance argue about Sikaiz. Hear them out, then go to the rift itself, where Munkenro waits with the expedition.",
 		IconName = "ico_nq.bmp",
-		Description = { "Return to Captain Varrick in the Allied camp (200, 282).<br><br>How to get there:<br>1. From Manuk Field, the Teleport Cat (135, 49) takes you back to the Allied camp (10,000 zeny). Or walk west: man_fild01's west edge (35, 232) leads into the camp.<br><br>Route: <NAVI>[Captain Varrick]<INFO>mid_camp,200,282,0,000,0</INFO></NAVI>" },
+		Description = { "RO quest: two officers of the Alliance argue about Sikaiz. Hear them out, then go to the rift itself, where Munkenro waits with the expedition.<br><br>How to get there:<br>1. The officers are in a side room of the Rekenber building (lhz_in01, 32, 22): the Route link draws the way.<br>2. To the rift: the Guard in the Rekenber hall (lhz_in01, 130, 232) sends you there (Send me there.). By the rift (moc_fild20), the Rift Guard (349, 179) lets you through (Yes, sure.). Munkenro stands at 230, 197.<br>3. After Ready!! the head of the Alliance arrives and speaks. When it is over, talk to Munkenro again: RO pays you, and he can send you through to the Allied camp (Yes, of course!).<br><br>Route: <NAVI>[Officer A]<INFO>lhz_in01,32,22,0,000,0</INFO></NAVI>" },
 	},
 	[77911] = {
 		Title = "Chronicle 9-1: The Warden of El Dicastes",
@@ -419,6 +419,36 @@ QuestInfoList = {
 		Summary = "Return to Professor Hendrik in Verus (190, 180).",
 		IconName = "ico_nq.bmp",
 		Description = { "Return to Professor Hendrik in Verus (190, 180).<br><br>How to get there:<br>1. From the excavation site, the way south (107, 36) leads into the tunnel (ver_tunn), and its west end (10, 36) to Verus. Hendrik is at his camp (190, 180).<br><br>Route: <NAVI>[Professor Hendrik]<INFO>verus04,190,180,0,000,0</INFO></NAVI>" },
+	},
+	[77906] = {
+		Title = "Chronicle 8-1: Through the Rift",
+		Summary = "A part of the Chronicle that has since been retold.",
+		IconName = "ico_nq.bmp",
+		Description = { "A part of the Chronicle that has since been retold. Your Journal (Alt+B) has the story as it is now." },
+	},
+	[77907] = {
+		Title = "Chronicle 8-2: The Wild Fields",
+		Summary = "A part of the Chronicle that has since been retold.",
+		IconName = "ico_nq.bmp",
+		Description = { "A part of the Chronicle that has since been retold. Your Journal (Alt+B) has the story as it is now." },
+	},
+	[77908] = {
+		Title = "Chronicle 8-3: Proof of Good Faith",
+		Summary = "A part of the Chronicle that has since been retold.",
+		IconName = "ico_nq.bmp",
+		Description = { "A part of the Chronicle that has since been retold. Your Journal (Alt+B) has the story as it is now." },
+	},
+	[77909] = {
+		Title = "Chronicle 8-4: The Rift-Mad Beast",
+		Summary = "A part of the Chronicle that has since been retold.",
+		IconName = "ico_nq.bmp",
+		Description = { "A part of the Chronicle that has since been retold. Your Journal (Alt+B) has the story as it is now." },
+	},
+	[77910] = {
+		Title = "Chronicle 8-5: A Word from the Sapha",
+		Summary = "A part of the Chronicle that has since been retold.",
+		IconName = "ico_nq.bmp",
+		Description = { "A part of the Chronicle that has since been retold. Your Journal (Alt+B) has the story as it is now." },
 	},
 	[77111] = {
 		Title = "Side Quest 1-1: The Harbour Master",

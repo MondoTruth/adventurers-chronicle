@@ -73,6 +73,8 @@ foreach ($c in $chapters) {
         if (-not ($s.id -is [int]) -or $s.id -lt 1 -or $s.id -gt 999) { throw "Step $g ($($s.title)) needs an id from 1 to 999" }
         if ($ids[$s.id]) { throw "Step id $($s.id) is used twice" }
         $ids[$s.id] = $true
+        # An RO quest step (Renewal's episodes): done when its cond holds.
+        if ($s.type -eq 'ro' -and -not $s.cond) { throw "Step $($s.id) is an RO quest step without a cond" }
         # A chapter's spots (the way back in when you are somewhere Navigation
         # can't route from) go with each of its steps, after the step's own
         # (not with a step marked ownSpots); its 'away' line is the directions
@@ -87,6 +89,14 @@ foreach ($c in $chapters) {
 # 1-40 have id = position).
 $posOf = @{}
 foreach ($s in $steps) { $posOf[$s.id] = $s.g }
+# Main steps that guide RO's own quest, and steps taken out of this route
+# (story.ps1's retired: a character on one moves to step 'to').
+$mainRo = @($steps | Where-Object { $_.type -eq 'ro' })
+$retired = @($story.retired | Where-Object { $_ -and (-not $_.era -or $_.era -eq $era) })
+foreach ($rt in $retired) {
+    if (-not $posOf[[int]$rt.to]) { throw "Retired steps lead to step $($rt.to), which the $era route doesn't have" }
+    foreach ($r in $rt.steps) { if ($ids[[int]$r[0]]) { throw "Step id $($r[0]) is retired but still in the $era route" } }
+}
 foreach ($h in @($sides | Where-Object { $_.hook }) + @($side.mvps | Where-Object { $_.g })) {
     $key = $(if ($h.hook) { 'hook' } else { 'g' })
     $p = $posOf[[int]$h[$key]]
@@ -157,6 +167,14 @@ foreach ($s in $steps) {
             $q += "      - Mob: $name"
             $q += "        Count: $($mb[2])"
         }
+    }
+}
+foreach ($rt in $retired) {
+    $k = 0
+    foreach ($r in $rt.steps) {
+        $k++
+        $q += "  - Id: $(77000 + $r[0])"
+        $q += "    Title: $(Q (Ascii ('Chronicle ' + $rt.ch + '-' + $k + ': ' + $r[1]) 'title'))"
     }
 }
 foreach ($s in $sideSteps) {
@@ -247,6 +265,18 @@ foreach ($s in $steps) {
     $l += "`t`tIconName = `"ico_nq.bmp`","
     $l += "`t`tDescription = { $(Q (Ascii $desc 'now')) },"
     $l += "`t},"
+}
+foreach ($rt in $retired) {
+    $k = 0
+    foreach ($r in $rt.steps) {
+        $k++
+        $l += "`t[$(77000 + $r[0])] = {"
+        $l += "`t`tTitle = $(Q (Ascii ('Chronicle ' + $rt.ch + '-' + $k + ': ' + $r[1]) 'title')),"
+        $l += "`t`tSummary = `"A part of the Chronicle that has since been retold.`","
+        $l += "`t`tIconName = `"ico_nq.bmp`","
+        $l += "`t`tDescription = { `"A part of the Chronicle that has since been retold. Your Journal (Alt+B) has the story as it is now.`" },"
+        $l += "`t},"
+    }
 }
 foreach ($s in $sideSteps) {
     $sd = $sides | Where-Object { $_.n -eq $s.sn }
@@ -469,6 +499,10 @@ $d += Arr '$@chr_bname$' ($steps | ForEach-Object { if ($_.boss) { Ascii $_.boss
 # Monsters the Journal follows on a map: "map|event label|name1,name2,...".
 $d += Arr '$@chr_watch$' ($steps | ForEach-Object { if ($_.watch) { Ascii "$($_.watch.map)|$($_.watch.event)|$($_.watch.names -join ',')" 'watch' } else { '' } }) -str
 $d += Arr '$@chr_bhp'($steps | ForEach-Object { if ($_.hp) { $_.hp } else { 0 } })
+# RO quest steps: "at|name;at|name", the parts announced as RO's quest moves on.
+if ($mainRo.Count) {
+    $d += Arr '$@chr_parts$' ($steps | ForEach-Object { if ($_.parts) { (@($_.parts) | ForEach-Object { if ($_.name -match '[|;"]') { throw "Bad character in part $($_.name)" }; "$($_.at)|$(Ascii $_.name 'part')" }) -join ';' } else { '' } }) -str
+}
 $d += Arr '$@chr_ctitle$' ($chapters | ForEach-Object { Ascii $_.title 'chapter title' }) -str
 $d += Arr '$@chr_town$' ($chapters | ForEach-Object { $_.town }) -str
 $d += Arr '$@chr_townname$' ($chapters | ForEach-Object { $_.townName }) -str
@@ -675,8 +709,103 @@ function	script	F_ChronGuideDone	{
 
 '@ -split "`r?`n"
 }
+# Main steps that guide RO's own quest (Renewal's episodes), and the steps
+# retired from the route. Built only into a route that has them.
+$mainFns = @()
+if ($mainRo.Count) {
+    $mainFns += '// ---- generated: RO quest steps of the main road ----', 'function	script	F_ChronMainCond	{', '	switch (getarg(0)) {'
+    foreach ($s in $mainRo) { $mainFns += "	case $($s.id): return ($($s.cond));" }
+    $mainFns += '	}', '	return 0;', '}', '', 'function	script	F_ChronMainVar	{', '	switch (getarg(0)) {'
+    foreach ($s in $mainRo | Where-Object { $_.var }) { $mainFns += "	case $($s.id): return $($s.var);" }
+    $mainFns += '	}', '	return -1;', '}', ''
+    # A character on retired step getarg(0) moves to the step that replaced it.
+    $mainFns += 'function	script	F_ChronRetire	{', '	switch (getarg(0)) {'
+    foreach ($rt in $retired) {
+        foreach ($r in $rt.steps) { $mainFns += "	case $($r[0]):" }
+        $mainFns += "		.@to = $($rt.to);", '		break;'
+    }
+    $mainFns += '	}'
+    $mainFns += @'
+	if (!.@to)
+		return 0;
+	if (checkquest(77000 + getarg(0)) >= 0)
+		erasequest 77000 + getarg(0);
+	for (.@p = 1; .@p <= $@chr_steps; .@p++)
+		if ($@chr_sid[.@p] == .@to)
+			break;
+	callfunc "F_ChronSet", .@p;
+	if (checkquest(77000 + .@to) < 0)
+		setquest 77000 + .@to;
+	dispbottom "[Chronicle] This part of your Chronicle has been retold. Next: " + $@chr_now$[.@p], 0xAADDFF;
+	return 1;
+}
+
+// Every tick on an RO quest step: done when its condition holds (RO's quest
+// gives its own rewards); each part RO's quest moves through is announced.
+function	script	F_ChronMainRo	{
+	.@g = CHRON_STEP;
+	if (.@g < 1 || .@g > $@chr_steps || $@chr_type[.@g] != 7)
+		return;
+	if (callfunc("F_ChronMainCond", $@chr_sid[.@g])) {
+		@chr_mg = 0;
+		callfunc "F_ChronAdvance", .@g;
+		return;
+	}
+	.@v = callfunc("F_ChronMainVar", $@chr_sid[.@g]);
+	if (@chr_mg == .@g && .@v != @chr_mv) {
+		callfunc "F_ChronMainPart", .@g, .@v;
+		dispbottom "@@event chronicle refresh";
+	}
+	@chr_mg = .@g;
+	@chr_mv = .@v;
+	if ($@chr_items$[.@g] != "") {
+		.@have$ = .@g + " " + callfunc("F_ChronHave", .@g);
+		if (.@have$ != @chr_have$) {
+			@chr_have$ = .@have$;
+			dispbottom "@@event chronicle items " + .@have$;
+		}
+	}
+	return;
+}
+
+// Step getarg(0): RO's variable is now getarg(1). Name the part just done
+// and the next one ($@chr_parts$ "at|name;...").
+function	script	F_ChronMainPart	{
+	if ($@chr_parts$[getarg(0)] == "")
+		return;
+	explode(.@pt$, $@chr_parts$[getarg(0)], ";");
+	.@done$ = "";
+	.@next$ = "";
+	for (.@j = 0; .@j < getarraysize(.@pt$); .@j++) {
+		explode(.@p$, .@pt$[.@j], "|");
+		.@at = atoi(.@p$[0]);
+		if (.@at == getarg(1))
+			.@done$ = .@p$[1];
+		else if (.@at > getarg(1) && .@next$ == "")
+			.@next$ = .@p$[1];
+	}
+	if (.@done$ != "")
+		dispbottom "[Chronicle] " + $@chr_title$[getarg(0)] + ": done, " + .@done$ + "." + (.@next$ != "" ? " Next: " + .@next$ + "." : ""), 0xFFDD66;
+	return;
+}
+
+// The Journal's field for an RO quest step: "<RO's variable>:<items in bag>".
+function	script	F_ChronMainState	{
+	.@g = CHRON_STEP;
+	if (.@g < 1 || .@g > $@chr_steps || $@chr_type[.@g] != 7)
+		return "-1:";
+	.@h$ = "";
+	if ($@chr_items$[.@g] != "")
+		.@h$ = callfunc("F_ChronHave", .@g);
+	return callfunc("F_ChronMainVar", $@chr_sid[.@g]) + ":" + .@h$;
+}
+
+'@ -split "`r?`n"
+}
 $npcs = @('// ---- generated NPCs ----')
 foreach ($c in $chapters) {
+    # An episode of RO's own story has no Chronicle NPC: RO's own NPCs tell it.
+    if ($c.noNpc) { continue }
     $npcs += "$($c.town),$($c.x),$($c.y),4`tduplicate(ChronNPC)`t$($c.npc)#c$($c.n)`t$($c.sprite)"
 }
 foreach ($sd in $sides | Where-Object { $_.npc }) {
@@ -695,7 +824,7 @@ foreach ($gt in $story.gates) {
     $npcs += '}'
 }
 $tpl = Get-Content (Join-Path $here 'chronicle.template.txt') -Raw
-$tpl = $tpl.Replace('//@@DATA@@', ($d -join "`n`t")).Replace('//@@NPCS@@', (($cond + $guideFns + $npcs) -join "`n"))
+$tpl = $tpl.Replace('//@@DATA@@', ($d -join "`n`t")).Replace('//@@NPCS@@', (($cond + $guideFns + $mainFns + $npcs) -join "`n"))
 # The template's guide hooks: the calls on a route with guides, gone without
 # a trace on one without (each marker must be there, once).
 $hooks = [ordered]@{
@@ -703,9 +832,20 @@ $hooks = [ordered]@{
     '//@@GUIDE_STAMPS@@' = '.@stamps += callfunc("F_ChronGuideStamps");'
     '/*@@GUIDE_STATE@@*/' = ' + "|" + callfunc("F_ChronGuideState")'
 }
-foreach ($m in $hooks.Keys) {
+# The same for the main road's RO quest steps (their state field comes after
+# the guides', so a route with them and no guides gets an empty one).
+$mainHooks = [ordered]@{
+    '//@@MAIN_RO_TICK@@' = 'callfunc "F_ChronMainRo";'
+    '//@@MAIN_RO_FIX@@' = 'if (callfunc("F_ChronRetire", .@id)) return;'
+    '/*@@MAIN_RO_STATE@@*/' = ' + "|" + callfunc("F_ChronMainState")'
+}
+if ($mainRo.Count -and -not $guides.Count) { $hooks['/*@@GUIDE_STATE@@*/'] = ' + "|"' }
+foreach ($m in @($hooks.Keys) + @($mainHooks.Keys)) {
     if (([regex]::Matches($tpl, [regex]::Escape($m))).Count -ne 1) { throw "Template marker $m must be there once" }
-    if ($guides.Count) { $tpl = $tpl.Replace($m, $hooks[$m]) }
+    $isMain = $mainHooks.Contains($m)
+    $on = $(if ($isMain) { $mainRo.Count -gt 0 } else { $guides.Count -gt 0 -or ($mainRo.Count -gt 0 -and $m -eq '/*@@GUIDE_STATE@@*/') })
+    $with = $(if ($isMain) { $mainHooks[$m] } else { $hooks[$m] })
+    if ($on) { $tpl = $tpl.Replace($m, $with) }
     elseif ($m.StartsWith('//')) { $tpl = $tpl -replace ('[ \t]*' + [regex]::Escape($m) + '\r?\n'), '' }
     else { $tpl = $tpl.Replace($m, '') }
 }
@@ -716,18 +856,30 @@ $js = [ordered]@{ final = $final; chapters = @() }
 # Renewal: what comes after the finale, for the Journal (only where the route has it).
 if ($era -eq 'renewal' -and $story.soonRe) { $js.Insert(1, 'soon', (Ascii $story.soonRe 'soon')) }
 foreach ($c in $chapters) {
-    $js.chapters += [ordered]@{
+    $jc = [ordered]@{
         n = $c.n; title = $c.title; range = $c.range; town = $c.town; townName = $c.townName; npc = $c.npc; x = $c.x; y = $c.y; intro = $c.intro
         steps = @($c.steps | ForEach-Object {
-            [ordered]@{
+            $js_s = [ordered]@{
                 g = $_.g; id = $_.id; type = $_.type; lv = $_.lv; title = $_.title; now = $_.now; done = $_.done
                 map = $(if ($_.map) { $_.map } else { $_.where }); boss = $_.boss; route = (NaviSpot $_)
                 mobs = @($_.mobs | Where-Object { $_ } | ForEach-Object { @{ id = $_[0]; name = $_[1]; count = $_[2] } })
                 items = @($_.items | Where-Object { $_ } | ForEach-Object { @{ id = $_[0]; name = $_[1]; count = $_[2] } })
                 hint = @($_.hint | Where-Object { $_ } | ForEach-Object { Ascii $_ 'hint' })
-                spots = @($_.spots | Where-Object { $_ } | ForEach-Object { [ordered]@{ map = $_.map; x = $_.x; y = $_.y; name = (Ascii $_.name 'spot'); sw = $_.sw } })
-            } })
+                spots = @($_.spots | Where-Object { $_ } | ForEach-Object {
+                    $sp = [ordered]@{ map = $_.map; x = $_.x; y = $_.y; name = (Ascii $_.name 'spot'); sw = $_.sw }
+                    if ($null -ne $_.ro) { $sp.ro = $_.ro }
+                    $sp })
+            }
+            # An RO quest step: its parts, ticked as RO's quest moves on.
+            if ($_.parts) {
+                $js_s.parts = @($_.parts | ForEach-Object { [ordered]@{ at = $_.at; name = (Ascii $_.name 'part')
+                    route = $(if ($_.route) { [ordered]@{ map = $_.route[0]; x = $_.route[1]; y = $_.route[2]; name = (Ascii $_.route[3] 'part route') } } else { $null }) } })
+            }
+            $js_s })
     }
+    # An episode of RO's own story: the Journal names it "Episode <n>".
+    if ($c.episode) { $jc.Insert(1, 'episode', $c.episode) }
+    $js.chapters += $jc
 }
 $js.sides = @()
 foreach ($sd in $sides) {

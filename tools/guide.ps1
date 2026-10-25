@@ -146,9 +146,9 @@ $guides = @(
   # rAthena quests_13_2.txt, Otherworld language (ep13_2_rhea, 1-12, 100): needs
   # ep13_start = 100 (Agent Geck's passage, Chapter 8's first step) and the
   # Small Fairy and the Tree Giant met (quests 2158, 2159; Lv 70+, quests_13_1.txt).
-  @{ key = 'ep13_language'; era = 'renewal'; hook = 906; title = 'The Otherworld Language'; range = '70+'
+  @{ key = 'ep13_language'; era = 'renewal'; hook = 935; title = 'The Otherworld Language'; range = '70+'
      where = 'the Allied camp'
-     intro = 'Captain Varrick: "Nobody here understands a word the Laphine or the Sapha say. Our mechanic swears he can build a device that translates them. Help him, and you will be the first human who can talk to this world."'
+     intro = 'Nobody in the Allied camp understands a word the Laphine or the Sapha say. The camp''s mechanic swears he can build a device that translates them: help him, and you will be among the first humans who can talk to this world.'
      reward = 'the Ring of the Ancient Wise King, the translator: wear it to understand the Laphine and the Sapha (and 200,000 base EXP).'
      steps = @(
        @{ title = 'A Translating Device'; cond = 'ep13_2_rhea >= 2'; var = 'ep13_2_rhea'
@@ -261,9 +261,9 @@ $guides = @(
   # Merchants' credit, up to its first points. More points (10 Pieces of Fish
   # a day, quest 12060 is the 4-hour wait) open storage at 20 and the Cat Warp
   # to Midgard at 40: dailies, not guided.
-  @{ key = 'ep13_catpaw'; era = 'renewal'; hook = 906; title = 'Cat Trading'; range = '118+'
+  @{ key = 'ep13_catpaw'; era = 'renewal'; hook = 935; title = 'Cat Trading'; range = '118+'
      where = 'the Allied camp'
-     intro = 'Captain Varrick: "Those cats who sent you through the rift keep a trading post at the west end of our camp. They do favours for those with credit. Earn some, it is worth it out here."'
+     intro = 'The Cat Paw Merchants of the Eden Group keep a trading post at the west end of the Allied camp. They do favours for those with credit, and out here that is worth earning.'
      reward = 'Cat Paw credit: a save point at the camp now, and with more credit later their storage and their Cat Warp to Midgard (and 20,000 base EXP).'
      steps = @(
        @{ title = 'Cat Paw Services'; cond = 'ep13_yong1 >= 2'; var = 'ep13_yong1'
@@ -314,7 +314,7 @@ $guides = @(
 
   # rAthena quests_dicastes.txt, Sapha's Visit (ep13_3_invite 1-6): the way
   # into El Dicastes. Every Sapha wants the Wise King's ring worn.
-  @{ key = 'ep13_sapha'; era = 'renewal'; hook = 910; title = 'Sapha''s Visit'; range = '118+'
+  @{ key = 'ep13_sapha'; era = 'renewal'; hook = 935; title = 'Sapha''s Visit'; range = '118+'
      where = 'the Allied camp and Manuk'
      intro = 'Warden Kahlis: "The law keeps the gate shut to humans. But the law also says a guest invited by the Sapha may enter. A Sapha is waiting in your camp, they tell me. Go and see what he wants, and wear something that lets you understand him."'
      reward = 'entry to El Dicastes, the Sapha capital, and the Light of El Dicastes.'

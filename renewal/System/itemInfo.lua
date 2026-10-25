@@ -403,7 +403,7 @@ mainTable[50903] = {
 	identifiedDisplayName = "Costume Feather Bonnet",
 	identifiedResourceName = "±êÅÐ¸ðÀÚ",
 	identifiedDescriptionName = {
-		"^777777A keepsake of Chapter 8 of your Chronicle: Beyond the Rift.^000000",
+		"^777777A keepsake of Chapter 8 of your Chronicle: Onward to the Other World.^000000",
 		"Looks like the Feather Bonnet, worn in the costume slot.",
 		"_______________________",
 		"^0000CCType:^000000 Costume",
@@ -421,7 +421,7 @@ mainTable[50904] = {
 	identifiedDisplayName = "Costume Ear Muffs",
 	identifiedResourceName = "±Í¸¶°³",
 	identifiedDescriptionName = {
-		"^777777A keepsake of Chapter 8 of your Chronicle: Beyond the Rift.^000000",
+		"^777777A keepsake of Chapter 8 of your Chronicle: Onward to the Other World.^000000",
 		"Looks like the Ear Muffs, worn in the costume slot.",
 		"_______________________",
 		"^0000CCType:^000000 Costume",
@@ -439,7 +439,7 @@ mainTable[50905] = {
 	identifiedDisplayName = "Costume Bunny Ears Hat",
 	identifiedResourceName = "Åä³¢±Í¸ðÀÚ",
 	identifiedDescriptionName = {
-		"^777777A keepsake of Chapter 8 of your Chronicle: Beyond the Rift.^000000",
+		"^777777A keepsake of Chapter 8 of your Chronicle: Onward to the Other World.^000000",
 		"Looks like the Bunny Ears Hat, worn in the costume slot.",
 		"_______________________",
 		"^0000CCType:^000000 Costume",

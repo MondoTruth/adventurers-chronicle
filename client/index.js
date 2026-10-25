@@ -115,7 +115,14 @@ export function parseState(text) {
     const f = raw.map(Number);
     if (f.length < 5 || !Number.isFinite(f[0])) return null;
     return { step: Math.max(1, f[0]), level: f[1], waypoints: f[2], skip: f[3] || 0, hunt: f[4], have: parseHave(raw[5]), watch: parseWatch(raw[6]), capped: f[7] === 1,
-        sides: parseSides(raw[8]), mvpk: Number(raw[9]) || 0, guides: parseGuides(raw[10]) };
+        sides: parseSides(raw[8]), mvpk: Number(raw[9]) || 0, guides: parseGuides(raw[10]), main: parseMain(raw[11]) };
+}
+
+/** "12:300,1,0" -> { ro, have }: an RO quest step of the main road (Renewal's episodes): RO's variable, items in the bag. */
+export function parseMain(text) {
+    if (text == null || text === '') return { ro: -1, have: null };
+    const [ro, have] = String(text).split(':');
+    return { ro: Number(ro), have: parseHave(have) };
 }
 
 /** "1:3:0,2;100:-1:" -> [{ step, ro, have }]: where each RO quest guide stands (-1: its mod is not on the server, 0: not open, 100: done). */
@@ -141,6 +148,8 @@ export function parseWatch(text) {
 }
 
 const mapName = name => String(name || '').replace(/\.(gat|rsw)$/i, '');
+/** "Chapter 3", or "Episode 13.1" for a chapter that is an episode of RO's own story. */
+const chapterName = c => c.episode ? `Episode ${c.episode}` : `Chapter ${c.n}`;
 
 const GUIDES = DATA.guides || [];
 const STEPS = DATA.chapters.flatMap(c => c.steps.map((s, i) => ({ ...s, ch: c.n, k: i + 1, chapter: c })));
@@ -320,6 +329,12 @@ export default function init(parameters, api) {
 
     function objective(s) {
         const c = s.chapter;
+        // An RO quest step (Renewal's episodes): RO's own quest, drawn like a
+        // guide's step (its parts ticked, items counted, spots and route).
+        if (s.type === 'ro') {
+            const counts = have?.g === s.g ? have.counts : state?.main?.have;
+            return sideObjective({ n: `m${s.g}` }, s, { ro: state?.main?.ro ?? -1, have: counts || null });
+        }
         // Directions where Navigation alone can't get you there (the Culvert
         // Recruiter, the Kafra to Morroc, the Juperos elevator, the Hugel Boatman).
         const hint = s.hint?.length
@@ -513,7 +528,7 @@ export default function init(parameters, api) {
         const cur = finished ? null : STEPS[step - 1];
         const chNow = cur ? cur.ch : DATA.chapters.length;
 
-        head.innerHTML = `<h2>${finished ? 'Your Chronicle is complete' : `Chapter ${cur.ch}: ${escape(cur.chapter.title)}`}</h2>
+        head.innerHTML = `<h2>${finished ? 'Your Chronicle is complete' : `${chapterName(cur.chapter)}: ${escape(cur.chapter.title)}`}</h2>
             <div class="meta">${state ? `<span>Level ${state.level}</span>${state.waypoints > 0 ? `<span>Places found: ${state.waypoints}</span>` : ''}` : '<span>Asking the server...</span>'}
             <button type="button" class="qwin" title="The game's quest window, with live kill counts">Quest window</button></div>
             <div class="tabs">${TABS.map(([id, label]) => `<button type="button" data-tab="${id}" class="${tab === id ? 'on' : ''}">${label}${id === 'side' && sidesOpen() ? ` (${sidesOpen()})` : ''}</button>`).join('')}</div>`;
@@ -528,9 +543,10 @@ export default function init(parameters, api) {
         let card = '';
         if (cur) {
             const low = state && !state.capped && state.level < cur.lv;
-            const spots = here(cur);
+            const spots = cur.type === 'ro' ? '' : here(cur);
             const there = cur.type === 'boss' && curMap === cur.map;
-            card = `<p>${escape(cur.now)}</p>${objective(cur)}
+            card = cur.type === 'ro' ? `<p>${escape(cur.now)}</p>${objective(cur)}<p class="hint route-note"></p>
+                ${low ? `<p class="warn">Needs level ${cur.lv}. You are level ${state.level}.</p>` : ''}` : `<p>${escape(cur.now)}</p>${objective(cur)}
                 ${there ? `<p class="ok">You made it to ${escape(cur.map)}. Get ready!</p>`
                     : spots || (cur.route ? `<p>Route: <span class="route" title="Open Navigation with the way there">${escape(cur.route.name)} (${escape(cur.route.map)} ${cur.route.x}, ${cur.route.y})</span></p>`
                     : '<p class="hint">Navigation has no route to this map. Follow the directions above.</p>')}
@@ -563,7 +579,7 @@ export default function init(parameters, api) {
                     return `<div class="q locked"><b>Quest ${i + 1}:</b> ???</div>`;
                 }).join('')}</div>`;
             const k = `ch${c.n}-${locked ? 'lock' : current ? 'cur' : 'done'}`;
-            return `<details data-k="${k}"${opened(k, current) ? ' open' : ''}><summary>Chapter ${c.n}: ${escape(c.title)} <small>Lv ${escape(c.range)}</small>${badge}</summary>${body}</details>`;
+            return `<details data-k="${k}"${opened(k, current) ? ' open' : ''}><summary>${chapterName(c)}: ${escape(c.title)} <small>Lv ${escape(c.range)}</small>${badge}</summary>${body}</details>`;
         }).join('');
 
         win.body.querySelectorAll('img[data-icon]').forEach(img => icon(img, Number(img.dataset.icon)));
@@ -576,7 +592,8 @@ export default function init(parameters, api) {
             const next = parseState(await api.server.request('chronicle', 'state'));
             if (next) {
                 state = next;
-                have = next.have ? { g: next.step, counts: next.have } : null;
+                const counts = next.have || next.main?.have;
+                have = counts ? { g: next.step, counts } : null;
                 watch = next.watch;
                 paintTracker();
                 syncTicks();

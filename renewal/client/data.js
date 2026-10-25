@@ -1820,7 +1820,7 @@ export default {
                                            "lv":  117,
                                            "title":  "The Guardians\u0027 Purpose",
                                            "now":  "Report to Sage Elisha in Juno (156, 47).",
-                                           "done":  "Elisha believes the guardians were built to watch over the seals. The Core\u0027s last broadcast showed two places: Arunafeltz, and the rift that opened when Morroc fell. The Allied Expedition beyond the rift had asked the Sages for help, so she sent you through it first.",
+                                           "done":  "Elisha believes the guardians were built to watch over the seals. The Core\u0027s last broadcast showed two places: Arunafeltz, and the rift that opened when Morroc fell. The three kingdoms are sending an expedition through the rift, so she sent you to join it first.",
                                            "map":  null,
                                            "boss":  null,
                                            "route":  {
@@ -1846,30 +1846,31 @@ export default {
                      },
                      {
                          "n":  8,
-                         "title":  "Beyond the Rift",
+                         "episode":  "13.1",
+                         "title":  "Onward to the Other World",
                          "range":  "118-124",
-                         "town":  "mid_camp",
-                         "townName":  "the Allied Forces Post",
-                         "npc":  "Captain Varrick",
-                         "x":  200,
-                         "y":  282,
-                         "intro":  "Beyond the rift under Morroc lies a world no map of Rune-Midgard shows: the land of the Laphine of Splendide and the Sapha of Manuk. The Allied Expedition of the three kingdoms keeps its camp just past the rift.",
+                         "town":  "prt_cas",
+                         "townName":  "Prontera Castle",
+                         "npc":  "the Recruiter for the Brave",
+                         "x":  207,
+                         "y":  165,
+                         "intro":  "When Morroc fell, a rift opened in its ruins, and beyond it lies a world no map of Rune-Midgard shows. Rune-Midgard, the Schwarzwald Republic and Arunafeltz have joined in an Alliance to send an expedition through it, and its recruiters are looking for adventurers. This is Ragnarok\u0027s own story: the Chronicle only shows the way, and RO gives its rewards.",
                          "steps":  [
                                        {
                                            "g":  36,
-                                           "id":  906,
-                                           "type":  "talk",
+                                           "id":  931,
+                                           "type":  "ro",
                                            "lv":  118,
-                                           "title":  "Through the Rift",
-                                           "now":  "Go through the rift under Morroc the Cat Paw way, to the Allied Forces Post, and find Captain Varrick in the camp (200, 282).",
-                                           "done":  "Captain Varrick leads the Allied Expedition\u0027s camp. Since the rift opened, the monsters of this new world have grown wild, and both the Laphine and the Sapha blame the humans who came through it.",
+                                           "title":  "The Recruiter for the Brave",
+                                           "now":  "RO quest: in Prontera Castle, the Recruiter for the Brave (prt_cas, 207, 165) signs up adventurers for the expedition through the rift. Talk to him and choose Yes, I am interested.",
+                                           "done":  "In Prontera Castle you signed up for the Alliance\u0027s expedition to the other world. First, the Alliance wanted its word spread.",
                                            "map":  null,
                                            "boss":  null,
                                            "route":  {
-                                                         "map":  "yuno",
-                                                         "x":  144,
-                                                         "y":  189,
-                                                         "name":  "Eden Teleport Officer: yuno"
+                                                         "map":  "prontera",
+                                                         "x":  156,
+                                                         "y":  358,
+                                                         "name":  "Gate of Prontera Castle"
                                                      },
                                            "mobs":  [
 
@@ -1878,231 +1879,322 @@ export default {
 
                                                      ],
                                            "hint":  [
-                                                        "RO quest: the Cat Paw Agent. The Eden Teleport Officer in Juno (144, 189), or in most other towns, takes you to the Eden Group: choose Move to Eden Group.",
-                                                        "In the Eden Group, Agent Geck stands near where you arrive (44, 19). Choose Why don\u0027t you collect it yourself?, then I also want to go and help the merchants., type any name to sign, then choose Pay 50,000 zeny. Bring 50,000 zeny; the other answers only end the talk, nothing is lost. He sends you to the Sograt Desert by the rift (moc_fild20).",
-                                                        "There, a small Cat Paw cat sits by the wall (368, 197): choose Let\u0027s do this! and climb over on its back. Beyond the wall, Tat (moc_fild22b, 182, 179) asks if you are ready: choose To the other world!.",
-                                                        "You arrive at the Allied Forces Post (mid_camp). Captain Varrick stands near the arrival spot (200, 282). The rift guards by the gorge only let in those who did the long Onward to the Other World quest; you do not need it.",
-                                                        "Later, the way back in is free: Geck in the Eden Group (Send me back), or the cat on moc_fild20 straight away."
+                                                        "The castle gate is at the north end of Prontera (156, 358). The Recruiter stands a few steps inside, to the north-west.",
+                                                        "The quest window (Alt+U) follows it as Onward to the Other World."
                                                     ],
                                            "spots":  [
                                                          {
-                                                             "map":  "yuno",
-                                                             "x":  144,
-                                                             "y":  189,
-                                                             "name":  "Eden Teleport Officer: to the Eden Group",
+                                                             "map":  "prontera",
+                                                             "x":  156,
+                                                             "y":  358,
+                                                             "name":  "Gate of Prontera Castle",
                                                              "sw":  null
                                                          },
                                                          {
-                                                             "map":  "moc_para01",
-                                                             "x":  44,
-                                                             "y":  19,
-                                                             "name":  "Agent Geck: the Cat Paw passage to the rift",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild20",
-                                                             "x":  368,
-                                                             "y":  197,
-                                                             "name":  "Cat Paw cat: over the wall",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild22b",
-                                                             "x":  182,
-                                                             "y":  179,
-                                                             "name":  "Tat: to the Allied camp",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "mid_camp",
+                                                             "map":  "prt_cas",
                                                              "x":  207,
-                                                             "y":  234,
-                                                             "name":  "Teleport Cat: Near Splendide or Manuk Field (10,000 zeny)",
+                                                             "y":  165,
+                                                             "name":  "Recruiter for the Brave",
                                                              "sw":  null
                                                          }
                                                      ]
                                        },
                                        {
                                            "g":  37,
-                                           "id":  907,
-                                           "type":  "hunt",
+                                           "id":  932,
+                                           "type":  "ro",
                                            "lv":  119,
-                                           "title":  "The Wild Fields",
-                                           "now":  "Hunt 30 Naga and 20 Cornus in the fields north of Splendide (spl_fild01).",
-                                           "done":  "You drove back the Naga and the Cornus that had overrun the fields north of Splendide.",
-                                           "map":  "spl_fild01",
+                                           "title":  "The Promotional Staff",
+                                           "now":  "RO quest: the Alliance\u0027s Promotional Staff spread the word in three towns. Visit each in turn and bring what they ask for.",
+                                           "done":  "You carried the Alliance\u0027s word to Al De Baran, Geffen and Izlude, with 300 Jellopy, an Emerald and a Ruby for its staff.",
+                                           "map":  null,
                                            "boss":  null,
                                            "route":  {
-                                                         "map":  "spl_fild01",
-                                                         "x":  289,
-                                                         "y":  30,
-                                                         "name":  "Hunting ground: spl_fild01"
+                                                         "map":  "aldebaran",
+                                                         "x":  127,
+                                                         "y":  138,
+                                                         "name":  "Promotional Staff"
                                                      },
                                            "mobs":  [
-                                                        {
-                                                            "name":  "Naga",
-                                                            "id":  1993,
-                                                            "count":  30
-                                                        },
-                                                        {
-                                                            "name":  "Cornus",
-                                                            "id":  1992,
-                                                            "count":  20
-                                                        }
+
                                                     ],
                                            "items":  [
-
+                                                         {
+                                                             "name":  "Jellopy",
+                                                             "id":  909,
+                                                             "count":  300
+                                                         },
+                                                         {
+                                                             "name":  "Emerald",
+                                                             "id":  721,
+                                                             "count":  1
+                                                         },
+                                                         {
+                                                             "name":  "Ruby",
+                                                             "id":  723,
+                                                             "count":  1
+                                                         }
                                                      ],
                                            "hint":  [
-                                                        "The camp\u0027s gate guards only let the Expedition\u0027s own people out. Take the Teleport Cat in the camp (207, 234) to Near Splendide (10,000 zeny).",
-                                                        "You arrive on spl_fild02. Its way north (293, 379) leads to spl_fild01, the hunting ground."
+                                                        "Emerald and Ruby: the Jewelers of Morroc (154, 55 and 166, 54) and of Lighthalzen sell them. Jellopy drops from Porings and most small monsters.",
+                                                        "The Staff in Izlude only lets level 70 and up go on; under 70, come back when you get there.",
+                                                        "The Journal counts the items in your bag; the Staff take them."
                                                     ],
                                            "spots":  [
                                                          {
-                                                             "map":  "spl_fild02",
-                                                             "x":  293,
-                                                             "y":  379,
-                                                             "name":  "Way north to spl_fild01",
-                                                             "sw":  null
+                                                             "map":  "aldebaran",
+                                                             "x":  127,
+                                                             "y":  138,
+                                                             "name":  "Promotional Staff",
+                                                             "sw":  null,
+                                                             "ro":  1
                                                          },
                                                          {
-                                                             "map":  "yuno",
-                                                             "x":  144,
-                                                             "y":  189,
-                                                             "name":  "Eden Teleport Officer: to the Eden Group",
-                                                             "sw":  null
+                                                             "map":  "aldebaran",
+                                                             "x":  127,
+                                                             "y":  138,
+                                                             "name":  "Promotional Staff",
+                                                             "sw":  null,
+                                                             "ro":  2
                                                          },
                                                          {
-                                                             "map":  "moc_para01",
-                                                             "x":  44,
-                                                             "y":  19,
-                                                             "name":  "Agent Geck: the Cat Paw passage to the rift",
-                                                             "sw":  null
+                                                             "map":  "geffen",
+                                                             "x":  90,
+                                                             "y":  67,
+                                                             "name":  "Promotional Staff",
+                                                             "sw":  null,
+                                                             "ro":  3
                                                          },
                                                          {
-                                                             "map":  "moc_fild20",
-                                                             "x":  368,
-                                                             "y":  197,
-                                                             "name":  "Cat Paw cat: over the wall",
-                                                             "sw":  null
+                                                             "map":  "geffen",
+                                                             "x":  90,
+                                                             "y":  67,
+                                                             "name":  "Promotional Staff",
+                                                             "sw":  null,
+                                                             "ro":  4
                                                          },
                                                          {
-                                                             "map":  "moc_fild22b",
-                                                             "x":  182,
-                                                             "y":  179,
-                                                             "name":  "Tat: to the Allied camp",
-                                                             "sw":  null
+                                                             "map":  "geffen",
+                                                             "x":  90,
+                                                             "y":  67,
+                                                             "name":  "Promotional Staff",
+                                                             "sw":  null,
+                                                             "ro":  5
                                                          },
                                                          {
-                                                             "map":  "mid_camp",
-                                                             "x":  207,
-                                                             "y":  234,
-                                                             "name":  "Teleport Cat: Near Splendide or Manuk Field (10,000 zeny)",
-                                                             "sw":  null
+                                                             "map":  "izlude",
+                                                             "x":  102,
+                                                             "y":  171,
+                                                             "name":  "Promotional Staff",
+                                                             "sw":  null,
+                                                             "ro":  6
+                                                         },
+                                                         {
+                                                             "map":  "izlude",
+                                                             "x":  102,
+                                                             "y":  171,
+                                                             "name":  "Promotional Staff",
+                                                             "sw":  null,
+                                                             "ro":  7
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  2,
+                                                             "name":  "Promotional Staff in Al De Baran (127, 138), answer I have something for you",
+                                                             "route":  {
+                                                                           "map":  "aldebaran",
+                                                                           "x":  127,
+                                                                           "y":  138,
+                                                                           "name":  "Promotional Staff"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  3,
+                                                             "name":  "Bring her 300 Jellopy",
+                                                             "route":  {
+                                                                           "map":  "aldebaran",
+                                                                           "x":  127,
+                                                                           "y":  138,
+                                                                           "name":  "Promotional Staff"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  4,
+                                                             "name":  "Promotional Staff in Geffen (90, 67), answer The Staff in Aldebaran sent me",
+                                                             "route":  {
+                                                                           "map":  "geffen",
+                                                                           "x":  90,
+                                                                           "y":  67,
+                                                                           "name":  "Promotional Staff"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  5,
+                                                             "name":  "Bring him an Emerald",
+                                                             "route":  {
+                                                                           "map":  "geffen",
+                                                                           "x":  90,
+                                                                           "y":  67,
+                                                                           "name":  "Promotional Staff"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  6,
+                                                             "name":  "Bring him a Ruby",
+                                                             "route":  {
+                                                                           "map":  "geffen",
+                                                                           "x":  90,
+                                                                           "y":  67,
+                                                                           "name":  "Promotional Staff"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  8,
+                                                             "name":  "Promotional Staff in Izlude (102, 171), answer I have something for you",
+                                                             "route":  {
+                                                                           "map":  "izlude",
+                                                                           "x":  102,
+                                                                           "y":  171,
+                                                                           "name":  "Promotional Staff"
+                                                                       }
                                                          }
                                                      ]
                                        },
                                        {
                                            "g":  38,
-                                           "id":  908,
-                                           "type":  "deliver",
-                                           "lv":  121,
-                                           "title":  "Proof of Good Faith",
-                                           "now":  "Varrick wants proof to show the Laphine. Bring him 8 Scale Shells from the Naga and 8 Mystic Horns from the Cornus, in the Allied camp (200, 282).",
-                                           "done":  "The Laphine accepted the proof, but their elders had a warning: the madness is not coming from the humans. It seeps up out of the rift itself, and the Tatacho of Manuk\u0027s fields have caught it worst.",
+                                           "id":  933,
+                                           "type":  "ro",
+                                           "lv":  120,
+                                           "title":  "Sikaiz of the Alliance",
+                                           "now":  "RO quest: report back to the Recruiter in Prontera Castle, then meet Sikaiz, who leads the Alliance from the Rekenber building in Lighthalzen. Talk to him until he has told you everything.",
+                                           "done":  "The Recruiter signed you up for good, and RO paid you for it. In Lighthalzen, Sikaiz told you of the three kingdoms and their one mission beyond the rift.",
                                            "map":  null,
                                            "boss":  null,
                                            "route":  {
-                                                         "map":  "mid_camp",
-                                                         "x":  200,
-                                                         "y":  282,
-                                                         "name":  "Captain Varrick"
+                                                         "map":  "prt_cas",
+                                                         "x":  207,
+                                                         "y":  165,
+                                                         "name":  "Recruiter for the Brave"
                                                      },
                                            "mobs":  [
 
                                                     ],
                                            "items":  [
-                                                         {
-                                                             "name":  "Scale Shell",
-                                                             "id":  936,
-                                                             "count":  8
-                                                         },
-                                                         {
-                                                             "name":  "Mystic Horn",
-                                                             "id":  6023,
-                                                             "count":  8
-                                                         }
+
                                                      ],
                                            "hint":  [
-                                                        "From spl_fild01, the way south (289, 28) leads back to spl_fild02. Its east edge (382, 143) leads into the camp."
+                                                        "Prontera Castle: the gate is at the north end of Prontera (156, 358).",
+                                                        "Lighthalzen: the Rekenber building is in the north-west of the city (door at 101, 248); RO\u0027s Guide says Sikaiz is on its 2nd floor. The Route link draws the way through the building."
                                                     ],
                                            "spots":  [
                                                          {
-                                                             "map":  "spl_fild01",
-                                                             "x":  289,
-                                                             "y":  28,
-                                                             "name":  "Way south to spl_fild02",
-                                                             "sw":  null
+                                                             "map":  "prontera",
+                                                             "x":  156,
+                                                             "y":  358,
+                                                             "name":  "Gate of Prontera Castle",
+                                                             "sw":  null,
+                                                             "ro":  8
                                                          },
                                                          {
-                                                             "map":  "spl_fild02",
-                                                             "x":  382,
-                                                             "y":  143,
-                                                             "name":  "Way east into the camp",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "yuno",
-                                                             "x":  144,
-                                                             "y":  189,
-                                                             "name":  "Eden Teleport Officer: to the Eden Group",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_para01",
-                                                             "x":  44,
-                                                             "y":  19,
-                                                             "name":  "Agent Geck: the Cat Paw passage to the rift",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild20",
-                                                             "x":  368,
-                                                             "y":  197,
-                                                             "name":  "Cat Paw cat: over the wall",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild22b",
-                                                             "x":  182,
-                                                             "y":  179,
-                                                             "name":  "Tat: to the Allied camp",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "mid_camp",
+                                                             "map":  "prt_cas",
                                                              "x":  207,
-                                                             "y":  234,
-                                                             "name":  "Teleport Cat: Near Splendide or Manuk Field (10,000 zeny)",
-                                                             "sw":  null
+                                                             "y":  165,
+                                                             "name":  "Recruiter for the Brave",
+                                                             "sw":  null,
+                                                             "ro":  8
+                                                         },
+                                                         {
+                                                             "map":  "lighthalzen",
+                                                             "x":  101,
+                                                             "y":  248,
+                                                             "name":  "Door of the Rekenber building",
+                                                             "sw":  null,
+                                                             "ro":  9
+                                                         },
+                                                         {
+                                                             "map":  "lhz_in01",
+                                                             "x":  132,
+                                                             "y":  259,
+                                                             "name":  "Sikaiz",
+                                                             "sw":  null,
+                                                             "ro":  9
+                                                         },
+                                                         {
+                                                             "map":  "lhz_in01",
+                                                             "x":  132,
+                                                             "y":  259,
+                                                             "name":  "Sikaiz",
+                                                             "sw":  null,
+                                                             "ro":  10
+                                                         },
+                                                         {
+                                                             "map":  "lhz_in01",
+                                                             "x":  132,
+                                                             "y":  259,
+                                                             "name":  "Sikaiz",
+                                                             "sw":  null,
+                                                             "ro":  11
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  9,
+                                                             "name":  "Back to the Recruiter in Prontera Castle, answer Ash-Vacuum?",
+                                                             "route":  {
+                                                                           "map":  "prt_cas",
+                                                                           "x":  207,
+                                                                           "y":  165,
+                                                                           "name":  "Recruiter for the Brave"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  10,
+                                                             "name":  "Sikaiz in Lighthalzen (lhz_in01, 132, 259)",
+                                                             "route":  {
+                                                                           "map":  "lhz_in01",
+                                                                           "x":  132,
+                                                                           "y":  259,
+                                                                           "name":  "Sikaiz"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  11,
+                                                             "name":  "Sikaiz again, answer Sure",
+                                                             "route":  {
+                                                                           "map":  "lhz_in01",
+                                                                           "x":  132,
+                                                                           "y":  259,
+                                                                           "name":  "Sikaiz"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  12,
+                                                             "name":  "Sikaiz again, answer The three kingdoms",
+                                                             "route":  {
+                                                                           "map":  "lhz_in01",
+                                                                           "x":  132,
+                                                                           "y":  259,
+                                                                           "name":  "Sikaiz"
+                                                                       }
                                                          }
                                                      ]
                                        },
                                        {
                                            "g":  39,
-                                           "id":  909,
-                                           "type":  "boss",
-                                           "lv":  122,
-                                           "title":  "The Rift-Mad Beast",
-                                           "now":  "Go to Manuk Field (man_fild02), the Sapha\u0027s land, and put down the Rift-Mad Tatacho.",
-                                           "done":  "You put down the Rift-Mad Tatacho. Its eyes burned with the same light as the seal crystals of Juperos.",
-                                           "map":  "man_fild02",
-                                           "boss":  "Rift-Mad Tatacho",
+                                           "id":  934,
+                                           "type":  "ro",
+                                           "lv":  121,
+                                           "title":  "Errands of the Alliance",
+                                           "now":  "RO quest: carry the Alliance\u0027s messages between its seats: Prontera Castle, Sikaiz in Lighthalzen, and the temple of Rachel.",
+                                           "done":  "You ran the Alliance\u0027s errands from Prontera to Rachel, and Sikaiz put your name on the expedition\u0027s roll.",
+                                           "map":  null,
+                                           "boss":  null,
                                            "route":  {
-                                                         "map":  "man_fild02",
-                                                         "x":  133,
-                                                         "y":  47,
-                                                         "name":  "Rift-Mad Tatacho: man_fild02"
+                                                         "map":  "prt_cas",
+                                                         "x":  19,
+                                                         "y":  98,
+                                                         "name":  "Alliance Manager"
                                                      },
                                            "mobs":  [
 
@@ -2111,61 +2203,138 @@ export default {
 
                                                      ],
                                            "hint":  [
-                                                        "Take the Teleport Cat in the camp (207, 234) to Manuk Field (10,000 zeny). The Rift-Mad Tatacho appears a few seconds after you arrive."
+                                                        "In Prontera Castle, the Alliance Manager is in the west of the castle (19, 98): the Route link draws the way from the gate.",
+                                                        "Rachel: the Airship from Juno or Izlude. The Alliance Manager is inside the great temple (ra_temple, 119, 113; door at rachel 150, 249).",
+                                                        "At the end Sikaiz asks for your name: type your character\u0027s name exactly as it is spelled, capitals too. A wrong one only ends the talk; ask him again."
                                                     ],
                                            "spots":  [
                                                          {
-                                                             "map":  "yuno",
-                                                             "x":  144,
-                                                             "y":  189,
-                                                             "name":  "Eden Teleport Officer: to the Eden Group",
-                                                             "sw":  null
+                                                             "map":  "prt_cas",
+                                                             "x":  19,
+                                                             "y":  98,
+                                                             "name":  "Alliance Manager",
+                                                             "sw":  null,
+                                                             "ro":  12
                                                          },
                                                          {
-                                                             "map":  "moc_para01",
-                                                             "x":  44,
-                                                             "y":  19,
-                                                             "name":  "Agent Geck: the Cat Paw passage to the rift",
-                                                             "sw":  null
+                                                             "map":  "lhz_in01",
+                                                             "x":  132,
+                                                             "y":  259,
+                                                             "name":  "Sikaiz",
+                                                             "sw":  null,
+                                                             "ro":  13
                                                          },
                                                          {
-                                                             "map":  "moc_fild20",
-                                                             "x":  368,
-                                                             "y":  197,
-                                                             "name":  "Cat Paw cat: over the wall",
-                                                             "sw":  null
+                                                             "map":  "lhz_in01",
+                                                             "x":  132,
+                                                             "y":  259,
+                                                             "name":  "Sikaiz",
+                                                             "sw":  null,
+                                                             "ro":  14
                                                          },
                                                          {
-                                                             "map":  "moc_fild22b",
-                                                             "x":  182,
-                                                             "y":  179,
-                                                             "name":  "Tat: to the Allied camp",
-                                                             "sw":  null
+                                                             "map":  "ra_temple",
+                                                             "x":  119,
+                                                             "y":  113,
+                                                             "name":  "Alliance Manager",
+                                                             "sw":  null,
+                                                             "ro":  15
                                                          },
                                                          {
-                                                             "map":  "mid_camp",
-                                                             "x":  207,
-                                                             "y":  234,
-                                                             "name":  "Teleport Cat: Near Splendide or Manuk Field (10,000 zeny)",
-                                                             "sw":  null
+                                                             "map":  "lhz_in01",
+                                                             "x":  132,
+                                                             "y":  259,
+                                                             "name":  "Sikaiz",
+                                                             "sw":  null,
+                                                             "ro":  16
+                                                         },
+                                                         {
+                                                             "map":  "lhz_in01",
+                                                             "x":  132,
+                                                             "y":  259,
+                                                             "name":  "Sikaiz",
+                                                             "sw":  null,
+                                                             "ro":  17
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  13,
+                                                             "name":  "Alliance Manager in Prontera Castle (prt_cas, 19, 98)",
+                                                             "route":  {
+                                                                           "map":  "prt_cas",
+                                                                           "x":  19,
+                                                                           "y":  98,
+                                                                           "name":  "Alliance Manager"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  14,
+                                                             "name":  "Sikaiz in Lighthalzen",
+                                                             "route":  {
+                                                                           "map":  "lhz_in01",
+                                                                           "x":  132,
+                                                                           "y":  259,
+                                                                           "name":  "Sikaiz"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  15,
+                                                             "name":  "Sikaiz again",
+                                                             "route":  {
+                                                                           "map":  "lhz_in01",
+                                                                           "x":  132,
+                                                                           "y":  259,
+                                                                           "name":  "Sikaiz"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  16,
+                                                             "name":  "Alliance Manager in the temple of Rachel (ra_temple, 119, 113)",
+                                                             "route":  {
+                                                                           "map":  "ra_temple",
+                                                                           "x":  119,
+                                                                           "y":  113,
+                                                                           "name":  "Alliance Manager"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  17,
+                                                             "name":  "Sikaiz in Lighthalzen",
+                                                             "route":  {
+                                                                           "map":  "lhz_in01",
+                                                                           "x":  132,
+                                                                           "y":  259,
+                                                                           "name":  "Sikaiz"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  18,
+                                                             "name":  "Sikaiz: type your character\u0027s name",
+                                                             "route":  {
+                                                                           "map":  "lhz_in01",
+                                                                           "x":  132,
+                                                                           "y":  259,
+                                                                           "name":  "Sikaiz"
+                                                                       }
                                                          }
                                                      ]
                                        },
                                        {
                                            "g":  40,
-                                           "id":  910,
-                                           "type":  "report",
-                                           "lv":  124,
-                                           "title":  "A Word from the Sapha",
-                                           "now":  "Return to Captain Varrick in the Allied camp (200, 282).",
-                                           "done":  "The Sapha heard of the hunt. Their warden at the gate of El Dicastes, their capital, sent word: he wants to meet the one who did it, and he has seen the same light under Kamidal Mountain.",
+                                           "id":  935,
+                                           "type":  "ro",
+                                           "lv":  122,
+                                           "title":  "Through the Rift",
+                                           "now":  "RO quest: two officers of the Alliance argue about Sikaiz. Hear them out, then go to the rift itself, where Munkenro waits with the expedition.",
+                                           "done":  "The head of the Alliance sent the expedition through the rift, and you with it. Beyond lies the Allied Forces Post, and a world of Laphine and Sapha who never asked for visitors.",
                                            "map":  null,
                                            "boss":  null,
                                            "route":  {
-                                                         "map":  "mid_camp",
-                                                         "x":  200,
-                                                         "y":  282,
-                                                         "name":  "Captain Varrick"
+                                                         "map":  "lhz_in01",
+                                                         "x":  32,
+                                                         "y":  22,
+                                                         "name":  "Officer A"
                                                      },
                                            "mobs":  [
 
@@ -2174,50 +2343,118 @@ export default {
 
                                                      ],
                                            "hint":  [
-                                                        "From Manuk Field, the Teleport Cat (135, 49) takes you back to the Allied camp (10,000 zeny). Or walk west: man_fild01\u0027s west edge (35, 232) leads into the camp."
+                                                        "The officers are in a side room of the Rekenber building (lhz_in01, 32, 22): the Route link draws the way.",
+                                                        "To the rift: the Guard in the Rekenber hall (lhz_in01, 130, 232) sends you there (Send me there.). By the rift (moc_fild20), the Rift Guard (349, 179) lets you through (Yes, sure.). Munkenro stands at 230, 197.",
+                                                        "After Ready!! the head of the Alliance arrives and speaks. When it is over, talk to Munkenro again: RO pays you, and he can send you through to the Allied camp (Yes, of course!)."
                                                     ],
                                            "spots":  [
                                                          {
-                                                             "map":  "man_fild02",
-                                                             "x":  135,
-                                                             "y":  49,
-                                                             "name":  "Teleport Cat: back to the camp (10,000 zeny)",
-                                                             "sw":  null
+                                                             "map":  "lhz_in01",
+                                                             "x":  32,
+                                                             "y":  22,
+                                                             "name":  "Officer A",
+                                                             "sw":  null,
+                                                             "ro":  18
                                                          },
                                                          {
-                                                             "map":  "yuno",
-                                                             "x":  144,
-                                                             "y":  189,
-                                                             "name":  "Eden Teleport Officer: to the Eden Group",
-                                                             "sw":  null
+                                                             "map":  "lhz_in01",
+                                                             "x":  32,
+                                                             "y":  22,
+                                                             "name":  "Officer A",
+                                                             "sw":  null,
+                                                             "ro":  19
                                                          },
                                                          {
-                                                             "map":  "moc_para01",
-                                                             "x":  44,
-                                                             "y":  19,
-                                                             "name":  "Agent Geck: the Cat Paw passage to the rift",
-                                                             "sw":  null
+                                                             "map":  "lhz_in01",
+                                                             "x":  130,
+                                                             "y":  232,
+                                                             "name":  "Guard: Send me there.",
+                                                             "sw":  null,
+                                                             "ro":  20
                                                          },
                                                          {
                                                              "map":  "moc_fild20",
-                                                             "x":  368,
-                                                             "y":  197,
-                                                             "name":  "Cat Paw cat: over the wall",
-                                                             "sw":  null
+                                                             "x":  349,
+                                                             "y":  179,
+                                                             "name":  "Rift Guard: Yes, sure.",
+                                                             "sw":  null,
+                                                             "ro":  20
                                                          },
                                                          {
                                                              "map":  "moc_fild22b",
-                                                             "x":  182,
-                                                             "y":  179,
-                                                             "name":  "Tat: to the Allied camp",
-                                                             "sw":  null
+                                                             "x":  230,
+                                                             "y":  197,
+                                                             "name":  "Munkenro",
+                                                             "sw":  null,
+                                                             "ro":  20
                                                          },
                                                          {
-                                                             "map":  "mid_camp",
-                                                             "x":  207,
-                                                             "y":  234,
-                                                             "name":  "Teleport Cat: Near Splendide or Manuk Field (10,000 zeny)",
-                                                             "sw":  null
+                                                             "map":  "moc_fild22b",
+                                                             "x":  230,
+                                                             "y":  197,
+                                                             "name":  "Munkenro",
+                                                             "sw":  null,
+                                                             "ro":  21
+                                                         },
+                                                         {
+                                                             "map":  "moc_fild22b",
+                                                             "x":  230,
+                                                             "y":  197,
+                                                             "name":  "Munkenro",
+                                                             "sw":  null,
+                                                             "ro":  22
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  19,
+                                                             "name":  "Officer A or B in Lighthalzen (lhz_in01, 32, 22)",
+                                                             "route":  {
+                                                                           "map":  "lhz_in01",
+                                                                           "x":  32,
+                                                                           "y":  22,
+                                                                           "name":  "Officer A"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  20,
+                                                             "name":  "The officers again",
+                                                             "route":  {
+                                                                           "map":  "lhz_in01",
+                                                                           "x":  32,
+                                                                           "y":  22,
+                                                                           "name":  "Officer A"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  21,
+                                                             "name":  "Munkenro at the rift (moc_fild22b, 230, 197)",
+                                                             "route":  {
+                                                                           "map":  "lhz_in01",
+                                                                           "x":  130,
+                                                                           "y":  232,
+                                                                           "name":  "Guard: Send me there."
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  22,
+                                                             "name":  "Munkenro: Ready!!, and watch what happens",
+                                                             "route":  {
+                                                                           "map":  "lhz_in01",
+                                                                           "x":  130,
+                                                                           "y":  232,
+                                                                           "name":  "Guard: Send me there."
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  100,
+                                                             "name":  "Munkenro once more, when it is over",
+                                                             "route":  {
+                                                                           "map":  "lhz_in01",
+                                                                           "x":  130,
+                                                                           "y":  232,
+                                                                           "name":  "Guard: Send me there."
+                                                                       }
                                                          }
                                                      ]
                                        }
@@ -8230,11 +8467,11 @@ export default {
                    },
                    {
                        "key":  "ep13_language",
-                       "ch":  8,
-                       "hook":  36,
+                       "ch":  9,
+                       "hook":  40,
                        "title":  "The Otherworld Language",
                        "range":  "70+",
-                       "intro":  "Captain Varrick: \"Nobody here understands a word the Laphine or the Sapha say. Our mechanic swears he can build a device that translates them. Help him, and you will be the first human who can talk to this world.\"",
+                       "intro":  "Nobody in the Allied camp understands a word the Laphine or the Sapha say. The camp\u0027s mechanic swears he can build a device that translates them: help him, and you will be among the first humans who can talk to this world.",
                        "where":  "the Allied camp",
                        "mod":  null,
                        "reward":  "the Ring of the Ancient Wise King, the translator: wear it to understand the Laphine and the Sapha (and 200,000 base EXP).",
@@ -8685,11 +8922,11 @@ export default {
                    },
                    {
                        "key":  "ep13_catpaw",
-                       "ch":  8,
-                       "hook":  36,
+                       "ch":  9,
+                       "hook":  40,
                        "title":  "Cat Trading",
                        "range":  "118+",
-                       "intro":  "Captain Varrick: \"Those cats who sent you through the rift keep a trading post at the west end of our camp. They do favours for those with credit. Earn some, it is worth it out here.\"",
+                       "intro":  "The Cat Paw Merchants of the Eden Group keep a trading post at the west end of the Allied camp. They do favours for those with credit, and out here that is worth earning.",
                        "where":  "the Allied camp",
                        "mod":  null,
                        "reward":  "Cat Paw credit: a save point at the camp now, and with more credit later their storage and their Cat Warp to Midgard (and 20,000 base EXP).",
