@@ -87,6 +87,7 @@ summary small { font-weight: normal; color: #889; margin-left: auto; }
 .tabs button.on { background: #fff; color: #273256; font-weight: bold; }
 .side-now { margin: 6px 0; padding: 7px 9px; border: 1px solid #e5a15e; border-radius: 4px; background: #fff7ee; }
 .side-now h4 { margin: 0 0 3px; font-size: 12px; }
+h3.guides { margin: 12px 0 2px; font-size: 13px; color: #6b4a1d; }
 .st.opt { background: #f6e6d3; color: #8a4b12; }
 .badge.side { background: #f6e6d3; color: #8a4b12; }
 .quote { color: #556; font-style: italic; margin: 2px 0 6px; line-height: 1.4; }
@@ -114,7 +115,15 @@ export function parseState(text) {
     const f = raw.map(Number);
     if (f.length < 5 || !Number.isFinite(f[0])) return null;
     return { step: Math.max(1, f[0]), level: f[1], waypoints: f[2], skip: f[3] || 0, hunt: f[4], have: parseHave(raw[5]), watch: parseWatch(raw[6]), capped: f[7] === 1,
-        sides: parseSides(raw[8]), mvpk: Number(raw[9]) || 0 };
+        sides: parseSides(raw[8]), mvpk: Number(raw[9]) || 0, guides: parseGuides(raw[10]) };
+}
+
+/** "1:3:0,2;100:-1:" -> [{ step, ro, have }]: where each RO quest guide stands (-1: its mod is not on the server, 0: not open, 100: done). */
+export function parseGuides(text) {
+    return String(text || '').split(';').filter(Boolean).map(part => {
+        const [step, ro, have] = part.split(':');
+        return { step: Number(step) || 0, ro: Number(ro), have: parseHave(have) };
+    });
 }
 
 /** "1:-1::-1:0;3:1:0,1:-1:0" -> [{ step, hunt, have, ro, fail }]: where each Side Quest stands (step 100: done). */
@@ -133,6 +142,7 @@ export function parseWatch(text) {
 
 const mapName = name => String(name || '').replace(/\.(gat|rsw)$/i, '');
 
+const GUIDES = DATA.guides || [];
 const STEPS = DATA.chapters.flatMap(c => c.steps.map((s, i) => ({ ...s, ch: c.n, k: i + 1, chapter: c })));
 /** The quest id of the main step at a position: 77000 + the step's fixed id (on Renewal not its position). */
 const mainQuest = step => 77000 + (STEPS[step - 1]?.id ?? step);
@@ -368,7 +378,10 @@ export default function init(parameters, api) {
     const TABS = [['story', 'Story'], ['side', 'Side Quests'], ['mvp', 'MVP Ledger']];
     let tab = 'story';
     const sideState = n => state?.sides?.[n - 1] || { step: 0, hunt: -1, have: null, ro: -1 };
-    const sidesOpen = () => DATA.sides.filter(sd => { const k = sideState(sd.n).step; return k >= 1 && k < 100; }).length;
+    // RO quest guides: index i in DATA.guides, as the server lists them.
+    const guideState = i => state?.guides?.[i] || { step: 0, ro: -1, have: null };
+    const sidesOpen = () => DATA.sides.filter(sd => { const k = sideState(sd.n).step; return k >= 1 && k < 100; }).length
+        + GUIDES.filter((gd, i) => { const k = guideState(i).step; return k >= 1 && k < 100; }).length;
     const routeLink = r => r ? `<span class="route" data-r="${escape(r.map)},${r.x},${r.y}" title="Open Navigation with the way there">${escape(r.name)} (${escape(r.map)} ${r.x}, ${r.y})</span>` : '';
 
     function sideObjective(sd, s, st) {
@@ -416,11 +429,11 @@ export default function init(parameters, api) {
     }
 
     function sidesHtml() {
-        const stamps = DATA.sides.filter(sd => sideState(sd.n).step === 100).length;
+        const stamps = DATA.sides.filter(sd => sideState(sd.n).step === 100).length + GUIDES.filter((gd, i) => guideState(i).step === 100).length;
         const ranks = DATA.ranks.map(r => stamps >= r.need
             ? `<div><span class="ok">&#10003; ${escape(r.name)}</span>: ${escape(r.hat)} (${escape(r.stat)}), yours.</div>`
             : `<div>${escape(r.name)} at ${r.need} stamps: ${escape(r.hat)} (${escape(r.stat)}). ${r.need - stamps} to go.</div>`).join('');
-        const pass = `<div class="pass"><b>Adventurer's Passport:</b> ${stamps} stamp${stamps === 1 ? '' : 's'}. Each finished Side Quest stamps it.${ranks}</div>`;
+        const pass = `<div class="pass"><b>Adventurer's Passport:</b> ${stamps} stamp${stamps === 1 ? '' : 's'}. Each finished Side Quest${GUIDES.length ? ' or RO quest' : ''} stamps it.${ranks}</div>`;
         const body = DATA.sides.map(sd => {
             const st = sideState(sd.n);
             const k = st.step;
@@ -440,7 +453,36 @@ export default function init(parameters, api) {
             return `<details data-k="${fk}"${opened(fk, !done) ? ' open' : ''}><summary>${escape(sd.title)} <small>Chapter ${sd.ch}</small>${badge}</summary>
                 <div class="body"><p class="quote">${escape(sd.intro)}</p>${past}${now}</div></details>`;
         }).join('');
-        return pass + '<p class="hint route-note"></p>' + body + '<p class="hint">Side Quests are optional: the next chapter opens either way. Each gives a costume tied to its place, a small reward and a Passport stamp.</p>';
+        return pass + '<p class="hint route-note"></p>' + body + '<p class="hint">Side Quests are optional: the next chapter opens either way. Each gives a costume tied to its place, a small reward and a Passport stamp.</p>' + guidesHtml();
+    }
+
+    // Rune-Midgard's own quests on the road: the Journal only shows the way and
+    // ticks along with RO's own variables. A guide whose mod is not on this
+    // server (step -1) is left out.
+    function guidesHtml() {
+        const body = GUIDES.map((gd, i) => {
+            const st = guideState(i);
+            const k = st.step;
+            if (k < 0) return '';
+            const chapter = DATA.chapters[gd.ch - 1];
+            if (k < 1) {
+                return `<details data-k="gd-${gd.key}-lock"${opened(`gd-${gd.key}-lock`, false) ? ' open' : ''}><summary>??? <small>Chapter ${gd.ch}</small><span class="badge lock">Not yet</span></summary>
+                    <div class="body"><p class="intro">It opens when your road reaches ${escape(chapter?.townName || 'its chapter')}.</p></div></details>`;
+            }
+            const done = k === 100;
+            const past = gd.steps.filter(s => done || s.k < k).map(s => `<div class="q"><span class="st done">Done</span><b>${escape(s.title)}.</b> ${escape(s.done)}</div>`).join('');
+            const cur = done ? null : gd.steps[k - 1];
+            const sd = { n: `g-${gd.key}`, npc: '', town: '', townMap: '', x: 0, y: 0 };
+            const now = cur ? `<div class="side-now"><h4><span class="tag">${escape(cur.label || 'RO quest')}</span>Step ${cur.k}: ${escape(cur.title)}</h4>
+                <p>${escape(cur.now)}</p>${sideObjective(sd, cur, { ...st, hunt: -1 })}</div>` : '';
+            const reward = gd.reward ? `<p class="hint">RO's own reward: ${escape(gd.reward)}</p>` : '';
+            const badge = done ? '<span class="badge">Done, stamped</span>' : `<span class="badge side">RO quest, Lv ${escape(gd.range)}</span>`;
+            const fk = `gd-${gd.key}-${done ? 'done' : 'on'}`;
+            return `<details data-k="${fk}"${opened(fk, !done) ? ' open' : ''}><summary>${escape(gd.title)} <small>Chapter ${gd.ch}, ${escape(gd.where)}</small>${badge}</summary>
+                <div class="body"><p class="quote">${escape(gd.intro)}</p>${reward}${past}${now}</div></details>`;
+        }).join('');
+        if (!body) return '';
+        return `<h3 class="guides">RO quests on your road</h3><p class="hint">Rune-Midgard's own quests. The Chronicle only shows the way: the quest's own people give its rewards, and the Journal follows the quest as it moves on. Each one finished stamps your Passport.</p>${body}`;
     }
 
     function ledgerHtml() {
@@ -492,7 +534,7 @@ export default function init(parameters, api) {
                 ${low ? `<p class="warn">Needs level ${cur.lv}. You are level ${state.level}.</p>` : ''}`;
         }
 
-        list.innerHTML = (finished ? `<div class="now"><h3>Champion of Rune-Midgard</h3><p>Every chapter is told. Legends still wait: The Sign and Geffenia, Thanatos Tower, the Abyss Lakes and the Endless Tower.</p></div>` : '')
+        list.innerHTML = (finished ? `<div class="now"><h3>Champion of Rune-Midgard</h3><p>Every chapter is told. Legends still wait: The Sign and Geffenia, Thanatos Tower, the Abyss Lakes and the Endless Tower.</p>${DATA.soon ? `<p class="hint">${escape(DATA.soon)}</p>` : ''}</div>` : '')
             + DATA.chapters.map(c => {
             const first = (c.n - 1) * 5 + 1;
             const last = first + 4;

@@ -28,6 +28,8 @@
 
 $final = 115   # the level the last step fills toward
 $finalRe = 175 # the same on Renewal (its level cap)
+# Renewal: where the route stops for now (the Journal, after the finale).
+$soonRe = 'Episodes 16 to 21 are in development, coming soon.'
 
 # The way home from Odin's Temple (Chapter 8's Hugel steps): only its Boatman
 # sails back, so Navigation can't route out.
@@ -421,29 +423,37 @@ $chapters = @(
           # Renewal: the New World chapters come first.
           re = @{ lv = 117
              done = 'Elisha believes the guardians were built to watch over the seals. The Core''s last broadcast showed two places: Arunafeltz, and the rift that opened when Morroc fell. The Allied Expedition beyond the rift had asked the Sages for help, so she sent you through it first.'
-             say = @('A map of Arunafeltz? And this one... the rift beneath Morroc. Then I was right.', 'The guardians were built to watch over the seals. They woke because the seals are failing, and the deepest wound of all is the rift that opened when Morroc fell.', 'The Allied Expedition went through it into a new world, and their captain has asked the Sages for help. Go to Captain Varrick at their camp. Rachel can wait until you return.', 'An Allied Scout keeps watch over the rift, east of Morroc. Show him your Chronicle and he will let you through.') } }
+             say = @('A map of Arunafeltz? And this one... the rift beneath Morroc. Then I was right.', 'The guardians were built to watch over the seals. They woke because the seals are failing, and the deepest wound of all is the rift that opened when Morroc fell.', 'The Allied Expedition went through it into a new world, and their captain has asked the Sages for help. Go to Captain Varrick at their camp. Rachel can wait until you return.', 'The rift guards only let the Expedition''s own people through. But the Cat Paw Merchants of the Eden Group send adventurers across for a fee. Ask for their agent, Geck.') } }
      ) }
 
   # Renewal only: the New World beyond the rift under Morroc (rAthena
-  # quests_13_1.txt). The way in is quest-locked (ep13_ryu), so the Allied
-  # Scout (gates below) lets Chronicle bearers through to the Allied camp.
-  # The camp's own guards are locked too: the Teleport Cats take you out.
+  # quests_13_1.txt). RO's own way in: the Cat Paw Agent quest (Agent Geck in
+  # the Eden Group, quests_dicastes.txt: Lv 70, 50,000 zeny, ep13_start = 100),
+  # then the cat on moc_fild20 and Tat beyond the wall. The rift guards want
+  # the long Onward to the Other World quest (ep13_ryu) instead. The camp's
+  # own guards are locked too: the Teleport Cats take you out.
   @{ era = 'renewal'; title = 'Beyond the Rift'; range = '118-124'
      town = 'mid_camp'; townName = 'the Allied Forces Post'; npc = 'Captain Varrick'; sprite = '852'; x = 200; y = 282
      costumes = @(5018, 2283, 5378); costumeId = 50903; gift = @(@(504, 50), @(505, 30)); zeny = 70000
      intro = 'Beyond the rift under Morroc lies a world no map of Rune-Midgard shows: the land of the Laphine of Splendide and the Sapha of Manuk. The Allied Expedition of the three kingdoms keeps its camp just past the rift.'
      spots = @(
-       @{ map = 'moc_fild20'; x = 345; y = 182; name = 'Allied Scout: through the rift to the camp' }
+       @{ map = 'yuno'; x = 144; y = 189; name = 'Eden Teleport Officer: to the Eden Group' }
+       @{ map = 'moc_para01'; x = 44; y = 19; name = 'Agent Geck: the Cat Paw passage to the rift' }
+       @{ map = 'moc_fild20'; x = 368; y = 197; name = 'Cat Paw cat: over the wall' }
+       @{ map = 'moc_fild22b'; x = 182; y = 179; name = 'Tat: to the Allied camp' }
        @{ map = 'mid_camp'; x = 207; y = 234; name = 'Teleport Cat: Near Splendide or Manuk Field (10,000 zeny)' }
      )
-     away = 'Outside the New World? The Allied Scout east of Morroc (moc_fild20, 345, 182) lets you through the rift to the Allied camp. Once you have been there, a Waykeeper can send you back too.'
+     away = 'Outside the New World? Any Eden Teleport Officer (Juno 144, 189, and most towns) takes you to the Eden Group, where Agent Geck (44, 19) sends you back to the rift for free. There, the Cat Paw cat (moc_fild20, 368, 197) helps you over the wall to Tat, who sends you to the camp. Once you have been there, a Waykeeper can send you back too.'
      steps = @(
        @{ id = 906; type = 'talk'; lv = 118; title = 'Through the Rift'
-          route = @('moc_fild20', 345, 182, 'Allied Scout: moc_fild20')
-          now = 'Go through the rift under Morroc to the Allied Forces Post, and find Captain Varrick in the camp (200, 282).'
+          route = @('yuno', 144, 189, 'Eden Teleport Officer: yuno')
+          now = 'Go through the rift under Morroc the Cat Paw way, to the Allied Forces Post, and find Captain Varrick in the camp (200, 282).'
           hint = @(
-            'From Morroc, follow the Route link to the Allied Scout on the Sograt Desert east of the city (moc_fild20, 345, 182), next to the rift guards.'
-            'Show him your Chronicle and choose to go through. He sends you to the Allied Forces Post (mid_camp), where Captain Varrick stands near the arrival spot (200, 282).'
+            'RO quest: the Cat Paw Agent. The Eden Teleport Officer in Juno (144, 189), or in most other towns, takes you to the Eden Group: choose Move to Eden Group.'
+            'In the Eden Group, Agent Geck stands near where you arrive (44, 19). Choose Why don''t you collect it yourself?, then I also want to go and help the merchants., type any name to sign, then choose Pay 50,000 zeny. Bring 50,000 zeny; the other answers only end the talk, nothing is lost. He sends you to the Sograt Desert by the rift (moc_fild20).'
+            'There, a small Cat Paw cat sits by the wall (368, 197): choose Let''s do this! and climb over on its back. Beyond the wall, Tat (moc_fild22b, 182, 179) asks if you are ready: choose To the other world!.'
+            'You arrive at the Allied Forces Post (mid_camp). Captain Varrick stands near the arrival spot (200, 282). The rift guards by the gorge only let in those who did the long Onward to the Other World quest; you do not need it.'
+            'Later, the way back in is free: Geck in the Eden Group (Send me back), or the cat on moc_fild20 straight away.'
           )
           done = 'Captain Varrick leads the Allied Expedition''s camp. Since the rift opened, the monsters of this new world have grown wild, and both the Laphine and the Sapha blame the humans who came through it.'
           say = @('A sage of Juno sends us a Chronicle bearer? Good. We need one.', 'When Morroc fell, the seal under it tore open, and through the tear we found this place. The Laphine of Splendide call it their home. So do the Sapha of Manuk.', 'Since we came, their monsters have gone wild. The Laphine say we brought it with us, and I am not sure they are wrong.', 'The fields north of Splendide are the worst. Clear them, and maybe the Laphine will talk to us again. Our Teleport Cat by the supply tents will take you to Splendide''s fields.') }
@@ -498,7 +508,7 @@ $chapters = @(
        @{ map = 'mid_camp'; x = 207; y = 234; name = 'Teleport Cat: Manuk Field (10,000 zeny)' }
        @{ map = 'man_fild02'; x = 135; y = 49; name = 'Teleport Cat: Near El Dicastes (20,000 zeny)' }
      )
-     away = 'Far from El Dicastes? From the Allied camp, the Teleport Cat (207, 234) goes to Manuk Field, and the Teleport Cat there (135, 49) to Near El Dicastes. The Allied Scout east of Morroc (moc_fild20, 345, 182) lets you through the rift to the camp.'
+     away = 'Far from El Dicastes? From the Allied camp, the Teleport Cat (207, 234) goes to Manuk Field, and the Teleport Cat there (135, 49) to Near El Dicastes. Back in Rune-Midgard? The Cat Paw cat by the rift (moc_fild20, 368, 197) helps you over the wall to Tat (moc_fild22b, 182, 179), who sends you to the camp. Any Eden Teleport Officer takes you to Agent Geck in the Eden Group, who sends you to the rift.'
      steps = @(
        @{ id = 911; type = 'talk'; lv = 124; title = 'The Warden of El Dicastes'
           now = 'Go to Kamidal Mountain and find Warden Kahlis outside the gate of El Dicastes (dic_fild01, 156, 270).'
@@ -646,7 +656,7 @@ $chapters = @(
           # Renewal: not the end yet. On to Mora, beyond the rift.
           re = @{ lv = 146; title = 'The Light of Bifrost'
              done = 'Brynjar thanked you in the Valkyries'' name, but the temple had shown them one more failing light: Bifrost, the rainbow bridge beyond the rift, where the Laphine of Mora live. He sent you there.'
-             say = @('The temple is quiet. The Valkyries thank you.', 'But from the upper hall they saw one more light failing. Bifrost, the rainbow bridge of the gods, stands beyond the rift you crossed, in the land of the Laphine.', 'The Laphine village of Mora lies at its foot. Its elder, Mirrel, has kept the bridge''s light for longer than any human has lived. Go to him.', 'The Allied Scout east of Morroc will let you back through the rift.') } }
+             say = @('The temple is quiet. The Valkyries thank you.', 'But from the upper hall they saw one more light failing. Bifrost, the rainbow bridge of the gods, stands beyond the rift you crossed, in the land of the Laphine.', 'The Laphine village of Mora lies at its foot. Its elder, Mirrel, has kept the bridge''s light for longer than any human has lived. Go to him.', 'The Cat Paw Merchants will take you back through the rift: their agent Geck in the Eden Group, or the cat by the wall east of Morroc.') } }
      ) }
 
   # Renewal only: Mora, the Laphine village at the foot of Bifrost. From the
@@ -656,18 +666,21 @@ $chapters = @(
      costumes = @(2215, 5064, 2207); costumeId = 50909; gift = @(@(607, 10), @(608, 5)); zeny = 100000
      intro = 'Mora is a Laphine village of healers and gardeners, hidden in the hills at the foot of Bifrost, the rainbow bridge beyond the rift. Its Small Holes in the hillside are its only doors.'
      spots = @(
-       @{ map = 'moc_fild20'; x = 345; y = 182; name = 'Allied Scout: through the rift to the camp' }
+       @{ map = 'hugel'; x = 93; y = 153; name = 'Eden Teleport Officer: to the Eden Group' }
+       @{ map = 'moc_para01'; x = 44; y = 19; name = 'Agent Geck: Send me back (to the rift)' }
+       @{ map = 'moc_fild20'; x = 368; y = 197; name = 'Cat Paw cat: over the wall' }
+       @{ map = 'moc_fild22b'; x = 182; y = 179; name = 'Tat: to the Allied camp' }
        @{ map = 'mid_camp'; x = 207; y = 234; name = 'Teleport Cat: Near Splendide (10,000 zeny)' }
        @{ map = 'spl_fild02'; x = 53; y = 242; name = 'Teleport Cat: Entrance to Mora (55,000 zeny)' }
        @{ map = 'bif_fild02'; x = 285; y = 332; name = 'Small Hole: into Mora' }
      )
-     away = 'Far from Mora? Through the rift (the Allied Scout east of Morroc, moc_fild20, 345, 182) to the Allied camp, its Teleport Cat (207, 234) to Near Splendide, the Teleport Cat there (53, 242) to Entrance to Mora, then knock on the Small Hole (285, 332).'
+     away = 'Far from Mora? Through the rift to the Allied camp (an Eden Teleport Officer, then Agent Geck: Send me back; then the Cat Paw cat on moc_fild20, 368, 197, and Tat beyond the wall), its Teleport Cat (207, 234) to Near Splendide, the Teleport Cat there (53, 242) to Entrance to Mora, then knock on the Small Hole (285, 332).'
      steps = @(
        @{ id = 916; type = 'talk'; lv = 147; title = 'The Village Under the Bridge'
-          route = @('moc_fild20', 345, 182, 'Allied Scout: moc_fild20')
+          route = @('hugel', 93, 153, 'Eden Teleport Officer: hugel')
           now = 'Go to Mora, the Laphine village at the foot of Bifrost, and find Elder Mirrel (114, 96).'
           hint = @(
-            'Follow the Route link to the Allied Scout east of Morroc (moc_fild20, 345, 182). He lets you through the rift to the Allied camp.'
+            'Back through the rift: the Eden Teleport Officer in Hugel (93, 153) takes you to the Eden Group, where Agent Geck (44, 19) sends you to the rift (Send me back). The Cat Paw cat by the wall (moc_fild20, 368, 197) helps you over, and Tat (moc_fild22b, 182, 179) sends you to the Allied camp.'
             'In the camp, the Teleport Cat (207, 234) goes to Near Splendide (10,000 zeny). On spl_fild02, the Teleport Cat (53, 242) goes to Entrance to Mora (55,000 zeny).'
             'On bif_fild02, knock on the Small Hole in the hill (285, 332). It opens into Mora. Elder Mirrel stands in the village centre (114, 96).'
           )
@@ -829,18 +842,16 @@ $chapters = @(
             @{ map = 'ver_eju'; x = 107; y = 36; name = 'Way down to the tunnel (ver_tunn)' }
             @{ map = 'ver_tunn'; x = 10; y = 36; name = 'Way to Verus (verus04)' }
           )
-          done = 'The first seal holds. From Prontera''s fields to the roots of the World Tree, you stood wherever the seals failed. Your Chronicle is complete: you are a Champion of Rune-Midgard. Legends still wait: The Sign and Geffenia, Thanatos Tower, the Abyss Lakes and the Endless Tower.'
-          say = @('Silence. For the first time since we broke ground, the whole city is silent.', 'Under Morroc, in Einbech, beyond the rift, on the World Tree, and now here, at the first seal itself. You stood wherever the seals failed, and they held.', 'The Valkyries have a word for that, I am told. Rise, Champion of Rune-Midgard. Your Chronicle is complete, but legends still wait: the Sign, Thanatos Tower, the Abyss Lakes, the Endless Tower.') }
+          done = 'The first seal holds. From Prontera''s fields to the roots of the World Tree, you stood wherever the seals failed. Your Chronicle is complete for now: you are a Champion of Rune-Midgard. Episodes 16 to 21 are in development, coming soon. Legends still wait: The Sign and Geffenia, Thanatos Tower, the Abyss Lakes and the Endless Tower.'
+          say = @('Silence. For the first time since we broke ground, the whole city is silent.', 'Under Morroc, in Einbech, beyond the rift, on the World Tree, and now here, at the first seal itself. You stood wherever the seals failed, and they held.', 'The Valkyries have a word for that, I am told. Rise, Champion of Rune-Midgard. Your Chronicle is complete for now, but legends still wait: the Sign, Thanatos Tower, the Abyss Lakes, the Endless Tower.', 'And the world goes on beyond them. When the next chapters of your road are written, Episodes 16 to 21, you will hear of it first.') }
      ) }
 )
 
 # Passages the Chronicle opens: a Renewal NPC who lets a character through
 # from step id 'from' on (the New World's own way in is quest-locked). Only
 # built into a route that has that step.
-$gates = @(
-  @{ from = 906; map = 'moc_fild20'; x = 345; y = 182; dir = 4; sprite = '707'; name = 'Allied Scout'; to = @('mid_camp', 210, 288)
-     say = @('You carry a Chronicle, and the Sages of Juno vouch for you. The Allied Expedition will be glad of you.', 'Beyond the rift is the Allied Forces Post. Its own Teleport Cats and Dimensional Device can take you on from there.')
-     shut = 'The rift is closed to all but the Allied Expedition and those it calls for. I cannot let you through.' }
-)
+# (Renewal's Allied Scout let Chronicle bearers into the New World until
+# 2026-10-25; RO's own Cat Paw Agent quest is the way in now.)
+$gates = @()
 
-return @{ chapters = $chapters; final = $final; finalRe = $finalRe; gates = $gates }
+return @{ chapters = $chapters; final = $final; finalRe = $finalRe; soonRe = $soonRe; gates = $gates }

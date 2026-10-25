@@ -54,6 +54,15 @@ years and wondering where to go next.
     3 stamps earn the first Passport rank, 6 the second: costumes with a
     bonus.
 
+  RO quests on your road (Renewal)
+    The Side Quests tab also guides Rune-Midgard's own quests near each
+    Renewal chapter: the way into the New World, El Dicastes and Eclage,
+    the Einbroch factory, Metto in Juno, the stolen gem of Rachel, the
+    Odin Temple excavation, Fili's lost adventurers by Eclage and the
+    Wandering Bard of Verus. The Chronicle only shows the way and follows
+    RO's own quest as it moves on: the quest's own people give its
+    rewards, and each one finished stamps your Passport.
+
   MVP Ledger
     A Journal tab that fills in as people on your road mention the MVPs
     near them (the Golden Thief Bug, Moonlight Flower, Eddga, Drake...),
@@ -79,10 +88,11 @@ years and wondering where to go next.
     chapters in Einbech's mine (90-105), in the New World beyond the
     rift under Morroc (118-129), in Mora (147-150), Eclage (151-158) and
     Verus (160-171), and the Chapter 3 and 4 hunts moved to monsters of
-    the right level. An Allied Scout east of Morroc lets Chronicle
-    bearers through the rift. The Side Quests and the MVP Ledger
-    follow Renewal's levels and places too. The Renewal route is new and
-    not yet played through.
+    the right level. The way through the rift is RO's own: the Cat Paw
+    Agent in the Eden Group (Lv 70, 50,000 zeny), as the Journal shows.
+    The Side Quests and the MVP Ledger follow Renewal's levels and
+    places too. Episodes 16 to 21 are in development, coming soon. The
+    Renewal route is new and not yet played through.
   - Tested: Chapters 1 to 3. Chapters 4 to 8, the costume rewards and the
     Journal's Route link are still being tested. If something breaks,
     type @chronicle and send the chapter and step it shows, with what

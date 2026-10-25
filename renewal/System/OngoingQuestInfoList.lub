@@ -212,9 +212,9 @@ QuestInfoList = {
 	},
 	[77906] = {
 		Title = "Chronicle 8-1: Through the Rift",
-		Summary = "Go through the rift under Morroc to the Allied Forces Post, and find Captain Varrick in the camp (200, 282).",
+		Summary = "Go through the rift under Morroc the Cat Paw way, to the Allied Forces Post, and find Captain Varrick in the camp (200, 282).",
 		IconName = "ico_nq.bmp",
-		Description = { "Go through the rift under Morroc to the Allied Forces Post, and find Captain Varrick in the camp (200, 282).<br><br>How to get there:<br>1. From Morroc, follow the Route link to the Allied Scout on the Sograt Desert east of the city (moc_fild20, 345, 182), next to the rift guards.<br>2. Show him your Chronicle and choose to go through. He sends you to the Allied Forces Post (mid_camp), where Captain Varrick stands near the arrival spot (200, 282).<br><br>Route: <NAVI>[Allied Scout: moc_fild20]<INFO>moc_fild20,345,182,0,000,0</INFO></NAVI>" },
+		Description = { "Go through the rift under Morroc the Cat Paw way, to the Allied Forces Post, and find Captain Varrick in the camp (200, 282).<br><br>How to get there:<br>1. RO quest: the Cat Paw Agent. The Eden Teleport Officer in Juno (144, 189), or in most other towns, takes you to the Eden Group: choose Move to Eden Group.<br>2. In the Eden Group, Agent Geck stands near where you arrive (44, 19). Choose Why don't you collect it yourself?, then I also want to go and help the merchants., type any name to sign, then choose Pay 50,000 zeny. Bring 50,000 zeny; the other answers only end the talk, nothing is lost. He sends you to the Sograt Desert by the rift (moc_fild20).<br>3. There, a small Cat Paw cat sits by the wall (368, 197): choose Let's do this! and climb over on its back. Beyond the wall, Tat (moc_fild22b, 182, 179) asks if you are ready: choose To the other world!.<br>4. You arrive at the Allied Forces Post (mid_camp). Captain Varrick stands near the arrival spot (200, 282). The rift guards by the gorge only let in those who did the long Onward to the Other World quest; you do not need it.<br>5. Later, the way back in is free: Geck in the Eden Group (Send me back), or the cat on moc_fild20 straight away.<br><br>Route: <NAVI>[Eden Teleport Officer: yuno]<INFO>yuno,144,189,0,000,0</INFO></NAVI>" },
 	},
 	[77907] = {
 		Title = "Chronicle 8-2: The Wild Fields",
@@ -250,19 +250,19 @@ QuestInfoList = {
 		Title = "Chronicle 9-2: The Swarm on the Mountain",
 		Summary = "Hunt 30 Centipedes and 10 Dolomedes on the slopes of Kamidal Mountain (dic_fild01), outside El Dicastes.",
 		IconName = "ico_nq.bmp",
-		Description = { "Hunt 30 Centipedes and 10 Dolomedes on the slopes of Kamidal Mountain (dic_fild01), outside El Dicastes.<br><br>How to get there:<br>1. Far from El Dicastes? From the Allied camp, the Teleport Cat (207, 234) goes to Manuk Field, and the Teleport Cat there (135, 49) to Near El Dicastes. The Allied Scout east of Morroc (moc_fild20, 345, 182) lets you through the rift to the camp.<br><br>Route: <NAVI>[Hunting ground: dic_fild01]<INFO>dic_fild01,159,264,0,000,0</INFO></NAVI>" },
+		Description = { "Hunt 30 Centipedes and 10 Dolomedes on the slopes of Kamidal Mountain (dic_fild01), outside El Dicastes.<br><br>How to get there:<br>1. Far from El Dicastes? From the Allied camp, the Teleport Cat (207, 234) goes to Manuk Field, and the Teleport Cat there (135, 49) to Near El Dicastes. Back in Rune-Midgard? The Cat Paw cat by the rift (moc_fild20, 368, 197) helps you over the wall to Tat (moc_fild22b, 182, 179), who sends you to the camp. Any Eden Teleport Officer takes you to Agent Geck in the Eden Group, who sends you to the rift.<br><br>Route: <NAVI>[Hunting ground: dic_fild01]<INFO>dic_fild01,159,264,0,000,0</INFO></NAVI>" },
 	},
 	[77913] = {
 		Title = "Chronicle 9-3: What the Swarm Leaves",
 		Summary = "Bring Warden Kahlis 8 Bug Legs from the Centipedes and 5 White Spider Limbs from the Dolomedes, at the gate of El Dicastes (156, 270).",
 		IconName = "ico_nq.bmp",
-		Description = { "Bring Warden Kahlis 8 Bug Legs from the Centipedes and 5 White Spider Limbs from the Dolomedes, at the gate of El Dicastes (156, 270).<br><br>How to get there:<br>1. Far from El Dicastes? From the Allied camp, the Teleport Cat (207, 234) goes to Manuk Field, and the Teleport Cat there (135, 49) to Near El Dicastes. The Allied Scout east of Morroc (moc_fild20, 345, 182) lets you through the rift to the camp.<br><br>Route: <NAVI>[Warden Kahlis]<INFO>dic_fild01,156,270,0,000,0</INFO></NAVI>" },
+		Description = { "Bring Warden Kahlis 8 Bug Legs from the Centipedes and 5 White Spider Limbs from the Dolomedes, at the gate of El Dicastes (156, 270).<br><br>How to get there:<br>1. Far from El Dicastes? From the Allied camp, the Teleport Cat (207, 234) goes to Manuk Field, and the Teleport Cat there (135, 49) to Near El Dicastes. Back in Rune-Midgard? The Cat Paw cat by the rift (moc_fild20, 368, 197) helps you over the wall to Tat (moc_fild22b, 182, 179), who sends you to the camp. Any Eden Teleport Officer takes you to Agent Geck in the Eden Group, who sends you to the rift.<br><br>Route: <NAVI>[Warden Kahlis]<INFO>dic_fild01,156,270,0,000,0</INFO></NAVI>" },
 	},
 	[77914] = {
 		Title = "Chronicle 9-4: The Hive Under Kamidal",
 		Summary = "Enter the Scaraba Hole under Kamidal Mountain (dic_dun01). Its entrance is at the west end of dic_fild01 (24, 79).",
 		IconName = "ico_nq.bmp",
-		Description = { "Enter the Scaraba Hole under Kamidal Mountain (dic_dun01). Its entrance is at the west end of dic_fild01 (24, 79).<br><br>How to get there:<br>1. Far from El Dicastes? From the Allied camp, the Teleport Cat (207, 234) goes to Manuk Field, and the Teleport Cat there (135, 49) to Near El Dicastes. The Allied Scout east of Morroc (moc_fild20, 345, 182) lets you through the rift to the camp.<br><br>Route: <NAVI>[Rift-Touched Scaraba: dic_dun01]<INFO>dic_dun01,366,45,0,000,0</INFO></NAVI>" },
+		Description = { "Enter the Scaraba Hole under Kamidal Mountain (dic_dun01). Its entrance is at the west end of dic_fild01 (24, 79).<br><br>How to get there:<br>1. Far from El Dicastes? From the Allied camp, the Teleport Cat (207, 234) goes to Manuk Field, and the Teleport Cat there (135, 49) to Near El Dicastes. Back in Rune-Midgard? The Cat Paw cat by the rift (moc_fild20, 368, 197) helps you over the wall to Tat (moc_fild22b, 182, 179), who sends you to the camp. Any Eden Teleport Officer takes you to Agent Geck in the Eden Group, who sends you to the rift.<br><br>Route: <NAVI>[Rift-Touched Scaraba: dic_dun01]<INFO>dic_dun01,366,45,0,000,0</INFO></NAVI>" },
 	},
 	[77915] = {
 		Title = "Chronicle 9-5: A Shard of the Seal",
@@ -334,7 +334,7 @@ QuestInfoList = {
 		Title = "Chronicle 12-1: The Village Under the Bridge",
 		Summary = "Go to Mora, the Laphine village at the foot of Bifrost, and find Elder Mirrel (114, 96).",
 		IconName = "ico_nq.bmp",
-		Description = { "Go to Mora, the Laphine village at the foot of Bifrost, and find Elder Mirrel (114, 96).<br><br>How to get there:<br>1. Follow the Route link to the Allied Scout east of Morroc (moc_fild20, 345, 182). He lets you through the rift to the Allied camp.<br>2. In the camp, the Teleport Cat (207, 234) goes to Near Splendide (10,000 zeny). On spl_fild02, the Teleport Cat (53, 242) goes to Entrance to Mora (55,000 zeny).<br>3. On bif_fild02, knock on the Small Hole in the hill (285, 332). It opens into Mora. Elder Mirrel stands in the village centre (114, 96).<br><br>Route: <NAVI>[Allied Scout: moc_fild20]<INFO>moc_fild20,345,182,0,000,0</INFO></NAVI>" },
+		Description = { "Go to Mora, the Laphine village at the foot of Bifrost, and find Elder Mirrel (114, 96).<br><br>How to get there:<br>1. Back through the rift: the Eden Teleport Officer in Hugel (93, 153) takes you to the Eden Group, where Agent Geck (44, 19) sends you to the rift (Send me back). The Cat Paw cat by the wall (moc_fild20, 368, 197) helps you over, and Tat (moc_fild22b, 182, 179) sends you to the Allied camp.<br>2. In the camp, the Teleport Cat (207, 234) goes to Near Splendide (10,000 zeny). On spl_fild02, the Teleport Cat (53, 242) goes to Entrance to Mora (55,000 zeny).<br>3. On bif_fild02, knock on the Small Hole in the hill (285, 332). It opens into Mora. Elder Mirrel stands in the village centre (114, 96).<br><br>Route: <NAVI>[Eden Teleport Officer: hugel]<INFO>hugel,93,153,0,000,0</INFO></NAVI>" },
 	},
 	[77917] = {
 		Title = "Chronicle 12-2: The Bridge Fields",
@@ -346,7 +346,7 @@ QuestInfoList = {
 		Title = "Chronicle 12-3: Dust of the Rainbow",
 		Summary = "Bring Elder Mirrel 5 Angel Magic Powder from the Little Fatum and 5 Golden Feathers from the Miming, in Mora (114, 96).",
 		IconName = "ico_nq.bmp",
-		Description = { "Bring Elder Mirrel 5 Angel Magic Powder from the Little Fatum and 5 Golden Feathers from the Miming, in Mora (114, 96).<br><br>How to get there:<br>1. Far from Mora? Through the rift (the Allied Scout east of Morroc, moc_fild20, 345, 182) to the Allied camp, its Teleport Cat (207, 234) to Near Splendide, the Teleport Cat there (53, 242) to Entrance to Mora, then knock on the Small Hole (285, 332).<br><br>Route: <NAVI>[Elder Mirrel]<INFO>mora,114,96,0,000,0</INFO></NAVI>" },
+		Description = { "Bring Elder Mirrel 5 Angel Magic Powder from the Little Fatum and 5 Golden Feathers from the Miming, in Mora (114, 96).<br><br>How to get there:<br>1. Far from Mora? Through the rift to the Allied camp (an Eden Teleport Officer, then Agent Geck: Send me back; then the Cat Paw cat on moc_fild20, 368, 197, and Tat beyond the wall), its Teleport Cat (207, 234) to Near Splendide, the Teleport Cat there (53, 242) to Entrance to Mora, then knock on the Small Hole (285, 332).<br><br>Route: <NAVI>[Elder Mirrel]<INFO>mora,114,96,0,000,0</INFO></NAVI>" },
 	},
 	[77919] = {
 		Title = "Chronicle 12-4: The Thornheart",

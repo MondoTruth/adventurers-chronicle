@@ -80,6 +80,7 @@ OnTick:
 	}
 	// Side Quests run beside the main road (and after it is finished).
 	callfunc "F_ChronSideTick", .@map$;
+	//@@GUIDE_TICK@@
 	.@g = CHRON_STEP;
 	if (.@g < 1 || .@g > $@chr_steps)
 		end;
@@ -286,7 +287,7 @@ OnCmd:
 				.@fail = callfunc("F_ChronSideFail", .@i);
 			.@sq$ += (.@i > 1 ? ";" : "") + .@k + ":" + .@h + ":" + .@hv$ + ":" + .@ro + ":" + (.@fail ? 1 : 0);
 		}
-		dispbottom "@@reply " + .@atcmd_parameters$[0] + " 1/1 " + .@g + "|" + BaseLevel + "|" + getarraysize(NPCP_WM$) + "|" + CHRON_SKIP + "|" + .@hunt + "|" + .@have$ + "|" + @chr_watch$ + "|" + callfunc("F_ChronCapped") + "|" + .@sq$ + "|" + CHRON_MVPK;
+		dispbottom "@@reply " + .@atcmd_parameters$[0] + " 1/1 " + .@g + "|" + BaseLevel + "|" + getarraysize(NPCP_WM$) + "|" + CHRON_SKIP + "|" + .@hunt + "|" + .@have$ + "|" + @chr_watch$ + "|" + callfunc("F_ChronCapped") + "|" + .@sq$ + "|" + CHRON_MVPK/*@@GUIDE_STATE@@*/;
 		end;
 	}
 	dispbottom "@@event chronicle open";
@@ -775,6 +776,7 @@ function	script	F_ChronSideDone	{
 	for (.@j = 1; .@j <= $@sq_n; .@j++)
 		if (CHRON_SQ[.@j] == 100)
 			.@stamps++;
+	//@@GUIDE_STAMPS@@
 	for (.@r = 1; .@r <= $@pp_n; .@r++) {
 		if (.@stamps < $@pp_need[.@r] || (CHRON_PASS & (1 << .@r)))
 			continue;

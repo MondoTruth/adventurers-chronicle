@@ -33,7 +33,7 @@ If Find Mods can't install it, it can't reach GitHub's downloads. That can happe
 ## Requirements
 
 - Ragnarok Offline 1.4.8 or newer
-- Pre-renewal or Renewal. Renewal has its own route: 14 chapters on Renewal levels, up to 175. New chapters: Einbech's mine (90-105) between Glast Heim and Juno; the New World beyond the rift under Morroc, at the Allied camp and outside El Dicastes (118-129), between Juno and Rachel; and after Odin's Temple, Mora (147-150), Eclage (151-158) and the finale in Verus (160-171). The hunts in Morroc and Geffen move to monsters of the right level, and the Side Quests and the MVP Ledger follow Renewal's levels and places.
+- Pre-renewal or Renewal. Renewal has its own route: 14 chapters on Renewal levels, up to 175. New chapters: Einbech's mine (90-105) between Glast Heim and Juno; the New World beyond the rift under Morroc, at the Allied camp and outside El Dicastes (118-129), between Juno and Rachel; and after Odin's Temple, Mora (147-150), Eclage (151-158) and the finale in Verus (160-171). The hunts in Morroc and Geffen move to monsters of the right level, and the Side Quests and the MVP Ledger follow Renewal's levels and places. The way through the rift is Ragnarok's own Cat Paw Agent quest, and the Side Quests tab also guides Ragnarok's own quests near each Renewal chapter (the way into El Dicastes and Eclage, the Einbroch factory, the Odin Temple excavation, the Wandering Bard of Verus and more): the Chronicle shows the way, the quest's own people give the rewards, and each one stamps your Passport. Episodes 16 to 21 are in development, coming soon.
 
 ## Settings
 

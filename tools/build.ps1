@@ -93,6 +93,42 @@ foreach ($h in @($sides | Where-Object { $_.hook }) + @($side.mvps | Where-Objec
     if (-not $p) { throw "No step with id $($h[$key]) in the $era route ($key of $($h.title)$($h.name))" }
     $h[$key] = $p
 }
+# RO quest guides (guide.ps1): Rune-Midgard's own quests, shown on the way.
+# The Chronicle only guides them: no quest-window entries or ids of its own,
+# RO's own variables are the record. A guide opens once the main road passes
+# its hook step (a step id, like a Side Quest's) and is labelled with the
+# chapter that follows it.
+$guides = @()
+$guideFile = Join-Path $here 'guide.ps1'
+if (Test-Path $guideFile) {
+    $guides = @((& $guideFile).guides | Where-Object { -not $_.era -or $_.era -eq $era })
+    if ($era -eq 'renewal') {
+        foreach ($h in @($guides) + @($guides | ForEach-Object { $_.steps })) {
+            if ($h.re) { foreach ($k in @($h.re.Keys)) { $h[$k] = $h.re[$k] } }
+        }
+    }
+}
+$keys = @{}
+$gi = 0
+foreach ($gd in $guides) {
+    $gi++
+    $gd.i = $gi
+    if ($gd.key -notmatch '^[a-z0-9_]{1,20}$' -or $keys[$gd.key]) { throw "Guide key '$($gd.key)' must be unique, a-z 0-9 _ (it names the variable CHRON_G_<key>)" }
+    $keys[$gd.key] = $true
+    $p = $posOf[[int]$gd.hook]
+    if (-not $p) { throw "No step with id $($gd.hook) in the $era route (hook of guide $($gd.key))" }
+    $gd.hookPos = $p
+    $gd.ch = $(if ($p -lt $steps.Count) { $steps[$p].ch } else { $chapters.Count })
+    if ($gd.steps.Count -lt 1 -or $gd.steps.Count -gt 99) { throw "Guide $($gd.key) needs 1 to 99 steps" }
+    $k = 0
+    foreach ($s in $gd.steps) {
+        $k++
+        $s.k = $k
+        $s.type = 'ro'
+        if (-not $s.cond) { throw "Guide $($gd.key) step $k has no cond" }
+    }
+}
+
 # Side Quest steps: step k of Side Quest n has the id n*10+k (quest 77100+id).
 $sideSteps = @()
 foreach ($sd in $sides) {
@@ -501,6 +537,144 @@ $d += "`$@pp_n = $($side.ranks.Count);"
 $d += Arr '$@pp_need' ($side.ranks | ForEach-Object { $_.need })
 $d += Arr '$@pp_name$' ($side.ranks | ForEach-Object { Ascii $_.name 'rank' }) -str
 $d += Arr '$@pp_item' (1..$side.ranks.Count | ForEach-Object { $rankItem[$_] })
+# RO quest guides: per guide [i], per step [i*100+k]. Built only into a route
+# that has guides, so a route without them is written exactly as before.
+$guideFns = @()
+if ($guides.Count) {
+    $d += "// ---- RO quest guides ----"
+    $d += "`$@gd_n = $($guides.Count);"
+    $d += Arr '$@gd_key$' ($guides | ForEach-Object { $_.key }) -str
+    $d += Arr '$@gd_title$' ($guides | ForEach-Object { Ascii $_.title 'guide title' }) -str
+    foreach ($gd in $guides) {
+        $at = $gd.i * 100 + 1
+        $d += Arr '$@gds_title$' ($gd.steps | ForEach-Object { Ascii $_.title 'guide step' }) -str -from $at
+        $d += Arr '$@gds_now$' ($gd.steps | ForEach-Object { Ascii $_.now 'guide now' }) -str -from $at
+        $d += Arr '$@gds_items$' ($gd.steps | ForEach-Object { ItemList $_.items }) -str -from $at
+        $d += Arr '$@gds_parts$' ($gd.steps | ForEach-Object { if ($_.parts) { (@($_.parts) | ForEach-Object { if ($_.name -match '[|;"]') { throw "Bad character in part $($_.name)" }; "$($_.at)|$(Ascii $_.name 'part')" }) -join ';' } else { '' } }) -str -from $at
+    }
+    # Where guide getarg(0) stands: -1 its mod is not on this server (needs),
+    # 0 not open yet, 100 done, else the first step whose cond is not true.
+    $guideFns += '// ---- generated: RO quest guides ----', 'function	script	F_ChronGuideK	{', '	switch (getarg(0)) {'
+    foreach ($gd in $guides) {
+        $guideFns += "	case $($gd.i):	// $($gd.key)"
+        if ($gd.needs) { $guideFns += "		if (!getnpcid(0, $(Q $gd.needs))) return -1;" }
+        $guideFns += "		if (CHRON_STEP <= $($gd.hookPos)) return 0;"
+        $guideFns += "		if (CHRON_G_$($gd.key)) return 100;"
+        foreach ($s in $gd.steps) { $guideFns += "		if (!($($s.cond))) return $($s.k);" }
+        $guideFns += '		return 100;'
+    }
+    $guideFns += '	}', '	return 0;', '}', ''
+    # The value of RO's variable on step getarg(0) (i*100+k), for its parts and spots.
+    $guideFns += 'function	script	F_ChronGuideRo	{', '	switch (getarg(0)) {'
+    foreach ($gd in $guides) { foreach ($s in $gd.steps | Where-Object { $_.var }) { $guideFns += "	case $($gd.i * 100 + $s.k): return $($s.var);" } }
+    $guideFns += '	}', '	return -1;', '}', ''
+    $guideFns += @'
+// The Journal's line for the guides: "k:ro:items" per guide, ';' between.
+function	script	F_ChronGuideState	{
+	.@s$ = "";
+	for (.@i = 1; .@i <= $@gd_n; .@i++) {
+		.@k = callfunc("F_ChronGuideK", .@i);
+		.@v = -1;
+		.@h$ = "";
+		if (.@k >= 1 && .@k < 100) {
+			.@v = callfunc("F_ChronGuideRo", .@i * 100 + .@k);
+			if ($@gds_items$[.@i * 100 + .@k] != "")
+				.@h$ = callfunc("F_ChronHaveList", $@gds_items$[.@i * 100 + .@k]);
+		}
+		.@s$ += (.@i > 1 ? ";" : "") + .@k + ":" + .@v + ":" + .@h$;
+	}
+	return .@s$;
+}
+
+// Every tick: a guide that moved on is announced, one RO finished is stamped.
+// The first look after login only notes where each one stands.
+function	script	F_ChronGuideTick	{
+	for (.@i = 1; .@i <= $@gd_n; .@i++) {
+		if (getd("CHRON_G_" + $@gd_key$[.@i]))
+			continue;
+		.@k = callfunc("F_ChronGuideK", .@i);
+		if (.@k == 100) {
+			callfunc "F_ChronGuideDone", .@i;
+			continue;
+		}
+		.@v = -1;
+		if (.@k >= 1)
+			.@v = callfunc("F_ChronGuideRo", .@i * 100 + .@k);
+		if (@chr_ginit) {
+			.@was = @chr_gk[.@i];
+			if (.@k >= 1 && .@was < 1) {
+				dispbottom "[Chronicle] New on your road: " + $@gd_title$[.@i] + ", one of Rune-Midgard's own quests. The Journal (Alt+B, Side Quests tab) shows the way.", 0xE5A15E;
+				dispbottom "@@event chronicle refresh";
+			} else if (.@k >= 1 && .@was != .@k) {
+				if (.@k > .@was)
+					dispbottom "[Chronicle] " + $@gd_title$[.@i] + ": " + $@gds_title$[.@i * 100 + .@was] + " done. Next: " + $@gds_now$[.@i * 100 + .@k], 0xE5A15E;
+				dispbottom "@@event chronicle refresh";
+			} else if (.@k >= 1 && .@v != @chr_gv[.@i]) {
+				callfunc "F_ChronGuidePart", .@i, .@i * 100 + .@k, .@v;
+				dispbottom "@@event chronicle refresh";
+			}
+		}
+		@chr_gk[.@i] = .@k;
+		@chr_gv[.@i] = .@v;
+	}
+	@chr_ginit = 1;
+	return;
+}
+
+// Guide getarg(0), step getarg(1): RO's variable is now getarg(2). Name the
+// part just done and the next one ($@gds_parts$ "at|name;...").
+function	script	F_ChronGuidePart	{
+	if ($@gds_parts$[getarg(1)] == "")
+		return;
+	explode(.@pt$, $@gds_parts$[getarg(1)], ";");
+	.@done$ = "";
+	.@next$ = "";
+	for (.@j = 0; .@j < getarraysize(.@pt$); .@j++) {
+		explode(.@p$, .@pt$[.@j], "|");
+		.@at = atoi(.@p$[0]);
+		if (.@at == getarg(2))
+			.@done$ = .@p$[1];
+		else if (.@at > getarg(2) && .@next$ == "")
+			.@next$ = .@p$[1];
+	}
+	if (.@done$ != "")
+		dispbottom "[Chronicle] " + $@gd_title$[getarg(0)] + ": done, " + .@done$ + "." + (.@next$ != "" ? " Next: " + .@next$ + "." : ""), 0xE5A15E;
+	return;
+}
+
+// How many guides are done (CHRON_G_<key>): Passport stamps, beside the Side Quests'.
+function	script	F_ChronGuideStamps	{
+	.@n = 0;
+	for (.@i = 1; .@i <= $@gd_n; .@i++)
+		if (getd("CHRON_G_" + $@gd_key$[.@i]))
+			.@n++;
+	return .@n;
+}
+
+// Guide getarg(0) is done: RO's quest gave its own rewards, the Chronicle
+// stamps the Passport (and hands out a rank reached).
+function	script	F_ChronGuideDone	{
+	.@i = getarg(0);
+	setd "CHRON_G_" + $@gd_key$[.@i], 1;
+	specialeffect2 EF_ANGEL2;
+	dispbottom "[Chronicle] " + $@gd_title$[.@i] + " is done. Your Adventurer's Passport is stamped.", 0xFFDD66;
+	.@stamps = callfunc("F_ChronGuideStamps");
+	for (.@j = 1; .@j <= $@sq_n; .@j++)
+		if (CHRON_SQ[.@j] == 100)
+			.@stamps++;
+	for (.@r = 1; .@r <= $@pp_n; .@r++) {
+		if (.@stamps < $@pp_need[.@r] || (CHRON_PASS & (1 << .@r)))
+			continue;
+		CHRON_PASS = CHRON_PASS | (1 << .@r);
+		getitem $@pp_item[.@r], 1;
+		dispbottom "[Chronicle] Passport rank " + $@pp_name$[.@r] + "! You received " + getitemname($@pp_item[.@r]) + ".", 0xFFDD66;
+	}
+	dispbottom "@@event chronicle refresh";
+	return;
+}
+
+'@ -split "`r?`n"
+}
 $npcs = @('// ---- generated NPCs ----')
 foreach ($c in $chapters) {
     $npcs += "$($c.town),$($c.x),$($c.y),4`tduplicate(ChronNPC)`t$($c.npc)#c$($c.n)`t$($c.sprite)"
@@ -521,11 +695,26 @@ foreach ($gt in $story.gates) {
     $npcs += '}'
 }
 $tpl = Get-Content (Join-Path $here 'chronicle.template.txt') -Raw
-$tpl = $tpl.Replace('//@@DATA@@', ($d -join "`n`t")).Replace('//@@NPCS@@', (($cond + $npcs) -join "`n"))
+$tpl = $tpl.Replace('//@@DATA@@', ($d -join "`n`t")).Replace('//@@NPCS@@', (($cond + $guideFns + $npcs) -join "`n"))
+# The template's guide hooks: the calls on a route with guides, gone without
+# a trace on one without (each marker must be there, once).
+$hooks = [ordered]@{
+    '//@@GUIDE_TICK@@' = 'callfunc "F_ChronGuideTick";'
+    '//@@GUIDE_STAMPS@@' = '.@stamps += callfunc("F_ChronGuideStamps");'
+    '/*@@GUIDE_STATE@@*/' = ' + "|" + callfunc("F_ChronGuideState")'
+}
+foreach ($m in $hooks.Keys) {
+    if (([regex]::Matches($tpl, [regex]::Escape($m))).Count -ne 1) { throw "Template marker $m must be there once" }
+    if ($guides.Count) { $tpl = $tpl.Replace($m, $hooks[$m]) }
+    elseif ($m.StartsWith('//')) { $tpl = $tpl -replace ('[ \t]*' + [regex]::Escape($m) + '\r?\n'), '' }
+    else { $tpl = $tpl.Replace($m, '') }
+}
 [IO.File]::WriteAllText((Join-Path $out 'npc\chronicle.txt'), $tpl, $utf8)
 
 # ---- client/data.js ----
 $js = [ordered]@{ final = $final; chapters = @() }
+# Renewal: what comes after the finale, for the Journal (only where the route has it).
+if ($era -eq 'renewal' -and $story.soonRe) { $js.Insert(1, 'soon', (Ascii $story.soonRe 'soon')) }
 foreach ($c in $chapters) {
     $js.chapters += [ordered]@{
         n = $c.n; title = $c.title; range = $c.range; town = $c.town; townName = $c.townName; npc = $c.npc; x = $c.x; y = $c.y; intro = $c.intro
@@ -562,11 +751,28 @@ foreach ($sd in $sides) {
             } })
     }
 }
+if ($guides.Count) {
+    $js.guides = @($guides | ForEach-Object {
+        [ordered]@{
+            key = $_.key; ch = $_.ch; hook = $_.hookPos; title = (Ascii $_.title 'guide title'); range = $_.range; intro = (Ascii $_.intro 'guide intro')
+            where = (Ascii $_.where 'guide where'); reward = $(if ($_.reward) { Ascii $_.reward 'guide reward' } else { $null })
+            steps = @($_.steps | ForEach-Object {
+                [ordered]@{
+                    k = $_.k; type = 'ro'; label = $_.label; any = [bool]$_.any; minLv = $_.minLv; title = (Ascii $_.title 'guide step'); now = (Ascii $_.now 'guide now'); done = (Ascii $_.done 'guide done')
+                    route = $(if ($_.route) { [ordered]@{ map = $_.route[0]; x = $_.route[1]; y = $_.route[2]; name = (Ascii $_.route[3] 'route') } } else { $null })
+                    items = @($_.items | Where-Object { $_ } | ForEach-Object { @{ id = $_[0]; name = $_[1]; count = $_[2] } })
+                    hint = @($_.hint | Where-Object { $_ } | ForEach-Object { Ascii $_ 'hint' })
+                    spots = @($_.spots | Where-Object { $_ } | ForEach-Object { [ordered]@{ map = $_.map; x = $_.x; y = $_.y; name = (Ascii $_.name 'spot'); ro = $_.ro } })
+                    parts = @($_.parts | Where-Object { $_ } | ForEach-Object { [ordered]@{ at = $_.at; name = (Ascii $_.name 'part')
+                        route = $(if ($_.route) { [ordered]@{ map = $_.route[0]; x = $_.route[1]; y = $_.route[2]; name = (Ascii $_.route[3] 'part route') } } else { $null }) } })
+                } })
+        } })
+}
 $js.mvps = @($side.mvps | ForEach-Object { [ordered]@{ id = $_.id; name = $_.name; where = $_.where; map = $_.map; lv = $_.lv; g = $_.g; side = $_.side; k = $_.k } })
 $rk = 0
 $js.ranks = @($side.ranks | ForEach-Object { $rk++; [ordered]@{ need = $_.need; name = $_.name; item = $rankItem[$rk]; hat = $icons[[int]$_.base].name; stat = $_.stat } })
 $json = $js | ConvertTo-Json -Depth 8
 [IO.File]::WriteAllText((Join-Path $out 'client\data.js'), "// GENERATED by tools/build.ps1 from tools/story.ps1.`nexport default $json;`n", $utf8)
 
-"Built ${era}: $($steps.Count) steps in $($chapters.Count) chapters, $($sides.Count) Side Quests ($($sideSteps.Count) steps), $($side.mvps.Count) MVPs, items 50100-$id."
+"Built ${era}: $($steps.Count) steps in $($chapters.Count) chapters, $($sides.Count) Side Quests ($($sideSteps.Count) steps), $($side.mvps.Count) MVPs, $($guides.Count) RO quest guides, items 50100-$id."
 }
