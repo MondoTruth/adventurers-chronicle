@@ -7704,6 +7704,7 @@ export default {
                        "range":  "90+",
                        "intro":  "Foreman Gustav: \"The smoke over Einbroch gets worse every year. The factory there is short of hands, I hear: they would take anyone who can turn a valve. See it for yourself, it is a short train ride.\"",
                        "where":  "Einbroch",
+                       "mod":  null,
                        "reward":  "about 29,000 base EXP.",
                        "steps":  [
                                      {
@@ -8029,6 +8030,7 @@ export default {
                        "range":  "105+",
                        "intro":  "Sage Elisha: \"Juno has its own troubles, I am afraid. A scholar named Wagan keeps asking travellers for help with a colleague, Metto, whose experiments frighten the whole district.\"",
                        "where":  "Juno",
+                       "mod":  null,
                        "reward":  "5 Blue Gemstones (10 Yellow Gemstones for a Sage).",
                        "steps":  [
                                      {
@@ -8234,6 +8236,7 @@ export default {
                        "range":  "70+",
                        "intro":  "Captain Varrick: \"Nobody here understands a word the Laphine or the Sapha say. Our mechanic swears he can build a device that translates them. Help him, and you will be the first human who can talk to this world.\"",
                        "where":  "the Allied camp",
+                       "mod":  null,
                        "reward":  "the Ring of the Ancient Wise King, the translator: wear it to understand the Laphine and the Sapha (and 200,000 base EXP).",
                        "steps":  [
                                      {
@@ -8688,6 +8691,7 @@ export default {
                        "range":  "118+",
                        "intro":  "Captain Varrick: \"Those cats who sent you through the rift keep a trading post at the west end of our camp. They do favours for those with credit. Earn some, it is worth it out here.\"",
                        "where":  "the Allied camp",
+                       "mod":  null,
                        "reward":  "Cat Paw credit: a save point at the camp now, and with more credit later their storage and their Cat Warp to Midgard (and 20,000 base EXP).",
                        "steps":  [
                                      {
@@ -8884,6 +8888,7 @@ export default {
                        "range":  "118+",
                        "intro":  "Warden Kahlis: \"The law keeps the gate shut to humans. But the law also says a guest invited by the Sapha may enter. A Sapha is waiting in your camp, they tell me. Go and see what he wants, and wear something that lets you understand him.\"",
                        "where":  "the Allied camp and Manuk",
+                       "mod":  null,
                        "reward":  "entry to El Dicastes, the Sapha capital, and the Light of El Dicastes.",
                        "steps":  [
                                      {
@@ -9062,6 +9067,7 @@ export default {
                        "range":  "60+",
                        "intro":  "Sister Ilyana: \"Something is wrong in the house of High Priest Zhed. His steward, Vincent, has been asking every traveller for help, and begging them to keep quiet about it.\"",
                        "where":  "Rachel",
+                       "mod":  null,
                        "reward":  "an Old Violet Box from Vincent and 90,000 base EXP from High Priest Zhed.",
                        "steps":  [
                                      {
@@ -9384,6 +9390,7 @@ export default {
                        "range":  "60+",
                        "intro":  "Brynjar the Herald: \"Two teams of excavators are digging in Odin\u0027s Temple, and they post notices for hired hands. Join one. What they dig up there is the gods\u0027 business, and so, I think, is yours.\"",
                        "where":  "Hugel",
+                       "mod":  null,
                        "reward":  "an Old Blue Box for the runes, and 100,000 base EXP at the end.",
                        "steps":  [
                                      {
@@ -9759,6 +9766,7 @@ export default {
                        "range":  "151+",
                        "intro":  "Captain Sylwen: \"The council lets no stranger in. Unless, of course, the stranger fills in the forms. Every form. In order.\"",
                        "where":  "the gate of Eclage",
+                       "mod":  null,
                        "reward":  "entry to Eclage, the Laphine city on the World Tree.",
                        "steps":  [
                                      {
@@ -9873,6 +9881,7 @@ export default {
                        "range":  "100+",
                        "intro":  "Captain Sylwen: \"Fili, by the keepers\u0027 tower, worries about everyone: the gardeners in the fields, and the humans who went into the tower and never came out. Help him, if you have the time.\"",
                        "where":  "the fields of Eclage",
+                       "mod":  null,
                        "reward":  "600,000 base and 600,000 job EXP in all, 2 Splendide Coins and 10 Meat.",
                        "steps":  [
                                      {
@@ -10059,6 +10068,7 @@ export default {
                        "range":  "99+",
                        "intro":  "Professor Hendrik: \"A bard wanders the old city, trading songs for stories. He has heard of you. I would not keep him waiting: he leaves when he runs out of tales.\"",
                        "where":  "Verus",
+                       "mod":  null,
                        "reward":  "a song of your own; when he has heard all six of his stories, 5 Battle Manuals.",
                        "steps":  [
                                      {
@@ -10126,6 +10136,1550 @@ export default {
                                                            "name":  "Wandering Bard",
                                                            "ro":  null
                                                        }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     }
+                                 ]
+                   },
+                   {
+                       "key":  "wse_criminal",
+                       "ch":  4,
+                       "hook":  16,
+                       "title":  "Criminal Activities",
+                       "range":  "70+",
+                       "intro":  "Magister Ivo: \"An agent of the kingdom has taken a room at our inn. He hunts a gangster called Jymmy the Thumb, and he is looking for someone the gang does not know yet.\"",
+                       "where":  "Geffen and the airship",
+                       "mod":  "world-sync-extras",
+                       "reward":  "1,000,000 base and 700,000 job EXP and an Old Violet Box.",
+                       "steps":  [
+                                     {
+                                         "k":  1,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Agent York",
+                                         "now":  "Quest: talk to Agent York in the Geffen inn (geffen_in, 77, 57): choose I\u0027ll talk to Vince.",
+                                         "done":  "Agent York wants Jymmy the Thumb\u0027s gang broken up, starting with the band Jymmy forces to work for him.",
+                                         "route":  {
+                                                       "map":  "geffen_in",
+                                                       "x":  77,
+                                                       "y":  57,
+                                                       "name":  "Agent York"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "geffen_in",
+                                                           "x":  77,
+                                                           "y":  57,
+                                                           "name":  "Agent York",
+                                                           "ro":  null
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  2,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Ling Mynmei\u0027s Contract",
+                                         "now":  "Quest: Vince Noir (geffen, 107, 48) gives you a Raccoon Doll for his bandmate Ling Mynmei; she owes her contract to Old Lady Kroot next door. Get the contract and bring Ling the news.",
+                                         "done":  "Ling Mynmei is free of Jymmy\u0027s contract.",
+                                         "route":  {
+                                                       "map":  "geffen",
+                                                       "x":  107,
+                                                       "y":  48,
+                                                       "name":  "Vince Noir"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+                                                      "Old Lady Kroot: Arm wrestle you for it costs 5,000 zeny a try and wins about 3 times in 10. Or Buy the contract for 100,000 zeny (50,000 after you give her a Bomber Steak, which is rare)."
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "geffen",
+                                                           "x":  107,
+                                                           "y":  48,
+                                                           "name":  "Vince Noir",
+                                                           "ro":  null
+                                                       },
+                                                       {
+                                                           "map":  "geffen_in",
+                                                           "x":  30,
+                                                           "y":  131,
+                                                           "name":  "Ling Mynmei",
+                                                           "ro":  null
+                                                       },
+                                                       {
+                                                           "map":  "geffen_in",
+                                                           "x":  33,
+                                                           "y":  131,
+                                                           "name":  "Old Lady Kroot",
+                                                           "ro":  null
+                                                       }
+                                                   ],
+                                         "parts":  [
+                                                       {
+                                                           "at":  2,
+                                                           "name":  "Vince Noir (geffen 107, 48)",
+                                                           "route":  {
+                                                                         "map":  "geffen",
+                                                                         "x":  107,
+                                                                         "y":  48,
+                                                                         "name":  "Vince Noir"
+                                                                     }
+                                                       },
+                                                       {
+                                                           "at":  3,
+                                                           "name":  "Give Ling Mynmei the Raccoon Doll (geffen_in 30, 131)",
+                                                           "route":  {
+                                                                         "map":  "geffen_in",
+                                                                         "x":  30,
+                                                                         "y":  131,
+                                                                         "name":  "Ling Mynmei"
+                                                                     }
+                                                       },
+                                                       {
+                                                           "at":  4,
+                                                           "name":  "Win Ling\u0027s contract from Old Lady Kroot (geffen_in 33, 131)",
+                                                           "route":  {
+                                                                         "map":  "geffen_in",
+                                                                         "x":  33,
+                                                                         "y":  131,
+                                                                         "name":  "Old Lady Kroot"
+                                                                     }
+                                                       },
+                                                       {
+                                                           "at":  5,
+                                                           "name":  "Back to Ling Mynmei",
+                                                           "route":  {
+                                                                         "map":  "geffen_in",
+                                                                         "x":  30,
+                                                                         "y":  131,
+                                                                         "name":  "Ling Mynmei"
+                                                                     }
+                                                       }
+                                                   ]
+                                     },
+                                     {
+                                         "k":  3,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Howard Moon\u0027s Floods",
+                                         "now":  "Quest: talk to Howard Moon (geffen, 183, 80), turn off the four Flood Controls in Geffen (Turn it off), then tell him.",
+                                         "done":  "With the floods stopped, Howard Moon walked away from Jymmy too.",
+                                         "route":  {
+                                                       "map":  "geffen",
+                                                       "x":  183,
+                                                       "y":  80,
+                                                       "name":  "Howard Moon"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+                                                      "The Flood Controls stand at (33, 138), (75, 43), (194, 183) and (139, 166). The quest window counts them."
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "geffen",
+                                                           "x":  183,
+                                                           "y":  80,
+                                                           "name":  "Howard Moon",
+                                                           "ro":  null
+                                                       },
+                                                       {
+                                                           "map":  "geffen",
+                                                           "x":  33,
+                                                           "y":  138,
+                                                           "name":  "Flood Control",
+                                                           "ro":  6
+                                                       },
+                                                       {
+                                                           "map":  "geffen",
+                                                           "x":  75,
+                                                           "y":  43,
+                                                           "name":  "Flood Control",
+                                                           "ro":  6
+                                                       },
+                                                       {
+                                                           "map":  "geffen",
+                                                           "x":  194,
+                                                           "y":  183,
+                                                           "name":  "Flood Control",
+                                                           "ro":  6
+                                                       },
+                                                       {
+                                                           "map":  "geffen",
+                                                           "x":  139,
+                                                           "y":  166,
+                                                           "name":  "Flood Control",
+                                                           "ro":  6
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  4,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "The Casino Airship",
+                                         "now":  "Quest: on the domestic airship, find Naota (airplane, 102, 62), sabotage Jymmy\u0027s casino, then tell the Dealer and Naota.",
+                                         "done":  "Jymmy\u0027s casino is ruined, and Naota is free.",
+                                         "route":  {
+                                                       "map":  "airplane",
+                                                       "x":  102,
+                                                       "y":  62,
+                                                       "name":  "Naota"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+                                                      "The domestic airship leaves from the airports of Juno, Einbroch, Lighthalzen and Hugel (1,200 zeny).",
+                                                      "Cooked Chicken (44, 61): Add Naota\u0027s seasoning. Slot Machine (46, 79), Roulette Wheel (24, 70) and Slot Machine (44, 45): Install a cheat detector. Then the Dealer (32, 52), then Naota again."
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "airplane",
+                                                           "x":  102,
+                                                           "y":  62,
+                                                           "name":  "Naota",
+                                                           "ro":  null
+                                                       },
+                                                       {
+                                                           "map":  "airplane",
+                                                           "x":  44,
+                                                           "y":  61,
+                                                           "name":  "Cooked Chicken",
+                                                           "ro":  8
+                                                       },
+                                                       {
+                                                           "map":  "airplane",
+                                                           "x":  46,
+                                                           "y":  79,
+                                                           "name":  "Slot Machine",
+                                                           "ro":  8
+                                                       },
+                                                       {
+                                                           "map":  "airplane",
+                                                           "x":  24,
+                                                           "y":  70,
+                                                           "name":  "Roulette Wheel",
+                                                           "ro":  8
+                                                       },
+                                                       {
+                                                           "map":  "airplane",
+                                                           "x":  44,
+                                                           "y":  45,
+                                                           "name":  "Slot Machine",
+                                                           "ro":  8
+                                                       },
+                                                       {
+                                                           "map":  "airplane",
+                                                           "x":  32,
+                                                           "y":  52,
+                                                           "name":  "Dealer",
+                                                           "ro":  8
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  5,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Bringing the Ship Down",
+                                         "now":  "Quest: pull the Switch on the airship (18, 62), then fire the cannon (95, 202): Aim at the engines and fire.",
+                                         "done":  "The cannon took out the airship\u0027s engines.",
+                                         "route":  {
+                                                       "map":  "airplane",
+                                                       "x":  18,
+                                                       "y":  62,
+                                                       "name":  "Switch"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+                                                      "Mobsters jump out when the cannon fires: be ready to fight."
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "airplane",
+                                                           "x":  18,
+                                                           "y":  62,
+                                                           "name":  "Switch",
+                                                           "ro":  null
+                                                       },
+                                                       {
+                                                           "map":  "airplane",
+                                                           "x":  95,
+                                                           "y":  202,
+                                                           "name":  "Cannon Switch",
+                                                           "ro":  null
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  6,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Jymmy the Thumb",
+                                         "now":  "Quest: face Jymmy the Thumb on the airship (232, 157). The ship comes down near Izlude: report to Agent York (izlude_in, 67, 113).",
+                                         "done":  "Jymmy\u0027s gang is broken, and Agent York has his man.",
+                                         "route":  {
+                                                       "map":  "airplane",
+                                                       "x":  232,
+                                                       "y":  157,
+                                                       "name":  "Jymmy the Thumb"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "airplane",
+                                                           "x":  232,
+                                                           "y":  157,
+                                                           "name":  "Jymmy the Thumb",
+                                                           "ro":  null
+                                                       },
+                                                       {
+                                                           "map":  "izlude_in",
+                                                           "x":  67,
+                                                           "y":  113,
+                                                           "name":  "Agent York",
+                                                           "ro":  null
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     }
+                                 ]
+                   },
+                   {
+                       "key":  "wse_seoyeon",
+                       "ch":  5,
+                       "hook":  21,
+                       "title":  "Seoyeon\u0027s Trial",
+                       "range":  "70+",
+                       "intro":  "Sir Aldric: \"A swordswoman named Seoyeon tests travellers in Amatsu, in the dungeon under the lord\u0027s palace. They say she hunts the ghost of an ancient ninja.\"",
+                       "where":  "Amatsu",
+                       "mod":  "world-sync-extras",
+                       "reward":  "EXP: half of your current level (at most 2,000,000 base).",
+                       "steps":  [
+                                     {
+                                         "k":  1,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Seoyeon",
+                                         "now":  "Quest: talk to Seoyeon in Amatsu (82, 118): choose I\u0027ll take your trial.",
+                                         "done":  "Seoyeon set you a trial in the three floors under the palace.",
+                                         "route":  {
+                                                       "map":  "amatsu",
+                                                       "x":  82,
+                                                       "y":  118,
+                                                       "name":  "Seoyeon"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "amatsu",
+                                                           "x":  82,
+                                                           "y":  118,
+                                                           "name":  "Seoyeon",
+                                                           "ro":  null
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  2,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Three Floors",
+                                         "now":  "Quest: defeat 100 monsters on each floor of the Amatsu Dungeon (ama_dun01, ama_dun02, ama_dun03), then go back to Seoyeon.",
+                                         "done":  "Seoyeon was satisfied, and told you of Yeongwi, an ancient ninja whose soul still haunts the battlefield on the second floor.",
+                                         "route":  {
+                                                       "map":  "amatsu",
+                                                       "x":  82,
+                                                       "y":  118,
+                                                       "name":  "Seoyeon"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+                                                      "The quest window (Alt+U) counts each floor. Monsters there are Lv 85 to 100.",
+                                                      "The way in is through the palace: the hidden gate needs the Feudal Lord Permit (Side Quest The Fox of the Palace)."
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "amatsu",
+                                                           "x":  82,
+                                                           "y":  118,
+                                                           "name":  "Seoyeon",
+                                                           "ro":  null
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  3,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Traces of Yeongwi",
+                                         "now":  "Quest: find the Traces of Yeongwi on the second floor of the Amatsu Dungeon (ama_dun02). Seoyeon told you where: the Journal marks the place.",
+                                         "done":  "At the traces, Yeongwi\u0027s shadow rose to meet you.",
+                                         "route":  {
+                                                       "map":  "amatsu",
+                                                       "x":  82,
+                                                       "y":  118,
+                                                       "name":  "Seoyeon"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "ama_dun02",
+                                                           "x":  52,
+                                                           "y":  163,
+                                                           "name":  "Traces of Yeongwi",
+                                                           "ro":  1
+                                                       },
+                                                       {
+                                                           "map":  "ama_dun02",
+                                                           "x":  67,
+                                                           "y":  97,
+                                                           "name":  "Traces of Yeongwi",
+                                                           "ro":  2
+                                                       },
+                                                       {
+                                                           "map":  "ama_dun02",
+                                                           "x":  122,
+                                                           "y":  12,
+                                                           "name":  "Traces of Yeongwi",
+                                                           "ro":  3
+                                                       },
+                                                       {
+                                                           "map":  "ama_dun02",
+                                                           "x":  154,
+                                                           "y":  140,
+                                                           "name":  "Traces of Yeongwi",
+                                                           "ro":  4
+                                                       },
+                                                       {
+                                                           "map":  "ama_dun02",
+                                                           "x":  162,
+                                                           "y":  36,
+                                                           "name":  "Traces of Yeongwi",
+                                                           "ro":  5
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  4,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Yeongwi",
+                                         "now":  "Quest: Yeongwi stands by the traces: choose Draw your weapon. and defeat him (60,000 HP).",
+                                         "done":  "Yeongwi\u0027s shadow broke apart like smoke.",
+                                         "route":  {
+                                                       "map":  "amatsu",
+                                                       "x":  82,
+                                                       "y":  118,
+                                                       "name":  "Seoyeon"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+
+                                                  ],
+                                         "spots":  [
+
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  5,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Seoyeon\u0027s Verdict",
+                                         "now":  "Quest: talk to Seoyeon, who came running to the same place.",
+                                         "done":  "Seoyeon passed you: the ancient ninja\u0027s soul is free.",
+                                         "route":  {
+                                                       "map":  "amatsu",
+                                                       "x":  82,
+                                                       "y":  118,
+                                                       "name":  "Seoyeon"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+
+                                                  ],
+                                         "spots":  [
+
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     }
+                                 ]
+                   },
+                   {
+                       "key":  "wse_beholder",
+                       "ch":  10,
+                       "hook":  46,
+                       "title":  "Eye of the Beholder",
+                       "range":  "50+",
+                       "intro":  "Sister Ilyana: \"There is a beholder living in our temple, if you can believe it. Beho is gentle as a lamb, and hopelessly in love with a girl who screams when she sees him.\"",
+                       "where":  "Rachel",
+                       "mod":  "world-sync-extras",
+                       "reward":  "500,000 base and 375,000 job EXP, 5 Yggdrasil Berries and an Eden Merit Badge.",
+                       "steps":  [
+                                     {
+                                         "k":  1,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "A Lovesick Beholder",
+                                         "now":  "Quest: the Beholder by Rachel\u0027s temple (ra_temple, 104, 185) takes you to Beho: choose Sure, send me to Beho. Then talk to Beho (ra_temin, 268, 321).",
+                                         "done":  "Beho loves Bianca, who is terrified of beholders.",
+                                         "route":  {
+                                                       "map":  "ra_temple",
+                                                       "x":  104,
+                                                       "y":  185,
+                                                       "name":  "Beholder"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+                                                      "Another Beholder waits on the deck of the international airship (airplane_01, 238, 57)."
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "ra_temple",
+                                                           "x":  104,
+                                                           "y":  185,
+                                                           "name":  "Beholder",
+                                                           "ro":  null
+                                                       },
+                                                       {
+                                                           "map":  "ra_temin",
+                                                           "x":  268,
+                                                           "y":  321,
+                                                           "name":  "Beho",
+                                                           "ro":  null
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  2,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Bianca",
+                                         "now":  "Quest: see what Bianca (ra_temin, 301, 112) thinks of beholders, and tell Beho.",
+                                         "done":  "Bianca will need winning over, one gift at a time.",
+                                         "route":  {
+                                                       "map":  "ra_temin",
+                                                       "x":  301,
+                                                       "y":  112,
+                                                       "name":  "Bianca"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "ra_temin",
+                                                           "x":  301,
+                                                           "y":  112,
+                                                           "name":  "Bianca",
+                                                           "ro":  null
+                                                       }
+                                                   ],
+                                         "parts":  [
+                                                       {
+                                                           "at":  61004,
+                                                           "name":  "Bianca (ra_temin 301, 112)",
+                                                           "route":  {
+                                                                         "map":  "ra_temin",
+                                                                         "x":  301,
+                                                                         "y":  112,
+                                                                         "name":  "Bianca"
+                                                                     }
+                                                       },
+                                                       {
+                                                           "at":  61006,
+                                                           "name":  "Back to Beho",
+                                                           "route":  {
+                                                                         "map":  "ra_temin",
+                                                                         "x":  268,
+                                                                         "y":  321,
+                                                                         "name":  "Beho"
+                                                                     }
+                                                       }
+                                                   ]
+                                     },
+                                     {
+                                         "k":  3,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "White Chocolate",
+                                         "now":  "Quest: ask Kyara (ra_temin, 31, 70) what Bianca likes. She gives you White Chocolate: take it to Beho.",
+                                         "done":  "Beho has White Chocolate for Bianca.",
+                                         "route":  {
+                                                       "map":  "ra_temin",
+                                                       "x":  31,
+                                                       "y":  70,
+                                                       "name":  "Kyara"
+                                                   },
+                                         "items":  [
+                                                       {
+                                                           "name":  "White Chocolate",
+                                                           "id":  561,
+                                                           "count":  1
+                                                       }
+                                                   ],
+                                         "hint":  [
+
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "ra_temin",
+                                                           "x":  31,
+                                                           "y":  70,
+                                                           "name":  "Kyara",
+                                                           "ro":  null
+                                                       }
+                                                   ],
+                                         "parts":  [
+                                                       {
+                                                           "at":  61007,
+                                                           "name":  "Kyara (ra_temin 31, 70): White Chocolate",
+                                                           "route":  {
+                                                                         "map":  "ra_temin",
+                                                                         "x":  31,
+                                                                         "y":  70,
+                                                                         "name":  "Kyara"
+                                                                     }
+                                                       },
+                                                       {
+                                                           "at":  61008,
+                                                           "name":  "Kyara again: Beho is gentle and honest.",
+                                                           "route":  {
+                                                                         "map":  "ra_temin",
+                                                                         "x":  31,
+                                                                         "y":  70,
+                                                                         "name":  "Kyara"
+                                                                     }
+                                                       },
+                                                       {
+                                                           "at":  61009,
+                                                           "name":  "Give Beho the chocolate",
+                                                           "route":  {
+                                                                         "map":  "ra_temin",
+                                                                         "x":  268,
+                                                                         "y":  321,
+                                                                         "name":  "Beho"
+                                                                     }
+                                                       }
+                                                   ]
+                                     },
+                                     {
+                                         "k":  4,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "A Song",
+                                         "now":  "Quest: Doina (ra_temin, 165, 101) writes Beho a song. Answer her, then take the Blank Scroll to Beho.",
+                                         "done":  "Beho has a song for Bianca.",
+                                         "route":  {
+                                                       "map":  "ra_temin",
+                                                       "x":  165,
+                                                       "y":  101,
+                                                       "name":  "Doina"
+                                                   },
+                                         "items":  [
+                                                       {
+                                                           "name":  "Blank Scroll",
+                                                           "id":  7433,
+                                                           "count":  1
+                                                       }
+                                                   ],
+                                         "hint":  [
+                                                      "Doina asks what the song is about: Heart (or Eyes, or Tears; not Hunger). Then how it feels: Strong (or Itchy)."
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "ra_temin",
+                                                           "x":  165,
+                                                           "y":  101,
+                                                           "name":  "Doina",
+                                                           "ro":  null
+                                                       },
+                                                       {
+                                                           "map":  "ra_temin",
+                                                           "x":  268,
+                                                           "y":  321,
+                                                           "name":  "Beho",
+                                                           "ro":  null
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  5,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "The Necklace",
+                                         "now":  "Quest: Lilla (ra_in01, 343, 130) lends a necklace once you have searched four places for it.",
+                                         "done":  "Lilla lent you the Necklace of Wisdom for Bianca.",
+                                         "route":  {
+                                                       "map":  "ra_in01",
+                                                       "x":  343,
+                                                       "y":  130,
+                                                       "name":  "Lilla"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+                                                      "The Flowerpot (ra_in01, 374, 123), the Flowerpot in the streets (rachel, 106, 168), the Flowerpot (ra_in01, 308, 37) and the Sofa (ra_in01, 388, 68), in that order; then Lilla again.",
+                                                      "The Necklace of Wisdom is a loan for 3 days: finish the quest before it vanishes."
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "ra_in01",
+                                                           "x":  343,
+                                                           "y":  130,
+                                                           "name":  "Lilla",
+                                                           "ro":  61012
+                                                       },
+                                                       {
+                                                           "map":  "ra_in01",
+                                                           "x":  374,
+                                                           "y":  123,
+                                                           "name":  "Flowerpot",
+                                                           "ro":  61013
+                                                       },
+                                                       {
+                                                           "map":  "rachel",
+                                                           "x":  106,
+                                                           "y":  168,
+                                                           "name":  "Flowerpot",
+                                                           "ro":  61014
+                                                       },
+                                                       {
+                                                           "map":  "ra_in01",
+                                                           "x":  308,
+                                                           "y":  37,
+                                                           "name":  "Flowerpot",
+                                                           "ro":  61015
+                                                       },
+                                                       {
+                                                           "map":  "ra_in01",
+                                                           "x":  388,
+                                                           "y":  68,
+                                                           "name":  "Sofa",
+                                                           "ro":  61016
+                                                       },
+                                                       {
+                                                           "map":  "ra_in01",
+                                                           "x":  343,
+                                                           "y":  130,
+                                                           "name":  "Lilla",
+                                                           "ro":  61017
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  6,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "The Bouquet",
+                                         "now":  "Quest: Kees (rachel, 122, 196) makes a bouquet from four of Rachel\u0027s flowerbeds. Visit them, then go back to him.",
+                                         "done":  "Kees made Beho a Bouquet.",
+                                         "route":  {
+                                                       "map":  "rachel",
+                                                       "x":  122,
+                                                       "y":  196,
+                                                       "name":  "Kees"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "rachel",
+                                                           "x":  122,
+                                                           "y":  196,
+                                                           "name":  "Kees",
+                                                           "ro":  61018
+                                                       },
+                                                       {
+                                                           "map":  "rachel",
+                                                           "x":  123,
+                                                           "y":  201,
+                                                           "name":  "Flowerbed",
+                                                           "ro":  61019
+                                                       },
+                                                       {
+                                                           "map":  "rachel",
+                                                           "x":  126,
+                                                           "y":  201,
+                                                           "name":  "Flowerbed",
+                                                           "ro":  61020
+                                                       },
+                                                       {
+                                                           "map":  "rachel",
+                                                           "x":  123,
+                                                           "y":  184,
+                                                           "name":  "Flowerbed",
+                                                           "ro":  61021
+                                                       },
+                                                       {
+                                                           "map":  "rachel",
+                                                           "x":  112,
+                                                           "y":  190,
+                                                           "name":  "Flowerbed",
+                                                           "ro":  61022
+                                                       },
+                                                       {
+                                                           "map":  "rachel",
+                                                           "x":  122,
+                                                           "y":  196,
+                                                           "name":  "Kees",
+                                                           "ro":  61023
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  7,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "The Pope\u0027s Blessing",
+                                         "now":  "Quest: show Beho the gifts, then ask the Pope (ra_temin, 169, 147) for his blessing.",
+                                         "done":  "The Pope blessed Beho\u0027s courtship.",
+                                         "route":  {
+                                                       "map":  "ra_temin",
+                                                       "x":  268,
+                                                       "y":  321,
+                                                       "name":  "Beho"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+
+                                                  ],
+                                         "spots":  [
+
+                                                   ],
+                                         "parts":  [
+                                                       {
+                                                           "at":  61025,
+                                                           "name":  "Beho (he hands you the gifts)",
+                                                           "route":  {
+                                                                         "map":  "ra_temin",
+                                                                         "x":  268,
+                                                                         "y":  321,
+                                                                         "name":  "Beho"
+                                                                     }
+                                                       },
+                                                       {
+                                                           "at":  61026,
+                                                           "name":  "The Pope (ra_temin 169, 147)",
+                                                           "route":  {
+                                                                         "map":  "ra_temin",
+                                                                         "x":  169,
+                                                                         "y":  147,
+                                                                         "name":  "Pope"
+                                                                     }
+                                                       }
+                                                   ]
+                                     },
+                                     {
+                                         "k":  8,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Bianca\u0027s Answer",
+                                         "now":  "Quest: bring Bianca (ra_temin, 301, 112) all four gifts and sing Beho\u0027s song, then talk to her again.",
+                                         "done":  "Bianca listened to the song, and smiled.",
+                                         "route":  {
+                                                       "map":  "ra_temin",
+                                                       "x":  301,
+                                                       "y":  112,
+                                                       "name":  "Bianca"
+                                                   },
+                                         "items":  [
+                                                       {
+                                                           "name":  "White Chocolate",
+                                                           "id":  561,
+                                                           "count":  1
+                                                       },
+                                                       {
+                                                           "name":  "Blank Scroll",
+                                                           "id":  7433,
+                                                           "count":  1
+                                                       },
+                                                       {
+                                                           "name":  "Necklace of Wisdom",
+                                                           "id":  1007,
+                                                           "count":  1
+                                                       },
+                                                       {
+                                                           "name":  "Bouquet",
+                                                           "id":  744,
+                                                           "count":  1
+                                                       }
+                                                   ],
+                                         "hint":  [
+                                                      "Pick the right line each time: When I look in your eyes, I feel my heart beat strong., I cried those nights, million of tears as in this song..."
+                                                  ],
+                                         "spots":  [
+
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  9,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Beho",
+                                         "now":  "Quest: tell Beho, waiting outside the temple (ra_temple, 68, 158).",
+                                         "done":  "Beho is the happiest beholder in Arunafeltz.",
+                                         "route":  {
+                                                       "map":  "ra_temple",
+                                                       "x":  68,
+                                                       "y":  158,
+                                                       "name":  "Beho"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "ra_temple",
+                                                           "x":  68,
+                                                           "y":  158,
+                                                           "name":  "Beho",
+                                                           "ro":  null
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     }
+                                 ]
+                   },
+                   {
+                       "key":  "ra_sanctuary",
+                       "ch":  10,
+                       "hook":  46,
+                       "title":  "The Sanctuary of Rachel",
+                       "range":  "60+",
+                       "intro":  "Sister Ilyana: \"The temple\u0027s Sanctuary has been shut for as long as I have served here. They say it opens when the faithful have given enough. Ten thousand gifts, they say.\"",
+                       "where":  "Rachel",
+                       "mod":  "solo-community-goals",
+                       "reward":  "entry to the Rachel Sanctuary, and EXP along the way (90,000 base and 60,000 job at the end).",
+                       "steps":  [
+                                     {
+                                         "k":  1,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Priestess Nemma",
+                                         "now":  "RO quest: talk to Priestess Nemma in Rachel\u0027s temple (ra_temple, 116, 174).",
+                                         "done":  "Nemma worries about a gate locked from the inside.",
+                                         "route":  {
+                                                       "map":  "ra_temple",
+                                                       "x":  116,
+                                                       "y":  174,
+                                                       "name":  "Nemma"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+                                                      "Needs the temple open: solo-community-goals opens it (its setting Donations to open Rachel\u0027s Sanctuary, 0 by default)."
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "ra_temple",
+                                                           "x":  116,
+                                                           "y":  174,
+                                                           "name":  "Nemma",
+                                                           "ro":  null
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  2,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "The Candy Kid",
+                                         "now":  "RO quest: ask the kid in the south-east of Rachel (243, 37), who saw a way in. Answer Yeah. or Sure, I love the stuff~, and give him a Candy if he asks (Sure.).",
+                                         "done":  "The kid told you about a window into the temple.",
+                                         "route":  {
+                                                       "map":  "rachel",
+                                                       "x":  243,
+                                                       "y":  37,
+                                                       "name":  "Kid"
+                                                   },
+                                         "items":  [
+                                                       {
+                                                           "name":  "Candy",
+                                                           "id":  529,
+                                                           "count":  1
+                                                       }
+                                                   ],
+                                         "hint":  [
+                                                      "Candy: Delightful Ludes on Rachel\u0027s fields drop it often."
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "rachel",
+                                                           "x":  243,
+                                                           "y":  37,
+                                                           "name":  "Kid",
+                                                           "ro":  null
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  3,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Through the Window",
+                                         "now":  "RO quest: climb in through the window at the side of the temple (ra_temple, 67, 209: Enter Through Window), follow the corridors, investigate the bloody spot twice, and push the gate open (Push Gate).",
+                                         "done":  "You opened the locked gate from the inside.",
+                                         "route":  {
+                                                       "map":  "ra_temple",
+                                                       "x":  67,
+                                                       "y":  209,
+                                                       "name":  "The window"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+                                                      "The Journal marks the next spot on your map inside (que_rachel). Walking onto each one moves the quest on."
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "que_rachel",
+                                                           "x":  60,
+                                                           "y":  80,
+                                                           "name":  "Next spot",
+                                                           "ro":  2
+                                                       },
+                                                       {
+                                                           "map":  "que_rachel",
+                                                           "x":  59,
+                                                           "y":  112,
+                                                           "name":  "Next spot",
+                                                           "ro":  3
+                                                       },
+                                                       {
+                                                           "map":  "que_rachel",
+                                                           "x":  94,
+                                                           "y":  139,
+                                                           "name":  "Next spot",
+                                                           "ro":  4
+                                                       },
+                                                       {
+                                                           "map":  "que_rachel",
+                                                           "x":  132,
+                                                           "y":  70,
+                                                           "name":  "Next spot",
+                                                           "ro":  5
+                                                       },
+                                                       {
+                                                           "map":  "que_rachel",
+                                                           "x":  28,
+                                                           "y":  315,
+                                                           "name":  "Bloody Spot: Investigate",
+                                                           "ro":  6
+                                                       },
+                                                       {
+                                                           "map":  "que_rachel",
+                                                           "x":  28,
+                                                           "y":  315,
+                                                           "name":  "Bloody Spot: Investigate Again",
+                                                           "ro":  7
+                                                       },
+                                                       {
+                                                           "map":  "que_rachel",
+                                                           "x":  170,
+                                                           "y":  37,
+                                                           "name":  "Next spot",
+                                                           "ro":  8
+                                                       },
+                                                       {
+                                                           "map":  "que_rachel",
+                                                           "x":  169,
+                                                           "y":  18,
+                                                           "name":  "Gate: Push Gate",
+                                                           "ro":  9
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  4,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Panno",
+                                         "now":  "RO quest: tell Panno inside the temple (ra_temin, 170, 46): Hey, did you open the gate?, The locked gate to the temple!, Explain. Then talk to her once more.",
+                                         "done":  "Panno sent you back to Nemma.",
+                                         "route":  {
+                                                       "map":  "ra_temin",
+                                                       "x":  170,
+                                                       "y":  46,
+                                                       "name":  "Panno"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "ra_temin",
+                                                           "x":  170,
+                                                           "y":  46,
+                                                           "name":  "Panno",
+                                                           "ro":  null
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  5,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Firecrackers",
+                                         "now":  "RO quest: talk to Nemma twice; the second time choose Yes. with 20 Firecrackers.",
+                                         "done":  "Nemma took the firecrackers, and sent you to High Priest Zhed.",
+                                         "route":  {
+                                                       "map":  "ra_temple",
+                                                       "x":  116,
+                                                       "y":  174,
+                                                       "name":  "Nemma"
+                                                   },
+                                         "items":  [
+                                                       {
+                                                           "name":  "Firecracker",
+                                                           "id":  12018,
+                                                           "count":  20
+                                                       }
+                                                   ],
+                                         "hint":  [
+                                                      "The Party Supplies Shop in Hugel (hu_in01, 23, 311) sells 5 Firecrackers for 500 zeny."
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "ra_temple",
+                                                           "x":  116,
+                                                           "y":  174,
+                                                           "name":  "Nemma",
+                                                           "ro":  null
+                                                       },
+                                                       {
+                                                           "map":  "hu_in01",
+                                                           "x":  23,
+                                                           "y":  311,
+                                                           "name":  "Party Supplies Shop",
+                                                           "ro":  null
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  6,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "High Priest Zhed",
+                                         "now":  "RO quest: talk to High Priest Zhed (ra_temin, 277, 159): choose Yes, sure.",
+                                         "done":  "Zhed asked you to see the Pope.",
+                                         "route":  {
+                                                       "map":  "ra_temin",
+                                                       "x":  277,
+                                                       "y":  159,
+                                                       "name":  "High Priest Zhed"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "ra_temin",
+                                                           "x":  277,
+                                                           "y":  159,
+                                                           "name":  "High Priest Zhed",
+                                                           "ro":  null
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  7,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Glacial Hearts",
+                                         "now":  "RO quest: the Pope\u0027s Office Guard (ra_temin, 134, 128) lets you pass for 40 Glacial Hearts.",
+                                         "done":  "The guard let you through to the Pope.",
+                                         "route":  {
+                                                       "map":  "ra_temin",
+                                                       "x":  134,
+                                                       "y":  128,
+                                                       "name":  "Pope\u0027s Office Guard"
+                                                   },
+                                         "items":  [
+                                                       {
+                                                           "name":  "Glacial Heart",
+                                                           "id":  7561,
+                                                           "count":  40
+                                                       }
+                                                   ],
+                                         "hint":  [
+                                                      "Glacial Hearts: Ice Titans (1 in 4), Snowiers and Gazetis (about 1 in 7) in the Ice Cave (ice_dun02, ice_dun03, Lv 103-110)."
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "ra_temin",
+                                                           "x":  134,
+                                                           "y":  128,
+                                                           "name":  "Pope\u0027s Office Guard",
+                                                           "ro":  null
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  8,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "The Pope",
+                                         "now":  "RO quest: walk past the guard (134, 131), then up through (275, 226) to the Pope (ra_temsky, 99, 99). Choose No, not at all...!, type anything twice, then R-really...? and Holy Ground?",
+                                         "done":  "The Pope spoke of a Holy Ground.",
+                                         "route":  {
+                                                       "map":  "ra_temin",
+                                                       "x":  134,
+                                                       "y":  131,
+                                                       "name":  "The way to the Pope"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "ra_temin",
+                                                           "x":  134,
+                                                           "y":  131,
+                                                           "name":  "The way past the guard",
+                                                           "ro":  null
+                                                       },
+                                                       {
+                                                           "map":  "ra_temin",
+                                                           "x":  275,
+                                                           "y":  226,
+                                                           "name":  "The way up",
+                                                           "ro":  null
+                                                       },
+                                                       {
+                                                           "map":  "ra_temsky",
+                                                           "x":  99,
+                                                           "y":  99,
+                                                           "name":  "Pope",
+                                                           "ro":  null
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  9,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "The Holy Ground",
+                                         "now":  "RO quest: tell Zhed about the Holy Ground, listen in at the hidden spot nearby, ask Zhed about Bekento, and pick up the small key (Pick It Up).",
+                                         "done":  "You have the small key to the Sanctuary.",
+                                         "route":  {
+                                                       "map":  "ra_temin",
+                                                       "x":  277,
+                                                       "y":  159,
+                                                       "name":  "High Priest Zhed"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+
+                                                  ],
+                                         "spots":  [
+
+                                                   ],
+                                         "parts":  [
+                                                       {
+                                                           "at":  18,
+                                                           "name":  "Tell High Priest Zhed",
+                                                           "route":  {
+                                                                         "map":  "ra_temin",
+                                                                         "x":  277,
+                                                                         "y":  159,
+                                                                         "name":  "High Priest Zhed"
+                                                                     }
+                                                       },
+                                                       {
+                                                           "at":  19,
+                                                           "name":  "Listen at the hidden spot (ra_temin 288, 151)",
+                                                           "route":  {
+                                                                         "map":  "ra_temin",
+                                                                         "x":  288,
+                                                                         "y":  151,
+                                                                         "name":  "Hidden spot"
+                                                                     }
+                                                       },
+                                                       {
+                                                           "at":  20,
+                                                           "name":  "Zhed again: Ask about Bekento",
+                                                           "route":  {
+                                                                         "map":  "ra_temin",
+                                                                         "x":  277,
+                                                                         "y":  159,
+                                                                         "name":  "High Priest Zhed"
+                                                                     }
+                                                       },
+                                                       {
+                                                           "at":  21,
+                                                           "name":  "Pick up the key (ra_temin 272, 143)",
+                                                           "route":  {
+                                                                         "map":  "ra_temin",
+                                                                         "x":  272,
+                                                                         "y":  143,
+                                                                         "name":  "Key"
+                                                                     }
+                                                       }
+                                                   ]
+                                     },
+                                     {
+                                         "k":  10,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Into the Sanctuary",
+                                         "now":  "RO quest: open the Sanctuary gate (ra_temin, 28, 319: Use Small Key), walk to the way on at the south of the first hall (ra_san01, 139, 13), then north to the far end of that hall (que_san04, 119, 203).",
+                                         "done":  "You came out of the Sanctuary with its secret.",
+                                         "route":  {
+                                                       "map":  "ra_temin",
+                                                       "x":  28,
+                                                       "y":  319,
+                                                       "name":  "Sanctuary gate"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+                                                      "It brings you out in Rachel; walk onto the spot at (rachel, 163, 152)."
+                                                  ],
+                                         "spots":  [
+                                                       {
+                                                           "map":  "ra_san01",
+                                                           "x":  139,
+                                                           "y":  13,
+                                                           "name":  "The way on",
+                                                           "ro":  21
+                                                       },
+                                                       {
+                                                           "map":  "que_san04",
+                                                           "x":  119,
+                                                           "y":  203,
+                                                           "name":  "The far end",
+                                                           "ro":  21
+                                                       },
+                                                       {
+                                                           "map":  "rachel",
+                                                           "x":  163,
+                                                           "y":  152,
+                                                           "name":  "The spot in Rachel",
+                                                           "ro":  22
+                                                       }
+                                                   ],
+                                         "parts":  [
+
+                                                   ]
+                                     },
+                                     {
+                                         "k":  11,
+                                         "type":  "ro",
+                                         "label":  null,
+                                         "any":  false,
+                                         "minLv":  null,
+                                         "title":  "Zhed\u0027s Answer",
+                                         "now":  "RO quest: tell High Priest Zhed what you saw: choose Did something happen?",
+                                         "done":  "The Sanctuary of Rachel is open to you from now on.",
+                                         "route":  {
+                                                       "map":  "ra_temin",
+                                                       "x":  277,
+                                                       "y":  159,
+                                                       "name":  "High Priest Zhed"
+                                                   },
+                                         "items":  [
+
+                                                   ],
+                                         "hint":  [
+
+                                                  ],
+                                         "spots":  [
+
                                                    ],
                                          "parts":  [
 

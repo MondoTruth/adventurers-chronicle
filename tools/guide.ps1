@@ -13,7 +13,8 @@
 # hook = the id of the step in story.ps1 after which the guide opens; the
 # Journal lists it under the chapter that follows.
 # needs = a unique NPC name ("Name#id") that must exist on the server, for a
-# quest another mod adds: without it the guide is left out.
+# quest another mod adds or makes possible; mod = that mod's name. Without
+# the NPC the Journal lists the guide with a note to install the mod.
 # reward = what RO's own quest gives (checked in rathena-pin), for the Journal.
 # A step is done when its cond (rAthena script) is true, and the conds of a
 # guide must follow each other (a later one true means the earlier ones are).
@@ -617,6 +618,319 @@ $guides = @(
           )
           spots = @(@{ map = 'verus03'; x = 129; y = 21; name = 'Wandering Bard' })
           done = 'You told the Bard a story he had only ever sung, and he swore to make a new song of it.' }
+     ) }
+
+  # ---- Quests other mods add or make possible ----------------------------------
+  # world-sync-extras (LilArt420), block criminal_activities: iRO's Criminal
+  # Activities (iq_crim 1-13, Lv 70). Checked against v2.1.1.
+  @{ key = 'wse_criminal'; era = 'renewal'; hook = 16; title = 'Criminal Activities'; range = '70+'
+     where = 'Geffen and the airship'; needs = 'Agent York#iqcrim'; mod = 'world-sync-extras'
+     intro = 'Magister Ivo: "An agent of the kingdom has taken a room at our inn. He hunts a gangster called Jymmy the Thumb, and he is looking for someone the gang does not know yet."'
+     reward = '1,000,000 base and 700,000 job EXP and an Old Violet Box.'
+     steps = @(
+       @{ title = 'Agent York'; cond = 'iq_crim >= 1'
+          route = @('geffen_in', 77, 57, 'Agent York')
+          now = 'Quest: talk to Agent York in the Geffen inn (geffen_in, 77, 57): choose I''ll talk to Vince.'
+          spots = @(@{ map = 'geffen_in'; x = 77; y = 57; name = 'Agent York' })
+          done = 'Agent York wants Jymmy the Thumb''s gang broken up, starting with the band Jymmy forces to work for him.' }
+       @{ title = 'Ling Mynmei''s Contract'; cond = 'iq_crim >= 5'; var = 'iq_crim'
+          parts = @(
+            @{ at = 2; name = 'Vince Noir (geffen 107, 48)'; route = @('geffen', 107, 48, 'Vince Noir') }
+            @{ at = 3; name = 'Give Ling Mynmei the Raccoon Doll (geffen_in 30, 131)'; route = @('geffen_in', 30, 131, 'Ling Mynmei') }
+            @{ at = 4; name = 'Win Ling''s contract from Old Lady Kroot (geffen_in 33, 131)'; route = @('geffen_in', 33, 131, 'Old Lady Kroot') }
+            @{ at = 5; name = 'Back to Ling Mynmei'; route = @('geffen_in', 30, 131, 'Ling Mynmei') }
+          )
+          route = @('geffen', 107, 48, 'Vince Noir')
+          now = 'Quest: Vince Noir (geffen, 107, 48) gives you a Raccoon Doll for his bandmate Ling Mynmei; she owes her contract to Old Lady Kroot next door. Get the contract and bring Ling the news.'
+          hint = @(
+            'Old Lady Kroot: Arm wrestle you for it costs 5,000 zeny a try and wins about 3 times in 10. Or Buy the contract for 100,000 zeny (50,000 after you give her a Bomber Steak, which is rare).'
+          )
+          spots = @(
+            @{ map = 'geffen'; x = 107; y = 48; name = 'Vince Noir' }
+            @{ map = 'geffen_in'; x = 30; y = 131; name = 'Ling Mynmei' }
+            @{ map = 'geffen_in'; x = 33; y = 131; name = 'Old Lady Kroot' }
+          )
+          done = 'Ling Mynmei is free of Jymmy''s contract.' }
+       @{ title = 'Howard Moon''s Floods'; cond = 'iq_crim >= 7'; var = 'iq_crim'
+          route = @('geffen', 183, 80, 'Howard Moon')
+          now = 'Quest: talk to Howard Moon (geffen, 183, 80), turn off the four Flood Controls in Geffen (Turn it off), then tell him.'
+          hint = @('The Flood Controls stand at (33, 138), (75, 43), (194, 183) and (139, 166). The quest window counts them.')
+          spots = @(
+            @{ map = 'geffen'; x = 183; y = 80; name = 'Howard Moon' }
+            @{ map = 'geffen'; x = 33; y = 138; name = 'Flood Control'; ro = 6 }
+            @{ map = 'geffen'; x = 75; y = 43; name = 'Flood Control'; ro = 6 }
+            @{ map = 'geffen'; x = 194; y = 183; name = 'Flood Control'; ro = 6 }
+            @{ map = 'geffen'; x = 139; y = 166; name = 'Flood Control'; ro = 6 }
+          )
+          done = 'With the floods stopped, Howard Moon walked away from Jymmy too.' }
+       @{ title = 'The Casino Airship'; cond = 'iq_crim >= 10'; var = 'iq_crim'
+          route = @('airplane', 102, 62, 'Naota')
+          now = 'Quest: on the domestic airship, find Naota (airplane, 102, 62), sabotage Jymmy''s casino, then tell the Dealer and Naota.'
+          hint = @(
+            'The domestic airship leaves from the airports of Juno, Einbroch, Lighthalzen and Hugel (1,200 zeny).'
+            'Cooked Chicken (44, 61): Add Naota''s seasoning. Slot Machine (46, 79), Roulette Wheel (24, 70) and Slot Machine (44, 45): Install a cheat detector. Then the Dealer (32, 52), then Naota again.'
+          )
+          spots = @(
+            @{ map = 'airplane'; x = 102; y = 62; name = 'Naota' }
+            @{ map = 'airplane'; x = 44; y = 61; name = 'Cooked Chicken'; ro = 8 }
+            @{ map = 'airplane'; x = 46; y = 79; name = 'Slot Machine'; ro = 8 }
+            @{ map = 'airplane'; x = 24; y = 70; name = 'Roulette Wheel'; ro = 8 }
+            @{ map = 'airplane'; x = 44; y = 45; name = 'Slot Machine'; ro = 8 }
+            @{ map = 'airplane'; x = 32; y = 52; name = 'Dealer'; ro = 8 }
+          )
+          done = 'Jymmy''s casino is ruined, and Naota is free.' }
+       @{ title = 'Bringing the Ship Down'; cond = 'iq_crim >= 12'; var = 'iq_crim'
+          route = @('airplane', 18, 62, 'Switch')
+          now = 'Quest: pull the Switch on the airship (18, 62), then fire the cannon (95, 202): Aim at the engines and fire.'
+          hint = @('Mobsters jump out when the cannon fires: be ready to fight.')
+          spots = @(
+            @{ map = 'airplane'; x = 18; y = 62; name = 'Switch' }
+            @{ map = 'airplane'; x = 95; y = 202; name = 'Cannon Switch' }
+          )
+          done = 'The cannon took out the airship''s engines.' }
+       @{ title = 'Jymmy the Thumb'; cond = 'iq_crim >= 13'
+          route = @('airplane', 232, 157, 'Jymmy the Thumb')
+          now = 'Quest: face Jymmy the Thumb on the airship (232, 157). The ship comes down near Izlude: report to Agent York (izlude_in, 67, 113).'
+          spots = @(
+            @{ map = 'airplane'; x = 232; y = 157; name = 'Jymmy the Thumb' }
+            @{ map = 'izlude_in'; x = 67; y = 113; name = 'Agent York' }
+          )
+          done = 'Jymmy''s gang is broken, and Agent York has his man.' }
+     ) }
+
+  # world-sync-extras, block varmundt: iRO's Seoyeon's Trial (wsv_sy 1-5,
+  # Lv 70). The trace waits at one of five places (wsv_sys 1-5).
+  @{ key = 'wse_seoyeon'; era = 'renewal'; hook = 21; title = 'Seoyeon''s Trial'; range = '70+'
+     where = 'Amatsu'; needs = 'Seoyeon#wsv'; mod = 'world-sync-extras'
+     intro = 'Sir Aldric: "A swordswoman named Seoyeon tests travellers in Amatsu, in the dungeon under the lord''s palace. They say she hunts the ghost of an ancient ninja."'
+     reward = 'EXP: half of your current level (at most 2,000,000 base).'
+     steps = @(
+       @{ title = 'Seoyeon'; cond = 'wsv_sy >= 1'
+          route = @('amatsu', 82, 118, 'Seoyeon')
+          now = 'Quest: talk to Seoyeon in Amatsu (82, 118): choose I''ll take your trial.'
+          spots = @(@{ map = 'amatsu'; x = 82; y = 118; name = 'Seoyeon' })
+          done = 'Seoyeon set you a trial in the three floors under the palace.' }
+       @{ title = 'Three Floors'; cond = 'wsv_sy >= 2'
+          route = @('amatsu', 82, 118, 'Seoyeon')
+          now = 'Quest: defeat 100 monsters on each floor of the Amatsu Dungeon (ama_dun01, ama_dun02, ama_dun03), then go back to Seoyeon.'
+          hint = @(
+            'The quest window (Alt+U) counts each floor. Monsters there are Lv 85 to 100.'
+            'The way in is through the palace: the hidden gate needs the Feudal Lord Permit (Side Quest The Fox of the Palace).'
+          )
+          spots = @(@{ map = 'amatsu'; x = 82; y = 118; name = 'Seoyeon' })
+          done = 'Seoyeon was satisfied, and told you of Yeongwi, an ancient ninja whose soul still haunts the battlefield on the second floor.' }
+       @{ title = 'Traces of Yeongwi'; cond = 'wsv_sy >= 3'; var = 'wsv_sys'
+          route = @('amatsu', 82, 118, 'Seoyeon')
+          now = 'Quest: find the Traces of Yeongwi on the second floor of the Amatsu Dungeon (ama_dun02). Seoyeon told you where: the Journal marks the place.'
+          spots = @(
+            @{ map = 'ama_dun02'; x = 52; y = 163; name = 'Traces of Yeongwi'; ro = 1 }
+            @{ map = 'ama_dun02'; x = 67; y = 97; name = 'Traces of Yeongwi'; ro = 2 }
+            @{ map = 'ama_dun02'; x = 122; y = 12; name = 'Traces of Yeongwi'; ro = 3 }
+            @{ map = 'ama_dun02'; x = 154; y = 140; name = 'Traces of Yeongwi'; ro = 4 }
+            @{ map = 'ama_dun02'; x = 162; y = 36; name = 'Traces of Yeongwi'; ro = 5 }
+          )
+          done = 'At the traces, Yeongwi''s shadow rose to meet you.' }
+       @{ title = 'Yeongwi'; cond = 'wsv_sy >= 4'
+          route = @('amatsu', 82, 118, 'Seoyeon')
+          now = 'Quest: Yeongwi stands by the traces: choose Draw your weapon. and defeat him (60,000 HP).'
+          done = 'Yeongwi''s shadow broke apart like smoke.' }
+       @{ title = 'Seoyeon''s Verdict'; cond = 'wsv_sy >= 5'
+          route = @('amatsu', 82, 118, 'Seoyeon')
+          now = 'Quest: talk to Seoyeon, who came running to the same place.'
+          done = 'Seoyeon passed you: the ancient ninja''s soul is free.' }
+     ) }
+
+  # world-sync-extras, block eye_of_the_beholder: iRO's Eye of the Beholder
+  # (iq_beho 61001-61029, then 1 when done, Lv 50).
+  @{ key = 'wse_beholder'; era = 'renewal'; hook = 31; title = 'Eye of the Beholder'; range = '50+'
+     where = 'Rachel'; needs = 'Beho#iqbeho'; mod = 'world-sync-extras'
+     intro = 'Sister Ilyana: "There is a beholder living in our temple, if you can believe it. Beho is gentle as a lamb, and hopelessly in love with a girl who screams when she sees him."'
+     reward = '500,000 base and 375,000 job EXP, 5 Yggdrasil Berries and an Eden Merit Badge.'
+     steps = @(
+       @{ title = 'A Lovesick Beholder'; cond = 'iq_beho == 1 || iq_beho >= 61003'
+          route = @('ra_temple', 104, 185, 'Beholder')
+          now = 'Quest: the Beholder by Rachel''s temple (ra_temple, 104, 185) takes you to Beho: choose Sure, send me to Beho. Then talk to Beho (ra_temin, 268, 321).'
+          hint = @('Another Beholder waits on the deck of the international airship (airplane_01, 238, 57).')
+          spots = @(
+            @{ map = 'ra_temple'; x = 104; y = 185; name = 'Beholder' }
+            @{ map = 'ra_temin'; x = 268; y = 321; name = 'Beho' }
+          )
+          done = 'Beho loves Bianca, who is terrified of beholders.' }
+       @{ title = 'Bianca'; cond = 'iq_beho == 1 || iq_beho >= 61006'; var = 'iq_beho'
+          parts = @(
+            @{ at = 61004; name = 'Bianca (ra_temin 301, 112)'; route = @('ra_temin', 301, 112, 'Bianca') }
+            @{ at = 61006; name = 'Back to Beho'; route = @('ra_temin', 268, 321, 'Beho') }
+          )
+          route = @('ra_temin', 301, 112, 'Bianca')
+          now = 'Quest: see what Bianca (ra_temin, 301, 112) thinks of beholders, and tell Beho.'
+          spots = @(@{ map = 'ra_temin'; x = 301; y = 112; name = 'Bianca' })
+          done = 'Bianca will need winning over, one gift at a time.' }
+       @{ title = 'White Chocolate'; cond = 'iq_beho == 1 || iq_beho >= 61009'; var = 'iq_beho'
+          items = @(, @(561, 'White Chocolate', 1))
+          parts = @(
+            @{ at = 61007; name = 'Kyara (ra_temin 31, 70): White Chocolate'; route = @('ra_temin', 31, 70, 'Kyara') }
+            @{ at = 61008; name = 'Kyara again: Beho is gentle and honest.'; route = @('ra_temin', 31, 70, 'Kyara') }
+            @{ at = 61009; name = 'Give Beho the chocolate'; route = @('ra_temin', 268, 321, 'Beho') }
+          )
+          route = @('ra_temin', 31, 70, 'Kyara')
+          now = 'Quest: ask Kyara (ra_temin, 31, 70) what Bianca likes. She gives you White Chocolate: take it to Beho.'
+          spots = @(@{ map = 'ra_temin'; x = 31; y = 70; name = 'Kyara' })
+          done = 'Beho has White Chocolate for Bianca.' }
+       @{ title = 'A Song'; cond = 'iq_beho == 1 || iq_beho >= 61012'; var = 'iq_beho'
+          items = @(, @(7433, 'Blank Scroll', 1))
+          route = @('ra_temin', 165, 101, 'Doina')
+          now = 'Quest: Doina (ra_temin, 165, 101) writes Beho a song. Answer her, then take the Blank Scroll to Beho.'
+          hint = @('Doina asks what the song is about: Heart (or Eyes, or Tears; not Hunger). Then how it feels: Strong (or Itchy).')
+          spots = @(
+            @{ map = 'ra_temin'; x = 165; y = 101; name = 'Doina' }
+            @{ map = 'ra_temin'; x = 268; y = 321; name = 'Beho' }
+          )
+          done = 'Beho has a song for Bianca.' }
+       @{ title = 'The Necklace'; cond = 'iq_beho == 1 || iq_beho >= 61018'; var = 'iq_beho'
+          route = @('ra_in01', 343, 130, 'Lilla')
+          now = 'Quest: Lilla (ra_in01, 343, 130) lends a necklace once you have searched four places for it.'
+          hint = @(
+            'The Flowerpot (ra_in01, 374, 123), the Flowerpot in the streets (rachel, 106, 168), the Flowerpot (ra_in01, 308, 37) and the Sofa (ra_in01, 388, 68), in that order; then Lilla again.'
+            'The Necklace of Wisdom is a loan for 3 days: finish the quest before it vanishes.'
+          )
+          spots = @(
+            @{ map = 'ra_in01'; x = 343; y = 130; name = 'Lilla'; ro = 61012 }
+            @{ map = 'ra_in01'; x = 374; y = 123; name = 'Flowerpot'; ro = 61013 }
+            @{ map = 'rachel'; x = 106; y = 168; name = 'Flowerpot'; ro = 61014 }
+            @{ map = 'ra_in01'; x = 308; y = 37; name = 'Flowerpot'; ro = 61015 }
+            @{ map = 'ra_in01'; x = 388; y = 68; name = 'Sofa'; ro = 61016 }
+            @{ map = 'ra_in01'; x = 343; y = 130; name = 'Lilla'; ro = 61017 }
+          )
+          done = 'Lilla lent you the Necklace of Wisdom for Bianca.' }
+       @{ title = 'The Bouquet'; cond = 'iq_beho == 1 || iq_beho >= 61024'; var = 'iq_beho'
+          route = @('rachel', 122, 196, 'Kees')
+          now = 'Quest: Kees (rachel, 122, 196) makes a bouquet from four of Rachel''s flowerbeds. Visit them, then go back to him.'
+          spots = @(
+            @{ map = 'rachel'; x = 122; y = 196; name = 'Kees'; ro = 61018 }
+            @{ map = 'rachel'; x = 123; y = 201; name = 'Flowerbed'; ro = 61019 }
+            @{ map = 'rachel'; x = 126; y = 201; name = 'Flowerbed'; ro = 61020 }
+            @{ map = 'rachel'; x = 123; y = 184; name = 'Flowerbed'; ro = 61021 }
+            @{ map = 'rachel'; x = 112; y = 190; name = 'Flowerbed'; ro = 61022 }
+            @{ map = 'rachel'; x = 122; y = 196; name = 'Kees'; ro = 61023 }
+          )
+          done = 'Kees made Beho a Bouquet.' }
+       @{ title = 'The Pope''s Blessing'; cond = 'iq_beho == 1 || iq_beho >= 61026'; var = 'iq_beho'
+          parts = @(
+            @{ at = 61025; name = 'Beho (he hands you the gifts)'; route = @('ra_temin', 268, 321, 'Beho') }
+            @{ at = 61026; name = 'The Pope (ra_temin 169, 147)'; route = @('ra_temin', 169, 147, 'Pope') }
+          )
+          route = @('ra_temin', 268, 321, 'Beho')
+          now = 'Quest: show Beho the gifts, then ask the Pope (ra_temin, 169, 147) for his blessing.'
+          done = 'The Pope blessed Beho''s courtship.' }
+       @{ title = 'Bianca''s Answer'; cond = 'iq_beho == 1 || iq_beho >= 61028'
+          items = @(@(561, 'White Chocolate', 1), @(7433, 'Blank Scroll', 1), @(1007, 'Necklace of Wisdom', 1), @(744, 'Bouquet', 1))
+          route = @('ra_temin', 301, 112, 'Bianca')
+          now = 'Quest: bring Bianca (ra_temin, 301, 112) all four gifts and sing Beho''s song, then talk to her again.'
+          hint = @('Pick the right line each time: When I look in your eyes, I feel my heart beat strong., I cried those nights, million of tears as in this song...')
+          done = 'Bianca listened to the song, and smiled.' }
+       @{ title = 'Beho'; cond = 'iq_beho == 1'
+          route = @('ra_temple', 68, 158, 'Beho')
+          now = 'Quest: tell Beho, waiting outside the temple (ra_temple, 68, 158).'
+          spots = @(@{ map = 'ra_temple'; x = 68; y = 158; name = 'Beho' })
+          done = 'Beho is the happiest beholder in Arunafeltz.' }
+     ) }
+
+  # rAthena quests_rachel.txt, Sanctuary Quest (ra_tem_q 1-23, then
+  # MISC_QUEST bit 8192 and ra_tem_q back to 0). It needs the server's 10,000
+  # donations (500 million zeny): solo-community-goals opens it at 0.
+  @{ key = 'ra_sanctuary'; era = 'renewal'; hook = 31; title = 'The Sanctuary of Rachel'; range = '60+'
+     where = 'Rachel'; needs = 'solo_community_goals#mod'; mod = 'solo-community-goals'
+     intro = 'Sister Ilyana: "The temple''s Sanctuary has been shut for as long as I have served here. They say it opens when the faithful have given enough. Ten thousand gifts, they say."'
+     reward = 'entry to the Rachel Sanctuary, and EXP along the way (90,000 base and 60,000 job at the end).'
+     steps = @(
+       @{ title = 'Priestess Nemma'; cond = '(MISC_QUEST & 8192) || ra_tem_q >= 1'
+          route = @('ra_temple', 116, 174, 'Nemma')
+          now = 'RO quest: talk to Priestess Nemma in Rachel''s temple (ra_temple, 116, 174).'
+          hint = @('Needs the temple open: solo-community-goals opens it (its setting Donations to open Rachel''s Sanctuary, 0 by default).')
+          spots = @(@{ map = 'ra_temple'; x = 116; y = 174; name = 'Nemma' })
+          done = 'Nemma worries about a gate locked from the inside.' }
+       @{ title = 'The Candy Kid'; cond = '(MISC_QUEST & 8192) || ra_tem_q >= 2'
+          items = @(, @(529, 'Candy', 1))
+          route = @('rachel', 243, 37, 'Kid')
+          now = 'RO quest: ask the kid in the south-east of Rachel (243, 37), who saw a way in. Answer Yeah. or Sure, I love the stuff~, and give him a Candy if he asks (Sure.).'
+          hint = @('Candy: Delightful Ludes on Rachel''s fields drop it often.')
+          spots = @(@{ map = 'rachel'; x = 243; y = 37; name = 'Kid' })
+          done = 'The kid told you about a window into the temple.' }
+       @{ title = 'Through the Window'; cond = '(MISC_QUEST & 8192) || ra_tem_q >= 10'; var = 'ra_tem_q'
+          route = @('ra_temple', 67, 209, 'The window')
+          now = 'RO quest: climb in through the window at the side of the temple (ra_temple, 67, 209: Enter Through Window), follow the corridors, investigate the bloody spot twice, and push the gate open (Push Gate).'
+          hint = @('The Journal marks the next spot on your map inside (que_rachel). Walking onto each one moves the quest on.')
+          spots = @(
+            @{ map = 'que_rachel'; x = 60; y = 80; name = 'Next spot'; ro = 2 }
+            @{ map = 'que_rachel'; x = 59; y = 112; name = 'Next spot'; ro = 3 }
+            @{ map = 'que_rachel'; x = 94; y = 139; name = 'Next spot'; ro = 4 }
+            @{ map = 'que_rachel'; x = 132; y = 70; name = 'Next spot'; ro = 5 }
+            @{ map = 'que_rachel'; x = 28; y = 315; name = 'Bloody Spot: Investigate'; ro = 6 }
+            @{ map = 'que_rachel'; x = 28; y = 315; name = 'Bloody Spot: Investigate Again'; ro = 7 }
+            @{ map = 'que_rachel'; x = 170; y = 37; name = 'Next spot'; ro = 8 }
+            @{ map = 'que_rachel'; x = 169; y = 18; name = 'Gate: Push Gate'; ro = 9 }
+          )
+          done = 'You opened the locked gate from the inside.' }
+       @{ title = 'Panno'; cond = '(MISC_QUEST & 8192) || ra_tem_q >= 12'
+          route = @('ra_temin', 170, 46, 'Panno')
+          now = 'RO quest: tell Panno inside the temple (ra_temin, 170, 46): Hey, did you open the gate?, The locked gate to the temple!, Explain. Then talk to her once more.'
+          spots = @(@{ map = 'ra_temin'; x = 170; y = 46; name = 'Panno' })
+          done = 'Panno sent you back to Nemma.' }
+       @{ title = 'Firecrackers'; cond = '(MISC_QUEST & 8192) || ra_tem_q >= 14'
+          items = @(, @(12018, 'Firecracker', 20))
+          route = @('ra_temple', 116, 174, 'Nemma')
+          now = 'RO quest: talk to Nemma twice; the second time choose Yes. with 20 Firecrackers.'
+          hint = @('The Party Supplies Shop in Hugel (hu_in01, 23, 311) sells 5 Firecrackers for 500 zeny.')
+          spots = @(
+            @{ map = 'ra_temple'; x = 116; y = 174; name = 'Nemma' }
+            @{ map = 'hu_in01'; x = 23; y = 311; name = 'Party Supplies Shop' }
+          )
+          done = 'Nemma took the firecrackers, and sent you to High Priest Zhed.' }
+       @{ title = 'High Priest Zhed'; cond = '(MISC_QUEST & 8192) || ra_tem_q >= 15'
+          route = @('ra_temin', 277, 159, 'High Priest Zhed')
+          now = 'RO quest: talk to High Priest Zhed (ra_temin, 277, 159): choose Yes, sure.'
+          spots = @(@{ map = 'ra_temin'; x = 277; y = 159; name = 'High Priest Zhed' })
+          done = 'Zhed asked you to see the Pope.' }
+       @{ title = 'Glacial Hearts'; cond = '(MISC_QUEST & 8192) || ra_tem_q >= 16'
+          items = @(, @(7561, 'Glacial Heart', 40))
+          route = @('ra_temin', 134, 128, 'Pope''s Office Guard')
+          now = 'RO quest: the Pope''s Office Guard (ra_temin, 134, 128) lets you pass for 40 Glacial Hearts.'
+          hint = @('Glacial Hearts: Ice Titans (1 in 4), Snowiers and Gazetis (about 1 in 7) in the Ice Cave (ice_dun02, ice_dun03, Lv 103-110).')
+          spots = @(@{ map = 'ra_temin'; x = 134; y = 128; name = 'Pope''s Office Guard' })
+          done = 'The guard let you through to the Pope.' }
+       @{ title = 'The Pope'; cond = '(MISC_QUEST & 8192) || ra_tem_q >= 17'
+          route = @('ra_temin', 134, 131, 'The way to the Pope')
+          now = 'RO quest: walk past the guard (134, 131), then up through (275, 226) to the Pope (ra_temsky, 99, 99). Choose No, not at all...!, type anything twice, then R-really...? and Holy Ground?'
+          spots = @(
+            @{ map = 'ra_temin'; x = 134; y = 131; name = 'The way past the guard' }
+            @{ map = 'ra_temin'; x = 275; y = 226; name = 'The way up' }
+            @{ map = 'ra_temsky'; x = 99; y = 99; name = 'Pope' }
+          )
+          done = 'The Pope spoke of a Holy Ground.' }
+       @{ title = 'The Holy Ground'; cond = '(MISC_QUEST & 8192) || ra_tem_q >= 21'; var = 'ra_tem_q'
+          parts = @(
+            @{ at = 18; name = 'Tell High Priest Zhed'; route = @('ra_temin', 277, 159, 'High Priest Zhed') }
+            @{ at = 19; name = 'Listen at the hidden spot (ra_temin 288, 151)'; route = @('ra_temin', 288, 151, 'Hidden spot') }
+            @{ at = 20; name = 'Zhed again: Ask about Bekento'; route = @('ra_temin', 277, 159, 'High Priest Zhed') }
+            @{ at = 21; name = 'Pick up the key (ra_temin 272, 143)'; route = @('ra_temin', 272, 143, 'Key') }
+          )
+          route = @('ra_temin', 277, 159, 'High Priest Zhed')
+          now = 'RO quest: tell Zhed about the Holy Ground, listen in at the hidden spot nearby, ask Zhed about Bekento, and pick up the small key (Pick It Up).'
+          done = 'You have the small key to the Sanctuary.' }
+       @{ title = 'Into the Sanctuary'; cond = '(MISC_QUEST & 8192) || ra_tem_q >= 23'; var = 'ra_tem_q'
+          route = @('ra_temin', 28, 319, 'Sanctuary gate')
+          now = 'RO quest: open the Sanctuary gate (ra_temin, 28, 319: Use Small Key), walk to the way on at the south of the first hall (ra_san01, 139, 13), then north to the far end of that hall (que_san04, 119, 203).'
+          hint = @('It brings you out in Rachel; walk onto the spot at (rachel, 163, 152).')
+          spots = @(
+            @{ map = 'ra_san01'; x = 139; y = 13; name = 'The way on'; ro = 21 }
+            @{ map = 'que_san04'; x = 119; y = 203; name = 'The far end'; ro = 21 }
+            @{ map = 'rachel'; x = 163; y = 152; name = 'The spot in Rachel'; ro = 22 }
+          )
+          done = 'You came out of the Sanctuary with its secret.' }
+       @{ title = 'Zhed''s Answer'; cond = 'MISC_QUEST & 8192'
+          route = @('ra_temin', 277, 159, 'High Priest Zhed')
+          now = 'RO quest: tell High Priest Zhed what you saw: choose Did something happen?'
+          done = 'The Sanctuary of Rachel is open to you from now on.' }
      ) }
 )
 

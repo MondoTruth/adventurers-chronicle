@@ -755,7 +755,7 @@ if ($guides.Count) {
     $js.guides = @($guides | ForEach-Object {
         [ordered]@{
             key = $_.key; ch = $_.ch; hook = $_.hookPos; title = (Ascii $_.title 'guide title'); range = $_.range; intro = (Ascii $_.intro 'guide intro')
-            where = (Ascii $_.where 'guide where'); reward = $(if ($_.reward) { Ascii $_.reward 'guide reward' } else { $null })
+            where = (Ascii $_.where 'guide where'); mod = $_.mod; reward = $(if ($_.reward) { Ascii $_.reward 'guide reward' } else { $null })
             steps = @($_.steps | ForEach-Object {
                 [ordered]@{
                     k = $_.k; type = 'ro'; label = $_.label; any = [bool]$_.any; minLv = $_.minLv; title = (Ascii $_.title 'guide step'); now = (Ascii $_.now 'guide now'); done = (Ascii $_.done 'guide done')

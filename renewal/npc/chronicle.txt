@@ -220,9 +220,9 @@ OnInit:
 	setarray $@pp_name$[1], "Wanderer", "Voyager";
 	setarray $@pp_item[1], 50129, 50144;
 	// ---- RO quest guides ----
-	$@gd_n = 10;
-	setarray $@gd_key$[1], "ein_factory", "yuno_metto", "ep13_language", "ep13_catpaw", "ep13_sapha", "ra_lostchild", "hg_odin", "ep14_eclage", "ep14_nines", "ver_bard";
-	setarray $@gd_title$[1], "The Factory of Einbroch", "The Scientist Who Trusts Fate", "The Otherworld Language", "Cat Trading", "Sapha's Visit", "The Stolen Gem", "The Odin Temple Excavation", "Eclage's Entrance", "Fili and the Lost Adventurers", "The Wandering Bard";
+	$@gd_n = 14;
+	setarray $@gd_key$[1], "ein_factory", "yuno_metto", "ep13_language", "ep13_catpaw", "ep13_sapha", "ra_lostchild", "hg_odin", "ep14_eclage", "ep14_nines", "ver_bard", "wse_criminal", "wse_seoyeon", "wse_beholder", "ra_sanctuary";
+	setarray $@gd_title$[1], "The Factory of Einbroch", "The Scientist Who Trusts Fate", "The Otherworld Language", "Cat Trading", "Sapha's Visit", "The Stolen Gem", "The Odin Temple Excavation", "Eclage's Entrance", "Fili and the Lost Adventurers", "The Wandering Bard", "Criminal Activities", "Seoyeon's Trial", "Eye of the Beholder", "The Sanctuary of Rachel";
 	setarray $@gds_title$[101], "Short of Hands", "The Rounds", "Liotzburg", "Spare Parts";
 	setarray $@gds_now$[101], "RO quest: in the Einbroch factory, ask the overseer Zelmeto (ein_in01, 67, 242) about his work: choose You're understaffed?, then I can help you.", "RO quest: make the rounds of the factory floor: click each machine Zelmeto names, then report back to him, six times in all.", "RO quest: report to Zelmeto once more, then find Liotzburg, who stands in the streets of Einbroch (132, 84).", "RO quest: tell Zelmeto what Liotzburg said, then bring him 20 Flexible Tubes, 10 Rusty Screws and 10 Used Iron Plates: choose Give him materials.";
 	setarray $@gds_items$[101], "", "", "", "7325,20,Flexible Tube;7317,10,Rusty Screw;7319,10,Used Iron Plate";
@@ -263,6 +263,22 @@ OnInit:
 	setarray $@gds_now$[1001], "RO quest: listen to the Wandering Bard in the old city of Verus (verus03, 129, 21). He tells you a story, and wants to hear how it ended.", "RO quest: tell the Bard the ending of a story you lived. If his story is one you have not lived yet, give it back and ask for another.";
 	setarray $@gds_items$[1001], "", "";
 	setarray $@gds_parts$[1001], "", "";
+	setarray $@gds_title$[1101], "Agent York", "Ling Mynmei's Contract", "Howard Moon's Floods", "The Casino Airship", "Bringing the Ship Down", "Jymmy the Thumb";
+	setarray $@gds_now$[1101], "Quest: talk to Agent York in the Geffen inn (geffen_in, 77, 57): choose I'll talk to Vince.", "Quest: Vince Noir (geffen, 107, 48) gives you a Raccoon Doll for his bandmate Ling Mynmei; she owes her contract to Old Lady Kroot next door. Get the contract and bring Ling the news.", "Quest: talk to Howard Moon (geffen, 183, 80), turn off the four Flood Controls in Geffen (Turn it off), then tell him.", "Quest: on the domestic airship, find Naota (airplane, 102, 62), sabotage Jymmy's casino, then tell the Dealer and Naota.", "Quest: pull the Switch on the airship (18, 62), then fire the cannon (95, 202): Aim at the engines and fire.", "Quest: face Jymmy the Thumb on the airship (232, 157). The ship comes down near Izlude: report to Agent York (izlude_in, 67, 113).";
+	setarray $@gds_items$[1101], "", "", "", "", "", "";
+	setarray $@gds_parts$[1101], "", "2|Vince Noir (geffen 107, 48);3|Give Ling Mynmei the Raccoon Doll (geffen_in 30, 131);4|Win Ling's contract from Old Lady Kroot (geffen_in 33, 131);5|Back to Ling Mynmei", "", "", "", "";
+	setarray $@gds_title$[1201], "Seoyeon", "Three Floors", "Traces of Yeongwi", "Yeongwi", "Seoyeon's Verdict";
+	setarray $@gds_now$[1201], "Quest: talk to Seoyeon in Amatsu (82, 118): choose I'll take your trial.", "Quest: defeat 100 monsters on each floor of the Amatsu Dungeon (ama_dun01, ama_dun02, ama_dun03), then go back to Seoyeon.", "Quest: find the Traces of Yeongwi on the second floor of the Amatsu Dungeon (ama_dun02). Seoyeon told you where: the Journal marks the place.", "Quest: Yeongwi stands by the traces: choose Draw your weapon. and defeat him (60,000 HP).", "Quest: talk to Seoyeon, who came running to the same place.";
+	setarray $@gds_items$[1201], "", "", "", "", "";
+	setarray $@gds_parts$[1201], "", "", "", "", "";
+	setarray $@gds_title$[1301], "A Lovesick Beholder", "Bianca", "White Chocolate", "A Song", "The Necklace", "The Bouquet", "The Pope's Blessing", "Bianca's Answer", "Beho";
+	setarray $@gds_now$[1301], "Quest: the Beholder by Rachel's temple (ra_temple, 104, 185) takes you to Beho: choose Sure, send me to Beho. Then talk to Beho (ra_temin, 268, 321).", "Quest: see what Bianca (ra_temin, 301, 112) thinks of beholders, and tell Beho.", "Quest: ask Kyara (ra_temin, 31, 70) what Bianca likes. She gives you White Chocolate: take it to Beho.", "Quest: Doina (ra_temin, 165, 101) writes Beho a song. Answer her, then take the Blank Scroll to Beho.", "Quest: Lilla (ra_in01, 343, 130) lends a necklace once you have searched four places for it.", "Quest: Kees (rachel, 122, 196) makes a bouquet from four of Rachel's flowerbeds. Visit them, then go back to him.", "Quest: show Beho the gifts, then ask the Pope (ra_temin, 169, 147) for his blessing.", "Quest: bring Bianca (ra_temin, 301, 112) all four gifts and sing Beho's song, then talk to her again.", "Quest: tell Beho, waiting outside the temple (ra_temple, 68, 158).";
+	setarray $@gds_items$[1301], "", "", "561,1,White Chocolate", "7433,1,Blank Scroll", "", "", "", "561,1,White Chocolate;7433,1,Blank Scroll;1007,1,Necklace of Wisdom;744,1,Bouquet", "";
+	setarray $@gds_parts$[1301], "", "61004|Bianca (ra_temin 301, 112);61006|Back to Beho", "61007|Kyara (ra_temin 31, 70): White Chocolate;61008|Kyara again: Beho is gentle and honest.;61009|Give Beho the chocolate", "", "", "", "61025|Beho (he hands you the gifts);61026|The Pope (ra_temin 169, 147)", "", "";
+	setarray $@gds_title$[1401], "Priestess Nemma", "The Candy Kid", "Through the Window", "Panno", "Firecrackers", "High Priest Zhed", "Glacial Hearts", "The Pope", "The Holy Ground", "Into the Sanctuary", "Zhed's Answer";
+	setarray $@gds_now$[1401], "RO quest: talk to Priestess Nemma in Rachel's temple (ra_temple, 116, 174).", "RO quest: ask the kid in the south-east of Rachel (243, 37), who saw a way in. Answer Yeah. or Sure, I love the stuff~, and give him a Candy if he asks (Sure.).", "RO quest: climb in through the window at the side of the temple (ra_temple, 67, 209: Enter Through Window), follow the corridors, investigate the bloody spot twice, and push the gate open (Push Gate).", "RO quest: tell Panno inside the temple (ra_temin, 170, 46): Hey, did you open the gate?, The locked gate to the temple!, Explain. Then talk to her once more.", "RO quest: talk to Nemma twice; the second time choose Yes. with 20 Firecrackers.", "RO quest: talk to High Priest Zhed (ra_temin, 277, 159): choose Yes, sure.", "RO quest: the Pope's Office Guard (ra_temin, 134, 128) lets you pass for 40 Glacial Hearts.", "RO quest: walk past the guard (134, 131), then up through (275, 226) to the Pope (ra_temsky, 99, 99). Choose No, not at all...!, type anything twice, then R-really...? and Holy Ground?", "RO quest: tell Zhed about the Holy Ground, listen in at the hidden spot nearby, ask Zhed about Bekento, and pick up the small key (Pick It Up).", "RO quest: open the Sanctuary gate (ra_temin, 28, 319: Use Small Key), walk to the way on at the south of the first hall (ra_san01, 139, 13), then north to the far end of that hall (que_san04, 119, 203).", "RO quest: tell High Priest Zhed what you saw: choose Did something happen?";
+	setarray $@gds_items$[1401], "", "529,1,Candy", "", "", "12018,20,Firecracker", "", "7561,40,Glacial Heart", "", "", "", "";
+	setarray $@gds_parts$[1401], "", "", "", "", "", "", "", "", "18|Tell High Priest Zhed;19|Listen at the hidden spot (ra_temin 288, 151);20|Zhed again: Ask about Bekento;21|Pick up the key (ra_temin 272, 143)", "", "";
 
 	bindatcmd "chronicle", strnpcinfo(3) + "::OnCmd", 0, 99;
 
@@ -1442,6 +1458,57 @@ function	script	F_ChronGuideK	{
 		if (!(isbegin_quest(4295) || isbegin_quest(4297) || isbegin_quest(4298) || isbegin_quest(4299) || isbegin_quest(4300) || isbegin_quest(4301) || isbegin_quest(4302))) return 1;
 		if (!(isbegin_quest(4295) == 2 || isbegin_quest(4297) == 2 || isbegin_quest(4298) == 2 || isbegin_quest(4299) == 2 || isbegin_quest(4300) == 2 || isbegin_quest(4301) == 2 || isbegin_quest(4302) == 2)) return 2;
 		return 100;
+	case 11:	// wse_criminal
+		if (!getnpcid(0, "Agent York#iqcrim")) return -1;
+		if (CHRON_STEP <= 16) return 0;
+		if (CHRON_G_wse_criminal) return 100;
+		if (!(iq_crim >= 1)) return 1;
+		if (!(iq_crim >= 5)) return 2;
+		if (!(iq_crim >= 7)) return 3;
+		if (!(iq_crim >= 10)) return 4;
+		if (!(iq_crim >= 12)) return 5;
+		if (!(iq_crim >= 13)) return 6;
+		return 100;
+	case 12:	// wse_seoyeon
+		if (!getnpcid(0, "Seoyeon#wsv")) return -1;
+		if (CHRON_STEP <= 21) return 0;
+		if (CHRON_G_wse_seoyeon) return 100;
+		if (!(wsv_sy >= 1)) return 1;
+		if (!(wsv_sy >= 2)) return 2;
+		if (!(wsv_sy >= 3)) return 3;
+		if (!(wsv_sy >= 4)) return 4;
+		if (!(wsv_sy >= 5)) return 5;
+		return 100;
+	case 13:	// wse_beholder
+		if (!getnpcid(0, "Beho#iqbeho")) return -1;
+		if (CHRON_STEP <= 46) return 0;
+		if (CHRON_G_wse_beholder) return 100;
+		if (!(iq_beho == 1 || iq_beho >= 61003)) return 1;
+		if (!(iq_beho == 1 || iq_beho >= 61006)) return 2;
+		if (!(iq_beho == 1 || iq_beho >= 61009)) return 3;
+		if (!(iq_beho == 1 || iq_beho >= 61012)) return 4;
+		if (!(iq_beho == 1 || iq_beho >= 61018)) return 5;
+		if (!(iq_beho == 1 || iq_beho >= 61024)) return 6;
+		if (!(iq_beho == 1 || iq_beho >= 61026)) return 7;
+		if (!(iq_beho == 1 || iq_beho >= 61028)) return 8;
+		if (!(iq_beho == 1)) return 9;
+		return 100;
+	case 14:	// ra_sanctuary
+		if (!getnpcid(0, "solo_community_goals#mod")) return -1;
+		if (CHRON_STEP <= 46) return 0;
+		if (CHRON_G_ra_sanctuary) return 100;
+		if (!((MISC_QUEST & 8192) || ra_tem_q >= 1)) return 1;
+		if (!((MISC_QUEST & 8192) || ra_tem_q >= 2)) return 2;
+		if (!((MISC_QUEST & 8192) || ra_tem_q >= 10)) return 3;
+		if (!((MISC_QUEST & 8192) || ra_tem_q >= 12)) return 4;
+		if (!((MISC_QUEST & 8192) || ra_tem_q >= 14)) return 5;
+		if (!((MISC_QUEST & 8192) || ra_tem_q >= 15)) return 6;
+		if (!((MISC_QUEST & 8192) || ra_tem_q >= 16)) return 7;
+		if (!((MISC_QUEST & 8192) || ra_tem_q >= 17)) return 8;
+		if (!((MISC_QUEST & 8192) || ra_tem_q >= 21)) return 9;
+		if (!((MISC_QUEST & 8192) || ra_tem_q >= 23)) return 10;
+		if (!(MISC_QUEST & 8192)) return 11;
+		return 100;
 	}
 	return 0;
 }
@@ -1467,6 +1534,20 @@ function	script	F_ChronGuideRo	{
 	case 703: return hg_odin;
 	case 705: return hg_odin;
 	case 706: return hg_odin;
+	case 1102: return iq_crim;
+	case 1103: return iq_crim;
+	case 1104: return iq_crim;
+	case 1105: return iq_crim;
+	case 1203: return wsv_sys;
+	case 1302: return iq_beho;
+	case 1303: return iq_beho;
+	case 1304: return iq_beho;
+	case 1305: return iq_beho;
+	case 1306: return iq_beho;
+	case 1307: return iq_beho;
+	case 1403: return ra_tem_q;
+	case 1409: return ra_tem_q;
+	case 1410: return ra_tem_q;
 	}
 	return -1;
 }

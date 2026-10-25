@@ -463,7 +463,11 @@ export default function init(parameters, api) {
         const body = GUIDES.map((gd, i) => {
             const st = guideState(i);
             const k = st.step;
-            if (k < 0) return '';
+            if (k < 0) {
+                // A quest another mod adds (or makes possible): listed, with the mod to get.
+                return `<details data-k="gd-${gd.key}-mod"${opened(`gd-${gd.key}-mod`, false) ? ' open' : ''}><summary>${escape(gd.title)} <small>Chapter ${gd.ch}, ${escape(gd.where)}</small><span class="badge lock">Needs a mod</span></summary>
+                    <div class="body"><p class="quote">${escape(gd.intro)}</p><p class="warn">This quest needs the mod ${escape(gd.mod || 'it comes from')}. Install it from the game's Settings: Mods, then Find Mods, and switch it on. This entry then guides you through it.</p></div></details>`;
+            }
             const chapter = DATA.chapters[gd.ch - 1];
             if (k < 1) {
                 return `<details data-k="gd-${gd.key}-lock"${opened(`gd-${gd.key}-lock`, false) ? ' open' : ''}><summary>??? <small>Chapter ${gd.ch}</small><span class="badge lock">Not yet</span></summary>
