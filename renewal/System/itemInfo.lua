@@ -288,7 +288,7 @@ mainTable[50115] = {
 	ClassNum = 371,
 	costume = true
 }
-mainTable[50125] = {
+mainTable[50900] = {
 	unidentifiedDisplayName = "Costume Mine Helmet",
 	unidentifiedResourceName = "광산헬멧",
 	unidentifiedDescriptionName = { "" },
@@ -306,7 +306,7 @@ mainTable[50125] = {
 	ClassNum = 116,
 	costume = true
 }
-mainTable[50126] = {
+mainTable[50901] = {
 	unidentifiedDisplayName = "Costume Safety Helmet",
 	unidentifiedResourceName = "안전모",
 	unidentifiedDescriptionName = { "" },
@@ -324,7 +324,7 @@ mainTable[50126] = {
 	ClassNum = 95,
 	costume = true
 }
-mainTable[50127] = {
+mainTable[50902] = {
 	unidentifiedDisplayName = "Costume Engineer Cap",
 	unidentifiedResourceName = "엔지니어캡",
 	unidentifiedDescriptionName = { "" },
@@ -396,7 +396,7 @@ mainTable[50118] = {
 	ClassNum = 43,
 	costume = true
 }
-mainTable[50128] = {
+mainTable[50903] = {
 	unidentifiedDisplayName = "Costume Feather Bonnet",
 	unidentifiedResourceName = "깃털모자",
 	unidentifiedDescriptionName = { "" },
@@ -414,7 +414,7 @@ mainTable[50128] = {
 	ClassNum = 104,
 	costume = true
 }
-mainTable[50129] = {
+mainTable[50904] = {
 	unidentifiedDisplayName = "Costume Ear Muffs",
 	unidentifiedResourceName = "귀마개",
 	unidentifiedDescriptionName = { "" },
@@ -432,7 +432,7 @@ mainTable[50129] = {
 	ClassNum = 70,
 	costume = true
 }
-mainTable[50130] = {
+mainTable[50905] = {
 	unidentifiedDisplayName = "Costume Bunny Ears Hat",
 	unidentifiedResourceName = "토끼귀모자",
 	unidentifiedDescriptionName = { "" },
@@ -450,7 +450,7 @@ mainTable[50130] = {
 	ClassNum = 384,
 	costume = true
 }
-mainTable[50131] = {
+mainTable[50906] = {
 	unidentifiedDisplayName = "Costume Antlers",
 	unidentifiedResourceName = "사슴뿔",
 	unidentifiedDescriptionName = { "" },
@@ -468,7 +468,7 @@ mainTable[50131] = {
 	ClassNum = 71,
 	costume = true
 }
-mainTable[50132] = {
+mainTable[50907] = {
 	unidentifiedDisplayName = "Costume Jewel Crown",
 	unidentifiedResourceName = "쥬얼크라운",
 	unidentifiedDescriptionName = { "" },
@@ -486,7 +486,7 @@ mainTable[50132] = {
 	ClassNum = 88,
 	costume = true
 }
-mainTable[50133] = {
+mainTable[50908] = {
 	unidentifiedDisplayName = "Costume Goggles",
 	unidentifiedResourceName = "고글",
 	unidentifiedDescriptionName = { "" },
@@ -612,7 +612,7 @@ mainTable[50124] = {
 	ClassNum = 562,
 	costume = true
 }
-mainTable[50134] = {
+mainTable[50909] = {
 	unidentifiedDisplayName = "Costume Flower Band",
 	unidentifiedResourceName = "꽃머리띠",
 	unidentifiedDescriptionName = { "" },
@@ -630,7 +630,7 @@ mainTable[50134] = {
 	ClassNum = 5,
 	costume = true
 }
-mainTable[50135] = {
+mainTable[50910] = {
 	unidentifiedDisplayName = "Costume Smokie Leaf",
 	unidentifiedResourceName = "나뭇잎투구",
 	unidentifiedDescriptionName = { "" },
@@ -648,7 +648,7 @@ mainTable[50135] = {
 	ClassNum = 148,
 	costume = true
 }
-mainTable[50136] = {
+mainTable[50911] = {
 	unidentifiedDisplayName = "Costume Fancy Flower",
 	unidentifiedResourceName = "장식용꽃",
 	unidentifiedDescriptionName = { "" },
@@ -666,7 +666,7 @@ mainTable[50136] = {
 	ClassNum = 4,
 	costume = true
 }
-mainTable[50137] = {
+mainTable[50912] = {
 	unidentifiedDisplayName = "Costume Flower Crown",
 	unidentifiedResourceName = "화관",
 	unidentifiedDescriptionName = { "" },
@@ -684,7 +684,7 @@ mainTable[50137] = {
 	ClassNum = 325,
 	costume = true
 }
-mainTable[50138] = {
+mainTable[50913] = {
 	unidentifiedDisplayName = "Costume Water Lily Crown",
 	unidentifiedResourceName = "수련왕관",
 	unidentifiedDescriptionName = { "" },
@@ -702,7 +702,7 @@ mainTable[50138] = {
 	ClassNum = 312,
 	costume = true
 }
-mainTable[50139] = {
+mainTable[50914] = {
 	unidentifiedDisplayName = "Costume Angel Wings",
 	unidentifiedResourceName = "천사의머리띠",
 	unidentifiedDescriptionName = { "" },
@@ -720,7 +720,7 @@ mainTable[50139] = {
 	ClassNum = 38,
 	costume = true
 }
-mainTable[50140] = {
+mainTable[50915] = {
 	unidentifiedDisplayName = "Costume Wings of Victory",
 	unidentifiedResourceName = "승리의날개",
 	unidentifiedDescriptionName = { "" },
@@ -738,7 +738,7 @@ mainTable[50140] = {
 	ClassNum = 365,
 	costume = true
 }
-mainTable[50141] = {
+mainTable[50916] = {
 	unidentifiedDisplayName = "Costume Emperor's Laurel Crown",
 	unidentifiedResourceName = "월계관",
 	unidentifiedDescriptionName = { "" },
@@ -756,7 +756,7 @@ mainTable[50141] = {
 	ClassNum = 261,
 	costume = true
 }
-mainTable[50142] = {
+mainTable[50917] = {
 	unidentifiedDisplayName = "Costume Crown",
 	unidentifiedResourceName = "크라운",
 	unidentifiedDescriptionName = { "" },
@@ -772,6 +772,368 @@ mainTable[50142] = {
 	},
 	slotCount = 0,
 	ClassNum = 45,
+	costume = true
+}
+mainTable[50125] = {
+	unidentifiedDisplayName = "Costume Fish Head Hat",
+	unidentifiedResourceName = "물고기머리모자",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Fish Head Hat",
+	identifiedResourceName = "물고기머리모자",
+	identifiedDescriptionName = {
+		"^777777A keepsake of the Side Quest The Sea Caves of Byalan.^000000",
+		"Looks like the Fish Head Hat, worn in the costume slot.",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 386,
+	costume = true
+}
+mainTable[50126] = {
+	unidentifiedDisplayName = "Costume Captain's Hat",
+	unidentifiedResourceName = "선장의모자",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Captain's Hat",
+	identifiedResourceName = "선장의모자",
+	identifiedDescriptionName = {
+		"^777777A keepsake of the Side Quest The Drowned Crew.^000000",
+		"Looks like the Captain's Hat, worn in the costume slot.",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 236,
+	costume = true
+}
+mainTable[50127] = {
+	unidentifiedDisplayName = "Costume Anubis Helm",
+	unidentifiedResourceName = "아누비스투구",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Anubis Helm",
+	identifiedResourceName = "아누비스투구",
+	identifiedDescriptionName = {
+		"^777777A keepsake of the Side Quest The Face in the Sand.^000000",
+		"Looks like the Anubis Helm, worn in the costume slot.",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 485,
+	costume = true
+}
+mainTable[50128] = {
+	unidentifiedDisplayName = "Costume Tiger Mask",
+	unidentifiedResourceName = "타이거마스크",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Tiger Mask",
+	identifiedResourceName = "타이거마스크",
+	identifiedDescriptionName = {
+		"^777777A keepsake of the Side Quest The Tiger Across the Sea.^000000",
+		"Looks like the Tiger Mask, worn in the costume slot.",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 181,
+	costume = true
+}
+mainTable[50129] = {
+	unidentifiedDisplayName = "Costume Wanderer's Sakkat",
+	unidentifiedResourceName = "배회하는자의삿갓",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Wanderer's Sakkat",
+	identifiedResourceName = "배회하는자의삿갓",
+	identifiedDescriptionName = {
+		"^777777Adventurer's Passport, rank Wanderer (3 stamps).^000000",
+		"Looks like the Wanderer's Sakkat, worn in the costume slot.",
+		"^0000CCBonus:^000000 +1 LUK",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 558,
+	costume = true
+}
+mainTable[50130] = {
+	unidentifiedDisplayName = "Costume Fish in Mouth",
+	unidentifiedResourceName = "입에문물고기",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Fish in Mouth",
+	identifiedResourceName = "입에문물고기",
+	identifiedDescriptionName = {
+		"^777777A keepsake of the Side Quest The Sea Caves of Byalan.^000000",
+		"Looks like the Fish in Mouth, worn in the costume slot.",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 406,
+	costume = true
+}
+mainTable[50131] = {
+	unidentifiedDisplayName = "Costume Pirate Bandana",
+	unidentifiedResourceName = "해적두건",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Pirate Bandana",
+	identifiedResourceName = "해적두건",
+	identifiedDescriptionName = {
+		"^777777A keepsake of the Side Quest The Drowned Crew.^000000",
+		"Looks like the Pirate Bandana, worn in the costume slot.",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 74,
+	costume = true
+}
+mainTable[50132] = {
+	unidentifiedDisplayName = "Costume Desert Prince",
+	unidentifiedResourceName = "사막의왕자",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Desert Prince",
+	identifiedResourceName = "사막의왕자",
+	identifiedDescriptionName = {
+		"^777777A keepsake of the Side Quest The Face in the Sand.^000000",
+		"Looks like the Desert Prince, worn in the costume slot.",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 567,
+	costume = true
+}
+mainTable[50133] = {
+	unidentifiedDisplayName = "Costume Leaf Cat Hat",
+	unidentifiedResourceName = "리프캣모자",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Leaf Cat Hat",
+	identifiedResourceName = "리프캣모자",
+	identifiedDescriptionName = {
+		"^777777A keepsake of the Side Quest The Tiger Across the Sea.^000000",
+		"Looks like the Leaf Cat Hat, worn in the costume slot.",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 539,
+	costume = true
+}
+mainTable[50134] = {
+	unidentifiedDisplayName = "Costume Orc Hero Headdress",
+	unidentifiedResourceName = "대형오크히어로투구",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Orc Hero Headdress",
+	identifiedResourceName = "대형오크히어로투구",
+	identifiedDescriptionName = {
+		"^777777A keepsake of the Side Quest Orc's Memory.^000000",
+		"Looks like the Orc Hero Headdress, worn in the costume slot.",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 381,
+	costume = true
+}
+mainTable[50135] = {
+	unidentifiedDisplayName = "Costume Orc Helm",
+	unidentifiedResourceName = "오크족헬름",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Orc Helm",
+	identifiedResourceName = "오크족헬름",
+	identifiedDescriptionName = {
+		"^777777A keepsake of the Side Quest Orc's Memory.^000000",
+		"Looks like the Orc Helm, worn in the costume slot.",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 86,
+	costume = true
+}
+mainTable[50136] = {
+	unidentifiedDisplayName = "Costume Kitsune Mask",
+	unidentifiedResourceName = "여우가면",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Kitsune Mask",
+	identifiedResourceName = "여우가면",
+	identifiedDescriptionName = {
+		"^777777A keepsake of the Side Quest The Fox of the Palace.^000000",
+		"Looks like the Kitsune Mask, worn in the costume slot.",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 153,
+	costume = true
+}
+mainTable[50137] = {
+	unidentifiedDisplayName = "Costume Drooping Nine Tail",
+	unidentifiedResourceName = "늘어진구미호",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Drooping Nine Tail",
+	identifiedResourceName = "늘어진구미호",
+	identifiedDescriptionName = {
+		"^777777A keepsake of the Side Quest The Fox of the Palace.^000000",
+		"Looks like the Drooping Nine Tail, worn in the costume slot.",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 296,
+	costume = true
+}
+mainTable[50138] = {
+	unidentifiedDisplayName = "Costume Evil Snake Lord Hat",
+	unidentifiedResourceName = "흑사왕의모자",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Evil Snake Lord Hat",
+	identifiedResourceName = "흑사왕의모자",
+	identifiedDescriptionName = {
+		"^777777A keepsake of the Side Quest The Broken Sword of Kunlun.^000000",
+		"Looks like the Evil Snake Lord Hat, worn in the costume slot.",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 372,
+	costume = true
+}
+mainTable[50139] = {
+	unidentifiedDisplayName = "Costume Chinese Crown",
+	unidentifiedResourceName = "봉관",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Chinese Crown",
+	identifiedResourceName = "봉관",
+	identifiedDescriptionName = {
+		"^777777A keepsake of the Side Quest The Broken Sword of Kunlun.^000000",
+		"Looks like the Chinese Crown, worn in the costume slot.",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 221,
+	costume = true
+}
+mainTable[50140] = {
+	unidentifiedDisplayName = "Costume Time Keeper Hat",
+	unidentifiedResourceName = "음유시인모자",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Time Keeper Hat",
+	identifiedResourceName = "음유시인모자",
+	identifiedDescriptionName = {
+		"^777777A keepsake of the Side Quest The Gears Below.^000000",
+		"Looks like the Time Keeper Hat, worn in the costume slot.",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 240,
+	costume = true
+}
+mainTable[50141] = {
+	unidentifiedDisplayName = "Costume Alarm Mask",
+	unidentifiedResourceName = "알람가면",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Alarm Mask",
+	identifiedResourceName = "알람가면",
+	identifiedDescriptionName = {
+		"^777777A keepsake of the Side Quest The Gears Below.^000000",
+		"Looks like the Alarm Mask, worn in the costume slot.",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 170,
+	costume = true
+}
+mainTable[50142] = {
+	unidentifiedDisplayName = "Costume Red Bandana",
+	unidentifiedResourceName = "반다나",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Red Bandana",
+	identifiedResourceName = "반다나",
+	identifiedDescriptionName = {
+		"^777777A keepsake of the Side Quest The Turtle General.^000000",
+		"Looks like the Red Bandana, worn in the costume slot.",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 62,
+	costume = true
+}
+mainTable[50143] = {
+	unidentifiedDisplayName = "Costume Diver Goggles",
+	unidentifiedResourceName = "물안경",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Diver Goggles",
+	identifiedResourceName = "물안경",
+	identifiedDescriptionName = {
+		"^777777A keepsake of the Side Quest The Turtle General.^000000",
+		"Looks like the Diver Goggles, worn in the costume slot.",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 10,
+	costume = true
+}
+mainTable[50144] = {
+	unidentifiedDisplayName = "Costume Drooping Cat",
+	unidentifiedResourceName = "늘어진고양이",
+	unidentifiedDescriptionName = { "" },
+	identifiedDisplayName = "Costume Drooping Cat",
+	identifiedResourceName = "늘어진고양이",
+	identifiedDescriptionName = {
+		"^777777Adventurer's Passport, rank Voyager (6 stamps).^000000",
+		"Looks like the Drooping Cat, worn in the costume slot.",
+		"^0000CCBonus:^000000 +1 AGI, +1 DEX",
+		"_______________________",
+		"^0000CCType:^000000 Costume",
+		"^0000CCPosition:^000000 Upper",
+		"^0000CCWeight:^000000 0"
+	},
+	slotCount = 0,
+	ClassNum = 142,
 	costume = true
 }
 
@@ -819,4 +1181,24 @@ if tbl then
 	tbl[50140] = mainTable[50140]
 	tbl[50141] = mainTable[50141]
 	tbl[50142] = mainTable[50142]
+	tbl[50143] = mainTable[50143]
+	tbl[50144] = mainTable[50144]
+	tbl[50900] = mainTable[50900]
+	tbl[50901] = mainTable[50901]
+	tbl[50902] = mainTable[50902]
+	tbl[50903] = mainTable[50903]
+	tbl[50904] = mainTable[50904]
+	tbl[50905] = mainTable[50905]
+	tbl[50906] = mainTable[50906]
+	tbl[50907] = mainTable[50907]
+	tbl[50908] = mainTable[50908]
+	tbl[50909] = mainTable[50909]
+	tbl[50910] = mainTable[50910]
+	tbl[50911] = mainTable[50911]
+	tbl[50912] = mainTable[50912]
+	tbl[50913] = mainTable[50913]
+	tbl[50914] = mainTable[50914]
+	tbl[50915] = mainTable[50915]
+	tbl[50916] = mainTable[50916]
+	tbl[50917] = mainTable[50917]
 end

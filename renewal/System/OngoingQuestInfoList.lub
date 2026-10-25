@@ -70,7 +70,7 @@ QuestInfoList = {
 		Title = "Chronicle 3-2: Beneath the Sphinx",
 		Summary = "Hunt 30 Drainliars and 10 Matyrs on the first level of the Sphinx (in_sphinx1), a short walk west of Morroc.",
 		IconName = "ico_nq.bmp",
-		Description = { "Hunt 30 Drainliars and 10 Matyrs on the first level of the Sphinx (in_sphinx1), a short walk west of Morroc.<br><br>How to get there:<br>1. Leave Morroc by its west gate (24, 164). In the desert beyond (moc_fild19), the entrance to the Sphinx stands near the middle of the map (98, 99).<br>2. Requiems and Zeroms (level 70) roam the same level and attack on sight. Bring potions, and keep close to the entrance if they swarm you.<br><br>Route: <NAVI>[Hunting ground: in_sphinx1]<INFO>in_sphinx1,288,10,0,000,0</INFO></NAVI>" },
+		Description = { "Hunt 30 Drainliars and 10 Matyrs on the first level of the Sphinx (in_sphinx1), a short walk west of Morroc.<br><br>How to get there:<br>1. Leave Morroc by its west gate (24, 164). In the desert beyond (moc_fild19), the entrance to the Sphinx stands near the middle of the map (98, 99).<br>2. Requiems and Zeroms (level 70) roam the same level and attack on sight. Bring potions, and keep close to the entrance if they swarm you.<br><br>Route: <NAVI>[Hunting ground: in_sphinx1]<INFO>in_sphinx1,288,9,0,000,0</INFO></NAVI>" },
 	},
 	[77013] = {
 		Title = "Chronicle 3-3: Omens of the Desert",
@@ -150,31 +150,31 @@ QuestInfoList = {
 		IconName = "ico_nq.bmp",
 		Description = { "Tell Sir Aldric in Al De Baran (142, 63) what the wraith said.<br><br>Route: <NAVI>[Sir Aldric]<INFO>aldebaran,142,63,0,000,0</INFO></NAVI>" },
 	},
-	[77101] = {
+	[77901] = {
 		Title = "Chronicle 6-1: The Foreman of Einbech",
 		Summary = "Travel to Einbech, the mining town of the Schwarzwald Republic, and find Foreman Gustav by the mine entrance (142, 244).",
 		IconName = "ico_nq.bmp",
 		Description = { "Travel to Einbech, the mining town of the Schwarzwald Republic, and find Foreman Gustav by the mine entrance (142, 244).<br><br>How to get there:<br>1. From Al De Baran, a Kafra Employee (143, 119) can teleport you to Juno (1,200 zeny).<br>2. In Juno, enter the airport in the west of the city (53, 214). Pay the Airport Staff (1,200 zeny), go through Domestic Boarding and ride the airship until it lands in Einbroch.<br>3. In Einbroch, the Train Station Staff (232, 272) takes you to Einbech for 200 zeny. Gustav stands by the mine entrance in the north of the town (142, 244) and is marked on your minimap when you arrive.<br><br>Route: <NAVI>[Foreman Gustav]<INFO>einbech,142,244,0,000,0</INFO></NAVI>" },
 	},
-	[77102] = {
+	[77902] = {
 		Title = "Chronicle 6-2: The Restless Mine",
 		Summary = "Hunt 30 Pitmen and 20 Noxious on the first level of the Einbech Mine (ein_dun01). Its entrance is in the north of Einbech (138, 252).",
 		IconName = "ico_nq.bmp",
 		Description = { "Hunt 30 Pitmen and 20 Noxious on the first level of the Einbech Mine (ein_dun01). Its entrance is in the north of Einbech (138, 252).<br><br>How to get there:<br>1. The mine entrance is in the north of Einbech (138, 252), next to Foreman Gustav. Pitmen and Noxious fill its first level.<br><br>Route: <NAVI>[Hunting ground: ein_dun01]<INFO>ein_dun01,22,14,0,000,0</INFO></NAVI>" },
 	},
-	[77103] = {
+	[77903] = {
 		Title = "Chronicle 6-3: Samples for the Foreman",
 		Summary = "Gustav wants to know what is poisoning his mine. Bring him 5 Old Picks from the Pitmen and 8 Dust Pollutants from the Noxious, in Einbech (142, 244).",
 		IconName = "ico_nq.bmp",
 		Description = { "Gustav wants to know what is poisoning his mine. Bring him 5 Old Picks from the Pitmen and 8 Dust Pollutants from the Noxious, in Einbech (142, 244).<br><br>How to get there:<br>1. Far from Einbech? From Al De Baran, a Kafra Employee (143, 119) teleports you to Juno (1,200 zeny). Juno's airship stops in Einbroch, and Einbroch's train (232, 272) runs to Einbech (200 zeny).<br><br>Route: <NAVI>[Foreman Gustav]<INFO>einbech,142,244,0,000,0</INFO></NAVI>" },
 	},
-	[77104] = {
+	[77904] = {
 		Title = "Chronicle 6-4: The Black Seam",
 		Summary = "Descend to the second level of the Einbech Mine (ein_dun02). The way down is at the far north-east end of the first level (261, 255).",
 		IconName = "ico_nq.bmp",
 		Description = { "Descend to the second level of the Einbech Mine (ein_dun02). The way down is at the far north-east end of the first level (261, 255).<br><br>How to get there:<br>1. Enter the mine in the north of Einbech (138, 252).<br>2. Mine level 1: cross to its north-east corner (261, 255) and take the way down to level 2. The Warden of the Black Crystal appears a few seconds after you arrive.<br><br>Route: <NAVI>[Warden of the Black Crystal: ein_dun02]<INFO>ein_dun02,291,292,0,000,0</INFO></NAVI>" },
 	},
-	[77105] = {
+	[77905] = {
 		Title = "Chronicle 6-5: Crystal and Steel",
 		Summary = "Bring Foreman Gustav in Einbech (142, 244) news of the Warden.",
 		IconName = "ico_nq.bmp",
@@ -210,61 +210,61 @@ QuestInfoList = {
 		IconName = "ico_nq.bmp",
 		Description = { "Report to Sage Elisha in Juno (156, 47).<br><br>Route: <NAVI>[Sage Elisha]<INFO>yuno,156,47,0,000,0</INFO></NAVI>" },
 	},
-	[77106] = {
+	[77906] = {
 		Title = "Chronicle 8-1: Through the Rift",
 		Summary = "Go through the rift under Morroc to the Allied Forces Post, and find Captain Varrick in the camp (200, 282).",
 		IconName = "ico_nq.bmp",
 		Description = { "Go through the rift under Morroc to the Allied Forces Post, and find Captain Varrick in the camp (200, 282).<br><br>How to get there:<br>1. From Morroc, follow the Route link to the Allied Scout on the Sograt Desert east of the city (moc_fild20, 345, 182), next to the rift guards.<br>2. Show him your Chronicle and choose to go through. He sends you to the Allied Forces Post (mid_camp), where Captain Varrick stands near the arrival spot (200, 282).<br><br>Route: <NAVI>[Allied Scout: moc_fild20]<INFO>moc_fild20,345,182,0,000,0</INFO></NAVI>" },
 	},
-	[77107] = {
+	[77907] = {
 		Title = "Chronicle 8-2: The Wild Fields",
 		Summary = "Hunt 30 Naga and 20 Cornus in the fields north of Splendide (spl_fild01).",
 		IconName = "ico_nq.bmp",
 		Description = { "Hunt 30 Naga and 20 Cornus in the fields north of Splendide (spl_fild01).<br><br>How to get there:<br>1. The camp's gate guards only let the Expedition's own people out. Take the Teleport Cat in the camp (207, 234) to Near Splendide (10,000 zeny).<br>2. You arrive on spl_fild02. Its way north (293, 379) leads to spl_fild01, the hunting ground.<br><br>Route: <NAVI>[Hunting ground: spl_fild01]<INFO>spl_fild01,289,30,0,000,0</INFO></NAVI>" },
 	},
-	[77108] = {
+	[77908] = {
 		Title = "Chronicle 8-3: Proof of Good Faith",
 		Summary = "Varrick wants proof to show the Laphine. Bring him 8 Scale Shells from the Naga and 8 Mystic Horns from the Cornus, in the Allied camp (200, 282).",
 		IconName = "ico_nq.bmp",
 		Description = { "Varrick wants proof to show the Laphine. Bring him 8 Scale Shells from the Naga and 8 Mystic Horns from the Cornus, in the Allied camp (200, 282).<br><br>How to get there:<br>1. From spl_fild01, the way south (289, 28) leads back to spl_fild02. Its east edge (382, 143) leads into the camp.<br><br>Route: <NAVI>[Captain Varrick]<INFO>mid_camp,200,282,0,000,0</INFO></NAVI>" },
 	},
-	[77109] = {
+	[77909] = {
 		Title = "Chronicle 8-4: The Rift-Mad Beast",
 		Summary = "Go to Manuk Field (man_fild02), the Sapha's land, and put down the Rift-Mad Tatacho.",
 		IconName = "ico_nq.bmp",
 		Description = { "Go to Manuk Field (man_fild02), the Sapha's land, and put down the Rift-Mad Tatacho.<br><br>How to get there:<br>1. Take the Teleport Cat in the camp (207, 234) to Manuk Field (10,000 zeny). The Rift-Mad Tatacho appears a few seconds after you arrive.<br><br>Route: <NAVI>[Rift-Mad Tatacho: man_fild02]<INFO>man_fild02,133,47,0,000,0</INFO></NAVI>" },
 	},
-	[77110] = {
+	[77910] = {
 		Title = "Chronicle 8-5: A Word from the Sapha",
 		Summary = "Return to Captain Varrick in the Allied camp (200, 282).",
 		IconName = "ico_nq.bmp",
 		Description = { "Return to Captain Varrick in the Allied camp (200, 282).<br><br>How to get there:<br>1. From Manuk Field, the Teleport Cat (135, 49) takes you back to the Allied camp (10,000 zeny). Or walk west: man_fild01's west edge (35, 232) leads into the camp.<br><br>Route: <NAVI>[Captain Varrick]<INFO>mid_camp,200,282,0,000,0</INFO></NAVI>" },
 	},
-	[77111] = {
+	[77911] = {
 		Title = "Chronicle 9-1: The Warden of El Dicastes",
 		Summary = "Go to Kamidal Mountain and find Warden Kahlis outside the gate of El Dicastes (dic_fild01, 156, 270).",
 		IconName = "ico_nq.bmp",
 		Description = { "Go to Kamidal Mountain and find Warden Kahlis outside the gate of El Dicastes (dic_fild01, 156, 270).<br><br>How to get there:<br>1. From the Allied camp, take the Teleport Cat (207, 234) to Manuk Field (10,000 zeny).<br>2. On Manuk Field, the Teleport Cat (135, 49) goes to Near El Dicastes (20,000 zeny). Warden Kahlis stands just south of the city gate (156, 270).<br><br>Route: <NAVI>[Warden Kahlis]<INFO>dic_fild01,156,270,0,000,0</INFO></NAVI>" },
 	},
-	[77112] = {
+	[77912] = {
 		Title = "Chronicle 9-2: The Swarm on the Mountain",
 		Summary = "Hunt 30 Centipedes and 10 Dolomedes on the slopes of Kamidal Mountain (dic_fild01), outside El Dicastes.",
 		IconName = "ico_nq.bmp",
 		Description = { "Hunt 30 Centipedes and 10 Dolomedes on the slopes of Kamidal Mountain (dic_fild01), outside El Dicastes.<br><br>How to get there:<br>1. Far from El Dicastes? From the Allied camp, the Teleport Cat (207, 234) goes to Manuk Field, and the Teleport Cat there (135, 49) to Near El Dicastes. The Allied Scout east of Morroc (moc_fild20, 345, 182) lets you through the rift to the camp.<br><br>Route: <NAVI>[Hunting ground: dic_fild01]<INFO>dic_fild01,159,264,0,000,0</INFO></NAVI>" },
 	},
-	[77113] = {
+	[77913] = {
 		Title = "Chronicle 9-3: What the Swarm Leaves",
 		Summary = "Bring Warden Kahlis 8 Bug Legs from the Centipedes and 5 White Spider Limbs from the Dolomedes, at the gate of El Dicastes (156, 270).",
 		IconName = "ico_nq.bmp",
 		Description = { "Bring Warden Kahlis 8 Bug Legs from the Centipedes and 5 White Spider Limbs from the Dolomedes, at the gate of El Dicastes (156, 270).<br><br>How to get there:<br>1. Far from El Dicastes? From the Allied camp, the Teleport Cat (207, 234) goes to Manuk Field, and the Teleport Cat there (135, 49) to Near El Dicastes. The Allied Scout east of Morroc (moc_fild20, 345, 182) lets you through the rift to the camp.<br><br>Route: <NAVI>[Warden Kahlis]<INFO>dic_fild01,156,270,0,000,0</INFO></NAVI>" },
 	},
-	[77114] = {
+	[77914] = {
 		Title = "Chronicle 9-4: The Hive Under Kamidal",
 		Summary = "Enter the Scaraba Hole under Kamidal Mountain (dic_dun01). Its entrance is at the west end of dic_fild01 (24, 79).",
 		IconName = "ico_nq.bmp",
 		Description = { "Enter the Scaraba Hole under Kamidal Mountain (dic_dun01). Its entrance is at the west end of dic_fild01 (24, 79).<br><br>How to get there:<br>1. Far from El Dicastes? From the Allied camp, the Teleport Cat (207, 234) goes to Manuk Field, and the Teleport Cat there (135, 49) to Near El Dicastes. The Allied Scout east of Morroc (moc_fild20, 345, 182) lets you through the rift to the camp.<br><br>Route: <NAVI>[Rift-Touched Scaraba: dic_dun01]<INFO>dic_dun01,366,45,0,000,0</INFO></NAVI>" },
 	},
-	[77115] = {
+	[77915] = {
 		Title = "Chronicle 9-5: A Shard of the Seal",
 		Summary = "Return to Warden Kahlis at the gate of El Dicastes (156, 270).",
 		IconName = "ico_nq.bmp",
@@ -330,94 +330,442 @@ QuestInfoList = {
 		IconName = "ico_nq.bmp",
 		Description = { "Return to Brynjar the Herald in Hugel (101, 56).<br><br>How to get there:<br>1. In Odin's Temple? Go down to the first floor (odin_tem01) and ask the Boatman there (93, 146) to sail you back to Hugel.<br><br>Route: <NAVI>[Brynjar the Herald]<INFO>hugel,101,56,0,000,0</INFO></NAVI>" },
 	},
-	[77116] = {
+	[77916] = {
 		Title = "Chronicle 12-1: The Village Under the Bridge",
 		Summary = "Go to Mora, the Laphine village at the foot of Bifrost, and find Elder Mirrel (114, 96).",
 		IconName = "ico_nq.bmp",
 		Description = { "Go to Mora, the Laphine village at the foot of Bifrost, and find Elder Mirrel (114, 96).<br><br>How to get there:<br>1. Follow the Route link to the Allied Scout east of Morroc (moc_fild20, 345, 182). He lets you through the rift to the Allied camp.<br>2. In the camp, the Teleport Cat (207, 234) goes to Near Splendide (10,000 zeny). On spl_fild02, the Teleport Cat (53, 242) goes to Entrance to Mora (55,000 zeny).<br>3. On bif_fild02, knock on the Small Hole in the hill (285, 332). It opens into Mora. Elder Mirrel stands in the village centre (114, 96).<br><br>Route: <NAVI>[Allied Scout: moc_fild20]<INFO>moc_fild20,345,182,0,000,0</INFO></NAVI>" },
 	},
-	[77117] = {
+	[77917] = {
 		Title = "Chronicle 12-2: The Bridge Fields",
 		Summary = "Hunt 30 Little Fatum and 20 Miming on the fields of Bifrost outside Mora (bif_fild02).",
 		IconName = "ico_nq.bmp",
 		Description = { "Hunt 30 Little Fatum and 20 Miming on the fields of Bifrost outside Mora (bif_fild02).<br><br>How to get there:<br>1. Mora's east door (182, 74) leads out to bif_fild02, the hunting ground.<br><br>Route: <NAVI>[Hunting ground: bif_fild02]<INFO>bif_fild02,291,323,0,000,0</INFO></NAVI>" },
 	},
-	[77118] = {
+	[77918] = {
 		Title = "Chronicle 12-3: Dust of the Rainbow",
 		Summary = "Bring Elder Mirrel 5 Angel Magic Powder from the Little Fatum and 5 Golden Feathers from the Miming, in Mora (114, 96).",
 		IconName = "ico_nq.bmp",
 		Description = { "Bring Elder Mirrel 5 Angel Magic Powder from the Little Fatum and 5 Golden Feathers from the Miming, in Mora (114, 96).<br><br>How to get there:<br>1. Far from Mora? Through the rift (the Allied Scout east of Morroc, moc_fild20, 345, 182) to the Allied camp, its Teleport Cat (207, 234) to Near Splendide, the Teleport Cat there (53, 242) to Entrance to Mora, then knock on the Small Hole (285, 332).<br><br>Route: <NAVI>[Elder Mirrel]<INFO>mora,114,96,0,000,0</INFO></NAVI>" },
 	},
-	[77119] = {
+	[77919] = {
 		Title = "Chronicle 12-4: The Thornheart",
 		Summary = "Return to the fields of Bifrost outside Mora (bif_fild02) and slay the Thornheart Mantis.",
 		IconName = "ico_nq.bmp",
 		Description = { "Return to the fields of Bifrost outside Mora (bif_fild02) and slay the Thornheart Mantis.<br><br>How to get there:<br>1. Mora's east door (182, 74) leads out to bif_fild02. The Thornheart Mantis appears a few seconds after you arrive.<br><br>Route: <NAVI>[Thornheart Mantis: bif_fild02]<INFO>bif_fild02,291,323,0,000,0</INFO></NAVI>" },
 	},
-	[77120] = {
+	[77920] = {
 		Title = "Chronicle 12-5: Seven Colours",
 		Summary = "Return to Elder Mirrel in Mora (114, 96).",
 		IconName = "ico_nq.bmp",
 		Description = { "Return to Elder Mirrel in Mora (114, 96).<br><br>How to get there:<br>1. On bif_fild02, knock on the Small Hole in the hill (285, 332). It opens into Mora.<br><br>Route: <NAVI>[Elder Mirrel]<INFO>mora,114,96,0,000,0</INFO></NAVI>" },
 	},
-	[77121] = {
+	[77921] = {
 		Title = "Chronicle 13-1: The Gate of Eclage",
 		Summary = "Go to the fields of Eclage (ecl_fild01) and find Captain Sylwen outside the city gate (102, 307).",
 		IconName = "ico_nq.bmp",
 		Description = { "Go to the fields of Eclage (ecl_fild01) and find Captain Sylwen outside the city gate (102, 307).<br><br>How to get there:<br>1. From Mora, the east door (182, 74) leads out to bif_fild02.<br>2. On bif_fild02, the way in the north-east (292, 351) leads to ecl_fild01. Walk north-west to the city gate; Captain Sylwen stands just outside it (102, 307).<br><br>Route: <NAVI>[Captain Sylwen]<INFO>ecl_fild01,102,307,0,000,0</INFO></NAVI>" },
 	},
-	[77122] = {
+	[77922] = {
 		Title = "Chronicle 13-2: The Ashen Halls",
 		Summary = "Hunt 25 Cenere and 20 Antique Books on the second floor of the keepers' tower (ecl_tdun02).",
 		IconName = "ico_nq.bmp",
 		Description = { "Hunt 25 Cenere and 20 Antique Books on the second floor of the keepers' tower (ecl_tdun02).<br><br>How to get there:<br>1. The tower's door is in the south of ecl_fild01 (182, 82).<br>2. Floor 1: the stairs up (67, 106) lead to the second floor (ecl_tdun02), the hunting ground.<br><br>Route: <NAVI>[Hunting ground: ecl_tdun02]<INFO>ecl_tdun02,60,88,0,000,0</INFO></NAVI>" },
 	},
-	[77123] = {
+	[77923] = {
 		Title = "Chronicle 13-3: Ash and Pages",
 		Summary = "Bring Captain Sylwen 5 Mould Powder from the Cenere and 5 Worn Out Pages from the Antique Books, outside the gate of Eclage (102, 307).",
 		IconName = "ico_nq.bmp",
 		Description = { "Bring Captain Sylwen 5 Mould Powder from the Cenere and 5 Worn Out Pages from the Antique Books, outside the gate of Eclage (102, 307).<br><br>How to get there:<br>1. Far from Eclage? From Mora, the east door (182, 74) leads to bif_fild02, and its north-east way (292, 351) to ecl_fild01. Captain Sylwen stands outside the city gate (102, 307).<br><br>Route: <NAVI>[Captain Sylwen]<INFO>ecl_fild01,102,307,0,000,0</INFO></NAVI>" },
 	},
-	[77124] = {
+	[77924] = {
 		Title = "Chronicle 13-4: The Last Keeper",
 		Summary = "Climb to the third floor of the keepers' tower (ecl_tdun03) and free the Withered Steward.",
 		IconName = "ico_nq.bmp",
 		Description = { "Climb to the third floor of the keepers' tower (ecl_tdun03) and free the Withered Steward.<br><br>How to get there:<br>1. The tower's door is in the south of ecl_fild01 (182, 82). Floor 1: the stairs up (67, 106). Floor 2: the stairs up (52, 9) lead to the third floor.<br>2. The Withered Steward appears a few seconds after you arrive.<br><br>Route: <NAVI>[Withered Steward: ecl_tdun03]<INFO>ecl_tdun03,47,13,0,000,0</INFO></NAVI>" },
 	},
-	[77125] = {
+	[77925] = {
 		Title = "Chronicle 13-5: The Roots Below",
 		Summary = "Return to Captain Sylwen outside the gate of Eclage (102, 307).",
 		IconName = "ico_nq.bmp",
 		Description = { "Return to Captain Sylwen outside the gate of Eclage (102, 307).<br><br>How to get there:<br>1. From the tower, take the stairs down to the first floor and its door (61, 11) back out to ecl_fild01. Sylwen stands outside the city gate (102, 307).<br><br>Route: <NAVI>[Captain Sylwen]<INFO>ecl_fild01,102,307,0,000,0</INFO></NAVI>" },
 	},
-	[77126] = {
+	[77926] = {
 		Title = "Chronicle 14-1: The Buried City",
 		Summary = "Go to Verus, the buried city beneath Juperos, and find Professor Hendrik at the excavation camp (verus04, 190, 180).",
 		IconName = "ico_nq.bmp",
 		Description = { "Go to Verus, the buried city beneath Juperos, and find Professor Hendrik at the excavation camp (verus04, 190, 180).<br><br>How to get there:<br>1. From Juno, follow the Route link into the Juperos ruins (juperos_01). Its east tunnel (245, 87) leads to the excavation site (ver_eju).<br>2. On ver_eju, the way south (107, 36) leads into the tunnel (ver_tunn). The tunnel's west end (10, 36) opens into Verus (verus04). Professor Hendrik works near the excavators' camp (190, 180).<br><br>Route: <NAVI>[The way to Verus: juperos_01]<INFO>juperos_01,245,87,0,000,0</INFO></NAVI>" },
 	},
-	[77127] = {
+	[77927] = {
 		Title = "Chronicle 14-2: The Waking City",
 		Summary = "Hunt 30 Repair Robots and 15 Exploration Rovers in the old city of Verus (verus03).",
 		IconName = "ico_nq.bmp",
 		Description = { "Hunt 30 Repair Robots and 15 Exploration Rovers in the old city of Verus (verus03).<br><br>How to get there:<br>1. From Professor Hendrik's camp, the ways north (121, 267) and (44, 267) lead to the old city (verus03), the hunting ground.<br><br>Route: <NAVI>[Way to the old city: verus04]<INFO>verus04,121,267,0,000,0</INFO></NAVI>" },
 	},
-	[77128] = {
+	[77928] = {
 		Title = "Chronicle 14-3: Iron and Orders",
 		Summary = "Bring Professor Hendrik 5 Used Iron Plates from the Repair Robots and 10 Iron from the Exploration Rovers, in Verus (190, 180).",
 		IconName = "ico_nq.bmp",
 		Description = { "Bring Professor Hendrik 5 Used Iron Plates from the Repair Robots and 10 Iron from the Exploration Rovers, in Verus (190, 180).<br><br>How to get there:<br>1. Far from Verus? From Juno, go down into the Juperos ruins (juperos_01). Its east tunnel (245, 87) leads to the excavation (ver_eju), its south way (107, 36) to the tunnel (ver_tunn), and the tunnel's west end (10, 36) to Verus (verus04).<br><br>Route: <NAVI>[Professor Hendrik]<INFO>verus04,190,180,0,000,0</INFO></NAVI>" },
 	},
-	[77129] = {
+	[77929] = {
 		Title = "Chronicle 14-4: The Excavator Prime",
 		Summary = "Go back up to the excavation site (ver_eju) and destroy the Excavator Prime.",
 		IconName = "ico_nq.bmp",
 		Description = { "Go back up to the excavation site (ver_eju) and destroy the Excavator Prime.<br><br>How to get there:<br>1. From Verus, the way east (204, 163) leads into the tunnel (ver_tunn), and its north end (84, 86) up to the excavation site (ver_eju). The Excavator Prime appears a few seconds after you arrive.<br><br>Route: <NAVI>[Excavator Prime: ver_eju]<INFO>ver_eju,13,148,0,000,0</INFO></NAVI>" },
 	},
-	[77130] = {
+	[77930] = {
 		Title = "Chronicle 14-5: Champion of Rune-Midgard",
 		Summary = "Return to Professor Hendrik in Verus (190, 180).",
 		IconName = "ico_nq.bmp",
 		Description = { "Return to Professor Hendrik in Verus (190, 180).<br><br>How to get there:<br>1. From the excavation site, the way south (107, 36) leads into the tunnel (ver_tunn), and its west end (10, 36) to Verus. Hendrik is at his camp (190, 180).<br><br>Route: <NAVI>[Professor Hendrik]<INFO>verus04,190,180,0,000,0</INFO></NAVI>" },
+	},
+	[77111] = {
+		Title = "Side Quest 1-1: The Harbour Master",
+		Summary = "Walk south from Prontera to Izlude (prt_fild08) and find Harbour Master Oswin on the Izlude dock (199, 207). The Undersea Tunnel's monsters are Lv 34 to 48: come when you are near Lv 35.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Sea Caves of Byalan.<br>Walk south from Prontera to Izlude (prt_fild08) and find Harbour Master Oswin on the Izlude dock (199, 207). The Undersea Tunnel's monsters are Lv 34 to 48: come when you are near Lv 35.<br><br>Route: <NAVI>[Harbour Master Oswin]<INFO>izlude,199,207,0,000,0</INFO></NAVI>" },
+	},
+	[77112] = {
+		Title = "Side Quest 1-2: Your First Boat",
+		Summary = "Ride the Sailor at the end of the Izlude dock (197, 205) to Byalan Island (150 zeny).",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Sea Caves of Byalan.<br>Ride the Sailor at the end of the Izlude dock (197, 205) to Byalan Island (150 zeny).<br><br>How to get there:<br>1. Talk to the Sailor at the end of the Izlude dock (197, 205) and choose Byalan Island -> 150 Zeny. Boats are how you reach islands: each one names its price before you board.<br>2. The way back: the Sailor standing on the island (108, 27) rows you back to Izlude.<br><br>Route: <NAVI>[Sailor: boat to Byalan Island]<INFO>izlude,197,205,0,000,0</INFO></NAVI>" },
+	},
+	[77113] = {
+		Title = "Side Quest 1-3: The Undersea Tunnel",
+		Summary = "Enter the cave in the middle of Byalan Island (108, 83) and hunt 20 Planktons and 10 Hydras on the first level of the Undersea Tunnel (iz_dun00).",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Sea Caves of Byalan.<br>Enter the cave in the middle of Byalan Island (108, 83) and hunt 20 Planktons and 10 Hydras on the first level of the Undersea Tunnel (iz_dun00).<br><br>Route: <NAVI>[Sailor: boat to Byalan Island]<INFO>izlude,197,205,0,000,0</INFO></NAVI>" },
+	},
+	[77114] = {
+		Title = "Side Quest 1-4: Something Bites the Boats",
+		Summary = "Go down to the second level of the Undersea Tunnel (iz_dun01). The beast that bites the boats waits there.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Sea Caves of Byalan.<br>Go down to the second level of the Undersea Tunnel (iz_dun01). The beast that bites the boats waits there.<br><br>How to get there:<br>1. First level: the way down is in the far north-east (352, 342) or in the south-west (39, 41). The Tidebreaker Vadon rises a few seconds after you arrive.<br><br>Route: <NAVI>[Sailor: boat to Byalan Island]<INFO>izlude,197,205,0,000,0</INFO></NAVI>" },
+	},
+	[77115] = {
+		Title = "Side Quest 1-5: Fair Winds",
+		Summary = "Tell Harbour Master Oswin on the Izlude dock (199, 207) that the caves are quiet.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Sea Caves of Byalan.<br>Tell Harbour Master Oswin on the Izlude dock (199, 207) that the caves are quiet.<br><br>Route: <NAVI>[Harbour Master Oswin]<INFO>izlude,199,207,0,000,0</INFO></NAVI>" },
+	},
+	[77121] = {
+		Title = "Side Quest 2-1: The Port Town",
+		Summary = "Walk west from Payon to the port town of Alberta (pay_fild01, pay_fild02, pay_fild03) and find Merchant Tolliver by the docks (186, 153). The wreck's drowned crew are Lv 48: come when you are near Lv 40.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Drowned Crew.<br>Walk west from Payon to the port town of Alberta (pay_fild01, pay_fild02, pay_fild03) and find Merchant Tolliver by the docks (186, 153). The wreck's drowned crew are Lv 48: come when you are near Lv 40.<br><br>How to get there:<br>1. Towns are joined by fields: leave Payon by its west gate and keep walking west through three fields. Nothing on the way attacks first. The Route link draws the whole path.<br><br>Route: <NAVI>[Merchant Tolliver]<INFO>alberta,186,153,0,000,0</INFO></NAVI>" },
+	},
+	[77122] = {
+		Title = "Side Quest 2-2: Out to the Wreck",
+		Summary = "Ride with Fisk on the Alberta dock (189, 151) to the Sunken Ship (250 zeny), then walk into the wreck (88, 111).",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Drowned Crew.<br>Ride with Fisk on the Alberta dock (189, 151) to the Sunken Ship (250 zeny), then walk into the wreck (88, 111).<br><br>How to get there:<br>1. Talk to Fisk (189, 151) and choose Sunken Ship -> 250 zeny. He rows you to the wreck's outer deck (alb2trea).<br>2. On the outer deck, the way into the ship is at (88, 111).<br>3. The way back: Fisk waits on the outer deck (39, 50) to row you to Alberta.<br><br>Route: <NAVI>[Fisk: boat to the Sunken Ship]<INFO>alberta,189,151,0,000,0</INFO></NAVI>" },
+	},
+	[77123] = {
+		Title = "Side Quest 2-3: The Drowned Crew",
+		Summary = "Hunt 15 Pirate Skeletons on the first deck of the Sunken Ship (treasure01).",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Drowned Crew.<br>Hunt 15 Pirate Skeletons on the first deck of the Sunken Ship (treasure01).<br><br>Route: <NAVI>[Fisk: boat to the Sunken Ship]<INFO>alberta,189,151,0,000,0</INFO></NAVI>" },
+	},
+	[77124] = {
+		Title = "Side Quest 2-4: The First Mate",
+		Summary = "Someone still gives the crew orders. Face the Drowned First Mate on the first deck of the Sunken Ship (treasure01).",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Drowned Crew.<br>Someone still gives the crew orders. Face the Drowned First Mate on the first deck of the Sunken Ship (treasure01).<br><br>Route: <NAVI>[Fisk: boat to the Sunken Ship]<INFO>alberta,189,151,0,000,0</INFO></NAVI>" },
+	},
+	[77125] = {
+		Title = "Side Quest 2-5: Calm Waters",
+		Summary = "Tell Merchant Tolliver in Alberta (186, 153) that the crew rests again.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Drowned Crew.<br>Tell Merchant Tolliver in Alberta (186, 153) that the crew rests again.<br><br>Route: <NAVI>[Merchant Tolliver]<INFO>alberta,186,153,0,000,0</INFO></NAVI>" },
+	},
+	[77131] = {
+		Title = "Side Quest 3-1: Deeper into the Sphinx",
+		Summary = "Go back to the Sphinx west of Morroc (moc_fild19, the entrance at 98, 99), down to its second floor (in_sphinx2), and hunt 20 Zeroms and 15 Requiems.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Face in the Sand.<br>Go back to the Sphinx west of Morroc (moc_fild19, the entrance at 98, 99), down to its second floor (in_sphinx2), and hunt 20 Zeroms and 15 Requiems.<br><br>How to get there:<br>1. The first floor's stairs down are at (80, 191). Zeroms and Requiems (Lv 70 and 71) attack on sight: come near Lv 65, and bring companions.<br><br>Route: <NAVI>[Sphinx entrance: moc_fild19]<INFO>moc_fild19,98,99,0,000,0</INFO></NAVI>" },
+	},
+	[77132] = {
+		Title = "Side Quest 3-2: The Warden",
+		Summary = "Go down to the third floor of the Sphinx (in_sphinx3). The guardian Nafisa saw waits there.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Face in the Sand.<br>Go down to the third floor of the Sphinx (in_sphinx3). The guardian Nafisa saw waits there.<br><br>How to get there:<br>1. First floor: stairs down at (80, 191). Second floor: the stairs to the third floor are in the far north-east (276, 272). The Warden rises a few seconds after you arrive.<br><br>Route: <NAVI>[Warden of the Sphinx: in_sphinx3]<INFO>in_sphinx3,210,54,0,000,0</INFO></NAVI>" },
+	},
+	[77133] = {
+		Title = "Side Quest 3-3: One Seal",
+		Summary = "Tell Nafisa in Morroc (156, 286) what guards the Sphinx.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Face in the Sand.<br>Tell Nafisa in Morroc (156, 286) what guards the Sphinx.<br><br>Route: <NAVI>[Nafisa the Seer]<INFO>morocc,156,286,0,000,0</INFO></NAVI>" },
+	},
+	[77141] = {
+		Title = "Side Quest 4-1: Your First Ship Overseas",
+		Summary = "Sail to Ayothaya, across the sea: about 11,700 zeny in all. The ship leaves from the Alberta dock (Aibakthing, 246, 29, 10,000 zeny).",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Tiger Across the Sea.<br>Sail to Ayothaya, across the sea: about 11,700 zeny in all. The ship leaves from the Alberta dock (Aibakthing, 246, 29, 10,000 zeny).<br><br>How to get there:<br>1. Morroc: a Kafra Employee (160, 258 or 156, 97) teleports you to Prontera (1,200 zeny). Morroc has no open road out.<br>2. Prontera: walk south to Izlude (prt_fild08). The Sailor at the end of the Izlude dock (197, 205) sails to Alberta Marina for 500 zeny.<br>3. Alberta: Aibakthing at the far south end of the dock (246, 29) sails to Ayothaya for 10,000 zeny. Ships overseas cost much more than boats, so the Journal tells you the price up front.<br>4. The way back: Aibakthing waits by the Ayothaya dock (152, 68) to sail you to Alberta.<br><br>Route: <NAVI>[Aibakthing: ship to Ayothaya]<INFO>alberta,246,29,0,000,0</INFO></NAVI>" },
+	},
+	[77142] = {
+		Title = "Side Quest 4-2: Nafisa's Courier",
+		Summary = "Find Kasim, Nafisa's courier, on the Ayothaya dock (146, 72). He sailed ahead of you with her pouch.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Tiger Across the Sea.<br>Find Kasim, Nafisa's courier, on the Ayothaya dock (146, 72). He sailed ahead of you with her pouch.<br><br>Route: <NAVI>[Kasim the Courier]<INFO>ayothaya,146,72,0,000,0</INFO></NAVI>" },
+	},
+	[77143] = {
+		Title = "Side Quest 4-3: Dusit and the Shaman",
+		Summary = "RO quest: hear Dusit's tale of the Sa-mhing Tiger (83, 132), then find the shaman Boonthom in a house in western Ayothaya (the door at 62, 104).",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Tiger Across the Sea.<br>RO quest: hear Dusit's tale of the Sa-mhing Tiger (83, 132), then find the shaman Boonthom in a house in western Ayothaya (the door at 62, 104).<br><br>How to get there:<br>1. Talk to Dusit and choose What is it?, then Yes, I do and I think they're scary! (the other answer ends the talk). He sends you to the shaman Boonthom.<br>2. Boonthom sits inside the house behind the door at (62, 104), at (181, 193). Choose I want to explore the ancient ruins., then Sure!. He asks for materials to weave a Holy Thread.<br><br>Route: <NAVI>[Dusit]<INFO>ayothaya,83,132,0,000,0</INFO></NAVI>" },
+	},
+	[77144] = {
+		Title = "Side Quest 4-4: The Holy Thread",
+		Summary = "RO quest: bring Boonthom 1 Fabric, 1 Nine Tails (a fox tail), 1 Solid Husk and 1 Holy Water. He weaves the Holy Thread that lets you into the Ancient Shrine.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Tiger Across the Sea.<br>RO quest: bring Boonthom 1 Fabric, 1 Nine Tails (a fox tail), 1 Solid Husk and 1 Holy Water. He weaves the Holy Thread that lets you into the Ancient Shrine.<br><br>How to get there:<br>1. Kasim's pouch (he gave it to you on the dock) holds all four. Lost or sold them? Talk to Kasim on the Ayothaya dock (146, 72): he replaces them (once per step). Or hunt them: Fabric: Whispers (the Shrine, or the Sunken Ship's second deck). Nine Tails, the item: the Nine Tail monsters on the Payon Cave's deepest floor (pay_dun04, Lv 72). Solid Husk: Beetle Kings in the Mjolnir mountains (mjolnir_07, mjolnir_08). Holy Water: an Acolyte's Aqua Benedicta, or a player's shop.<br><br>Route: <NAVI>[Door to Boonthom's house]<INFO>ayothaya,62,104,0,000,0</INFO></NAVI>" },
+	},
+	[77145] = {
+		Title = "Side Quest 4-5: The Six Slates",
+		Summary = "RO quest: enter the Ancient Shrine and read the six stone slates on its first level, in order.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Tiger Across the Sea.<br>RO quest: enter the Ancient Shrine and read the six stone slates on its first level, in order.<br><br>How to get there:<br>1. Leave Ayothaya by the east road (276, 176). On that field (ayo_fild01), Puraim (129, 197) feels your Holy Thread: choose Yes. and he shoves you down the hill to the field below (ayo_fild02).<br>2. The Shrine's entrance is at the east end of that field (285, 149). Back up the hill: Aik (ayo_fild02, 25, 154).<br>3. Read the slates in order; the Journal shows the next one while you are inside. Some monsters here attack on sight, and the Shrine has drops that kill you outright: keep to the paths.<br><br>Route: <NAVI>[Puraim: the way down to the Shrine]<INFO>ayo_fild01,129,197,0,000,0</INFO></NAVI>" },
+	},
+	[77146] = {
+		Title = "Side Quest 4-6: A Stronger Thread",
+		Summary = "RO quest: show Boonthom the slate's message, then bring him 2 Holy Water, 1 Yggdrasil Leaf, 2 Fabric and 2 Nine Tails for a stronger thread.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Tiger Across the Sea.<br>RO quest: show Boonthom the slate's message, then bring him 2 Holy Water, 1 Yggdrasil Leaf, 2 Fabric and 2 Nine Tails for a stronger thread.<br><br>How to get there:<br>1. Talk to Boonthom once to show him the message; he names the materials. Nafisa's pouch only covered the first thread: these you gather yourself, and the Journal counts them.<br>2. 2 Fabric: the Whispers (little ghosts) right here in the Ancient Shrine drop it, about 1 time in 4.<br>3. 2 Nine Tails, the item: the Nine Tail foxes on the Payon Cave's deepest floor (pay_dun04) drop it, about 1 time in 4. They are Lv 72: bring companions.<br>4. 2 Holy Water: an Acolyte or Priest makes it (Aqua Benedicta, standing in water), or a player shop may sell it.<br>5. 1 Yggdrasil Leaf: Tool Dealers sell it, Ayothaya's own among them (indoors, ayo_in01, 18, 182).<br><br>Route: <NAVI>[Door to Boonthom's house]<INFO>ayothaya,62,104,0,000,0</INFO></NAVI>" },
+	},
+	[77147] = {
+		Title = "Side Quest 4-7: The Second Level",
+		Summary = "RO quest: carrying the stronger thread, go back into the Ancient Shrine, down to its second level, and find the remains of Boonthom's friend (ayo_dun02, 268, 108).",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Tiger Across the Sea.<br>RO quest: carrying the stronger thread, go back into the Ancient Shrine, down to its second level, and find the remains of Boonthom's friend (ayo_dun02, 268, 108).<br><br>How to get there:<br>1. Back to the Shrine: leave Ayothaya by the east road (276, 176), talk to Puraim on that field (129, 197) and choose Yes. to be pushed down the hill, then enter the Shrine at the east end of the lower field (285, 149).<br>2. The way down is in the far north-west of the first level (24, 283). The second level is harder (Tamruans, Lv 73), so bring companions. Its MVP, Lady Tanee, is for much later.<br><br>Route: <NAVI>[Puraim: the way down to the Shrine]<INFO>ayo_fild01,129,197,0,000,0</INFO></NAVI>" },
+	},
+	[77148] = {
+		Title = "Side Quest 4-8: The Old Letter",
+		Summary = "RO quest: bring the old letter back to Boonthom (ayo_in01, 181, 193).",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Tiger Across the Sea.<br>RO quest: bring the old letter back to Boonthom (ayo_in01, 181, 193).<br><br>Route: <NAVI>[Door to Boonthom's house]<INFO>ayothaya,62,104,0,000,0</INFO></NAVI>" },
+	},
+	[77149] = {
+		Title = "Side Quest 4-9: A Letter for Nafisa",
+		Summary = "Tell Kasim on the Ayothaya dock (146, 72) what you found, so he can write to Nafisa.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Tiger Across the Sea.<br>Tell Kasim on the Ayothaya dock (146, 72) what you found, so he can write to Nafisa.<br><br>Route: <NAVI>[Kasim the Courier]<INFO>ayothaya,146,72,0,000,0</INFO></NAVI>" },
+	},
+	[77151] = {
+		Title = "Side Quest 5-1: The Orc Village",
+		Summary = "Walk west from Geffen to the Orc Village (gef_fild10): through gef_fild07, gef_fild13 and gef_fild09.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: Orc's Memory.<br>Walk west from Geffen to the Orc Village (gef_fild10): through gef_fild07, gef_fild13 and gef_fild09.<br><br>How to get there:<br>1. A Kafra Employee in Geffen also teleports you to the Orc Dungeon (1,700 zeny): you arrive in the Orc Village. The Orc Lord (Lv 55) sometimes walks the village itself and attacks on sight: if you see him, walk around him.<br><br>Route: <NAVI>[Scholar Wendel: Orc Village]<INFO>gef_fild10,234,199,0,000,0</INFO></NAVI>" },
+	},
+	[77152] = {
+		Title = "Side Quest 5-2: The Magister's Scholar",
+		Summary = "Find Scholar Wendel in the Orc Village (234, 199). The Magister sent him to watch the Mad Scientist.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: Orc's Memory.<br>Find Scholar Wendel in the Orc Village (234, 199). The Magister sent him to watch the Mad Scientist.<br><br>Route: <NAVI>[Scholar Wendel]<INFO>gef_fild10,234,199,0,000,0</INFO></NAVI>" },
+	},
+	[77153] = {
+		Title = "Side Quest 5-3: The Mad Scientist",
+		Summary = "RO quest: let the Mad Scientist (238, 202) explain his machine. He only talks to Lv 50 and up.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: Orc's Memory.<br>RO quest: let the Mad Scientist (238, 202) explain his machine. He only talks to Lv 50 and up.<br><br>How to get there:<br>1. Choose Orcs don't attack you?, then Oh? Like what, travel to alternate space?, then ...Um, that doesn't sound legal?, then Alright... What do I do?<br><br>Route: <NAVI>[Mad Scientist]<INFO>gef_fild10,238,202,0,000,0</INFO></NAVI>" },
+	},
+	[77154] = {
+		Title = "Side Quest 5-4: An Orc's Memory",
+		Summary = "RO instance: enter Orc's Memory through the statue (242, 202) and live it to the end, until you speak with the dying Kruger.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: Orc's Memory.<br>RO instance: enter Orc's Memory through the statue (242, 202) and live it to the end, until you speak with the dying Kruger.<br><br>How to get there:<br>1. LEVEL LIMIT: RO's statue only lets in Lv 30 to 80. Over Lv 80? Talk to Scholar Wendel (234, 199) instead: he reads you the memory from the scientist's notes, and this step counts as done.<br>2. The statue needs a party of 2 or more, everyone online and Lv 30 to 80 (companions too). The party leader talks to the statue first and chooses Reserve the Orc's Memory, then Enter the Dungeon. After it ends, the statue needs 2 hours before the next try.<br>3. First floor: you are an orc warrior, Kruger's ally. Talk to Kruger. The basement is split into 4 zones: kill the one Enchanted Orc in each zone to open the way on. Fight as few other orcs as you can, every kill brings reinforcements.<br>4. Second floor: talk to Kruger again. Only the party leader can light the braziers, one at a time, each opening the next path. Three guardians wait on the way: the Safeguard Chief, the Orc Sniper and the Depraved Orc Spirit.<br>5. At the altar, Shaman Cargalache and the Depraved Orc Hero attack together. Defeat the Shaman, then talk to Kruger lying beside the altar. That ends the memory.<br><br>Route: <NAVI>[Dimensional Gorge Piece]<INFO>gef_fild10,242,202,0,000,0</INFO></NAVI>" },
+	},
+	[77155] = {
+		Title = "Side Quest 5-5: What the Orcs Remember",
+		Summary = "Tell Scholar Wendel in the Orc Village (234, 199) what you saw in the orc's memory.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: Orc's Memory.<br>Tell Scholar Wendel in the Orc Village (234, 199) what you saw in the orc's memory.<br><br>Route: <NAVI>[Scholar Wendel]<INFO>gef_fild10,234,199,0,000,0</INFO></NAVI>" },
+	},
+	[77161] = {
+		Title = "Side Quest 6-1: A Ship to Amatsu",
+		Summary = "Sail to Amatsu: the Sea Captain on the Alberta dock (246, 74) takes you there and back for 10,000 zeny.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Fox of the Palace.<br>Sail to Amatsu: the Sea Captain on the Alberta dock (246, 74) takes you there and back for 10,000 zeny.<br><br>How to get there:<br>1. Getting to Alberta from Geffen: a Kafra Employee teleports you to Prontera (1,200 zeny). From Prontera, walk south to Izlude and take the Sailor at the end of the dock (197, 205) to Alberta Marina (500 zeny).<br>2. The Sea Captain stands on the Alberta dock (246, 74). In Amatsu, he waits by the dock (194, 79) to sail you back.<br><br>Route: <NAVI>[Sea Captain: ship to Amatsu]<INFO>alberta,246,74,0,000,0</INFO></NAVI>" },
+	},
+	[77162] = {
+		Title = "Side Quest 6-2: The Sick Mother",
+		Summary = "RO quest: ask the Gate Soldiers guarding a house in Amatsu (164, 174 or 171, 174) what is wrong.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Fox of the Palace.<br>RO quest: ask the Gate Soldiers guarding a house in Amatsu (164, 174 or 171, 174) what is wrong.<br><br>Route: <NAVI>[Gate Soldier]<INFO>amatsu,164,174,0,000,0</INFO></NAVI>" },
+	},
+	[77163] = {
+		Title = "Side Quest 6-3: The Lord of the Castle",
+		Summary = "RO quest: climb the castle in north-west Amatsu (the door at 85, 235) to Lord Ishida (200, 176) and offer your help.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Fox of the Palace.<br>RO quest: climb the castle in north-west Amatsu (the door at 85, 235) to Lord Ishida (200, 176) and offer your help.<br><br>How to get there:<br>1. Inside, the castle's stairs take you up floor by floor. When you are inside, the Journal lists each stair on your map.<br>2. Talk to Lord Ishida Yoshinaga and choose I heard about your mother... He asks you to cure her.<br><br>Route: <NAVI>[Castle door]<INFO>amatsu,85,235,0,000,0</INFO></NAVI>" },
+	},
+	[77164] = {
+		Title = "Side Quest 6-4: A Children's Song",
+		Summary = "RO quest: listen to Kouji, the boy who sings in the streets of Amatsu (189, 166). His song holds a clue.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Fox of the Palace.<br>RO quest: listen to Kouji, the boy who sings in the streets of Amatsu (189, 166). His song holds a clue.<br><br>Route: <NAVI>[Kouji]<INFO>amatsu,189,166,0,000,0</INFO></NAVI>" },
+	},
+	[77165] = {
+		Title = "Side Quest 6-5: The North Shrine",
+		Summary = "RO quest: find Takehue at the abandoned north shrine (ama_in01, 180, 173) and show him your spirit.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Fox of the Palace.<br>RO quest: find Takehue at the abandoned north shrine (ama_in01, 180, 173) and show him your spirit.<br><br>How to get there:<br>1. Leave Amatsu by the north-east road (248, 292) onto the field (ama_fild01). The shrine's door is far to the north (174, 331).<br>2. Talk to Takehue (the boy in the Kitsune Mask) and choose Taaaaah!!. He teaches you to shout the fox out.<br><br>Route: <NAVI>[North shrine door]<INFO>ama_fild01,174,331,0,000,0</INFO></NAVI>" },
+	},
+	[77166] = {
+		Title = "Side Quest 6-6: Driving Out the Fox",
+		Summary = "RO quest: go into the guarded house (the door at 168, 182), face the possessed mother (22, 111) and shout the fox out of her.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Fox of the Palace.<br>RO quest: go into the guarded house (the door at 168, 182), face the possessed mother (22, 111) and shout the fox out of her.<br><br>How to get there:<br>1. Choose Taaaah!!. It does not always work: if the fox laughs, you are thrown outside. Just walk back in and try again.<br>2. Your odds are 1 in 4. Carry ONE of these and they become 1 in 2: Holy Water, a Bear's Footskin or a Tiger Skin (the Journal counts them; you need only one, it is not used up). Acolytes and Monks get 1 in 2 anyway, Priests 3 in 4.<br>3. When it works, the fox flees as a Nine Tail and leaves its tail behind: the item Nine Tails, your proof.<br><br>Route: <NAVI>[Door of the guarded house]<INFO>amatsu,168,182,0,000,0</INFO></NAVI>" },
+	},
+	[77167] = {
+		Title = "Side Quest 6-7: Proof for the Lord",
+		Summary = "RO quest: bring the fox's tail (Nine Tails) to Lord Ishida at the top of the castle (200, 176). Keep it in your bag: he wants proof.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Fox of the Palace.<br>RO quest: bring the fox's tail (Nine Tails) to Lord Ishida at the top of the castle (200, 176). Keep it in your bag: he wants proof.<br><br>Route: <NAVI>[Castle door]<INFO>amatsu,85,235,0,000,0</INFO></NAVI>" },
+	},
+	[77168] = {
+		Title = "Side Quest 6-8: The Gate Beneath",
+		Summary = "Show the Feudal Lord Permit to Jyuro, the soldier on the castle's top floor (115, 177). He opens the hidden gate to the palace dungeon (ama_dun01).",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Fox of the Palace.<br>Show the Feudal Lord Permit to Jyuro, the soldier on the castle's top floor (115, 177). He opens the hidden gate to the palace dungeon (ama_dun01).<br><br>How to get there:<br>1. Jyuro stands on the floor above the lord: climb the same stairs, then take one more (222, 161).<br>2. Talk to Jyuro, choose Open the gate, then I will go in. The permit is not used up. In the dungeon, a Soldier by the entrance (229, 7) takes you back up. Its floors are around Lv 85 to 98; the Samurai Specter (Lv 100) rules the third.<br><br>Route: <NAVI>[Castle door]<INFO>amatsu,85,235,0,000,0</INFO></NAVI>" },
+	},
+	[77169] = {
+		Title = "Side Quest 6-9: A Letter for Geffen",
+		Summary = "Tell Envoy Lise on the Amatsu dock (199, 86) how it ended.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Fox of the Palace.<br>Tell Envoy Lise on the Amatsu dock (199, 86) how it ended.<br><br>Route: <NAVI>[Envoy Lise]<INFO>amatsu,199,86,0,000,0</INFO></NAVI>" },
+	},
+	[77171] = {
+		Title = "Side Quest 7-1: The Mountain Village",
+		Summary = "Sail to Kunlun: the Kunlun Envoy on the Alberta dock (246, 62) takes you for 10,000 zeny. You land on the field below the village: walk north into Kunlun (gonryun).",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Broken Sword of Kunlun.<br>Sail to Kunlun: the Kunlun Envoy on the Alberta dock (246, 62) takes you for 10,000 zeny. You land on the field below the village: walk north into Kunlun (gonryun).<br><br>How to get there:<br>1. Getting to Alberta from Geffen: a Kafra Employee teleports you to Prontera (1,200 zeny); walk south to Izlude and take the Sailor (197, 205) to Alberta Marina (500 zeny).<br>2. You land at the south of the field (gon_fild01, 258, 82). The village gate is at its north end (192, 265). Side Winders (Lv 70) on that field attack on sight.<br>3. The way back: the Kunlun Envoy in the village (153, 64) takes you down to the harbour for free, and the Envoy there (255, 79) sails you to Alberta.<br>4. RO's Broken Sword quest needs Lv 51 or higher: the chief won't speak of it before.<br><br>Route: <NAVI>[Kunlun Envoy: ship to Kunlun]<INFO>alberta,246,62,0,000,0</INFO></NAVI>" },
+	},
+	[77172] = {
+		Title = "Side Quest 7-2: The Chief's Treasure",
+		Summary = "RO quest: meet the chief, Shi Yan Wen, then the tavern hostess, and offer the chief your help. The Journal names every answer: NEVER choose any other.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Broken Sword of Kunlun.<br>RO quest: meet the chief, Shi Yan Wen, then the tavern hostess, and offer the chief your help. The Journal names every answer: NEVER choose any other.<br><br>How to get there:<br>1. 1. The chief's hall: the door at (109, 131), then the inner door (42, 35). Talk to the chief (17, 93) once; he only greets you.<br>2. 2. The tavern: the door at (215, 114). Talk to the hostess, Mei Yen Fang (152, 35). She tells you of the robbery.<br>3. 3. Back to the chief. Choose I heard that something was stolen..., then What was stolen?, then Can I find it for you?. WARNING: Hope you find it soon. closes the quest forever on this character.<br>4. 4. Back to the hostess once more: she points you to the drinker at the table.<br><br>Route: <NAVI>[Door of the chief's hall]<INFO>gonryun,109,131,0,000,0</INFO></NAVI>" },
+	},
+	[77173] = {
+		Title = "Side Quest 7-3: The Drinker's Story",
+		Summary = "RO quest: bring the hungover drinker, Xue Bong, a Green Potion in the tavern (165, 16), hear what he saw, and tell the chief.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Broken Sword of Kunlun.<br>RO quest: bring the hungover drinker, Xue Bong, a Green Potion in the tavern (165, 16), hear what he saw, and tell the chief.<br><br>How to get there:<br>1. Talk to Xue Bong with a Green Potion in your bag. Choose Here, drink this!, then About a thief..., then Where to?. WARNING: choosing No. and then Sorry, I don't have any. closes the quest forever.<br>2. Then go back to the chief (17, 93): he thanks you with White Potions.<br>3. Green Potions are sold by Tool Dealers in most towns.<br><br>Route: <NAVI>[Tavern door]<INFO>gonryun,215,114,0,000,0</INFO></NAVI>" },
+	},
+	[77174] = {
+		Title = "Side Quest 7-4: Traces in the Dark",
+		Summary = "RO quest: find the three pieces of the sword in the Kunlun Dungeon, one on each floor (gon_dun01, gon_dun02, gon_dun03). The entrance is in the village (159, 201).",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Broken Sword of Kunlun.<br>RO quest: find the three pieces of the sword in the Kunlun Dungeon, one on each floor (gon_dun01, gon_dun02, gon_dun03). The entrance is in the village (159, 201).<br><br>How to get there:<br>1. The thief's trace is INVISIBLE. On each floor it waits on one of the trace spots the Journal lists, and moves to another spot after a minute or so.<br>2. At a trace spot: stand on it for 3 seconds, then walk 4 steps away and walk back onto it. The blade piece is hidden right there and only shows itself when you walk into it. If the message You found a piece of blade appears, that floor is done. If not, the trace was elsewhere: try the next spot.<br>3. A piece you uncovered waits for you until the server restarts, so going back to a spot you tried is never wasted.<br>4. Two of RO's pieces fall away from their trace: floor 2's trace at (65, 168) drops its piece at (202, 25), and floor 3's trace at (162, 40) drops its piece at (68, 39). If you stood on one of those traces, walk to its piece spot.<br>5. Floor 2 is a maze of warp tiles. The trace at (23, 105) is in the first area. Maze A (56, 119) leads to the trace at (65, 168). From there, maze B (92, 190) leads to the trace at (249, 39) and the piece spot (202, 25); maze C (44, 166) leads on to maze D (94, 118).<br>6. Floor 2, after maze D: maze E (165, 189) leads to the trace at (247, 129), and maze F (276, 76) from there to the trace at (149, 74). Or take maze G (180, 189), then H (170, 161), I (86, 44) and J (148, 236) to the trace at (265, 200) and the way down to floor 3 (251, 268).<br>7. Floor 1 is around Lv 90 to 94, floors 2 and 3 Lv 96 to 97. The Evil Snake Lord (Lv 105) rules floor 3: bring companions.<br><br>Route: <NAVI>[Kunlun Dungeon entrance]<INFO>gonryun,159,201,0,000,0</INFO></NAVI>" },
+	},
+	[77175] = {
+		Title = "Side Quest 7-5: A Knife and a Name",
+		Summary = "RO quest: agree to have the sword repaired, help Han Ran Jiao find her lost knife, and ask the stranger Zuo Hei where to find a smith.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Broken Sword of Kunlun.<br>RO quest: agree to have the sword repaired, help Han Ran Jiao find her lost knife, and ask the stranger Zuo Hei where to find a smith.<br><br>How to get there:<br>1. 1. The chief (17, 93): choose Alright. when he asks you to repair the sword. WARNING: No way. ends the quest here.<br>2. 2. Han Ran Jiao, by the cliff in the north-east of the village (237, 226): she dropped her family knife.<br>3. 3. The knife lies hidden under leaves on the field below the village (gon_fild01, 245, 257). Walk over the spot and it is yours.<br>4. 4. Back to Han Ran Jiao: choose Return the knife. (Refuse. only ends the talk: keep the knife and ask again.)<br>5. 5. Zuo Hei, the stranger on the village's north-west edge (100, 241): choose Ask about the blacksmith., then Exactly.. He sends you to Geffen. (Talked to him before the knife? He sends you to help someone first: just do the knife, then come back.)<br><br>Route: <NAVI>[Door of the chief's hall]<INFO>gonryun,109,131,0,000,0</INFO></NAVI>" },
+	},
+	[77176] = {
+		Title = "Side Quest 7-6: The Smith's Granddaughter",
+		Summary = "RO quest: win over the grieving smith Aumgarl in Geffen, then search Prontera and Juno for a doctor who can cure his granddaughter, Lyroo.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Broken Sword of Kunlun.<br>RO quest: win over the grieving smith Aumgarl in Geffen, then search Prontera and Juno for a doctor who can cure his granddaughter, Lyroo.<br><br>How to get there:<br>1. 1. Geffen: the house door at (172, 174). The smith Aumgarl is inside (71, 112). Choose Sir...?, then I came to repair this sword.<br>2. 2. He shuts his shop and throws you out. Keep walking back in and talking to him: about 1 time in 8 he gives in.<br>3. 3. Then choose, in this order: Your granddaughter is such a pretty girl., Anything wrong?, I'll make her happy., I want to take her with me., I am sorry., Well..., Sure., Yes, Sir.. He asks you to find a cure for Lyroo.<br>4. 4. Prontera: Neil, by the east wall (275, 86), was cured by a doctor from Juno.<br>5. 5. Juno: the girl Hisa (208, 164) names the doctor, Cylrnel.<br>6. 6. Juno: Cylrnel's house, the door at (245, 147). A voice throws you out: keep walking in. About 1 time in 10 you are let in.<br><br>Route: <NAVI>[Door of the smith's house]<INFO>geffen,172,174,0,000,0</INFO></NAVI>" },
+	},
+	[77177] = {
+		Title = "Side Quest 7-7: The Doctor's Cure",
+		Summary = "RO quest: get the busy doctor Cylrnel (yuno_in01, 99, 101) to listen, answer her questions about Lyroo correctly, and bring the ingredients for the medicine.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Broken Sword of Kunlun.<br>RO quest: get the busy doctor Cylrnel (yuno_in01, 99, 101) to listen, answer her questions about Lyroo correctly, and bring the ingredients for the medicine.<br><br>How to get there:<br>1. 1. Cylrnel is moody: keep talking to her. When she asks if you want something, choose You're so beautiful.. If she laughs at you, choose Yes, I fell in love at first sight., then Well, actually.... It can take many tries; this way she never throws you out.<br>2. 2. When she asks for the symptoms, choose Yes, Here., then exactly: Turns hot and cold repeatedly., No sweating at all., Becomes paralyzed often., Heart beats irregularly., then Yes, I am sure. and I'm sure.. (No need to visit Lyroo first: these are her symptoms.)<br>3. 3. WARNING: wrong symptoms give a shorter list that is the wrong medicine. It wastes those items and you start the questions again.<br>4. 4. Bring the full list (the Journal counts it): 2 Yggdrasil Seeds, 3 Aloe, 1 Witherless Rose, 10 Witch Starsand, 5 Burning Hearts, 5 Ice Cubics. She brews Aloevera.<br><br>Route: <NAVI>[Door of Cylrnel's house]<INFO>yuno,245,147,0,000,0</INFO></NAVI>" },
+	},
+	[77178] = {
+		Title = "Side Quest 7-8: Mending the Sword",
+		Summary = "RO quest: give Lyroo her medicine, bring Aumgarl the materials to mend the sword, and carry it home to the chief in Kunlun.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Broken Sword of Kunlun.<br>RO quest: give Lyroo her medicine, bring Aumgarl the materials to mend the sword, and carry it home to the chief in Kunlun.<br><br>How to get there:<br>1. 1. Lyroo is upstairs in the smith's house (106, 106): choose It's your medicine..<br>2. 2. Aumgarl (71, 112): choose Would you repair the sword for me?, then Alright, I'll go get them..<br>3. 3. Bring him (the Journal counts them): 1 Anvil, 2 Rough Oridecon, 5 Broken Swords, 2 Steel, 1 Hammer of Blacksmith, 2 Star Crumbs, 5 Live Coal.<br>4. 4. Keep talking to him until the sword is done: about 1 time in 5. You receive the repaired sword (Haedonggum).<br>5. 5. Sail back to Kunlun and give the sword to the chief (17, 93).<br><br>Route: <NAVI>[Door of the smith's house]<INFO>geffen,172,174,0,000,0</INFO></NAVI>" },
+	},
+	[77179] = {
+		Title = "Side Quest 7-9: A Letter for Geffen",
+		Summary = "Tell Scribe Wang in Kunlun (118, 128) that the sword is home.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Broken Sword of Kunlun.<br>Tell Scribe Wang in Kunlun (118, 128) that the sword is home.<br><br>Route: <NAVI>[Scribe Wang]<INFO>gonryun,118,128,0,000,0</INFO></NAVI>" },
+	},
+	[77181] = {
+		Title = "Side Quest 8-1: Tick and Tock",
+		Summary = "Climb the Clock Tower: hunt 15 Clocks on floor 2 (c_tower2) and 15 Alarms on floor 3 (c_tower3).",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Gears Below.<br>Climb the Clock Tower: hunt 15 Clocks on floor 2 (c_tower2) and 15 Alarms on floor 3 (c_tower3).<br><br>How to get there:<br>1. Floor 1: the stairs up are in the north-east (235, 226). Floor 2: the stairs to floor 3 are in the north (142, 283). Clocks are Lv 81, Alarms Lv 88.<br><br>Route: <NAVI>[Stairs up to floor 2]<INFO>c_tower1,235,226,0,000,0</INFO></NAVI>" },
+	},
+	[77182] = {
+		Title = "Side Quest 8-2: The Key of the Tower",
+		Summary = "Find a Key of Clock Tower. Your best bet: a Clock Tower Manager, the big clock keeper (about 1 in 10). One walks each of floors 1 and 2, four walk floor 3.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Gears Below.<br>Find a Key of Clock Tower. Your best bet: a Clock Tower Manager, the big clock keeper (about 1 in 10). One walks each of floors 1 and 2, four walk floor 3.<br><br>How to get there:<br>1. Alarms and Clocks drop the key too, but rarely (about 1 in 700 to 1,000). The odds are RO's normal drop rates: your server's drop rate setting makes them better.<br><br>Route: <NAVI>[Stairs up to floor 3]<INFO>c_tower2,142,283,0,000,0</INFO></NAVI>" },
+	},
+	[77183] = {
+		Title = "Side Quest 8-3: The Gatekeeper Boy",
+		Summary = "Give the key to the Gatekeeper Boy in the far north-west of floor 3 (10, 249) and go through to floor 4 (c_tower4).",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Gears Below.<br>Give the key to the Gatekeeper Boy in the far north-west of floor 3 (10, 249) and go through to floor 4 (c_tower4).<br><br>How to get there:<br>1. Talk to him and choose Move to the 4th Floor. He takes the key and sends you through.<br><br>Route: <NAVI>[Gatekeeper Boy]<INFO>c_tower3,10,249,0,000,0</INFO></NAVI>" },
+	},
+	[77184] = {
+		Title = "Side Quest 8-4: Wound Too Tight",
+		Summary = "Somewhere on floor 4 (c_tower4) the tower's keeper has been wound far too tight. Stop it.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Gears Below.<br>Somewhere on floor 4 (c_tower4) the tower's keeper has been wound far too tight. Stop it.<br><br>How to get there:<br>1. It rises a few seconds after you arrive. Owl Dukes (Lv 92) haunt this floor: keep your companions close.<br><br>Route: <NAVI>[Gatekeeper Boy: floor 4]<INFO>c_tower3,10,249,0,000,0</INFO></NAVI>" },
+	},
+	[77185] = {
+		Title = "Side Quest 8-5: The Key Below",
+		Summary = "Keep the Key of Underground the Overwound Keeper dropped. Lost it? Elders (about 1 in 7, two walk floors 2 and 4) and Clock Tower Managers (1 in 10) drop one.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Gears Below.<br>Keep the Key of Underground the Overwound Keeper dropped. Lost it? Elders (about 1 in 7, two walk floors 2 and 4) and Clock Tower Managers (1 in 10) drop one.<br><br>Route: <NAVI>[Stairs up to floor 2]<INFO>c_tower1,235,226,0,000,0</INFO></NAVI>" },
+	},
+	[77186] = {
+		Title = "Side Quest 8-6: The Gate Below",
+		Summary = "Give the key to the Gatekeeper in basement 3 (alde_dun03, 264, 16) and go down to basement 4 (alde_dun04).",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Gears Below.<br>Give the key to the Gatekeeper in basement 3 (alde_dun03, 264, 16) and go down to basement 4 (alde_dun04).<br><br>How to get there:<br>1. The quickest way to basement 3 is from floor 4 itself: the way at (37, 70) leads straight there (alde_dun03, 277, 54).<br>2. Talk to the Gatekeeper and choose Move to the B4th Floor. He takes the key.<br><br>Route: <NAVI>[Gatekeeper (basement 3)]<INFO>alde_dun03,264,16,0,000,0</INFO></NAVI>" },
+	},
+	[77187] = {
+		Title = "Side Quest 8-7: The Jester in the Dark",
+		Summary = "Something laughs in basement 4 (alde_dun04), where the great gear turns. Silence it.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Gears Below.<br>Something laughs in basement 4 (alde_dun04), where the great gear turns. Silence it.<br><br>How to get there:<br>1. It rises a few seconds after you arrive. Bathories (Lv 86) and Jokers (Lv 90) fill this floor.<br><br>Route: <NAVI>[Gatekeeper: basement 4]<INFO>alde_dun03,264,16,0,000,0</INFO></NAVI>" },
+	},
+	[77188] = {
+		Title = "Side Quest 8-8: On Time",
+		Summary = "Tell Sir Aldric in Al De Baran (142, 63) that the tower keeps time again.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Gears Below.<br>Tell Sir Aldric in Al De Baran (142, 63) that the tower keeps time again.<br><br>Route: <NAVI>[Sir Aldric]<INFO>aldebaran,142,63,0,000,0</INFO></NAVI>" },
+	},
+	[77191] = {
+		Title = "Side Quest 9-1: Grandpa Turtle",
+		Summary = "RO quest: in Alberta, ask Grandpa Turtle how to reach Turtle Island. His house door is at (65, 233).",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Turtle General.<br>RO quest: in Alberta, ask Grandpa Turtle how to reach Turtle Island. His house door is at (65, 233).<br><br>How to get there:<br>1. Inside, go up through the room to the north (22, 130). Grandpa Turtle sits at (23, 104). Choose How can I get there?. He names the only navigator who knows the way, Gotanblue.<br><br>Route: <NAVI>[Door of Grandpa Turtle's house]<INFO>alberta,65,233,0,000,0</INFO></NAVI>" },
+	},
+	[77192] = {
+		Title = "Side Quest 9-2: The Voyage Log",
+		Summary = "RO quest: read the old Voyage Log lying on the Alberta dock (246, 117).",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Turtle General.<br>RO quest: read the old Voyage Log lying on the Alberta dock (246, 117).<br><br>How to get there:<br>1. Click the log. Half the time the page you open is blank or unreadable: just read it again. The page you find decides which of the island's secrets you will follow.<br><br>Route: <NAVI>[Voyage Log]<INFO>alberta,246,117,0,000,0</INFO></NAVI>" },
+	},
+	[77193] = {
+		Title = "Side Quest 9-3: The Only Navigator",
+		Summary = "Ask Gotanblue, the old sailor on the dock (244, 118), to take you to Turtle Island (10,000 zeny).",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Turtle General.<br>Ask Gotanblue, the old sailor on the dock (244, 118), to take you to Turtle Island (10,000 zeny).<br><br>How to get there:<br>1. Choose How can I get there?, then Turtle island -> 10000 zeny.<br>2. The way back: a Sailor waits where you land (165, 29) to take you to Alberta.<br>3. The island is dangerous: Dragon Tails and Permeters (Lv 86 to 90) on floor 1, Freezers and Assaulters (Lv 94 to 100) below, all aggressive. Bring companions.<br><br>Route: <NAVI>[Gotanblue: boat to Turtle Island]<INFO>alberta,244,118,0,000,0</INFO></NAVI>" },
+	},
+	[77194] = {
+		Title = "Side Quest 9-4: The Island's Secret",
+		Summary = "RO quest: follow the page you found in the Voyage Log to one of the island's hidden treasures. The Journal shows your next spot on each floor.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Turtle General.<br>RO quest: follow the page you found in the Voyage Log to one of the island's hidden treasures. The Journal shows your next spot on each floor.<br><br>How to get there:<br>1. The skull page: the Skull Stone on floor 1 (160, 81).<br>2. The turtle-crystal page: the Turtle Tree Roots on floor 2 (132, 251), then the pile of turtle crystals (46, 125), then the Turtle Pillar (49, 158).<br>3. The turtle-stone page: the turtle stones on floor 1 (203, 155), floor 2 (75, 249) and floor 3 (118, 233), then the Turtle Statue on floor 4 (113, 178).<br>4. Floor 1 to 2: (154, 241). Floor 2 to 3: (167, 19). Floor 3 to 4: (217, 71).<br><br>Route: <NAVI>[Gotanblue: boat to Turtle Island]<INFO>alberta,244,118,0,000,0</INFO></NAVI>" },
+	},
+	[77195] = {
+		Title = "Side Quest 9-5: Back from the Fog",
+		Summary = "Tell Navigator Corvin on the Alberta dock (241, 116) what you found on Turtle Island.",
+		IconName = "ico_nq.bmp",
+		Description = { "Optional Side Quest: The Turtle General.<br>Tell Navigator Corvin on the Alberta dock (241, 116) what you found on Turtle Island.<br><br>Route: <NAVI>[Navigator Corvin]<INFO>alberta,241,116,0,000,0</INFO></NAVI>" },
 	},
 }
