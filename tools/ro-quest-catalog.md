@@ -25,7 +25,9 @@ Anything not read in the script itself says **to verify**.
   EXP tiers by level are not a minimum and are left out. "none" = no check found.
 - Tags: `opens a place` (dungeon, map, ship, NPC service), `repeatable`
   (daily or other cooldown; the Passport stamps once), `needs a mod`,
-  `dead end` (see `guide-deferred.md`), `guided` (already has a guide in
+  `dead end` (see `guide-deferred.md`), `party N` (needs a party of N or
+  more; party bots count as players, MondoTruth 2026-10-26, so these quests
+  stay in, shown with the player count), `guided` (already has a guide in
   `guide.ps1`, key given), `side N` (inside Always's Side Quest N in `side.ps1`;
   only RO's own part belongs here).
 - Links: **needs** = must be done first (Ragnarok asks first); **opens** =
@@ -140,16 +142,16 @@ Labyrinth (Prontera Maze) are Episode 16.2 content (see "Later").
 - **Orc's Memory** - the Orc Village's statue shows an orc's memory.
   `instances/OrcsMemory.txt` (a memorial dungeon) | `mad`, `yong_odun` 0->2
   | Lv: 30-80 at the statue, 50 for the Mad Scientist | side 5 (RO part
-  only) | **dead end**: the statue needs a party of 2+ online members, all Lv
-  30-80 (line 43). See guide-deferred.md. Kept here because side 5 uses it.
+  only) | `party 2`: the statue needs 2+ online party members, all Lv 30-80
+  (line 43).
 
 ## 3. Payon and Archer Village
 
 ### Single quests
 - **The Party Relay** - a relay race around Payon for a whole party.
   `quests/partyrelay.txt` | `party_relay`, `party_relay_lv` | Lv: 40
-  | **dead end**: from the first talk (lines 204, 348) the party leader must
-  be in a guild and lead more than 5 members. See guide-deferred.md.
+  | `party 6`: from the first talk (lines 204, 348) the party leader must
+  lead 6+ members and be in a guild (to verify: a guild for bots/solo).
 
 ## 4. Morroc and the Sograt Desert
 
@@ -167,9 +169,8 @@ Story only: Episode 12, Rebirth of Satan Morocc (`rebirth_moc_edq`,
   Unlucky Emerald. `quests/quests_nameless.txt` | `treasure_nd` 0->12, then
   `jewel_nd` 0->31 | Lv: none for the treasure, 66 for the jewel part
   (`treasure_nd > 10 && BaseLevel > 65`) | needs: Broken Diamond done
-  (`diamond_edq == 26`, Ibrahim) for the jewel part only | **dead end**: the
-  treasure chest opens only for a party of 2+ (line 9909). See
-  guide-deferred.md.
+  (`diamond_edq == 26`, Ibrahim) for the jewel part only | `party 2`: the
+  treasure chest opens only for a party of 2+ (line 9909).
 - **Pyramid nightmare hunts** - a suspicious cat in the Nightmare Pyramid
   hands out Verit and Mummy hunts. `re/quests/quests_morocc.txt` | quests
   2289-2292 | Lv: none | repeatable.

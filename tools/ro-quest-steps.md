@@ -28,6 +28,8 @@ N. **Short title** - what to do (NPC, what to choose or bring, counts).
 - Choices are quoted as the menu shows them.
 - **Reward** is RO's own (EXP as `base/job` on Renewal, `checkre` value).
 - A dead end stops at the blocker: "dead end, see guide-deferred.md".
+- **Players: N** marks a quest that needs a party of N or more; party bots
+  count as players (MondoTruth, 2026-10-26).
 
 ---
 
@@ -769,10 +771,9 @@ Geffen, 20-27 from Morocc, they join at 10) | Lv none.
 ### Orc's Memory
 `instances/OrcsMemory.txt` (a memorial dungeon) | `mad` 0->1, `yong_odun`
 0->2 | Lv 50 for the Mad Scientist; the statue takes Lv 30-80
-| **needs a party** of 2+ online members, all Lv 30-80
-(`instance_check_party(.@party_id,2,30,80)`, line 43): dead end on a solo
-server unless the app's Companions count as party members (see
-guide-deferred.md). Side 5 tells the memory from Wendel's notes instead.
+| **Players: 2** (2+ online party members, all Lv 30-80,
+`instance_check_party(.@party_id,2,30,80)`, line 43). Side 5 tells the
+memory from Wendel's notes for those over Lv 80.
 
 1. **The Mad Scientist** - in the Orc Village, the Mad Scientist (Lv 50+):
    "Orcs don't attack you?", "Oh? Like what, travel to alternate space?",
@@ -794,10 +795,10 @@ guide-deferred.md). Side 5 tells the memory from Wendel's notes instead.
 
 ### The Party Relay
 `quests/partyrelay.txt` | `party_relay`, `party_relay_lv` | Lv 40
-(`BaseLevel > 39`). **Dead end at step 1**: Ledrion in Payon
-(`/navi payon 103/113`) starts it only for a party leader who is in a guild
-and has more than 5 party members (lines 204 and 348); every later check
-(lines 39, 114, 163) asks the same. No steps. See guide-deferred.md.
+(`BaseLevel > 39`) | **Players: 6**: Ledrion in Payon (`/navi payon
+103/113`) starts it only for a party leader who leads 6+ members and is in a
+guild (lines 204 and 348); every later check (lines 39, 114, 163) asks the
+same. Steps: next batch.
 
 ## 4. Morroc and the Sograt Desert
 
@@ -859,9 +860,9 @@ of the Fate - 1..6") | Lv 60 (`BaseLevel > 59`).
 ### The Unlucky Emerald
 `quests/quests_nameless.txt` | `treasure_nd` 0->12, then `jewel_nd` 0->31 |
 Lv none for the treasure; 66 for the jewel part (`treasure_nd > 10 &&
-BaseLevel > 65`, Ibrahim) | **dead end at step 7**: the treasure chest opens
-only for a party of 2 or more (`getpartymember`, line 9909; offline members
-count). See guide-deferred.md.
+BaseLevel > 65`, Ibrahim) | **Players: 2** at step 7: the treasure chest
+opens only for a party of 2 or more (`getpartymember`, line 9909; offline
+members count).
 
 1. **The ragged man** - in Morocc: "How may I help you?", "Umm... So?", "I can
    give you some money." and pay 1,200 zeny (2). ("Why don't you just
@@ -885,15 +886,14 @@ count). See guide-deferred.md.
    other half: "Sesame]" (to 10) or "Treasure]" (to 9). With `zdan_edq > 12`
    (Z-Gang past step 9) the talk differs, same result.
    `/navi comodo 339/224` | done when: `treasure_nd` 9 or 10
-7. **The chest opens** - **blocker**: at the chest type the whole spell as one
-   word; it only works with 2 or more members in your party. Note the
+7. **The chest opens** - in a party of 2 or more, type the whole spell at
+   the chest as one word. Note the
    script's own swap: at 9 the answer is `OpenSesame`, at 10 `UnlockTreasure`
    (the opposite of the halves you hold).
    You would get: Unlucky Emerald, Dead Branch, Two-Handed Sword, and a curse.
    `/navi moc_fild18 108/116` | done when: `treasure_nd` 11 or 12
-   Dead end, see guide-deferred.md.
 
-After the blocker (not written out yet): the jewel part (`jewel_nd`) starts at
+Not written out yet (next batch): the jewel part (`jewel_nd`) starts at
 Ibrahim (Broken Diamond done, `treasure_nd > 10`, Lv 66) and runs through
 jewellers in Alberta, Payon and Geffen, a scholar in Comodo, a shaman in
 Alberta (200,000 and 100,000 zeny), an archeologist in Juno, a wanderer's

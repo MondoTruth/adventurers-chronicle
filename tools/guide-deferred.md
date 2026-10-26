@@ -19,15 +19,13 @@ why, and what could open it.
 | Veins Siblings (`rachel_camel`, quests/quests_veins.txt) | 10 Rachel | Needs `MISC_QUEST & 8192`, the end of the Rachel Sanctuary Quest. | Now possible with solo-community-goals (Sanctuary guide `ra_sanctuary`); write its guide next. |
 | Rachel Sanctuary Quest (`ra_tem_q`) | 10 Rachel | The temple wants 10,000 donations from the whole server (500 million zeny). | Guided as `ra_sanctuary`, shown when solo-community-goals is on. |
 | Nameless Island (`aru_monas`, quests/quests_nameless.txt) and what follows: Thor Volcano Base (`aru_vol`, quests/quests_veins.txt), Peace to Arunafeltz and Rachel Addition (`aru_em`) | - (catalog region 13) | Step 14 of the Nameless Island waits for the Veins Siblings done (`rachel_camel == 25`, the Drunkard in ve_in), and Siblings needs the Sanctuary. The Thor Volcano Base starts at High Priest Zhed only after the Sanctuary (MISC_QUEST 8192) and Nameless Island step 11; Peace to Arunafeltz needs the Thor Volcano Base done (`aru_vol == 27`). | Opens with solo-community-goals, like Siblings: guide them after `ra_sanctuary`. |
-| Party Relay (`party_relay`, quests/partyrelay.txt) | - (catalog region 3) | From the first talk (lines 204, 348; Lv 40) Ledrion wants the party leader, in a guild, with more than 5 party members; every later step asks the same. | To check: whether the app's Companions count as party members; otherwise leave out. |
-| Unlucky Emerald (`treasure_nd`, then `jewel_nd`, quests/quests_nameless.txt) | - (catalog region 4) | Step 7: the Z-Gang's buried chest (moc_fild18 108,116) opens only with 2 or more members in your party (`getpartymember`, line 9909; offline members count too). The whole jewel part needs the emerald from that chest. | Same check as the Party Relay: Companions in the party, or a second character in a party. Steps 1-6 are in `ro-quest-steps.md`. |
-| Orc's Memory (`yong_odun`, instances/OrcsMemory.txt) | - (catalog region 2; side 5) | The statue (gef_fild10 242,202) checks `instance_check_party(.@party_id,2,30,80)`: a party of 2+ online members, all Lv 30-80. | Side 5 already tells the memory from Wendel's notes when the statue refuses; same Companions check. |
 | Guild Relay (`guildrelay_q`, quests/guildrelay.txt) | - (excluded) | A guild quest in the castles: needs a guild and its leader. | Leave out. |
 
 Mora (Chapter 12) has no guide yet: all four of its quests are above.
 
-The rows Nameless Island, Party Relay and Guild Relay were added on 2026-10-26 with `ro-quest-catalog.md`,
+The rows Nameless Island and Guild Relay were added on 2026-10-26 with `ro-quest-catalog.md`,
 the list of every RO side quest on Renewal; the catalog marks each dead end
 "dead end, see guide-deferred.md".
-Unlucky Emerald and Orc's Memory were added the same day with step 2,
-batch 1 (`ro-quest-steps.md`, regions 1-6).
+Party quests (Party Relay, Unlucky Emerald, Orc's Memory) left this list on
+2026-10-26: party bots count as players, so the catalog keeps them with a
+`party N` tag (MondoTruth).
