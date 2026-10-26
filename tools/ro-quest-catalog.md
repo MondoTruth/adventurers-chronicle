@@ -2,8 +2,9 @@
 
 Step 1 of the Renewal Side Quests tab (concept v3, 2026-10-26): every side
 quest Ragnarok itself has on a Renewal server, grouped Region -> Storyline ->
-Quest, with the links between them. No steps yet; step 2 adds the steps, an
-explanation for each and a `/navi map x/y`, region by region.
+Quest, with the links between them. Step 2 adds the steps, an explanation
+for each and a `/navi map x/y`, region by region, in `ro-quest-steps.md`
+(regions 1-6 and the entrances done on 2026-10-26).
 
 Source of truth: rathena-pin, commit 8aea17a (the app 1.7.0 pin). Every file
 named here is loaded on Renewal (`npc/scripts_athena.conf`, which
@@ -89,32 +90,39 @@ Then: later (Episodes 16-19), not covered, excluded files, open questions.
 ### Storyline: Z-Gang and the Unlucky Emerald (continues in Morroc, Comodo)
 - **The Z-Gang** - Prontera's wanted notice: the Z-Gang robbers.
   `quests/quests_nameless.txt` | `zdan_edq` 0->19, quests 3119-3134 | Lv: 71
-  | links: the Unlucky Emerald's treasure step and the Rogue Guild Investigation
-  read `zdan_edq` (to verify what each needs).
+  | opens: the Rogue Guild Investigation (needs `zdan_edq > 10`); the
+  Unlucky Emerald's Man in Hiding only talks differently at `zdan_edq > 12`
+  (not needed).
 - **Rogue Guild Investigation** - a man from Morroc and the Rogue Guild's
   agents look into a rumour.
   `quests/quests_nameless.txt` | `rumour_nd` 0->22 | Lv: none
-  | class-only? The start checks `BaseJob == Job_Rogue` (to verify whether
-  others can do it at all) | needs: something on `zdan_edq` (to verify).
+  | any class (the `Job_Rogue` checks only change lines) | needs: the Z-Gang
+  past step 8 (`zdan_edq > 10`, Rogue Agent line 11540).
 
 ### Single quests
 - **Prontera Culvert** - the Prontera Knights recruit volunteers against the
   culvert's insects. `quests/quests_prontera.txt` | MISC_QUEST bit 8 | Lv: none
   | opens a place: the Culvert (prt_sewb1).
 - **The Spy Quest** - a kid in Prontera; prove or disprove a bard's innocence.
-  `quests/quests_veins.txt` | `que_sch` 0->26 | Lv: none | continues in Veins.
+  `quests/quests_veins.txt` | `que_sch` 0->26 | Lv: none | continues in
+  Morocc, an Arunafeltz prison (ra_in01), Comodo, the Airship and Einbroch
+  (not in Veins itself); the Megaphone costs 500,000 zeny.
 - **Eye of Hellion** - an old scholar's search for the Nile Rose.
-  `quests/eye_of_hellion.txt` | `HELLIONQ` | Lv: 60 (to verify: the line at
-  63 may be a hint, not a refusal).
+  `quests/eye_of_hellion.txt` | `HELLIONQ` 0->36..70 | Lv: 60 (line 63
+  refuses below 60).
 - **The Sign** - three parts through all of Rune-Midgard, ending at the doors
-  of Geffenia. Starts at a Sign in Prontera (`prontera 147,305`; in Renewal a
-  soldier at `prt_cas 87,214`, `re/quests/the_sign_quest.txt`).
-  `quests/the_sign_quest.txt` | `sign_q`, `sign_sq` | Lv: 50
-  | opens a place: Geffenia (que_sign01 / gef_dun04 area, to verify).
+  of Geffenia. Starts at a Sign in any of six towns (Prontera `147,305`,
+  Geffen, Morocc, Payon, Al De Baran, Alberta); `re/quests/the_sign_quest.txt`
+  only moves a part-1 soldier to `prt_cas 87,214`.
+  `quests/the_sign_quest.txt` | `sign_q` 0->142 (fail 200-203), `sign_sq` | Lv: 50
+  | needs: the Umbalian Language (7) for the Umbala step (`event_umbala >= 3`)
+  | opens a place: Geffenia (gefenia01-04): Lucifer's Lament, from the Queen
+  of the Dead after the end, opens a 45-second portal at Geffen's fountain.
 - **The Message Delivery** - Erious in Prontera wants a message brought to his
   late wife in Niflheim. `quests/quests_niflheim.txt` | `nif_revive` 0->8,
   MISC_QUEST 16384, quests 11038-11043 | Lv: 80 (at Feylin, Niflheim)
-  | continues in Umbala and Niflheim.
+  | continues in Umbala and Niflheim | one try: the spell works 13 times in
+  100; a failure ends the quest with the leaves given back.
 - **Help Me Shorty** - a black shadow in Izlude: Shorty, a guide you can call
   up. `re/quests/HelpMeShorty.txt` | quests 14688-14695 | Lv: under 31 only
   (`BaseLevel < 31` to start).
@@ -127,19 +135,21 @@ Labyrinth (Prontera Maze) are Episode 16.2 content (see "Later").
 
 ### Single quests
 - **The Wandering Bard** (Minstrel) - help the bard in Geffen remember his
-  song. `quests/bard_quest.txt` | `gef_bard_q` 0->~21 | Lv: none.
+  song. `quests/bard_quest.txt` | `gef_bard_q` 0->30/31 (starts in Geffen
+  or Morocc) | Lv: none.
 - **Orc's Memory** - the Orc Village's statue shows an orc's memory.
   `instances/OrcsMemory.txt` (a memorial dungeon) | `mad`, `yong_odun` 0->2
-  | Lv: 30-80 at the statue | side 5 (RO part only) | to verify: whether
-  instances belong in this catalog at all (see "not covered").
+  | Lv: 30-80 at the statue, 50 for the Mad Scientist | side 5 (RO part
+  only) | **dead end**: the statue needs a party of 2+ online members, all Lv
+  30-80 (line 43). See guide-deferred.md. Kept here because side 5 uses it.
 
 ## 3. Payon and Archer Village
 
 ### Single quests
 - **The Party Relay** - a relay race around Payon for a whole party.
-  `quests/partyrelay.txt` | `party_relay`, `party_relay_lv` | Lv: none
-  | **dead end**: the party leader must be in a guild and lead more than 5
-  members (line 39). See guide-deferred.md.
+  `quests/partyrelay.txt` | `party_relay`, `party_relay_lv` | Lv: 40
+  | **dead end**: from the first talk (lines 204, 348) the party leader must
+  be in a guild and lead more than 5 members. See guide-deferred.md.
 
 ## 4. Morroc and the Sograt Desert
 
@@ -151,12 +161,15 @@ Story only: Episode 12, Rebirth of Satan Morocc (`rebirth_moc_edq`,
 ### Single quests
 - **The Crow of Fate** - a man in the Morroc ruins and the story of the
   crow of fate, through Prontera and Juno's libraries.
-  `quests/quests_morocc.txt` | `barmunt_crow` 0->19, quests 2063-2068 | Lv: 60.
+  `quests/quests_morocc.txt` | `barmunt_crow` 0->16, quests 2063-2068 | Lv: 60
+  | continues in Prontera, Juno and a cave off the Einbroch field.
 - **The Unlucky Emerald** - a ragged man in Morroc and the origin of the
   Unlucky Emerald. `quests/quests_nameless.txt` | `treasure_nd` 0->12, then
-  `jewel_nd` 0->31 | Lv: 66 for the jewel part (`treasure_nd > 10 &&
-  BaseLevel > 65`) | needs: Broken Diamond for the jewel part (Ibrahim checks
-  `diamond_edq`) - to verify the exact order | reads `zdan_edq` at the treasure.
+  `jewel_nd` 0->31 | Lv: none for the treasure, 66 for the jewel part
+  (`treasure_nd > 10 && BaseLevel > 65`) | needs: Broken Diamond done
+  (`diamond_edq == 26`, Ibrahim) for the jewel part only | **dead end**: the
+  treasure chest opens only for a party of 2+ (line 9909). See
+  guide-deferred.md.
 - **Pyramid nightmare hunts** - a suspicious cat in the Nightmare Pyramid
   hands out Verit and Mummy hunts. `re/quests/quests_morocc.txt` | quests
   2289-2292 | Lv: none | repeatable.
@@ -174,7 +187,10 @@ headgear (excluded).
 
 ### Single quests
 - **The Alberta Boy** - Iromo and his mother; a boy who never goes out.
-  `quests/quests_alberta.txt` | `ep13_2_hiki` 0->~10, quests 10079-10089 | Lv: 41.
+  `quests/quests_alberta.txt` | `ep13_2_hiki` 0->13, quests 10079-10089 | Lv: 41
+  | needs: the Rekenber Job Quest past 21 (`lhz_rekenber > 21`) and the
+  Friendship Quest past 14 (`friendship > 14`), both region 11; two waits
+  of one day.
 
 ## 6. Comodo
 
@@ -185,7 +201,7 @@ headgear (excluded).
 - **Broken Diamond** - Ibrahim in the Morroc ruins and a broken diamond.
   `quests/quests_nameless.txt` | `diamond_edq` 14->26, quests 3110-3118
   | Lv: 66 | needs: Muff's Loan | opens: the Unlucky Emerald's jewel part (4)
-  | a step for Rogues/Thieves differs (`BaseJob == Job_Rogue`, line 6031).
+  | the Rogue Investigator's 10,000-zeny tip is optional (free for Rogues).
 
 ## 7. Umbala
 
@@ -194,7 +210,7 @@ headgear (excluded).
   `quests/quests_umbala.txt` | `event_umbala` 0->3+ | Lv: none
   | closes: Umbala Domestic Dispute | makes unnecessary: the Umbalian
   language quests in custom files are off (`npc/custom/quests/umbalian_language.txt`
-  is commented out), so none.
+  is commented out), so none | opens: The Sign's Umbala step (1).
 - **Umbala Domestic Dispute** - Phrenetan's family quarrel.
   `quests/quests_umbala.txt` | `um_wind` 0->4, MISC_QUEST 32768 | Lv: none
   | closed for good once you learn the language (`event_umbala >= 3`, line ~1005;
@@ -272,7 +288,8 @@ Excluded: Oridecon/Mineral Stone (`ein_gear1`, an exchange), the Typing Test
 ### Storyline: Rekenber and the President (needs Einbroch, Hugel)
 - **The Rekenber Job Quest** - a job at the Rekenber Corporation (employment,
   not a class change). `quests/quests_lighthalzen.txt` | `lhz_rekenber` 0->26,
-  quests 12007-12013 | Lv: none found (to verify).
+  quests 12007-12013 | Lv: none found (to verify) | opens: a step of the
+  Alberta Boy (5) at `lhz_rekenber > 21`.
 - **The President Quest** (Schwarzwald Trilogy) - Ghalstein, the lab, the
   President's mission and the Secret Wing.
   `quests/quests_lighthalzen.txt` | `lhz_boss` 0->47, MISC_QUEST 512, quests
@@ -292,7 +309,8 @@ Excluded: Oridecon/Mineral Stone (`ein_gear1`, an exchange), the Typing Test
   | opens: one of the Wandering Bard's stories (29).
 - **The Friendship Quest** - Digotz and Maku, old friends.
   `quests/quests_lighthalzen.txt` | `friendship` 0->16, quests 12000-12006
-  | Lv: 50 (to verify: refusal text) | opens: Bruspetti (13); gives the Pass
+  | Lv: 50 (to verify: refusal text) | opens: Bruspetti (13); the Alberta
+  Boy's last step (5) at `friendship > 14`; gives the Pass
   (7350, line 3091) the Uptown guards let through (Gangster Alert below).
 - **Gangster Alert** and **the Pickpocket** - not quests: the guards between
   Uptown and the slums let only Pass holders through (the Pass comes from the
@@ -731,10 +749,12 @@ NPCs that only let you into a harder version of a place: no steps, shown as
   c_tower2_ 274,26 and c_tower3_ 59,148). `re/quests/quests_aldebaran.txt`
   | Lv: 150 | 10,000 zeny to the warped tower's 2nd or 3rd floor.
 - **Nightmare Glast Heim** - Hugin's follower (glast_01 195,273; back from
-  gl_chyard_ 148,149). `re/quests/quests_glastheim.txt` | Lv: none found
-  | a zeny fee (`.@zeny`, amount to verify).
-- **Nightmare Pyramid** - the Suspicious Cat (moc_prydb1 103,54) tells of it;
-  the way in to verify. Its hunts are listed in Morroc (4).
+  gl_chyard_ 148,149 and gl_cas02_ 104,36). `re/quests/quests_glastheim.txt`
+  | Lv: none (advice only) | 5,000 zeny to the Monastery Cemetery, 10,000
+  zeny to the 2nd floor Corridor.
+- **Nightmare Pyramid** - the Suspicious Cat (moc_prydb1 103,54) leads you in
+  for 5,000 zeny (to moc_prydn1). `re/quests/quests_morocc.txt` | Lv: none.
+  Its hunts are listed in Morroc (4).
 - Candidates to check in step 2: Eclage's Teleport Cats (27) and the Cat Paw
   teleports of the New World (25) may fit here better.
 
@@ -838,7 +858,8 @@ Crafting, headgear, item exchange: `quests/newgears/*`, `re/quests/newgears/*`,
 `quests/lvl4_weapon_quest.txt`, `quests/doomed_swords.txt`,
 `quests/doomed_swords_quest.txt` (with the Doomed Swords parts of
 `quests/quests_comodo.txt` and `quests/quests_yuno.txt`), `quests/quests_geffen.txt`,
-`quests/quests_payon.txt`, `re/quests/quest_payon.txt`, `quests/quests_lutie.txt`,
+`quests/quests_payon.txt`, `re/quests/quest_payon.txt`, `quests/quests_lutie.txt`, Elin's Doll Quest in
+`quests/quests_alberta.txt` (dolls for food and potions),
 `quests/quests_aldebaran.txt`, the headgear parts of `quests/quests_alberta.txt`
 and `quests/quests_comodo.txt`, `re/quests/pile_bunker.txt`, the Oridecon/Mineral
 quest of `quests/quests_ein.txt`, Moscovia's Shafka Hat and acorns, the
