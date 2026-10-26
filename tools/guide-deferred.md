@@ -11,12 +11,19 @@ why, and what could open it.
 | Juperos Ruins History (`yuno_hist`, quests/quests_juperos.txt) | 7 Juno | Needs one each of the four Transparent Plates (7352-7355), 0.25% from one Dimik kind each: about 1,600 kills. One of the Wandering Bard's stories. | Drop-rate setting, or a mod with better plate rates. |
 | Lovers Quest (`EIN_LOVERQ`, quests/quests_ein.txt) | 6 Einbech | 40 Coal (best source Obsidian 2.5%), a Tuxedo, and `nude` at the end takes off all your equipment. | Coal source to find (kRO shops?); warn about `nude`. |
 | Murder Quest (`Shinokas_Quest`, quests/quests_ein.txt) | 6 Einbech | Needs the Factory Quest past step 12 first (guided), then 100+ Apples per try at the drunk on the airship; a failed try (7 in 10) takes all of them. | Guide it after the Factory Quest, with the apple warning. |
-| Biological Weapon (`hg_bio`, quests/quests_hugel.txt) | 11 Hugel | Needs the Juno Remedy Quest (`hg_herb` 13: a 4-second drawer timing puzzle) and 5 Coal, 3 Detrimindexta, herbs, Brigan, Cyfar, 20 Shells. One of the Bard's stories. | Guide Remedy + Weapon together once Coal has a source. |
+| Biological Weapon (`hg_bio`, quests/quests_hugel.txt) | 11 Hugel | Needs the Hugel Medicine Quest (`hg_herb` 13, Allen Schuwell; it holds the 4-second medicine-drawer timing puzzle. Not the Juno Remedy Quest, which is `hg_ma1`) and 5 Coal, 3 Detrimindexta, herbs, Brigan, Cyfar, 20 Shells. One of the Bard's stories. | Guide Medicine + Weapon together once Coal has a source. |
 | Helping Lope and Euridi (`ep14_1_rope`, re/quests/quests_mora.txt) | 12 Mora | 30 Lope's Clues drop only from Parus, which lives only in the Hazy Forest instance. | Guide it with the Hazy Forest instance. |
 | Find the Research Tools (`ep14_1_muk`, re/quests/quests_mora.txt) | 12 Mora | Several waits of hours of play time, samples to gather, and the researcher is away from 0:00 to 5:00 server time. | Doable, just long: a guide with the waits named. |
 | Theore's Request (`ep14_1_bs`, re/quests/quests_mora.txt) | 12 Mora | A random fairy appears from a bush and you must later describe her (hair, skin, clothes, wings) correctly. | Guide with "note what she looks like"; check the matching table in the script. |
 | Chesire's New Day (`ep14_1_cheshir2`, re/quests/quests_mora.txt) | 12 Mora | Needs `ep13_3_secret` > 22, the long Episode 13.3 El Dicastes story. | Guide Ep 13.3 first. |
 | Veins Siblings (`rachel_camel`, quests/quests_veins.txt) | 10 Rachel | Needs `MISC_QUEST & 8192`, the end of the Rachel Sanctuary Quest. | Now possible with solo-community-goals (Sanctuary guide `ra_sanctuary`); write its guide next. |
 | Rachel Sanctuary Quest (`ra_tem_q`) | 10 Rachel | The temple wants 10,000 donations from the whole server (500 million zeny). | Guided as `ra_sanctuary`, shown when solo-community-goals is on. |
+| Nameless Island (`aru_monas`, quests/quests_nameless.txt) and what follows: Thor Volcano Base (`aru_vol`, quests/quests_veins.txt), Peace to Arunafeltz and Rachel Addition (`aru_em`) | - (catalog region 13) | Step 14 of the Nameless Island waits for the Veins Siblings done (`rachel_camel == 25`, the Drunkard in ve_in), and Siblings needs the Sanctuary. The Thor Volcano Base starts at High Priest Zhed only after the Sanctuary (MISC_QUEST 8192) and Nameless Island step 11; Peace to Arunafeltz needs the Thor Volcano Base done (`aru_vol == 27`). | Opens with solo-community-goals, like Siblings: guide them after `ra_sanctuary`. |
+| Party Relay (`party_relay`, quests/partyrelay.txt) | - (catalog region 3) | The start (line 39) wants the party leader, in a guild, with more than 5 party members. | To check: whether the app's Companions count as party members; otherwise leave out. |
+| Guild Relay (`guildrelay_q`, quests/guildrelay.txt) | - (excluded) | A guild quest in the castles: needs a guild and its leader. | Leave out. |
 
 Mora (Chapter 12) has no guide yet: all four of its quests are above.
+
+The last three rows were added on 2026-10-26 with `ro-quest-catalog.md`,
+the list of every RO side quest on Renewal; the catalog marks each dead end
+"dead end, see guide-deferred.md".
