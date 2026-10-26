@@ -2,8 +2,9 @@
 
 Step 2 of the Renewal Side Quests tab: the steps of every quest in
 `ro-quest-catalog.md`, same regions, same numbers, same order. Batch 1
-(2026-10-26): regions 1-6 and "Entrances without a quest". Regions 7-31
-follow in later batches.
+(2026-10-26): regions 1-6 and "Entrances without a quest". Batch 2
+(2026-10-26): regions 7-13, the Party Relay and the Unlucky Emerald's jewel
+part. Regions 14-31 follow in later batches.
 
 Source of truth: rathena-pin, commit 8aea17a (the app 1.7.0 pin). Every
 coordinate, item, count, level and variable value below was read in the
@@ -794,11 +795,95 @@ memory from Wendel's notes for those over Lv 80.
 ## 3. Payon and Archer Village
 
 ### The Party Relay
-`quests/partyrelay.txt` | `party_relay`, `party_relay_lv` | Lv 40
-(`BaseLevel > 39`) | **Players: 6**: Ledrion in Payon (`/navi payon
-103/113`) starts it only for a party leader who leads 6+ members and is in a
-guild (lines 204 and 348); every later check (lines 39, 114, 163) asks the
-same. Steps: next batch.
+`quests/partyrelay.txt` | `party_relay` 0->32 (each runner's own value),
+`party_relay_lv`, Mission Tickets 1-12 (7730-7741) | Lv 40 (`BaseLevel >
+39`) | **Players: 6** in the party, and up to **14** around Lospii at the
+end. Ledrion only talks to a party leader who leads 6+ members and is in a
+guild (`getcharid(2) > 0`, lines 39, 114, 163, 204, 348). The six runners
+must be a Swordman, Mage, Acolyte, Archer, Thief and Merchant (any later
+class of them counts, `BaseClass`). Repeatable (it starts over at 0).
+
+The four NPCs stand in Payon, and the same four in Comodo, Einbroch, Hugel,
+Rachel and Veins (lines 3094-3121); any town's set works. Payon: Ledrion
+`payon 103/113`, Gatan `payon 83/327`, Bafhail `payon 204/221`, Lospii
+`payon 168/314`. Each one only works at certain hours of the **server
+clock** (`gettime(DT_HOUR)`; the NPCs say "Pacific Standard Time"). A
+runner holding another runner's ticket is turned away, so pass each ticket
+on at once. Every runner first needs room for more items.
+
+1. **Ledrion** - the party leader: "Sure!" (1), then talk again: he gives
+   Mission Ticket 1 for the Swordman (2).
+   Why: a rich philanthropist bet that adventurers can still work together.
+   `/navi payon 103/113` | done when: leader `party_relay >= 2`
+2. **Gatan: the Swordman** - the Swordman brings Ticket 1 to Gatan at
+   11:00-14:00 or 0:00-3:00. He asks for Base Levels: Lv 40-59 three more
+   (4), Lv 60-79 two (3), Lv 80-94 one (99), Lv 95+ none (5). Gain them and
+   come back in the same hours (5), then talk again: Ticket 2 and 2
+   Yggdrasil Berry (6).
+   Why: Gatan, Ledrion's lazy friend, tests whether you keep growing.
+   `/navi payon 83/327` | done when: Swordman `party_relay >= 6`
+3. **Bafhail: the Thief** - the Thief brings Ticket 2 to Bafhail. At
+   21:00-24:00 he asks for 10 Fish Tail, 10 Porcupine Quill, 10 Elder
+   Pixie's Moustache (7); at 8:00-11:00 for 10 Wooden Heart, 10 Wolf Claw,
+   10 Shoulder Protector (8). Bring them at 8:00-11:00 or 21:00-24:00
+   (taken): Ticket 3 and 2 Yggdrasil Berry (9).
+   Why: his trial is to gather items and bring them on time.
+   `/navi payon 204/221` | done when: Thief `party_relay >= 9`
+   Fails: script bug at 8: he checks for 10 Piano Key but takes 10 Wooden
+   Heart (line 2224), so the morning list needs 10 Piano Key too (kept).
+   Hand Ticket 2 over at 21:00-24:00 to get the other list.
+4. **Lospii: the Archer** - the Archer brings Ticket 3 at 14:00-17:00 or
+   18:00-21:00 (10). Then come back in the same hours with 10 players
+   standing within 8 cells of Lospii (`getareausers`, line 2469): Ticket 4
+   and 2 Yggdrasil Berry (11).
+   Why: the child Lospii wants to see how many friends you have.
+   `/navi payon 168/314` | done when: Archer `party_relay >= 11`
+5. **Ledrion again** - the leader brings Ticket 4: 3 Gift Box, 1 Old Blue
+   Box and Ticket 5 for the Mage (12).
+   `/navi payon 103/113` | done when: leader `party_relay >= 12`
+6. **Gatan: the Mage** - the Mage brings Ticket 5 at 8:00-11:00 or
+   21:00-24:00; levels as in step 2 (15 = three, 14 = two, 13 = one, 16 =
+   none). Come back after 8:00 (at 15 only 8:00-11:00: its evening check
+   can never be true, line 909) (16), then talk again: Ticket 6 and 2
+   Yggdrasil Leaf (17).
+   `/navi payon 83/327` | done when: Mage `party_relay >= 17`
+7. **Bafhail: the Acolyte** - the Acolyte brings Ticket 6. At 14:00-17:00
+   he asks for 10 Dark Mask, 10 Dokebi Horn, 10 Peco Peco Feather (18); at
+   18:00-21:00 for 10 Tongue, 10 Leopard Claw, 10 Poisonous Toad Skin (19).
+   Bring them between 14:00 and 21:00 (taken): Ticket 7 and 2 Yggdrasil
+   Leaf (20).
+   `/navi payon 204/221` | done when: Acolyte `party_relay >= 20`
+8. **Lospii: the Merchant** - the Merchant brings Ticket 7 at 11:00-14:00
+   or 0:00-3:00 (21), then comes back in the same hours with 12 players
+   within 8 cells: Ticket 8 and 2 Yggdrasil Leaf (22).
+   `/navi payon 168/314` | done when: Merchant `party_relay >= 22`
+9. **Ledrion again** - the leader brings Ticket 8: 3 Old Blue Box, 1 Old
+   Violet Box and Ticket 9 for a Swordman or Mage (23).
+   `/navi payon 103/113` | done when: leader `party_relay >= 23`
+10. **Gatan: Swordman or Mage** - Ticket 9 at any hour; levels: Lv 40-59
+    three (26), 60-79 two (25), 80-94 one (24), 95+ none (27). Come back
+    at 14:00-17:00 or 18:00-21:00 (27), then talk again: Ticket 10, 2
+    Yggdrasil Leaf, 2 Yggdrasil Berry (28).
+    `/navi payon 83/327` | done when: runner `party_relay >= 28`
+11. **Bafhail: Thief or Acolyte** - Ticket 10 at 11:00-14:00 or 0:00-3:00
+    (29); bring 20 Frill, 20 Horrendous Hair, 20 Anolian Skin in the same
+    hours (taken): Ticket 11, 2 Yggdrasil Leaf, 2 Yggdrasil Berry (30).
+    `/navi payon 204/221` | done when: runner `party_relay >= 30`
+12. **Lospii: Archer or Merchant** - Ticket 11 at 21:00-24:00 (at
+    8:00-11:00 only a first-job Archer or Merchant, `BaseJob`, line 2563)
+    (31); come back at 8:00-11:00 or 21:00-24:00 with 14 players within 8
+    cells: Ticket 12, 2 Yggdrasil Leaf, 2 Yggdrasil Berry (32).
+    `/navi payon 168/314` | done when: runner `party_relay >= 32`
+13. **The prize** - the leader brings Ticket 12 to Ledrion (taken; the
+    leader's `party_relay` goes back to 0).
+    `/navi payon 103/113` | done when: Ticket 12 handed in
+    Reward: 6 Gift Box, 3 Old Blue Box, and one of Sabbath, Slaughter or
+    Quadrille (1 in 7 each), otherwise 3 Old Violet Box. Every ticket
+    handed out also gives the runner base EXP: 1,080 (Lv 40-49), 2,880
+    (50-59), 6,720 (60-69), 19,560 (70-79), 38,520 (80-89), 85,920 (90-94),
+    104,760 (95+) (`F_PartyRelay_Exp`, Renewal values marked "unconfirmed").
+    To verify: whether bots count for `getareausers` (it counts characters
+    on the map, not party members).
 
 ## 4. Morroc and the Sograt Desert
 
@@ -893,12 +978,75 @@ members count).
    You would get: Unlucky Emerald, Dead Branch, Two-Handed Sword, and a curse.
    `/navi moc_fild18 108/116` | done when: `treasure_nd` 11 or 12
 
-Not written out yet (next batch): the jewel part (`jewel_nd`) starts at
-Ibrahim (Broken Diamond done, `treasure_nd > 10`, Lv 66) and runs through
-jewellers in Alberta, Payon and Geffen, a scholar in Comodo, a shaman in
-Alberta (200,000 and 100,000 zeny), an archeologist in Juno, a wanderer's
-ghost in a Geffen field and an old soldier in Prontera; reward Old Blue Box
-plus EXP or items by level.
+The jewel part (`jewel_nd` 0->31) needs the Unlucky Emerald in your bag at
+the steps that say so; the Old Soldier takes it at the end.
+
+8. **Ibrahim and the emerald** - after Broken Diamond (`diamond_edq` 26),
+   at Lv 66 with the emerald: "Sure, why not?", then "I'm going to sell it."
+   (1) or "I'm going to study it." (10).
+   Why: Ibrahim, owner of another Cursed Jewel, wants to see yours.
+   `/navi moc_ruins 152/147` | done when: `jewel_nd` 1 or 10
+9. **No buyer (only after "sell")** - at Jhonnita, Kimeunbang or Leblo:
+   "I have a rare emerald to sell..." (2); nobody dares buy it. Back to
+   Ibrahim: "Everyone seems scared!" (9).
+   Why: the jewellers fear the curse.
+   `/navi alberta 102/80` (or `payon 69/65`, `geffen 128/153`), then
+   `/navi moc_ruins 152/147` | done when: `jewel_nd` 9 or 10
+10. **The antique appraiser** - the Scholar in Comodo: at 10 "Ask About
+    Cursed Jewel", "No, it's the Unlucky Emerald." (11); at 9 just talk
+    (11). Talk again for the jewel's story (12).
+    Why: everyone who owned the emerald was ruined or died; a shaman may
+    talk to their spirits.
+    `/navi comodo 139/184` | done when: `jewel_nd >= 12`
+11. **The shaman** - in Alberta: "Actually, I have a Cursed Jewel." (with
+    the emerald, 13), then pay 200,000 zeny (14); talk again: he wants
+    100,000 more (15); pay it (16).
+    Why: he says the ritual against the curse is costly and risky.
+    `/navi alberta_in 70/109` | done when: `jewel_nd >= 16`
+12. **The ritual** - talk again: he lists the offerings (17). Bring 1 Holy
+    Water, 1 Red Blood, 1 Witherless Rose, 1 Crystal Blue, 1 Wind of Verdure
+    (taken, 18).
+    Why: in the trance he sees a blood-covered warrior with a sword.
+    `/navi alberta_in 70/109` | done when: `jewel_nd >= 18`
+13. **The archeologist** - in Juno, with the emerald: "Ask About the
+    Jewel's Curse" (19).
+    Why: he says there is no curse; only the Comodo gambler died.
+    `/navi yuno_in04 38/48` | done when: `jewel_nd >= 19`
+14. **The shaman's pride** - back to the shaman: "The archaeologist
+    said..." (20), then talk again with the emerald (21).
+    Why: to prove himself he reads the jewel: something west of Geffen
+    will react to it.
+    `/navi alberta_in 70/109` | done when: `jewel_nd >= 21`
+15. **The wanderer's ghost** - leave Geffen by the west gate, cross the
+    bridge to the high ground and step on the spot with the emerald: the
+    Wanderer appears. Talk to him (22), then again (23).
+    Why: the ghost of a warrior who says Cobolds killed his comrades.
+    `/navi gef_fild08 182/182` (spot; ghost at `182/185`) | done when:
+    `jewel_nd >= 23`
+    Note: he vanishes after 60 seconds; step on the spot again to call him.
+16. **The records** - the archeologist (24), then again (25).
+    Why: a witness wrote that one warrior survived, covered in blood; the
+    witness is a retired soldier in Prontera.
+    `/navi yuno_in04 38/48` | done when: `jewel_nd >= 25`
+17. **The Old Soldier** - in Prontera: "Ask About Fallen Warrior" (26).
+    Why: he was there when the warrior was found alive among the dead.
+    `/navi prontera 140/304` | done when: `jewel_nd >= 26`
+18. **The truth** - call the Wanderer again (`/navi gef_fild08 182/182`):
+    "You weren't killed by Cobolds, were you?" (27), "Do you remember your
+    last moment?" (28; "You killed your comrades!" only loops), "How did
+    your comrades die?", "You slashed everything..." (29).
+    Why: he went berserk and cut down everything, friends included.
+    `/navi gef_fild08 182/185` | done when: `jewel_nd >= 29`
+19. **The end of the curse** - the Old Soldier: "I met the warrior's
+    spirit.", "Do you believe the jewel is really cursed?" (30); with the
+    emerald he takes it (31). ("I feel so sorry for him." just ends the
+    talk.)
+    `/navi prontera 140/304` | done when: `jewel_nd >= 31`
+    Reward: 1 Old Blue Box and base EXP by level: 5,000 (Lv 66-74), 18,000
+    (75-80), 36,000 (81-85), 50,000 (86-90), 80,000 (91-95), 100,000
+    (96+); below Lv 66 a Yggdrasil Berry. Bringing the emerald later (at
+    30) gives the smaller table: 5,000 / 8,000 / 15,000 / 20,000 / 40,000 /
+    50,000.
 
 ### Nightmare Pyramid hunts
 `re/quests/quests_morocc.txt` | quests 2289 "Verit Hunting (Nightmare)",
@@ -1077,6 +1225,1388 @@ Diamond" | Lv 66 (Ibrahim: `BaseLevel > 65`) | needs: Muff's Loan.
    `/navi moc_ruins 152/147` | done when: `diamond_edq >= 26`
    Reward: 2 3carat Diamond, 1 Old Blue Box.
    Opens: the Unlucky Emerald's jewel part (region 4).
+
+## 7. Umbala
+
+### The Umbalian Language
+`quests/quests_umbala.txt` | `event_umbala` 0->3 | Lv none.
+
+1. **The Utan chief** - talk to Karkatan, chief of the Utan tribe, in the
+   great tree (1).
+   Why: he learned your language from an adventurer long ago, but only
+   teaches his own to those who respect Utan ways.
+   `/navi um_in 39/122` | done when: `event_umbala >= 1`
+2. **A mask** - wear a mask and choose "I want to learn Utan language."
+   (2). Any one of: Mr. Smile, Goblin Mask, Mr. Scream, Welding Mask, Gas
+   Mask, Opera Masque, Opera Phantom Mask (`isequipped`, line 137).
+   Why: Utans hide their faces so that looks never decide how others are
+   treated.
+   `/navi um_in 39/122` | done when: `event_umbala >= 2`
+   Fails: without a mask he sends you to look around the village; nothing
+   is lost.
+3. **The lesson** - bring 10 Oil Paper, 5 Slick Paper, 1 Squid Ink, 1
+   Feather of Birds (taken) (3).
+   Why: paper and ink to write the lessons down.
+   `/navi um_in 39/122` | done when: `event_umbala >= 3`
+   Opens: you understand the Utans; The Sign's Umbala step (region 1).
+   Closes: Umbala Domestic Dispute (it is played in the Utan tongue).
+
+The Utan Shaman (`/navi um_in 44/71`) then asks for the chief's leave
+(4); the chief wants 1 Mr. Smile (5, taken at 6); the shaman agrees (7).
+That only unlocks her Create Essence / Dismantle Stone service (excluded as
+crafting) and opens the skull door in Umbala (`/navi umbala 221/193`) into
+her room without the gemstone test (`event_umbala >= 7`, line 827).
+
+### Umbala Domestic Dispute
+`quests/quests_umbala.txt` | `um_wind` 0->5, then 0 and MISC_QUEST bit 32768
+| Lv none. Only before the Umbalian Language (`event_umbala` below 3) and
+not as a Novice (`BaseJob == Job_Novice && Upper != 2`, line 998). You
+will not understand a word: the women only answer after 19:00 server time
+(`gettime(DT_HOUR) > 18`).
+
+1. **Phrenetan** - talk to the angry woman in the house (1).
+   Why: her husband Umpokoriohtan chases every girl in the village.
+   `/navi um_in 139/48` | done when: `um_wind >= 1`
+2. **Wainatan** - after 19:00, talk to her (2).
+   `/navi um_in 101/73` | done when: `um_wind >= 2`
+3. **Bertztan** - after 19:00 (3).
+   `/navi um_in 94/123` | done when: `um_wind >= 3`
+4. **Chabimatan** - after 19:00, outside (4): Umpokoriohtan appears in his
+   house.
+   `/navi umbala 145/217` | done when: `um_wind >= 4`
+5. **Caught** - walk into Phrenetan's house: she beats her husband and
+   throws you out (5).
+   `/navi um_in 141/46` | done when: `um_wind >= 5`
+6. **A leaf** - where you land, step on the spot: "Take it." (a Yggdrasil
+   Leaf) or "Leave it." Both end the quest (MISC_QUEST 32768).
+   `/navi umbala 94/181` | done when: `MISC_QUEST & 32768`
+   Reward: 1 Yggdrasil Leaf (if taken).
+## 8. Niflheim
+
+### The Piano Key Quest
+`quests/quests_niflheim.txt` (the last piano spot in
+`re/quests/quests_niflheim.txt`) | `nif_esc` 0->12, MISC_QUEST bit 32 | Lv
+none. Six Piano Keys (7184) open a way out of Niflheim. Alreg picks one of
+two orders at random (`nif_esc` 1 or 2); the steps say which way.
+
+1. **Alreg** - touch the hungry giant in Niflheim: he takes a bite (60% of
+   your HP) and gives a Piano Key (1 or 2).
+   Why: he has not tasted a living one for a long time; the key is his
+   thanks.
+   `/navi niflheim 224/243` | done when: `nif_esc` 1 or 2
+   Note: later talks only cost 30% HP.
+2. **Crayu, the bard** - listen to her song and type the line she asks
+   for, exactly: 1 `Mountain sunset to the west`, 2 `Where the purple dusk
+   falls`, 3 `Surrounded by beautiful melody`, 4 `You become the key that
+   ignores its master`. Gives a key.
+   Why: the song hides the secret of the piano.
+   `/navi nif_in 105/81` | done when: `nif_esc` 3 (order 1) or 6 (order 2,
+   after step 3)
+   Fails: a wrong line costs nothing; talk again (the line is random).
+3. **Kuzkahina's shop** - the dead shopkeeper hands you "junk" to throw
+   away: a key.
+   Why: even dead he cannot make his store pay.
+   `/navi nif_in 31/20` | done when: `nif_esc` 5 (order 1) or 4 (order 2,
+   then go to Crayu)
+4. **The graves** - step on the two spots in the graveyard and choose
+   "Yes" each time: order 1 the first grave twice (7, 9), then the second
+   (11); order 2 the second grave (8), then the first twice (10, 11).
+   `/navi niflheim 208/103` (first), `/navi niflheim 169/71` (second) | done
+   when: `nif_esc >= 11` (6 keys)
+5. **The piano** - in the house, step by the piano: the 6 keys go in (12).
+   `/navi nif_in 115/181` | done when: `nif_esc >= 12`
+6. **The last key** - step on the spot at the left end of the keyboard:
+   you become the last key and float away (MISC_QUEST 32), into the
+   Witch's room; she sends you to Umbala.
+   `/navi nif_in 118/151` (Witch: `nif_in 188/168`) | done when:
+   `MISC_QUEST & 32`
+   Opens a place: a way out of Niflheim. Once done, the same spot takes you
+   to the Witch at any time, and she warps you to `umbala 138/208`.
+
+The Message Delivery (`nif_revive`, the same file) starts in Prontera
+(region 1).
+## 9. Juno, Juperos and the Kiel Hyre area
+
+### The Kiel Hyre Quest
+`quests/kiel_hyre_quest.txt` | `KielHyreQuest` 0->109 (side values
+`KHToastGirlEnd`, `KHCottagePoem1/2`) | Lv none. Many typed answers: type
+them exactly as shown.
+
+Part 1: the delivery and Elly's cookies
+
+1. **The pub master** - walk up to the Pub Master in Juno (1), then talk:
+   "You look worried, what's up?", "Do you want me to help you?", "Sure
+   I'll do it" (2, a bottle of Culinary Wine).
+   Why: his delivery man was hurt; the wine must reach Mrs. Lecollane at
+   the Kiel Hyre Academy.
+   `/navi yuno_in01 35/179` | done when: `KielHyreQuest >= 2`
+2. **The academy gate** - the Security Guard: "I'm here for a delivery.",
+   type `Lecollane`, then `Culinary Wine`: he lets you in.
+   `/navi yuno_fild08 158/194` | done when: inside `kh_school`
+   Note: from now until Elly's note (step 16) the guard lets you in.
+3. **Mrs. Lecollane** - "Yes, that's right!" (4; the wine is taken).
+   Why: a crash next door: her student Elly broke something again.
+   `/navi kh_school 176/60` | done when: `KielHyreQuest >= 4`
+4. **Elly** - the Cute Student: "What happened?", "What can I do to help
+   you?", "Accept" (6).
+   Why: she spilled her cookie ingredients and fails the semester if the
+   cookies are not baked today.
+   `/navi kh_school 179/39` | done when: `KielHyreQuest >= 6`
+5. **The ingredients** - gather 7 Milk, 2 Cheese, 5 Cacao (Yoyo drop), 1
+   Culinary Wine (the Pub Master: "I need more wine...", plus 1,000 zeny
+   pay) and 1 Delivery Package: the Little Kid's toast stand in Juno, "I'm
+   here for Elly" (`/navi yuno 217/114`), the Windmill Owner in
+   Lighthalzen, "I'm here for Cezu" (`/navi lighthalzen 366/299`), then
+   back to the kid. Bring all to Elly (taken, 8).
+   `/navi kh_school 179/39` | done when: `KielHyreQuest >= 8`
+6. **Cookies for grandfather** - talk to Elly again (10, 5 Well-baked
+   Cookie), then "What do you need?", "Sure" (12).
+   Why: she wants her grandfather, Kiel Hyre, to taste her first unburnt
+   cookies.
+   `/navi kh_school 179/39` | done when: `KielHyreQuest >= 12`
+
+Part 2: Kiel Hyre's cottage
+
+7. **The cottage keeper** - north of the academy: "I have an appointment
+   with Kiel Hyre.", "Yes" (14): Kiel Hyre is not home.
+   `/navi yuno_fild02 93/210` | done when: `KielHyreQuest >= 14`
+8. **The spare key** - back to Elly (16, a Cottage Key).
+   `/navi kh_school 179/39` | done when: `KielHyreQuest >= 16`
+9. **The letter** - at the cottage, the left door: "Unlock" (18); inside,
+   step on the letter on the floor (20).
+   `/navi yuno_fild02 75/218`, then `/navi kh_vila 179/11` | done when:
+   `KielHyreQuest >= 20`
+10. **Bad news** - give the letter to Elly (22). Then ask "What's with
+    this academy?", "Strange incidents?" (24): a ghost curses students; if
+    it ever gets her, shout "Wake up, Elly!". Talk once more (26).
+    Why: the letter is ten days old: Kiel Hyre went to meet his son Kiehl.
+    `/navi kh_school 179/39` | done when: `KielHyreQuest >= 26`
+11. **The secret path** - in the cottage study, click the bookshelf books
+    until a wall opens (1 try in 10, 28); walk through the wall.
+    `/navi kh_vila 184/20` (also `181/20`, `178/20`, `175/19`; wall `kh_vila
+    191/14`) | done when: `KielHyreQuest >= 28`
+12. **The first poem** - in the hidden part: the Map, "Examine" (poem 1);
+    the Pot, "Try it."; the Map again; the Pool: "Pull Handles", "Left
+    Handle", "Investigate", "Press button".
+    `/navi kh_vila 44/126`, `33/184`, `44/126`, `39/41` | done when:
+    `KHCottagePoem1 >= 4`
+13. **The second poem** - the Desk (poem 2); the Medicine Chest: "Of
+    course! Let's try it!", "Try Blue Liquid".
+    `/navi kh_vila 118/144`, `kh_vila 123/170` | done when: `KHCottagePoem2 >= 2`
+    Note: if the Vicious Dog blocks you (`kh_vila 181/178`), buy Pet Food
+    at the vending box (`/navi kh_vila 16/175`, 1,100 zeny), then "March
+    forward", "Give Pet Food".
+14. **The swords** - the Sword Hilt: "Of course!", "Insert Ornamental
+    Swords", then "Second Snake", "Fourth Snake", "First Snake", "Third
+    Snake": you drop into the lab. At the Test Tube: "Press Button" and
+    type `little lost devil` (30).
+    `/navi kh_vila 136/68`, then `/navi kh_vila 185/68` | done when:
+    `KielHyreQuest >= 30`
+    Fails: a wrong snake order or answer only sends you back; try again.
+15. **Three keys** - still in the cottage: the Calabash, "Look Inside
+    Calabash" (Old Bronze Key); the Box, "Use Old Bronze Key" (Green
+    Keycard); the Bookshelf: "Examine Book", "Examine the steel surface",
+    "Try all your keys", first "Cottage Key", then "Green Keycard" (Iron
+    Box; both keys taken); the Drawer, "Open Drawer" (Yellow Keycard).
+    `/navi kh_vila 14/55`, `107/126`, `181/138`, `115/186` | done when: you
+    hold the Iron Box and the Yellow Keycard
+
+Part 3: Elly's curse and the Robot Factory
+
+16. **Elly's window** - at night she asked you to her dorm: below her
+    window, "Climb Water Pipe" (1 try in 3; a fall costs 10% HP). In her
+    room, the Cookie Basket: "Read Note" (32).
+    `/navi yuno_fild08 69/185`, then `/navi kh_school 175/176` | done when:
+    `KielHyreQuest >= 32`
+17. **Wake up, Elly!** - Elly stands frozen: "Wake her up by yelling." and
+    type `Wake up, Elly!` (34: Golden Key and Kiel Button). Talk again
+    with the Iron Box: the Golden Key opens it (36: Blue Keycard and a
+    note).
+    `/navi kh_school 178/180` | done when: `KielHyreQuest >= 36`
+    Note: leave by the window (`/navi kh_school 188/185`).
+18. **The grave** - the grave behind the academy: type `Yellow Keycard`,
+    then the password `4772961` (38). Then "Enter": the Robot Factory.
+    `/navi yuno_fild08 71/170` | done when: `KielHyreQuest >= 38`
+    Opens a place: the Robot Factory floor 1 (`kh_dun01`).
+19. **Allysia** - in the factory, the Heavy Door: "Open Door", type `Blue
+    Keycard` (to a room under the academy). The Beautiful Lady: choose
+    "Golden Key" (the "Carved Button" calls 4 Bombs). In her room,
+    Allysia: "What happened to Kiel Hyre?" (40, a Red Keycard); talk again
+    to go down into the factory.
+    `/navi kh_dun01 235/48`, `/navi kh_school 119/149`, `/navi kh_school
+    122/186` | done when: `KielHyreQuest >= 40`
+20. **Kiel Hyre's voice** - at the Mechanical Device type `Red Keycard`;
+    walk to the door of Factory area B: Kiel Hyre, locked in, slides you a
+    metal fragment (42).
+    `/navi kh_dun01 166/223`, then `/navi kh_dun01 224/233` | done when:
+    `KielHyreQuest >= 42`
+21. **His orders** - back to Allysia (through the Heavy Door): she takes
+    the fragment (44); talk again: she takes all three keycards and sends
+    you to the mansion in Lighthalzen (46).
+    `/navi kh_school 122/186` | done when: `KielHyreQuest >= 46`
+
+Part 4: the mansion and Agent Mitchell
+
+22. **Kiel Hyre** - the mansion in Lighthalzen (`/navi lighthalzen
+    188/204`): the Steward, "Present Golden Key". Ask Kiel Hyre all three:
+    "Robots?", "Kiehl?", "Elly's button?" (48; Golden Key and button
+    taken), then talk again (50).
+    `/navi kh_mansion 78/55`, then `/navi kh_mansion 22/28` | done when:
+    `KielHyreQuest >= 50`
+    Reward: 70,000 base EXP, 1 Taming Gift Set.
+23. **Kidnapped** - step out of the mansion: you are knocked out (99% of
+    your HP) and wake before a Mysterious Woman: "I'll tell you
+    everything!", "Okay" (52); talk again (54), "Yes": to Juno.
+    Why: she is Agent Mitchell of the Schwarzwald government, watching Kiel
+    Hyre and Rekenber; she wants to know about an Allysia who died 30
+    years ago.
+    `/navi lighthalzen 188/200` (`kh_mansion 25/79`) | done when:
+    `KielHyreQuest >= 54`
+24. **The odd grandma** - in Juno: "What are you doing?" (56).
+    `/navi yuno 257/140` | done when: `KielHyreQuest >= 56`
+25. **The old lady** - "Do you know that grandma?", "Was Allysia...?",
+    "Wait, who's James Rosimier?", "May I borrow the Master Key?" (58,
+    Rosimier Key).
+    `/navi yuno 250/132` | done when: `KielHyreQuest >= 58`
+26. **The Rosimier mansion** - walk into its door with the key; take: the
+    Table (Family Portrait); the Shelf, "Use Key", "First Box" (Elysia
+    Portrait); the Desk, "Second Drawer" (a letter of Kiel Hyre); the
+    Bookshelf (James's memo).
+    `/navi yuno 273/141`, then `/navi kh_rossi 23/23`, `92/40`, `144/286`,
+    `148/288` | done when: you hold all four
+    Fails: "Check Bedsheets" at the Bed costs 10% HP.
+27. **Allysia's past** - the old lady: "Why did Allysia...?" (60; key
+    taken).
+    `/navi yuno 250/132` | done when: `KielHyreQuest >= 60`
+28. **The old fisherman** - bring 10 Raw Fish (taken): "30 years ago, a
+    woman killed herself...", "Do you remember his name?" (62).
+    `/navi yuno_fild12 232/222` | done when: `KielHyreQuest >= 62`
+29. **The wooden board** - a man's portrait under a board (64).
+    `/navi yuno_fild09 158/217` | done when: `KielHyreQuest >= 64`
+30. **Report to Mitchell** - the mansion Steward: "Mitchell"; the
+    Mysterious Woman gives you a hidden mic (68).
+    `/navi kh_mansion 78/55` | done when: `KielHyreQuest >= 68`
+31. **Face Kiel Hyre** - the Steward: "Kiel Hyre"; then "About
+    Allysia...", "Reveal Kiel's Portrait from Hut", "Reveal Portrait of
+    Rosimiers", "Show James's Note", "Show K.H.'s note" (70; all five
+    taken). Talk again: "Accept" (or "Okay", "Nod"), "Allysia's Ring?"
+    (74, a Toy Motor).
+    `/navi kh_mansion 22/28` | done when: `KielHyreQuest >= 74`
+
+Part 5: Kiehl
+
+32. **Kiehl's lair** - Kiel Hyre: "Yes": a warp opens beside him into
+    Kiehl's cave. The Receiver (76) calls an Alicel and an Aliot: kill them
+    for a Black Keycard (talk to it again for more). The Box: type `open
+    the door` (Toy Key).
+    `/navi kh_mansion 27/27`, then `/navi kh_kiehl01 17/39`, `19/25` | done
+    when: `KielHyreQuest >= 76`
+33. **The big doors** - type `Black Keycard` at the doors at `kh_kiehl01
+    44/33` and `77/108` (1 card each) and `42/177` (2 cards), `Toy Key` at
+    `174/40`; the robots at `15/179` also leave a Black Keycard. Each door
+    stays open 30 seconds.
+    | done when: at the last door (`kh_kiehl01 166/187`)
+34. **The last door** - try it three times (each try calls 4 robots; 86),
+    then pry it with "Solid Iron Piece" four times (one each, from Alicel
+    and Aliot, 15%) (94), then "Yes": into Kiehl's room.
+    `/navi kh_kiehl01 166/187` | done when: `KielHyreQuest >= 94`
+35. **Kiehl** - kill 5 of the robots he calls, talk (100); talk again and
+    defeat Kiehl (boss); talk to him: he takes the Toy Motor (104), a
+    3-minute countdown starts; talk again (106, Allysia's Ring) and leave
+    by the exit before it ends.
+    `/navi kh_kiehl02 50/52` (exit `49/56`) | done when: `KielHyreQuest >= 106`
+    Fails: one player at a time in the room; it resets after 20 minutes or
+    when the countdown ends (you are put out in Lighthalzen).
+36. **The ring** - give it to Kiel Hyre (108).
+    `/navi kh_mansion 22/28` | done when: `KielHyreQuest >= 108`
+    Reward: 100,000 base EXP, 1 Old Card Album, the Luxurious Keycard.
+    Opens a place: Robot Factory floor 2 (`kh_dun02`): type `Luxurious
+    Keycard` at the Entrance Device (`/navi kh_dun01 44/203`).
+37. **Elly's letter** - in Elly's room, the Cookie Basket: read her letter
+    and type anything (109).
+    `/navi kh_school 175/176` | done when: `KielHyreQuest >= 109`
+
+### The Metto Quest (Scientist Who Trusts Fate)
+`quests/quests_yuno.txt` | `metto_q` 0->9 | Lv none (not as a Novice) |
+guided `yuno_metto`.
+
+1. **Wagan's plan** - talk to Wagan: "Leave it to me." (1).
+   Why: Wagan wants Metto to give up experiments that frighten the
+   district; Metto believes in fate, so fate must seem against him.
+   `/navi yuno_in01 17/30` | done when: `metto_q >= 1`
+2. **Three warnings** - hear Metto out (2); Stangckle: "I'm here to stop
+   your research." (3); Metto (4); Kato: "I want to stop you from making a
+   mistake." (5); Metto (6); CiCi: "I want to warn you." (7); Metto (8).
+   Why: three others tried his experiment and failed; he begins to believe
+   it is fate.
+   `/navi yuno_in03 26/39`, `yuno_in01 17/95`, `yuno_in01 19/183`, `yuno_in03
+   178/43` | done when: `metto_q >= 8`
+3. **Fate decides** - tell Wagan (9).
+   `/navi yuno_in01 17/30` | done when: `metto_q >= 9`
+   Reward: 5 Blue Gemstone (a Sage: 10 Yellow Gemstone).
+   Opens: one of the Wandering Bard's stories (29).
+
+### Juperos Ruins History
+`quests/quests_juperos.txt` | `yuno_hist` 0->10, `jupe_hist`, quests
+11017-11022 | Lv none | dead end at step 4.
+
+1. **The thesis** - in the Juno library, the Bundle of Files: "Table of
+   Contents.", "Preface" (1).
+   `/navi yuno_in04 186/125` | done when: `yuno_hist >= 1`
+2. **Fayruz** - the Scholar: "By any chance..." (2).
+   Why: she studies the fall of Juperos and needs someone to go there.
+   `/navi yuno_in04 190/125` | done when: `yuno_hist >= 2`
+3. **The bronze statue** - in Juperos: "Investigate" (3).
+   `/navi juperos_01 99/112` | done when: `yuno_hist >= 3`
+4. **The inscription** - Fayruz: "I found something in Juperos." (4).
+   `/navi yuno_in04 190/125` | done when: `yuno_hist >= 4`
+5. **The plates** - she needs the four Transparent Plates (7352-7355, one
+   each), dropped only by the four Dimik kinds at 0.25% (`db/re/mob_db.yml`;
+   Plate 1 also 1.25% from the champion Dimik). Dead end, see
+   guide-deferred.md.
+   Note: a plate 7355 alone cannot be used: the script deletes 7352
+   instead (line 325).
+
+### The Juno Remedy Quest
+`quests/quests_hugel.txt` (Juno, Hugel) and `quests/quests_airship.txt`
+(the airship) | `hg_ma1` 0->13, quests 8044-8052 | Lv 60 (`BaseLevel <
+60`, Euslan) | **Players: 5** at step 5: Eukran is only reached through a
+Bingo game, and the Bingo waiting room starts at 5 players.
+
+1. **Euslan** - the coughing woman in Juno: "Speak to Euslan" (1), again
+   "Speak to Euslan", "Are you alright?", "Offer to find Thierry" (3).
+   ("Leave her alone" sets 2; talk again and offer.)
+   Why: her fiance Thierry went looking for her medicine and has not come
+   back.
+   `/navi yuno 111/156` | done when: `hg_ma1 >= 3`
+2. **Kaci** - on the domestic airship: "Do you know a guy named Thierry?"
+   (4).
+   `/navi airplane 33/69` | done when: `hg_ma1 >= 4`
+   Note: Hallen (`airplane 236/63`) only sends you to Kaci; he will not
+   start the Heart Fragment Quest while `hg_ma1` is 3.
+3. **The passenger list** - Captain Ferlock: "I am looking for a man named
+   Thierry.", "Will you let me check the history of passenger lists?" (5).
+   Why: Thierry flew to Hugel on the route's first day and saved the
+   airship from dragons.
+   `/navi airplane 236/163` | done when: `hg_ma1 >= 5`
+4. **Back to Euslan** - "Well, I met Kaci on the Airship." (6).
+   `/navi yuno 111/156` | done when: `hg_ma1 >= 6`
+5. **Eukran** - in Hugel's Bingo hall (`/navi hugel 55/208`), play one
+   Bingo game (waiting room `que_bingo 48/84`, 1,000 zeny, starts at 5
+   players; winning is not needed). At the end the plate takes you to
+   Eukran: "Talk about Euslan" (8).
+   `/navi que_bingo 53/190` | done when: `hg_ma1 >= 8`
+6. **Thierry** - in the Odin Shrine, walk to where two men talk; Thierry
+   appears for 3 minutes: "Mr. Thierry?", "Tell him about Euslan", "What
+   are you doing here?" (9).
+   `/navi odin_tem01 129/127` (Thierry `130/134`) | done when: `hg_ma1 >= 9`
+7. **The plot** - walk on to overhear the men: they plan to kill Thierry
+   (10). Warn him: "Warn Thierry about Suspicious Men" (11).
+   Why: they are Rekenber agents digging for a giant's remains under the
+   shrine.
+   `/navi odin_tem01 111/144`, then `/navi odin_tem01 130/134` | done when:
+   `hg_ma1 >= 11`
+8. **The runes** - bring Thierry 5 Rune of Darkness (taken, 12): he makes
+   the medicine.
+   `/navi odin_tem01 130/134` | done when: `hg_ma1 >= 12`
+9. **The medicine** - give it to Euslan (13).
+   `/navi yuno 111/156` | done when: `hg_ma1 >= 13`
+   Reward: 90,000 base / 60,000 job EXP.
+
+Not quests here: the Pile Bunker (`re/quests/pile_bunker.txt`, an item) and
+the Doomed Swords and Alchemist parts of `quests/quests_yuno.txt` are
+excluded (crafting, job).
+
+## 10. Einbroch and Einbech
+
+The Einbroch Laboratory door (Security, `/navi einbroch 51/52`) is used by
+the Murder Quest and the Heart Fragment Quest: walk onto it while the
+quest is at that step, choose "Identify." and type the two lines it shows,
+exactly (case and spaces count), within 60 seconds in all. Fails: a typo
+or more than 60 seconds; try again. It lets you in to `ein_in01 283/25`.
+
+### The Factory Quest
+`quests/quests_ein.txt` | `EinFactory` 0->16, quests 8017-8031 | Lv none |
+guided `ein_factory`. Every finished quest adds 1 to `$EinPolution`; at 10
+the Einbroch Smog Alert fills the town with Toxic Fogs and hides the
+townsfolk (Zelmeto sends you away while it lasts).
+
+1. **Zelmeto** - the overseer in the factory: "You're understaffed?", "I
+   can help you." (1).
+   Why: the factory is so short of hands that the machines run unwatched.
+   `/navi ein_in01 67/242` | done when: `EinFactory >= 1`
+2. **The rounds** - click each machine, then report to Zelmeto: the 2nd
+   Control Panel (2, report 3), the 3rd Pressure Governor (4, 5), the Main
+   Control Panel (6, 7), the Conveyor (8, 9), the Pipe (10, 11), the other
+   Conveyor (12).
+   `/navi ein_in01 49/232`, `108/217`, `62/258`, `46/197`, `100/266`,
+   `95/239` | done when: `EinFactory >= 12`
+3. **Liotzburg** - report to Zelmeto (13), then walk up to Liotzburg in
+   the streets (14).
+   Why: he has his own view of what the factory does to Einbroch.
+   `/navi einbroch 132/84` | done when: `EinFactory >= 14`
+4. **Spare parts** - tell Zelmeto (15), then bring 20 Flexible Tube, 10
+   Rusty Screw, 10 Used Iron Plate: "Give him materials." (16).
+   `/navi ein_in01 67/242` | done when: `EinFactory >= 16`
+   Reward: base EXP by level: 61 (Lv 40 or less), 307, 660, 1,850, 3,206,
+   7,602, 29,067 (Lv 91+).
+   Opens: the Murder Quest's step 6 (`EinFactory > 12`).
+
+### The Murder Quest
+`quests/quests_ein.txt` | `Shinokas_Quest` 0->11, quests 2071-2078 | Lv
+none | needs: the Factory Quest past step 12 (at step 7).
+
+1. **Buender Hikeman** - the old miner in Einbech: "'What are you talking
+   about?'", then any answer (1).
+   Why: he takes you for someone from the old mine collapse and mutters
+   about a mysterious ore.
+   `/navi einbech 165/105` | done when: `Shinokas_Quest >= 1`
+2. **The accident** - talk again; answer either way (2).
+   `/navi einbech 165/105` | done when: `Shinokas_Quest >= 2`
+3. **The sick old man** - in Einbroch, the Sick Old Man: ask "Remember the
+   mine tunnel collapse?" or "Didn't you used to be a miner?" seven times
+   in a row (never "Have you lived in Einbroch all your life?", which
+   starts the count over), then "Have you ever heard of Hikeman before?"
+   (3).
+   Why: he is Shinokas, Hikeman's friend who caused the collapse.
+   `/navi ein_in01 231/163` | done when: `Shinokas_Quest >= 3`
+4. **His story** - talk again: "Did you find it?", "Wait, who's trying to
+   get you?" (4).
+   Why: he sold out his friends for an ore and has been hunted ever since;
+   he wants to know what it was.
+   `/navi ein_in01 231/163` | done when: `Shinokas_Quest >= 4`
+5. **The Kapellthaine maid** - in the manor, ask the Maid (5).
+   `/navi ein_in01 32/133` | done when: `Shinokas_Quest >= 5`
+6. **Where is the ore?** - back to Shinokas (6); with `EinFactory > 12`,
+   talk again and choose "Laboratory" (7).
+   `/navi ein_in01 231/163` | done when: `Shinokas_Quest >= 7`
+7. **The laboratory** - get in through the Security door (see the top of
+   this region); the Scientist inside: "What's wrong?" (8).
+   Why: the lab head spends his days on the airship with a woman.
+   `/navi ein_in01 254/35` | done when: `Shinokas_Quest >= 8`
+8. **The drunk on the airship** - the Drunken Man on the domestic airship
+   loses his apples at dice. Bring 100 or more Apples (all taken, each
+   try): 3 tries in 10 he wins. Then "So what was that about Ymir's
+   Heart?", "Project?" (9).
+   `/navi airplane 31/77` | done when: `Shinokas_Quest >= 9`
+   Fails: a lost try (7 in 10) takes all your apples; 11-99 apples are not
+   enough to play. Apples are sold in Einbroch (`/navi einbroch 82/199`),
+   Hugel and Lighthalzen.
+9. **Too late** - back to Shinokas, found stabbed; type what the ore was
+   (`Ymir`, either answer goes on) (10).
+   `/navi ein_in01 231/163` | done when: `Shinokas_Quest >= 10`
+10. **Hikeman** - "Tell Hikeman about Shinokas's death." (11; "Don't notify
+    Hikeman." leaves it at 10).
+    `/navi einbech 165/105` | done when: `Shinokas_Quest >= 11`
+    Reward: base / job EXP: 30,000 (below Lv 70), 40,000 (70-79), 70,000
+    (80-89), 90,000 (90+), the same as job EXP.
+    Opens: a branch of the President Quest (`Shinokas_Quest == 11`); the
+    Heart Fragment Quest skips a step (`Shinokas_Quest > 9`).
+
+### The Lovers Quest
+`quests/quests_ein.txt` | `EIN_LOVERQ` 0->17, quests 8076-8088 | Lv 60
+(Calla: `BaseLevel < 60` only talks).
+
+1. **Calla** - in Kapellthaine Manor, Einbroch (1).
+   Why: the rich man's daughter envies your freedom.
+   `/navi ein_in01 31/138` | done when: `EIN_LOVERQ >= 1`
+2. **Klitzer** - in Einbech, the young man (2).
+   Why: he loves Calla but thinks himself a coward and a fool.
+   `/navi ein_in01 200/101` | done when: `EIN_LOVERQ >= 2`
+3. **The violin** - Calla gives you her Violin for him (3).
+   `/navi ein_in01 31/138` | done when: `EIN_LOVERQ >= 3`
+   Fails: Megass, Calla's father, stands in the manor (`ein_in01 21/147`):
+   coming within 3 cells of him throws you out to `einbroch 112/245`, and
+   with the violin he also takes it and 90% of your HP (4). Calla then
+   gives you another (3).
+4. **Klitzer's flower** - give Klitzer the violin (5; he restores your HP).
+   He asks you to bring Calla 1 Flower.
+   `/navi ein_in01 200/101` | done when: `EIN_LOVERQ >= 5`
+   Reward: base EXP 61 (Lv 40 or less), 600 (41-60), 3,000 (61-80),
+   20,000 (81-98), 30,000 (99+).
+5. **Names** - give Calla the Flower and type your character's name (6);
+   then at Klitzer type your name too (7).
+   `/navi ein_in01 31/138`, `/navi ein_in01 200/101` | done when:
+   `EIN_LOVERQ >= 7`
+6. **Klitzer's mother** - Kaijeta, in Einbech (8).
+   `/navi ein_in01 191/102` | done when: `EIN_LOVERQ >= 8`
+7. **Lady Satra** - Calla's mother, in the manor (9): she wants Coal.
+   Bring 10 Coal four times (taken each time, 10, 11, 12, 13); at the
+   last, type who gathered it: `Klitzer` (13).
+   Why: she looks down on Einbech's miners; Coal "from Klitzer" earns him
+   a tea with her.
+   `/navi ein_in01 31/151` | done when: `EIN_LOVERQ >= 13`
+   Note: Coal drops from Banaspaty 5%, Panzer Goblin 2.9%, Obsidian 2.5%
+   (`db/re/mob_db.yml`); Hans in the Eden Market Group sells it for 10,000
+   zeny, only on Saturday 22:00-24:00 server time (`re/merchants/eden_market.txt`).
+8. **Tea with her mother** - tell Klitzer (14); Kaijeta says he needs a
+   Formal Suit or a Tuxedo (15).
+   `/navi ein_in01 200/101`, `/navi ein_in01 191/102` | done when:
+   `EIN_LOVERQ >= 15`
+9. **The tuxedo** - give Klitzer a Tuxedo (sold by the Wedding Shop Dealer
+   in Prontera and Lighthalzen): "Give it to him." (16).
+   `/navi ein_in01 200/101` | done when: `EIN_LOVERQ >= 16`
+   Reward: one random gem (Olivine, Phlogopite, Agate, Rose Quartz,
+   Turquoise, Citrine or Pyroxene).
+10. **Calla's thanks** - talk to Calla (17).
+    `/navi ein_in01 31/138` | done when: `EIN_LOVERQ >= 17`
+    Reward: base EXP as in step 4.
+    Warning: her "massage" takes off all your equipment (`nude`); put it
+    back on afterwards.
+
+### Kain's Free Ticket
+`quests/quests_airship.txt` | `kain_ticket` 0->15, quests 2079-2085 | Lv
+none.
+
+1. **Kain** - the Crewman on the domestic airship: "About the Airship..."
+   twice (1, 2), then again: "What's wrong?", "I have time for a long
+   story.", "I'm sorry to hear that.", "Have you tried looking for her?",
+   "Einbroch" (4). ("Juno" sets 3: ask again.)
+   Why: Kain Himere was a miner who lost his little daughter long ago.
+   `/navi airplane 47/61` | done when: `kain_ticket >= 4`
+2. **A lost box** - talk again: a box for Defru Ark at the Einbroch Hotel
+   (5). Walk to the hotel door (6).
+   `/navi ein_in01 227/279` | done when: `kain_ticket >= 6`
+3. **Elle** - walk up to the girl: "What are you singing?" (7).
+   Why: she sings a miner's song.
+   `/navi ein_in01 261/241` | done when: `kain_ticket >= 7`
+4. **The Cherno workshop** - Theo or Tarsha Cherno: "Your daughter asked
+   me to visit you." (8); look in the Mirror (9); Tarsha again (10).
+   Why: Tarsha was raised by foster parents; her real father sang the
+   miner's song.
+   `/navi ein_in01 125/99` (mirror `121/99`) | done when: `kain_ticket >= 10`
+5. **Back to Kain** - either answer (11).
+   `/navi airplane 47/61` | done when: `kain_ticket >= 11`
+6. **The diary** - in Einbech, click the trees by the station until you
+   find Kain's diary (1 try in 10) (12).
+   `/navi einbech 45/113` (also `36/100`, `44/90`, `53/94`) | done when:
+   `kain_ticket >= 12`
+7. **Tarsha's scar** - Tarsha: "Check her hands." (13; the other choices
+   cost 10-20% HP).
+   `/navi ein_in01 125/99` | done when: `kain_ticket >= 13`
+8. **Elle's letter** - walk up to Elle (14, Doodled Message).
+   `/navi ein_in01 261/241` | done when: `kain_ticket >= 14`
+9. **Kain's daughter** - give Kain the message (15).
+   `/navi airplane 47/61` | done when: `kain_ticket >= 15`
+   Reward: 4 Free Ticket for Flyship.
+   Opens: the Unidentified Machine in the Cherno workshop repairs all
+   broken items for free (`/navi ein_in01 117/80`, `kain_ticket > 12`).
+
+### Captain Tarlock: How the Airship Flies
+`quests/quests_airship.txt` | `lght_air` 0->7, quests 8032-8035 | Lv 60
+(`BaseLevel <= 59` refuses at step 2).
+
+1. **Captain Tarlock** - on the international airship: "How does this
+   Airship fly?" (1).
+   `/navi airplane_01 238/154` | done when: `lght_air >= 1`
+2. **A favour** - ask again: "Yes, I really want to know!", "Sure." (2,
+   his letter).
+   Why: the secret is for captains only, but he will trade it for a favour.
+   `/navi airplane_01 238/154` | done when: `lght_air >= 2`
+3. **Captain Ferlock** - on the domestic airship: "Give him Tarlock's
+   Letter." (3); bring 2 Will of Darkness and 2 Prickly Fruit (taken):
+   "Here are the items I've found." (4).
+   Why: monsters raiding Tarlock's ship stole the things Tarlock borrowed.
+   `/navi airplane 236/163` | done when: `lght_air >= 4`
+4. **The reply** - back to Tarlock three times: "I handed the letter to
+   Captain Ferlock." (5), "You finished reading the letter?" (6),
+   "Already finished reading?" (7).
+   `/navi airplane_01 238/154` | done when: `lght_air >= 7`
+   Reward: 20,000 base / 1,000 job EXP.
+   Opens: the Heart Fragment Quest's step 4 (`lght_air == 7`).
+
+### The Heart Fragment Quest
+`quests/quests_airship.txt` | `lhz_heart` 0->13, quests 8036-8043 | Lv 60
+(Hallen) | needs: Captain Tarlock done (step 4).
+
+1. **Hallen** - the cabin boy on the domestic airship: "Hey kid, what are
+   you doing?", "Kaci?" (1); again: "What is it?" (2, a letter).
+   `/navi airplane 236/63` | done when: `lhz_heart >= 2`
+   Note: while the Juno Remedy Quest waits at `hg_ma1 == 3` he only talks
+   about Thierry; ask Kaci first.
+2. **Kaci** - "Give her the letter from Hallen." (3); then ask all three:
+   "Ask about Hallen", "Ask about Mawong", "Ask about the Airship" (4).
+   `/navi airplane 33/69` | done when: `lhz_heart >= 4`
+3. **Hallen's worry** - either answer (5); then "Sage Varmunt?" (6).
+   Why: someone is trying to steal the Rune stones that fly the airship.
+   `/navi airplane 236/63` | done when: `lhz_heart >= 6`
+4. **Another power source** - with `lght_air == 7`: "Umm, yeah, kind of.",
+   "Actually, there's another power source." (7); talk again (8, or 9 if
+   the Murder Quest is past step 9; a Red Potion).
+   `/navi airplane 236/63` | done when: `lhz_heart` 8 or 9
+5. **The drunk** - at 8, Kaci: "Who's that drunk over there?" (9).
+   `/navi airplane 33/69` | done when: `lhz_heart >= 9`
+6. **The laboratory** - get in through the Security door; pick up the
+   Password Checker (10), then at the inner door type a 3-digit password
+   (digits 1-9, all different): it answers how many digits are right and
+   in place; 5 tries in 3 minutes (11).
+   `/navi ein_in01 264/17`, then `/navi ein_in01 261/35` | done when:
+   `lhz_heart >= 11`
+   Fails: after 5 wrong tries it shows the answer and makes a new one.
+7. **Captain Ferlock** - "Well, there's someone I need to help...", "I
+   promise...", "Wait, what's the Varmunt Project?" (12); talk again (13).
+   `/navi airplane 236/163` | done when: `lhz_heart >= 13`
+   Reward: 70,000 base / 40,000 job EXP.
+
+Excluded: the Oridecon/Mineral quest (Cavitar, `ein_gear1`) and Uwe Kleine
+(Large Jellopy exchange) as crafting.
+
+## 11. Lighthalzen
+
+### The Rekenber Job Quest
+`quests/quests_lighthalzen.txt` | `lhz_rekenber` 0->23, quests 12007-12013
+| Lv 70 (Kazien: `BaseLevel < 70` refuses at step 2). Kazien is the Young
+Man in the Rekenber building (`lhz_in01 174/258`); Lyozien rides the
+international airship (`airplane_01 96/48`); Mr. Ahman, the Scamp, stands
+at the Izlude airport (`izlude 172/73`, `re/quests/quests_lighthalzen.txt`).
+
+1. **The old man** - in Lighthalzen (1).
+   Why: Kazien at the Rekenber Corporation is short of hands.
+   `/navi lighthalzen 141/162` | done when: `lhz_rekenber >= 1`
+2. **Kazien** - "Yes, of course." (2), then talk again (3).
+   Why: his first job is a test: ask after a researcher named Garins at
+   the Einbroch Laboratory.
+   `/navi lhz_in01 174/258` | done when: `lhz_rekenber >= 3`
+3. **The laboratory guard** - in Einbroch: "Whoa, I'm leaving!" (or
+   "Actually, I do have business here.", "I'll... come back later.") (5).
+   `/navi einbroch 55/52` | done when: `lhz_rekenber >= 5`
+   Fails: "I need to see Mr. Garins..." tells the guard your job (4):
+   Kazien fails you (6) and only 1 talk in 15 he forgets you and you can
+   start over (0).
+4. **The test** - tell Kazien (7): Garins never existed. Talk again (8).
+   `/navi lhz_in01 174/258` | done when: `lhz_rekenber >= 8`
+5. **Lyozien** - on the international airship (9): tell Mr. Ahman in
+   Izlude his packages arrived. The Scamp (10); Lyozien (11); Kazien (12).
+   `/navi airplane_01 96/48`, `/navi izlude 172/73`, `/navi lhz_in01
+   174/258` | done when: `lhz_rekenber >= 12`
+   Reward: 40,000 base EXP.
+6. **The thugs** - Lyozien (13): two Thugs attack the packages; kill them
+   (14). Then the Scamp (15), Lyozien (16), Kazien (17).
+   `/navi airplane_01 96/48` | done when: `lhz_rekenber >= 17`
+   Reward: 45,000 base EXP.
+7. **What is in the packages?** - Lyozien (18), again (19): three Thugs;
+   kill them, then step on the packages to peek inside: weapons and parts
+   for castle guardians. Lyozien (20, a White Potion); the Scamp (21);
+   Kazien (22).
+   `/navi airplane_01 99/47` | done when: `lhz_rekenber >= 22`
+   Reward: 55,000 base EXP.
+8. **A flashback** - walk out of Kazien's office: Lyozien's voice (23).
+   `/navi lhz_in01 187/247` (or `75/248`) | done when: `lhz_rekenber >= 23`
+   Opens: the Alberta Boy's step 7 (`lhz_rekenber > 21`, region 5).
+
+### The Friendship Quest
+`quests/quests_lighthalzen.txt` | `friendship` 0->16, quests 12000-12006 |
+Lv 50 (Digotz). Digotz lives in Uptown (`lhz_in02 201/210`), Maku in the
+slums (`lighthalzen 337/232`).
+
+1. **Maku** - talk to him (1).
+   `/navi lighthalzen 337/232` | done when: `friendship >= 1`
+2. **Digotz** - "Do you know someone named Maku?" (2).
+   Why: they were best friends; the guards keep rich and poor apart.
+   `/navi lhz_in02 201/210` | done when: `friendship >= 2`
+3. **Messages** - Maku: "I actually met Digotz and..." (3); Digotz: "Yes, I
+   did already..." (4): he gives you a message for Maku.
+   | done when: `friendship >= 4`
+4. **Digotz's message** - Maku: "Speaking of which...", then type the six
+   lines one per box: `Hopeless bastard!` / `You're still a stubborn
+   jerk!` / `You owe me at least 3 lunches!` / `Not to mention an
+   apology!` / `But who cares what you think?!` / `I'm so goddamn happy
+   without you!` (5).
+   `/navi lighthalzen 337/232` | done when: `friendship >= 5`
+5. **Maku's temper** - talk again (6; he hits you for 50% of your HP);
+   Digotz (7).
+   Why: both miss their third friend, Benkaistein.
+   | done when: `friendship >= 7`
+6. **Benkaistein** - in the Juno Library, the Student (8); the
+   Passionate Student: "Excuse me...", "Hey...", "HEY YOU...!" (9), "Tell
+   him about Maku and Digotz." (10).
+   `/navi yuno_in04 107/14`, `/navi yuno_in04 96/106` | done when:
+   `friendship >= 10`
+7. **The diary** - the Book in the library (11, Friend's Diary); show it
+   to Benkaistein (12).
+   `/navi yuno_in04 168/117` | done when: `friendship >= 12`
+8. **Reunion** - Digotz: "Show Benkaistein's Journal." (13); Maku (14;
+   the diary is taken); Digotz (15, a Knife); Benkaistein (16).
+   | done when: `friendship >= 16`
+   Reward: twice (at 14 and 16) base EXP 20,000 (Lv 75 or less), 40,000
+   (76-90), 70,000 (91+); a Knife; the Pass.
+   Opens: the Pass lets you through the guards between Uptown and the
+   slums; Bruspetti (region 13); the Alberta Boy's step 9
+   (`friendship > 14`).
+
+### The Cube Room
+`quests/quests_lighthalzen.txt` | `lhz_sincube` 0->10, `lhz_secret01-03`,
+MISC_QUEST bit 512, quest 12014 | Lv 60 (Fishbone: `BaseLevel >= 60`, or
+the President Quest at 6).
+
+1. **Fishbone** - the shady guard in the slums: talk four times (4).
+   Why: he was a Regenschirm scientist until they laid him off.
+   `/navi lighthalzen 341/224` | done when: `lhz_sincube >= 4`
+2. **His price** - "Okay." (5); bring exactly 20 Jellopy: "Here you go!"
+   (taken, 6); "Yes." (7): he sends you into the cube maze.
+   `/navi lighthalzen 341/224` | done when: `lhz_sincube >= 7`
+3. **The maze** - walk from room to room (each wall has warps) to the
+   furnished room (around `lhz_cube 237/190`). to verify: the route.
+4. **The red chain** - the Bundle of Files: "Rummage through the files."
+   (Red Key); the Drawer: type `Red Key` (a Jackknife); the Picture: "Look
+   behind picture.", type `Jackknife`: note the nine numbers (one of `4 3
+   2 9 1 6 8 2 7`, `3 6 4 1 2 8 7 1 5`, `4 9 3 7 6 2 8 6 6`).
+   `/navi lhz_cube 237/198`, `242/201`, `234/202` | done when:
+   `lhz_secret01` 3-5
+5. **The axe and the barrel** - the Chest: "Take the utility Axe." (8);
+   the Barrel: type `Axe` (9), then again: type the nine numbers, one per
+   box (Yellow Key); the Power Generator: type `Yellow Key`; the Status
+   Light: "Smash the light bulb."; the Experiment Tube: type `Black Key`.
+   `/navi lhz_cube 248/179`, `237/183`, `224/192`, `244/201`, `224/197` |
+   done when: `lhz_secret01 >= 9`
+6. **The sticks** - the Desk: "Under the desk"; the Bed: "Under the bed"
+   twice, the second time type `Long Stick`.
+   `/navi lhz_cube 234/200`, `247/198` | done when: `lhz_secret02 >= 4`
+7. **The green chain** - the Goblet: "Examine the goblet."; the Chemicals:
+   type `Rusty Key`; the Cabinet: type `Green Key`.
+   `/navi lhz_cube 229/184`, `231/202`, `249/191` | done when:
+   `lhz_secret03 >= 3`
+8. **The box** - three holes: "Oval Hole" type `Oval`, "Cube Hole" type
+   `Cube`, "Polygon Hole" type `Polygon`; then "Open the box." (10, the
+   Laboratory Permit).
+   `/navi lhz_cube 248/193` | done when: `lhz_sincube >= 10`
+9. **Downstairs** - the Experiment Tube: type `Laboratory Permit`, "Go
+   downstairs" (MISC_QUEST 512).
+   `/navi lhz_cube 224/197` | done when: `MISC_QUEST & 512`
+   Opens a place: the Sewer Pipe in the slums (`/navi lighthalzen
+   313/301`) takes you to the cube room again, and from there to the Bio
+   Laboratory's second floor (`lhz_dun02`). Opens: the President Quest's
+   step 3.
+
+### The Cursed Spirit Quest
+`quests/quests_lighthalzen.txt` | `lhz_curse` 0->32, `lhz_spi01-04`, quests
+2086-2095 | Lv none. Keep at least 1 Handcuffs (7345, dropped by the Bio
+Laboratory's Seyren, Howard, Cecil, Kathryne 15%) in your bag the whole
+time: the spirits only show to its holder.
+
+1. **A spirit in the lab** - walk onto a haunted spot in the Bio
+   Laboratory (1; you are cursed for a moment).
+   `/navi lhz_dun01 147/106` (also `239/135`, `66/213`, `225/198`, or on
+   floors 2-3) | done when: `lhz_curse >= 1`
+2. **Four voices in the slums** - walk onto the four spots: you hear the
+   last words of the poor.
+   `/navi lighthalzen 344/278`, `/navi lhz_in03 178/22`, `/navi lighthalzen
+   295/227`, `/navi lighthalzen 364/315` | done when: `lhz_spi01..04` all 1
+3. **The old woman** - the Elder: "Um, burden...?", "Things?", "Yes! How do
+   I get rid of them?", either answer, "Y-yes, I have." (6).
+   Why: spirits of slum people follow you; something in the Rekenber
+   building holds them.
+   `/navi lighthalzen 346/263` | done when: `lhz_curse >= 6`
+4. **The Rekenber building** - walk onto the spot by the entrance (7); the
+   Representative: "Corporation History" (8); the other Representative:
+   "Corporation History" twice (10); the Rekenber Guidebook (11); the spot
+   upstairs (12); the spot in the hall (a vision); talk to either man in it
+   (13).
+   `/navi lhz_in01 113/150`, `114/181`, `27/247`, `25/251`, `272/227`,
+   `206/129` | done when: `lhz_curse >= 13`
+5. **The mad scientist** - "Do you need any help?" (14); "Let me speak with
+   you." (15); bring 1 Glass Bead (taken): "Why do you want Glass Beads?",
+   either, "What kind of research?", "Um, what are you testing on?" (16).
+   `/navi lhz_in01 273/121` | done when: `lhz_curse >= 16`
+6. **The pendant** - walk onto the spot (a vision): talk to the man (17, a
+   Worn Out Pendant).
+   `/navi lhz_in01 282/166` | done when: `lhz_curse >= 17`
+7. **The rites** - the Elder: "Show him the Pendant." (18); bring 5 Holy
+   Water and 1 Bunch of Flowers (taken) (19).
+   `/navi lighthalzen 346/263` | done when: `lhz_curse >= 19`
+8. **The crippled girl** - "Show her the Pendant.", "Break it to her
+   gently", then "Distract her" or "Comfort her" (25; the pendant is
+   taken). ("Brutal Truth" sends you outside (20): walk through her door
+   three times (23), then give her the pendant (24).)
+   `/navi lhz_in03 32/162` | done when: `lhz_curse >= 24`
+9. **Peace** - walk onto the spot in front of her house (26).
+   `/navi lighthalzen 319/321` | done when: `lhz_curse >= 26`
+   Reward: base / job EXP 30,000 / 30,000 (below Lv 70), 40,000 / 70,000
+   (70-79), 70,000 / 90,000 (80-89), 90,000 / 90,000 (90+).
+10. **Secretary Slierre** - "About the Slums" (27); "About the Laboratory"
+    (28); "Wolfchev's Research", "I'm a friend of his.", "W-Wait!", "About
+    Wolfchev's Research", "Wolfchev's Test Subjects", "His experiments are
+    suspicious...", "Show Evidence" (the Handcuffs), then any answers (30);
+    talk again: "What was he doing...?" (31).
+    `/navi lhz_in01 286/226` | done when: `lhz_curse >= 31`
+    Reward: 1 Old Blue Box, 10 Speed Up Potion.
+11. **The end** - take the warp (`/navi lhz_in01 43/114`) and walk onto the
+    spot (32).
+    `/navi lhz_que01 94/24` | done when: `lhz_curse >= 32`
+    Opens: one of the Wandering Bard's stories (29); with the President
+    Quest done, a step of the Rebellion Quest (`lhz_curse > 30`, region 12).
+
+### The President Quest (Schwarzwald Trilogy)
+`quests/quests_lighthalzen.txt` | `lhz_boss` 0->44, quests 12015-12028 |
+Lv 60 (Ghalstein) | needs: the Cube Room (step 8) and the Murder Quest done
+(`Shinokas_Quest == 11`, step 21). Ghalstein is the Ordinary Man in
+Lighthalzen (`lighthalzen 179/170`); the President's office is in Juno
+(`yuno_pre`); Esuna waits outside Lighthalzen (`lhz_fild01 66/219`).
+
+1. **The ordinary man** - talk to him (1); walk onto the spot behind him:
+   "Keep listening." (2).
+   `/navi lighthalzen 179/170`, `/navi lighthalzen 173/167` | done when:
+   `lhz_boss >= 2`
+2. **Ghalstein** - "Uh, what were you doing just now?", "But I heard you
+   talking about something..." (3); "Yes, I'm sure of it!", "I'm not
+   interrogating...", "Who are you dealing with?" (4); "How can I
+   cooperate?", "Sure, I'll cooperate.", "Take it." (5); talk again (6).
+   Why: he is an agent of Secret Wing, fighting the Rekenber Corporation.
+   `/navi lighthalzen 179/170` | done when: `lhz_boss >= 6`
+   Fails: refusing ("No, thanks.", "Don't cooperate") starts the quest
+   over (0) and puts you out.
+3. **The lab** - do the Cube Room (it lets you in at `lhz_boss == 6`
+   whatever your level); on Bio Lab floor 2, the Broken Machine:
+   "Investigate it.", "This might be important." (7, Ymir's Heart Piece).
+   `/navi lhz_dun02 282/278` | done when: `lhz_boss >= 7`
+4. **The evidence** - bring Ghalstein the piece, 10 Research Chart (Bio Lab
+   monsters, 10-25%) and 10 Handcuffs (taken) (8, a Membership Card).
+   `/navi lighthalzen 179/170` | done when: `lhz_boss >= 8`
+5. **Gusharr** - the Dismal Guy near Juno: "Red Tonic", "Oh, right!" (9);
+   talk twice more (11).
+   `/navi yuno_fild04 165/245` | done when: `lhz_boss >= 11`
+6. **The president's office** - in Juno, the Secretary: "Show Secret Wing
+   Card." (only 11:00-15:00 and 20:00-24:00 server time). The Guard (12);
+   talk again until Eridan Keshnaar walks out (1 in 10) (13); "Who was
+   that gentleman...?" (14).
+   `/navi yuno_pre 69/20`, `/navi yuno_pre 95/71` | done when: `lhz_boss >= 14`
+7. **Mr. President** - "I'm ready for my mission.", "Yes sir, Mr.
+   President." (15); talk again (16, a File Folder); the Secretary: "I
+   brought this." (17).
+   `/navi yuno_pre 69/79` | done when: `lhz_boss >= 17`
+8. **Benith** - in the Kafra Headquarters in Al De Baran: "Okay.", "Are you
+   Benith..?", "Show Membership Card." (18).
+   `/navi aldeba_in 155/240` | done when: `lhz_boss >= 18`
+9. **Jargeah** - the Wounded Man in the Lighthalzen field: "Jargeah?",
+   type `Secret Wing` (or `Kafra Corporation`) (19, a Sealed File Folder).
+   `/navi lhz_fild02 228/214` | done when: `lhz_boss >= 19`
+10. **His file** - Benith: "He's in a better place." (20); again (21, the
+    file); give it to the President (22). Talk to him until he has read it
+    (1 in 5) (23, or 24 if the Murder Quest is done).
+    `/navi aldeba_in 155/240`, `/navi yuno_pre 69/79` | done when:
+    `lhz_boss` 23 or 24
+11. **Shinokas** - at 24: "Actually, Shinokas is..." (25), then talk until
+    he is done (1 in 10) (26). At 23: finish the Murder Quest (region 10),
+    then talk to him (26).
+    `/navi yuno_pre 69/79` | done when: `lhz_boss >= 26`
+12. **Esuna** - walk to her outside Lighthalzen (27).
+    `/navi lhz_fild01 76/214` | done when: `lhz_boss >= 27`
+13. **Agent Lestin** - in the Rekenber lab, the researcher: "Red", "Yes",
+    "Show Secret Wing Card."; the second researcher (28, Archive Permit).
+    `/navi lhz_in01 93/45`, then `/navi lhz_in01 285/169` | done when:
+    `lhz_boss >= 28`
+14. **The secret archive** - step by the archive door and wait for the
+    guards to change ("Sneak in now."), "Insert Card", type `738495`,
+    "Enter" (29). The File Search Engine: "Search Engine.", type
+    `shinokas` (31). The shelf "Area 1-5" (35, Shinokas Case File). You
+    have 3 minutes inside.
+    `/navi lhz_in01 187/31`, `182/35`, `184/40` | done when: `lhz_boss >= 35`
+    Fails: three wrong codes throw you out; the 3 minutes too.
+15. **Out with the file** - the second researcher (36, permit taken);
+    Esuna (37); the President, with the case file (38); Esuna (39, a
+    Sealed File Folder); the President: "Give the file from Esuna." (40).
+    | done when: `lhz_boss >= 40`
+16. **The traitor** - Esuna: "What happened?", "Who could have done
+    such....?" (41); the President (42), again (43): Kurelle betrayed
+    Secret Wing.
+    `/navi lhz_fild01 66/219`, `/navi yuno_pre 69/79` | done when:
+    `lhz_boss >= 43`
+17. **Ghalstein** - report (44).
+    `/navi lighthalzen 179/170` | done when: `lhz_boss >= 44`
+    Reward: 180,000 base EXP, 1 Old Violet Box.
+    Opens: one of the Wandering Bard's stories (29); the Rebellion Quest's
+    step at `lhz_boss == 44` (region 12).
+
+Not quests: the Gangster Alert and the pickpocketing "suspicious guys"
+(see the catalog).
+
+## 12. Hugel
+
+### The Medicine Quest
+`quests/quests_hugel.txt` | `hg_herb` 0->13, quests 8053-8056 | Lv 50
+(Allen: `BaseLevel > 49`).
+
+1. **Allen Schuwell** - the sick old man: "Sure." (1).
+   Why: his son Postell went out east and has his medicine, "Kolbun A".
+   `/navi hu_in01 387/245` | done when: `hg_herb >= 1`
+2. **Postell** - outside town: "But your father needs you!" (2).
+   `/navi hu_fild06 34/123` | done when: `hg_herb >= 2`
+3. **A White Potion** - Allen has an attack: "Give White Potion" (taken)
+   (3); talk again (4).
+   `/navi hu_in01 387/245` | done when: `hg_herb >= 4`
+4. **The medicine drawer** - step away from Allen and walk into him again
+   (5): the drawer next to him opens a moment later. Click the drawer
+   between 1 and 4.5 seconds after (6). Talk to Allen (7) and do it once
+   more (8, then 9).
+   `/navi hu_in01 370/255` | done when: `hg_herb >= 9`
+   Fails: clicking too early or too late shuts the drawer (back to 4 or 7):
+   walk into Allen again.
+5. **Postell comes home** - Allen: 1 talk in 3 the medicine works (10;
+   otherwise back to 7, repeat step 4). Talk again: Postell comes in (11);
+   again (12).
+   `/navi hu_in01 387/245` | done when: `hg_herb >= 12`
+6. **Help yourself** - open the medicine drawer (13).
+   `/navi hu_in01 370/255` | done when: `hg_herb >= 13`
+   Reward: 5,000 base EXP, 1 Old Blue Box.
+   Opens: Biological Weapon.
+
+### Biological Weapon
+`quests/quests_hugel.txt` | `hg_bio` 0->9, quests 11009-11016 | Lv none |
+needs: the Medicine Quest (`hg_herb == 13`).
+
+1. **Morriphen** - the coughing man in Einbroch: "Help him" (1).
+   Why: he needs his medicine from his wife in Hugel.
+   `/navi ein_in01 16/36` | done when: `hg_bio >= 1`
+2. **Siria** - his wife in Hugel (2): she is out of medicine too.
+   `/navi hu_in01 326/307` | done when: `hg_bio >= 2`
+3. **Dono** - Morriphen's old colleague in Lighthalzen (3); bring him 3
+   Detrimindexta, 5 Coal, 1 Unripe Apple, 1 each of Red, Yellow, White,
+   Green and Blue Herb, 5 Cyfar, 5 Brigan, 20 Shell (taken) (4).
+   `/navi lighthalzen 88/79` | done when: `hg_bio >= 4`
+   Note: Detrimindexta drops from Deviace 1% and Toad 0.5%, and Dye the
+   Alchemist in the Eden Market Group sells it (20,000 zeny, every day but
+   Wednesday). Coal: see the Lovers Quest (region 10).
+4. **Makkie** - Dono sends you to Makkie (5); back to Dono (6, the
+   medicine).
+   `/navi lhz_in03 193/28`, `/navi lighthalzen 88/79` | done when:
+   `hg_bio >= 6`
+5. **Two patients** - Morriphen (7): the medicine must go to Siria; Siria
+   (8).
+   `/navi ein_in01 16/36`, `/navi hu_in01 326/307` | done when: `hg_bio >= 8`
+   Reward: 30,000 base EXP.
+6. **Friends again** - Morriphen (9).
+   Why: he left Rekenber for Siria; Dono kept their secret all along.
+   `/navi ein_in01 16/36` | done when: `hg_bio >= 9`
+   Reward: 70,000 base EXP.
+   Opens: one of the Wandering Bard's stories (29).
+
+### The Rebellion Quest
+`quests/quests_hugel.txt` | `hg_tre` 0->57 | Lv none | needs: the President
+Quest done (`lhz_boss == 44`) and the Cursed Spirit past step 10
+(`lhz_curse > 30`) and the Odin Temple Excavation done (`hg_odin == 60`),
+all at step 3.
+
+1. **Shede** - in Hugel: "Do you want me to help you?" (a random job: 10
+   mushrooms, 20 clams or 30 bugs).
+   `/navi hugel 70/137` | done when: `hg_tre` 10, 20 or 30
+2. **The job** - gather 5: "Gather them." / "Catch them." at the spots
+   (4 tries in 5 succeed; a used spot rests a while), then Shede (40).
+   Mushrooms: `/navi hu_fild06 168/359`, `194/341`, `198/339`; clams:
+   `/navi hugel 209/163`, `203/166`, `217/158`, `204/150`; bugs: `/navi
+   hu_fild06 155/309`, `218/320`, `249/329`, `218/373` | done when:
+   `hg_tre >= 40`
+3. **Herico** - with the President and Cursed Spirit quests done, Shede
+   (41). Herico, in his room: "Yes, you are right." (42); talk (43); with
+   the Odin dig done (44); talk (45).
+   Why: Herico survived the old mercenary rebellion against Rekenber.
+   `/navi hu_in01 256/40` | done when: `hg_tre >= 45`
+4. **The reporter** - Enquro Carson in Lighthalzen: "Mercenary Rebellion"
+   (46); bring a Tropical Sograt and a Vermilion on the Beach (taken, 47).
+   `/navi lhz_in03 39/44` | done when: `hg_tre >= 47`
+   Note: the bartender in the closed pub of Morocc sells both, 1,000 zeny
+   each (`/navi morocc_in 166/76`, `quests/skills/bard_skills.txt`; to
+   verify: how to get into the pub).
+5. **The survivor's daughter** - the Girl (48); her Book: "Read the small
+   book.", "Page 9" (49).
+   `/navi hu_in01 310/380`, `/navi hu_in01 317/312` | done when: `hg_tre >= 49`
+6. **Regenschirm** - Herico: either answer (50); "Yes, I will." (51); talk
+   (52). In the Rekenber building, the Pile of Paper (53, a File Folder; two
+   Guards attack). Give it to Herico (54).
+   `/navi lhz_in01 214/129` | done when: `hg_tre >= 54`
+7. **The machine** - buy a Marine Sphere Bottle from the Bomb Maker in
+   Einbech (3,000 zeny); on Bio Lab floor 2 use it on the Unethical Machine
+   (55; the blast costs 10% HP).
+   `/navi einbech 208/124`, `/navi lhz_dun02 244/226` | done when: `hg_tre >= 55`
+8. **Who can stop them?** - Herico: type `President Karl` (56, a File
+   Folder).
+   `/navi hu_in01 256/40` | done when: `hg_tre >= 56`
+9. **The President** - in Juno (57).
+   `/navi yuno_pre 69/79` | done when: `hg_tre >= 57`
+   Reward: 200,000 base EXP, 1 Old Violet Box.
+   Herico then trades 100 Handcuffs for one random dish, as often as you
+   like (an exchange).
+
+### The Memory Quest
+`quests/quests_hugel.txt` | `hg_memory` 0->12, quests 8057-8063 | Lv 50
+(the tree: `BaseLevel > 49`).
+
+1. **The old tree** - walk to the big tree in Hugel (1).
+   `/navi hugel 198/169` | done when: `hg_memory >= 1`
+2. **Manainne** - the old woman by the tree (2).
+   Why: her sister Kanainne loved El Schatt, who now only thinks of money.
+   `/navi hugel 191/172` | done when: `hg_memory >= 2`
+3. **El Schatt and Perfitz** - El Schatt (3); Perfitz (4); El Schatt (5);
+   Manainne (6).
+   `/navi hugel 196/164`, `/navi hugel 100/103`, `/navi hugel 191/172` |
+   done when: `hg_memory >= 6`
+4. **A spirit in Niflheim** - find the spirit in Niflheim (7; it sends you
+   back to Hugel).
+   `/navi niflheim 90/106` | done when: `hg_memory >= 7`
+5. **The last words** - Manainne three times (10), then once more (11); El
+   Schatt (12).
+   `/navi hugel 191/172`, `/navi hugel 196/164` | done when: `hg_memory >= 12`
+   Reward: 8,000 base EXP, 1 Old Blue Box.
+
+### Hide and Seek
+`quests/quests_hugel.txt` | `hg_ubu01` 0->9, quests 12044-12048 | Lv 50
+(Torpy).
+
+1. **Torpy** - "What's wrong?", "Really? Tell me more..." (1).
+   Why: his mother has hidden and he cannot find her.
+   `/navi hugel 107/67` | done when: `hg_ubu01 >= 1`
+2. **His mother** - Torpy's Mom in the field (2); Torpy (3).
+   `/navi hu_fild06 190/367`, `/navi hugel 107/67` | done when: `hg_ubu01 >= 3`
+3. **The barrel** - the Suspicious Barrel: "I'll bring you Steamed Crab
+   Nippers" (4); bring 1 (taken, 5).
+   `/navi hugel 100/176` | done when: `hg_ubu01 >= 5`
+   Note: Steamed Crab Nippers are a cooked dish (the Cooking Quest
+   teaches the recipe and gives one, `quests/cooking_quest.txt`).
+4. **The strange man** - next to the barrel (6); Torpy (7); his mother (8);
+   Torpy (9).
+   `/navi hugel 100/174` | done when: `hg_ubu01 >= 9`
+   Reward: 5,000 base EXP, 3 Green Salad (from his mother).
+
+### The Fish Cake Soup Delivery
+`quests/quests_hugel.txt` | `hg_odeng` 0->10, then 0, quests 8064-8075 | Lv
+none | repeatable.
+
+1. **Cellette** - "Sure, I'll work for you!" (a Fish Cake Soup, and a
+   random customer: 1 Neha, 2 Maewan, 3 Layoma, 4 Erjan).
+   `/navi hu_in01 15/372` | done when: `hg_odeng` 1-4
+2. **The delivery** - bring the customer the soup (it stays with you): he
+   asks for one item: Neha a Whip, Maewan a Bookclip in Memory, Layoma a
+   Mushroom Spore, Erjan a China. Bring it with the soup (both taken, 10).
+   `/navi hugel 76/134` (Neha), `87/139` (Maewan), `84/125` (Layoma),
+   `102/161` (Erjan) | done when: `hg_odeng >= 10`
+   Fails: lost the soup? Cellette sells another for 100 zeny; with less
+   than 100 zeny she calls you irresponsible (5) and never deals with you
+   again.
+3. **Paid** - Cellette (back to 0).
+   `/navi hu_in01 15/372` | done when: `hg_odeng == 0` after 10
+   Reward: 3 Fish Cake Soup, 100 base EXP.
+
+### Cow Milking
+`quests/quests_hugel.txt` | `hg_milk` 0->13, quests 12040-12043 | Lv 50
+(Kurupe) | repeatable after step 5.
+
+1. **Kurupe** - walk up to the farmer (1); talk: "Sure." (2).
+   Why: his helper Burupu has not come to work and the milk is due
+   tomorrow.
+   `/navi hugel 56/104` | done when: `hg_milk >= 2`
+2. **Burupu** - in the field (3, 4): "Alright." (5); bring him a Rapier
+   (taken, 6).
+   `/navi hu_fild06 217/270` | done when: `hg_milk >= 6`
+3. **Permission** - Kurupe (7). Read Burupu's notebook by the cow.
+   `/navi hugel 56/104`, `/navi hugel 72/101` | done when: `hg_milk >= 7`
+4. **Booboo** - with 3 Concentration Potion (taken): "Attempt to Milk
+   Booboo". Listen to her sound and type the brush strokes: joy 3, so-so 5,
+   sad 10, angry 0, love 1. Then she sings the notebook's song with one
+   word changed: type the notebook's word (one of `Brrbrr`, `Brrrrrr`,
+   `Rrrrboo`, `Boobooru`, `Boobooboo`, `B`) (8).
+   `/navi hugel 68/99` | done when: `hg_milk >= 8`
+   Fails: a wrong count or word costs the 3 potions; try again.
+5. **The milk** - Kurupe (9).
+   `/navi hugel 56/104` | done when: `hg_milk >= 9`
+   Reward: 10,000 base EXP, 3 Fruit Mix.
+   Again: Kurupe "Sure, I'll milk Booboo." (10), Burupu (11), Kurupe (12),
+   Booboo as in step 4 (13), Kurupe: a random reward (5 Milk, 5 Orange
+   Potion, 5 Yellow Potion, 3 Honey or a Bundle of Food) and back to 9.
+
+### The Odin Temple Excavation
+`quests/quests_hugel.txt` | `hg_odin` 0->60, quests 11000-11008 | Lv 60 |
+guided `hg_odin` (steps from guide.ps1).
+
+1. **The notice** - read the Sign in Hugel (1).
+   `/navi hugel 91/152` | done when: `hg_odin >= 1`
+2. **A team** - Alex: "I saw the recruitment notice and..." or Laura: "Yes,
+   I'll do it!" (2).
+   `/navi hu_in01 19/161` (Alex), `/navi hu_in01 14/11` (Laura) | done when:
+   `hg_odin >= 2`
+3. **Runes from the temple** - the Boatman: "Sure!" to sail to the temple;
+   sail back (`odin_tem01 93/146`) and talk to your leader, twice. Alex:
+   "Yes, I do.", then "There you go!" with 5 Rune of Darkness (Skogul,
+   Frus); Laura: any answers, "Yes!", then "Right here!". Then Laura (17).
+   `/navi hugel 209/109` | done when: `hg_odin >= 17`
+4. **Ymir's Heart** - walk through the door to Alex's room (`hu_in01
+   15/108`), then Laura: "Ymir's Heart" (20).
+   `/navi hu_in01 14/11` | done when: `hg_odin >= 20`
+5. **The hidden way** - on the temple's top floor one of five spots pulls
+   you into the sealed hall (it moves after use): `odin_tem03 266/302`,
+   `288/271`, `283/241`, `179/275`, `320/264`. Inside, the object: "Explore"
+   (1 try in 3), "Pick it up"; then the way back (23).
+   `/navi que_hugel 35/29`, `163/178` | done when: `hg_odin >= 23`
+6. **The dig house** - walk into it (`/navi hugel 52/90`): Laura (25), Ashe
+   (59).
+   `/navi hu_in01 159/84`, `162/85` | done when: `hg_odin >= 59`
+7. **Ashe in the desert** - walk to the spot, either question (60).
+   `/navi moc_fild12 160/365` | done when: `hg_odin >= 60`
+   Reward (guide): an Old Blue Box for the runes, 100,000 base EXP at the
+   end.
+   Opens: one of the Wandering Bard's stories (29); the Rebellion Quest's
+   step 3.
+
+### The Thanatos Tower
+`quests/thana_quest.txt` | `thana_tower` 0->10, quests 7048-7053 | Lv none;
+the 7th floor takes only 2nd classes or higher (or Super Novice, Taekwon,
+Star Gladiator, Soul Linker, Ninja, Gunslinger, Summoner at Lv 95+, line
+2295).
+
+1. **The tower keeper** - "Enter the tower", "Enter": 5,000 zeny (3,000
+   once you work there).
+   `/navi hu_fild01 140/163` | done when: inside the tower
+2. **A work contract** - the Guide on floor 1: "Temporary Work Contract",
+   "Sure, I'd like to work for you.", "Yes", "Sign" (1).
+   `/navi tha_t01 149/78` | done when: `thana_tower >= 1`
+3. **The entrance guide** - floor 2: "Start a conversation.", "About the
+   development.", "Just tell me about it.", "What accident are you
+   referring to?", "Ok! I will." (4).
+   `/navi tha_t02 231/161` | done when: `thana_tower >= 4`
+4. **The red key** - floor 3, the Rune Device: "Investigate it." with a
+   level 4 weapon in hand (a Taekwon kicks); "Concentrate on it." (5).
+   `/navi tha_t03 67/70` | done when: `thana_tower >= 5`
+5. **The yellow key** - floor 4, the Rune Device: a 3-digit code (digits
+   1-9, all different); it tells you how many digits are right and in
+   place. Then "Concentrate on it." (6).
+   `/navi tha_t04 195/195` | done when: `thana_tower >= 6`
+6. **The blue key** - floor 5, the Brilliant Statue: "Stick the key into
+   the crack...", type `Red Key`, then `Yellow Key`; "Concentrate on it."
+   (7).
+   `/navi tha_t05 62/179` | done when: `thana_tower >= 7`
+7. **The green key** - floor 6, the Brilliant Statue: "Investigate.",
+   "Investigate the Wheels", then set all five the same way: "1st Small
+   Wheel" "Lower Wheel", "2nd Small Wheel" "Press Wheel", "1st Big Wheel"
+   "Raise Wheel", "2nd Big Wheel" "Vertically Shift Wheel", "3rd Big Wheel"
+   "Lower Wheel"; "Concentrate on it." (8).
+   `/navi tha_t06 226/230` | done when: `thana_tower >= 8`
+8. **The black key** - the Splendid Sword: "Observe it.", "Towards the
+   hilt of the sword", "Insert the sword into the hole" (9, Barmund's
+   note). The other choices cost 20% HP.
+   `/navi tha_t06 204/181` | done when: `thana_tower >= 9`
+9. **Varmunt's journal** - the Entrance Guide: "Start a conversation.", "I
+   found Varmunt's Journal..." (10).
+   `/navi tha_t02 231/161` | done when: `thana_tower >= 10`
+   Reward: 120,000 base / 10,000 job EXP, 1 Old Violet Box.
+   Opens a place: the upper tower: with the Black Key, the warp to the 7th
+   floor (`/navi tha_t06 119/120`); on floor 8 the Shining Crystals turn
+   each key into a Charm Stone, and on floor 12 the four statues take them
+   to open Thanatos' memory (the MVP).
+
+## 13. Arunafeltz: Rachel, Veins and Nameless Island
+
+### The Lost Child (The Stolen Gem)
+`quests/quests_rachel.txt` | `lost_boy` 0->13, quests 8089-8098 | Lv 60 |
+guided `ra_lostchild` (steps from guide.ps1).
+
+1. **Vincent** - the steward of High Priest Zhed's mansion: "Sure, why
+   not?" (1).
+   Why: a gem the Pope gave Zhed was stolen, and the servant Phobe ran off
+   the same night.
+   `/navi ra_in01 384/246` | done when: `lost_boy >= 1`
+2. **Phobe's trail** - Logan (2), Manson (3), Jenny (4), an idle merchant
+   (5), another idle merchant (6); each sends you to the next.
+   `/navi rachel 114/232`, `ra_in01 372/200`, `rachel 48/237`, `rachel
+   138/73`, `rachel 120/47` | done when: `lost_boy >= 6`
+3. **The suspicious man** - south of Rachel (7). He hits you for half your
+   HP before he talks: come with full HP.
+   `/navi ra_fild01 245/325` | done when: `lost_boy >= 7`
+4. **The truth** - Vincent (8), the Kid (9), Vincent (10), Jenny (11),
+   Vincent (12).
+   `/navi ra_in01 384/246`, `rachel 263/32`, `rachel 48/237` | done when:
+   `lost_boy >= 12`
+5. **The High Priest** - Zhed in the inner temple: "I'm here on Vincent's
+   behalf", "Actually... I was just curious.", "Tell him your name." (13).
+   `/navi ra_temin 277/159` | done when: `lost_boy >= 13`
+   Reward (guide): an Old Violet Box from Vincent, 90,000 base EXP from
+   Zhed.
+
+### The Sanctuary Quest
+`quests/quests_rachel.txt` | `ra_tem_q` 0->23, then MISC_QUEST bit 8192 | Lv
+none | **needs a mod**: the temple only opens after 10,000 donations from
+the whole server (`$rachel_donate`); solo-community-goals opens it (setting
+"Donations to open Rachel's Sanctuary"). Guided `ra_sanctuary` (steps from
+guide.ps1). Without the mod: dead end at step 1, see guide-deferred.md.
+
+1. **Priestess Nemma** - in the temple (1).
+   Why: a gate is locked from the inside.
+   `/navi ra_temple 116/174` | done when: `ra_tem_q >= 1`
+2. **The candy kid** - "Yeah." or "Sure, I love the stuff~", and give him a
+   Candy if he asks ("Sure.") (2).
+   `/navi rachel 243/37` | done when: `ra_tem_q >= 2`
+3. **Through the window** - at the temple's side, "Enter Through Window";
+   walk onto each spot in turn, investigate the Bloody Spot twice, then
+   "Push Gate" (10).
+   `/navi ra_temple 67/209`, then `que_rachel 60/80`, `59/112`, `94/139`,
+   `132/70`, `28/315` (twice), `170/37`, `169/18` | done when: `ra_tem_q >= 10`
+4. **Panno** - "Hey, did you open the gate?", "The locked gate to the
+   temple!", "Explain."; talk again (12).
+   `/navi ra_temin 170/46` | done when: `ra_tem_q >= 12`
+5. **Firecrackers** - Nemma twice; the second time "Yes." with 20
+   Firecrackers (Party Supplies Shop in Hugel, `hu_in01 23/311`, 5 for 500
+   zeny) (14).
+   `/navi ra_temple 116/174` | done when: `ra_tem_q >= 14`
+6. **High Priest Zhed** - "Yes, sure." (15).
+   `/navi ra_temin 277/159` | done when: `ra_tem_q >= 15`
+7. **Glacial Hearts** - the Pope's Office Guard lets you pass for 40
+   Glacial Hearts (Ice Titan, Snowier, Gazeti in the Ice Cave) (16).
+   `/navi ra_temin 134/128` | done when: `ra_tem_q >= 16`
+8. **The Pope** - past the guard (`ra_temin 134/131`), up through `275/226`:
+   "No, not at all...!", type anything twice, "R-really...?", "Holy
+   Ground?" (17).
+   `/navi ra_temsky 99/99` | done when: `ra_tem_q >= 17`
+9. **The small key** - tell Zhed (18), listen at the hidden spot (19), Zhed:
+   "Ask about Bekento" (20), the key: "Pick It Up" (21).
+   `/navi ra_temin 277/159`, `288/151`, `272/143` | done when: `ra_tem_q >= 21`
+10. **Into the Sanctuary** - the gate: "Use Small Key"; walk to the way on
+    (`ra_san01 139/13`), north to the far end (`que_san04 119/203`); in
+    Rachel walk onto the spot (`rachel 163/152`) (23).
+    `/navi ra_temin 28/319` | done when: `ra_tem_q >= 23`
+11. **Zhed's answer** - "Did something happen?" (MISC_QUEST 8192).
+    `/navi ra_temin 277/159` | done when: `MISC_QUEST & 8192`
+    Reward (guide): EXP along the way, 90,000 base / 60,000 job at the end.
+    Opens a place: the Rachel Sanctuary. Opens: the Siblings Quest.
+
+### The Siblings Quest
+`quests/quests_veins.txt` | `rachel_camel` 0->25, quests 3060-3083 | Lv none
+| needs: the Sanctuary Quest (MISC_QUEST 8192; the Kid in Veins,
+`veins 327/185`, only talks after it). Dead end without the Sanctuary, see
+guide-deferred.md (Veins Siblings). Steps: with the Sanctuary's batch.
+Opens: the Nameless Island's step 12 and the Thor Volcano Base.
+
+### The Nameless Island
+`quests/quests_nameless.txt` (with `quests_prontera.txt`, `quests_rachel.txt`,
+`quests_veins.txt`) | `aru_monas` 0->26 | Lv none | needs: the Geoborg
+Family Curse at an ending (`prt_curse` 36, 45, 56 or 61). Dead end at step
+12: High Priest Zhed goes on only with the Sanctuary (MISC_QUEST 8192) and
+the Siblings Quest done (`rachel_camel == 25`), see guide-deferred.md.
+
+1. **The agent on the airship** - on the international airship, walk to
+   the spot by the agent (1).
+   Why: Priest Bamph is waiting for you at the Prontera church.
+   `/navi airplane_01 90/63` | done when: `aru_monas >= 1`
+2. **Priest Bamph** - (2).
+   `/navi prt_church 185/106` | done when: `aru_monas >= 2`
+3. **Comodo** - the Ordinary Man: "Excuse me.", "Priest Bamph sent me."
+   (3; he takes you to a back room); the other man: "Why to the west?" (4).
+   Why: someone close to Bamph was kidnapped, maybe by people from
+   Arunafeltz.
+   `/navi cmd_in02 174/89`, then `/navi cmd_in02 111/52` | done when:
+   `aru_monas >= 4`
+4. **Bamph again** - "Tell him what Larjes said." (5); talk again: "Of
+   course, I'll help." (6).
+   `/navi prt_church 185/106` | done when: `aru_monas >= 6`
+5. **The Rachel restaurant** - the Waiter: "Yes, I've come for another
+   reason.", "Yes." (7, a seat); listen to the men at the next table:
+   "...Yes, that sounds good." (8).
+   `/navi ra_in01 308/59`, then `/navi ra_in01 301/43` | done when:
+   `aru_monas >= 8`
+   Note: with more than 3,000 zeny you pay 3,000 for the meal and get 4
+   Assorted Seafood.
+6. **The Veins magistrate** - "Are you in trouble?" (9); the Soldier: "Who
+   are the smugglers?" (10); the Magistrate: "I want to know about the
+   smugglers." (11).
+   `/navi ve_in 78/314`, `/navi ve_in 81/296` | done when: `aru_monas >= 11`
+7. **High Priest Zhed** - "Ask About Veins Incident" (12). Only with the
+   Sanctuary and the Siblings Quest done: dead end, see guide-deferred.md.
+   `/navi ra_temin 277/159`
+
+### The Thor Volcano Base
+`quests/quests_veins.txt` (starts in `quests/quests_rachel.txt`) | `aru_vol`
+0->27, quests 2114-60212 | Lv none | needs: the Sanctuary (MISC_QUEST 8192)
+and the Siblings Quest done (`rachel_camel == 25`): High Priest Zhed
+(`ra_temin 277/159`) offers it then (when `aru_monas` is 11 he does the
+Nameless Island step first). Dead end without the Sanctuary, see
+guide-deferred.md. Opens: Peace to Arunafeltz.
+
+### Peace to Arunafeltz and Rachel Addition
+`quests/quests_nameless.txt` | `aru_em` 0->23 | Lv none | needs: the Thor
+Volcano Base (`aru_vol == 27`). Dead end without the Sanctuary, like the
+Thor Volcano Base, see guide-deferred.md.
+
+### Bruspetti
+`quests/quests_rachel.txt` | `rach_vice` 0->24, quests 8106-8122 | Lv none |
+needs: the Friendship Quest past step 10 (`friendship > 10`, region 11);
+keep its Knife for step 9.
+
+1. **Katinshuell** - the man who wants to be left alone (1).
+   `/navi ra_in01 235/194` | done when: `rach_vice >= 1`
+2. **Mr. Shendar** - (2); Lachellen (3); Katinshuell (4); Mr. Shendar (5).
+   Why: Katinshuell is Benkaistein's lost friend from Lighthalzen.
+   `/navi ra_in01 250/19`, `/navi rachel 73/244` | done when: `rach_vice >= 5`
+3. **A memory in Lighthalzen** - walk into Digotz's room in Uptown (6);
+   Lachellen (7); walk onto the spot in south-east Rachel (8); Mr. Shendar
+   (9); the Book in his house (10).
+   `/navi lhz_in02 213/207`, `/navi rachel 265/47`, `/navi ra_in01 255/25`
+   | done when: `rach_vice >= 10`
+4. **Names** - Katinshuell: type `Bruspetti` (or `Lighthalzen`, `Freya's
+   Spring`) (11); Lachellen: type `Freya's Spring` (12); the Grandma (13);
+   Mr. Shendar (14; he hits you for 50% HP).
+   `/navi ra_in01 235/194`, `/navi rachel 73/244`, `/navi rachel 266/35`,
+   `/navi ra_in01 250/19` | done when: `rach_vice >= 14`
+5. **The blue diary** - the Book (15, Diary of Blue); give it to
+   Katinshuell (16).
+   `/navi ra_in01 255/25` | done when: `rach_vice >= 16`
+6. **His story** - Katinshuell: "Lighthalzen", "Recent Break-up", "Freya's
+   Spring" (17); talk three times more (20).
+   `/navi ra_in01 235/194` | done when: `rach_vice >= 20`
+7. **The knife** - with a Knife: talk (21), again (22; the Knife is taken).
+   `/navi ra_in01 235/194` | done when: `rach_vice >= 22`
+8. **Goodbye** - walk onto the spot in south-east Rachel (23), again (24).
+   `/navi rachel 265/47` | done when: `rach_vice >= 24`
+   Reward: base EXP 45,000 (Lv 75 or less), 85,000 (76-90), 130,000 (91+).
+
+### The Ice Necklace
+`quests/quests_rachel.txt` | `ice_necklace_q` 0->7, quests 2109-2113 | Lv
+none.
+
+1. **Urstia** - the sincere follower: "Freya? I'd like to know more.",
+   "Alright, I'll do it." (1, Ashy Necklace).
+   Why: Freya's power should free a man stuck in the Ice Cave.
+   `/navi rachel 157/183` | done when: `ice_necklace_q >= 1`
+2. **The man in the ice** - walk up to him (2).
+   `/navi ice_dun02 120/105` | done when: `ice_necklace_q >= 2`
+3. **Hamion** - (3); bring 5 Rough Wind, 1 Hammer, 1 Blank Scroll (taken):
+   "Don't worry, I checked." (4, Wind Hammer).
+   `/navi rachel 265/98` | done when: `ice_necklace_q >= 4`
+4. **Breaking the ice** - the man in the ice, with the Wind Hammer and the
+   necklace: four Snowiers attack; kill them (5: Sparkling Necklace, 4
+   Freezing Snow Powder).
+   `/navi ice_dun02 120/105` | done when: `ice_necklace_q >= 5`
+5. **Back to Urstia** - give her the necklace (6).
+   `/navi rachel 157/183` | done when: `ice_necklace_q >= 6`
+   Reward: 90,000 base EXP.
+6. **Mohadian** - walk up to him: "Sure." (7): from then on he buys
+   Glacial Hearts for zeny.
+   `/navi rachel 113/97` | done when: `ice_necklace_q >= 7`
+   Opens: the Freezing Snow Powder puts out the four Blazing Fires on Ice
+   Cave floor 3 (`ice_dun03 126/126`, `172/126`, `172/172`, `127/172`),
+   which wakes Ktullanux.
+
+### The Stone Quest
+`quests/quests_veins.txt` (the old man's place on Renewal in
+`re/quests/quests_veins.txt`) | `veins_stone` 0->8 | Lv none.
+
+1. **The wincing old man** - "Gosh, how bad is it?", "Can I help?", "I will
+   help you.", "What do you want me to do?", then "Nothing." (1).
+   Why: his back is broken and his stone job is unfinished.
+   `/navi ve_fild02 337/314` | done when: `veins_stone >= 1`
+2. **Zabaroo** - the Strange Old Man in Veins: "........", "Oh, I-I'm...",
+   "I'm here for Mr. Zabaroo...", "What materials...?" (2). ("Excuse me..."
+   costs 30% HP and throws you out.)
+   `/navi ve_in 169/310` | done when: `veins_stone >= 2`
+3. **Materials** - bring 5 Steel, 5 Root of Maneater, 2 Glacial Heart
+   (taken, 3); talk again (4).
+   `/navi ve_in 169/310` | done when: `veins_stone >= 4`
+4. **The message** - the old man: "Yes, here...", "This message...", "Huh?
+   What is it?" (5).
+   `/navi ve_fild02 337/314` | done when: `veins_stone >= 5`
+5. **The factory** - the Factory Manager: "I've brought these...", "I'm
+   here on his behalf." (6); the Factory Worker: "He still hurts.", "I have
+   a question...", "What's this Hetarium??", "How do they use Hetarium??"
+   (7).
+   `/navi ve_in02 37/28`, `/navi ve_in02 54/49` | done when: `veins_stone >= 7`
+6. **Done** - the old man (8).
+   `/navi ve_fild02 337/314` | done when: `veins_stone >= 8`
+   Reward: 30,000 base EXP, 3 Elunium.
 
 ## Entrances without a quest
 

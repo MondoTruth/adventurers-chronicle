@@ -4,7 +4,7 @@ Step 1 of the Renewal Side Quests tab (concept v3, 2026-10-26): every side
 quest Ragnarok itself has on a Renewal server, grouped Region -> Storyline ->
 Quest, with the links between them. Step 2 adds the steps, an explanation
 for each and a `/navi map x/y`, region by region, in `ro-quest-steps.md`
-(regions 1-6 and the entrances done on 2026-10-26).
+(regions 1-13 and the entrances done on 2026-10-26).
 
 Source of truth: rathena-pin, commit 8aea17a (the app 1.7.0 pin). Every file
 named here is loaded on Renewal (`npc/scripts_athena.conf`, which
@@ -148,10 +148,13 @@ Labyrinth (Prontera Maze) are Episode 16.2 content (see "Later").
 ## 3. Payon and Archer Village
 
 ### Single quests
-- **The Party Relay** - a relay race around Payon for a whole party.
-  `quests/partyrelay.txt` | `party_relay`, `party_relay_lv` | Lv: 40
-  | `party 6`: from the first talk (lines 204, 348) the party leader must
-  lead 6+ members and be in a guild (to verify: a guild for bots/solo).
+- **The Party Relay** - a relay race for a whole party (Payon, Comodo,
+  Einbroch, Hugel, Rachel, Veins). `quests/partyrelay.txt` | `party_relay`
+  0->32 (per runner), `party_relay_lv`, Mission Tickets 1-12 | Lv: 40
+  | `party 6`: the party leader must lead 6+ members and be in a guild
+  (lines 39, 114, 163, 204, 348); the runners must be a Swordman, Mage,
+  Acolyte, Archer, Thief and Merchant; Lospii's three tasks want 10, 12 and
+  14 players around her (`getareausers`) | repeatable.
 
 ## 4. Morroc and the Sograt Desert
 
@@ -208,27 +211,27 @@ headgear (excluded).
 
 ### Storyline: The Umbalian Language
 - **The Umbalian Language** - the Utan chief teaches you his tribe's tongue.
-  `quests/quests_umbala.txt` | `event_umbala` 0->3+ | Lv: none
-  | closes: Umbala Domestic Dispute | makes unnecessary: the Umbalian
-  language quests in custom files are off (`npc/custom/quests/umbalian_language.txt`
-  is commented out), so none | opens: The Sign's Umbala step (1).
+  `quests/quests_umbala.txt` | `event_umbala` 0->3 | Lv: none
+  | closes: Umbala Domestic Dispute | opens: The Sign's Umbala step (1).
 - **Umbala Domestic Dispute** - Phrenetan's family quarrel.
-  `quests/quests_umbala.txt` | `um_wind` 0->4, MISC_QUEST 32768 | Lv: none
-  | closed for good once you learn the language (`event_umbala >= 3`, line ~1005;
-  header: "only available if you have not done language quest").
+  `quests/quests_umbala.txt` | `um_wind` 0->5, then 0 and MISC_QUEST 32768
+  | Lv: none; not as a Novice (line 998) | closed for good once you learn
+  the language (`event_umbala >= 3`, line 985).
 
 Not quests: the Utan Shaman's Create Essence/Dismantle Stone is a service
-(needs the chief's permission, `event_umbala`); excluded as crafting. The
-header names an "Umbala Skeletal Gate Quest" but no such NPC is in the file
-(to verify: moved or removed).
+(`event_umbala` 4->7, the chief wants a Mr. Smile); excluded as crafting.
+The header's "Umbala Skeletal Gate Quest" is the skull door into the
+shaman's room (`#Skulldoor`, umbala 221,193): a gemstone test, or open at
+`event_umbala >= 7`; an entrance, not a quest.
 
 ## 8. Niflheim
 
 ### Single quests
 - **The Piano Key Quest** - escape from Niflheim: Alreg, Crayu and
   Kuzkahina. `quests/quests_niflheim.txt` (+ `re/quests/quests_niflheim.txt`
-  for one piano) | `nif_esc` 0->8, `nif_piano`, MISC_QUEST 32 | Lv: none
-  | opens a place? A way out of Niflheim (to verify what it unlocks).
+  for the last piano spot) | `nif_esc` 0->12, MISC_QUEST 32 | Lv: none
+  | opens a place: the Witch's room and a way out of Niflheim to Umbala
+  (the spot at nif_in 118,151 works at any time once done).
 - The Message Delivery starts in Prontera (1).
 
 ## 9. Juno, Juperos and the Kiel Hyre area
@@ -236,23 +239,26 @@ header names an "Umbala Skeletal Gate Quest" but no such NPC is in the file
 ### Storyline: Kiel Hyre (continues in Lighthalzen)
 - **The Kiel Hyre Quest** - Juno's pub master, Elly of the academy, the
   cottage, the Rosimier mansion and Kiel Hyre himself.
-  `quests/kiel_hyre_quest.txt` | `KielHyreQuest` 0->~60 (+ `KHCottagePoem1/2`,
-  `KHToastGirlEnd`, `KHPubMasterEnd`) | Lv: none
-  | opens a place: the Robot Factory floors 1 and 2 (kh_dun01, kh_dun02).
+  `quests/kiel_hyre_quest.txt` | `KielHyreQuest` 0->109 (+ `KHCottagePoem1/2`,
+  `KHToastGirlEnd`) | Lv: none
+  | opens a place: the Robot Factory floor 1 (kh_dun01, at 38) and floor 2
+  (kh_dun02, Luxurious Keycard at 108).
 
 ### Single quests
 - **The Metto Quest** - Metto, a scientist who trusts fate. `quests/quests_yuno.txt`
-  | `metto_q` 0->9 | Lv: none | guided `yuno_metto` | opens: one of the
-  Wandering Bard's stories (29).
+  | `metto_q` 0->9 | Lv: none (not as a Novice) | guided `yuno_metto` | opens:
+  one of the Wandering Bard's stories (29).
 - **Juperos Ruins History** - the scholar's files on Juperos.
   `quests/quests_juperos.txt` | `yuno_hist` 0->10 (and `jupe_hist`), quests
-  11017-11022 | Lv: none | **dead end** (Transparent Plates, see
-  guide-deferred.md) | opens: one of the Wandering Bard's stories (29)
-  | to verify: what `jupe_hist` gates (Juperos elevator/core?).
-- **The Juno Remedy Quest** - Euslan in Juno needs a remedy.
-  `quests/quests_hugel.txt` | `hg_ma1` 0->13, quests 8044-8052 | Lv: 60
-  | opens: the Heart Fragment quest (10; the Hallen path at `hg_ma1 == 3`,
-  to verify).
+  11017-11022 | Lv: none | **dead end** at step 5 (Transparent Plates, see
+  guide-deferred.md) | opens: one of the Wandering Bard's stories (29).
+- **The Juno Remedy Quest** - Euslan in Juno needs a remedy; her fiance is
+  in the Odin Shrine. `quests/quests_hugel.txt` (+ the airship's Kaci and
+  Captain Ferlock in `quests/quests_airship.txt`) | `hg_ma1` 0->13, quests
+  8044-8052 | Lv: 60 | `party 5`: Eukran is only reached through a Bingo
+  game, and the Bingo waiting room starts at 5 players
+  (`npc/other/hugel_bingo.txt`). No link to the Heart Fragment Quest: Hallen
+  only waits while `hg_ma1 == 3`.
 - **The Pile Bunker** - excluded (item).
 
 ## 10. Einbroch and Einbech
@@ -260,59 +266,69 @@ header names an "Umbala Skeletal Gate Quest" but no such NPC is in the file
 ### Storyline: the Schwarzwald trilogy (continues in Lighthalzen)
 - **The Factory Quest** - Einbroch's factory is short of hands.
   `quests/quests_ein.txt` | `EinFactory` 0->16, quests 8017-8031 | Lv: none
-  | guided `ein_factory` | each one done adds to `$EinPolution` (smog alert).
+  | guided `ein_factory` | each one done adds to `$EinPolution` (smog alert)
+  | opens: the Murder Quest's step 6 (`EinFactory > 12`).
 - **The Murder Quest** - a sick old man, a maid and a murder in Einbech.
   `quests/quests_ein.txt` | `Shinokas_Quest` 0->11, quests 2071-2078 | Lv: none
-  | **dead end** (apples, see guide-deferred.md) | needs: the Factory Quest past
-  step 12 (guide-deferred.md) | opens: a branch of the President Quest
-  (`Shinokas_Quest == 11` sets `lhz_boss` 24, line 7928).
-- **The Lovers Quest** - Calla and Klitzer in Einbroch.
-  `quests/quests_ein.txt` | `EIN_LOVERQ` 0->17, quests 8076-8088 | Lv: none
-  | **dead end** (Coal, `nude`, see guide-deferred.md).
+  | needs: the Factory Quest past step 12 | opens: the President Quest
+  (needed there, `Shinokas_Quest == 11`); the Heart Fragment skips a step
+  (`Shinokas_Quest > 9`). The apples at the airship drunk (100+ per try, 7
+  tries in 10 lose them) are sold in Einbroch, Hugel and Lighthalzen: not a
+  dead end.
+- **The Lovers Quest** - Calla and Klitzer in Einbroch and Einbech.
+  `quests/quests_ein.txt` | `EIN_LOVERQ` 0->17, quests 8076-8088 | Lv: 60
+  | 40 Coal (Banaspaty 5%, Panzer Goblin 2.9%, Obsidian 2.5%, or Hans in the
+  Eden Market Group, Saturday 22:00-24:00) and a Tuxedo (Wedding Shop); the
+  last talk takes off all equipment (`nude`). Not a dead end.
 
 ### Storyline: The Airship
 - **Kain's Free Ticket** - a crewman on the airship, the Cherno family and an
-  unidentified machine. `quests/quests_airship.txt` | `kain_ticket` 0->4,
-  quests 2079-2085 | Lv: none | reward: a free airship ticket (header).
-- **Captain Tarlock: Monsters Attack** - the Lighthalzen airship under attack.
-  `quests/quests_airship.txt` | `lght_air` 0->7, quests 8032-8035 | Lv: to
-  verify (`BaseLevel <= 59` at line 1863 is dialogue).
+  unidentified machine. `quests/quests_airship.txt` | `kain_ticket` 0->15,
+  quests 2079-2085 | Lv: none | reward: 4 Free Ticket for Flyship | opens:
+  the Unidentified Machine's free repairs (`kain_ticket > 12`).
+- **Captain Tarlock: How the Airship Flies** - the brothers Tarlock and
+  Ferlock. `quests/quests_airship.txt` | `lght_air` 0->7, quests 8032-8035
+  | Lv: 60 (`BaseLevel <= 59` refuses) | opens: the Heart Fragment Quest's
+  step 4.
 - **The Heart Fragment Quest** - Hallen and Kaci on the airship.
-  `quests/quests_airship.txt` | `lhz_heart` 0->13, quests 8036-8044 | Lv: 60
-  | needs: Juno Remedy at step 3 (`hg_ma1 == 3` path) - to verify.
+  `quests/quests_airship.txt` | `lhz_heart` 0->13, quests 8036-8043 | Lv: 60
+  | needs: Captain Tarlock done (`lght_air == 7`) at step 4.
 
-Excluded: Oridecon/Mineral Stone (`ein_gear1`, an exchange), the Typing Test
-(Security, a mini-game; to verify).
+The Einbroch Laboratory door (Security, a typing test) is the way in for
+the Murder and Heart Fragment quests, not a quest of its own.
+Excluded: Oridecon/Mineral Stone (`ein_gear1`, an exchange), Uwe Kleine.
 
 ## 11. Lighthalzen
 
 ### Storyline: Rekenber and the President (needs Einbroch, Hugel)
 - **The Rekenber Job Quest** - a job at the Rekenber Corporation (employment,
-  not a class change). `quests/quests_lighthalzen.txt` | `lhz_rekenber` 0->26,
-  quests 12007-12013 | Lv: none found (to verify) | opens: a step of the
-  Alberta Boy (5) at `lhz_rekenber > 21`.
+  not a class change). `quests/quests_lighthalzen.txt` | `lhz_rekenber` 0->23,
+  quests 12007-12013 | Lv: 70 (Kazien) | opens: a step of the Alberta Boy (5)
+  at `lhz_rekenber > 21`.
 - **The President Quest** (Schwarzwald Trilogy) - Ghalstein, the lab, the
   President's mission and the Secret Wing.
-  `quests/quests_lighthalzen.txt` | `lhz_boss` 0->47, MISC_QUEST 512, quests
-  12015-12028 | Lv: 60 | needs: branches read the Rebellion Quest
-  (`hg_tre` 56/57) and the Murder Quest (`Shinokas_Quest` 11) - to verify which
-  are required | opens: one of the Wandering Bard's stories (29); the Cube Room
+  `quests/quests_lighthalzen.txt` | `lhz_boss` 0->44, quests 12015-12028
+  | Lv: 60 | needs: the Cube Room (MISC_QUEST 512, step 3) and the Murder
+  Quest done (`Shinokas_Quest == 11`, step 11) | opens: one of the Wandering
+  Bard's stories (29); the Rebellion Quest (`lhz_boss == 44`); the Cube Room
   early (`lhz_boss == 6`).
 - **The Cube Room** - Fishbone and the secret cube room under Lighthalzen.
-  `quests/quests_lighthalzen.txt` | `lhz_sincube` 0->12, `lhz_secret01-03`,
+  `quests/quests_lighthalzen.txt` | `lhz_sincube` 0->10, `lhz_secret01-03`,
   MISC_QUEST 512, quest 12014 | Lv: 60 (or `lhz_boss == 6`)
-  | opens a place: lhz_cube | to verify: shares MISC_QUEST 512 with the President.
+  | opens a place: the Sewer Pipe into lhz_cube and on to the Bio Lab floor 2
+  | opens: the President Quest's step 3.
 
 ### Single quests
 - **The Cursed Spirit** - spirits in the Bio Lab and the city.
-  `quests/quests_lighthalzen.txt` | `lhz_curse` 0->31+, `lhz_spi01-04`, quests
-  2086-2095 | Lv: none | needs: item 7345 to begin (to verify which)
-  | opens: one of the Wandering Bard's stories (29).
+  `quests/quests_lighthalzen.txt` | `lhz_curse` 0->32, `lhz_spi01-04`, quests
+  2086-2095 | Lv: none | needs: Handcuffs (7345, Bio Lab monsters) in the
+  bag throughout | opens: one of the Wandering Bard's stories (29); the
+  Rebellion Quest (`lhz_curse > 30`).
 - **The Friendship Quest** - Digotz and Maku, old friends.
   `quests/quests_lighthalzen.txt` | `friendship` 0->16, quests 12000-12006
-  | Lv: 50 (to verify: refusal text) | opens: Bruspetti (13); the Alberta
-  Boy's last step (5) at `friendship > 14`; gives the Pass
-  (7350, line 3091) the Uptown guards let through (Gangster Alert below).
+  | Lv: 50 (Digotz) | opens: Bruspetti (13); the Alberta Boy's last step (5)
+  at `friendship > 14`; gives the Pass (7350, line 3091) the Uptown guards let
+  through (Gangster Alert below).
 - **Gangster Alert** and **the Pickpocket** - not quests: the guards between
   Uptown and the slums let only Pass holders through (the Pass comes from the
   Friendship Quest), gangsters raid on a timer, and "suspicious guys" steal
@@ -323,33 +339,40 @@ Excluded: Oridecon/Mineral Stone (`ein_gear1`, an exchange), the Typing Test
 
 ### Storyline: Hugel's herbs and the Biological Weapon
 - **The Medicine Quest** - Allen and Postell Schuwell's herbs.
-  `quests/quests_hugel.txt` | `hg_herb` 0->16, quests 8053-8056 | Lv: 50
-  | has the 4-second medicine-drawer puzzle (step 12->13, `#DrawerOpener`)
+  `quests/quests_hugel.txt` | `hg_herb` 0->13, quests 8053-8056 | Lv: 50
+  | has the 4-second medicine-drawer puzzle (`#DrawerOpener`)
   | opens: Biological Weapon (`hg_herb == 13`).
 - **Biological Weapon** - Morriphen in Einbroch and a weapon from Hugel's
   herbs. `quests/quests_hugel.txt` | `hg_bio` 0->9, quests 11009-11016 | Lv: none
-  | needs: the Medicine Quest at 13 | **dead end** (see guide-deferred.md)
+  | needs: the Medicine Quest at 13 | 3 Detrimindexta (Deviace 1%, Toad 0.5%,
+  Dye the Alchemist in the Eden Market Group) and 5 Coal: not a dead end
   | opens: one of the Wandering Bard's stories (29).
 
 ### Storyline: The Rebellion (continues in Lighthalzen)
-- **The Rebellion Quest** - Shede in Hugel and a plot that reaches
-  Lighthalzen. `quests/quests_hugel.txt` | `hg_tre` 0->57 (steps of 10)
-  | Lv: none | opens: President Quest branch (`hg_tre` 56/57, to verify).
+- **The Rebellion Quest** - Shede and Herico in Hugel and a plot that reaches
+  Lighthalzen. `quests/quests_hugel.txt` | `hg_tre` 0->57 | Lv: none
+  | needs: the President Quest done (`lhz_boss == 44`), the Cursed Spirit
+  past 30 and the Odin Temple Excavation done (`hg_odin == 60`), both at
+  step 3 | ends at the President in Juno (`hg_tre` 56->57).
 
 ### Single quests
 - **The Memory Quest** - Manainne and a spirit in Niflheim.
   `quests/quests_hugel.txt` | `hg_memory` 0->12, quests 8057-8063 | Lv: 50.
 - **Hide and Seek** - Torpy hides; his mother is worried.
-  `quests/quests_hugel.txt` | `hg_ubu01` 0->10, quests 12044-12048 | Lv: 50.
+  `quests/quests_hugel.txt` | `hg_ubu01` 0->9, quests 12044-12048 | Lv: 50
+  | needs one Steamed Crab Nippers (cooking).
 - **The Fish Cake Soup Delivery** - Cellette's soup for Hugel's people.
-  `quests/quests_hugel.txt` | `hg_odeng` 0->17, quests 8064-8071 | Lv: none.
+  `quests/quests_hugel.txt` | `hg_odeng` 0->10, then 0, quests 8064-8075 | Lv: none
+  | repeatable.
 - **Cow Milking** - Kurupe and Burupu's cow.
-  `quests/quests_hugel.txt` | `hg_milk` 0->18, quests 12040-12043 | Lv: 50.
+  `quests/quests_hugel.txt` | `hg_milk` 0->13, quests 12040-12043 | Lv: 50
+  | repeatable (9->13).
 - **The Odin Temple Excavation** - Alex's or Laura's dig team.
   `quests/quests_hugel.txt` | `hg_odin` 0->60, quests 11000-11008 | Lv: 60
-  | guided `hg_odin` | opens: one of the Wandering Bard's stories (29).
+  | guided `hg_odin` | opens: one of the Wandering Bard's stories (29); the
+  Rebellion Quest's step 3.
 - **The Thanatos Tower** - the tower keeper and the guides of Thanatos.
-  `quests/thana_quest.txt` | `thana_tower` 0->9, quests 7048-7053
+  `quests/thana_quest.txt` | `thana_tower` 0->10, quests 7048-7053
   | Lv: none; class check at the upper portal (2nd class or higher, line 2295)
   | opens a place: the upper Thanatos Tower.
 
@@ -370,20 +393,20 @@ Excluded: Oridecon/Mineral Stone (`ein_gear1`, an exchange), the Typing Test
 - **The Nameless Island** - an event switch on the airship, Comodo and the
   cursed monastery. `quests/quests_nameless.txt` | `aru_monas` 0->26
   | Lv: none | needs: the Geoborg Family Curse at an ending (36/45/56/61);
-  at step 14 the Siblings Quest done (`rachel_camel == 25`, Drunkard in
-  ve_in) | **dead end** without the Sanctuary (Siblings needs it; see
-  guide-deferred.md) | opens a place: Nameless Island and the Cursed Abbey.
+  at step 12 (High Priest Zhed, `aru_monas == 11`) the Sanctuary (MISC_QUEST
+  8192) and the Siblings Quest done (`rachel_camel == 25`) | **dead end**
+  without the Sanctuary (see guide-deferred.md) | opens a place: Nameless
+  Island and the Cursed Abbey.
 - **The Siblings Quest** - a boy in Veins saves his little sister.
   `quests/quests_veins.txt` | `rachel_camel` 0->25, quests 3060-3083 | Lv: none
   | needs: the Sanctuary Quest (MISC_QUEST 8192) | **dead end** until the
   Sanctuary is possible (guide-deferred.md: Veins Siblings) | opens: the
-  Nameless Island past step 14 (Karyn's lines after the reward follow
-  `aru_monas`).
+  Nameless Island past step 11; the Thor Volcano Base.
 - **The Thor Volcano Base** - infiltrate Thor Volcano: what is Arunafeltz up
   to? `quests/quests_veins.txt` | `aru_vol` 0->27, quests 2114-60212 | Lv: none
   | starts at High Priest Zhed (ra_temin 277,159, `quests/quests_rachel.txt`
-  line 5582) | needs: the Sanctuary Quest (MISC_QUEST 8192) and the Nameless
-  Island at 11 (`aru_monas == 11`) - to verify | **dead end** without the
+  line 5582) | needs: the Sanctuary Quest (MISC_QUEST 8192) and the Siblings
+  Quest done (`rachel_camel == 25`, line 5280) | **dead end** without the
   Sanctuary (see guide-deferred.md) | opens: Peace to Arunafeltz.
 - **Peace to Arunafeltz** - a foreign merchant in the Morroc ruins.
   `quests/quests_nameless.txt` | `aru_em` 0->23, quests 2129-2140 | Lv: none
@@ -395,10 +418,12 @@ Excluded: Oridecon/Mineral Stone (`ein_gear1`, an exchange), the Typing Test
 
 ### Single quests
 - **Bruspetti** - Katinshuell in Rachel. `quests/quests_rachel.txt` | `rach_vice`
-  0->24, quests 8106-8122 | Lv: none | needs: the Friendship Quest past 10 (11).
+  0->24, quests 8106-8122 | Lv: none | needs: the Friendship Quest past 10 (11)
+  and its Knife.
 - **The Ice Necklace** - Urstia, a sincere follower, and a man stuck in the
   Ice Cave. `quests/quests_rachel.txt` | `ice_necklace_q` 0->7, quests
-  2109-2113 | Lv: none.
+  2109-2113 | Lv: none | opens: Mohadian buys Glacial Hearts; the Freezing
+  Snow Powder wakes Ktullanux.
 - **The Stone Quest** - help an old man in Veins with his job.
   `quests/quests_veins.txt` | `veins_stone` 0->8 | Lv: none (Renewal adds the
   old man at ve_fild02 337,314, `re/quests/quests_veins.txt`).
