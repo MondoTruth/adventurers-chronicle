@@ -32,12 +32,13 @@ Anything not read in the script itself says **to verify**.
   the other one impossible; **makes unnecessary** = the other stays possible
   but is no longer needed.
 - Story episodes (12, 13.1-13.3, 14.1-14.3, 15) are the Story tab, not here;
-  they appear only as link targets. Episodes 16-19 have no Story entry yet
-  (coming soon): their main lines are listed as "Story line, not a side quest"
-  so their side quests can link to them.
+  they appear only as link targets.
+- Up to Episode 15 for now (MondoTruth, 2026-10-26): content of Episodes
+  16-19 is only named under "Later", to be added with those episodes.
+- Region = where the quest starts (MondoTruth, 2026-10-26), with "continues
+  in ..." when it goes on elsewhere.
 - Episode tag per region: classic Rune-Midgard regions have none; New World 13;
-  Mora, Bifrost, Eclage, Flame Basin 14; Verus and the Eden 15 lines 15; and 16-19
-  for the newer regions.
+  Mora, Bifrost, Eclage, Flame Basin 14; Verus 15.
 
 ## Regions
 
@@ -71,15 +72,9 @@ Anything not read in the script itself says **to verify**.
 28. Flame Basin (Episode 14.3)
 29. Verus and the Phantasmagorika (Episode 15)
 30. Rock Ridge
-31. Prontera Castle and the Royal Banquet (Episode 16.1)
-32. Terra Gloria and the Rebellion (Episode 16.2-17.1)
-33. Varmundt's mansion (Episode 17.2)
-34. Grey Wolf Village and Rachel (Episode 18)
-35. Issgard (Episode 19)
-36. Level 175-250 dungeons
-37. Quests from other mods (World Sync Extras 2.1.2)
+31. Quests from other mods (World Sync Extras 2.1.2)
 
-Then: not covered, excluded files, open questions.
+Then: later (Episodes 16-19), not covered, excluded files, open questions.
 
 ---
 
@@ -125,8 +120,8 @@ Then: not covered, excluded files, open questions.
   (`BaseLevel < 31` to start).
 
 Not quests: Edgar's Offer (Izlude, `quests/quests_izlude.txt`, MISC_QUEST 16)
-is a cheaper boat ride; the Illusion Investigation team in `prt_in` is in 24;
-the Illusion of the Labyrinth (Prontera Maze) is in 31.
+is a cheaper boat ride; the Illusion Investigation team in `prt_in` and the Illusion of the
+Labyrinth (Prontera Maze) are Episode 16.2 content (see "Later").
 
 ## 2. Geffen
 
@@ -137,10 +132,6 @@ the Illusion of the Labyrinth (Prontera Maze) is in 31.
   `instances/OrcsMemory.txt` (a memorial dungeon) | `mad`, `yong_odun` 0->2
   | Lv: 30-80 at the statue | side 5 (RO part only) | to verify: whether
   instances belong in this catalog at all (see "not covered").
-- **Illusion of Vampire** (Geffen Dungeon) - Mojo and Father Grimm look for
-  their colleagues. `re/quests/quests_illusion_dungeons.txt` | `ill_vampire`
-  0->16, quests 14652-14680 | Lv: 130 | Episode 16.2 era | opens a place:
-  gef_d01_i.
 
 ## 3. Payon and Archer Village
 
@@ -149,10 +140,6 @@ the Illusion of the Labyrinth (Prontera Maze) is in 31.
   `quests/partyrelay.txt` | `party_relay`, `party_relay_lv` | Lv: none
   | **dead end**: the party leader must be in a guild and lead more than 5
   members (line 39). See guide-deferred.md.
-- **Illusion of Moonlight** - the elders of Payon and a nightmare in the
-  ruined village. `re/quests/quests_illusion_dungeons.txt`
-  | `illusion_moonlight` 0->9, quests 7776-7788 | Lv: 100 | Episode 16.2 era
-  | opens a place: pay_d03_i.
 
 ## 4. Morroc and the Sograt Desert
 
@@ -184,9 +171,6 @@ headgear (excluded).
   Turtle General. `quests/quests_alberta.txt` | `TURTLE` 0->13, MISC_QUEST
   65536, quests 11029-11037 | Lv: none | opens a place: Turtle Island
   (tur_dun01, its dungeon) | side 9 (RO part only).
-- **Illusion of Turtle** - Knight Aylvar and strangers on Turtle Island.
-  `re/quests/quests_illusion_dungeons.txt` | `ill_turtle` 0->13, quests
-  16096-16117 | Lv: 150 | Episode 16.2 era | opens a place: tur_d03_i.
 
 ### Single quests
 - **The Alberta Boy** - Iromo and his mother; a boy who never goes out.
@@ -206,12 +190,6 @@ headgear (excluded).
   `quests/quests_nameless.txt` | `diamond_edq` 14->26, quests 3110-3118
   | Lv: 66 | needs: Muff's Loan | opens: the Unlucky Emerald's jewel part (4)
   | a step for Rogues/Thieves differs (`BaseJob == Job_Rogue`, line 6031).
-
-### Single quests
-- **Illusion of Luanda** (Comodo cave) - Defense Manager Luanda's fight
-  against Megaliths and Utans. `re/quests/quests_illusion_dungeons.txt`
-  | `ill_luanda`, quests 5847-5855 | Lv: 160 | Episode 16.2 era | repeatable
-  parts | opens a place: com_d02_i.
 
 ## 7. Umbala
 
@@ -321,7 +299,8 @@ Excluded: Oridecon/Mineral Stone (`ein_gear1`, an exchange), the Typing Test
   | opens: one of the Wandering Bard's stories (29).
 - **The Friendship Quest** - Digotz and Maku, old friends.
   `quests/quests_lighthalzen.txt` | `friendship` 0->16, quests 12000-12006
-  | Lv: 50 (to verify: refusal text) | opens: Bruspetti (13).
+  | Lv: 50 (to verify: refusal text) | opens: Bruspetti (13); gives the Pass
+  (7350, line 3091) the Uptown guards let through (Gangster Alert below).
 - **Gangster Alert** and **the Pickpocket** - town events with guards and
   suspicious men. `quests/quests_lighthalzen.txt` | no variable | to verify:
   events, not quests (probably leave out).
@@ -556,10 +535,6 @@ Not quests: `eden_common.txt` (Lime Evenor, Eden teleport officers),
 - **The Juno Monster Society** - assistants in Rachel, Alberta, Einbroch,
   Geffen, Juno... and map examiners in the fields. `re/quests/juno_monster_society.txt`
   | quests 3471-16547 | Lv: 70-95 by field | repeatable.
-- **The Illusion Investigation** - Commander Joel's team (prt_in 136,34) sends
-  you into the Illusion dungeons. `re/quests/illusion_investigation.txt`
-  | quests 3446-3509 | Lv: 100-170 by dungeon | repeatable
-  | needs: the dungeon's own Illusion quest to get in (31; to verify).
 
 ## 25. The New World (Episode 13)
 
@@ -758,105 +733,32 @@ Not quests: the Reward Coordinator and the contribution certificate machine
   same file | quests 1298-16088 | Lv: 100 (some 130/140) | several repeatable
   | needs: the main line (to verify per quest).
 
-## 31. Prontera Castle and the Royal Banquet (Episode 16.1)
+## Later: Episodes 16-19 (not in the catalog yet)
 
-Story line, not a side quest yet: **The Royal Banquet** (`ep16_royal`,
-`re/quests/quests_16_1.txt`, Lv 100, needs 13.1 done: `ep13_ryu > 99 ||
-ep13_start > 99`).
+Named so nothing is lost; each gets its regions when its episode comes.
 
-- **The noble families** - Walther, Roegenburg, Wigner, Geoborg.
-  `re/quests/quests_16_1.txt` | `ep16_wal`, `ep16_lug`, `ep16_wig`, `ep16_gaobs`
-  | Lv: 100 | needs: the Banquet (to verify the step).
-- **The Royal Kitchen** - the head chef's sauces, griffin barbecue, dishes.
-  `ep16_cookbs`, quests 11394-11431 | repeatable.
-- **Warrior Discipline** - repeatable hunts by monster race. quests 5404-5414
-  | repeatable.
-- **The Royal Prison** - Chief Guard Spiegel, Ellond and the prisoners.
-  quests (to verify) | Lv: 140.
-- **Illusion dungeons of Terra Gloria** - listed in their towns (2, 3, 5, 6)
-  and here: **Illusion of the Labyrinth** (Prontera Maze, `ill_laby`, Lv 170,
-  repeatable), **Illusion of Underwater** (Izlude, `ill_underwater`, Lv 140,
-  deep part 180), **Illusion of the Frozen** (Ice Cave, `illusion_frozen`,
-  Lv 110/120), **Illusion of Anthell** (`ill_anthell`, Lv 160), **Illusion of
-  Teddy Bear** (Einbroch, `ill_teddy`, Lv 150) - all
-  `re/quests/quests_illusion_dungeons.txt` | opens a place each.
-  To decide in step 2: move each into its town's region (Izlude, Rachel,
-  Morroc, Einbroch).
+- Episode 16.1, the Royal Banquet: `re/quests/quests_16_1.txt` (`ep16_royal`,
+  Lv 100, needs 13.1; the noble families, the royal kitchen, Warrior
+  Discipline, the royal prison).
+- Episode 16.2-17.1, Terra Gloria and the Rebellion: `re/quests/quests_16_2.txt`,
+  `re/quests/quests_17_1.txt` (`terra_gloria_main` and the hideout's quests).
+- The Illusion dungeons (16.2, "Terra Gloria - Illusion"):
+  `re/quests/quests_illusion_dungeons.txt` - Moonlight (Payon, Lv 100), Vampire
+  (Geffen, 130), Frozen (Ice Cave, 110/120), Turtle (Alberta, 150), Luanda
+  (Comodo, 160), Underwater (Izlude, 140/180), Anthell (160), Teddy Bear
+  (Einbroch, 150), Labyrinth (Prontera, 170); and Commander Joel's Illusion
+  Investigation boards, `re/quests/illusion_investigation.txt` (Lv 100-170).
+- Episode 17.2, Sage's Legacy: `re/quests/quests_17_2.txt` (`ep17_2_main`, the
+  bathhouse, Chirp, the library, the water garden, Cotton).
+- Episode 18, Direction of Prayer: `re/quests/quests_18.txt` (`ep18_main`,
+  Lv 200; Grey Wolf Village and Rachel's quests, Lv 170).
+- Episode 19, Issgard: `re/quests/quests_19.txt` (`ep19_main`, Lv 200).
+- Level 175-250 content of those episodes' time: `re/quests/quests_exp_175.txt`
+  (Abyss and Glast Heim research, Lv 175-190), `re/quests/quests_dungeons_200.txt`
+  (Lv 200-240), `re/quests/garden_of_time.txt` (Lv 250) - to verify with
+  MondoTruth that these wait too.
 
-## 32. Terra Gloria and the Rebellion (Episode 16.2-17.1)
-
-Story line, not a side quest yet: **Terra Gloria** (`terra_gloria_main`,
-`re/quests/quests_16_2.txt`, `re/quests/quests_17_1.txt`).
-
-- **Rebellion's hideout** - Lebedev's arena (`lebedev_quest_16_2`), the ladies'
-  part (`terra_gloria_lady_part`), the Yurhik siblings (`yurhik_quest`),
-  Rachel Smith's deliveries (`rachel_quest_16_2`), the hiding researcher and
-  the old rings. `re/quests/quests_16_2.txt` | needs: Terra Gloria (to verify)
-  | several repeatable.
-- **Episode 17.1 side errands** - "My Name is Morning", barrier
-  investigation and more. `re/quests/quests_17_1.txt` | quests 5856-17035.
-- **Coor operation / sp_cor** (17.1) - Elena Volkova. `ep17_2_main` (to verify).
-
-## 33. Varmundt's mansion (Episode 17.2)
-
-Story line, not a side quest yet: **Sage's Legacy** (`ep17_2_main`,
-`re/quests/quests_17_2.txt`, Lv 130+).
-
-- **The Bathhouse** - `ep17_2_bath`, quests 17363-17380.
-- **Chirp's basement** - `ep17_2_chirp`, quests 17342-17360 | Lv: 160/170.
-- **The Library** - `ep17_2_library`, quests 11621-11637 | repeatable.
-- **The Water Garden** - `ep172_watergarden`, quests 16427-16436 | Lv: 180.
-- **Cotton's Pitayas** - quests 8586-8595 | Lv: 150 | repeatable.
-All need Sage's Legacy (to verify the steps).
-
-## 34. Grey Wolf Village and Rachel (Episode 18)
-
-Story line, not a side quest yet: **Direction of Prayer** (`ep18_main` 0->57,
-`re/quests/quests_18.txt`, Lv 200 at Imril).
-
-- **Grey Wolf Village quests** - Training Grey Wolves, Ahab's Request,
-  Collecting Folklore, Purifying Water, Transporting Goods, Clinic
-  Construction, Checking Traps for Food, the Firewind Kites, Childhood Friends,
-  the Oz Labyrinth investigation, the camper's daily. same file | needs:
-  `ep18_main` (to verify the step) | several repeatable.
-- **Rachel's quests** - Helping the Children, Price of Labor, Gather
-  Opinions in Rachel, Picking Half Flowers, Niren's Request, Gray Children.
-  same file | Lv: 170 | several repeatable.
-
-## 35. Issgard (Episode 19)
-
-Story line, not a side quest yet: **Issgard, Land of Snow Flowers**
-(`ep19_main` 0->61/100, `re/quests/quests_19.txt`, Lv 200). Its header: step
-11 opens Ice Castle dailies, 21 the Jormungandr nest's, 33 the Airship
-Destruction instance, 100 the rest.
-
-- **The Lady of Purification** - `ep19_side_saint`, quests 11794-11811.
-- **Frozen Sea / Digging and Digging / A Refrigerator / Crunchy Tools** -
-  `ep19_side_sea`, quests 11815-11859 | repeatable parts.
-- **Leon's Story and the survivors** - `ep19_survivor`, quests 18132-18138.
-- **Secret Fun** (Private Holly) - `warm`, quests 5980-5982 | repeatable.
-- **Ice Castle and nest dailies** (Goryuro, Moryara's fishing, lunch with
-  Zoryara, "Do not feed me") - quests 5976-8789 | repeatable.
-All `re/quests/quests_19.txt` | Lv: 200 (220/240 for some) | needs: `ep19_main`
-at the step the header names.
-
-## 36. Level 175-250 dungeons
-
-- **Abyss and Glast Heim research** - Magician Nillem, Ethnographer
-  Marigold, Lily Blanc, apprentice Sally. `re/quests/quests_exp_175.txt`
-  | quests 7879-8548 | Lv: 175/180/190 | repeatable.
-- **New dungeons of level 200+** - Yulma, Ansuriya, Gerbena in the pub
-  (pub_cat), Rudus, Amicitia, Niflheim's banquet hall.
-  `re/quests/quests_dungeons_200.txt` | quests 8639-16545 | Lv: 200, 215, 230,
-  240 | repeatable | opens a place (some areas, to verify).
-- **The Garden of Time / Hall of Life** - the dimensional barrier in Lutie's
-  field. `re/quests/garden_of_time.txt` | quests 12592-12620 | Lv: 250
-  | opens a place: t_garden.
-Not quests: Nightmare Clock Tower (Belljamin Button, `re/quests/quests_aldebaran.txt`,
-Lv 150) and Nightmare Glast Heim (Hugin's followers, `re/quests/quests_glastheim.txt`)
-are entrance NPCs - to decide: list them under "opens a place" with no steps.
-
-## 37. Quests from other mods (World Sync Extras 2.1.2)
+## 31. Quests from other mods (World Sync Extras 2.1.2)
 
 Installed at `%APPDATA%\Ragnarok Offline\state\mods\world-sync-extras`
 (v2.1.2, 2026-10-26; guide.ps1 was checked against 2.1.1 - recheck the three
@@ -910,8 +812,8 @@ Story candidates for "Episodes 16-21", not side quests.
 - Quest NPCs outside the quest folders (`npc/cities`, `npc/re/cities`,
   `npc/merchants`, `npc/re/merchants`), e.g. access NPCs such as dungeon
   gatekeepers. Not searched.
-- Juno Monster Society, Eden boards and Illusion Investigation are listed as
-  one entry each; step 2 may split them.
+- Juno Monster Society and the Eden boards are listed as one entry each;
+  step 2 may split them.
 
 ## Excluded files
 
@@ -946,15 +848,12 @@ Off in rAthena: `quests/dandelion_request.txt`, `re/quests/cupet.txt`,
 
 ## Open questions
 
-1. Episodes 16-19 (31-35) and Rock Ridge (30): side quests here, or wait for
-   their Story episodes ("coming soon")?
-2. Regions for quests that start far from where they are played: the rule
-   "where it starts" puts the Spy Quest and the Message Delivery in Prontera,
-   the Nameless Island on the airship. Keep, or place by where they are played?
-3. Instances and entrance NPCs (Nightmare modes, Thanatos upper tower): list
-   as "opens a place" with no steps, or leave out?
-4. Small or unclear ones to keep or drop: Old Blue Box, Sushi, Uwe Kleine,
+1. Rock Ridge (30): its script checks no episode, only Lv 100; keep it now,
+   or later with Episode 16?
+2. Entrance NPCs with no quest (the Nightmare Clock Tower and Pyramid, Old
+   Glast Heim's door): list as "opens a place" with no steps, or leave out?
+3. Small or unclear ones to keep or drop: Old Blue Box, Sushi, Uwe Kleine,
    Traditional Weapon (may be exchanges), the Pintados Festival and Momotaro
    (events), Lighthalzen's Gangster Alert and Pickpocket.
-5. World Sync Extras: Bounty Boards and City Investment as one entry each?
+4. World Sync Extras: Bounty Boards and City Investment as one entry each?
    Acolyte training excluded as class training?
