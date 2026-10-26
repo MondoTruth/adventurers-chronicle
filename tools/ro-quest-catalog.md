@@ -175,10 +175,6 @@ headgear (excluded).
 ### Single quests
 - **The Alberta Boy** - Iromo and his mother; a boy who never goes out.
   `quests/quests_alberta.txt` | `ep13_2_hiki` 0->~10, quests 10079-10089 | Lv: 41.
-- **Old Blue Box** - a tourist in Alberta and a box-related errand through
-  Morroc and Comodo. `quests/obb_quest.txt` | `thai_head` | Lv: none
-  | to verify: the header calls its purpose "undetermined"; maybe an item
-  exchange (then excluded).
 
 ## 6. Comodo
 
@@ -256,9 +252,6 @@ header names an "Umbala Skeletal Gate Quest" but no such NPC is in the file
 - **The Lovers Quest** - Calla and Klitzer in Einbroch.
   `quests/quests_ein.txt` | `EIN_LOVERQ` 0->17, quests 8076-8088 | Lv: none
   | **dead end** (Coal, `nude`, see guide-deferred.md).
-- **Uwe Kleine** - Einbroch's cook. `quests/quests_ein.txt` | `ein_cook`
-  | Lv: none | to verify: a Whitesmith-only branch (`Class == Job_Whitesmith`)
-  and whether this is a trade (then excluded).
 
 ### Storyline: The Airship
 - **Kain's Free Ticket** - a crewman on the airship, the Cherno family and an
@@ -301,9 +294,11 @@ Excluded: Oridecon/Mineral Stone (`ein_gear1`, an exchange), the Typing Test
   `quests/quests_lighthalzen.txt` | `friendship` 0->16, quests 12000-12006
   | Lv: 50 (to verify: refusal text) | opens: Bruspetti (13); gives the Pass
   (7350, line 3091) the Uptown guards let through (Gangster Alert below).
-- **Gangster Alert** and **the Pickpocket** - town events with guards and
-  suspicious men. `quests/quests_lighthalzen.txt` | no variable | to verify:
-  events, not quests (probably leave out).
+- **Gangster Alert** and **the Pickpocket** - not quests: the guards between
+  Uptown and the slums let only Pass holders through (the Pass comes from the
+  Friendship Quest), gangsters raid on a timer, and "suspicious guys" steal
+  10-200 zeny. `quests/quests_lighthalzen.txt` | shown as one line under the
+  Friendship Quest ("a pass to Uptown"), no entry of their own.
 
 ## 12. Hugel
 
@@ -396,10 +391,7 @@ Excluded: Oridecon/Mineral Stone (`ein_gear1`, an exchange), the Typing Test
   | Lv: none | opens a place: the Amatsu Dungeon | side 6 (RO part only).
 - **The Momotaro Event** - a publisher in Amatsu and the story of Momotaro.
   `quests/quests_amatsu.txt` | `event_momo` 0->6, quests 8127-8130 | Lv: 30
-  | to verify: an event (party, timer?).
-- **The Sushi Quest** - the Sushi Master wants fish.
-  `quests/quests_amatsu.txt` | `fish_r`, `ama_sushi`, quests 10036-10041
-  | Lv: none | to verify: an item exchange?
+  | a field trip through the tale on its own map (ama_test), prizes at the end.
 
 ## 15. Kunlun
 
@@ -475,8 +467,6 @@ All `quests/quests_brasilis.txt`.
 - **The Dewata Legend** - the tribal chief and the sage.
   `re/quests/quests_dewata.txt` | `dew_legend` 0->17, quests 9155-9165 | Lv: 60.
 - **Help Out the Old Man** - Memo. `dew_drink` 0->9, quests 5035-5045 | Lv: 60.
-- **The Traditional Weapon** - Gatti. `dew_weapon` 0->8, quests 5052-5054
-  | Lv: 60 | to verify: an item reward quest (maybe excluded).
 
 ## 21. Malangdo
 
@@ -507,10 +497,8 @@ Excluded: Archangel Wing enchants.
 - **The Nurse in Port Malaya** - the hospital of Bangungot. `malaya_bang`
   0->31, quests 11284-11309 | Lv: 100 | needs: Cautious Village at 20.
 
-### Single quests
-- **The Pintados Festival** - a festival on a timer (`ma_fild01 1,1` manager).
-  | to verify: a server event, maybe not a quest.
-Excluded: traders, boss equipment upgrades.
+Excluded: traders, boss equipment upgrades, the Pintados Festival (a timed
+festival where Ancient Grudges are handed in).
 
 ## 23. Eden Group (Morroc's Eden Group headquarters)
 
@@ -725,13 +713,30 @@ Not quests: the Reward Coordinator and the contribution certificate machine
 - **Rock Ridge, Land of Opportunities** (main line) - Karam Pucci in Alberta
   and the town of Rock Ridge. `re/quests/quests_rockridge.txt`
   | `rock_main_quest` 0->24, quests 7790-... | Lv: 100 | opens a place: Rock
-  Ridge (harboro1). To decide: side quest or a Story episode (kRO lists it
-  with Episode 16, to verify).
+  Ridge (harboro1). Standalone: Karam Pucci asks only `BaseLevel >= 100` and
+  `rock_main_quest == 0`; no episode variable, and no other script reads
+  `rock_main_quest`. The ship from Alberta runs at any level.
 - **Spotty and Her Ring**, **Cacturon**, **Collecting Ore Fragments**,
   **Pipe Cleaning**, **Midnight**, **Gas! Gas!**, **Mrs. McPhy**, **Mr. McPhy**,
   **the prison**, **the food supplier** - the town's own quests and dailies.
   same file | quests 1298-16088 | Lv: 100 (some 130/140) | several repeatable
   | needs: the main line (to verify per quest).
+
+## Entrances without a quest
+
+NPCs that only let you into a harder version of a place: no steps, shown as
+"opens a place" with level, price and a /navi (MondoTruth, 2026-10-26).
+
+- **Nightmare Clock Tower** - Belljamin Button (c_tower1 232,222; also
+  c_tower2_ 274,26 and c_tower3_ 59,148). `re/quests/quests_aldebaran.txt`
+  | Lv: 150 | 10,000 zeny to the warped tower's 2nd or 3rd floor.
+- **Nightmare Glast Heim** - Hugin's follower (glast_01 195,273; back from
+  gl_chyard_ 148,149). `re/quests/quests_glastheim.txt` | Lv: none found
+  | a zeny fee (`.@zeny`, amount to verify).
+- **Nightmare Pyramid** - the Suspicious Cat (moc_prydb1 103,54) tells of it;
+  the way in to verify. Its hunts are listed in Morroc (4).
+- Candidates to check in step 2: Eclage's Teleport Cats (27) and the Cat Paw
+  teleports of the New World (25) may fit here better.
 
 ## Later: Episodes 16-19 (not in the catalog yet)
 
@@ -788,17 +793,18 @@ Story candidates for "Episodes 16-21", not side quests.
   dailies of the 2022 series. To place in step 2: each town's region.
 - **Gramps' weekly hunts** (Eden Group) - block `gramps_turn_ins` | Lv: 70-150
   | repeatable (weekly).
-- **Bounty Boards** - block `bounty_boards` | 314 hunts in 25 towns
-  | repeatable. To decide: list as one entry per town or one overall.
+- **Bounty Boards** - block `bounty_boards` | 314 hunts of 150 kills on 65
+  boards in 25 towns and the Illusion dungeons | repeatable | one entry, no
+  steps per board (MondoTruth, 2026-10-26).
 - **City Investment** (Merchant Union, Alberta) - block `city_investment`
-  | deliveries, weekly Wanted bosses | repeatable.
-- **Acolyte training** (Izlude Sunken Ship) - block `iro_systems` | Acolytes
-  only: excluded as class training (to verify with MondoTruth).
+  | Union Insignias for 113 deliveries, weekly Wanted bosses, investing in 9
+  cities, Union gear, street stall staffers | repeatable | one entry.
 - **Devil in the Box** (Clock Tower 1F) - block `iro_systems` | Lv: 200
   | repeatable (daily/weekly).
 - Block `star_forest`: the Star Emperor job change is excluded (job quest);
   Herosria's Garden of Dawn gifts and Ash Village are services/trades
-  (excluded, to verify).
+  (excluded, to verify). Acolyte training (Izlude Sunken Ship, `iro_systems`)
+  is for Acolytes only: excluded as class training (MondoTruth, 2026-10-26).
 
 ---
 
@@ -837,7 +843,12 @@ Crafting, headgear, item exchange: `quests/newgears/*`, `re/quests/newgears/*`,
 and `quests/quests_comodo.txt`, `re/quests/pile_bunker.txt`, the Oridecon/Mineral
 quest of `quests/quests_ein.txt`, Moscovia's Shafka Hat and acorns, the
 Malangdo wing enchants, Port Malaya's traders, El Dicastes's Cat Paw
-enchantment, the Umbala shaman's essences.
+enchantment, the Umbala shaman's essences. Exchange quests count as crafting
+(MondoTruth, 2026-10-26): `quests/obb_quest.txt` (Old Blue Box for shells,
+Brigan, Cyfar and cookies), Amatsu's Sushi Quest (Heart of Mermaid for sushi
+and fish slices), Uwe Kleine in Einbroch (Large Jellopy for furnaces and
+hammers), Dewata's Traditional Weapon (Steel, Oridecon, leather for Caress),
+Port Malaya's Pintados Festival.
 
 Needs a guild or War of Emperium: `quests/guildrelay.txt` (dead end: guild
 leader of a castle-owning guild), `re/quests/woe_te/*` (WoE TE missions and god
@@ -848,12 +859,7 @@ Off in rAthena: `quests/dandelion_request.txt`, `re/quests/cupet.txt`,
 
 ## Open questions
 
-1. Rock Ridge (30): its script checks no episode, only Lv 100; keep it now,
-   or later with Episode 16?
-2. Entrance NPCs with no quest (the Nightmare Clock Tower and Pyramid, Old
-   Glast Heim's door): list as "opens a place" with no steps, or leave out?
-3. Small or unclear ones to keep or drop: Old Blue Box, Sushi, Uwe Kleine,
-   Traditional Weapon (may be exchanges), the Pintados Festival and Momotaro
-   (events), Lighthalzen's Gangster Alert and Pickpocket.
-4. World Sync Extras: Bounty Boards and City Investment as one entry each?
-   Acolyte training excluded as class training?
+None open. Decided on 2026-10-26: up to Episode 15; region = where a quest
+starts; entrances without a quest in their own group; exchange quests go with
+crafting, story quests stay; Bounty Boards and City Investment one entry each;
+Acolyte training excluded. Rock Ridge stays (standalone, no episode).
