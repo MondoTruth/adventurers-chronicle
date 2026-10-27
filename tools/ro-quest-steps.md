@@ -678,7 +678,7 @@ Umbalian Language (`event_umbala >= 3`, region 7) for the Umbala step.
     fountain (no delitem in the script).
 
 Fail end: at 200 the Witch takes the ring and tonic (201); the Archeologist
-takes the Sobbing Starlight for 10,000 base EXP and an Old Violet Box (202).
+takes the Sobbing Starlight for 10,000 base EXP and an Old Purple Box (202).
 
 ### The Message Delivery
 `quests/quests_niflheim.txt` | `nif_revive` 0->6, then MISC_QUEST bit 16384,
@@ -863,7 +863,7 @@ on at once. Every runner first needs room for more items.
    within 8 cells: Ticket 8 and 2 Yggdrasil Leaf (22).
    `/navi payon 168/314` | done when: Merchant `party_relay >= 22`
 9. **Ledrion again** - the leader brings Ticket 8: 3 Old Blue Box, 1 Old
-   Violet Box and Ticket 9 for a Swordman or Mage (23).
+   Purple Box and Ticket 9 for a Swordman or Mage (23).
    `/navi payon 103/113` | done when: leader `party_relay >= 23`
 10. **Gatan: Swordman or Mage** - Ticket 9 at any hour; levels: Lv 40-59
     three (26), 60-79 two (25), 80-94 one (24), 95+ none (27). Come back
@@ -883,7 +883,7 @@ on at once. Every runner first needs room for more items.
     leader's `party_relay` goes back to 0).
     `/navi payon 103/113` | done when: Ticket 12 handed in
     Reward: 6 Gift Box, 3 Old Blue Box, and one of Sabbath, Slaughter or
-    Quadrille (1 in 7 each), otherwise 3 Old Violet Box. Every ticket
+    Quadrille (1 in 7 each), otherwise 3 Old Purple Box. Every ticket
     handed out also gives the runner base EXP: 1,080 (Lv 40-49), 2,880
     (50-59), 6,720 (60-69), 19,560 (70-79), 38,520 (80-89), 85,920 (90-94),
     104,760 (95+) (`F_PartyRelay_Exp`, Renewal values marked "unconfirmed").
@@ -935,7 +935,7 @@ of the Fate - 1..6") | Lv 60 (`BaseLevel > 59`).
    (12).
    `/navi yuno_in04 111/57` | done when: `barmunt_crow >= 12`
 10. **The worn-out book** - the Worn-out Book in the library: "Sell" gives the
-    album away (14: Author Autograph, Author Memo, Old Violet Box). "Don't
+    album away (14: Author Autograph, Author Memo, Old Purple Box). "Don't
     Sell" sets 13: then the Suspicious Man (`/navi yuno_in04 169/123`), "Yes",
     gives the same (14).
     `/navi yuno_in04 167/120` | done when: `barmunt_crow >= 14`
@@ -945,7 +945,7 @@ of the Fate - 1..6") | Lv 60 (`BaseLevel > 59`).
 12. **The end of the book** - give the memo and autograph to the
     book-touching man: "Give".
     `/navi moc_ruins 137/70` | done when: `barmunt_crow >= 16`
-    Reward: 90,000 base / 90,000 job EXP (plus the Old Violet Box of step 10).
+    Reward: 90,000 base / 90,000 job EXP (plus the Old Purple Box of step 10).
 
 ### The Unlucky Emerald
 `quests/quests_nameless.txt` | `treasure_nd` 0->12, then `jewel_nd` 0->31 |
@@ -2118,7 +2118,7 @@ Lighthalzen (`lighthalzen 179/170`); the President's office is in Juno
     `lhz_boss >= 43`
 17. **Ghalstein** - report (44).
     `/navi lighthalzen 179/170` | done when: `lhz_boss >= 44`
-    Reward: 180,000 base EXP, 1 Old Violet Box.
+    Reward: 180,000 base EXP, 1 Old Purple Box.
     Opens: one of the Wandering Bard's stories (29); the Rebellion Quest's
     step at `lhz_boss == 44` (region 12).
 
@@ -2227,7 +2227,7 @@ all at step 3.
    `/navi hu_in01 256/40` | done when: `hg_tre >= 56`
 9. **The President** - in Juno (57).
    `/navi yuno_pre 69/79` | done when: `hg_tre >= 57`
-   Reward: 200,000 base EXP, 1 Old Violet Box.
+   Reward: 200,000 base EXP, 1 Old Purple Box.
    Herico then trades 100 Handcuffs for one random dish, as often as you
    like (an exchange).
 
@@ -2390,7 +2390,7 @@ Star Gladiator, Soul Linker, Ninja, Gunslinger, Summoner at Lv 95+, line
 9. **Varmunt's journal** - the Entrance Guide: "Start a conversation.", "I
    found Varmunt's Journal..." (10).
    `/navi tha_t02 231/161` | done when: `thana_tower >= 10`
-   Reward: 120,000 base / 10,000 job EXP, 1 Old Violet Box.
+   Reward: 120,000 base / 10,000 job EXP, 1 Old Purple Box.
    Opens a place: the upper tower: with the Black Key, the warp to the 7th
    floor (`/navi tha_t06 119/120`); on floor 8 the Shining Crystals turn
    each key into a Charm Stone, and on floor 12 the four statues take them
@@ -2421,7 +2421,7 @@ guided `ra_lostchild` (steps from guide.ps1).
 5. **The High Priest** - Zhed in the inner temple: "I'm here on Vincent's
    behalf", "Actually... I was just curious.", "Tell him your name." (13).
    `/navi ra_temin 277/159` | done when: `lost_boy >= 13`
-   Reward (guide): an Old Violet Box from Vincent, 90,000 base EXP from
+   Reward (guide): an Old Purple Box from Vincent, 90,000 base EXP from
    Zhed.
 
 ### The Sanctuary Quest

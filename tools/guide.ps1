@@ -303,7 +303,7 @@ $guides = @(
           now = 'RO quest: catch 10 Pieces of Fish at a School of Fish and bring them to Ferocious Gorurug (69, 144).'
           hint = @(
             'A School of Fish ripples in the camp''s own pond (mid_camp, 75, 135), right by Gorurug; more lie near Splendide (spl_fild02, 314, 165). Click it: 15 seconds of fishing (less with a fishing rod), and about 1 cast in 4 brings a Piece of Fish.'
-            'Fishing works only while you carry fewer than 20 Pieces of Fish, and not during the 4 hours after you hand fish to Gorurug.'
+            'Fishing works only while you carry fewer than 20 Pieces of Fish, and not again until 4:00 server time after you hand fish to Gorurug.'
           )
           spots = @(
             @{ map = 'mid_camp'; x = 75; y = 135; name = 'School of Fish' }
@@ -369,7 +369,7 @@ $guides = @(
   @{ key = 'ra_lostchild'; era = 'renewal'; hook = 31; title = 'The Stolen Gem'; range = '60+'
      where = 'Rachel'
      intro = 'Sister Ilyana: "Something is wrong in the house of High Priest Zhed. His steward, Vincent, has been asking every traveller for help, and begging them to keep quiet about it."'
-     reward = 'an Old Violet Box from Vincent and 90,000 base EXP from High Priest Zhed.'
+     reward = 'an Old Purple Box from Vincent and 90,000 base EXP from High Priest Zhed.'
      steps = @(
        @{ title = 'The Steward''s Secret'; cond = 'lost_boy >= 1'
           route = @('ra_in01', 384, 246, 'Vincent')
@@ -613,8 +613,8 @@ $guides = @(
           now = 'RO quest: tell the Bard the ending of a story you lived. If his story is one you have not lived yet, give it back and ask for another.'
           hint = @(
             'His stories are RO quests: A Mad Scientist is The Scientist Who Trusts Fate (Juno), Odin Temple is The Odin Temple Excavation (Hugel); both are guided in this Journal. The others: Some Corporation (Lighthalzen''s Cursed Spirit quest), The President (Lighthalzen''s President quest), a Scholar in Juno (the Juperos Ruins History quest), Hugel (the Biological Weapon quest).'
-            'If he tells one you have not finished, talk to him again and choose Return the quest.; then talk once more and he tells another. Only Some Corporation makes him rest for 4 hours when you give it back.'
-            'After each story he rests for 4 hours of your play time before the next.'
+            'If he tells one you have not finished, talk to him again and choose Return the quest.; then talk once more and he tells another. Only Some Corporation makes him rest until 4:00 server time when you give it back.'
+            'After each story he rests until 4:00 server time before the next.'
           )
           spots = @(@{ map = 'verus03'; x = 129; y = 21; name = 'Wandering Bard' })
           done = 'You told the Bard a story he had only ever sung, and he swore to make a new song of it.' }
@@ -626,7 +626,7 @@ $guides = @(
   @{ key = 'wse_criminal'; era = 'renewal'; hook = 16; title = 'Criminal Activities'; range = '70+'
      where = 'Geffen and the airship'; needs = 'Agent York#iqcrim'; mod = 'world-sync-extras'
      intro = 'Magister Ivo: "An agent of the kingdom has taken a room at our inn. He hunts a gangster called Jymmy the Thumb, and he is looking for someone the gang does not know yet."'
-     reward = '1,000,000 base and 700,000 job EXP and an Old Violet Box.'
+     reward = '1,000,000 base and 700,000 job EXP and an Old Purple Box.'
      steps = @(
        @{ title = 'Agent York'; cond = 'iq_crim >= 1'
           route = @('geffen_in', 77, 57, 'Agent York')
