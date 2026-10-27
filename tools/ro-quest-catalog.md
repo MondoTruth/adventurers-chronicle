@@ -914,7 +914,8 @@ not side quests. Steps: `ro-quest-steps.md` region 29 (batch 5, read in the
 - **City Investment** (the City Merchant Union Manager at the Eden Group
   HQ, `moc_para01 53,34`; an Investment Manager and a Union shop in each of
   9 cities) - `city_investment/city_investment.txt` | quest 12370,
-  `iq_ci_city[1..9]` | Lv: none | repeatable | one entry. Its Bulletin
+  `iq_ci_city[1..9]` | Lv: none | repeatable | one entry (kept despite the
+  Eden exclusion, MondoTruth 2026-10-27). Its Bulletin
   Board (deliveries and weekly Wanted bosses) is a board: listed only as a
   source of Union Insignias.
 - **Devil in the Box** (the Mysterious Box, Clock Tower 1F, `c_tower1
@@ -998,3 +999,6 @@ starts; entrances without a quest in their own group; exchange quests go with
 crafting, story quests stay; City Investment one entry; Acolyte training
 excluded. Decided on 2026-10-27: hunting boards and the Eden Group are out
 (Excluded files), so the old regions 23-24 are gone and 25-31 became 23-29. Rock Ridge stays (standalone, no episode).
+City Investment stays as one entry although its manager stands at the Eden
+Group HQ (MondoTruth, 2026-10-27, batch 5); only its Bulletin Board counts
+as a board.
