@@ -4,7 +4,7 @@ Step 2 of the Renewal Side Quests tab: the steps of every quest in
 `ro-quest-catalog.md`, same regions, same numbers, same order. Batch 1
 (2026-10-26): regions 1-6 and "Entrances without a quest". Batch 2
 (2026-10-26): regions 7-13, the Party Relay and the Unlucky Emerald's jewel
-part. Batch 3 (2026-10-27): regions 14-22. Regions 23-31 follow in later
+part. Batch 3 (2026-10-27): regions 14-22. Regions 23-29 follow in later
 batches.
 
 Source of truth: rathena-pin, commit 8aea17a (the app 1.7.0 pin). Every

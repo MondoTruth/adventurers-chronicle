@@ -68,15 +68,13 @@ Anything not read in the script itself says **to verify**.
 20. Dewata
 21. Malangdo
 22. Port Malaya
-23. Eden Group (Morroc's Eden Group headquarters)
-24. Across the world (hunting boards in many towns)
-25. The New World: Midgard Camp, Splendide, Manuk, El Dicastes (Episode 13)
-26. Mora and Bifrost (Episode 14.1)
-27. Eclage (Episode 14.2)
-28. Flame Basin (Episode 14.3)
-29. Verus and the Phantasmagorika (Episode 15)
-30. Rock Ridge
-31. Quests from other mods (World Sync Extras 2.1.5)
+23. The New World: Midgard Camp, Splendide, Manuk, El Dicastes (Episode 13)
+24. Mora and Bifrost (Episode 14.1)
+25. Eclage (Episode 14.2)
+26. Flame Basin (Episode 14.3)
+27. Verus and the Phantasmagorika (Episode 15)
+28. Rock Ridge
+29. Quests from other mods (World Sync Extras 2.1.5)
 
 Then: later (Episodes 16-19), not covered, excluded files, open questions.
 
@@ -577,31 +575,7 @@ All `re/quests/quests_malangdo.txt`. Excluded: Archangel Wing enchants.
 Excluded: traders, boss equipment upgrades, the Pintados Festival (a timed
 festival where Ancient Grudges are handed in).
 
-## 23. Eden Group (Morroc's Eden Group headquarters)
-
-- **The Eden Tutorial** - the tutorial instructor's lessons (sieges,
-  parties, battlegrounds, memorial dungeons, maps). `re/quests/eden/eden_tutorial.txt`
-  | quests 4161-9173 | Lv: none.
-- **Eden training: "Conquer the ..."** (Instructor Boya) - training courses
-  in the desert, the culvert and more. `re/quests/eden/eden_quests.txt`
-  | `para_suv01` (`para_suv02`), quests 7128-... | Lv: 12 (and 40 for one
-  course).
-- **Eden advanced training** (Instructor Ur) - Romeo, Johan, Kiren...
-  `re/quests/eden/eden_quests.txt` | `para_2nd01-04`, quests 7214-7241
-  | Lv: 60-99 by course | Toren's Errands repeatable.
-- **Eden mission boards** - hunting missions by level band: 11-25, 26-40,
-  41-55, 56-70, 71-85, 86-90, 91-99, 100-111, 111-120, 121-130, 131-140.
-  `re/quests/eden/<band>.txt`, `eden_100_111.txt` ... | Lv: the band | repeatable.
-Not quests: `eden_common.txt` (Lime Evenor, Eden teleport officers),
-`eden_service.txt` (storage).
-
-## 24. Across the world (hunting boards in many towns)
-
-- **The Juno Monster Society** - assistants in Rachel, Alberta, Einbroch,
-  Geffen, Juno... and map examiners in the fields. `re/quests/juno_monster_society.txt`
-  | quests 3471-16547 | Lv: 70-95 by field | repeatable.
-
-## 25. The New World (Episode 13)
+## 23. The New World (Episode 13)
 
 Story: 13.1 Onward to the Other World (`ep13_ryu`), 13.2 Two Tribes
 (`ep13_mdrama`), 13.3 Doha's Secret Orders (`ep13_3_secret`). Most side quests
@@ -681,7 +655,7 @@ Excluded: Cat Paw's enchantment (`ep13_3_ring2`).
   | `mao_morocc2` 0->~38, quests 7012-7041 | Lv: none | needs: 13.1.
 - **The Magic Books** - excluded (skill books).
 
-## 26. Mora and Bifrost (Episode 14.1)
+## 24. Mora and Bifrost (Episode 14.1)
 
 Story: 14.1 Mistwood Maze (`ep14_1_mistwoods`, `instances/HazyForest.txt` is
 not in this catalog).
@@ -708,7 +682,7 @@ not in this catalog).
   `ep14_1_mistwoods` (to verify: needs 14.1?).
 All `re/quests/quests_mora.txt`.
 
-## 27. Eclage (Episode 14.2)
+## 25. Eclage (Episode 14.2)
 
 Story: 14.2 Encounter in a Strange Land (`ep14_2_mylord`, Lv 99), Light and
 Darkness (`ep14_2_etran`, after `ep14_2_mylord > 6`).
@@ -739,7 +713,7 @@ Darkness (`ep14_2_etran`, after `ep14_2_mylord > 6`).
   | opens a place | to verify: any condition.
 All `re/quests/quests_eclage.txt`.
 
-## 28. Flame Basin (Episode 14.3)
+## 26. Flame Basin (Episode 14.3)
 
 Story: 14.3 Dimensional Travel (`ep14_3_newerabs`, Lv 140, needs
 `ep14_2_mylord` past 33).
@@ -759,7 +733,7 @@ Story: 14.3 Dimensional Travel (`ep14_3_newerabs`, Lv 140, needs
 - **Flaming Basin and Doom Prayers** - the base investigator and the Doom
   Prayers. same file | `ep14_3_fall_bless`, quests 1264-1297 | Lv: 150.
 
-## 29. Verus and the Phantasmagorika (Episode 15)
+## 27. Verus and the Phantasmagorika (Episode 15)
 
 Story: 15 To Phantasmagorika!/Atnad excavation (`ep15_1_atnad`, Lv 140).
 
@@ -785,7 +759,7 @@ Story: 15 To Phantasmagorika!/Atnad excavation (`ep15_1_atnad`, Lv 140).
 Not quests: the Reward Coordinator and the contribution certificate machine
 (Lv 80); the Doom Prayers event on verus04 (to verify).
 
-## 30. Rock Ridge
+## 28. Rock Ridge
 
 - **Rock Ridge, Land of Opportunities** (main line) - Karam Pucci in Alberta
   and the town of Rock Ridge. `re/quests/quests_rockridge.txt`
@@ -842,7 +816,7 @@ Named so nothing is lost; each gets its regions when its episode comes.
   (Lv 200-240), `re/quests/garden_of_time.txt` (Lv 250) - to verify with
   MondoTruth that these wait too.
 
-## 31. Quests from other mods (World Sync Extras 2.1.5)
+## 29. Quests from other mods (World Sync Extras 2.1.5)
 
 Installed at `%APPDATA%\Ragnarok Offline\state\mods\world-sync-extras`
 (v2.1.5, 2026-10-27). Compared with 2.1.2 (`D:\Claude\projects\world-sync-extras`):
@@ -880,11 +854,6 @@ Story candidates for "Episodes 16-21", not side quests.
   (Ernst's letter, the mine, gas, ghosts), Hugel (Abyss Lake, dailies only),
   Juperos (Maxim's camp, dailies only), Rachel and Veins (`iq_ra21`), dungeon
   dailies of the 2022 series. To place in step 2: each town's region.
-- **Gramps' weekly hunts** (Eden Group) - block `gramps_turn_ins` | Lv: 70-150
-  | repeatable (weekly).
-- **Bounty Boards** - block `bounty_boards` | 314 hunts of 150 kills on 65
-  boards in 25 towns and the Illusion dungeons | repeatable | one entry, no
-  steps per board (MondoTruth, 2026-10-26).
 - **City Investment** (Merchant Union, Alberta) - block `city_investment`
   | Union Insignias for 113 deliveries, weekly Wanted bosses, investing in 9
   cities, Union gear, street stall staffers | repeatable | one entry.
@@ -907,8 +876,6 @@ Story candidates for "Episodes 16-21", not side quests.
 - Quest NPCs outside the quest folders (`npc/cities`, `npc/re/cities`,
   `npc/merchants`, `npc/re/merchants`), e.g. access NPCs such as dungeon
   gatekeepers. Not searched.
-- Juno Monster Society and the Eden boards are listed as one entry each;
-  step 2 may split them.
 
 ## Excluded files
 
@@ -940,6 +907,14 @@ and fish slices), Uwe Kleine in Einbroch (Large Jellopy for furnaces and
 hammers), Dewata's Traditional Weapon (Steel, Oridecon, leather for Caress),
 Port Malaya's Pintados Festival.
 
+Hunting boards and the Eden Group (MondoTruth, 2026-10-27): the Eden Group
+quests (`re/quests/eden/*`: the tutorial, Instructor Boya's and Instructor
+Ur's training, the mission boards), the Juno Monster Society
+(`re/quests/juno_monster_society.txt`), and World Sync Extras' Bounty Boards
+(block `bounty_boards`) and Gramps' weekly hunts at the Eden Group (block
+`gramps_turn_ins`). The Eden Market Group's shops still count as item
+sources.
+
 Needs a guild or War of Emperium: `quests/guildrelay.txt` (dead end: guild
 leader of a castle-owning guild), `re/quests/woe_te/*` (WoE TE missions and god
 items).
@@ -951,5 +926,6 @@ Off in rAthena: `quests/dandelion_request.txt`, `re/quests/cupet.txt`,
 
 None open. Decided on 2026-10-26: up to Episode 15; region = where a quest
 starts; entrances without a quest in their own group; exchange quests go with
-crafting, story quests stay; Bounty Boards and City Investment one entry each;
-Acolyte training excluded. Rock Ridge stays (standalone, no episode).
+crafting, story quests stay; City Investment one entry; Acolyte training
+excluded. Decided on 2026-10-27: hunting boards and the Eden Group are out
+(Excluded files), so the old regions 23-24 are gone and 25-31 became 23-29. Rock Ridge stays (standalone, no episode).
