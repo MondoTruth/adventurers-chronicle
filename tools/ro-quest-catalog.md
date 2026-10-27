@@ -4,7 +4,8 @@ Step 1 of the Renewal Side Quests tab (concept v3, 2026-10-26): every side
 quest Ragnarok itself has on a Renewal server, grouped Region -> Storyline ->
 Quest, with the links between them. Step 2 adds the steps, an explanation
 for each and a `/navi map x/y`, region by region, in `ro-quest-steps.md`
-(regions 1-13 and the entrances done on 2026-10-26).
+(regions 1-13 and the entrances done on 2026-10-26, regions 14-22 on
+2026-10-27).
 
 Source of truth: rathena-pin, commit 8aea17a (the app 1.7.0 pin). Every file
 named here is loaded on Renewal (`npc/scripts_athena.conf`, which
@@ -75,7 +76,7 @@ Anything not read in the script itself says **to verify**.
 28. Flame Basin (Episode 14.3)
 29. Verus and the Phantasmagorika (Episode 15)
 30. Rock Ridge
-31. Quests from other mods (World Sync Extras 2.1.2)
+31. Quests from other mods (World Sync Extras 2.1.5)
 
 Then: later (Episodes 16-19), not covered, excluded files, open questions.
 
@@ -434,28 +435,35 @@ Excluded: Oridecon/Mineral Stone (`ein_gear1`, an exchange), Uwe Kleine.
   palace. `quests/quests_amatsu.txt` | `event_amatsu` 0->6, quests 8131-8135
   | Lv: none | opens a place: the Amatsu Dungeon | side 6 (RO part only).
 - **The Momotaro Event** - a publisher in Amatsu and the story of Momotaro.
-  `quests/quests_amatsu.txt` | `event_momo` 0->6, quests 8127-8130 | Lv: 30
+  `quests/quests_amatsu.txt` | `event_momo` 0->4, quests 8127-8130 | Lv: 30
   | a field trip through the tale on its own map (ama_test), prizes at the end.
+Excluded: the Sushi Quest (exchange, see Excluded files).
 
 ## 15. Kunlun
 
 - **The Broken Sword** - the chief's treasure, a drinker's tale and the
-  smith's granddaughter. `quests/quests_gonryun.txt` | `b_sword` 0->28+
-  | Lv: 51 | side 7 (RO part only).
-- **The Lost Knife** - Han Ran Jiao. `quests/quests_gonryun.txt` | `nakha`,
-  quests 10034-10035 | Lv: 20.
+  smith's granddaughter. `quests/quests_gonryun.txt` | `b_sword` 0->33
+  (11, 12, 13, 15 = closed by a wrong answer) | Lv: 51 | needs: the Lost
+  Knife (`nakha == 3`, at Zuo Hei) | side 7 (RO part only).
+- **The Lost Knife** - Han Ran Jiao. `quests/quests_gonryun.txt` | `nakha`
+  0->3, quests 10034-10035 | Lv: 20 | opens: the Broken Sword past step 8.
 
 ## 16. Luoyang
 
-- **The Soup Quest** - the inn's employees and their soup.
-  `quests/quests_louyang.txt` | `ch_tre` 0->5 | Lv: none (`< 80` is a line
-  of dialogue).
+- **The Soup Quest** - steal the restaurant's Dragon Soup broth for Jiu
+  Lian Bu. `quests/quests_louyang.txt` | `ch_tre` 0->5 | Lv: none (`< 80` is
+  a line of dialogue).
 - **The Doctor Quest** - Hua Tuo and his patients.
-  `quests/quests_louyang.txt` | `ch_par` 0->18, quests 11044-11057 | Lv: 40.
-- **The Poison King** - the Poison King's poem quiz and errands.
-  `quests/quests_louyang.txt` | `ch_poison` 0->20, quests 11070-11083 | Lv: none.
-- **The Revolution Quest** - a hermit and a gunpowder expert.
-  `quests/quests_louyang.txt` | `ch_make` 0->9 | Lv: 50 (to verify: line 4715).
+  `quests/quests_louyang.txt` | `ch_par` 0->18 (10 = short ending), quests
+  11044-11057 | Lv: 40 | opens: the Poison King's disciple (`ch_par > 9`).
+- **The Poison King** - the Poison King's poem quiz and his disciple's
+  revenge. `quests/quests_louyang.txt` | `ch_poison` 0->21 (14 = dark
+  ending), quests 11070-11083 | Lv: none | needs: the Doctor Quest at
+  `ch_par > 9`.
+- **The Revolution Quest** - Sun Mao's revolt and the gunpowder expert.
+  `quests/quests_louyang.txt` | `QL_REVOL` 0->9, `ch_make` 0/1 | Lv: 50 (the
+  leader, at 8 members) | party 8 (every member makes gunpowder: to
+  verify with bots).
 
 ## 17. Ayothaya
 
@@ -473,73 +481,98 @@ Excluded: Oridecon/Mineral Stone (`ein_gear1`, an exchange), Uwe Kleine.
 
 ### Storyline: The Moving Island and Koshei
 - **The Moving Island** (Whale Island) - Berbayeff, Mr. Ibanoff's ship and the
-  Csar. `quests/quests_moscovia.txt` | `mos_whale_edq` 0->~20, quests
-  18100-18120 | Lv: none | opens a place: the island (mosk_fild01, to verify).
+  Csar. `quests/quests_moscovia.txt` | `mos_whale_edq` 0->41 (91-94 and
+  241-244 at sea), quests 18100-18120 | Lv: none | opens a place: the island
+  (mosk_fild01, step 4), its far side and the Moscovia dungeons (mosk_fild02,
+  mosk_dun01-03, `mos_whale_edq > 38`; no other way in) | opens: Koshei,
+  Banish Winter, Help Mikhail's step 9.
 - **Koshei the Immortal** - the sage, the gray wolf, Maria Morebna and Baba
-  Yaga's golden key. `quests/quests_moscovia.txt` | `rhea_rus_main` 0->~23
-  | Lv: none | opens: the Red Ring, Lusalka's Hair and the Golden Thread
-  (they need `rhea_rus_main` 8).
-- **The Red Ring** - Vassili Grandpapa and Ryubaba. `rhea_rus_ring` | needs:
-  Koshei at 8 and certain shoes worn (2429/2430, to verify).
+  Yaga's golden key. `quests/quests_moscovia.txt` | `rhea_rus_main` 0->53
+  (Baba Yaga's errand by class: 11-46) | Lv: none | needs: the Moving Island
+  at `mos_whale_edq > 38` | opens: the Red Ring, Lusalka's Hair and the
+  Golden Thread (they need `rhea_rus_main == 8` and the Iron Boots worn).
+- **The Red Ring** - Vassili Grandpapa and Ryubaba. `rhea_rus_ring` 0->10 (9
+  or 10) | needs: Koshei at 8, Iron Boots (2429/2430) worn.
 - **Lusalka's Hair** - a worried mother and the water spirit. `rhea_rus_hair`
-  | needs: Koshei at 8, same shoes.
-- **The Golden Thread** - Marozka's dungeon. `rhea_rus_quiz` | needs: Koshei at 8.
+  0->9 | needs: Koshei at 8, same boots.
+- **The Golden Thread** - Marozka's cave and riddles. `rhea_rus_quiz` 0->30
+  | needs: Koshei at 8, same boots.
 
 ### Single quests
 - **Help Mikhail** - Gallina, Anna and Mikhail in the inn.
-  `quests/quests_moscovia.txt` | `mos_swan`, quests 18060-18069 | Lv: none.
+  `quests/quests_moscovia.txt` | `mos_swan` 0->101 (25, 100, 101), quests
+  18060-18069 | Lv: none | needs: the Moving Island at `mos_whale_edq > 38`
+  (the swamp in mosk_dun03).
 - **Banish Winter** - Baba Yaga the Horrible and the villagers.
-  `quests/quests_moscovia.txt` | `mos_nowinter` 0->19, quests 18070-18078
-  | Lv: 60 for one step (to verify).
-- Excluded: Shafka Hat, Acorn exchange (headgear, exchange).
+  `quests/quests_moscovia.txt` | `mos_nowinter` 0->21, quests 18070-18079
+  | Lv: 60 (Baba Yaga, with 40 Yaga's Pestle) | needs: the Moving Island at
+  `mos_whale_edq > 38` (her hut is reached from mosk_dun02).
+- Excluded: Shafka Hat, Acorn exchange (headgear, exchange), Larissa's
+  pancakes (cooking).
 
 ## 19. Brasilis
 
-- **The Brasilis Dungeon Access** - Pedro, Mariana, Fabio and a ghost story.
-  `quests/quests_brasilis.txt` | `brazil_ghost` 0->10, quests 2208-60355
-  | Lv: 40 (the curator) | opens a place: the Brasilis Dungeon.
-- **The Guarana Candy** - the candy maker. `brazil_gua` 0->11, quests 2192-2200 | Lv: none.
-- **The Water Lily** - botanist Karmen. `brazil_regia` 0->10, quests 2201-2207 | Lv: none.
-- **Lost Puppies** - Angelo's puppies. quests 9030-9032 | Lv: 40 | repeatable (24 h).
-- **The Suspicious Beach** - Lucia. quests 9028-9029 | Lv: 40 | repeatable (24 h).
+- **The Brasilis Dungeon Access** - Pedro, the curator and the bathroom
+  ghost. `quests/quests_brasilis.txt` | `brazil_ghost` 0->8, quests 2208,
+  60351-60355 | Lv: 40 (the curator) | opens a place: the Brasilis Dungeon
+  (`brazil_ghost > 6`) | opens: the Water Lily's dungeon steps, Iara.
+- **The Guarana Candy** - the candy maker. `brazil_gua` 0->11, quests 2192-2200
+  | Lv: none.
+- **The Water Lily** - botanist Karmen. `brazil_regia` 0->10 | Lv: none
+  | needs: the Dungeon Access at 7 (steps in bra_dun02).
+- **Lost Puppies** - Angelo's puppies. quests 9030-9032 | Lv: 40 | repeatable
+  (4 h on Renewal, quest_db).
+- **The Suspicious Beach** - Lucia and the Strange Hydras. quests 9028-9029
+  | Lv: 40 | repeatable (4 h).
 - **Iara** - the shaman and the river spirit. quests 4133-4135 | Lv: 40
-  | repeatable (24 h, a buff).
+  | repeatable (4 h, a buff) | needs: the Dungeon Access at 7.
 All `quests/quests_brasilis.txt`.
 
 ## 20. Dewata
 
 - **The Dewata Legend** - the tribal chief and the sage.
-  `re/quests/quests_dewata.txt` | `dew_legend` 0->17, quests 9155-9165 | Lv: 60.
-- **Help Out the Old Man** - Memo. `dew_drink` 0->9, quests 5035-5045 | Lv: 60.
+  `re/quests/quests_dewata.txt` | `dew_legend` 0->17, quests 9155-9165 | Lv: 60
+  | opens: the Gatekeeper of Krakatau (dew_dun01).
+- **Help Out the Old Man** - Memo. `dew_drink` 0->10, quests 5035-5044 | Lv: 60
+  | then a 4-hour daily (quests 5045-5050).
+Excluded: the Traditional Weapon (exchange).
 
 ## 21. Malangdo
 
 - **Malangdo Island** - the village chief Tomas and the cats' meeting.
-  `re/quests/quests_malangdo.txt` | `ma_tomas` 0->34, quests 11209-11245 | Lv: 60
-  | opens a place? (to verify: Octopus Cave / Malangdo Culvert are instances).
-- **Help the Bad Cats in Danger** - Gobonge's gang. `malang_bad_guys`, quests
-  1145-1155 | Lv: 60 | repeatable parts (`checkquest(1152,PLAYTIME)`).
-- **Clean the Ship** - `mal_qook`, quests 7260-7275 | Lv: 60 (to verify) | repeatable.
-- **Help Chef Nyas** - `mal_food`, quests 7264-7280 | Lv: 60 | repeatable (to verify).
-- **Play with Baby Cats** - the Meow Team. `nyadven`, `nyadven02`, quests
-  7242-7259 | Lv: 60.
-- **Cat Gamers** - the director's games. `malang_gamer`, quests 5058-5090 | Lv: 60.
-Excluded: Archangel Wing enchants.
+  `re/quests/quests_malangdo.txt` | `ma_tomas` 0->35, then 100 and 101, quests
+  11209-11245 | Lv: 60 | Pipielle's last part (101) is a **dead end**: no
+  source for Unknown Fish (see guide-deferred.md). The Octopus Cave and the
+  Malangdo Culvert memorials are not opened by it.
+- **Help the Bad Cats in Danger** - Gobonge's gang. quests 1145-1155 | Lv: 60
+  | repeatable (4 h).
+- **Clean the Ship** - Cleanyang. quests 7260-7275 | Lv: 60 | repeatable (4 h)
+  | opens: Help Chef Nyas.
+- **Help Chef Nyas** - quests 7264-7280 | Lv: 60 | repeatable (4 h)
+  | needs: Clean the Ship (7264).
+- **Play with Baby Cats** - the Meow Team. `nyadven` 0->14, `nyadven02`, quests
+  7242-7259 | Lv: 60 | repeatable games after.
+- **Cat Gamers** - the director's games. `malang_gamer` 0->20, quests 5058-5090
+  | Lv: 60 | repeatable games after.
+All `re/quests/quests_malangdo.txt`. Excluded: Archangel Wing enchants.
 
 ## 22. Port Malaya
 
 ### Storyline: The Cautious Village
-- **The Cautious Village** - Rodel the guard; win the villagers' trust (the
-  dailies run on the same variable). `re/quests/quests_malaya.txt` | `malaya_hi`
-  0->26, `malaya_diwata`, quests 7350-7410 | Lv: 100 | repeatable parts
-  | opens: Secret in the Woods (`malaya_hi` 10/20), Bakonawa, the Nurse
-  (`malaya_hi` 20).
-- **Secret in the Woods** - the Buwaya. `malaya_buwaya` 0->16, quests 2271-2281
-  | Lv: 100 | needs: Cautious Village at 10 or 20 (to verify).
-- **Bakonawa Extermination** - the old legend teller. `malaya_bakona1/2`,
-  quests 1174-1193 | Lv: 120 | needs: Cautious Village at 20.
+- **The Cautious Village** - Rodel the guard, Phong and the six villagers;
+  win their trust (the dailies run after it). `re/quests/quests_malaya.txt`
+  | `malaya_hi` 0->25, `malaya_diwata`, quests 7350-7410 | Lv: 100 (dailies,
+  Imelda) | repeatable parts | opens: Secret in the Woods, Bakonawa, the
+  Nurse (all at `malaya_hi >= 20`).
+- **Secret in the Woods** - the Buwaya. `malaya_buwaya` 0->15, quests 2271-2281
+  | Lv: 100 | needs: Cautious Village at 20.
+- **Bakonawa Extermination** - the old legend teller and the village chief.
+  `malaya_bakona1` 0->7, `malaya_bakona2` 0->15, quests 1174-1193 | Lv: 120
+  | needs: Cautious Village at 20; part 2 needs part 1 at 6.
 - **The Nurse in Port Malaya** - the hospital of Bangungot. `malaya_bang`
-  0->31, quests 11284-11309 | Lv: 100 | needs: Cautious Village at 20.
+  0->42 (1-20, 30-36, 40-42), quests 11284-11309 | Lv: 100 | needs: Cautious
+  Village at 20 | party 1 (the Bangungot Hospital 2F memorial wants a party,
+  even of one).
 
 Excluded: traders, boss equipment upgrades, the Pintados Festival (a timed
 festival where Ancient Grudges are handed in).
@@ -809,11 +842,21 @@ Named so nothing is lost; each gets its regions when its episode comes.
   (Lv 200-240), `re/quests/garden_of_time.txt` (Lv 250) - to verify with
   MondoTruth that these wait too.
 
-## 31. Quests from other mods (World Sync Extras 2.1.2)
+## 31. Quests from other mods (World Sync Extras 2.1.5)
 
 Installed at `%APPDATA%\Ragnarok Offline\state\mods\world-sync-extras`
-(v2.1.2, 2026-10-26; guide.ps1 was checked against 2.1.1 - recheck the three
-guided quests). Every entry: `needs a mod` (World Sync Extras, block named).
+(v2.1.5, 2026-10-27). Compared with 2.1.2 (`D:\Claude\projects\world-sync-extras`):
+no side quest added, removed or changed. 2.1.5 changes only the Jormungandr
+story (Episode 20 gains the Drift Ice Zone and Twig's Nest instances, files
+`ep20_drift.txt`, `ep20_twignest.txt`; other Episode 20/21 files and the
+Jormungandr mob and instance db reworked), Varmundt Chapter 1's memorial
+entry (`F_WSV_EnterMd` in `vr_common.txt`, used by `ch1_f_fortress.txt`),
+one placeholder fewer (Verkhasel, ve_fild05: 72 instead of 73) and a new
+`db/item_db.yml` (job lists of 16 iRO items). The files of the three guided
+quests (`criminal_activities.txt`, `eye_of_the_beholder.txt`,
+`seoyeon_trial.txt`) are unchanged; every coordinate of `wse_criminal`,
+`wse_seoyeon` and `wse_beholder` in guide.ps1 is an NPC header in 2.1.5 and
+their variables (`iq_crim`, `iq_beho`, `wsv_sy`, `wsv_sys`) are still used. Every entry: `needs a mod` (World Sync Extras, block named).
 Story lines of the mod (Episodes 20 and 21, Varmundt chapters 1 and 2) are
 Story candidates for "Episodes 16-21", not side quests.
 

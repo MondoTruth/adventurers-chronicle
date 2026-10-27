@@ -4,7 +4,8 @@ Step 2 of the Renewal Side Quests tab: the steps of every quest in
 `ro-quest-catalog.md`, same regions, same numbers, same order. Batch 1
 (2026-10-26): regions 1-6 and "Entrances without a quest". Batch 2
 (2026-10-26): regions 7-13, the Party Relay and the Unlucky Emerald's jewel
-part. Regions 14-31 follow in later batches.
+part. Batch 3 (2026-10-27): regions 14-22. Regions 23-31 follow in later
+batches.
 
 Source of truth: rathena-pin, commit 8aea17a (the app 1.7.0 pin). Every
 coordinate, item, count, level and variable value below was read in the
@@ -2607,6 +2608,1295 @@ none.
 6. **Done** - the old man (8).
    `/navi ve_fild02 337/314` | done when: `veins_stone >= 8`
    Reward: 30,000 base EXP, 3 Elunium.
+
+## 14. Amatsu
+
+### The Amatsu Dungeon Quest
+`quests/quests_amatsu.txt` | `event_amatsu` 0->6, quests 8131-8135 | Lv
+none | side 6 (RO part only). The castle door is `/navi amatsu 85/235`;
+inside, the stairs go up at `ama_in02 195/44`, `56/44`, `59/160` to the
+lord's floor, and one more at `222/161` to Jyuro's floor.
+
+1. **The Gate Soldiers** - the soldiers guarding a house in Amatsu (either
+   one) (1).
+   Why: the lord's mother lies sick in that house and no doctor can help.
+   `/navi amatsu 164/174` (or `171/174`) | done when: `event_amatsu >= 1`
+2. **Lord Ishida** - at the top of the castle: "I heard about your
+   mother..." (2).
+   Why: the lord begs you to cure his mother.
+   `/navi ama_in02 200/176` | done when: `event_amatsu >= 2`
+3. **Kouji's song** - the boy singing in the streets (3); talk again for
+   the quest log (8133).
+   Why: his song tells of a fox that follows someone, and a priest at the
+   north shrine.
+   `/navi amatsu 189/166` | done when: `event_amatsu >= 3`
+4. **The north shrine** - leave by the north-east road (`amatsu 248/292`);
+   the shrine door is at `ama_fild01 174/331`. Inside, the boy in the
+   Kitsune Mask: "Taaaaah!!" (4).
+   Why: he teaches you to shout a fox out of a body.
+   `/navi ama_in01 180/173` | done when: `event_amatsu >= 4`
+5. **The possessed mother** - into the guarded house (door `amatsu
+   168/182`), talk to the Grandma: "Taaaah!!" (5, Nine Tails).
+   `/navi ama_in01 22/111` | done when: `event_amatsu >= 5`
+   Fails: it works 1 time in 4; carrying 1 Holy Water, Bear's Footskin or
+   Tiger Skin (not taken) makes it 1 in 2 (Acolytes and Monks 1 in 2 too,
+   Priests 3 in 4). A failure throws you out to `amatsu 167/197`: walk in
+   and try again.
+6. **Proof** - bring the Nine Tails (taken) to Lord Ishida (6).
+   `/navi ama_in02 200/176` | done when: `event_amatsu >= 6`
+   Reward: Feudal Lord Permit.
+   Opens: the Amatsu Dungeon. Jyuro, the soldier one floor up
+   (`/navi ama_in02 115/177`): "Open the gate", "I will go in" (the permit
+   is kept) warps you to `ama_dun01 229/10`; the Soldier there
+   (`ama_dun01 229/7`, "Yes, I do") takes you back. A lost permit: the
+   Soldier at `ama_in02 170/62`, "Issue me a Transit Permit", 10,000 zeny.
+   Warning: showing a permit to Jyuro before step 6 loses it.
+
+### The Momotaro Event
+`quests/quests_amatsu.txt` | `event_momo` 0->4, quests 8127-8130 | Lv 30
+(Publisher: `BaseLevel > 29`). One run only. The field trip is a small
+map (`ama_test`) for one player at a time, 6 minutes.
+
+1. **The Publisher** - "What is Momotaro Story?" first, then "I want to
+   try!" (warps you to `ama_test 52/35`). Keep your weight low (she
+   refuses an overweight bag) and put a pet back into its egg.
+   Why: her company celebrates a million copies of the Momotaro tale.
+   `/navi amatsu 223/236` | done when: on `ama_test`
+2. **The waiting room** - the Assistant Satoshi: "Yes" (you heard the
+   story; "No" sends you back to Amatsu), then join his waiting room
+   "Waiting Exhibit.": it starts with you alone. Walk up to the old couple
+   (1).
+   `/navi ama_test 52/44` | done when: `event_momo >= 1`
+3. **The Dokebis** - kill the 9 Dokebi (Lv 68) around the couple within
+   the 6 minutes (2).
+   Why: Dokebis robbed the old couple, like in the tale.
+   `/navi ama_test 50/93` | done when: `event_momo >= 2`
+   Fails: time out warps you back to Amatsu (still 1): the Assistant asks
+   again, "Yes" to try again, "No, I want to go back" resets to 0.
+4. **The Coach** - he appears in the middle: "Well, well. It is nothing~"
+   ends here (2). For the harder fight: "It was boring.", "Bring it on,
+   foo'!" (70% HP back), kill 3 Am Mut (Lv 141) before the 6 minutes run
+   out (3).
+   `/navi ama_test 50/100` | done when: `event_momo` 2 or 3
+5. **The reward** - back to the Publisher (4).
+   `/navi amatsu 223/236` | done when: `event_momo >= 4`
+   Reward: one random pet food or toy: after the Am Mut fight one of Her
+   Heart, Sweet Potato, Tropical Banana, Armlet of Obedience, No
+   Recipient, Well-Dried Bone, Old Broom, Orc Trophy, Monster Juice,
+   Contract in Shadow; otherwise one of Rainbow Carrot, Sweet Milk,
+   Singing Flower, Fatty Chubby Earthworm, Earthworm the Dude, Unripe
+   Apple, Bitter Herb, Orange Juice, Rusty Iron, Rotten Fish.
+
+Excluded: the Sushi Quest (exchange).
+
+## 15. Kunlun
+
+The chief's hall: door `/navi gonryun 109/131`, then the inner door
+`gon_in 42/35`. The tavern: door `/navi gonryun 215/114`. The Kunlun
+Dungeon: `/navi gonryun 159/201`.
+
+### The Broken Sword
+`quests/quests_gonryun.txt` | `b_sword` 0->33 (fails: 11, 12, 13, 15) | Lv
+51 (Chief: `BaseLevel > 50`) | needs: the Lost Knife done (step 7) | side
+7 (RO part only). A wrong answer at steps 3, 5 or 6 closes the quest for
+this character.
+
+1. **The chief** - Shi Yan Wen only greets you (1).
+   `/navi gon_in 17/93` | done when: `b_sword >= 1`
+2. **The hostess** - Mei Yen Fang in the tavern (2).
+   Why: she tells you the chief's house was robbed last night.
+   `/navi gon_in 152/35` | done when: `b_sword >= 2`
+3. **Offer your help** - the chief: "I heard that something was
+   stolen...", "What was stolen?", "Can I find it for you?" (3).
+   Why: his family sword, an heirloom of many generations, is gone.
+   `/navi gon_in 17/93` | done when: `b_sword >= 3`
+   Fails: "Hope you find it soon." sets 11: the quest is closed.
+4. **The hostess again** - she points you to the drinker (4).
+   `/navi gon_in 152/35` | done when: `b_sword >= 4`
+5. **The drinker** - Xue Bong, with 1 Green Potion (taken): "Here, drink
+   this!" (5), "About a thief...", "Where to?" (6).
+   Why: he saw someone on the chief's roof, fleeing toward a shrine.
+   `/navi gon_in 165/16` | done when: `b_sword >= 6`
+   Fails: "No." then "Sorry, I don't have any." sets 12: closed.
+6. **Back to the chief** - (7).
+   `/navi gon_in 17/93` | done when: `b_sword >= 7`
+   Reward: 3 White Potion.
+7. **Three blade pieces** - one on each floor of the Kunlun Dungeon. The
+   thief's trace is invisible and waits on one of five or seven spots per
+   floor, moving on after 10 seconds: stand on a spot 3 seconds, step away
+   and back; the piece then lies there (or close by) and is picked up by
+   walking onto it (8 on floor 1, 9 on floor 2, 10 on floor 3).
+   Floor 1 spots: `gon_dun01 201/25`, `190/160`, `163/53`, `133/183`,
+   `139/257`. Floor 2: `gon_dun02 65/168` (piece at `202/25`), `265/200`,
+   `247/129`, `149/74`, `23/105`, `249/39`. Floor 3: `gon_dun03 11/75`,
+   `199/103`, `14/162`, `155/263`, `169/90`, `162/40` (piece at `68/39`),
+   `68/212`.
+   Why: the wounded thief broke the sword rather than give it up; his
+   bones lie on floor 3 (`gon_dun03 62/222`, "Yes." reads his note).
+   `/navi gonryun 159/201` | done when: `b_sword >= 10`
+   Note: floor 2 is a maze of warp tiles; side 7 in `side.ps1` lists the
+   route. Floors are around Lv 90-97, the Evil Snake Lord Lv 105.
+8. **Repair it?** - the chief: "Alright." (14).
+   `/navi gon_in 17/93` | done when: `b_sword == 14`
+   Reward: 1 Old Blue Box.
+   Fails: "No way." sets 15: closed (also an Old Blue Box).
+9. **Zuo Hei** - the stranger on the north-west edge: "Ask about the
+   blacksmith.", "Exactly." With the Lost Knife not yet done he sends you
+   to help someone first (16); with it done he names a smith in Geffen
+   (17).
+   Why: he only helps people who keep their promises.
+   `/navi gonryun 100/241` | done when: `b_sword >= 17`
+10. **Aumgarl the smith** - in Geffen (house door `geffen 172/174`): "Sir...?",
+    "I came to repair this sword." (18). He throws you out: keep talking
+    to him, 1 time in 8 he listens (19). Then "Your granddaughter is such
+    a pretty girl.", "Anything wrong?", "I'll make her happy.", "I want to
+    take her with me.", "I am sorry.", "Well...", "Sure.", "Yes, Sir."
+    (20).
+    Why: he will not touch a sword while his granddaughter Lyroo lies
+    dying.
+    `/navi geffen_in 71/112` | done when: `b_sword >= 20`
+11. **Neil** - by the east wall of Prontera (21).
+    Why: a doctor from Juno cured him.
+    `/navi prontera 275/86` | done when: `b_sword >= 21`
+12. **Hisa** - the girl in Juno (22): the doctor is Cylrnel.
+    `/navi yuno 208/164` | done when: `b_sword >= 22`
+13. **Cylrnel's house** - walk in; a voice throws you out, 1 time in 10
+    you are let in (23).
+    `/navi yuno 245/147` | done when: `b_sword >= 23`
+14. **The moody doctor** - Cylrnel: keep talking; "You're so beautiful.",
+    then "Yes, I fell in love at first sight." and "Well, actually..."
+    (24). Each try is random; a bad mood sends you out (`yuno 246/143`).
+    `/navi yuno_in01 99/101` | done when: `b_sword >= 24`
+15. **The symptoms** - "Yes, Here.", "Turns hot and cold repeatedly.", "No
+    sweating at all.", "Becomes paralyzed often.", "Heart beats
+    irregularly.", "Yes, I am sure.", "I'm sure." (26).
+    Why: Lyroo has Amarhade.
+    `/navi yuno_in01 99/101` | done when: `b_sword == 26`
+    Fails: other symptoms set 25 and a shorter list (1 Yggdrasil Seed, 1
+    Aloe, 5 Witched Starsand, 3 Burning Heart, 3 Ice Cubic) that brews the
+    wrong cure: the items are taken and you are back at 24.
+16. **The medicine** - bring 2 Yggdrasil Seed, 3 Aloe, 1 Witherless Rose,
+    10 Witched Starsand, 5 Burning Heart, 5 Ice Cubic (taken) (27,
+    Aloevera).
+    `/navi yuno_in01 99/101` | done when: `b_sword >= 27`
+17. **Lyroo** - upstairs in the smith's house: "It's your medicine." (28).
+    `/navi geffen_in 106/106` | done when: `b_sword >= 28`
+18. **The materials** - Aumgarl: "Would you repair the sword for me?",
+    "Alright, I'll go get them." (30); bring 1 Anvil, 2 Rough Oridecon, 5
+    Broken Sword, 2 Steel, 1 Hammer of Blacksmith, 2 Star Crumb, 5 Live
+    Coal (taken) (31). Keep talking: 1 time in 5 the sword is done (32,
+    Haedonggum).
+    `/navi geffen_in 71/112` | done when: `b_sword >= 32`
+19. **Home** - give the Haedonggum to the chief (33).
+    `/navi gon_in 17/93` | done when: `b_sword >= 33`
+    Reward: Shoes.
+
+### The Lost Knife
+`quests/quests_gonryun.txt` | `nakha` 0->3, quests 10034-10035 | Lv 20
+(Han Ran Jiao: `BaseLevel >= 20`).
+
+1. **Han Ran Jiao** - by the cliff in the north-east of the village (1).
+   Why: she dropped her family knife on the field below.
+   `/navi gonryun 237/226` | done when: `nakha >= 1`
+2. **The knife** - walk onto the spot under the leaves (2, Knife).
+   `/navi gon_fild01 245/257` | done when: `nakha >= 2`
+3. **Return it** - "Return the knife." (3; "Refuse." keeps it, ask again).
+   `/navi gonryun 237/226` | done when: `nakha >= 3`
+   Reward: 2 Blue Potion.
+   Opens: the Broken Sword's step 9.
+
+## 16. Luoyang
+
+Doors used below: the restaurant `/navi louyang 280/167`, the hospital
+`/navi louyang 263/93`, the tool shop `/navi louyang 136/97` (its store
+room is behind it), City Hall `/navi louyang 309/80` (upstairs at
+`lou_in02 201/94`), the palace `/navi louyang 218/255`.
+
+### The Soup Quest
+`quests/quests_louyang.txt` | `ch_tre` 0->5 | Lv none (Chi Wu Ping's
+`BaseLevel < 80` only changes a line). No reward but a secret spot.
+
+1. **Jiu Lian Bu** - the young man on the field south of Luoyang: "What
+   restaurant?", "I'll do it!" (1).
+   Why: he wants to ruin the restaurant that throws him out by stealing
+   its Dragon Soup broth.
+   `/navi lou_fild01 195/177` | done when: `ch_tre >= 1`
+2. **The pot** - in the restaurant kitchen, click a pot: "Take the pot."
+   (2 = a wrong broth, 3 = the real one, 1 in 4). Then walk out without
+   an employee or the chef walking into you.
+   `/navi lou_in02 50/185` (or `49/185`) | done when: `ch_tre` 2 or 3
+   Fails: caught by the staff puts you back to 1 (the chef also throws
+   you out to `louyang 280/161`). The chance to be caught depends on the
+   server hour: 10:00-14:00 8 in 10, 14:00-17:00 9 in 10, 17:00-22:00 5
+   in 10, at night (restaurant closed) 4 in 10. Go at night.
+3. **The taste test** - bring it to Jiu Lian Bu: a wrong broth sends you
+   back for another pot (1); the real one (4) takes you to his spot.
+   `/navi lou_fild01 195/177` | done when: `ch_tre >= 4`
+4. **Shout it out** - talk to him there and type anything to shout (5).
+   Why: shouting is his way of letting go of what weighs on him.
+   `/navi lou_fild01 175/173` | done when: `ch_tre >= 5`
+   Opens: he takes you back there whenever you ask ("Sure, let's go~").
+
+### The Doctor Quest
+`quests/quests_louyang.txt` | `ch_par` 0->18 (10 = the short ending),
+quests 11044-11057 | Lv 40 (Doctor: `BaseLevel < 40` refuses at step 2).
+Keep 2,000 weight free for the doctor and the store room.
+
+1. **The doctor** - Hua Tuo in the hospital (or his patient at
+   `lou_in02 272/55`) (1).
+   `/navi lou_in02 265/69` | done when: `ch_par >= 1`
+2. **His errand** - talk again: "I can help you.", either answer (2).
+   Why: the hospital ran out of medicine and he cannot leave his patients.
+   `/navi lou_in02 265/69` | done when: `ch_par >= 2`
+3. **The tool shop** - the master: "I'm here to get something for the
+   doctor..." (3).
+   `/navi lou_in02 248/166` | done when: `ch_par >= 3`
+4. **The store keeper** - "I'm on an errand for the doctor.", "Um, what
+   is it?" (5-8: he names one document and wants you to fetch it).
+   `/navi lou_in02 201/166` | done when: `ch_par` 5 to 8
+   Branch: "Sorry, I'm busy." (4) lets you search the five supply stacks
+   yourself (`lou_in02 204/169`, `207/168`, `206/163`, `198/170`,
+   `192/170`) at about 1 try in 2,000 each; a find jumps to step 7 (9).
+5. **City Hall** - the officer downstairs: "I need a document.", "A
+   little zeny to cut the red tape, eh?", type a bribe of 10,000 zeny or
+   more (taken; you must have more than you type) (11-14).
+   `/navi lou_in02 210/47` | done when: `ch_par` 11 to 14
+6. **The document** - the studying officer upstairs: "I came to pick up
+   my documents.", type the name the store keeper said, exactly:
+   `Residence Transfer Application` (11), `Summer SAT Class Application`
+   (12), `Sandy Dust Phenomenon Report` (13) or `Communication Proposal`
+   (14). (15). Bring it to the store keeper: "Excuse me." (16, Herbal
+   Medicine).
+   `/navi lou_in02 156/38`, `/navi lou_in02 201/166` | done when:
+   `ch_par >= 15`, then 16
+7. **The medicine** - give the doctor the Herbal Medicine: "No problem."
+   (17) to go on.
+   `/navi lou_in02 265/69` | done when: `ch_par == 17`
+   Branch: "I'm sorry, I can't help you." ends here (10).
+   Reward (10): 2 Pilule, 1,000 base EXP.
+8. **More medicine** - bring 2 Leopard Claw, 10 Solid Peach, 5 Poisonous
+   Toad Skin, 20 Brown Root, 10 Sprout, 5 Honey Pot (taken) (18).
+   `/navi lou_in02 265/69` | done when: `ch_par >= 18`
+   Reward: 5 Pilule, 10,000 base EXP.
+   Opens: the Poison King's disciple talks to you (`ch_par > 9`).
+
+### The Poison King
+`quests/quests_louyang.txt` | `ch_poison` 0->21 (14 = the dark ending),
+quests 11070-11083 | Lv none | needs: the Doctor Quest at step 7 or later
+(`ch_par > 9`, from step 5). The Poison King, Nagash Arses, sits in a
+house in Luoyang (`lou_in02 123/39`); his disciple Song Zhi Du works in
+the hospital (`lou_in02 253/45`).
+
+1. **The old man** - listen to his poem, then choose "Show him a sad
+   look." (1).
+   Why: a famous Assassin and poison master, he has been a wanted man in
+   Luoyang for 40 years.
+   `/navi lou_in02 123/39` | done when: `ch_poison >= 1`
+2. **The poem** - carry a Green Potion, Green Herb or Red Gemstone (not
+   taken) and talk until the four-topic menu shows (2 times in 3): "Ask
+   about the poem." He asks four random questions; all four must be
+   right, then the line he asks for (2). Answers: "in bed", "frost",
+   "homesick.", "Wistful", "Separation", "In bed.", "It's a quatrain, of
+   course.", "Moonlight and frost", "All places and peoples share the same
+   moon.", "head", "He's homesick, so the moonlight looks cold"; the lines
+   are "As I lay in bed looking up at the moonlight", "It looks like the
+   frost on the ground", "I lift my head to look at the bright moon", "I
+   lower my head feeling homesick."
+   `/navi lou_in02 123/39` | done when: `ch_poison >= 2`
+   Fails: one wrong answer: try again.
+3. **His hometown** - same way to the menu: "Ask about his hometown.",
+   "Just listen." (sometimes he forgets: try again) (3).
+   Why: he was the poison expert of Morroc's Assassin band "Canine of
+   Desert", shipwrecked here 40 years ago.
+   `/navi lou_in02 123/39` | done when: `ch_poison >= 3`
+4. **His situation** - "Ask about his situation.", "It must have been
+   good." or "I don't know, but how did it go?" (4).
+   Why: rivals poisoned the lord's son and blamed his school; he was
+   jailed and broken.
+   `/navi lou_in02 123/39` | done when: `ch_poison >= 4`
+5. **Poison** - "Ask about use of Poison." (5): go to his disciple.
+   `/navi lou_in02 123/39` | done when: `ch_poison >= 5`
+6. **Song Zhi Du** - (needs `ch_par > 9`) "Yes, I fully understand." (8).
+   Why: he wants revenge on Lord Bai Long for his master.
+   `/navi lou_in02 253/45` | done when: `ch_poison >= 6`
+   Branch: "But revenge isn't good." (6); then "I'm sorry for last
+   time." (7) and bring 4 Bee Sting, 10 Venom Canine, 10 Empty Potion
+   Bottle, 30 Green Potion (taken) (8).
+7. **The delivery** - the firecracker lady at the town's entrance: "Yes.",
+   type `Song Zhi Du`, pay 1,000 zeny (9, Large Jellopy).
+   `/navi lou_fild01 224/348` | done when: `ch_poison >= 9`
+8. **The brew** - give Song Zhi Du the Large Jellopy (all taken): it
+   fails (10). Bring 4 Bee Sting, 10 Venom Canine, 10 Empty Potion
+   Bottle, 30 Green Potion, 1 Large Jellopy (all you carry of them is
+   taken each try); 3 tries in 10 work (11, 2 Poison Bottle).
+   `/navi lou_in02 253/45` | done when: `ch_poison >= 11`
+   Fails: a failed brew takes the whole set: bring another.
+9. **The plan** - talk again (12): he wants the poison in the lord's
+   drink.
+   `/navi lou_in02 253/45` | done when: `ch_poison >= 12`
+10. **Tell the master** - with both Poison Bottles: "I want to talk about
+    your diciple.", "Give him Poison Bottle." (1 taken), "Explain to him
+    what happened." (15); talk again (16).
+    Why: he begs you to save the lord and his disciple from this.
+    `/navi lou_in02 123/39` | done when: `ch_poison >= 16`
+    Branch (dark ending): go straight to the palace at 12, put the poison
+    in the drink (13), back to Song Zhi Du (14, 3 Poison Bottle, a pill
+    and base EXP by level 500 to 11,000): the quest ends there.
+11. **The lord's drink** - carry 1 Sticky Mucus and 1 Empty Bottle. Click
+    the crack in the palace wall (`louyang 217/278`), then the drink
+    bottle (both taken) (17); the spot at `lou_in01 118/167` takes you
+    out.
+    `/navi lou_in01 107/163` | done when: `ch_poison >= 17`
+    Fails: the palace's front way is trapped and guarded while you are at
+    12 or 16: any trap or soldier throws you out to `louyang 218/246`.
+12. **The journal** - back to the Poison King (18, his journal).
+    `/navi lou_in02 123/39` | done when: `ch_poison >= 18`
+13. **Lord Bai Long** - give him the journal in the palace (19).
+    `/navi lou_in01 99/158` | done when: `ch_poison >= 19`
+    Reward: 1 Old Blue Box.
+    Note: the script moves the Journal entry to quest 11802 ("The Lady of
+    Purification") here, a typo for 11082 (rAthena bug).
+14. **The master's thanks** - (20).
+    `/navi lou_in02 123/39` | done when: `ch_poison >= 20`
+    Reward: base EXP by level: 1,050 (below 56), 1,230, 1,570, 2,300,
+    3,400, 4,500, 9,000, 18,000, 20,000 (91+).
+15. **Song Zhi Du** - (21).
+    `/navi lou_in02 253/45` | done when: `ch_poison >= 21`
+    Reward: 5 Poison Bottle.
+
+### The Revolution Quest
+`quests/quests_louyang.txt` | `QL_REVOL` 0->9, `ch_make` 0/1 | Lv 50 (the
+leader at step 3: `BaseLevel < 50` waits) | **Players: 8**. Every member
+of the party must do step 4 with their own character.
+
+1. **Sun Mao** - the hermit: "I will join you!", "I am 100% sure." (1).
+   Why: he gathers people for a revolt against Luoyang's corrupt
+   officials.
+   `/navi lou_in02 77/37` | done when: `QL_REVOL >= 1`
+2. **Recruits** - as party leader, add one member at a time and talk to
+   him after each (2 ... 7). Two or more new members at once are refused.
+   `/navi lou_in02 77/37` | done when: `QL_REVOL >= 7`
+3. **Eight** - with the eighth member: he gives the leader 8 Burnt Tree, 8
+   Lava, 8 Mud Lump (8). Each member needs one of each.
+   `/navi lou_in02 77/37` | done when: `QL_REVOL >= 8`
+4. **The gunpowder expert** - Hao Chenryu, held in the palace building.
+   The soldier at `lou_in01 82/139` lets nobody in who carries the
+   chemicals, and the one at `45/138` nobody out who carries Gunpowder:
+   hide them in a Cart. Each member (with `QL_REVOL` set, in a party of 8)
+   with one of each: "Make Gunpowder." (`ch_make` 1, 1 Gunpowder).
+   `/navi lou_in01 43/147` | done when: `ch_make == 1` for each member
+5. **Back to Sun Mao** - the leader, in a party of 8, with 8 Gunpowder
+   (all taken) (9).
+   `/navi lou_in02 77/37` | done when: `QL_REVOL >= 9`
+   Reward: 8 Red Envelope (to share).
+   To verify: how to reach `lou_in01 82/139`; whether party bots can do
+   step 4 (if not, it needs 8 real characters).
+
+## 17. Ayothaya
+
+The way to the Ancient Shrine: leave Ayothaya by the east road
+(`ayothaya 276/176`); on that field Puraim (`/navi ayo_fild01 129/197`)
+pushes you down the hill to `ayo_fild02` if you carry a Holy Threads or
+Holier Threads ("Yes."); Aik (`ayo_fild02 25/154`) takes you back up. The
+Shrine's door is `/navi ayo_fild02 285/149`.
+
+### The Ayothaya Dungeon Quest
+`quests/quests_ayothaya.txt` | `ayodunquest` 0->13, quests 12035-12039 |
+Lv none | side 4 (RO part only). Boonthom lives behind the door at
+`ayothaya 62/104`.
+
+1. **Dusit** - "What is it?", "Yes, I do" and "I think they're scary!" (1).
+   Why: he tells of the Sa-mhing Tiger, a man-eater sealed in the shrine.
+   `/navi ayothaya 83/132` | done when: `ayodunquest >= 1`
+2. **The shaman** - Boonthom: "I want to explore the ancient ruins.",
+   "Sure!" (2).
+   `/navi ayo_in01 181/193` | done when: `ayodunquest >= 2`
+3. **The Holy Thread** - bring 1 Fabric, 1 Nine Tails, 1 Solid Husk, 1
+   Holy Water (taken) (3, Holy Threads). A lost thread: the same items
+   again.
+   Why: the thread keeps the shrine's spirits off you.
+   `/navi ayo_in01 181/193` | done when: `ayodunquest >= 3`
+4. **Six slates** - on the shrine's first level click the stone slates in
+   order (4 ... 9): `ayo_dun01 198/164`, `87/16`, `268/214`, `147/274`,
+   `99/118`, `16/188`.
+   Why: they spell a dead man's warning not to go deeper without more
+   holy power.
+   `/navi ayo_dun01 198/164` | done when: `ayodunquest >= 9`
+5. **A stronger thread** - tell Boonthom (10); bring 2 Holy Water, 1
+   Yggdrasil Leaf, 2 Fabric, 2 Nine Tails (taken) (11, Holier Threads).
+   `/navi ayo_in01 181/193` | done when: `ayodunquest >= 11`
+   Note: Yggdrasil Leaf is sold by Ayothaya's Tool Dealer
+   (`ayo_in01 18/182`).
+6. **The second level** - with the Holier Threads, the way down in the far
+   north-west of the first level (`ayo_dun01 24/283`); then the remains
+   (12).
+   Why: Boonthom's friend died keeping the tiger sealed.
+   `/navi ayo_dun02 268/108` | done when: `ayodunquest >= 12`
+   Reward: 1 Old Blue Box.
+   Opens: the shrine's second level (the way down needs `ayodunquest >
+   10` and the Holier Threads).
+7. **The old letter** - back to Boonthom (13).
+   `/navi ayo_in01 181/193` | done when: `ayodunquest >= 13`
+
+### The Ayothaya Ring
+`quests/quests_ayothaya.txt` | `thai_find` 0->14, quests 12029-12034 | Lv
+none.
+
+1. **The powerful-looking woman** - by the water: talk until she speaks
+   to you (1 time in 2), "Lies~!", either answer (1).
+   Why: her fiance Annon lost her engagement ring and ran off to train.
+   `/navi ayothaya 233/105` | done when: `thai_find >= 1`
+2. **The fisherman** - each try costs 1 Monster's Feed and 50 zeny; 1 try
+   in 10 fishes up the Engagement Ring (2). (Other catches: Stone, Red
+   Potion, Yellow Potion, Sushi, Flower Ring, Diamond Ring.)
+   `/navi ayothaya 253/99` | done when: `thai_find >= 2`
+3. **The ring** - give it to the woman, either answer (3).
+   `/navi ayothaya 233/105` | done when: `thai_find >= 3`
+4. **The old man** - he saw Annon run toward the shrine (4).
+   `/navi ayothaya 193/171` | done when: `thai_find >= 4`
+5. **Footprints** - walk over each spot in order; each pass finds the
+   prints 1 time in 3 (5 ... 12): `ayo_dun01 255/62`, `74/142`, `244/256`,
+   `17/257`, then `ayo_dun02 145/120`, `135/168` (either answer), `77/213`,
+   `86/254`.
+   `/navi ayo_dun01 255/62` | done when: `thai_find >= 12`
+6. **Blood** - walk up to the bushes under the big tree (1 time in 3)
+   (13); then click them: "Dig up the bushes." (or "Scatter the bushes.",
+   "I'm not Shuda!") until the Haggard Man shows up.
+   `/navi ayo_dun02 91/263` | done when: `thai_find >= 13`
+7. **Annon** - "Treat his wound first." with a White Potion (taken), "What
+   do you want me to do?" (14).
+   Why: Annon swears to come home once his training is done.
+   `/navi ayo_dun02 91/264` | done when: `thai_find >= 14`
+   Reward: base EXP by level: 900 (below 56), 1,050, 1,868, 2,741, 7,075,
+   13,024, 15,034, 18,205, 40,678 (91+).
+
+### Tom Yum Goong
+`quests/quests_ayothaya.txt` | `tomyumgoong` 0->8, quests 8123-8126 | Lv
+none. Keep 4,000 weight free.
+
+1. **Einon** - "Sure thing." (1).
+   Why: he longs for Ayothaya's famous dish.
+   `/navi ayothaya 196/265` | done when: `tomyumgoong >= 1`
+2. **The cook** - in the pub (door `ayothaya 229/69`): "Sure!", "Where can
+   I find them?" (2).
+   `/navi ayo_in01 145/163` | done when: `tomyumgoong >= 2`
+3. **Shrimp** - Thongpool: "I need Shrimp for Tom Yum Goong.", "I will take
+   them." (11,000 zeny, 20 Shrimp) (3); give them to the cook (4).
+   `/navi ayothaya 153/86` | done when: `tomyumgoong >= 4`
+4. **Lemons** - Mr. Jun: "I need some Lemons.", "Yes, I will pay you.",
+   "Sure, why not!": a game of Scissors / Rock / Paper, 3 wins before he
+   has 5 (5, 10 Lemon); give them to the cook (6).
+   `/navi ayothaya 121/240` | done when: `tomyumgoong >= 6`
+   Fails: a lost game: play again.
+5. **Chiles** - the merchant: "Thanks, I'll take it." (2,000 zeny, 30 Red
+   Chile) (7); give them to the cook (8).
+   `/navi ayothaya 213/94` | done when: `tomyumgoong >= 8`
+   Reward: 10 Tom Yum Goong.
+
+## 18. Moscovia
+
+The Csar's palace: door `/navi moscovia 256/138`; the Csar is at
+`mosk_in 131/92`, his Prime Minister at `mosk_in 127/89`.
+
+### The Moving Island
+`quests/quests_moscovia.txt` | `mos_whale_edq` 0->41 (the sea legs use
+91-94 and 241-244), quests 18100-18120 | Lv none.
+
+How the sea legs work: on Mr. Ibanoff's ship (`mosk_ship`) the captain
+(`mosk_ship 98/110`) calls a direction; steer it at the rudder
+(`mosk_ship 101/111`). Then keep talking to him until he says the
+currents changed and names a new direction (1 time in 3 or 4), and steer
+again. Sea monsters can board the ship (more often after a wrong
+direction): kill them all before he talks again. Mr. Ibanoff only sails
+at low tide: server hours 0-3, 6-9, 12-15, 18-21.
+
+1. **Berbayeff** - the fisherman: "Do you have a problem?", "Tell me.",
+   "The island doesn't appear anymore?" (1); talk again until he names Mr.
+   Ibanoff.
+   Why: he saw an island that moves, and nobody believes him.
+   `/navi moscovia 171/71` | done when: `mos_whale_edq >= 1`
+2. **Mr. Ibanoff** - "Tell me an adventure story.", "Interesting. Keep
+   talking." (2); then "Lend me your ship." (3).
+   `/navi moscovia 135/49` | done when: `mos_whale_edq >= 3`
+3. **Repairs** - bring 10 Strange Steel Piece, 10 Rusty Screw, 5 Flexible
+   Tube, 10 Jubilee (taken) (4).
+   `/navi moscovia 135/49` | done when: `mos_whale_edq >= 4`
+4. **First voyage** - at low tide talk to him to board; on the ship: East
+   (5, 6), North (7, 8), then the random directions he calls (91-94, 10)
+   until he spots something (11, 12); walk around the deck to the bow
+   (13): a whale rises and you land on the island.
+   `/navi mosk_ship 98/110`, deck `mosk_ship 81/110` | done when:
+   `mos_whale_edq >= 13`
+5. **The aged stranger** - on the island; talk until he sends you home
+   (14, 15, back to Moscovia).
+   Why: an old man lives alone on the back of a giant whale.
+   `/navi mosk_fild01 86/104` | done when: `mos_whale_edq >= 15`
+6. **Tell the tale** - Mr. Ibanoff: "Explain the whole story." (16); the
+   Prime Minister: "To see the dear Csar.", "I have an adventure story
+   for him." (17); the Csar: "Tell the story all the while." (18).
+   Why: the Csar laughs at a tale without proof.
+   `/navi moscovia 135/49`, `/navi mosk_in 127/89`, `/navi mosk_in
+   131/92` | done when: `mos_whale_edq >= 18`
+7. **Second voyage** - Mr. Ibanoff: "Try again to find Whale Island."
+   (19); at low tide, the same sailing: East (20, 21), North (22, 23),
+   random directions (241-244, 25) until the island shows (26, 30, you
+   land on it).
+   `/navi mosk_ship 98/110` | done when: `mos_whale_edq >= 30`
+8. **A proof** - the aged stranger: "Explain the whole story.", "Don't
+   you have a way?" (31), "I am ready." (32, home).
+   `/navi mosk_fild01 86/104` | done when: `mos_whale_edq >= 32`
+9. **The materials** - Mr. Ibanoff (33) takes you back to the island
+   ("Let's go."); bring the stranger 30 Log, 20 Tough Vines, 20 Antelope
+   Horn, 10 Sea-Otter Fur (taken) (34).
+   `/navi mosk_fild01 86/104` | done when: `mos_whale_edq >= 34`
+10. **The Gusli** - talk to him until it is ready (1 time in 3) (35,
+    Gusli).
+    `/navi mosk_fild01 86/104` | done when: `mos_whale_edq >= 35`
+    Opens: back to the island whenever you like: equip the Gusli and walk
+    onto the dock at `moscovia 136/46`, "Go to Whale Island."
+11. **Learn to play** - "I want to learn the Gusli" (36); equip the Gusli
+    and play after him until it works: 1 time in 6 (Bard and Clown 1 in
+    3) (37 while failing, 38).
+    `/navi mosk_fild01 86/104` | done when: `mos_whale_edq == 38`
+    Opens: the stranger's "Venture into the unknown." sends you to the
+    far side of the island (`mosk_fild02`).
+12. **The Csar** - with the Gusli (41).
+    `/navi mosk_in 131/92` | done when: `mos_whale_edq == 41`
+    Reward: 1 Old Purple Box, 100,000 base EXP.
+    Branch: showing the Csar the Gusli at 35, without learning it, ends
+    the quest: "I can't play it." (40: Old Navy Box, 70,000 base EXP) or
+    "I can play." (39: he is angry; Old Navy Box, 50,000).
+
+### Koshei the Immortal
+`quests/quests_moscovia.txt` | `rhea_rus_main` 0->53 (the errand of step
+9 uses 11-46 by class) | Lv none | needs: the Moving Island at step 11
+(`mos_whale_edq > 38`: the far side of the island, `mosk_fild02`, and the
+Moscovia dungeons are only reached through the aged stranger) | opens: the
+Red Ring, Lusalka's Hair and the Golden Thread (at `rhea_rus_main == 8`).
+
+1. **The sage** - "Ok, let's talk.", "Show him a Poring Card" (shown, not
+   taken) (1).
+   Why: the immortal Koshei holds Maria Morebna prisoner in the forest.
+   `/navi mosk_fild02 198/252` | done when: `rhea_rus_main >= 1`
+2. **The stone** - in the forest (`mosk_dun01`): "Middle" (2). "Right"
+   costs half your HP and SP, "Left" curses you; both send you back.
+   `/navi mosk_dun01 169/162` | done when: `rhea_rus_main >= 2`
+3. **The gray wolf** - (3); the stone again (4); the wolf: "Ok, I'll help"
+   (5, he takes you to the wall).
+   `/navi mosk_dun01 167/160` | done when: `rhea_rus_main >= 5`
+4. **The wall** - talk until a voice answers (1 time in 3): "Ok, I can"
+   (6).
+   Why: Maria is walled in; only a golden key opens it.
+   `/navi mosk_dun01 45/259` | done when: `rhea_rus_main >= 6`
+5. **The blacksmith** - in Moscovia (7); bring 25 Steel (taken) (8, Iron
+   Boots). Wear the Iron Boots for every talk of steps 6-7 and of the
+   three quests below.
+   `/navi moscovia 178/127` | done when: `rhea_rus_main >= 8`
+6. **The key's materials** - finish the Red Ring, Lusalka's Hair and the
+   Golden Thread; with 2 Cursed Ruby, 3 Gold, 1 Red Ring, 2 Lusalka's
+   Hair, 10 Golden Thread, the blacksmith takes the boots (9).
+   `/navi moscovia 178/127` | done when: `rhea_rus_main >= 9`
+7. **Baba Yaga** - in her hut (`mosk_dun02`): she takes the materials
+   (10) and sets you an errand by your class (step 8).
+   `/navi mosk_dun02 48/214` | done when: `rhea_rus_main >= 10`
+8. **Baba Yaga's errand** - one of six, then back to her (Golden Key, 47):
+   - Archer (11): walk up to one of her three cows (`mosk_dun02
+     257/193`, `146/247`, `102/107`); 1 time in 4 you can cast: type
+     `Good feed is orange-flavored` (41).
+   - Acolyte (16): the Noisy Coffin (`mosk_dun02 65/232`): "Pour Holy
+     Water on him" (1 Holy Water) (17), "Pray" (18), "Sing a hymn" (19),
+     "Kick him" (20), talk again (42).
+   - Thief (21): her silver spoons in the Sunken Ship (`treasure01`): the
+     Old Bed `24/39` "Bed sheet" (22), the Dirty Wall `98/119` (23), the Old
+     Wooden Box `61/183` "Put hand inside the box" (1 in 7) (24), the
+     Opened Treasure Chest `27/115` (25), the Old Treasure Box `165/58`
+     with a Crystal Mirror, "Insert the key into the lock" (43, Baba
+     Yaga's Silver Spoon; a Medusa and Obeaunes appear).
+   - Mage (26): the Momotaro publisher in Amatsu (`amatsu 233/234`): type
+     `Baba Yaga` (27, Mystery Magic Book); Baba Yaga (28, 29, 44).
+   - Swordman (31): the House Ghost Jar (`mosk_dun02 57/220`) (32, kill
+     the Thief Bugs and the Ancient Worm); "Can I play with you?" (33);
+     guess its card (Poring, Angeling or Ghostring) right 3 times (34);
+     give it a Milk (45).
+   - Any other class (36): the Broom Grandma in Payon (`payon 65/119`)
+     (37); the Ghost Tree in the Payon Cave (`pay_dun04 163/186`): "Ok,
+     ask me!" (38), type `Curly Sue`, `Jasmine`, `Roxie`, `Pavianne`,
+     `Blossom` (39), `Antonio` (40), then roll the same number as the tree
+     within 3 throws (46).
+   `/navi mosk_dun02 48/214` | done when: `rhea_rus_main >= 47`
+9. **Koshei** - the wall with the Golden Key (taken) (48): Koshei, the
+   Immortal (Lv 85, about 600,000 HP) appears; kill him, then talk to the
+   wall (49).
+   `/navi mosk_dun01 45/259` | done when: `rhea_rus_main >= 49`
+   Note: only one player at a time can fight him (`$@rus_req02`).
+10. **Life and Death Water** - Baba Yaga (50); bring 1 Holy Water, 1
+    Cursed Water, 2 Yggdrasil Leaf, 10 Hinalle Leaflet (taken) (51).
+    `/navi mosk_dun02 48/214` | done when: `rhea_rus_main >= 51`
+11. **Maria** - at the wall: "Death Water" first, then "Life Water" (52).
+    `/navi mosk_dun01 45/259` | done when: `rhea_rus_main >= 52`
+    Reward: base / job EXP by level: 1,300 / 350 (below 56), 2,460 /
+    615, 4,242 / 1,060, 6,489 / 1,622, 16,491 / 4,123, 27,629 / 6,907,
+    34,041 / 8,510, 41,846 / 10,462, 88,814 / 22,204 (91+; at max level
+    an Old Purple Box instead), and one random stat dish (Special Toast,
+    Incredibly Spicy Curry, Bearfoot Special, Royal Family Tea, Giant
+    Burito, Strawberry Flavored Rice Ball).
+    Fails: "Life Water" first wastes it: try again.
+12. **Baba Yaga** - (53).
+    `/navi mosk_dun02 48/214` | done when: `rhea_rus_main >= 53`
+    Opens: Baba Yaga brews Condensed Red and Yellow Potions for
+    ingredients and zeny (a service).
+
+### The Red Ring
+`quests/quests_moscovia.txt` | `rhea_rus_ring` 0->10 (9 or 10 at the end)
+| Lv none | needs: Koshei at 8, the Iron Boots worn. Keep 3,500 weight
+free.
+
+1. **Vassili Grandpapa** - "I have something to ask...", type `Red Ring`
+   (1).
+   `/navi moscovia 206/81` | done when: `rhea_rus_ring >= 1`
+2. **Ryubaba** - his daughter: "Yes, you are right." (2).
+   `/navi moscovia 213/216` | done when: `rhea_rus_ring >= 2`
+3. **The little boy** - give him a Candy or a Well-Baked Cookie (3).
+   `/navi moscovia 223/210` | done when: `rhea_rus_ring >= 3`
+4. **Ryubaba** - give her a Witherless Rose or a Frozen Rose (4); "You
+   are...", type `Red Ring` (5).
+   `/navi moscovia 213/216` | done when: `rhea_rus_ring >= 5`
+5. **The shepherdess** - (6); cut 25 Sharp Branch from the thorny trees
+   (1 try in 3, each tree rests a minute) and bring them (taken) (7,
+   Wooden Flute). Trees: `mosk_fild02 151/188`, `160/227`, `160/179`,
+   `142/247`, `149/223`, `114/223`, `101/197`, `125/182`.
+   `/navi mosk_fild02 157/233` | done when: `rhea_rus_ring >= 7`
+6. **The ring** - Ryubaba: "Exchange" (9, Red Ring). Or "Not exchange"
+   (8) and give the flute to Vassili (10, Red Ring).
+   `/navi moscovia 213/216` | done when: `rhea_rus_ring >= 9`
+   Reward: base EXP by level: 470 (below 56) up to 30,000 (91+).
+
+### Lusalka's Hair
+`quests/quests_moscovia.txt` | `rhea_rus_hair` 0->9 | Lv none | needs:
+Koshei at 8, the Iron Boots worn. Carry a Holy Water for Lusalka.
+
+1. **The worried mother** - "I will find her." (1); talk again (2).
+   Why: her daughter vanished at the marsh, maybe turned into a Lusalka.
+   `/navi moscovia 166/145` | done when: `rhea_rus_hair >= 2`
+2. **Lusalka** - walk up to the lake shore (`mosk_fild02 116/202`), then
+   talk to her: "I am an adventurer and...", "Ok, I will do it" (3).
+   `/navi mosk_fild02 124/202` | done when: `rhea_rus_hair >= 3`
+3. **The wanderer** - in Prontera: type `Igor` (4).
+   `/navi prontera 228/279` | done when: `rhea_rus_hair >= 4`
+4. **A Morroc villager** - (5).
+   `/navi morocc 165/82` | done when: `rhea_rus_hair >= 5`
+5. **The soldier** - deep in the Pyramids (6); talk again (7).
+   `/navi moc_pryd04 126/120` | done when: `rhea_rus_hair >= 7`
+6. **Back to Lusalka** - (8); walk up to the shore again (9).
+   `/navi mosk_fild02 124/202` | done when: `rhea_rus_hair >= 9`
+   Reward: 2 Lusalka's Hair.
+
+### The Golden Thread
+`quests/quests_moscovia.txt` | `rhea_rus_quiz` 0->30 | Lv none | needs:
+Koshei at 8, the Iron Boots worn.
+
+1. **The portal** - at the wall: "Open the portal!", then walk onto it
+   (`mosk_dun01 45/250`) to Marozka's cave (`mosk_que`); a voice greets
+   you (1).
+   `/navi mosk_dun01 45/259` | done when: `rhea_rus_quiz >= 1`
+2. **The stone furnace** - search it (1 time in 3) (2); a Marozka's Guard
+   (Lv 73) attacks.
+   `/navi mosk_que 45/131` | done when: `rhea_rus_quiz >= 2`
+3. **The apple tree** - search it (1 time in 5) (3); the way out is at
+   `mosk_que 47/217`.
+   `/navi mosk_que 56/202` | done when: `rhea_rus_quiz >= 3`
+4. **Marozka** - (4); come back in another server hour (28); talk (29).
+   `/navi mosk_fild02 243/270` | done when: `rhea_rus_quiz >= 29`
+5. **His riddles** - "I will take it!", then "A Mirror", "4", "Day", "A
+   Candle", "An Hourglass" (30).
+   `/navi mosk_fild02 243/270` | done when: `rhea_rus_quiz >= 30`
+   Reward: 10 Golden Thread.
+   Fails: one wrong answer: try again.
+
+### Help Mikhail
+`quests/quests_moscovia.txt` | `mos_swan` 0->101 (25, then 100 and 101
+at the end), quests 18060-18069 | Lv none | needs: the Moving Island at
+step 11 (`mos_whale_edq > 38`) for step 9: Moscovia's dungeons are only
+reached from the far side of the island. Gallina's house: door
+`moscovia 205/98`, then `mosk_in 220/273`. The landlady, the pub and Victor:
+door `moscovia 229/208`.
+
+1. **Gallina** - "Talk to her.", "Yes, I will!" (1).
+   Why: her son Mikhail has disappeared from the inn.
+   `/navi mosk_in 144/279` | done when: `mos_swan >= 1`
+2. **The fire pot** - look at it (2).
+   `/navi mosk_in 205/268` | done when: `mos_swan >= 2`
+3. **Anna** - "About the situation" (3).
+   `/navi mosk_in 148/274` | done when: `mos_swan >= 3`
+4. **The landlady** - "Ask her about Mikhail.", "Stay overnight and get
+   the info. - 5000z" (4, 5,000 zeny; you wake in a room), walk out of the
+   room (5), ask her again (7).
+   `/navi mosk_in 135/191` | done when: `mos_swan >= 7`
+5. **The pub** - the owner: "Ask him about Mikhail." (8), then buy a drink
+   for 1,000 zeny (9).
+   `/navi mosk_in 141/212` | done when: `mos_swan >= 9`
+6. **Victor** - in the pub (10): he sends you to a bubbling swamp.
+   `/navi mosk_in 147/202` | done when: `mos_swan >= 10`
+7. **The swamp** - click it (11).
+   `/navi mosk_dun03 153/90` | done when: `mos_swan >= 11`
+8. **Mikhail found** - the fire pot: "Look it over", "Mikhail is in the
+   fire pot." (12).
+   Why: the boy is a swan that got stuck in the fire pot.
+   `/navi mosk_in 205/268` | done when: `mos_swan >= 12`
+9. **Glue** - Victor (13); click the swamp: each click gives a Sticky
+   Herb 1 time in 2 (else a Green Herb) (23 after 10 herbs); bring Victor
+   10 Sticky Herb and 1 Medicine Bowl (taken) (24, High Strength
+   Adhesive).
+   `/navi mosk_dun03 153/90`, `/navi mosk_in 147/202` | done when:
+   `mos_swan >= 24`
+10. **Free him** - use the adhesive at the fire pot (25).
+    `/navi mosk_in 205/268` | done when: `mos_swan >= 25`
+11. **Gallina** - (100).
+    `/navi mosk_in 144/279` | done when: `mos_swan >= 100`
+    Reward: 90,000 base EXP.
+12. **Larissa** - the cook (101).
+    `/navi mosk_in 211/259` | done when: `mos_swan >= 101`
+    Reward: 5 Jam Pancake, 5 Honey Pancake. (After that she cooks
+    pancakes for ingredients: an exchange, not part of the quest.)
+
+### Banish Winter
+`quests/quests_moscovia.txt` | `mos_nowinter` 0->21, quests 18070-18079 |
+Lv 60 (Baba Yaga: `BaseLevel > 59`) | needs: the Moving Island at step 11
+(Baba Yaga's hut is reached from `mosk_dun02 53/220`). Bring 80 Yaga's
+Pestle in all (40 shown to Baba Yaga, 40 taken by the Csar); they drop
+from the Baba-Yaga monsters (Lv 87).
+
+1. **Baba Yaga, the Horrible** - walk into her hut with 40 Yaga's Pestle
+   (not taken) (2). Below Lv 60 she takes some of them and throws you out.
+   `/navi mosk_in 215/46` | done when: `mos_nowinter >= 2`
+2. **Her secret medicine** - "A present?", "I don't need them anymore.",
+   "Well...", "Good, but I think you're lying.", "Ok, I will." (5).
+   Why: she offers to end Moscovia's winter with a spell.
+   `/navi mosk_in 215/46` | done when: `mos_nowinter >= 5`
+3. **The list** - talk again; "...Are you sure?" (6) or "A glue? You want
+   me to kill you?!" (7, no Sticky Mucus). Bring 20 Grasshopper's Leg, 5
+   Spawn, 20 Wing of Red Bat, 10 Witched Starsand, 10 Fine Grit, 1
+   Detonator, 5 Red Blood, 10 Burning Heart, a 1, 2 or 3 carat Diamond,
+   and at 6 also 10 Sticky Mucus (all taken) (8).
+   `/navi mosk_in 215/46` | done when: `mos_nowinter >= 8`
+4. **The dragon's lair** - the pile of skeletons: "Look for it." (6 times
+   in 20; Thieves always) (9, Magic Gourd Bottle).
+   `/navi mosk_dun03 225/233` | done when: `mos_nowinter >= 9`
+5. **Voices** - show Baba Yaga the bottle (10); in Moscovia, talk to the
+   townsfolk until a child, a young person and an older one each say
+   they want no winter (3 times in 10 each) (11). Children: `moscovia
+   252/203`, `255/203`, `202/102`, `228/80`; young: `233/204`,
+   `204/188`, `220/172`, `192/80`, `211/215`, `196/71`; older: `219/229`,
+   `167/97`, `253/175`, `168/135`, `149/112`, `234/168`.
+   `/navi moscovia 252/203` | done when: `mos_nowinter >= 11`
+6. **Arrested** - go back to the hut: soldiers take you to the Csar (12);
+   "Explain the circumstances.", show 40 Yaga's Pestle (taken) (14).
+   `/navi mosk_in 131/92` | done when: `mos_nowinter >= 14`
+   Fails: without the pestles you stay at 13 ("Yes, I did." with them
+   later).
+7. **The book** - back to Baba Yaga with the bottle (taken) (15); read the
+   book: "Read from the marked page." (16).
+   `/navi mosk_in 215/46`, book `mosk_in 217/45` | done when:
+   `mos_nowinter >= 16`
+8. **The pot** - follow the book at the pot: "Put the materials in it."
+   Powder Of Wing Of Bat, Liquid Of Spawn, Grasshopper's Leg; "Pour water
+   in it."; "Stir it up." type `20`; then Starsand Of Witch and Fine
+   Grit; "Stir it up." type `15`; then in this order Red Blood, Detonator,
+   Burning Heart, Piece Of Diamond; "It is over!" (17, 18).
+   `/navi mosk_in 221/43` | done when: `mos_nowinter >= 18`
+   Fails: a wrong step: start over (17).
+9. **The medicine** - Baba Yaga (19, Baba Yaga's Secret Medicine).
+   `/navi mosk_in 215/46` | done when: `mos_nowinter >= 19`
+10. **The town centre** - click the spot (20).
+    `/navi moscovia 224/190` | done when: `mos_nowinter >= 20`
+11. **The Csar** - (21).
+    `/navi mosk_in 131/92` | done when: `mos_nowinter >= 21`
+    Reward: 1 Old Blue Box.
+
+Excluded: the Shafka Hat and the Acorn Exchange (exchange), Larissa's
+pancakes (cooking for ingredients).
+
+## 19. Brasilis
+
+Coconut and Banana: the Fruit Gardener (`/navi brasilis 221/128`).
+
+### The Brasilis Dungeon Access
+`quests/quests_brasilis.txt` | `brazil_ghost` 0->8, quests 2208,
+60351-60355 | Lv 40 (the curator: `BaseLevel < 40` refuses) | opens a
+place: the Brasilis Dungeon. In the haunted bathroom, each object first
+wants a line of the magic words typed exactly, then an action.
+
+1. **Pedro** - "Ask about the gossip.", "Can you tell me more?", "So then
+   what happened?", "So was it a ghost?", "Did anyone tell you the magic
+   words?", "Wanna help me find this ghost?" (1).
+   Why: children say a ghost haunts the museum's bathroom.
+   `/navi brasilis 185/246` | done when: `brazil_ghost >= 1`
+2. **The curator** - in the museum, with 1 Coconut (taken): "I need to use
+   the bathroom.", "But I forgot something inside.", "It's such a hot
+   day!" (2, you are in the bathroom).
+   `/navi bra_in01 7/181` | done when: `brazil_ghost >= 2`
+3. **The door** - "Turn the key.", type `Mother the door won't open!`,
+   "Turn the key.", type `7` (3).
+   `/navi bra_in01 149/184` | done when: `brazil_ghost >= 3`
+4. **The toilet** - "Use the toilet", type `Mother the water is
+   flooding!`, "Flush the toilet.", type `3` (4).
+   `/navi bra_in01 144/187` | done when: `brazil_ghost >= 4`
+5. **The faucet** - "Examine it.", type `Mother the drought has started!`,
+   "Turn on the water.", type `1` (5).
+   `/navi bra_in01 134/189` | done when: `brazil_ghost >= 5`
+6. **The carpet** - "Examine it.", type `Mother where are my friends?`,
+   "Shake the carpet.", type `7` (6).
+   `/navi bra_in01 138/184` | done when: `brazil_ghost >= 6`
+7. **The mirror** - "Examine it.", type `Where are you mom?`, "Take the
+   eye bandage off.": a dice throw against the ghost; a higher throw wins,
+   a tie is thrown again
+   (7, you are taken to the manhole room).
+   Why: the ghost is a mother still looking for her child.
+   `/navi bra_in01 151/180` | done when: `brazil_ghost >= 7`
+   Fails: a lower throw (or "Run away~.") sends you back to 1: start
+   again at the curator with a new Coconut.
+8. **The open manhole** - (8).
+   `/navi bra_in01 206/188` | done when: `brazil_ghost >= 8`
+   Reward: 90,000 base EXP (135,000 with VIP).
+   Opens: the Brasilis Dungeon: the manhole leads to `bra_dun01`; later
+   the pipe on the field (`bra_fild01 323/136`, `brazil_ghost > 6`) takes
+   you back to the manhole room.
+
+### The Guarana Candy
+`quests/quests_brasilis.txt` | `brazil_gua` 0->11, quests 2192-2200 | Lv
+none.
+
+1. **The candy maker** - "How can I taste this guarana candy?", "How do I
+   find guarana?" (1).
+   `/navi brasilis 187/162` | done when: `brazil_gua >= 1`
+2. **Cherto** - "Guarana?", "Whaaaat??", "What are you talking about?"
+   (2); talk again: "Guarana kid?" (3).
+   Why: only a strange kid knows where guarana grows.
+   `/navi bra_in01 95/179` | done when: `brazil_gua >= 3`
+3. **The strange kid** - "Try to talk.", then "End conversation." (4).
+   `/navi brasilis 203/64` | done when: `brazil_gua >= 4`
+4. **Cherto** - (5).
+   `/navi bra_in01 95/179` | done when: `brazil_gua >= 5`
+5. **Mage Paje** - "What kind of magic?" (6).
+   `/navi brasilis 56/224` | done when: `brazil_gua >= 6`
+6. **The toucan** - on the field: walk up to it, "What are you talking
+   about?", "Not yet... but I want to be a friend.", "Absolutely!" (7).
+   `/navi bra_fild01 75/83` | done when: `brazil_gua >= 7`
+7. **The jaguar** - "Yes? N...o......actually...." (8).
+   `/navi bra_fild01 34/184` | done when: `brazil_gua >= 8`
+8. **The monkey** - "I've come here to help him." (9).
+   `/navi bra_fild01 245/52` | done when: `brazil_gua >= 9`
+9. **The kid** - (10, Guarana Fruit).
+   `/navi brasilis 203/64` | done when: `brazil_gua >= 10`
+10. **The candy** - give the candy maker the Guarana Fruit (11).
+    `/navi brasilis 187/162` | done when: `brazil_gua >= 11`
+    Reward: 1 Guarana Candy, 70,000 base / 10,000 job EXP (105,000 /
+    15,000 with VIP).
+    Opens: the candy maker sells Guarana Candy (4,000 zeny).
+
+### The Water Lily
+`quests/quests_brasilis.txt` | `brazil_regia` 0->10 | Lv none | needs: the
+Brasilis Dungeon Access at 7 (steps 4-6 are in `bra_dun02`).
+
+1. **Botanist Karmen** - (1).
+   `/navi brasilis 203/286` | done when: `brazil_regia >= 1`
+2. **Marta** - (2).
+   `/navi bra_in01 142/27` | done when: `brazil_regia >= 2`
+3. **The girl** - walk up to her: "What's wrong?", "Just trying to
+   help.", "Help Jasira." (3).
+   `/navi brasilis 270/145` | done when: `brazil_regia >= 3`
+4. **The recluse** - in the dungeon: "Are you the moon?" (4).
+   `/navi bra_dun02 67/205` | done when: `brazil_regia >= 4`
+5. **The water lily** - with 10 Banana (taken) (5).
+   `/navi bra_dun02 71/200` | done when: `brazil_regia >= 5`
+6. **The girl** - (6); the recluse with 5 Coconut (taken) (7); the water
+   lily (8, Lotus Flower).
+   `/navi brasilis 270/145`, `/navi bra_dun02 67/205` | done when:
+   `brazil_regia >= 8`
+7. **The girl** - give her the Lotus Flower (9).
+   `/navi brasilis 270/145` | done when: `brazil_regia >= 9`
+   Reward: Flower Lily (headgear, with one of three random cards).
+8. **Karmen** - (10).
+   `/navi brasilis 203/286` | done when: `brazil_regia >= 10`
+   Reward: 50,000 base / 10,000 job EXP (75,000 / 15,000 with VIP).
+
+### Lost Puppies
+`quests/quests_brasilis.txt` | quests 9030-9032 (`brazil_kid` counts the
+puppies) | Lv 40 | repeatable (4 h, quest 9032; db/re/quest_db.yml).
+
+1. **Angelo** - (quest 9030).
+   `/navi brasilis 297/307` | done when: quest 9030 active
+2. **Three puppies** - on the field, click 3 puppies; each one found
+   shows the next somewhere near (quest 9031). Spots: `bra_fild01 98/96`,
+   `59/116`, `62/142`, `80/163`, `73/210`, `80/210`, `38/235`, `307/64`,
+   `260/60`, `234/101`, `200/84`, `176/63`.
+   `/navi bra_fild01 98/96` | done when: quest 9031 active
+3. **Back to Angelo** - (quest 9032, the 4-hour wait).
+   `/navi brasilis 297/307` | done when: quest 9032 active
+   Reward: 50,000 base EXP (75,000 with VIP), a Yggdrasil Berry's effect,
+   sometimes 2 White Potion or 1 Yggdrasil Seed.
+
+### The Suspicious Beach
+`quests/quests_brasilis.txt` | quests 9028-9029 | Lv 40 | repeatable (4 h,
+quest 9029).
+
+1. **Lucia** - "Yes." (quest 9028, Hydra Ball).
+   Why: Strange Hydras have surrounded the beach.
+   `/navi brasilis 192/133` | done when: quest 9028 active
+2. **A Strange Hydra** - use the Hydra Ball on one at the beach; it works
+   1 time in 2 (Mystic Leaf Cat Ball). A failed ball: ask Lucia for
+   another.
+   done when: you carry a Mystic Leaf Cat Ball
+3. **Back to Lucia** - (quest 9029).
+   `/navi brasilis 192/133` | done when: quest 9029 active
+   Reward: 3 Light Blue Potion or 5 Blue Potion and the effects of a
+   Yggdrasil Berry and three stat dishes.
+
+### Iara
+`quests/quests_brasilis.txt` | quests 4133-4135 | Lv 40 | repeatable (4 h,
+quest 4135, a buff) | needs: the Brasilis Dungeon Access at 7 (Iara is in
+`bra_dun02`).
+
+1. **The shaman** - "Okay, I'll do it." (quest 4133).
+   `/navi brasilis 315/334` | done when: quest 4133 active
+2. **The purification potion** - bring 20 Heart of Mermaid, 10 Leopard
+   Claw, 3 Ancient Lips (taken) (quests 4134 done, 4135 = the wait; 2 Puri
+   Potion).
+   `/navi brasilis 315/334` | done when: quest 4134 done
+3. **Iara** - walk up to her with a Puri Potion: "Yes." (1 taken).
+   `/navi bra_dun02 157/74` | done when: the buff is on
+   Reward: full HP and SP, +20 Flee and +10 Critical for an hour, and the
+   effects of six stat dishes. Without a potion she curses or confuses
+   you.
+
+## 20. Dewata
+
+### The Dewata Legend
+`re/quests/quests_dewata.txt` | `dew_legend` 0->17, quests 9155-9165 |
+Lv 60 (the hideout: `BaseLevel > 59`).
+
+1. **The hideout** - walk into the hidden spot on the field (1).
+   `/navi dew_fild01 57/274` | done when: `dew_legend >= 1`
+2. **Sage Kasyapa** - "I overheard talk about a crown?", "Anything I can
+   do to help?" (2).
+   Why: the Jaty tribe's crown is lost, and with it a legend.
+   `/navi dew_in01 22/48` | done when: `dew_legend >= 2`
+3. **Tribal Chief Paiko** - "I overheard the story by accident",
+   "Kasyapa was talking about a crown..." (3); walk to the hidden corner
+   (`dew_in01 15/33`) (4); the chief: "Crown-a-whatsis?", "Ok, I will
+   help" (5).
+   `/navi dew_in01 15/49` | done when: `dew_legend >= 5`
+4. **Feathers** - bring 15 Cendrawasih Feather (taken) (6); they drop from
+   the Cendrawasih (Lv 84). Talk again (7).
+   `/navi dew_in01 15/49` | done when: `dew_legend >= 7`
+5. **The sage** - he makes a Shining Cendrawasih Feather (8).
+   `/navi dew_in01 22/48` | done when: `dew_legend >= 8`
+6. **Satay deliveries** - the chief: "Of course, I can help" (9, 2 Satay);
+   each time give one Satay where he sends you, choose "Tribal Chief
+   Paiko", and report back for the next (2 Satay each time):
+   the Jaty Tribe Warrior (10, back 11), the Tribe Manager (12, back 13),
+   the Gatekeeper of Krakatau (14, back 15), the Borobudur Temple Manager
+   (16).
+   `/navi dew_fild01 78/288`, `/navi dew_fild01 185/300`, `/navi dewata
+   235/56`, `/navi dewata 78/192` | done when: `dew_legend >= 16`
+   Fails: eating the Satay ("I ate them all."): ask the chief again.
+7. **The crown** - the chief (17).
+   `/navi dew_in01 15/49` | done when: `dew_legend >= 17`
+   Reward: Jaty Crown, 5 Satay.
+   Opens: the Gatekeeper of Krakatau ("Allow me through") takes you into
+   the Krakatau volcano (`dew_dun01`).
+
+### Help Out the Old Man
+`re/quests/quests_dewata.txt` | `dew_drink` 0->10, quests 5035-5044 | Lv
+60 (Memo: `BaseLevel < 60` refuses) | the daily part after it: quests
+5045-5050 (cooldown 5044, 4 h).
+
+1. **Memo** - (talks 1 time in 3) "What happened?", "Sounds like a big
+   problem.", "No, I am not busy." (1).
+   Why: the old man is building an ark against a flood he fears.
+   `/navi dewata 109/262` | done when: `dew_drink >= 1`
+2. **Lero** - "Excuse me, but are you Lero?", "Memo sent me here.", "Yes,
+   I will find them." (2).
+   `/navi dew_fild01 114/275` | done when: `dew_drink >= 2`
+3. **Poby** - (3); Lero: "Poby.....", "Why don't I get the ingredients?"
+   (4).
+   `/navi dew_fild01 259/48`, `/navi dew_fild01 114/275` | done when:
+   `dew_drink >= 4`
+4. **Palm fruit** - shake or kick the palm trees near Poby: 5 times in 20
+   a fruit (sometimes five), else a Stone, Great Leaf, Worm Peelings,
+   damage or a throw across the field. Bring Lero 60 Oil Palm Fruit
+   (taken) (5). Keep 5,000 weight free. Trees: `dew_fild01 247/62`,
+   `276/73`, `278/63`, `301/88`, `314/72`, `320/68`.
+   `/navi dew_fild01 114/275` | done when: `dew_drink >= 5`
+5. **Back to Memo** - "Palm tree... became." (6); Lero (7, 30 Palm Oil).
+   `/navi dewata 109/262`, `/navi dew_fild01 114/275` | done when:
+   `dew_drink >= 7`
+6. **The palm oil** - give Memo 30 Palm Oil (taken) (8); come back after 5
+   minutes (10).
+   `/navi dewata 109/262` | done when: `dew_drink >= 10`
+   Reward: 50,000 base / 10,000 job EXP, 1 Old Purple Box.
+   Opens: a daily: Memo, "I will help you.", wants Palm Oil (Lero turns
+   Oil Palm Fruit into it) for Coco Juice.
+
+Excluded: the Traditional Weapon (Gatti, exchange).
+
+## 21. Malangdo
+
+The cats' meeting hall and the ship are `mal_in02`, the village houses
+`mal_in01`; the Malangdo Culvert field dungeon is `mal_dun01` (door
+`/navi malangdo 73/239`). Malangdo Canned Specialties are the island's
+money for Portali's teleports (`malangdo 190/167`).
+
+### Malangdo Island
+`re/quests/quests_malangdo.txt` | `ma_tomas` 0->35, then 100 and 101,
+quests 11209-11245 | Lv 60 (Tomas: `BaseLevel < 60` refuses). The
+choices of steps 2-8 are not all read: **to verify**.
+
+1. **Tomas** - the village chief: "Try to talk to him.", "It's my first
+   time to Malangdo." (1).
+   `/navi mal_in02 22/62` | done when: `ma_tomas >= 1`
+2. **The cats' meeting** - the President of Meeting (2), Scottfold (3),
+   Koon (4), Linguist Devore (5), Geologist Mali (6), Brie (7).
+   `/navi mal_in02 182/61`, `178/66`, `177/58`, `174/64`, `179/57`,
+   `181/55` | done when: `ma_tomas >= 7`
+3. **Rican's fruit** - Brie: "About Rican." (8); Rican in the village:
+   "Excuse me. Is this Rican's house?", "Ask about Yggdrasil Berry.",
+   "I'll help him." (9); dig 30 Fresh Fruit from the Suspicious Sand
+   Piles (`malangdo 221/139`, `208/174`, `191/223`, `150/195`, `116/196`,
+   `178/145`, `142/120`, `136/122`, `152/143`, `242/175`) (10); the Dry
+   Machine: "Put the fruits in." (11); Rican (12, 20 E Grade Coin); Brie
+   (13).
+   `/navi mal_in01 114/169`, machine `mal_in01 116/168` | done when:
+   `ma_tomas >= 13`
+4. **The cracks** - Mali: "Help repairing." (14); Bob: "Yes.", "Stop it!
+   Tell me how to repair the cracks." (15, Fix Kit); at a crack in the
+   village "Use the stapler." until it holds (1 in 3) (16; 1 time in 10
+   the ground swallows you into `mal_dun01`). Cracks: `malangdo
+   114/157`, `284/237`, `134/150`, `173/199`, `233/197`, `137/239`,
+   `239/157`, `221/155`, `217/109`, `162/183`. Bob (17), Mali (18, 20 E
+   Grade Coin).
+   `/navi mal_in02 140/94` | done when: `ma_tomas >= 18`
+5. **Star Candy** - Devore (19); Star Candy in the culvert: "Support?"
+   (20); Devore (21).
+   `/navi mal_dun01 133/125` | done when: `ma_tomas >= 21`
+6. **Biscuit** - in the culvert (22), ask all three topics (23-25):
+   "Okay." (26); bring 30 Delicious Jelly (taken; Siorava Lv 87, Wild
+   Rider Lv 95) (27, 5 E Grade Coin); "I'll help." (28).
+   `/navi mal_dun01 136/122` | done when: `ma_tomas >= 28`
+7. **Scrubbing** - the Cleaning Staff gives a Pail and a Cleaning Brush
+   (`mal_in02 102/94`); fill the pail at the 1st Rate Point (`malangdo
+   246/184`); scrub the four skins in the culvert in order (29-32): Dry
+   Skin `mal_dun01 143/137`, Prickly Skin `131/150`, Chapped Skin
+   `116/144`, Hard Skin `120/129`; one full pail per skin (33).
+   `/navi mal_dun01 143/137` | done when: `ma_tomas >= 33`
+8. **Biscuit's thanks** - keep 1,000 weight free (34).
+   `/navi mal_dun01 136/122` | done when: `ma_tomas >= 34`
+   Reward: 100 E Grade Coin, 20 Malangdo Canned Specialties.
+9. **Devore** - (35, 30 E Grade Coin); **Tomas** - (100, 30 E Grade
+   Coin).
+   `/navi mal_in02 174/64`, `/navi mal_in02 22/62` | done when:
+   `ma_tomas >= 100`
+10. **Pipielle** - "I met an Admiral Tomas...", then 30 Unknown Fish
+    (101, 200 E Grade Coin).
+    `/navi malangdo 137/200` | done when: `ma_tomas >= 101`
+    Blocker: no monster drops Unknown Fish and no shop sells it in
+    rathena-pin: dead end, see guide-deferred.md.
+
+### Help the Bad Cats in Danger
+`re/quests/quests_malangdo.txt` | quests 1145-1155 (`malang_bad_guys`) |
+Lv 60 | repeatable (4 h, quest 1152). Order of the clue spots: **to
+verify**.
+
+1. **Gobonge** - "Sure I will.", "Need help?", "Yes, I'll do it!" (1145).
+   `/navi malangdo 175/206` | done when: quest 1145 active
+2. **The clues** - two spots in the village (1146-1148), the Awfully
+   Suspicious Dealer (1149), a sack in the meeting hall (1150, Bad Canned
+   Food Sack), the dealer again (1151).
+   `/navi malangdo 196/120`, `155/179`, `171/163`, `mal_in02 184/77`
+   | done when: quest 1151 active
+3. **The bad cans** - bring Gobonge the sack and 30 Bad Canned Food (Red
+   Eruma, Lv 91) (taken) (1152).
+   `/navi malangdo 175/206` | done when: quest 1152 active
+   Reward: 20 Malangdo Canned Specialties.
+   Repeat: "Sure I will!", the Patrol Leader (`malangdo 125/147`): kill
+   20 Red Eruma (1154, 1155); Gobonge: 5 E Grade Coin.
+
+### Clean the Ship
+`re/quests/quests_malangdo.txt` | quests 7260-7275 (`mal_qook`) | Lv 60 |
+repeatable (4 h, quest 7267).
+
+1. **Cleanyang** - (7260): find the Cat Biscuits that bugs gather around:
+   searching a spot makes a Quick Dark Shadow appear and gives a Cat
+   Biscuit. Spots: `mal_in02 29/67`, `183/49`, `103/22`, `malangdo
+   141/178`, `133/134`, `232/131`, `mal_in01 74/20`, `159/225`, `24/72`.
+   `/navi mal_in02 76/63` | done when: the spots of the quest log done
+2. **Chef Nyas** - (7264), back to Cleanyang (7267).
+   Reward: 80,000 base / 80,000 job EXP, 30 Malangdo Canned Specialties.
+   Repeat: Cleanyang (7268): 30,000 / 40,000 EXP, 10 cans.
+
+### Help Chef Nyas
+`re/quests/quests_malangdo.txt` | quests 7264-7280 (`mal_food`) | Lv 60 |
+repeatable (4 h, quest 7276) | needs: Clean the Ship's step 2 (7264).
+
+1. **Chef Nyas** - (7265, 7266); bring 10 Bag of Grain and 1 Savory Sauce
+   (7276).
+   `/navi mal_in02 187/58` | done when: quest 7276 active
+   Repeat: he names a dish (7281-7340) to bring with the grain and sauce:
+   E Grade Coins and 50,000 / 80,000 EXP.
+
+### Play with Baby Cats
+`re/quests/quests_malangdo.txt` | `nyadven` 0->14 (`nyadven02` for the
+games), quests 7242-7259 | Lv 60. The games' rules are **to verify**.
+
+1. **Expert Cat** - (1).
+   `/navi malangdo 165/223` | done when: `nyadven >= 1`
+2. **The Meow Team** - Charo (2, 3); the Beginning Compass game (`malangdo
+   212/204`), Meowbell (`malangdo 175/163`) (4), Charo (5, 6); the Cat
+   Detective (`malangdo 172/178`) and the Noisy Machine (`malangdo
+   174/175`) (7-12); Charo (13).
+   `/navi malangdo 211/203` | done when: `nyadven >= 13`
+3. **Expert Cat** - (14).
+   `/navi malangdo 165/223` | done when: `nyadven >= 14`
+   Reward: 100 E Grade Coin.
+   Repeat: Roku (`malangdo 215/201`) and the Noisy Machine run 4-hour
+   games: 3 E Grade Coin, 20,000 / 20,000 EXP each.
+
+### Cat Gamers
+`re/quests/quests_malangdo.txt` | `malang_gamer` 0->20, quests
+5058-5090 | Lv 60. Choices **to verify**.
+
+1. **The director** - (1, 2, 3); the Strange Cat (`malangdo 127/111`)
+   (4); the director (5-8); the Strange Cat (9); the director (10-12,
+   with 4-hour waits between rounds, quests 5060, 5068, 5069) (20).
+   `/navi mal_in01 31/210` | done when: `malang_gamer >= 20`
+   Reward: G Honor Certificate.
+   Opens: the gamers Ser, Paa, Kuka and KungKung (`mal_in01 91/216`,
+   `86/222`, `91/222`, `134/221`) play 4-hour games for cans and coins.
+
+Excluded: the Archangel Wing enchants.
+
+## 22. Port Malaya
+
+### The Cautious Village
+`re/quests/quests_malaya.txt` | `malaya_hi` 0->25, quests 7350-7410 | Lv
+100 (for the dailies and Imelda; the start has no check) | opens: Secret
+in the Woods, Bakonawa and the Nurse (`malaya_hi >= 20`). The six
+villagers: Old Man Nardo `malaya 181/353`, Romel `224/267`, Talah
+`223/267`, Collection Dealer Woeon `295/171`, Blacksmith Pandoi
+`119/217`, Pedro the Sailor `326/68`.
+
+1. **Rodel the Guard** - (1).
+   `/navi malaya 266/76` | done when: `malaya_hi >= 1`
+2. **Leader Phong** - in Mumbaki: "Step toward the shadow." (10).
+   `/navi malaya 185/358` | done when: `malaya_hi >= 10`
+3. **The villagers' fears** - talk to all six villagers (quests
+   7352-7357) (11).
+   `/navi malaya 181/353` | done when: `malaya_hi >= 11`
+4. **Spiritual protection** - Phong: "Explain what happened.", then the
+   talk about "Holy Water!" and the Blue Gemstone (12).
+   `/navi malaya 185/358` | done when: `malaya_hi >= 12`
+5. **Hand them out** - give each of the six villagers 1 Holy Water and 1
+   Blue Gemstone (taken): "Hand over the prepared items." (13).
+   `/navi malaya 181/353` | done when: `malaya_hi >= 13`
+6. **Phong** - (20).
+   `/navi malaya 185/358` | done when: `malaya_hi >= 20`
+   Reward: 200,000 base / 200,000 job EXP.
+7. **Imelda** - (Lv 100) (21); bring 6 Sharp Bamboo (Black Bamboo,
+   `ma_fild01 178/206`), 6 Salt Bag (Sand Trap, `malaya 62/274`), 6
+   Silver Cross (Blacksmith Pandoi) (taken) (22); talk again (23, 6 Soul
+   Protection).
+   `/navi malaya 169/350` | done when: `malaya_hi >= 23`
+8. **Soul Protection** - give one to each of the six villagers (24).
+   `/navi malaya 181/353` | done when: `malaya_hi >= 24`
+9. **Imelda** - (25).
+   `/navi malaya 169/350` | done when: `malaya_hi >= 25`
+   Reward: 200,000 / 200,000 EXP.
+   Opens: the villagers' dailies (Lv 100, 4 h each): Imelda, Nardo,
+   Woeon, Pandoi, Pedro (the Ghost Diwata in `ma_in01`, `malaya_diwata`),
+   Kiko in Mumbaki (`ma_fild01 261/208`), Dhong the Guard (`ma_fild01
+   239/253`), Maries (`ma_fild01 200/190`), Budidai (`ma_fild02 241/39`):
+   200,000 / 200,000 EXP each. Details **to verify**.
+
+### Secret in the Woods
+`re/quests/quests_malaya.txt` | `malaya_buwaya` 0->15, quests 2271-2281 |
+Lv 100 | needs: the Cautious Village at 20 (`malaya_hi > 19`).
+
+1. **The guard** - walk up to him: "Treasure?" (1).
+   `/navi malaya 305/281` | done when: `malaya_buwaya >= 1`
+2. **A villager** - (2).
+   `/navi malaya 276/288` | done when: `malaya_buwaya >= 2`
+3. **Totoy** - (3, 4, 5).
+   `/navi ma_in01 47/101` | done when: `malaya_buwaya >= 5`
+4. **The Master of Hunting** - (6-9); the soil next to him (10, Collected
+   Sample).
+   `/navi malaya 290/152` | done when: `malaya_buwaya >= 10`
+5. **The Guard Leader** - (11); the dog in the woods (12); Totoy (13,
+   14, Lesser Agimat).
+   `/navi malaya 290/340`, `/navi ma_fild02 312/259` | done when:
+   `malaya_buwaya >= 14`
+6. **The Guard Leader** - (15).
+   `/navi malaya 290/340` | done when: `malaya_buwaya >= 15`
+   Reward: 1,000,000 base / 600,000 job EXP.
+   Opens: the Buwaya Cave memorial (Lv 130 for its reward).
+
+### Bakonawa Extermination
+`re/quests/quests_malaya.txt` | `malaya_bakona1` 0->7, `malaya_bakona2`
+0->15, quests 1174-1193 | Lv 120 | needs: the Cautious Village at 20.
+
+1. **The Old Legend Teller** - "Calm Bakonawa?", "I'll help." (1); the
+   old man's granddaughter (`malaya 304/100`) (2); the teller (3).
+   `/navi malaya 285/332` | done when: `malaya_bakona1 >= 3`
+2. **The immigrants** - `ma_fild02 40/240` (4), `ma_fild01 165/237` (5),
+   the spot `ma_fild01 171/235` (6).
+   done when: `malaya_bakona1 >= 6`
+3. **The teller** - (7).
+   `/navi malaya 285/332` | done when: `malaya_bakona1 >= 7`
+   Reward: 500,000 base / 200,000 job EXP, Ancient Grudge.
+4. **The village chief** - (needs `malaya_bakona1 > 5`) "I'm on my way."
+   (1); the missing person's father, friend, son and mother (`malaya
+   269/267`, `265/274`, `270/278`, `265/284`) (2-5); the chief (6, Inside
+   Out Shirts).
+   `/navi malaya 283/265` | done when: `malaya_bakona2 >= 6`
+5. **The young fortune teller** - (7, 8, Tikbalang Belts); the chief (9).
+   `/navi malaya 289/364` | done when: `malaya_bakona2 >= 9`
+6. **The search** - the spots `ma_fild01 54/244` (10), `ma_fild01
+   242/116` (11), then `ma_scene01 179/85`, `138/122`, `171/174`
+   (12-14).
+   done when: `malaya_bakona2 >= 14`
+7. **The chief** - (15).
+   `/navi malaya 283/265` | done when: `malaya_bakona2 >= 15`
+   Reward: 1,000,000 / 600,000 EXP, Lesser Agimat.
+   Opens: the Bakonawa Lake memorial.
+
+### The Nurse in Port Malaya
+`re/quests/quests_malaya.txt` | `malaya_bang` 0->42 (1-20, then 30-36,
+then 40-42), quests 11284-11309 | Lv 100 | needs: the Cautious Village at
+20 | **Players: 1** (the last fight is in the Bangungot Hospital 2F
+memorial, which needs a party, even of one).
+
+1. **The nurse** - outside the hospital (1, 2, 3); the hospital door
+   (`malaya 48/76`) (4); the nurse (5); the village woman (`malaya
+   64/78`) (6); the nurse (7); the village man (`malaya 62/37`) (8); the
+   nurse (9); Dr. Boon (`malaya 210/200`) (10); the nurse (11); the door
+   (12); the nurse (13); the bushes (`malaya 53/68`) (14, 15); the nurse
+   (16); the bent old lady (`malaya 114/183`) (17, 18); the nurse (19,
+   into the hospital `ma_dun01`); the nurse inside (20).
+   `/navi malaya 55/72` | done when: `malaya_bang >= 20`
+2. **The wooden stick** - in the hospital (30); the memorial's nurse
+   (`ma_dun01 147/10`) (31); the bent old lady (33), the bent shaman
+   (`malaya 276/367`) (34); the nurse: "Tell her about the talisman."
+   (35); the stick (36).
+   `/navi ma_dun01 152/23` | done when: `malaya_bang >= 36`
+3. **Bangungot** - the nurse: "Bangungot?" / "Nurse Maenne?" (42); in
+   the Bangungot Hospital 2F memorial kill Bangungot (quest 11309); back
+   to the nurse.
+   `/navi ma_dun01 147/10` | done when: quest 11309 done
+   Reward: 1,000,000 base EXP, 1 Old Purple Box, Ancient Grudge, Lesser
+   Agimat.
+   The values 32, 40 and 41 and the order of step 2 are **to verify**.
+
+Excluded: the traders, the boss equipment upgrades and the Pintados
+Festival (exchange).
 
 ## Entrances without a quest
 
