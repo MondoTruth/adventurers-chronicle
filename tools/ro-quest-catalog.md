@@ -4,8 +4,8 @@ Step 1 of the Renewal Side Quests tab (concept v3, 2026-10-26): every side
 quest Ragnarok itself has on a Renewal server, grouped Region -> Storyline ->
 Quest, with the links between them. Step 2 adds the steps, an explanation
 for each and a `/navi map x/y`, region by region, in `ro-quest-steps.md`
-(regions 1-13 and the entrances done on 2026-10-26, regions 14-22 and 23-28
-on 2026-10-27).
+(regions 1-13 and the entrances done on 2026-10-26, regions 14-22, 23-28
+and 29 on 2026-10-27).
 
 Source of truth: rathena-pin, commit 8aea17a (the app 1.7.0 pin). Every file
 named here is loaded on Renewal (`npc/scripts_athena.conf`, which
@@ -859,39 +859,75 @@ one placeholder fewer (Verkhasel, ve_fild05: 72 instead of 73) and a new
 quests (`criminal_activities.txt`, `eye_of_the_beholder.txt`,
 `seoyeon_trial.txt`) are unchanged; every coordinate of `wse_criminal`,
 `wse_seoyeon` and `wse_beholder` in guide.ps1 is an NPC header in 2.1.5 and
-their variables (`iq_crim`, `iq_beho`, `wsv_sy`, `wsv_sys`) are still used. Every entry: `needs a mod` (World Sync Extras, block named).
-Story lines of the mod (Episodes 20 and 21, Varmundt chapters 1 and 2) are
-Story candidates for "Episodes 16-21", not side quests.
+their variables (`iq_crim`, `iq_beho`, `wsv_sy`, `wsv_sys`) are still used.
+Every entry: `needs a mod` (World Sync Extras, block named). File paths are
+relative to the mod's `npc/when/`. Story lines of the mod (Episodes 20 and
+21, Varmundt chapters 1 and 2) are Story candidates for "Episodes 16-21",
+not side quests. Steps: `ro-quest-steps.md` region 29 (batch 5, read in the
+2.1.5 files).
 
-- **Criminal Activities** (Agent York, Jymmy's casino airship) - block
-  `criminal_activities` | `iq_crim` 1-13 | Lv: 70 | guided `wse_criminal`.
-- **Eye of the Beholder** (Beho and Bianca, Rachel) - block `eye_of_the_beholder`
-  | `iq_beho` | Lv: 50 | guided `wse_beholder`.
-- **Seoyeon's Trial** (Amatsu Dungeon) - block `varmundt` | `wsv_sy` 0-5 | Lv: 70
-  | guided `wse_seoyeon`.
-- **Fantasy Book "Dungeon Food"** (Prontera East Library) - block `varmundt`
-  | `wsv_df` | Lv: 100 | repeatable (daily).
-- **Overlook Water Dungeon** (the Sign west of Geffen) - block
-  `overlook_water_dungeon` | `iq_owd` 0-5 | Lv: 30-85 | opens a place.
-- **2021 town quests** - block `town_quests_2021`, one storyline per town,
-  each hunt a daily after: Morroc (old scholar's apprentice, `iq_moc21`),
-  Prontera (playground, Orc/Goblin subjugation, Glast Heim monastery), Payon
-  (well, missing grandson, fox spirit), Geffen (tower dungeon, `iq_gef21`),
-  Izlude (Instructor Pontes, Byalan, Leader Maxim), Alberta (shipwreck, Drake,
-  Knight Tybalt), Comodo (Bobby Q's sauce), Aldebaran and Juno fields
-  (checkpoint, academy, Clock Tower cleaning), Einbroch/Einbech/Lighthalzen
-  (Ernst's letter, the mine, gas, ghosts), Hugel (Abyss Lake, dailies only),
-  Juperos (Maxim's camp, dailies only), Rachel and Veins (`iq_ra21`), dungeon
-  dailies of the 2022 series. To place in step 2: each town's region.
-- **City Investment** (Merchant Union, Alberta) - block `city_investment`
-  | Union Insignias for 113 deliveries, weekly Wanted bosses, investing in 9
-  cities, Union gear, street stall staffers | repeatable | one entry.
-- **Devil in the Box** (Clock Tower 1F) - block `iro_systems` | Lv: 200
-  | repeatable (daily/weekly).
+- **Criminal Activities** (Agent York, Geffen inn; ends on the domestic
+  airship and in Izlude) - `criminal_activities/criminal_activities.txt`
+  | `iq_crim` 0->13 | Lv: 70 | guided `wse_criminal`.
+- **Eye of the Beholder** (the Beholder on the international airship or by
+  Rachel's temple; Beho and Bianca, Rachel) -
+  `eye_of_the_beholder/eye_of_the_beholder.txt` | `iq_beho` 61001-61029,
+  then 1 | Lv: 50 | guided `wse_beholder`.
+- **Seoyeon's Trial** (Amatsu Dungeon) - `varmundt/seoyeon_trial.txt`
+  | `wsv_sy` 0->5 | Lv: 70 | guided `wse_seoyeon` | needs: the Amatsu
+  Dungeon Quest (region 14), which opens the dungeon.
+- **Fantasy Book "Dungeon Food"** (Prontera East Library, new wing) -
+  `varmundt/fantasy_dungeon_food.txt` | `wsv_df` 0->15 | Lv: 100
+  | repeatable (until 4:00).
+- **Overlook Water Dungeon** (The Sign west of Geffen) -
+  `overlook_water_dungeon/overlook_water_dungeon.txt` | `iq_owd` 0->5 | Lv:
+  30-85 (both ends) | opens a place (`iz_dun00t`-`iz_dun04t`).
+- **2021 town quests** - block `town_quests_2021`, one storyline per town;
+  each hunt is a story step once, then a daily (until 4:00) shared with the
+  Eden Group's mission boards of mod eden-rework-2021:
+  - **Morroc**: the old scholar's apprentice - `morroc.txt` | `iq_moc21`
+    0->14 | Lv: 40.
+  - **Prontera**: the playground, the Orc and Goblin subjugation, Glast
+    Heim - `prontera.txt` | `iq_prt21` bits | Lv: none / 40 / 70.
+  - **Payon**: the well, the grandson, the fox spirit, and the neighbours'
+    requests - `payon.txt` | `iq_pay21` 0->8, `iq_pay_dd`, `iq_pay_side` |
+    Lv: none (fox hunt 60).
+  - **Geffen**: the tower dungeon - `geffen.txt` | `iq_gef21` bits | Lv:
+    55-80.
+  - **Izlude**: Instructor Pontes, Byalan, Leader Maxim - `izlude.txt`
+    | `iq_izl21` bits | Lv: 20 / 40 / 50.
+  - **Alberta**: the shipwreck (`iq_alb21` 0->12, Lv: 40) and Turtle Island
+    (`iq_alb21t` 0->6, Lv: 90, needs: the Turtle Island Quest started,
+    region 5) - `alberta.txt`.
+  - **Comodo**: Que Sera, Sera - `comodo.txt` | `iq_cmd21` 0->9 | Lv: 30
+    (the Vigilantes and the Explorer: 60).
+  - **Aldebaran and the Juno fields**: the lunch run, the academy, the
+    Clock Tower - `aldebaran.txt` | `iq_ald21` bits | Lv: 70 (80).
+  - **Einbroch, Einbech, Lighthalzen**: Ernst's letter, the mine, the gas,
+    the ghosts - `einbroch.txt` | `iq_ein21` bits | Lv: 80 (Einbech 85).
+  - **Hugel**: Abyss Lake (`iq_hu21` 0->3, Lv: 120; the lake wants one
+    Dragon Canine, Dragon Scale and Dragon Tail) and the fishermen's
+    dailies (Lv: 40-80) - `hugel.txt`.
+  - **Juperos**: Maxim's camp, dailies only - `juperos.txt` | Lv: 110.
+  - **Rachel and Veins**: three first hunts - `rachel.txt` | `iq_ra21` bits
+    | Lv: 90.
+- **City Investment** (the City Merchant Union Manager at the Eden Group
+  HQ, `moc_para01 53,34`; an Investment Manager and a Union shop in each of
+  9 cities) - `city_investment/city_investment.txt` | quest 12370,
+  `iq_ci_city[1..9]` | Lv: none | repeatable | one entry. Its Bulletin
+  Board (deliveries and weekly Wanted bosses) is a board: listed only as a
+  source of Union Insignias.
+- **Devil in the Box** (the Mysterious Box, Clock Tower 1F, `c_tower1
+  243,202`) - `iro_systems/devil_in_the_box.txt` | quests 5961-5971 | Lv:
+  200 (the Unknown Basement, monsters Lv 253-255) | repeatable (meals 20
+  hours, special meal weekly).
 - Block `star_forest`: the Star Emperor job change is excluded (job quest);
   Herosria's Garden of Dawn gifts and Ash Village are services/trades
   (excluded, to verify). Acolyte training (Izlude Sunken Ship, `iro_systems`)
   is for Acolytes only: excluded as class training (MondoTruth, 2026-10-26).
+- Not quests: Masha's street stall staffers
+  (`city_investment/street_stall_staffers.txt`, a service), the Commemorative Card Exchange of the Fantasy Series (an
+  exchange), the placeholders and @npcplace.
 
 ---
 
@@ -940,8 +976,12 @@ Hunting boards and the Eden Group (MondoTruth, 2026-10-27): the Eden Group
 quests (`re/quests/eden/*`: the tutorial, Instructor Boya's and Instructor
 Ur's training, the mission boards), the Juno Monster Society
 (`re/quests/juno_monster_society.txt`), and World Sync Extras' Bounty Boards
-(block `bounty_boards`) and Gramps' weekly hunts at the Eden Group (block
-`gramps_turn_ins`). The Eden Market Group's shops still count as item
+(block `bounty_boards`), Gramps' weekly hunts at the Eden Group (block
+`gramps_turn_ins`) and its dungeon-mission givers
+(`town_quests_2021/dungeon_dailies.txt`: Morvand, the Traces of Fire, the
+Museum Staff, Avril and Tart, Darkess and Chiab, Yerne, Theodore and Niu
+Niu, Lartal, Rotert and the Rachel and Veins askers; the file says they
+hand out the Eden Group's own dungeon missions, batch 5). The Eden Market Group's shops still count as item
 sources.
 
 Needs a guild or War of Emperium: `quests/guildrelay.txt` (dead end: guild

@@ -5,8 +5,8 @@ Step 2 of the Renewal Side Quests tab: the steps of every quest in
 (2026-10-26): regions 1-6 and "Entrances without a quest". Batch 2
 (2026-10-26): regions 7-13, the Party Relay and the Unlucky Emerald's jewel
 part. Batch 3 (2026-10-27): regions 14-22. Batch 4 (2026-10-27): regions
-23-28 and two more entrances. Region 29 (World Sync Extras) follows in the
-next batch.
+23-28 and two more entrances. Batch 5 (2026-10-27): region 29, the quests of
+World Sync Extras 2.1.5 (its own source of truth is the mod's files).
 
 Source of truth: rathena-pin, commit 8aea17a (the app 1.7.0 pin). Every
 coordinate, item, count, level and variable value below was read in the
@@ -5264,6 +5264,606 @@ quests 1331-1332 | Lv none found | repeatable.
 Not quests: the Prison (Johnny James and the jail are the main line's),
 the townsfolk (`harboro1` misc NPCs).
 
+## 29. Quests from other mods (World Sync Extras 2.1.5)
+
+Source of truth here is the mod itself, World Sync Extras 2.1.5, installed at
+`%APPDATA%\Ragnarok Offline\state\mods\world-sync-extras`. File paths below
+are relative to its `npc/when/` (the folder name is the mod's block, which
+the player can switch off in the mod's settings); quest titles and cooldowns
+come from its `db/quest_db.yml` and `db/when/<block>/quest_db.yml`, items
+and monsters from rathena-pin (`db/re/mob_db.yml` and `mob_db_world.yml`).
+Every quest here: **needs a mod** (World Sync Extras, block named). A
+cooldown of `TimeLimit: 4h` ends at the next 4:00 server time, as in RO.
+
+### Criminal Activities
+`criminal_activities/criminal_activities.txt` | `iq_crim` 0->13, quests
+40001-40026 | Lv 70 (Agent York) | guided `wse_criminal`.
+
+1. **Agent York** - in the Geffen inn: "I'll talk to Vince." (1).
+   Why: an agent of the Rune-Midgarts investigation office hunts the crime
+   lord Jymmy the Thumb; nobody talks, but a musician's friends are in deep
+   with Jymmy, and not by choice.
+   `/navi geffen_in 77/57` | done when: `iq_crim >= 1`
+2. **Vince Noir** - by the Geffen fountain; he gives you a Raccoon Doll for
+   his bandmate (2).
+   `/navi geffen 107/48` | done when: `iq_crim >= 2`
+3. **Ling Mynmei** - give her the Raccoon Doll (taken) (3).
+   Why: she owes her contract to Old Lady Kroot next door.
+   `/navi geffen_in 30/131` | done when: `iq_crim >= 3`
+4. **Old Lady Kroot** - get Ling's contract (4): "Arm wrestle you for it
+   (5,000 zeny)" (you win 3 times in 10, each try 5,000 zeny), or "Buy the
+   contract (100,000 zeny)". "Offer her a Bomber Steak" (taken) first brings
+   the price down to 50,000. Then back to Ling (5).
+   `/navi geffen_in 33/131`, `/navi geffen_in 30/131` | done when:
+   `iq_crim >= 5`
+5. **Howard Moon's floods** - talk to Howard Moon (6), turn off the four
+   Flood Controls in Geffen ("Turn it off": `geffen 33/138`, `75/43`,
+   `194/183`, `139/166`, any order; quests 40012-40015 count them), then
+   tell him (7).
+   Why: Jymmy floods his storage room to keep him working.
+   `/navi geffen 183/80` | done when: `iq_crim >= 7`
+6. **The casino airship** - on the domestic airship (from the airports of
+   Juno, Einbroch, Lighthalzen and Hugel, 1,200 zeny), Naota (8). Cooked
+   Chicken (`airplane 44/61`): "Add Naota's 'seasoning'"; Slot Machine
+   (`46/79`), Roulette Wheel (`24/70`), Slot Machine (`44/45`): "Install a
+   cheat detector"; then the Dealer (`32/52`) (9) and Naota (10).
+   `/navi airplane 102/62` | done when: `iq_crim >= 10`
+   Fails: the Dealer waits until all four are done.
+7. **Bringing the ship down** - the Switch ("Pull it", 11) takes you below;
+   the Cannon Switch: "Aim at the engines and fire" (12). Six Mobsters
+   (Lv 58) jump out and stay 3 minutes. The Stairs (`airplane 91/196`, "Go
+   up") lead back.
+   `/navi airplane 18/62`, `/navi airplane 95/202` | done when: `iq_crim >= 12`
+8. **Jymmy the Thumb** - in his quarters; the ship goes down and you
+   parachute into the fields south of Izlude (`prt_fild08 347/213`); the
+   Guard there (`prt_fild08 347/216`) sends you on.
+   `/navi airplane 232/157` | done when: `iq_crim_land == 1`
+9. **Agent York in Izlude** - at the armory (13).
+   `/navi izlude_in 67/113` | done when: `iq_crim >= 13`
+   Reward: 1,000,000 base / 700,000 job EXP, 1 Old Purple Box.
+
+### Eye of the Beholder
+`eye_of_the_beholder/eye_of_the_beholder.txt` | `iq_beho` 0 -> 61001-61029
+-> 1 (done), quests 61001-61029 | Lv 50 (the Beholder) | guided `wse_beholder`.
+
+1. **The Beholder** - on the international airship's deck, or by Rachel's
+   temple (`ra_temple 104/185`): "Sure, send me to Beho." (61001; he warps
+   you into the temple).
+   Why: his friend Beho, a gentle beholder, is hopelessly in love.
+   `/navi airplane_01 238/57` | done when: `iq_beho >= 61001`
+2. **Beho** - talk to him twice (61003); Bianca, who is terrified of
+   beholders (61004); Beho twice again (61006).
+   `/navi ra_temin 268/321`, `/navi ra_temin 301/112` | done when:
+   `iq_beho >= 61006`
+3. **White Chocolate** - Kyara: "White Chocolate" (the other three answers
+   are wrong; you get 1 White Chocolate, 61007); Kyara again: "Beho is
+   gentle and honest." or "He's harmless, really." (61008); Beho takes the
+   chocolate (61009).
+   `/navi ra_temin 31/70` | done when: `iq_beho >= 61009`
+4. **A song** - Doina (61010): the song is about "Eyes", "Heart" or "Tears"
+   (not "Hunger") and feels "Strong" or "Itchy" (not "Sleepy" or "Loud");
+   she gives a Blank Scroll (61011); Beho takes it (61012).
+   `/navi ra_temin 165/101` | done when: `iq_beho >= 61012`
+   Fails: a wrong answer ends the talk; ask her again.
+5. **The necklace** - Lilla (61013), then in this order: the Flowerpot
+   (`ra_in01 374/123`), the Flowerpot in the street (`rachel 106/168`), the
+   Flowerpot (`ra_in01 308/37`), the Sofa (`ra_in01 388/68`) (61017); Lilla
+   lends you the Necklace of Wisdom for 3 days (61018).
+   `/navi ra_in01 343/130` | done when: `iq_beho >= 61018`
+   Fails: the necklace vanishes after 3 days; finish before then.
+6. **The bouquet** - Kees (61019), then his four Flowerbeds in order
+   (`rachel 123/201`, `126/201`, `123/184`, `112/190`) (61023); Kees makes a
+   Bouquet (61024).
+   `/navi rachel 122/196` | done when: `iq_beho >= 61024`
+7. **The Pope's blessing** - Beho gives you back the chocolate and the
+   scroll (61025); the Pope on the temple's first floor blesses the
+   courtship (61026).
+   `/navi ra_temin 268/321`, `/navi ra_temin 169/147` | done when:
+   `iq_beho >= 61026`
+8. **Bianca's answer** - bring Bianca the White Chocolate, Blank Scroll,
+   Necklace of Wisdom and Bouquet (all taken) and sing: "When I look in your
+   eyes", "I feel my heart beat strong.", "I cried those nights", "million of
+   tears as in this song..." (the two lines of each pair come in random
+   order) (61027); talk to her again (61028).
+   `/navi ra_temin 301/112` | done when: `iq_beho >= 61028`
+   Fails: a wrong line ends the talk; sing again.
+9. **Beho in the gardens** - outside the temple, west of the entrance:
+   talk to him (61029), then again (1).
+   `/navi ra_temple 68/158` | done when: `iq_beho == 1`
+   Reward: 500,000 base / 375,000 job EXP, 5 Yggdrasil Berry, 1 Eden Merit
+   Badge.
+
+### Seoyeon's Trial
+`varmundt/seoyeon_trial.txt` | `wsv_sy` 0->5 (the trace: `wsv_sys` 1-5),
+quests 3519-3523 | Lv 70 (Seoyeon) | guided `wse_seoyeon`.
+
+1. **Seoyeon** - in Amatsu: "I'll take your trial." (1).
+   Why: a soul that refuses to rest stirs in the old battlefields under the
+   castle.
+   `/navi amatsu 82/118` | done when: `wsv_sy >= 1`
+2. **Three floors** - kill 100 monsters on each floor of the Amatsu Dungeon
+   (`ama_dun01`, `ama_dun02`, `ama_dun03`; quests 3519-3521 count them),
+   then back to Seoyeon (2).
+   Needs: the Amatsu Dungeon Quest (region 14), which opens the dungeon
+   (Seoyeon: the soldier on the castle's fifth floor lets you in once the
+   Feudal Lord has given you his permit).
+   `/navi amatsu 82/118` | done when: `wsv_sy >= 2`
+3. **Traces of Yeongwi** - on the Battlefield in the Underground Forest
+   (`ama_dun02`): one of five traces is his, chosen at random (`wsv_sys`):
+   `52/163`, `67/97`, `122/12`, `154/140`, `162/36` (3).
+   `/navi ama_dun02 52/163` | done when: `wsv_sy >= 3`
+4. **Yeongwi** - his shadow stands by the trace: "Draw your weapon." and
+   defeat him (Lv 99, 60,000 HP) (4).
+   done when: `wsv_sy >= 4`
+5. **Seoyeon's verdict** - she comes running to the same place: talk to her
+   (5).
+   done when: `wsv_sy >= 5`
+   Reward: half of the EXP your next base level needs (at most 2,000,000)
+   and half of the next job level's (at most 1,000,000).
+
+### Fantasy Book "Dungeon Food"
+`varmundt/fantasy_dungeon_food.txt` | `wsv_df` 0->15 then 0 (bit `wsv_dfb`
+8 = the bet won), quests 16667-16690 | Lv 100 | repeatable (cooldown 16668,
+until 4:00).
+
+A Virtual Record Book: you step into the story of Seyren, Margaretha and
+Kathryne at a beach lodge (`vr_bob`) and cook them lunch. Ink the fairy
+keeps the table of contents; the Magical Stones (`vr_bob 291/201`,
+`288/183`, `82/388`) move you between "The lodge." and "The beach.".
+
+1. **The new wing** - the Fantasy Series Manager in the Prontera East
+   Library: "Take me to the new wing."; the book "Dungeon Food...": "Open the
+   book." (1, you land in the lodge).
+   `/navi prt_in 176/57`, `/navi prt_elib 59/45` | done when: `wsv_df >= 1`
+2. **Ink** - talk to her (2).
+   `/navi vr_bob 293/202` | done when: `wsv_df >= 2`
+3. **Seyren** - "Why not just ask them?" (3).
+   `/navi vr_bob 296/200` | done when: `wsv_df >= 3`
+4. **Lunch orders** - on the beach, Margaretha: "Seyren sent me to ask
+   about lunch." (4); then hear both her and Kathryne (5).
+   `/navi vr_bob 146/293`, `/navi vr_bob 149/290` | done when: `wsv_df >= 5`
+5. **The verdict** - Seyren comes down to the beach: "Margaretha wants
+   something warm to share. Kathryne wants it fresh." (6).
+   `/navi vr_bob 144/289` | done when: `wsv_df >= 6`
+6. **The bet** - Kathryne: "You're on." (7): 5 Crab and 10 Shellfish on the
+   beach (quest 16676), then back to her (8).
+   `/navi vr_bob 149/290` | done when: `wsv_df >= 8`
+   Branches: back within 7 minutes, you win the bet (`wsv_dfb` bit 8) and
+   get one more Shamrock Flower Ring at the end; slower costs nothing else.
+7. **The oven** - Seyren in the lodge's kitchen (9); at the Oven, three
+   batches: "Leave them a little longer." until the shells are "bright red
+   and smell sweet", then "Take them out now." (10; burnt or raw batches
+   still count).
+   `/navi vr_bob 295/209`, `/navi vr_bob 289/209` | done when: `wsv_df >= 10`
+8. **The seasoning** - Seyren (11); in the Cupboard take the jar labelled
+   "T. paste" and the tin labelled "Paprika" (quest 16683); Seyren (12).
+   `/navi vr_bob 302/210` | done when: `wsv_df >= 12`
+   Fails: any other jar (16684-16686): Seyren sends you back to the
+   cupboard.
+9. **Lunch** - at the table outside: Kathryne (13), Margaretha (14), Seyren
+   (15); then Ink sees you out (back to 0).
+   `/navi vr_bob 291/195`, `/navi vr_bob 294/196`, `/navi vr_bob 290/198`,
+   `/navi vr_bob 293/202` | done when: quest 16690 done (`wsv_df` back to 0)
+   Reward: 1 Fantasy Book Bookmark, 1 Fantasy Book Completion Card, 1
+   Shamrock Flower Ring (2 after a won bet), and base EXP: a tenth of your
+   next level (a fiftieth from Lv 200), times 1 below Lv 150, 2 from Lv 150,
+   5 from Lv 170. From Lv 130 you may take that many Fantasy Growth Potions
+   instead (1/2/5).
+   Note: "Close the book for today." (at the book or at Ink) drops the
+   story; the next reading starts over. The Commemorative Card Exchange
+   (`prt_elib 22/50`) trades the cards (exchange, not a quest).
+
+### Overlook Water Dungeon
+`overlook_water_dungeon/overlook_water_dungeon.txt` | `iq_owd` 0->5 (then
+`iq_owd_card`), quests 50531-50535 | Lv 30-85 (both ends checked) | opens a
+place: the Overlook Water Dungeon (`iz_dun00t`-`iz_dun04t`), a flooded twin
+of the Byalan caves with Aged monsters (Lv 34-61).
+
+1. **The Sign** - west of Geffen: "Enter the dungeon".
+   `/navi gef_fild07 264/286` | done when: you stand in `iz_dun00t`
+2. **Floor 1** - the Sign Board: "Take the notice": 20 Aged Plankton and 20
+   Aged Marina; back to the board: "Guard [1]" or "Buckler [1]" (1).
+   `/navi iz_dun00t 174/169` | done when: `iq_owd >= 1`
+   Reward: 60,660 base / 68,040 job EXP and the shield you chose.
+3. **Floor 2** - down at `iz_dun00t 39/41`; 40 Aged Vadon and 40 Aged Kukre;
+   "Muffler [1]" or "Manteau [1]" (2).
+   `/navi iz_dun01t 122/147` | done when: `iq_owd >= 2`
+   Reward: 88,695 base / 99,900 job EXP and the garment you chose.
+4. **Floor 3** - down at `iz_dun01t 118/170`; 60 Aged Obeaune and 60 Aged
+   Marse (3).
+   `/navi iz_dun02t 236/214` | done when: `iq_owd >= 3`
+   Reward: 155,700 base / 174,960 job EXP, 2 Elunium.
+5. **Floor 4** - down at `iz_dun02t 339/331`; 80 Aged Marc and 80 Aged Phen
+   (4).
+   `/navi iz_dun03t 42/59` | done when: `iq_owd >= 4`
+   Reward: 218,475 base / 245,925 job EXP, 1 Rosary.
+6. **Floor 5** - down at `iz_dun03t 264/245`; 100 Aged Strouf and 100 Aged
+   Merman (5).
+   `/navi iz_dun04t 25/37` | done when: `iq_owd >= 5`
+   Reward: 335,340 base / 377,190 job EXP, 1 Rosary, 2 Elunium.
+7. **The final reward** - any Sign Board: pick one card, once (Kukre, Vadon,
+   Plankton, Hydra, Marina, Cornutus, Marse, Obeaune, Merman, Marc, Phen,
+   Swordfish, Marine Sphere, Strouf or Deviace Card), "Yes, this one.".
+   done when: `iq_owd_card == 1`
+   Fails: each board takes only the next floor's notice; a level outside
+   30-85 shuts the dungeon and the boards.
+
+### 2021 town quests
+
+Block `town_quests_2021`: kRO's 2021 town quests as iRO runs them, one
+storyline per town. Each hunt is a story step the first time; after that the
+same NPC offers it as a daily ("Sure"; cooldown until 4:00, quest_db
+`TimeLimit: 4h`). The mod says the dailies share quest ids with the Eden
+Group's mission boards (mod eden-rework-2021): a daily done at either place
+counts for both. The dungeon-mission givers in `dungeon_dailies.txt` are the
+Eden Group's own missions and are left out (Excluded files in the catalog).
+
+#### Morroc: the old scholar's apprentice
+`town_quests_2021/morroc.txt` | `iq_moc21` 0->14, quests 21201-21220 | Lv 40.
+
+1. **The Elderly Scholar** - "I'll find him." (1).
+   Why: his apprentice went after the pyramid's secrets and has not come
+   back.
+   `/navi morocc 151/86` | done when: `iq_moc21 >= 1`
+2. **The Wandering Boy** - in the desert (2): kill 10 Sandman and bring 5
+   Grit (taken) (3).
+   `/navi moc_fild17 358/277` | done when: `iq_moc21 >= 3`
+   Reward: 10,800 base / 9,600 job EXP.
+3. **The scholar at the ruins** - (4): a Field Shovel (Verit and Minorous
+   drop it, 10%, while quest 21204 is open) (5).
+   `/navi moc_ruins 104/122` | done when: `iq_moc21 >= 5`
+   Reward: 12,000 base / 12,800 job EXP.
+4. **Lumin** - (6): kill 10 Verit and 10 Minorous (7).
+   `/navi moc_ruins 105/124` | done when: `iq_moc21 >= 7`
+   Reward: 12,000 base / 12,800 job EXP.
+5. **Ernest and Leader Maxim** - Ernest (8); in the pyramid, Leader Maxim
+   (9): 1 Memento (taken) (10).
+   `/navi moc_ruins 101/124`, `/navi moc_pryd01 20/192` | done when:
+   `iq_moc21 >= 10`
+   Reward: 7,200 base / 7,800 job EXP.
+6. **The Sphinx** - Ernest (11): 1 Rotten Bandage from Isis (30% while
+   quest 21210 is open) (12, 16,740 / 17,880); kill 15 Zerom and 15 Requiem
+   (13, 19,450 / 20,090); 1 Old Papyrus from Marduk (30% while quest 21212
+   is open) (14, 25,640 / 24,210).
+   `/navi moc_ruins 101/124` | done when: `iq_moc21 >= 14`
+
+Dailies: the Wandering Boy (10 Sandman + 5 Grit, Lv 50), Lumin (10 Verit +
+10 Minorous, Lv 50), Leader Maxim (10 Mummy + 1 Memento, Lv 40; from 10),
+Ernest (from 14, Lv 60): "Defeat Isis (daily)" (20 Isis), "The Sphinx's
+workers (daily)" (15 Zerom + 15 Requiem), "Secrets of the Sphinx (daily)"
+(15 Marduk + 15 Pasana + 10 Old Papyrus). Each pays like its story step.
+
+#### Prontera: the playground, the Orc and Goblin subjugation, Glast Heim
+`town_quests_2021/prontera.txt` | `iq_prt21` bits (1 Hornets, 2 Rockers, 4
+Ambernite, 8 Leader, 16 Deputy, 32 Claude), quests 21040-21045, 21246-21275 |
+Lv none for the playground, 40 for the subjugation, 70 for Glast Heim.
+
+1. **The playground** - Paul outside the west gate: "Sure": kill 10 Hornet
+   (bit 1, 1,200 / 1,000); Paul again: 10 Rocker (bit 2, 1,600 / 1,400);
+   Ann: 10 Ambernite (bit 4, 2,000 / 2,000).
+   `/navi prt_fild05 353/221`, `/navi prt_fild05 351/220` | done when:
+   `iq_prt21 & 4`
+2. **The Knights' supplies** - the Mon. Hunt Corp Notice gives the hint
+   (Lv 40); the Knight's Office Staff: "I'll carry them" (2 Knight Supply);
+   the Extermination Commander in the Orc fields takes one (bit 8); his
+   Deputy Leader at the Goblin settlement takes the other (bit 16).
+   `/navi prontera 62/339`, `/navi gef_fild10 78/340`, `/navi gef_fild11
+   128/351` | done when: `iq_prt21 & 16`
+   Reward: 8,000 base / 8,000 job EXP (Deputy). The supply run is a daily
+   too (cooldown 21268).
+3. **Glast Heim** - Priest Leader Lars (Lv 70): "I'll find him"; find
+   Claude at Glast Heim (bit 32).
+   `/navi prontera 235/311`, `/navi glast_01 205/131` | done when:
+   `iq_prt21 & 32`
+   Reward: 37,640 base / 37,050 job EXP.
+
+Dailies: Paul (10 Hornet; 10 Rocker), Ann (10 Ambernite), Lv 10. The
+Extermination Commander (Lv 40): 15 Orc Warrior + 15 Orc Lady + 10 Orc Baby
+(23,520 / 24,300); 20 Orc Skeleton + 20 Orc Zombie (28,700 / 27,400); 20
+Zenorc (16,000 / 12,000). The Deputy Leader: two kinds of Goblin, 10 each
+(13,000 base, Lv 40, twice); 10 Goblin + 10 Goblin Archer (11,800 / 11,900,
+Lv 50). Claude: 15 Wraith + 15 Evil Druid (37,640 / 37,050, Lv 70); 10 Dark
+Priest + 1 Furious Dark Priest (96,220 / 91,630, Lv 90). While one of
+Claude's dailies is open, Tatiana (`gl_church 175/72`) and Marylin
+(`gl_chyard 144/119`) heal you and cast Blessing and Increase AGI, once
+every 5 minutes. At the castle gate, no story needed: Exhausted Priest
+Charon (`glast_01 206/291`, Lv 85: 10 Zombie Prisoner + 10 Skeleton
+Prisoner) and Sprawling Mage Nadir (`glast_01 204/291`: 10 Rybio, Lv 90; 20
+Injustice, Lv 85), 72,000 / 72,000 each.
+
+#### Payon: the well, the grandson and the fox spirit
+`town_quests_2021/payon.txt` | `iq_pay21` 0->8, quests 21011-21025 | Lv none
+for the story (60 for the fox hunt). Side requests: `iq_pay_dd` 0->4, and
+`iq_pay_side` bits 1, 2, 4.
+
+1. **The Village Grandfather** - "Sure" (1); the Well beside him: "Pull it
+   up" (2); back to him (3).
+   Why: his liquor is chilling in the well, and his grandson ran off to the
+   Archer Village.
+   `/navi payon 192/109`, `/navi payon 195/108` | done when: `iq_pay21 >= 3`
+   Reward: 800 base / 800 job EXP.
+2. **The Archer Village guard** - (4); Reno in Payon Cave (5): kill 5
+   Zombie, back to Reno (6); the guard (7).
+   `/navi pay_arche 41/131`, `/navi pay_dun00 155/174` | done when:
+   `iq_pay21 >= 7`
+   Reward: 3,200 base / 3,000 job EXP.
+3. **Elder Payon** - the story of the Moonlight Flower (8).
+   `/navi pay_arche 139/33` | done when: `iq_pay21 >= 8`
+   Reward: 3,200 base / 3,000 job EXP.
+4. **The fox hunt** (daily) - the Notice at the abandoned village's gate
+   (Lv 60): "Sign up for the hunt"; the Moonlight Flower drops a Fox Bead
+   (100% while quest 21023 is open); Elder Payon takes it.
+   `/navi pay_dun03 121/65` | done when: quest 21024 started
+   Reward: 20,000 base / 20,000 job EXP.
+
+Side requests in Payon: Dong Dong (the Anxious Middle-Aged Man, `payon
+173/77`): "I'll look", the Relaxed Man (`pay_fild01 328/351`): 3 Willow + 2
+Barren Trunk, back (800 / 800). The Worried Young Lady (`payon 217/94`):
+"Sure", 5 Boa (1,600 / 1,400, 5 Strawberry). The Worried Grandma (`payon
+237/64`): "I'll check", 1 Wormtail (1,600 / 1,400). The Worried Grandpa
+(`payon 239/64`): "Sure", 5 Spore (3,000 / 2,000). Each becomes a daily (5
+Willow + 3 Barren Trunk; 5 Boa; 5 Wormtail; 10 Spore).
+Dailies from 7: the Guard: 10 Zombie + 20 Skeleton (Lv 15, 3,200 / 3,000);
+15 Munak + 15 Bongun + 15 Amulet (Lv 50, 13,200 / 12,300; Amulet is rare:
+Munak 0.1%, Bongun 0.08%, Yao Jun 0.5%). Any time, Lv 50: the Wandering
+Monk (`pay_dun02 134/123` or `payon 203/113`): 10 Last Breath, poured from
+the Ha Soju the Grandfather gives at the 16 Ghost Fires of `pay_dun03`
+("Pour a cup") (9,600 / 9,600); the Young Apprentice (`payon 198/111`): 12
+Sohee + 3 Girl's Handkerchief (Sohee, 30% while open) (10,480 / 12,400).
+
+#### Geffen: the tower dungeon
+`town_quests_2021/geffen.txt` | `iq_gef21` bits 1-32, quests 21101-21118 |
+Lv 55-80 by hunt. Each first hunt is a story step, then a daily.
+
+1. **The Apprentice Mage** - choose a floor: "Hunterflies, 1F" (10 Hunter
+   Fly, Lv 55, 8,000 / 6,800); "Ghouls and Jakks, 2F" (10 each, Lv 55,
+   14,800 / 13,660); "Marionettes and Deviruchis, 3F" (10 each, Lv 80,
+   37,520 / 41,740).
+   `/navi geffen 126/113` | done when: `iq_gef21 & 4`
+2. **The Tired Man** - in Geffen Tower: 10 Nightmare (Lv 80, 42,000 /
+   38,000).
+   `/navi gef_tower 48/140` | done when: `iq_gef21 & 8`
+3. **The Petit Boy** - "Sky Petites" (10, Lv 75, 9,900 / 10,120) or "Ground
+   Petites" (10, Lv 75, 12,860 / 13,160).
+   `/navi geffen 40/113` | done when: `iq_gef21 & 32`
+
+#### Izlude: Instructor Pontes, Byalan and Leader Maxim
+`town_quests_2021/izlude.txt` | `iq_izl21` bits 1-256, quests 21221-21244 |
+Lv 20 (Pontes), 40 (Byalan), 50 (the tunnel).
+
+1. **Instructor Pontes** - "I'll do it": 10 Peco Peco + 10 Muka (bit 1,
+   4,800 / 4,200); from Lv 40: 10 Magnolia + 10 Metaller (bit 2, 8,400 /
+   8,380), and he sends you to Byalan.
+   `/navi izlude 132/207` | done when: `iq_izl21 & 2`
+2. **Student Helden** - on Byalan Island (bit 4); his daily: 10 Marina + 10
+   Plankton + 10 Single Cell (9,600 / 8,380).
+   `/navi izlu2dun 105/68` | done when: `iq_izl21 & 4`
+3. **The Wandering Store Owner** - 5 Nipper (taken) (bit 8, 7,800 / 8,380).
+   `/navi izlu2dun 108/68` | done when: `iq_izl21 & 8`
+4. **Jowon Ernest** - injured in the undersea tunnel (Lv 50): "I'll find
+   them"; Leader Maxim on the floor below (bit 16).
+   `/navi iz_dun01 121/158`, `/navi iz_dun02 229/231` | done when:
+   `iq_izl21 & 16`
+5. **The team** - Kusekili: 10 Squid Ink (bit 32, 10,640 / 10,240);
+   Ankana: kill 10 Obeaune and bring 1 Heart of Mermaid (bit 64, 9,600 /
+   9,600); with both done, take the soup to Ernest (bit 128, 12,400 /
+   14,380).
+   `/navi iz_dun02 228/229`, `/navi iz_dun02 231/230` | done when:
+   `iq_izl21 & 128`
+6. **Maxim's proof** - 1 Fin + 1 Ancient Lips (taken) (bit 256, 17,200 /
+   15,600).
+   `/navi iz_dun02 229/231` | done when: `iq_izl21 & 256`
+
+Dailies: Pontes (10 Peco Peco + 10 Muka; 10 Magnolia + 10 Metaller), Helden,
+the Store Owner (10 Vadon + 5 Nipper), Ernest (10 Swordfish + 10 Marc),
+Kusekili (20 Marse + 10 Squid Ink), Ankana (10 Obeaune + 1 Heart of
+Mermaid), Maxim (10 Strouf + 10 Merman); each pays like its step.
+
+#### Alberta: the shipwreck and Turtle Island
+`town_quests_2021/alberta.txt` | `iq_alb21` 0->12 (shipwreck), `iq_alb21t`
+0->6 (Turtle Island), quests 21120-21161 | Lv 40 (shipwreck), 90 (Turtle
+Island).
+
+1. **Timothy** - "I'll find him" (1); in the wreck, kill 10 Pirate
+   Skeleton and find Kale (3).
+   Why: a Zonda promoter talked Kale into exploring the shipwreck.
+   `/navi alberta 154/224`, `/navi treasure01 162/143` | done when:
+   `iq_alb21 >= 3`
+   Reward: 8,600 base / 9,600 job EXP.
+2. **The Zonda Promoter** - Timothy (4); Mulberry in Alberta (5): kill 10
+   Kukre (6, 6,500 / 6,500); she gives 10 Antique Coin: hide 2 in each of
+   the five Old Crates of the wreck ("Hide the coins": `treasure01 21/163`,
+   `69/110`, `71/30`, `94/164`, `173/50`), back to her (7, 7,000 / 7,000).
+   `/navi alberta_in 71/182` | done when: `iq_alb21 >= 7`
+3. **Drake's ship** - the Shipwreck Researcher (8); the Rotten Chest in the
+   wreck (9); the Researcher (10, 7,000 / 7,000); Mulberry (11): wait until
+   4:00 (quest 21134), talk to her again, then Drake's Ghost in her office
+   (12).
+   `/navi alb2trea 94/77`, `/navi treasure01 165/140`, `/navi alberta_in
+   70/185` | done when: `iq_alb21 >= 12`
+   Reward: 9,600 base / 8,280 job EXP.
+4. **Knight Tybalt** - (Lv 90) "I'll go": on Turtle Island, 10 Dragon Tail +
+   10 Spring Rabbit (2, 76,000 / 72,000); 10 Solider + 10 Permeter and 10
+   Freezer + 10 Heater (3, 102,000 / 104,000).
+   Needs: the boat to Turtle Island, which wants the Turtle Island Quest
+   started (region 5).
+   `/navi alberta 210/120` | done when: `iq_alb21t >= 3`
+5. **The Knight Commander** - in the Turtle Island dungeon (4): 10 Assaulter
+   (5, 52,000 / 67,000); back to Tybalt (6, 52,000 / 67,000).
+   `/navi tur_dun03 108/74` | done when: `iq_alb21t >= 6`
+
+Dailies: Timothy (20 Pirate Skeleton), Mulberry (10 Kukre; hiding the
+coins; from 12, the wreck's 1F: 10 Hydra, 9,600 / 8,280; 2F: 10 Whisper + 1
+Swift Sailor Skeleton, 11,800 / 9,600), Tybalt (the island; the turtle
+horde), the Knight Commander (10 Assaulter).
+
+#### Comodo: Que Sera, Sera
+`town_quests_2021/comodo.txt` | `iq_cmd21` 0->9, quests 21401-21421 | Lv 30
+(the hunters: 60).
+
+1. **Chef Bobby Q** - "I'll get them" (1): kill 10 Thara Frog and bring 5
+   Sticky Webfoot (2, 5,500 / 5,500).
+   Why: he wants a new sauce from the herb Serabi grows.
+   `/navi comodo 206/304` | done when: `iq_cmd21 >= 2`
+2. **Serabi** - (3): 10 Megalodon (4, 5,500 / 5,500); Bobby Q (5); Bunny Q
+   (6); Serabi (7).
+   `/navi comodo 166/137`, `/navi comodo 249/300` | done when: `iq_cmd21 >= 7`
+3. **Bunny Q** - 10 Hydra + 5 Tentacle (8, 5,500 / 5,500); Bobby Q: 10
+   Sticky Webfoot (9, 5,500 / 5,500).
+   `/navi comodo 249/300`, `/navi comodo 206/304` | done when: `iq_cmd21 >= 9`
+
+Dailies from 9: Bobby Q (10 Thara Frog + 10 Sticky Webfoot), Bunny Q (10
+Hydra + 5 Tentacle), Serabi (10 Megalodon), 5,500 / 5,500 each. Without the
+story (Lv 60): the Vigilante (`comodo 326/215`: 10 Seal + 10 Sea Otter,
+10,000 / 10,000), the Vigilante (`comodo 170/347`: 10 Stalactic Golem + 5
+Tri Joint + 5 Megalith, 20,000 / 20,000), the Explorer (`cmd_fild01 40/320`:
+15 Grove + 10 Alligator, 15,000 / 15,000); the first one turned in at
+each pays the EXP twice.
+
+#### Aldebaran and the Juno fields
+`town_quests_2021/aldebaran.txt` | `iq_ald21` bits 1, 2, quests 21276-21293,
+21300 | Lv 70 (the Clock Tower's lower floors: 80).
+
+1. **A mother's lunch** - the Middle-Aged Woman: "I'll take it"; the
+   Checkpoint Guard (bit 1, 5,000 / 5,000; again daily, cooldown 21300).
+   `/navi aldebaran 114/180`, `/navi yuno_fild01 196/154` | done when:
+   `iq_ald21 & 1`
+2. **Soft and fluffy** - the Kiel Hyre Academy Student at the checkpoint:
+   "Sure"; 5 Antelope Skin + 5 Peco Peco Feather to the student at the
+   academy (bit 2, 14,200 / 14,200).
+   `/navi yuno_fild01 189/154`, `/navi yuno_fild08 179/200` | done when:
+   `iq_ald21 & 2`
+
+Dailies: Checkpoint Manager Cesare (`yuno_fild01 193/158`: 10 Geographer +
+10 Mantis, 19,760 / 15,150); after step 2, the academy student (20 Goat + 20
+Grand Peco, 42,960 / 43,880), the Cat Paw Merchant (`yuno_fild08 172/198`:
+10 Antelope Skin + 10 Peco Peco Feather, 14,200 / 14,200), the Academy Guard
+(`yuno_fild08 198/200`: 15 Harpy + 15 Sleeper, 36,840 / 40,200). The Clock
+Tower Manager (`aldebaran 143/132`): 20 Rideword + 15 Punk (33,820 /
+40,650); from Lv 80: 15 Clock, 20 Alarm, 20 Bathory (20,310-28,320 base),
+each paying 1 Key of Clock Tower and 1 Key of Underground too.
+
+#### Einbroch, Einbech and Lighthalzen
+`town_quests_2021/einbroch.txt` | `iq_ein21` bits 1-8, quests 21301-21325 |
+Lv 80 (Einbech: 85).
+
+1. **Ernst's letter** - Ernst Schumacher at the Kiel Hyre Academy: "I'll
+   take it"; his brother Friedrich in the factory district (bit 1, 10,000 /
+   10,000).
+   `/navi yuno_fild08 172/194`, `/navi ein_fild06 163/173` | done when:
+   `iq_ein21 & 1`
+2. **The commuter pass** - Friedrich: "Use the commuter pass to Einbech"
+   (warps you); Guard Artin (bit 2).
+   `/navi einbech 156/200` | done when: `iq_ein21 & 2`
+3. **Karl's shift** - Guard Eisen: "Anything else?"; Guard Karl at the
+   airport (bit 8, 10,000 / 10,000).
+   `/navi einbroch 220/254`, `/navi airport 133/42` | done when:
+   `iq_ein21 & 8`
+
+Dailies: Friedrich (20 Metaling + 10 Holden, 40,920 / 38,220); Guard Artin (Lv
+85: 20 Pitman; 15 Old Stove; 15 Mineral + 5 Obsidian; 72,040-77,500 base);
+Guard Eisen (20 Venomous; 20 Noxious; 15 Teddy Bear; 38,200-48,600 base);
+Theodore in Lighthalzen (`lighthalzen 200/314`: 20 Rafflesia; 20 Stem Worm;
+about 50,000 base); Reno (`lighthalzen 208/314`: 20 Breeze, 84,392 /
+79,024).
+
+#### Hugel: Abyss Lake and the fishermen
+`town_quests_2021/hugel.txt` | `iq_hu21` 0->3, quests 21294-21299,
+21638-21647 | Lv 40-80 (the dailies), 120 (Abyss Lake).
+
+1. **Nahadan** - "I'll go" (1): kill 30 Ferus (the red ones) at Abyss
+   Lake, then find him on the field outside (2).
+   Needs: the lake opens for 30 seconds when you put one Dragon Canine,
+   Dragon Scale and Dragon Tail in the Column (`hu_fild05 168/304`).
+   `/navi hugel 69/121`, `/navi hu_fild05 185/36` | done when: `iq_hu21 >= 2`
+   Reward: 500,000 base / 500,000 job EXP.
+2. **Myungkyung** - tell him about the injured traveler (3).
+   `/navi hugel 67/119` | done when: `iq_hu21 >= 3`
+
+Dailies: Nahadan (from 3): 30 of each Ferus (both kinds), 30 of each Acidus
+(both kinds), 1 Hydrolancer; 500,000 / 500,000 and 2, 2 or 1 Eden Group
+Coin. No story: Fisherman Ein (`hugel 97/149`, Lv 40: 10 Aster + 10 Crab;
+10 Shellfish + 5 Clam Flesh; 8,400 / 8,380) and Blacksmith Dry (`hugel
+91/142`, Lv 80: 10 of each Novus, 43,080 / 40,160).
+
+#### Juperos: Leader Maxim's camp
+`town_quests_2021/juperos.txt` | quests 21350-21358 | Lv 110 | dailies only.
+
+1. **Leader Maxim and Ernest** - by the Juperos ruins; Maxim: Colorful
+   Dimiks 1 and 2 (10 + 10 Dimik each); Ernest: Iron Ants 1 and 2 (20 + 20
+   Venatu each); 300,000 / 250,000 and 1 Eden Group Coin each.
+   `/navi yuno_fild07 228/172`, `/navi yuno_fild07 232/176` | done when:
+   quest 21356, 21358, 21352 or 21354 started
+
+#### Rachel and Veins
+`town_quests_2021/rachel.txt` | `iq_ra21` bits 1, 2, 4, quests 21140-21148 |
+Lv 90. Each first hunt is a story step, then a daily.
+
+1. **The pilgrims' road** - the Airport Security Guard: 30 Roween (bit 1,
+   86,000 / 82,000).
+   `/navi ra_fild12 296/200` | done when: `iq_ra21 & 1`
+2. **Leonard** - 30 Siroma in the Ice Cave (bit 2, 92,000 / 82,000).
+   `/navi rachel 192/138` | done when: `iq_ra21 & 2`
+3. **Craven** - in Veins: 30 Stapo (bit 4, 86,000 / 82,000).
+   `/navi veins 182/130` | done when: `iq_ra21 & 4`
+
+### City Investment (the City Merchant Union)
+`city_investment/city_investment.txt` | quest 12370 (member), 12371 (the
+day's investment), `iq_ci_city[1..9]`, `iq_ci_jobs` | Lv none | repeatable.
+
+1. **Join the Union** - the City Merchant Union Manager at the Eden Group
+   HQ: "Join the Union" (quest 12370). While you are a member, monsters
+   outside instances drop a Union Insignia 1 time in 5.
+   `/navi moc_para01 53/34` | done when: quest 12370 started
+2. **Invest** - any city's Investment Manager: "Invest Union Insignias", up
+   to 250 a day in one city (each Insignia = 5.5 points; until 4:00).
+   Standing: Town Newbie 3,000, Neighbor 9,000, Notable 21,000, City Power
+   41,000, Ruler 42,000.
+   `/navi prontera 142/67` (also `geffen 103/70`, `payon 156/61`, `morocc
+   184/94`, `yuno 151/127`, `einbroch 84/257`, `lighthalzen 263/79`,
+   `rachel 267/131`, `veins 194/116`) | done when: `iq_ci_city[N] >= 3000`
+3. **Union gear** - the city's Merchant Union next to its manager sells the
+   city's weapon (and Rachel's/Veins' shield) from Town Newbie, shoes from
+   Neighbor, armor from Notable, a garment from City Power (100,000 to
+   250,000 zeny, account bound).
+   `/navi prontera 146/67` | done when: you bought one
+   Note: the Union's Bulletin Board (`moc_para01 53/36`) posts deliveries
+   (C/B/A, 20/30/50 Insignias, one of each a day; B after 10 requests, A
+   after 30) and a weekly Wanted boss (100-300 Insignias, new Wednesday
+   4:00), paid by the Secretary Governor (`moc_para01 53/32`). It is a
+   board: excluded with the other boards, as an Insignia source only.
+
+### Devil in the Box
+`iro_systems/devil_in_the_box.txt` | quests 5961-5971 | Lv 200 (the
+basement) | repeatable (meals: 20 hours after each; special meal: weekly,
+Monday 4:00; snack and Mimic: 20 hours).
+
+1. **The Mysterious Box** - in the Clock Tower: talk to it (quest 5971
+   done).
+   Why: a devil locked in a box by a clockmaker is starving for the soul
+   dregs of the monsters in the forgotten Unknown Basement.
+   `/navi c_tower1 243/202` | done when: quest 5971 done
+2. **The Unknown Basement** - "Go down to the Unknown Basement", "Send me
+   down" (Lv 200). Monsters there are Lv 253-255 (Extra Joker, Erzsebet,
+   Jennifer, General Orc, Sieglouse; the Goblin King boss).
+   done when: you stand in `clock_01`
+3. **Today's meal** - one a day: "Breakfast: 100 monsters", "Lunch: 300
+   monsters" or "Dinner: 1000 monsters" in the basement.
+   Reward: 30,000,000 / 20,000,000; 90,000,000 / 60,000,000; 300,000,000 /
+   200,000,000 base / job EXP.
+4. **This week's special meal** - "I'll do it": 5,000 monsters.
+   Reward: 1,500,000,000 base / 1,000,000,000 job EXP.
+5. **A snack** - 100 each of Jokers Wild (Extra Joker, 25%), Cute Broom
+   (Erzsebet, 22%), Colorful Coral (Jennifer, 21%) and Shiny Round Shell
+   (Sieglouse, 20%): "Give her the trinkets".
+   Reward: 100,000,000 base / 70,000,000 job EXP.
+6. **Your pet Mimic** - "I'll feed your Mimic": among the ten Pet Mimics in
+   the basement, the one with a red collar (chosen at random,
+   `wsi_mimic`); the wild ones point the way ("prints lead north..."). Then
+   back to the box.
+   `/navi clock_01 136/143` | done when: quest 5970 started
+   Reward: 50,000,000 base / 35,000,000 job EXP.
+
 ## Entrances without a quest
 
 - **Nightmare Clock Tower** - Belljamin Button in the Clock Tower: "Go to 2nd
@@ -5289,11 +5889,10 @@ the townsfolk (`harboro1` misc NPCs).
   each to its neighbours: Allied camp mid_camp 207/234 (Near Splendide,
   Manuk Field), spl_fild02 53/242 (Entrance to Mora, Allied camp),
   man_fild02 135/49 (Allied camp, Near El Dicastes), dic_fild01 161/266,
-  if_fild02 293/325, ecl_fild01 118/311. 10-55 Malangdo Canned
+  bif_fild02 293/325, ecl_fild01 118/311. 10-55 Malangdo Canned
   Specialties or 1,000 zeny for each can. No condition.
-  
-e/quests/quests_eclage.txt.
+  `re/quests/quests_eclage.txt`
 - **Cat Paw Agents** of the New World (mid_camp 62/125, spl_fild02 25/211,
   man_fild02 132/47): save point, storage and the Cat Warp by the Cat Paw
-  Trading Post's credit (region 23). quests/quests_13_1.txt,
-  quests/quests_13_2.txt.
+  Trading Post's credit (region 23).
+  `quests/quests_13_1.txt`, `quests/quests_13_2.txt`

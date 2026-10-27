@@ -50,3 +50,15 @@ written into the steps), Find the Research Tools (only long: waits of 1 hour,
 Worth knowing: quest_db `TimeLimit: 4h` (no `+`) ends at 4:00 server time, so
 the Renewal "4 h" quests are dailies; the batch 3 wording was fixed in
 ro-quest-steps.md and ro-quest-catalog.md.
+
+Batch 5 of the steps (2026-10-27, region 29, the quests of World Sync
+Extras 2.1.5) found no new dead end. The item checks now also read
+rathena-pin's `db/re/mob_db_world.yml` (the World Sync monsters), which the
+earlier batches left out; the Star Shape Mushroom (Professor Worm) and the
+Unknown Fish (Pipielle) still have no source there. Worth knowing: the
+Devil in the Box's snack wants 100 each of four items that only the Unknown
+Basement's Lv 253-255 monsters drop (20-25%); Payon's Soul Cleansing daily
+wants 15 Amulets (Munak 0.1%, Bongun 0.08%, Yao Jun 0.5%, no shop); Knight
+Tybalt's Turtle Island line needs the boat of the Turtle Island Quest, and
+Nahadan's Abyss Lake line needs a Dragon Canine, Dragon Scale and Dragon
+Tail to open the lake.
