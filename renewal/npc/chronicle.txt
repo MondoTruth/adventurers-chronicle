@@ -514,7 +514,9 @@ OnCmd:
 		end;
 	}
 	if (.@atcmd_numparameters >= 2 && .@atcmd_parameters$[1] == "cat") {
+		freeloop(1);
 		.@s$ = callfunc("F_ChronCatState");
+		freeloop(0);
 		.@len = getstrlen(.@s$);
 		.@parts = (.@len + 199) / 200;
 		for (.@p = 0; .@p < .@parts; .@p++)

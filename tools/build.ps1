@@ -865,10 +865,13 @@ foreach ($gt in $story.gates) {
 $tpl = Get-Content (Join-Path $here 'chronicle.template.txt') -Raw
 $tpl = $tpl.Replace('//@@DATA@@', ($d -join "`n`t")).Replace('//@@NPCS@@', (($cond + $guideFns + $catFns + $mainFns + $npcs) -join "`n"))
 # "@chronicle <n> cat": the catalog's line, in parts of 200 characters (one
-# chat line each; the client joins the parts of a reply).
+# chat line each; the client joins the parts of a reply). freeloop: the whole
+# catalog is more jumps than rAthena's 2048 allowed per run ("infinity loop").
 $catCmd = @'
 if (.@atcmd_numparameters >= 2 && .@atcmd_parameters$[1] == "cat") {
+		freeloop(1);
 		.@s$ = callfunc("F_ChronCatState");
+		freeloop(0);
 		.@len = getstrlen(.@s$);
 		.@parts = (.@len + 199) / 200;
 		for (.@p = 0; .@p < .@parts; .@p++)
