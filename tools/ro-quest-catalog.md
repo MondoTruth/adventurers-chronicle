@@ -4,8 +4,8 @@ Step 1 of the Renewal Side Quests tab (concept v3, 2026-10-26): every side
 quest Ragnarok itself has on a Renewal server, grouped Region -> Storyline ->
 Quest, with the links between them. Step 2 adds the steps, an explanation
 for each and a `/navi map x/y`, region by region, in `ro-quest-steps.md`
-(regions 1-13 and the entrances done on 2026-10-26, regions 14-22 on
-2026-10-27).
+(regions 1-13 and the entrances done on 2026-10-26, regions 14-22 and 23-28
+on 2026-10-27).
 
 Source of truth: rathena-pin, commit 8aea17a (the app 1.7.0 pin). Every file
 named here is loaded on Renewal (`npc/scripts_athena.conf`, which
@@ -519,11 +519,11 @@ Excluded: the Sushi Quest (exchange, see Excluded files).
 - **The Water Lily** - botanist Karmen. `brazil_regia` 0->10 | Lv: none
   | needs: the Dungeon Access at 7 (steps in bra_dun02).
 - **Lost Puppies** - Angelo's puppies. quests 9030-9032 | Lv: 40 | repeatable
-  (4 h on Renewal, quest_db).
+  (daily: until 4:00 server time, quest_db).
 - **The Suspicious Beach** - Lucia and the Strange Hydras. quests 9028-9029
-  | Lv: 40 | repeatable (4 h).
+  | Lv: 40 | repeatable (until 4:00).
 - **Iara** - the shaman and the river spirit. quests 4133-4135 | Lv: 40
-  | repeatable (4 h, a buff) | needs: the Dungeon Access at 7.
+  | repeatable (until 4:00, a buff) | needs: the Dungeon Access at 7.
 All `quests/quests_brasilis.txt`.
 
 ## 20. Dewata
@@ -532,7 +532,7 @@ All `quests/quests_brasilis.txt`.
   `re/quests/quests_dewata.txt` | `dew_legend` 0->17, quests 9155-9165 | Lv: 60
   | opens: the Gatekeeper of Krakatau (dew_dun01).
 - **Help Out the Old Man** - Memo. `dew_drink` 0->10, quests 5035-5044 | Lv: 60
-  | then a 4-hour daily (quests 5045-5050).
+  | then a daily, until 4:00 (quests 5045-5050).
 Excluded: the Traditional Weapon (exchange).
 
 ## 21. Malangdo
@@ -543,10 +543,10 @@ Excluded: the Traditional Weapon (exchange).
   source for Unknown Fish (see guide-deferred.md). The Octopus Cave and the
   Malangdo Culvert memorials are not opened by it.
 - **Help the Bad Cats in Danger** - Gobonge's gang. quests 1145-1155 | Lv: 60
-  | repeatable (4 h).
-- **Clean the Ship** - Cleanyang. quests 7260-7275 | Lv: 60 | repeatable (4 h)
+  | repeatable (until 4:00).
+- **Clean the Ship** - Cleanyang. quests 7260-7275 | Lv: 60 | repeatable (until 4:00)
   | opens: Help Chef Nyas.
-- **Help Chef Nyas** - quests 7264-7280 | Lv: 60 | repeatable (4 h)
+- **Help Chef Nyas** - quests 7264-7280 | Lv: 60 | repeatable (until 4:00)
   | needs: Clean the Ship (7264).
 - **Play with Baby Cats** - the Meow Team. `nyadven` 0->14, `nyadven02`, quests
   7242-7259 | Lv: 60 | repeatable games after.
@@ -580,53 +580,62 @@ festival where Ancient Grudges are handed in).
 Story: 13.1 Onward to the Other World (`ep13_ryu`), 13.2 Two Tribes
 (`ep13_mdrama`), 13.3 Doha's Secret Orders (`ep13_3_secret`). Most side quests
 here check `ep13_ryu > 99 || ep13_start > 99` (13.1 done, or the Cat Paw
-passage).
+passage). Not quests: the Yggdrasil Dungeon Floor 2 devices (a map puzzle,
+no variable) and the extra Cat Paw Agents of `quests/quests_13_2.txt` (Cat Paw
+Addition: the Trading Post's services by its credit `ep13_yong1`; see
+"Entrances without a quest").
 
 ### Storyline: toward Splendide (opens 13.2)
 - **Finding a Fairy & Finding a Giant Tree** - the small fairy in Splendide's
   field and the Tree Giant. `quests/quests_13_1.txt` | quests 2158, 2159
-  | Lv: 70 | needs: 13.1 | opens: the Otherworld Language.
+  | Lv: 70 | no 13.1 check of their own | opens: the Otherworld Language.
 - **The Otherworld Language** - learn the Laphine and Sapha tongues; wear the
   Ring of the Wise King (2782). `quests/quests_13_2.txt` | `ep13_2_rhea` 0->12,
-  100 | Lv: none | guided `ep13_language` | opens: Episode 13.2 (Story),
-  Monster Suppression, the Laphine dailies, Bazett's note.
-- **Monster Suppression** - Manuk Galtun's daily. `quests/quests_13_2.txt`
-  | `ep13_2_days01`, quests 7074-7075 | Lv: none | repeatable | needs:
-  the Otherworld Language, the ring worn, and 13.2 past 5 (`ep13_mdrama > 5`).
-- **Bradium, Laphine Craftsman and Draco Egg Collection** (with the "Wanted"
-  quest) - Manuk's engineer, the Laphine craftsman, the pet breeder.
+  100 | Lv: 70 (the fairy and the giant) | guided `ep13_language` | opens:
+  Episode 13.2 (Story), Monster Suppression, the Manuk and Splendide dailies,
+  Midgard Ore and Alfheim Perfume, Bazett's note.
+- **Monster Suppression** - Manuk Galtun. `quests/quests_13_2.txt`
+  | `ep13_2_days01` 0->2, quests 7074-7075 | Lv: none | once (nothing resets
+  it) | needs: the Otherworld Language, the ring worn, and 13.2 past 5
+  (`ep13_mdrama > 5`).
+- **Manuk and Splendide dailies** (Refined Bradium, the Laphine Craftsman,
+  Draco eggs, and the once-only "Wanted: Dandelion") - Manuk's engineer, the
+  Laphine craftsman, the pet breeder, the wanted sign.
   `quests/quests_13_2.txt` | `ep13_2_dayegg`, `ep13_2_wanted`, quests 7076-7082
-  | Lv: none | repeatable.
-- **Midgard Ore and Alfheim Perfume** - the High Laphine's dailies.
-  `quests/quests_13_2.txt` | `ep13_2_tre1`, `ep13_2_tre`, quests 2179-2186
-  | Lv: none | repeatable | needs: the Otherworld Language (100) and the ring worn.
-- **Secret Note of Bazett** - Bazett Teablack's daily. `quests/quests_13_2.txt`
-  | `ep13_2_busut`, quests 11101-11105 | Lv: none | repeatable | needs: the
-  Otherworld Language (100).
-- **Cat Paw Addition** - Cat Paw agents in Splendide and Manuk's fields
-  (teleports). `quests/quests_13_2.txt` | reads `ep13_1_rhea` | Lv: none
-  | opens a place (cat teleports) - to verify the condition.
-- **Yggdrasil Dungeon Floor 2 puzzle** - strange devices in Nidhoggur's
-  dungeon. `quests/quests_13_2.txt` | Lv: none | opens a place (to verify).
+  | Lv: none | repeatable (until 4:00) | needs: the Otherworld Language and the
+  ring (craftsman, breeder, sign also `ep13_mdrama > 5`).
+- **Midgard Ore and Alfheim Perfume** - Dr. Lifeguard in Manuk and the High
+  Laphine Grenouille. `quests/quests_13_2.txt` | `ep13_2_tre`, `ep13_2_tre1`,
+  quests 2179-2186 | Lv: none | repeatable (18 hours) | needs: the Otherworld
+  Language (100) and the ring worn.
+- **Secret Note of Bazett** - Bazett Teablack. `quests/quests_13_2.txt`
+  | `ep13_2_busut` 0->7, quests 11101-11105 | Lv: none | once (the script never
+  resets 7) | needs: the Otherworld Language (100) and the ring worn.
 
 ### Storyline: toward El Dicastes (opens 13.3)
 - **Sapha's Visit** - guards Ben, Maha and Aello: the way into El Dicastes.
   `re/quests/quests_dicastes.txt` | `ep13_3_invite` 0->6, quests 7182-7197
   | Lv: none | guided `ep13_sapha` | needs: 13.1 | opens: Episode 13.3 (Story),
-  Frede's Request.
-- **Frede's Request** - Frede and Brian in El Dicastes.
-  `re/quests/quests_dicastes.txt` | `ep13_3_bra` 0->10, quests 11159-11176
+  Frede's Request, the El Dicastes requests, the Unknown Relics.
+- **Frede's Request** - Frede and the six Bradium miners.
+  `re/quests/quests_dicastes.txt` | `ep13_3_bra` 0->9, quests 11159-11176
   | Lv: none | needs: Sapha's Visit past 5 and the ring worn.
-- **El Dicastes departments** (hunting, supply, transport) and **document
-  packages**. `re/quests/quests_dicastes.txt` | quests (to verify ids) | Lv:
-  80, 97 or 100 by department | repeatable.
-- **Unknown Relics** - relic collection around the world for El Dicastes.
-  `re/quests/quests_dicastes.txt` | `ep13_3_ahtdayq`, quests 7198-12164
-  | Lv: 80/97/100 | repeatable | reads `ep13_3_secret` (to verify).
+- **El Dicastes requests** - six citizens hand out hunting, supply and
+  transport requests; the department managers take them in.
+  `re/quests/quests_dicastes.txt` | quests 12099-12164 | Lv: 80 (Hunting 1:
+  97, Hunting 2: 100) | repeatable (one per citizen until 4:00) | needs:
+  Sapha's Visit at 6 and the ring worn.
+- **Unknown Relics** - the archive's Document Packages and Papyrus.
+  `re/quests/quests_dicastes.txt` | quests 12165-12215 | Lv: 80 | repeatable
+  | needs: Sapha's Visit at 6 and the ring worn.
+- **Removing Traces** - Minister Ahat's Secret Adjutant.
+  `re/quests/quests_dicastes.txt` | `ep13_3_ahtdayq`, quests 7200-7201 | Lv:
+  none | repeatable (until 4:00) | needs: 13.3 past 18 | closed by: Jeruth
+  Hesranta in the Flame Basin (26) at `ep13_3_secret == 24`.
 - **Cat Paw Agent (El Dicastes)** - the Cat Paw passage from Morroc to the New
-  World. `re/quests/quests_dicastes.txt` | `ep13_start` | Lv: 70 (to verify)
-  | opens a place: the New World without 13.1 (`ep13_start` = 100 counts as
-  13.1 for most side quests) | guided `ep13_catpaw` is the trading post, not this.
+  World. `re/quests/quests_dicastes.txt` | `ep13_start` 0->100 | Lv: 70 | opens
+  a place: the New World without 13.1 (`ep13_start` = 100 counts as 13.1 for
+  most side quests) | 50,000 zeny.
 Excluded: Cat Paw's enchantment (`ep13_3_ring2`).
 
 ### Single quests
@@ -634,52 +643,56 @@ Excluded: Cat Paw's enchantment (`ep13_3_ring2`).
   `quests/quests_13_1.txt` | `ep13_newbs` 0->24, 100, quests 11084-11100
   | Lv: none | needs: 13.1 (shown in the Story tab after 13.1; mockup v3).
 - **Attitude to the New** - the monster scholar and the botanist.
-  `quests/quests_13_1.txt` | `ep13_animal` 0->~10, quests 2147-2157 | Lv: none
-  | needs: 13.1.
-- **The Tripartite Union's Feud** - Ryosen and Hue quarrel.
-  `quests/quests_13_1.txt` | `ep13_1_rhea` 0->~10, 100, quests 8196-8210
+  `quests/quests_13_1.txt` | `ep13_animal` 0->15, 100, quests 2147-2157 | Lv:
+  none | needs: 13.1.
+- **The Tripartite Union's Feud** - Ryosen, Hue and Hansenne quarrel.
+  `quests/quests_13_1.txt` | `ep13_1_rhea` 0->26, 100, quests 8196-8210
   | Lv: none | needs: 13.1.
-- **Part Time Work** - breeder Taab. `quests/quests_13_1.txt` | `ep13_alba`,
-  quests 7042-7047 | Lv: none | needs: 13.1 | repeatable (to verify).
+- **Part Time Work** - breeder Taab. `quests/quests_13_1.txt` | `ep13_alba`
+  0->6, quests 7042-7047 | Lv: none | needs: 13.1 | repeatable (5 hours; he
+  hires 10 minutes in every 130, 5 places for the server).
 - **The Cat Paw Trading Post** - the Cat Paw merchants' credit.
-  `quests/quests_13_1.txt` | `ep13_yong1` 0->100, quests 12060-12062
-  | Lv: none found (guide says 118+, to verify) | guided `ep13_catpaw`
-  | repeatable (fish deliveries) | opens a place: Cat Paw storage at 20, the
-  Cat Warp to Midgard at 40.
+  `quests/quests_13_1.txt` | `ep13_yong1` 0->10, then credit points
+  | Lv: none (the guide's 118+ is a range) | guided `ep13_catpaw`
+  | repeatable (fish and minerals until 4:00) | opens a place: save point at 3,
+  storage at 20, the Cat Warp to Midgard at 40, Jotunheim warps at 100.
 - **Report from the New World** - Hibba Agip's report.
-  `quests/quests_13_1.txt` | `ep13_1_edq` 0->25, quests 3085-3094 | Lv: none
-  | needs: the sum `ep13_newbs + ep13_ryu + mao_morocc2 + ep13_1_rhea +
-  ep13_animal + ep13_start` over 115 (line 8488): roughly 13.1 and a second
-  New World quest done (to verify).
+  `quests/quests_13_1.txt` | `ep13_1_edq` 0->14, quests 3085-3094 | Lv: none
+  | needs: `ep13_newbs + ep13_ryu + mao_morocc2 + ep13_1_rhea + ep13_animal +
+  ep13_start > 115` (13.1 at 100 plus 16 from the camp quests) | its part from
+  15 leads into Nidhoggur's Nest (Story).
 - **Pursuing Rayan Moore** - the pursuit party. `quests/quests_13_1.txt`
-  | `mao_morocc2` 0->~38, quests 7012-7041 | Lv: none | needs: 13.1.
+  | `mao_morocc2` 0->31, 100, 101-108 (the sweet potatoes), quests 7012-7041
+  | Lv: none | needs: 13.1.
 - **The Magic Books** - excluded (skill books).
 
 ## 24. Mora and Bifrost (Episode 14.1)
 
-Story: 14.1 Mistwood Maze (`ep14_1_mistwoods`, `instances/HazyForest.txt` is
-not in this catalog).
+Story: 14.1 Mistwood Maze (`ep14_1_mistwoods`). The Mistwood Maze instance
+(`re/instances/HazyForest.txt`, Laphine Soldier `bif_fild01 158/340`) wants a
+party leader (a party of one counts), no level, again 2 h 30 after entry.
 
 ### Storyline: Lope and Euridi
 - **Helping Lope and Euridi** - `re/quests/quests_mora.txt` | `ep14_1_rope`
-  0->11, quests 1109-1117 | Lv: 100 | **dead end** (Parus, see
-  guide-deferred.md) | opens: Knights of the Neighborhood.
-- **Knights of the Neighborhood** - the knights' chief in Mora.
-  `ep14_1_mora_knight` section, quests 1118-1119 | Lv: none | needs: Lope and
-  Euridi (`ep14_1_rope`, to verify the step).
+  0->11, quests 1109-1117 | Lv: 100 | 30 Lope's Clue from Parus (Lv 142, only
+  in the Mistwood Maze) | opens: Knights of the Neighborhood.
+- **Knights of the Neighborhood** - the knights' head in Mora.
+  `ep14_1_mora_knight` section | `ep14_1_rope` 11->13, quests 1118-1119 | Lv:
+  none | needs: Lope and Euridi (`ep14_1_rope == 11`) | 30 more Lope's Clue.
 
 ### Single quests
 - **Theore's Request** - a white-gowned man at the camp and a fairy in the
-  bushes. `ep14_1_bs` 0->27, quests 11182-11208 | Lv: 100 | dead end? (see
-  guide-deferred.md: the fairy must be described).
+  bushes. `ep14_1_bs` 0->19, `ep14_1_bs2`, quests 11182-11208 | Lv: 100 | the
+  fairy's looks are fixed per fairy (Kusmi, Theodore, Pauchon): not a dead end.
 - **Find the Research Tools** - the raffle researcher.
-  `ep14_1_muk` 0->13, `ep14_1_goki`, quests 5016-5034 | Lv: 100
-  | dead end? (long waits, see guide-deferred.md).
-- **Chesire's New Day** - Cheshire in El Dicastes. quests 7206-7210 | Lv: none
-  | needs: 13.3 past 22 (`ep13_3_secret > 22`, guide-deferred.md).
-- **Mora daily quests** - Elephantine, Hotcha, Bow-wow and the Mora traders.
-  quests 12225-12253 | Lv: 97 (Elephantine 135) | repeatable | reads
-  `ep14_1_mistwoods` (to verify: needs 14.1?).
+  `ep14_1_muk` 0->15, `ep14_1_goki`, quests 5016-5034 | Lv: 100 | long: waits
+  of 1 hour, 1 day, 6 and 12 hours; the researcher is away 0:00-5:00.
+- **Chesire's New Day** - Cheshire in El Dicastes and on Bifrost. quests
+  7206-7210 | Lv: none | needs: 13.3 past 22 (`ep13_3_secret > 22`, Story) |
+  repeatable (until 4:00).
+- **Mora daily quests** - Elephantine, Hotcha, Bow-wow, Woof-grrr, the Mora
+  dealers and the Soul Guide. quests 12225-12253 | Lv: 97 (Elephantine 135) |
+  repeatable (until 4:00) | needs: 14.1 at 10 (`ep14_1_mistwoods >= 10`).
 All `re/quests/quests_mora.txt`.
 
 ## 25. Eclage (Episode 14.2)
@@ -692,25 +705,24 @@ Darkness (`ep14_2_etran`, after `ep14_2_mylord > 6`).
   `re/quests/quests_eclage.txt` | `ep14_2_oliver` 0->3, quests 11310-11311
   | Lv: none | guided `ep14_eclage` | opens a place: Eclage.
 - **Oliver Wolf Hood (Dreaming Time)** - a fairy carpenter and Oliver's hood.
-  `ep14_2_oliver` 3->27, quests 11312-11337 | Lv: 120 (fairy carpenter) | needs:
-  Eclage's Entrance.
+  `ep14_2_oliver` 3->30, quests 11312-11337 | Lv: 120 (fairy carpenter) | needs:
+  Eclage's Entrance | opens: Laphines That Love the Land (at 5).
 - **Laphines That Love the Land (Lost Adventurers)** - Fili and the laphines
-  outside the gate. `ep14_2_nines` 0->7, quests 13050-13066 | Lv: 100 (guide;
-  the script's `< 100` is a song line - to verify) | guided `ep14_nines`
-  | needs: `ep14_2_oliver > 4` for a later part.
+  outside the gate, then New Oz in the tower. `ep14_2_nines` 0->6, quests
+  13050-13066 | Lv: 100 (Fili) | guided `ep14_nines` (1-3) | needs:
+  `ep14_2_oliver > 4` to start | repeatable from 3 and 6 (until 4:00).
 
 ### Single quests
-- **Wanted to Be Big and Beautiful** - Wuhari. `ep14_2_big` 0->25, quests
+- **Wanted to Be Big and Beautiful** - Wuhari. `ep14_2_big` 0->26, quests
   14118-14141 | Lv: 120.
 - **The Mystery Burglary** - Daughter Luen's house. `ep14_2_detect` 0->15,
   quests 9225-9262 | Lv: 120.
-- **Troublesome Fairies (Prankster of Eclage)** - Eirinn, Bourbon, Cecilia.
-  quests 4254-4265 | Lv: 120.
+- **Troublesome Fairies (Prankster of Eclage)** - Eirinn, Bourbon, Cecilia,
+  Dominic. quests 4254-4265 | Lv: 120.
 - **Memory of Professor Worm** - the professor in the Eclage tower dungeon.
-  `ep14_2_profe` 0->15, quests 1214-1228 | Lv: 120 | **dead end** (Star Shape
-  Mushrooms, see guide-deferred.md).
-- **Teleport Cats** - Cat Paw teleports between Eclage, Bifrost and Splendide.
-  | opens a place | to verify: any condition.
+  `ep14_2_profe` 0->12, quests 1214-1228 | Lv: 120 | **dead end** at step 3
+  (Star Shape Mushrooms, see guide-deferred.md).
+Not a quest: the Teleport Cats (see "Entrances without a quest").
 All `re/quests/quests_eclage.txt`.
 
 ## 26. Flame Basin (Episode 14.3)
@@ -718,20 +730,25 @@ All `re/quests/quests_eclage.txt`.
 Story: 14.3 Dimensional Travel (`ep14_3_newerabs`, Lv 140, needs
 `ep14_2_mylord` past 33).
 
-- **Flame Basin dailies** - Adjutant Abidal and Instructor Igrid: Eliminating
-  Risks, Daily Cleaning, Frost Spider and Fire Wolf, Unending Hunt.
-  `re/quests/quests_14_3_bis.txt` | quests 7581-7599 | Lv: 140 | repeatable.
+- **Flame Basin dailies** - Instructor Igrid (Eliminating Risks, Daily
+  Cleaning) and Adjutant Abidal (Frost Spider and Fire Wolf, Unending Hunt).
+  `re/quests/quests_14_3_bis.txt` | quests 7581-7582, 7594, 7599 | Lv: 140
+  (Abidal 160) | repeatable (until 4:00) | Abidal needs Demon God Subjugation
+  taken.
 - **Magic Scholar and Hishieh** - Collecting Mana, Unending Battle, Wandering
-  Orb Magic, Promising Tomorrow. same file | reads `ep14_2_mylord` | Lv: 140
-  (160 for some) | repeatable.
+  Orb Magic, Promising Tomorrow. same file | quests 7583-7584, 7595, 7600 |
+  needs: `ep14_2_mylord` at 33 (the scholar moves it to 34) | Lv: 140 (Hishieh
+  160) | repeatable.
 - **Jeruth Hesranta** - Rampaging Box, Collecting Bradiums, Collecting Every
-  Day, Cheshire's Call. same file | reads `ep13_3_secret` | Lv: 140
-  | needs: 13.3 (to verify the step) | repeatable.
-- **Demon God Subjugation / Fall of the False God / Caged God** - Guardian
-  Nidhogg and Commander Hibba Agip. same file | `ep4_3_mockill`, quests
-  7593-7598 | Lv: 160 | opens a place: the Temple of the Demon God (instance).
+  Day. same file | `ep13_3_secret` 24->27, quests 7578-7580 | Lv: 140 (from 25)
+  | needs: 13.3 at 24 | closes: Removing Traces (23) | repeatable from 27.
+- **Demon God Subjugation / Fall of the False God / Caged God** - Commander
+  Hibba Agip and Guardian Nidhogg. same file | `ep4_3_mockill`, quests
+  7593-7598 | Lv: 160 | needs: Morse's Cave done (`ep14_3_mors01`, memorial)
+  | opens a place: the Temple of the Demon God (instance, party leader) |
+  repeatable.
 - **Flaming Basin and Doom Prayers** - the base investigator and the Doom
-  Prayers. same file | `ep14_3_fall_bless`, quests 1264-1297 | Lv: 150.
+  Prayers. same file | `ep14_3_fall_bless` 0->13, quests 1264-1297 | Lv: 150.
 
 ## 27. Verus and the Phantasmagorika (Episode 15)
 
@@ -743,35 +760,42 @@ Story: 15 To Phantasmagorika!/Atnad excavation (`ep15_1_atnad`, Lv 140).
   Biological Weapon, Odin Temple; his own quest wants all six.
 - **The Verus Police** - Chief Kesler and officers Salgran, Gerev, Seiden,
   Piffs. `re/quests/quests_15_1.txt` | `ep15_1_mang`, quests 5304-5318
-  | Lv: 140 | repeatable parts.
-- **New Power Source** - same file, quests 5265-5275 (to verify title/var).
+  | Lv: 140 | repeatable (until 4:00).
+- **New Power Source** - Machinist Lloyd. same file | quests 7628-7629 | Lv:
+  none | needs: Story 15 past 16 | repeatable (until 4:00).
 - **To Phantasmagorika! / Looking for the Traces** - guide Elisha and
-  Scarlet. same file | `ep15_1_elb`, quests 11363-11377 | Lv: none | needs:
-  `ep15_1_atnad >= 4` (Story 15) | opens: the bunker memories (`ep15_1_elb` 15).
+  Scarlet. same file | `ep15_1_elb` 0->15, quests 11363-11376 | Lv: none | needs:
+  `ep15_1_atnad >= 4` (Story 15) | opens: Vestige (`ep15_1_elb` 15).
 - **Monthly Brigan** - Krotzel and the journalists. `re/quests/quests_15_2.txt`
-  | `ep15_2_brigan`, quests 13195-13205 | needs: Story 15 at 19 | repeatable.
-- **The Bunker: Restriction on the Journey** - head counts, deliveries, grape
-  harvest, the air purifier. `re/quests/quests_15_2.txt` | `ep15_2_memory`,
-  quests 5341-5369 | repeatable parts | needs: to verify.
+  | `ep15_2_brigan` 0->8, quests 13195-13205 | needs: Story 15 at 19 |
+  repeatable from 8 (until 4:00).
+- **The Bunker: Restriction on the Journey** - head counts, air purifiers,
+  grape harvest, patients, transport. `re/quests/quests_15_2.txt` |
+  `ep15_2_memory`, quests 5341-5370 | repeatable (22 hours each) | needs: to
+  verify.
 - **Vestige / The Final Room** - Du, Mark and Alph in the bunker.
-  `re/quests/quests_15_2.txt` | `ep15_2_bslast`, `ep15_2_bsmemo`, quests
-  11380-11389 | needs: Story 15 at 19 and `ep15_1_elb` 15.
+  `re/quests/quests_15_2.txt` | `ep15_2_bslast` 0->9, `ep15_2_bsmemo` 0->16,
+  quests 11380-11389 | needs: Story 15 at 19 and `ep15_1_elb` 15.
 Not quests: the Reward Coordinator and the contribution certificate machine
-(Lv 80); the Doom Prayers event on verus04 (to verify).
+(Lv 80); the Doom Prayers event on verus04.
 
 ## 28. Rock Ridge
 
 - **Rock Ridge, Land of Opportunities** (main line) - Karam Pucci in Alberta
   and the town of Rock Ridge. `re/quests/quests_rockridge.txt`
-  | `rock_main_quest` 0->24, quests 7790-... | Lv: 100 | opens a place: Rock
+  | `rock_main_quest` 0->22, quests 7790-7809 | Lv: 100 | opens a place: Rock
   Ridge (harboro1). Standalone: Karam Pucci asks only `BaseLevel >= 100` and
   `rock_main_quest == 0`; no episode variable, and no other script reads
-  `rock_main_quest`. The ship from Alberta runs at any level.
-- **Spotty and Her Ring**, **Cacturon**, **Collecting Ore Fragments**,
-  **Pipe Cleaning**, **Midnight**, **Gas! Gas!**, **Mrs. McPhy**, **Mr. McPhy**,
-  **the prison**, **the food supplier** - the town's own quests and dailies.
-  same file | quests 1298-16088 | Lv: 100 (some 130/140) | several repeatable
-  | needs: the main line (to verify per quest).
+  `rock_main_quest`. The ship from Alberta costs 10,000 zeny.
+- **Cacturon**, **Collecting Ore Fragments**, **Pipe Cleaning**, **Midnight**,
+  **Gas! Gas!** - same file | quests 16078-16088, 9458-9461, 14672-14673,
+  1298-1299 | Lv: none (Midnight 130/140) | repeatable (until 4:00) | needs: the
+  main line at 22.
+- **The town's jobs** (the Exotic Merchant, the Food Distributer, the Steel
+  Vigilantes, the Desalination Facility) - same file | quests 12381-12411 |
+  Lv: 100 (Vigilante #2: 140) | repeatable (until 4:00) | needs: to verify.
+- **Mrs. McPhy and Spotty**, **Mr. McPhy** - same file | quests 1321-1332 |
+  Lv: 100 | repeatable.
 
 ## Entrances without a quest
 
@@ -788,8 +812,13 @@ NPCs that only let you into a harder version of a place: no steps, shown as
 - **Nightmare Pyramid** - the Suspicious Cat (moc_prydb1 103,54) leads you in
   for 5,000 zeny (to moc_prydn1). `re/quests/quests_morocc.txt` | Lv: none.
   Its hunts are listed in Morroc (4).
-- Candidates to check in step 2: Eclage's Teleport Cats (27) and the Cat Paw
-  teleports of the New World (25) may fit here better.
+- **Teleport Cats** - six Cat Paw cats along the New World (mid_camp 207,234;
+  spl_fild02 53,242; man_fild02 135,49; dic_fild01 161,266; bif_fild02 293,325;
+  ecl_fild01 118,311). `re/quests/quests_eclage.txt` | Lv: none | 10-55
+  Malangdo Canned Specialties or 1,000 zeny a can.
+- **Cat Paw Agents** of the New World (mid_camp 62,125; spl_fild02 25,211;
+  man_fild02 132,47) - save point, storage (60 zeny) and the Cat Warp by the
+  Trading Post's credit (23). `quests/quests_13_1.txt`, `quests/quests_13_2.txt`.
 
 ## Later: Episodes 16-19 (not in the catalog yet)
 

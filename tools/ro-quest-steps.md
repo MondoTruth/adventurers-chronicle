@@ -4,8 +4,9 @@ Step 2 of the Renewal Side Quests tab: the steps of every quest in
 `ro-quest-catalog.md`, same regions, same numbers, same order. Batch 1
 (2026-10-26): regions 1-6 and "Entrances without a quest". Batch 2
 (2026-10-26): regions 7-13, the Party Relay and the Unlucky Emerald's jewel
-part. Batch 3 (2026-10-27): regions 14-22. Regions 23-29 follow in later
-batches.
+part. Batch 3 (2026-10-27): regions 14-22. Batch 4 (2026-10-27): regions
+23-28 and two more entrances. Region 29 (World Sync Extras) follows in the
+next batch.
 
 Source of truth: rathena-pin, commit 8aea17a (the app 1.7.0 pin). Every
 coordinate, item, count, level and variable value below was read in the
@@ -32,6 +33,9 @@ N. **Short title** - what to do (NPC, what to choose or bring, counts).
 - A dead end stops at the blocker: "dead end, see guide-deferred.md".
 - **Players: N** marks a quest that needs a party of N or more; party bots
   count as players (MondoTruth, 2026-10-26).
+- Cooldowns come from `db/re/quest_db.yml`. `TimeLimit: 4h` (no `+`) is a
+  clock time: the wait ends at the next 4:00 server time, so such a quest
+  is a daily. `TimeLimit: +4h` is a length: 4 hours after it starts.
 
 ---
 
@@ -1051,7 +1055,7 @@ the steps that say so; the Old Soldier takes it at the end.
 
 ### Nightmare Pyramid hunts
 `re/quests/quests_morocc.txt` | quests 2289 "Verit Hunting (Nightmare)",
-2292 "Mummy Hunting (Nightmare)", cooldowns 2290 / 2291 (4h) | Lv none |
+2292 "Mummy Hunting (Nightmare)", cooldowns 2290 / 2291 (until 4:00) | Lv none |
 repeatable.
 
 1. **The Suspicious Cat** - in the Pyramid's basement, the cat: "Mummy? What
@@ -1065,7 +1069,7 @@ repeatable.
    talk to the cat.
    `/navi moc_prydn1 94/98` | done when: quest 2290 or 2291 (cooldown) started
    Reward: Verit 300,000 base / 100,000 job EXP; Mummy 600,000 base /
-   200,000 job EXP. Each again after 4 hours.
+   200,000 job EXP. Each again after the next 4:00 server time.
 
 ## 5. Alberta
 
@@ -3522,7 +3526,7 @@ Brasilis Dungeon Access at 7 (steps 4-6 are in `bra_dun02`).
 
 ### Lost Puppies
 `quests/quests_brasilis.txt` | quests 9030-9032 (`brazil_kid` counts the
-puppies) | Lv 40 | repeatable (4 h, quest 9032; db/re/quest_db.yml).
+puppies) | Lv 40 | repeatable (daily: until 4:00 server time, quest 9032).
 
 1. **Angelo** - (quest 9030).
    `/navi brasilis 297/307` | done when: quest 9030 active
@@ -3531,13 +3535,13 @@ puppies) | Lv 40 | repeatable (4 h, quest 9032; db/re/quest_db.yml).
    `59/116`, `62/142`, `80/163`, `73/210`, `80/210`, `38/235`, `307/64`,
    `260/60`, `234/101`, `200/84`, `176/63`.
    `/navi bra_fild01 98/96` | done when: quest 9031 active
-3. **Back to Angelo** - (quest 9032, the 4-hour wait).
+3. **Back to Angelo** - (quest 9032, the wait until 4:00).
    `/navi brasilis 297/307` | done when: quest 9032 active
    Reward: 50,000 base EXP (75,000 with VIP), a Yggdrasil Berry's effect,
    sometimes 2 White Potion or 1 Yggdrasil Seed.
 
 ### The Suspicious Beach
-`quests/quests_brasilis.txt` | quests 9028-9029 | Lv 40 | repeatable (4 h,
+`quests/quests_brasilis.txt` | quests 9028-9029 | Lv 40 | repeatable (until 4:00,
 quest 9029).
 
 1. **Lucia** - "Yes." (quest 9028, Hydra Ball).
@@ -3553,7 +3557,7 @@ quest 9029).
    Yggdrasil Berry and three stat dishes.
 
 ### Iara
-`quests/quests_brasilis.txt` | quests 4133-4135 | Lv 40 | repeatable (4 h,
+`quests/quests_brasilis.txt` | quests 4133-4135 | Lv 40 | repeatable (until 4:00,
 quest 4135, a buff) | needs: the Brasilis Dungeon Access at 7 (Iara is in
 `bra_dun02`).
 
@@ -3609,7 +3613,7 @@ Lv 60 (the hideout: `BaseLevel > 59`).
 ### Help Out the Old Man
 `re/quests/quests_dewata.txt` | `dew_drink` 0->10, quests 5035-5044 | Lv
 60 (Memo: `BaseLevel < 60` refuses) | the daily part after it: quests
-5045-5050 (cooldown 5044, 4 h).
+5045-5050 (cooldown 5044, until 4:00 server time).
 
 1. **Memo** - (talks 1 time in 3) "What happened?", "Sounds like a big
    problem.", "No, I am not busy." (1).
@@ -3704,7 +3708,7 @@ choices of steps 2-8 are not all read: **to verify**.
 
 ### Help the Bad Cats in Danger
 `re/quests/quests_malangdo.txt` | quests 1145-1155 (`malang_bad_guys`) |
-Lv 60 | repeatable (4 h, quest 1152). Order of the clue spots: **to
+Lv 60 | repeatable (until 4:00, quest 1152). Order of the clue spots: **to
 verify**.
 
 1. **Gobonge** - "Sure I will.", "Need help?", "Yes, I'll do it!" (1145).
@@ -3723,7 +3727,7 @@ verify**.
 
 ### Clean the Ship
 `re/quests/quests_malangdo.txt` | quests 7260-7275 (`mal_qook`) | Lv 60 |
-repeatable (4 h, quest 7267).
+repeatable (until 4:00, quest 7267).
 
 1. **Cleanyang** - (7260): find the Cat Biscuits that bugs gather around:
    searching a spot makes a Quick Dark Shadow appear and gives a Cat
@@ -3736,7 +3740,7 @@ repeatable (4 h, quest 7267).
 
 ### Help Chef Nyas
 `re/quests/quests_malangdo.txt` | quests 7264-7280 (`mal_food`) | Lv 60 |
-repeatable (4 h, quest 7276) | needs: Clean the Ship's step 2 (7264).
+repeatable (until 4:00, quest 7276) | needs: Clean the Ship's step 2 (7264).
 
 1. **Chef Nyas** - (7265, 7266); bring 10 Bag of Grain and 1 Savory Sauce
    (7276).
@@ -3758,8 +3762,8 @@ games), quests 7242-7259 | Lv 60. The games' rules are **to verify**.
 3. **Expert Cat** - (14).
    `/navi malangdo 165/223` | done when: `nyadven >= 14`
    Reward: 100 E Grade Coin.
-   Repeat: Roku (`malangdo 215/201`) and the Noisy Machine run 4-hour
-   games: 3 E Grade Coin, 20,000 / 20,000 EXP each.
+   Repeat: Roku (`malangdo 215/201`) and the Noisy Machine run daily
+   games (until 4:00): 3 E Grade Coin, 20,000 / 20,000 EXP each.
 
 ### Cat Gamers
 `re/quests/quests_malangdo.txt` | `malang_gamer` 0->20, quests
@@ -3767,11 +3771,12 @@ games), quests 7242-7259 | Lv 60. The games' rules are **to verify**.
 
 1. **The director** - (1, 2, 3); the Strange Cat (`malangdo 127/111`)
    (4); the director (5-8); the Strange Cat (9); the director (10-12,
-   with 4-hour waits between rounds, quests 5060, 5068, 5069) (20).
+   with waits between rounds: 3 minutes (5060), until 4:00 (5068), 1
+   hour (5069)) (20).
    `/navi mal_in01 31/210` | done when: `malang_gamer >= 20`
    Reward: G Honor Certificate.
    Opens: the gamers Ser, Paa, Kuka and KungKung (`mal_in01 91/216`,
-   `86/222`, `91/222`, `134/221`) play 4-hour games for cans and coins.
+   `86/222`, `91/222`, `134/221`) play daily games (until 4:00, quests 5070-5072) for cans and coins.
 
 Excluded: the Archangel Wing enchants.
 
@@ -3811,7 +3816,7 @@ villagers: Old Man Nardo `malaya 181/353`, Romel `224/267`, Talah
 9. **Imelda** - (25).
    `/navi malaya 169/350` | done when: `malaya_hi >= 25`
    Reward: 200,000 / 200,000 EXP.
-   Opens: the villagers' dailies (Lv 100, 4 h each): Imelda, Nardo,
+   Opens: the villagers' dailies (Lv 100, each until 4:00): Imelda, Nardo,
    Woeon, Pandoi, Pedro (the Ghost Diwata in `ma_in01`, `malaya_diwata`),
    Kiko in Mumbaki (`ma_fild01 261/208`), Dhong the Guard (`ma_fild01
    239/253`), Maries (`ma_fild01 200/190`), Budidai (`ma_fild02 241/39`):
@@ -3898,6 +3903,1367 @@ memorial, which needs a party, even of one).
 Excluded: the traders, the boss equipment upgrades and the Pintados
 Festival (exchange).
 
+## 23. The New World (Episode 13)
+
+Most quests here check `ep13_ryu > 99 || ep13_start > 99`: Episode 13.1
+done, or the Cat Paw passage (below). The Sapha and the Laphine quests also
+want the Ring of the Ancient Wise King (2782) worn: The Otherworld
+Language. The Teleport Cat in the camp (`mid_camp 207/234`) goes to Near
+Splendide (`spl_fild02`) and Manuk Field (`man_fild02`).
+
+Not quests: the strange devices on Nidhoggur's dungeon floor 2
+(`nyd_dun02 139/274` turns on a path of panels for 70 seconds, `178/255`
+takes you back to its start) are a map puzzle with no variable; the
+two extra Cat Paw Agents (`spl_fild02 25/211`, `man_fild02 132/47`) give the
+Trading Post's services by its credit (`ep13_yong1`).
+
+### Finding a Fairy & Finding a Giant Tree
+`quests/quests_13_1.txt` | quests 2158, 2159 | Lv 70 (both: `BaseLevel >
+69`) | no 13.1 check of their own.
+
+1. **The Small Fairy** - near Splendide; talk to her (2158).
+   Why: a tiny winged girl speaks a tongue nobody in the camp knows.
+   `/navi spl_fild02 34/223` | done when: quest 2158 started
+2. **The Tree Giant** - in Manuk's fields (2159).
+   `/navi man_fild03 236/105` | done when: quest 2159 started
+3. **The report** - the Camp Guard Captain, once for each (2158 and 2159
+   done).
+   `/navi mid_camp 212/237` | done when: quests 2158 and 2159 done
+   Reward: 90,000 base EXP for each.
+   Note: without the ring their words are gibberish; the Otherworld
+   Language (step 2) has you repeat them to the Linguist.
+
+### The Otherworld Language
+`quests/quests_13_2.txt` | `ep13_2_rhea` 0->12, 100 | Lv 70 (the fairy and
+the giant) | guided `ep13_language` | needs: 13.1 or the Cat Paw passage |
+opens: Episode 13.2 (Story), Monster Suppression, the Manuk and Splendide
+dailies, Bazett.
+
+1. **A translating device** - the Schwarzwald Mechanic (1), then the
+   Arunafeltz Linguist inside the camp building (any answers) (2).
+   Why: nobody in the camp understands the Laphine or the Sapha.
+   `/navi mid_camp 197/237`, `/navi mid_campin 168/82` | done when:
+   `ep13_2_rhea >= 2`
+2. **Voices in the wild** - listen to the Small Fairy (`spl_fild02 34/223`)
+   and the Tree Giant (`man_fild03 236/105`), then type their lines to the
+   Linguist: the fairy `RLGHLRXLA TKANTLFDMS`, `WJACK TNAHRDNJSDMFH`,
+   `WLSGHKWND !!`; the giant `TJDTMFJDNS CJFDI`, `TKADLFDMF QKATOS`,
+   `EKDTLSDML DLFMADMS..` (a wrong line does not stop you) (3).
+   `/navi mid_campin 168/82` | done when: `ep13_2_rhea >= 3`
+3. **Mr. Dictionary** - the Linguist again (4); the Rune-Midgarts Magician:
+   "Uh, Mr. Dictionary sent..." (5).
+   `/navi mid_camp 147/256` | done when: `ep13_2_rhea >= 5`
+4. **Two half-buried gems** - "Dig out the Gem" at `spl_fild02 27/218`
+   (red) and `man_fild03 227/109` (blue): 1 try in 4, else 10 Thief Bugs jump
+   out; bring the Red Jewel and the Blue Jewel to the Magician (6).
+   `/navi mid_camp 147/256` | done when: `ep13_2_rhea >= 6`
+5. **Back and forth** - the Linguist (7), the Mechanic (8), the Magician
+   (9).
+   `/navi mid_campin 168/82` | done when: `ep13_2_rhea >= 9`
+6. **An unknown mineral** - 1 Unidentified Mineral from a Mysterious Rock
+   (`man_fild01 180/170`, `147/157`, `114/174`, `man_fild03 82/134`, ...:
+   10 seconds of digging, 1 in 5) to the Magician (10); talk to him until
+   the gem is cut (1 in 5) (11).
+   `/navi man_fild01 180/170` | done when: `ep13_2_rhea >= 11`
+   Fails: the rocks give nothing while the Cat Paw mining wait (quest
+   12062) runs.
+7. **The Wise King's ring** - the Mechanic: "Give him the Gem" (12); one
+   hour of play time later, talk again (100).
+   `/navi mid_camp 197/237` | done when: `ep13_2_rhea >= 100`
+   Reward: Ring of the Ancient Wise King, 200,000 base EXP (guide).
+
+### Monster Suppression
+`quests/quests_13_2.txt` | `ep13_2_days01` 0->2, quests 7074-7075 | Lv
+none | needs: the Otherworld Language (100), the ring worn, and 13.2 past 5
+(`ep13_mdrama > 5`). Once: nothing resets `ep13_2_days01`.
+
+1. **Manuk Galtun** - "Keep the peace." (1; quests 7074 Rata Hunt and 7075
+   Duneyrr Hunt).
+   Why: the Manuk guard wants the beasts around the town thinned.
+   `/navi manuk 252/116` | done when: `ep13_2_days01 >= 1`
+2. **The hunt** - kill 1 Rata and 1 Duneyrr (quest_db counts 1 each), then
+   back to him (2).
+   `/navi manuk 252/116` | done when: `ep13_2_days01 >= 2`
+   Reward: 50,000 base / 30,000 job EXP, 10 Manuk Coin.
+
+### Manuk and Splendide dailies
+`quests/quests_13_2.txt` | `ep13_2_dayegg`, `ep13_2_wanted`, quests
+7076-7082 | Lv none | every NPC but the Pet Breeder wants the ring worn
+and the Otherworld Language (100); the craftsman, the breeder and the sign
+also 13.2 past 5 (`ep13_mdrama > 5`). Cooldowns end at the next 4:00
+server time (quest_db `TimeLimit: 4h`, a clock time).
+
+1. **Refined Bradium** - the Manuk Engineer: "About collecting stones.",
+   "Sure, I don't mind." (7079); bring 20 Refined Bradium (Bradium Golem
+   Lv 133, 2.5%; Elusive Bradium Golem 12.5%; Dolomedes) (taken).
+   `/navi man_in01 378/276` | done when: quest 7080 (the wait) started
+   Reward: 40,000 / 40,000 EXP, 3 Manuk Coin. Again after 4:00.
+2. **The Laphine Craftsman** - "May I help you?", "Yes." (7081); bring 15
+   Fluorescent Liquid and 15 Crystalized Teardrop (Aqua Elemental Lv 121)
+   (taken).
+   `/navi spl_in01 97/313` | done when: quest 7082 started
+   Reward: 30,000 / 30,000 EXP, 3 Splendide Coin. Again after 4:00.
+3. **Draco eggs** - the Pet Breeder: "Cute pet investigation.", "Yes."
+   (`ep13_2_dayegg` 1, quest 7077); pick 10 Draco's Egg from the Dragon
+   Eggs in Nidhoggur's dungeon (`nyd_dun01 258/134`, `100/210`, `74/68`,
+   `98/142`, `244/157`, `59/185`; `nyd_dun02 68/256`, `202/166`,
+   `201/166`, ...; each egg comes back after 4 or 7 minutes) and bring them
+   (2).
+   `/navi mid_camp 146/306` | done when: `ep13_2_dayegg >= 2`
+   Reward: 40,000 / 40,000 EXP, 1 Splendide Coin, 1 Manuk Coin. After 4:00
+   the breeder asks again ("Sure.").
+4. **Wanted: Dandelion** (once) - the Wanted Sign: "I accept that
+   request." (`ep13_2_wanted` 1, quest 7076); kill the wanted Dandelion
+   member (1); the Pet Breeder: "Notice for criminal report" (2).
+   `/navi mid_camp 192/239` | done when: `ep13_2_wanted >= 2`
+   Reward: 1 Treasure Box.
+
+### Midgard Ore and Alfheim Perfume
+`quests/quests_13_2.txt` | `ep13_2_tre` (Dr. Lifeguard), `ep13_2_tre1`
+(Grenouille), quests 2179-2186 | Lv none | needs: the Otherworld Language
+(100) and the ring worn | repeatable: each 18 hours after you finish
+(quests 2182, 2186, `+18h`).
+
+1. **Dr. Lifeguard's minerals** - the scientist in Manuk: "A chronic
+   disease?" (1); talk again: he names a place and lends you a Portable
+   Toolbox (2 Mt. Mjolnir: 10 Rough Mineral; 3 Abyss Lake: 5; 4 Thor
+   Volcano: 5). Walk the area until "Check current location." finds a
+   spot, then "Mine minerals." (1 in 2: 1, 2 or 5 Rough Mineral, else Stone
+   Fragments; the spot then rests). Spots: `mjolnir_01 32/309`, `217/34`,
+   `mjolnir_02 90/195`, `206/187`, `mjolnir_04 125/380`, `220/130`,
+   `mjolnir_09 229/214`, `mjolnir_10 188/260`; `hu_fild05 251/345`,
+   `134/322`, `72/104`, `323/84`; `ve_fild03 152/134`, `256/228`,
+   `85/189`, `282/268`. Back to him (100).
+   `/navi man_in01 372/221` | done when: `ep13_2_tre == 100`
+   Reward: 3 Manuk Coin.
+2. **Grenouille's flower** - the High Laphine (1); the Middle-Ranked
+   Laphine (2, a Sprout); hold the Sprout to a Purifier in Splendide
+   (`splendide 160/265`, `262/262`, `262/187`, `164/82`, `171/116`,
+   `134/280`) (3, Flower of Alfheim); the High Laphine (4); again (5, 5
+   Spirit of Alfheim); give one to each of five Exhausted Soldiers
+   (`splendide 205/139`, `181/135`, `139/178`, `164/188`, `177/257`,
+   `124/212`, `196/153`); the High Laphine (6).
+   `/navi spl_in01 30/324`, `/navi spl_in02 139/65` | done when:
+   `ep13_2_tre1 == 6`
+   Reward: 3 Splendide Coin.
+
+### Secret Note of Bazett
+`quests/quests_13_2.txt` | `ep13_2_busut` 0->7, `ep13_2_bs1`, quests
+11101-11105 | Lv none | needs: the Otherworld Language (100) and the ring
+worn. Once: the script never resets `ep13_2_busut` after 7.
+
+1. **Bazett Teablack** - "Sure.", "OK, so what can I do for you?" (2);
+   talk again (3, Bazett's Order).
+   Why: the camp's monster scholar has a secret order for Manuk.
+   `/navi mid_camp 283/198` | done when: `ep13_2_busut >= 3`
+2. **The Manuk worker** - (`ep13_2_bs1` 2, quest 11105); bring 30 Horn of
+   Hillslion (Hillthrion Lv 123, 15%) (taken) (`ep13_2_busut` 4).
+   `/navi manuk 193/135` | done when: `ep13_2_busut >= 4`
+3. **Report** - Bazett: "Yes." (7).
+   `/navi mid_camp 283/198` | done when: `ep13_2_busut >= 7`
+   Reward: 1 Manuk Coin.
+
+### Sapha's Visit
+`re/quests/quests_dicastes.txt` | `ep13_3_invite` 0->6, quests 7182-7197 |
+Lv none | guided `ep13_sapha` | needs: 13.1 or the Cat Paw passage, the
+ring worn | opens: Episode 13.3 (Story), Frede's Request, the El Dicastes
+requests.
+
+1. **A Sapha in the camp** - Guard Aello (1).
+   `/navi mid_campin 93/114` | done when: `ep13_3_invite >= 1`
+2. **Vyhannus's invitation** - the Soldier: "I have authorization."; talk
+   to the Sapha from Manuk (`mid_campin 168/128`) or his Hound
+   (`168/125`) three times (2, 3, 4).
+   Why: an envoy of the Sapha king invites you to their capital.
+   `/navi mid_campin 111/120` | done when: `ep13_3_invite >= 4`
+3. **Captain Avalanche** - in Manuk: "I've come with Vyhannus's
+   invitation." (5).
+   `/navi man_in01 315/52` | done when: `ep13_3_invite >= 5`
+4. **Into El Dicastes** - a Capital City Guard at the gate: "Yes.";
+   inside, the Adventurer Clerk: "Register as an adventurer." (6).
+   `/navi dic_fild01 146/281`, `/navi dic_in01 42/264` | done when:
+   `ep13_3_invite >= 6`
+   Reward: the Light Of El Discastes.
+   Opens: the Entrance Manager in Manuk (`manuk 321/182`) lets you into
+   the tunnel under Kamidal Mountain (`dic_dun01`).
+
+### Frede's Request
+`re/quests/quests_dicastes.txt` | `ep13_3_bra` 0->9, quests 11159-11176 |
+Lv none | needs: Sapha's Visit (`ep13_3_invite > 5`) and the ring worn.
+The six miners are in the Bradium mine (`dic_dun01`, Rose in `dic_dun02`).
+
+1. **Frede** - walk up to him in the city (1).
+   Why: a young Sapha worries about the miners his father sent away.
+   `/navi dicastes01 117/262` | done when: `ep13_3_bra >= 1`
+2. **Inside** - Frede at home (2, a Banana); talk again: "Will do." (4).
+   "No can't do." (3) only delays it.
+   `/navi dic_in01 165/104` | done when: `ep13_3_bra >= 4`
+3. **Six stories** - hear every miner (quests 11159-11164): Brian
+   `dic_dun01 205/43`, Tyler `153/107`, John `235/243`, Bain `64/107`, Lash
+   `58/225`, Rose `dic_dun02 110/127`; then Frede (5).
+   `/navi dic_dun01 205/43` | done when: `ep13_3_bra >= 5`
+4. **Bouy** - (6); bring 30 Small Bradium (Dolomedes Lv 132, 15%;
+   Dolomedes Ringleader 75%) (taken) (7).
+   `/navi dic_in01 349/129` | done when: `ep13_3_bra >= 7`
+5. **Wait** - two hours (quest 11175, `+2h`), then Bouy (8).
+   `/navi dic_in01 349/129` | done when: `ep13_3_bra >= 8`
+6. **Deliveries** - each miner: "You give Bradium to ..." (quests
+   11165-11170).
+   `/navi dic_dun01 205/43` | done when: quests 11165-11170 started
+7. **Frede** - (9).
+   `/navi dic_in01 165/104` | done when: `ep13_3_bra >= 9`
+   Reward: Bradium Earring.
+
+### El Dicastes requests (the departments)
+`re/quests/quests_dicastes.txt` | quests 12099-12158 (requests), 12159-12164
+(the day's record) | Lv 80 (Hunting 1: 97, Hunting 2: 100) | needs:
+Sapha's Visit at 6 and the ring worn | repeatable: one request from each
+citizen a day (until 4:00 server time).
+
+1. **Take a request** - a citizen in the city: "Please give me a request."
+   (a random one): Laponte (Hunting 1, kill 1-15 of a New World monster),
+   Kalipo (Hunting 2), Pura and Tragis (Supply 1 and 2: Midgard and New
+   World items, 1-27), Calyon and Moltuka (Transport 1 and 2: gems,
+   monster loot, 2-100 food items).
+   `/navi dicastes01 187/230` (Laponte), `175/217` (Kalipo), `208/230`
+   (Pura), `225/211` (Tragis), `223/190` (Calyon), `211/178` (Moltuka) |
+   done when: the request quest started
+2. **Hand it in** - the department manager on the civil service floor: "I
+   completed the request." (items taken).
+   `/navi dic_in01 48/263` (Hunting 1), `51/266` (Hunting 2), `51/270`,
+   `48/273` (Supply), `43/273`, `40/270` (Transport) | done when: the
+   request quest erased
+   Reward: 4,000-82,800 base EXP by request, 1 Proof Of Sapha's Honor.
+
+### Unknown Relics (the document packages)
+`re/quests/quests_dicastes.txt` | quests 12165 (wait), 12166-12215 (one
+per relic) | Lv 80 | needs: Sapha's Visit at 6, the ring worn | repeatable.
+
+1. **A document** - open a Document Package in the archive (`dic_in01
+   31/192` or `31/187`): 1 time in 7 a dizzy spell (6 hours, quest 12165),
+   2 in 7 nothing, else a record of a Midgard item to look for (a quest
+   12166-12215).
+   `/navi dic_in01 31/192` | done when: a relic quest started
+2. **The relic** - search its spot in Midgard (Tree Roots `pay_fild03
+   144/95`, Jellopy `prt_fild08 299/332`, Sticky Mucus `prt_fild02 102/97`,
+   ... 50 spots, named by the record): 1-4 of that item, and 1 time in 2 an
+   Unidentified Relic.
+   `/navi pay_fild03 144/95` (one example) | done when: the relic quest
+   erased
+3. **Papyrus** - the archive keeper trades 3 Unidentified Relic for 1
+   Proof Of Sapha's Honor, or 30 for 11.
+   `/navi dic_in01 40/193` | done when: (an exchange, no variable)
+
+### Removing Traces (Ahat's daily)
+`re/quests/quests_dicastes.txt` | `ep13_3_ahtdayq` 1-2, quests 7200-7201 |
+Lv none | needs: Episode 13.3 past 18 (`ep13_3_secret > 18`) | repeatable
+(until 4:00 server time, quest 7200).
+
+1. **The Secret Adjutant** - (`ep13_3_ahtdayq` 1, quest 7201).
+   Why: Minister Ahat wants the traces of the rift's intruders gone.
+   `/navi dic_in01 294/276` | done when: `ep13_3_ahtdayq >= 1`
+2. **The traces** - search the Rock Piles, Dirt Piles and Split Earth in
+   `dic_fild02` (`269/55`, `215/85`, `194/86`, ... 30 spots) for 10 Solid
+   Bloodstain, 10 Frozen Piece Of Skin and 10 Cursed Magical Stone; bring
+   them (taken) (2).
+   `/navi dic_fild02 215/85` | done when: `ep13_3_ahtdayq == 2`
+   Reward: 70,000 base / 30,000 job EXP, 1 Proof Of Sapha's Honor.
+
+### Cat Paw Agent (the passage to the New World)
+`re/quests/quests_dicastes.txt` | `ep13_start` 0->100 | Lv 70 (`BaseLevel <
+70` refuses) | opens a place: the New World without Episode 13.1;
+`ep13_start = 100` counts as 13.1 for most quests here.
+
+1. **Agent Geck** - in the Eden Group's building: "Why don't you collect
+   it yourself?", "I also want to go and help the merchants.", type any
+   name, "Pay 50,000 zeny." (100; you land on `moc_fild20`).
+   Why: the Cat Paw Merchants sneak sponsors across the rift for fish
+   money.
+   `/navi moc_para01 44/19` | done when: `ep13_start == 100`
+2. **The cats** - the Cat on `moc_fild20`: "Let's do this!" (to
+   `moc_fild22b`); Tat: "To the other world!" (to the Allied camp).
+   `/navi moc_fild20 368/197`, `/navi moc_fild22b 182/179` | done when:
+   (a warp, no variable)
+   Opens: Agent Geck's "Send me back" any time.
+
+### New Surroundings
+`quests/quests_13_1.txt` | `ep13_newbs` 0->24, 100, quests 11084-11100 |
+Lv none | needs: 13.1 or the Cat Paw passage. Keep 1,000 weight free.
+Diego stands at `mid_camp 266/263` on Renewal (`re/quests/quests_13_1.txt`).
+
+1. **Marian** - "Yes." (1).
+   Why: the camp's guide shows newcomers around.
+   `/navi mid_camp 222/283` | done when: `ep13_newbs >= 1`
+2. **The Instructor** - "Yes." (3). "No." (2) and "Yes." next time.
+   `/navi mid_camp 261/284` | done when: `ep13_newbs >= 3`
+3. **Register** - Receptionist Brink: "I am here to register." (4); the
+   Instructor (5).
+   `/navi mid_campin 106/122` | done when: `ep13_newbs >= 5`
+4. **Diego's post** - "Help him.", "So how can I help you." (6); bring 20
+   Ordinary Branch (the trees on `spl_fild02` `348/76`, `232/145`,
+   `380/197`, `304/151`, `183/235`: about 1 click in 9) and 20 Strong Vine
+   (Nepenthes Lv 114, 15%; Solid Nepenthes 75%) (taken) (7).
+   `/navi mid_camp 266/263` | done when: `ep13_newbs >= 7`
+5. **Tie the posts** - the first post: "Tie it with the vines." (1 in 5),
+   "Knot it." (8); the second the same (9).
+   `/navi mid_camp 267/263`, `/navi mid_camp 267/258` | done when:
+   `ep13_newbs >= 9`
+6. **Diego** - (10, 5 Chocolate Pie; you are moved inside); walk onto the
+   spot you land on (11); Lucas: "Dangerous way?" (12).
+   `/navi mid_campin 295/128` | done when: `ep13_newbs >= 12`
+7. **Supplies** - the Instructor (13); Marian (14, 3 Supply Box); the
+   Instructor (15); one box each to Jan (16), the Instructor (17), Gerard
+   (18), the Instructor (19), Alberto in Manuk's field (20), the Instructor
+   (21). Lost a box: Marian gives another.
+   `/navi mid_camp 160/298` (Jan), `/navi mid_camp 30/168` (Gerard),
+   `/navi man_fild01 80/248` (Alberto) | done when: `ep13_newbs >= 21`
+8. **The Instructor's friend** - talk until he sighs (1 in 3): "Help." (23,
+   Letter from Lugen). "Just listen." (22): "Help him." next time.
+   `/navi mid_camp 261/284` | done when: `ep13_newbs >= 23`
+9. **Otto** - takes the letter (24, Letter from Otto).
+   `/navi mid_camp 123/290` | done when: `ep13_newbs >= 24`
+10. **The Instructor** - with Otto's letter (taken) (100).
+    `/navi mid_camp 261/284` | done when: `ep13_newbs >= 100`
+    Reward: 1 Old Purple Box, 5 Chocolate Pie, 100,000 base / 10,000 job
+    EXP.
+
+### Attitude to the New
+`quests/quests_13_1.txt` | `ep13_animal` 0->15, 100, quests 2147-2157 | Lv
+none | needs: 13.1 or the Cat Paw passage.
+
+1. **The Monster Scholar** - "Who are you?", "How did you get here?", "When
+   do you go back?" (1).
+   Why: a scared scholar wants to know this world's monsters.
+   `/navi mid_camp 188/254` | done when: `ep13_animal >= 1`
+2. **Out of the camp** - the Camp Guard at the east gate: "I want to enter
+   the next area." (2).
+   `/navi mid_camp 336/171` | done when: `ep13_animal >= 2`
+3. **Proof** - the scholar with 1 Strong Vine (taken): "Show loot from
+   Nepentheses." (3); then 1 Empty Bottle, 5 Holy Water, 30 Sticky Mucus
+   (taken) (4).
+   `/navi mid_camp 188/254` | done when: `ep13_animal >= 4`
+4. **The Botanist** - (5; kill 30 Pinguicula, quest 2150); back (6; kill
+   10 Cornus, 2151); back (7, Decaying Stem).
+   `/navi mid_camp 240/270` | done when: `ep13_animal >= 7`
+5. **Plant it** - walk to `mid_camp 49/154` (8): the Botanist appears;
+   plant the stem in the Dirt (9, Sprout); the Botanist (10).
+   `/navi mid_camp 52/148` | done when: `ep13_animal >= 10`
+6. **Escort** - the scholar: "Okay." (11); walk to `man_fild01 59/261` and
+   talk to the Frozen Tree he climbed (12); bring him 5 Horn of Hillslion
+   (Hillthrion Lv 123, 15%) (13).
+   `/navi man_fild01 92/230` | done when: `ep13_animal >= 13`
+7. **Over the bridge** - the scholar (14; kill 10 Tatacho, 2157); type
+   `Tatacho`, then anything (15).
+   `/navi mid_camp 188/254` | done when: `ep13_animal >= 15`
+   Reward: 100,000 base EXP.
+8. **A horn** - 1 Horn of Tendrilion (Tendrillion Lv 126, 45%) (100).
+   `/navi mid_camp 188/254` | done when: `ep13_animal >= 100`
+   Reward: 50,000 base EXP.
+
+### The Tripartite Union's Feud
+`quests/quests_13_1.txt` | `ep13_1_rhea` 0->26, 100, quests 8196-8210 | Lv
+none | needs: 13.1 or the Cat Paw passage. Keep 3,500 weight free.
+
+1. **The meeting room** - walk up to the Research Official (1).
+   Why: the camp's three nations cannot even agree to meet.
+   `/navi mid_campin 376/120` | done when: `ep13_1_rhea >= 1`
+2. **Ryosen** - talk (2), (3), "Alright." (4, Meeting Invitation).
+   `/navi mid_camp 165/245` | done when: `ep13_1_rhea >= 4`
+3. **Hue** - "I came to show you this." (5); talk until he agrees (1 in 4):
+   "Please sign the invitation." (6).
+   `/navi mid_camp 247/255` | done when: `ep13_1_rhea >= 6`
+4. **Hansenne** - "Come and look at this." (7); talk until he agrees (2 in
+   5): "Hey, just sign this thing." (8).
+   `/navi mid_camp 222/218` | done when: `ep13_1_rhea >= 8`
+5. **Ryosen** - takes it (9); again (10, the invitation back); the
+   Research Official takes it (11).
+   `/navi mid_camp 165/245` | done when: `ep13_1_rhea >= 11`
+6. **The lost file** - Ryosen: "Can I help you with anything?" (12);
+   Hansenne: "I came to pick up the requested document." (13).
+   `/navi mid_camp 222/218` | done when: `ep13_1_rhea >= 13`
+7. **Fish it out** - at any School of Fish 1 cast in 20 brings the Messy
+   File (14): `mid_camp 75/135`, `spl_fild02 314/165`, `spl_fild03
+   226/151`, `spl_fild01 41/118`, ... (not while 20 Piece of Fish are
+   carried or the Cat Paw fishing wait runs).
+   `/navi mid_camp 75/135` | done when: `ep13_1_rhea >= 14`
+8. **Hansenne** - (15); Hue (16); bring Hue 1 Folding Fan of Cat Ghost (Mao
+   Guai), 1 Old Frying Pan (Magnolia), 1 Flame Stone (the Amatsu Trader
+   `prontera 178/244` sells it), 1 Squid Ink (Marse) with the file (taken)
+   (17); talk until the report is clean (1 in 4) (18, Neat Report).
+   `/navi mid_camp 247/255` | done when: `ep13_1_rhea >= 18`
+9. **The meeting** - Ryosen takes the report (19); the Research Official
+   (20, you are moved out), (21), (22).
+   `/navi mid_campin 376/120` | done when: `ep13_1_rhea >= 22`
+10. **Thanks all round** - Hansenne (23), (24, Arunafeltz Desert
+    Sandwich); Hue (25, Neat Report, Schwarzwald Pine Jubilee); Ryosen with
+    the report (26, Rune Strawberry Cake); the Research Official (100).
+    `/navi mid_campin 376/120` | done when: `ep13_1_rhea >= 100`
+    Reward: 80,000 base / 3,000 job EXP, 1 First Aid Kit. After it the
+    three trade their food for Mystic Horn, Fur or Peaked Hat (an
+    exchange).
+
+### Part Time Work
+`quests/quests_13_1.txt` | `ep13_alba` 0->6, quests 7042-7047 | Lv none |
+needs: 13.1 or the Cat Paw passage | repeatable (5 hours after you finish,
+quest 7047 `+5h`).
+
+1. **Breeder Taab** - only while he is hiring: every 130 minutes he calls
+   for 10 minutes, 5 places for the whole server. "I'm here for a job." (1-5
+   by your place: the first gets job 1).
+   Why: his New World beasts need feed.
+   `/navi mid_camp 143/306` | done when: `ep13_alba >= 1`
+2. **The job** - bring (taken): 1 = 50 Fresh Fish; 2 = 30 Huge Leaf,
+   30 Brown Root; 3 = 20 Monster's Feed, 30 Pet Food; 4 = 50 Meat, 30 Pet
+   Food; 5 = 30 Fur (6).
+   `/navi mid_camp 143/306` | done when: `ep13_alba >= 6`
+   Reward: 8,000 base / 3,000 job EXP (job 2: 9,000 / 4,000).
+   Note: alone on the server you always get job 1.
+
+### The Cat Paw Trading Post
+`quests/quests_13_1.txt` | `ep13_yong1` 0->10, then credit points | Lv none
+(the guide's 118+ is a range, not a check) | guided `ep13_catpaw` |
+repeatable (fish and minerals once a day, until 4:00 server time) | opens a
+place: save point at 3, storage at 20, the Cat Warp to Midgard at 40,
+Jotunheim warps at 100.
+
+1. **Cat Paw services** - the Cat Paw Agent: "Tell me more about your
+   services." (1); Fluffy Gyaruk: "Yes.", "What do you guys do?", "Yes.",
+   "What services do you offer?", "Credit?", "Sure." (2).
+   `/navi mid_camp 62/125`, `/navi mid_camp 72/94` | done when:
+   `ep13_yong1 >= 2`
+2. **The first errand** - the Agent (3, save point); Gyaruk: "What kind
+   of things?", "Sure." (4); Ferocious Gorurug: "Gyaruk has sent me.",
+   "What should I do?" (5).
+   `/navi mid_camp 69/144` | done when: `ep13_yong1 >= 5`
+3. **Ten Pieces of Fish** - fish at a School of Fish (`mid_camp 75/135`;
+   15 seconds, 1 cast in 4) and bring 10 Piece of Fish (10).
+   `/navi mid_camp 69/144` | done when: `ep13_yong1 >= 10`
+   Reward: 20,000 base EXP.
+4. **More credit** - +1 for 10 Piece of Fish to Gorurug (quest 12060), +1
+   for 3 Unidentified Mineral to the Cat Paw Mining Agent (quest 12062),
+   each once a day; +2 for each Marlin to Henry Clifford (no wait).
+   `/navi mid_camp 88/100` (mining), `/navi mid_camp 66/122` (Henry) |
+   done when: `ep13_yong1 >= 40` (the Cat Warp)
+   Note: storage costs 60 zeny; the warps 5,500 zeny at 40 credit down to
+   3,970 at 300, more towns as the credit grows.
+
+### Report from the New World
+`quests/quests_13_1.txt` | `ep13_1_edq` 0->14 (61/62, 71/72, 101-123 on
+the way), quests 3085-3094 | Lv none | needs: `ep13_newbs + ep13_ryu +
+mao_morocc2 + ep13_1_rhea + ep13_animal + ep13_start > 115` (13.1 or the
+passage at 100, plus 16 from the camp quests, e.g. New Surroundings at 16).
+Its part from 15 on goes into Nidhoggur's Nest (Story).
+
+1. **Hibba Agip** - (1); Staff Officer Abidal (2); Hibba (3, Expedition
+   Report).
+   Why: the expedition's report must reach Midgard.
+   `/navi mid_campin 90/121`, `/navi mid_campin 94/118` | done when:
+   `ep13_1_edq >= 3`
+2. **The messenger** - the Expedition Messenger: "Give the report." (4) or
+   "Protect the report." (5): either way it is lost; Hibba (61 or 62);
+   Abidal (71 or 72).
+   `/navi mid_camp 206/286` | done when: `ep13_1_edq >= 71`
+3. **The scattered pages** - collect Part of a Report: 1 for each of the
+   special monsters on `spl_fild02`, `spl_fild03`, `man_fild01`,
+   `man_fild03` (Luciola Vespa, Pinguicula, ...), and 0-5 from an
+   Expedition Scout every 30 minutes ("Ask about search results.":
+   `man_fild01 315/95`, `man_fild03 202/251`, `spl_fild02 295/368`,
+   `spl_fild03 172/71`). Abidal: "Submit found pages." takes 10 for one
+   random volume (a wrong roll wastes them, to verify); with Vol 1-4,
+   "Check the report's resoration status." (8, Expedition Report).
+   `/navi mid_campin 94/118` | done when: `ep13_1_edq >= 8`
+4. **Three copies** - Hibba takes it and gives 3 copies (9); deliver one
+   each, in any order, to the scout at `spl_fild03 172/71`, Nuria
+   (`ra_temple 122/174`) and Gerhart (`lhz_in01 110/174`) (13).
+   `/navi ra_temple 122/174` | done when: `ep13_1_edq >= 13`
+5. **Hibba** - (14).
+   `/navi mid_campin 90/121` | done when: `ep13_1_edq >= 14`
+   Reward: 300,000 base EXP, 3 First Aid Kit.
+
+### Pursuing Rayan Moore
+`quests/quests_13_1.txt` | `mao_morocc2` 0->31, 100 (then 101-108 for the
+sweet potatoes), quests 7012-7041 | Lv none | needs: 13.1 or the passage
+(`== 100`). The thieves' hideout `que_job01` is entered at `morocc 45/110`;
+the Dandelion hideout `que_dan02` from `yuno_fild09 234/133`.
+
+1. **The pursuit party** - the leader: "Hey, excuse me." (1).
+   Why: Rayan Moore, Satan Morroc's follower, fled into the New World.
+   `/navi mid_campin 68/185` | done when: `mao_morocc2 >= 1`
+2. **Mr. Kidd** - "Echinacea...", "No, I don't mind at all." (4). "Yes."
+   (2) sends you to the leader (3) and back to him (4).
+   `/navi mid_camp 199/311` | done when: `mao_morocc2 >= 4`
+3. **The bar in Morroc** - the Bar Master: "About the mission", "I'm here
+   for Rin!" (5); go through the hideout to Rin.
+   `/navi que_job01 82/95` | done when: `mao_morocc2 >= 5`
+4. **Rin** - "Mr. Kidd sent me." (6), (7); on `hu_fild04` the Heap of
+   Earth: "Take a careful look." (8, Crystal Of Feardom); Rin (9, Morocc
+   Tracing Log).
+   `/navi que_job01 84/17`, `/navi hu_fild04 235/103` | done when:
+   `mao_morocc2 >= 9`
+5. **Mr. Kidd** - log and crystal (taken) (10); he sends you on; the Corpse:
+   "Check his pockets." (11, Sealed Scroll; back to Morroc); walk past
+   `mid_camp 205/312` (12); Mr. Kidd (13).
+   `/navi que_dan01 49/36` | done when: `mao_morocc2 >= 13`
+   Reward (at 10): 20,000 base / 1,000 job EXP.
+6. **Defaria's seal** - the leader: "Who?" (14); Defaria: "Got it." (15);
+   bring 30 Holy Water, 30 Rune of Darkness (Skogul, Frus), 30 Bloody Rune,
+   the scroll (taken) (16); talk until the spell is undone (1 in 3) (17,
+   Unsealed Magic Spell).
+   `/navi mid_camp 256/272` | done when: `mao_morocc2 >= 17`
+7. **The Dandelion hideout** - Mr. Kidd; at the gate: "Enter." (18); Mr.
+   Kidd (19); the gate again, then the Man: "Rayan?!" (20, sent to your
+   save point).
+   `/navi que_dan02 21/37`, `/navi que_dan02 115/53` | done when:
+   `mao_morocc2 >= 20`
+8. **Rin again** - Mr. Kidd (21, a new crystal and log); in the hideout,
+   Rin with both (taken): "Who is this?", then any of the three blows
+   (22); she shows you a code (23, 24 or 25).
+   `/navi que_job01 144/54` | done when: `mao_morocc2 >= 23`
+9. **The code** - the leader: type the code exactly (`SDHF92F-SDF`,
+   `VWNM94GVWN90` or `CM3-TRDFGHE0`, the one Rin showed) (29). A wrong code
+   (26-28): Rin shows it again.
+   `/navi mid_campin 68/185` | done when: `mao_morocc2 >= 29`
+10. **Case closed?** - talk to the leader until he moves (1 in 3) (30); the
+    Manager (31); the leader (100).
+    `/navi mid_camp 191/206` | done when: `mao_morocc2 >= 100`
+    Reward: 120,000 base / 20,000 job EXP, 1 Old Purple Box.
+11. **Baked sweet potatoes** (optional) - the leader: "Something is
+    bothering me..." (101); Defaria: type `Dandelion`, "Just tell me what
+    you know.", "I'll do anything for you.", "Yes!", "Sure thing. How
+    many?" (102); bring 20 Potato and 30 Log (taken) (103), (104, 2 Yam);
+    Mr. Kidd: 2 Yam (105); Defaria (106, 2 Yam); the leader: 2 Yam (107);
+    Defaria (108).
+    `/navi mid_camp 256/272` | done when: `mao_morocc2 >= 108`
+    Reward: 5 Sweet Potato.
+
+Excluded: the Magic Books (skill books), Cat Paw's enchantment.
+
+## 24. Mora and Bifrost (Episode 14.1)
+
+Every quest here is in `re/quests/quests_mora.txt`. The Mistwood Maze
+(the Hazy Forest instance, `re/instances/HazyForest.txt`) is entered by the
+Laphine Soldier at `bif_fild01 158/340`: "Venture into the Hazy Forest.",
+for a party leader (a party of one is enough), again 2 h 30 after each
+entry (quest 7211, `+2h30mn`); no level check.
+
+### Helping Lope and Euridi
+`ep14_1_rope` 0->11, quests 1109-1117 | Lv 100 (Euridi: `BaseLevel < 100`
+refuses) | opens: Knights of the Neighborhood. Bring 30 Lope's Clue: only
+Parus (Lv 142, 15% in three drop slots) drops it, and Parus lives in the
+Mistwood Maze.
+
+1. **Euridi** - "Yes, I did.", "I'll help you!" (1).
+   Why: her beloved Lope never came back from the misty forest.
+   `/navi mora 117/66` | done when: `ep14_1_rope >= 1`
+2. **Pitt** - (2); Euridi (3).
+   `/navi mora 65/145` | done when: `ep14_1_rope >= 3`
+3. **The clues** - Pitt with 30 Lope's Clue: "Give it to him." (5 taken)
+   (4); Euridi takes the rest (up to 30) (5).
+   `/navi mora 65/145` | done when: `ep14_1_rope >= 5`
+4. **The ring** - Pitt (6, Lope's Ring); Euridi's Friend (7).
+   `/navi mora 115/68` | done when: `ep14_1_rope >= 7`
+5. **Lope** - walk up to him on Bifrost's field: "Talk to him." (8); talk
+   again (9).
+   Why: Lope lives, but the forest has taken his memory.
+   `/navi bif_fild01 132/338` | done when: `ep14_1_rope >= 9`
+6. **The answer** - Euridi: "Tell her he is dead." (10, the ring taken).
+   `/navi mora 117/66` | done when: `ep14_1_rope >= 10`
+7. **Her friend** - (11).
+   `/navi mora 115/68` | done when: `ep14_1_rope >= 11`
+   Reward: 1,000,000 base / 2,000,000 job EXP, 10 Mora Coin.
+
+### Knights of the Neighborhood
+`ep14_1_rope` 11->13, quests 1118-1119 | Lv none | needs: Helping Lope and
+Euridi (`ep14_1_rope == 11`).
+
+1. **The Knights Head** - "Yes, sir!" (12, quest 1118).
+   Why: Mora's self-made knights want to find more of Lope's trail.
+   `/navi mora 114/163` | done when: `ep14_1_rope >= 12`
+2. **More clues** - 30 Lope's Clue (Parus, the Mistwood Maze) (taken)
+   (13).
+   `/navi mora 114/163` | done when: `ep14_1_rope >= 13`
+   Reward: 1,000,000 base / 1,000,000 job EXP, 2 Mora Coin.
+   Opens: the Knights Boss (`mora 116/165`) takes 200 Mysterious Seed for
+   1 Mora Coin once a day (until 4:00, quest 1119): an exchange.
+
+### Theore's Request
+`ep14_1_bs` 0->19, `ep14_1_bs2` (which fairy), quests 11182-11208 | Lv 100
+(Theore) | the Laphines and the fairies want the ring worn. Keep 3,500
+weight free for step 10.
+
+1. **Theore** - walk up to him at the camp: "Try talking to him.", "Listen
+   to him more.", "Help." (2; quest 11182, a minute).
+   Why: a researcher of fairies needs someone the fairies do not flee.
+   `/navi mid_camp 148/222` | done when: `ep14_1_bs >= 2`
+2. **A minute later** - Theore: "Banned?" (3).
+   `/navi mid_camp 148/222` | done when: `ep14_1_bs >= 3`
+3. **The bushes** - on `spl_fild02` search the bushes (`79/104`,
+   `103/344`, `261/323`, `137/305`, `23/196`, `186/260`): 1 time in 5 a
+   fairy jumps out and runs (4-9 by bush). **Note how she looks**. Walk
+   over the spot she dropped her pouch (1 in 5): a Small Pocket.
+   `/navi spl_fild02 186/260` | done when: `ep14_1_bs >= 4` and the pouch
+   held
+4. **Theore** - shows him the pouch (quest 11186).
+   `/navi mid_camp 148/222` | done when: quest 11186 started
+5. **Who was she?** - the Tired-looking Fairy in Splendide: "Show the
+   pouch.", "I found it in the bushes.", "I think I saw a fairy that might
+   be the owner.", then describe her:
+   - Kusmi: "Blonde hair", "Light-skinned", "Grape clothing", "Two pairs
+     of wings".
+   - Theodore: "Grassy-green hair", "Dark-skinned", "Snow-white clothing",
+     "Round wings".
+   - Pauchon: "Sea-blue hair", "Dark-skinned", "Grassy-green clothing",
+     "Characteristic Wings".
+   `/navi splendide 183/117` | done when: `ep14_1_bs2 >= 10` (10 Kusmi, 11
+   Theodore, 12 Pauchon)
+   Fails: a wrong description only gets "Hmm...": try again.
+6. **The owner** - give her the pouch (10); talk again (11); "Supply route
+   from the mainland?", "Yes." (12).
+   `/navi splendide 119/138` (Kusmi), `304/295` (Theodore), `168/301`
+   (Pauchon) | done when: `ep14_1_bs >= 12`
+7. **The Laphine Soldier** - (13); the fairy again (14).
+   `/navi splendide 262/376` | done when: `ep14_1_bs >= 14`
+8. **Mora's warehouse** - the Warehouse Manager: "Supplies for Laphine?"
+   (15).
+   `/navi mora 185/163` | done when: `ep14_1_bs >= 15`
+9. **Jones** - "Yes." (16); again (17, Splendid Supply Kit).
+   `/navi mora 55/124` | done when: `ep14_1_bs >= 17`
+10. **Daphrer** - the kit (taken) (18).
+    `/navi splendide 121/260` | done when: `ep14_1_bs >= 18`
+    Reward: 500,000 job EXP, 5 Mora Coin (without the kit: 200,000, 2).
+11. **Theore** - (19).
+    `/navi mid_camp 148/222` | done when: `ep14_1_bs >= 19`
+    Reward: 200,000 job EXP, 5 Mora Coin.
+
+### Find the Research Tools
+`ep14_1_muk` 0->15, `ep14_1_goki` (fights), quests 5016-5034 | Lv 100 | the
+Raffle Researcher is away from 0:00 to 5:00 server time. The waits run in
+real time.
+
+1. **The Raffle Researcher** - "What is your business here?", "... ...",
+   then any "Help ..." line (1, quest 5016).
+   Why: a creature stole the researcher's tools.
+   `/navi mora 31/138` | done when: `ep14_1_muk >= 1`
+2. **The Black Shadow** - beat the creature in its menu fight, then "Look
+   for the research tools." (Research Tool Bag; a 1-hour wait, quest 5029).
+   `/navi mora 114/79` | done when: the bag held
+3. **Back** - the bag (taken) (2, 1 Mora Coin; quest 5017); after the hour,
+   the Researcher (3).
+   `/navi mora 31/138` | done when: `ep14_1_muk >= 3`
+4. **Revenge** - beat the Black Shadow three times, an hour apart (4, 5,
+   6). The fight's choices: **to verify**.
+   `/navi mora 114/79` | done when: `ep14_1_muk >= 6`
+5. **Bath water** - the Researcher (7, 10 Empty Test Tube); at the bath
+   spots ("Collect samples.": `mora 108/86`, `107/82`, `113/84`, `116/81`,
+   `118/86`) fill 10 Bath Water Sample; bring them (8, 1 Mora Coin; quest
+   5020, a day).
+   `/navi mora 108/86` | done when: `ep14_1_muk >= 8`
+6. **A day later** - the Researcher asks for teeth or scales (9, quest 5021
+   or 5022); "Look further." at the same spots (1 in 3) for 10 Teeth Sample
+   or 10 Scale Sample; bring them (1 Mora Coin; quest 5023, 6 hours); then
+   (10, 1 Empty Test Tube).
+   `/navi mora 31/138` | done when: `ep14_1_muk >= 10`
+7. **The four pools** - on `bif_fild02` "Collect a sample." at a Puddle
+   and bring each Sample Of Puddle Research: east `315/285` (11), then
+   `65/109` (12), `223/71` (13), `113/340` (14, 4 Mora Coin; quest 5028, 12
+   hours). Which puddle is which side: **to verify**.
+   `/navi bif_fild02 315/285` | done when: `ep14_1_muk >= 14`
+8. **The results** - after 12 hours: "Look at the results." (15).
+   `/navi mora 31/138` | done when: `ep14_1_muk >= 15`
+   Reward: 1,000,000 base / 4,000,000 job EXP, 30 Mora Coin.
+   Extra: after 30 fights the Black Shadow asks you to find its family
+   (quests 5030-5034, a fish on Bifrost) for a Fish Pin.
+
+### Chesire's New Day
+quests 7206-7210 | Lv none | needs: Episode 13.3 past 22
+(`ep13_3_secret > 22`, Story) | repeatable (the box once a day, until 4:00,
+quest 7208).
+
+1. **Cheshire** - walk into El Dicastes's 5th floor corridor (`dic_in01
+   262/191`), or talk to Cheshire on Bifrost: "Huh? Cheshire?", "Nothing,
+   it's just the hood...", "I guess I have no choice." (7206).
+   Why: the Cat Paw spy needs a box carried out of the Sapha mine.
+   `/navi bif_fild01 335/168` | done when: quest 7206 started
+2. **The box** - the Stacked Boxes of Goods in the mine (7207, Bradium
+   Box).
+   `/navi dic_dun01 274/114` | done when: quest 7207 started
+3. **Deliver** - Cheshire: "Why don't you do it yourself?" (box taken)
+   (7208).
+   `/navi bif_fild01 335/168` | done when: quest 7208 started
+   Reward: 1 Proof Of Sapha's Honor.
+   Daily: after 4:00 "Move the box." at the boxes (7210) and back to
+   Cheshire, 1 certificate. Lost the box: "I lost it..." and bring her 20
+   Refined Bradium instead (7209).
+
+### Mora daily quests
+quests 12225-12253 | Lv 97 (Elephantine 135) | needs: Episode 14.1 at 10
+(`ep14_1_mistwoods >= 10`, Story) | repeatable: one task from each giver a
+day (until 4:00 server time).
+
+1. **Hunting** - Elephantine: "Tell me about today's task." gives one hunt
+   (3 Pom Spider, 4 Angra Mantis, 5 Parus, 6 Little Fatum or 7 Miming);
+   Hotcha: "I have completed a task.".
+   `/navi mora 133/80`, `/navi mora 115/98` | done when: the hunt quest
+   erased
+   Reward: job EXP by job level (none from Job 50 at Lv 100+), 3 Mora Coin.
+2. **Items 1** - Bow-wow gives one: 4 Insect Feeler, 5 Immortal Heart, 1
+   Rotten Bandage, 3 Orcish Voucher or 3 Skel-Bone; the General Goods
+   Dealer takes it: "I have completed a task.".
+   `/navi mora 119/103`, `/navi mora 119/118` | done when: the request
+   erased
+   Reward: job EXP by job level, 1 Mora Coin.
+3. **Items 2** - Woof-grrr: 2 Memento, 3 Shell, 3 Scale Shell, 2 Venom
+   Canine or 5 Sticky Mucus; the Commodities Dealer takes it.
+   `/navi mora 124/108`, `/navi mora 127/112` | done when: the request
+   erased
+   Reward: job EXP by job level, 1 Mora Coin.
+4. **Missing people** - the Soul Guide names one of ten lost villagers;
+   find their remains in the Mistwood Maze (`1@mist`: Tazaar `132/100`,
+   Naizar `102/242`, Meshir `145/245`, Noirit `196/276`, Pajama God
+   `304/327`, Mendel `334/287`, Milebit `330/177`, Kunmun `284/84`,
+   Tsaihokin `170/54`, Tuar `118/43`).
+   `/navi mora 170/101` | done when: the search quest erased
+   Reward: 2-7 Mora Coin and a random item from the remains.
+
+## 25. Eclage (Episode 14.2)
+
+Every quest here is in `re/quests/quests_eclage.txt`. Light and Darkness
+and Encounter in a Strange Land are Episode 14.2 (Story). Not a quest: the
+Teleport Cats (Cat Paw Addition 14.2) carry you along the New World for
+Malangdo Canned Specialties or zeny, no condition (see "Entrances without
+a quest").
+
+### Eclage's Entrance
+`ep14_2_oliver` 0->3, quests 11310-11311 | Lv none | guided `ep14_eclage`
+| opens a place: Eclage.
+
+1. **The forms** - a Security Guard at the gate: "Fill out the forms.",
+   type anything in each of the three boxes (1).
+   Why: the Laphine city lets no stranger in without paperwork.
+   `/navi ecl_fild01 94/322` | done when: `ep14_2_oliver >= 1`
+2. **Immigration** - wait half a minute, then the Immigration Officer (2).
+   `/navi ecl_fild01 111/320` | done when: `ep14_2_oliver >= 2`
+   Fails: too soon and he only cries: talk again a little later.
+3. **Through the gate** - the Security Guard (3, into Eclage).
+   `/navi ecl_fild01 94/322` | done when: `ep14_2_oliver >= 3`
+
+### Oliver Wolf Hood (Dreaming Time)
+`ep14_2_oliver` 3->30, quests 11312-11337 | Lv 120 (the Fairy Carpenter) |
+needs: Eclage's Entrance | opens: Laphines That Love the Land (at 5).
+
+1. **The broken bridge** - the Fairy Carpenter at the city's entrance:
+   "Give help." (4).
+   Why: the bridge into Eclage is broken and the carpenter is stuck.
+   `/navi eclage 102/32` | done when: `ep14_2_oliver >= 4`
+2. **His sum** - "What if you use magic to repair it?", then type `002`
+   (what the script accepts) (5).
+   `/navi eclage 102/32` | done when: `ep14_2_oliver >= 5`
+3. **Leaf wood** - Golie by the keepers' tower (6, 2 Leaf Made Wood); the
+   carpenter takes them (7).
+   `/navi ecl_fild01 192/94` | done when: `ep14_2_oliver >= 7`
+4. **Glaces' birthday** - Glaces (8); Yube: "Share Glaces' story." (9);
+   Glaces: "Then what's Glaces' age?" (10); Murah (11); Shul (12); Tato:
+   "What's Tato's age?" (13).
+   `/navi eclage 283/275` (Glaces), `191/200` (Yube), `/navi ecl_in01
+   73/51` (Murah), `/navi eclage 265/166` (Shul), `137/169` (Tato) | done
+   when: `ep14_2_oliver >= 13`
+5. **The riddle** - Yube: type `128` (14).
+   `/navi eclage 191/200` | done when: `ep14_2_oliver >= 14`
+6. **Candles** - bring Yube 128 Dustball (Cenere Lv 146, 12.5%; Solid
+   Cenere 62.5%; Green Cenere 50%) (15, 128 Birthday Candle; "Make the
+   candles." makes fewer if you lost some); Glaces takes the 128 candles
+   (16).
+   `/navi eclage 191/200`, `/navi eclage 283/275` | done when:
+   `ep14_2_oliver >= 16`
+7. **The feather** - Moreng: "Yes, I am." (17), (18); the Old Man: "Yes, I
+   have." (19); the Traveler at the gate (20); the Sack Merchant: "Talk
+   about the feather." (21); Moreng (22); Glaces (23).
+   `/navi eclage 266/216`, `/navi ecl_in01 60/71`, `/navi ecl_fild01
+   97/315`, `/navi ecl_in01 70/88` | done when: `ep14_2_oliver >= 23`
+8. **Yube's house** - door at `eclage 292/265`; Yube inside (24, 25); the
+   Delivery Man (26); Yube (27).
+   `/navi ecl_in04 182/224`, `/navi ecl_in01 44/53` | done when:
+   `ep14_2_oliver >= 27`
+9. **Oliver** - 1 Pile Of Acorn (Petal Lv 141, 30%) (taken) (28).
+   `/navi ecl_in04 179/226` | done when: `ep14_2_oliver >= 28`
+10. **Du Lian** - walk back in through Yube's door (29); Du Lian (30).
+    `/navi ecl_in04 226/231` | done when: `ep14_2_oliver >= 30`
+    Reward: Oliver Wolf Hood.
+
+### Laphines That Love the Land (Lost Adventurers)
+`ep14_2_nines` 0->6, quests 13050-13066 | Lv 100 (Fili: `BaseLevel < 100`)
+| guided `ep14_nines` (steps 1-3) | needs: Oliver Wolf Hood past 4
+(`ep14_2_oliver > 4`, Fili checks it before he starts) | repeatable: Fili's
+two rounds and New Oz's three errands once a day after 3 and 6 (until 4:00
+server time).
+
+1. **Fili** - "See what kind of work it is." (1).
+   Why: the Laphine by the keepers' tower worries about everyone.
+   `/navi ecl_fild01 190/93` | done when: `ep14_2_nines >= 1`
+2. **The four gardeners** - the Singing (`222/290`), Watering (`83/263`),
+   Dancing (`163/196`) and Cute (`237/181`) Laphines, one answer each; Fili
+   (2).
+   `/navi ecl_fild01 222/290` | done when: `ep14_2_nines >= 2`
+   Reward: 300,000 base / 300,000 job EXP, 1 Splendide Coin.
+3. **Lost adventurers** - Fili: "I'll do it! I'm an adventurer, too!";
+   Euncheong (`ecl_tdun01 11/62`), Rosi (`ecl_tdun02 99/63`), New Oz
+   (`ecl_tdun03 68/80`: "I'm here to see if you're doing okay."); Fili:
+   "The adventurer on the third floor is starving!" (3).
+   `/navi ecl_fild01 190/93` | done when: `ep14_2_nines >= 3`
+   Reward: 300,000 / 300,000 EXP, 10 Meat, 1 Splendide Coin.
+4. **New Oz's food** - 10 Meat and 10 Pile Of Acorn (taken) (4).
+   `/navi ecl_tdun03 68/80` | done when: `ep14_2_nines >= 4`
+5. **Dusting off** - kill 20 Cenere (quest 13063); New Oz: "Loots from
+   local monsters" at each question (5).
+   `/navi ecl_tdun03 68/80` | done when: `ep14_2_nines >= 5`
+6. **Souvenirs** - 20 Leaf Bookmark (Antique Book Lv 148, 12.5%) (taken)
+   (6).
+   `/navi ecl_tdun03 68/80` | done when: `ep14_2_nines >= 6`
+   Reward each of steps 4-6: 300,000 / 300,000 EXP, 1 Splendide Coin.
+
+### Wanted to Be Big and Beautiful
+`ep14_2_big` 0->26, quests 14118-14141 | Lv 120 (Wuhari).
+
+1. **Wuhari** - "Of course!", "Sure.", "Just because." (1); talk again (2,
+   Younger Bro Letter).
+   Why: a small Laphine wants to grow big, like her brother promised.
+   `/navi eclage 282/255` | done when: `ep14_2_big >= 2`
+2. **Wuhuru** - talk until he takes the letter (3, 4, 5, 6), then (7).
+   `/navi ecl_in02 149/117` | done when: `ep14_2_big >= 7`
+3. **Wuhari** - "Do you have any complaints?", "Sure thing." (8); "Well, I
+   can help you." (9).
+   `/navi eclage 282/255` | done when: `ep14_2_big >= 9`
+4. **Asking around** - Masione: "Um, about Wuhuru..." (10); Goatie: "I came
+   after talking with Masione...", "I wanted to ask you about Wuhuru." ...
+   (11); Svery: "I was wondering about the paper that Wuhuru was
+   holding.", "Wuhari asked me a favor." (14, Stained Research Book).
+   `/navi eclage 200/272`, `163/228`, `170/195` | done when:
+   `ep14_2_big >= 14`
+5. **The book** - Wuhari: "They told me to give this to you." (taken)
+   (15); five minutes later (quest 14131): "Your brother's physique
+   was...", "Shall I look for that Laphine?" (17). "That's seems too
+   uncertain." (16), then "It's important to help others." (17).
+   `/navi eclage 282/255` | done when: `ep14_2_big >= 17`
+6. **The high-level Laphine** - Svery: "Who's the high-level Laphine?"
+   (18); Goatie (19); Pompe: "I was sent by Goatie...", "A corpse?" (20).
+   `/navi eclage 170/195`, `163/228`, `126/151` | done when:
+   `ep14_2_big >= 20`
+7. **Giranni** - in the fields (21); the Laphine corpse (22, Piece Of
+   Lapine Wing); Giranni takes the wing (23).
+   `/navi ecl_fild01 70/285`, `/navi ecl_fild01 269/165` | done when:
+   `ep14_2_big >= 23`
+   Reward: 100,000 base EXP, 1 Old Purple Box.
+8. **Wuhuru** - "I saw a dead corpse of a Laphine in the field.", "Did you
+   murder him out of anger?" (24); Wuhari (25).
+   `/navi ecl_in02 149/117` | done when: `ep14_2_big >= 25`
+9. **The ingredients** - Giranni: "I need a piece of your father's wing."
+   (Piece Of Lapine Wing); the corpse again (Firm Hair); bring Wuhari 1 each
+   of Piece Of Lapine Wing, Firm Hair, Karvodailnirol (Remover Lv 121,
+   0.5%), Refined Bradium, Rune of Darkness, Bloody Rune: "I brought them
+   all." (taken) (26).
+   `/navi eclage 282/255` | done when: `ep14_2_big >= 26`
+   Reward: 300,000 base EXP, 5 Splendide Coin.
+
+### The Mystery Burglary
+`ep14_2_detect` 0->15, quests 9225-9262 | Lv 120 (`BaseLevel >= 120` at
+the house). Daughter Luen's house: door `eclage 156/56`, inside `ecl_in04`.
+
+1. **A noise** - walk past `eclage 156/51` (1); inside, walk up to the
+   family (2); Mother Rosa (3); the spot again (4).
+   Why: Luen's family was robbed while they slept.
+   `/navi ecl_in04 81/106`, `/navi ecl_in04 77/104` | done when:
+   `ep14_2_detect >= 4`
+2. **Clues** - search the house (Poppy `85/104`, the Messy Bookshelves
+   `80/112`, the Damaged book `78/111`, the Soda can container `83/111`,
+   the messed up table `76/107`, the foreign substance `80/105`); Luen
+   (5).
+   `/navi ecl_in04 78/108` | done when: `ep14_2_detect >= 5`
+3. **The suspects** - Cruyan (6, a Center Potion); Balumin at the gate (7);
+   the Wandering Merchant (8); Luen (9: everyone meets in the house).
+   `/navi eclage 164/102`, `/navi ecl_fild01 98/299`, `/navi eclage
+   222/131` | done when: `ep14_2_detect >= 9`
+4. **Name the robber** - Luen in the meeting room: "Now I will track down
+   the robber.", "Cruyan", "To gain permission to date Luen", "I'm afraid
+   that's not true.", "According to Balumin's statements...", "Look
+   through his possessions." (10).
+   `/navi ecl_in04 208/194` | done when: `ep14_2_detect >= 10`
+   Fails: a wrong suspect or reason: "I must have gotten something wrong."
+   and start over.
+5. **Thanks** - Luen (11), Father Dames (12), Mother Rosa (13), Cruyan
+   (14), Balumin (15).
+   `/navi ecl_in04 78/108`, `85/110`, `77/104`, `/navi eclage 164/102`,
+   `/navi ecl_fild01 98/299` | done when: `ep14_2_detect >= 15`
+   Reward: 300,000 base / 150,000 job EXP from each, and 1 Splendide Coin
+   (Luen), 1 Yggdrasil Berry (Dames), 1 Splendide Coin and 1 Yggdrasil
+   Berry (Rosa), 1 Yggdrasil Seed (Cruyan), 20 Pile Of Acorn (Balumin).
+
+### Troublesome Fairies (Prankster of Eclage)
+quests 4254-4265 (no variable) | Lv 120 (each fairy).
+
+1. **Eirinn's stomach** - "Sure!" (4254); "Give Herbs": 10 Green Herb
+   (taken).
+   `/navi ecl_in02 160/36` | done when: quest 4254 done
+   Reward: 100,000 base EXP, Snow Flip, Peony Mamy, Slapping Herb,
+   Yggdrasil Dust.
+2. **Bourbon's revenge** - "Sure!" (4255: kill 20 Menblatt); back to him.
+   `/navi ecl_in03 175/69` | done when: quest 4255 done
+   Reward: 100,000 base EXP, 2 Splendide Coin.
+3. **Cecilia** - "What are you doing?", "Fine." (4256); 10 Pile Of Acorn,
+   10 Worn Out Page, 10 Mould Powder (taken).
+   `/navi ecl_in01 26/88` | done when: quest 4256 done
+   Reward: 300,000 base EXP.
+4. **The conspiracy** - with 4254 and 4255 done: Cecilia (4257); Eirinn
+   and Bourbon (4258, 4259); Cecilia (50,000 base EXP).
+   `/navi ecl_in01 26/88` | done when: quest 4257 done
+5. **Dominic** - walk up to him: "Cecilia says..." (4260); Cecilia: "Tell
+   Cecilia about Dominic." (100,000 base EXP; the bookshelves open, 4265).
+   `/navi ecl_in01 80/77` | done when: quest 4260 done
+6. **Counterattack** - Eirinn: "Sure!", 1 Stem and 1 Green Herb (Weeds);
+   the spot by Dominic's desk: "Do it." (300,000 base EXP).
+   `/navi ecl_in01 79/84` | done when: quest 4262 done
+7. **Counteroffensive** - Bourbon: "Sure!", 2 Rat Tail (Tiny Mouse Tail);
+   Dominic: "Yes." (300,000 base EXP).
+   `/navi ecl_in01 80/77` | done when: quest 4264 done
+
+### Memory of Professor Worm
+`ep14_2_profe` 0->12, quests 1214-1228 | Lv 120 | **dead end** at step 3,
+see guide-deferred.md.
+
+1. **Professor Worm** - in the tower's top floor: "What are you doing
+   here?", "I want to know about the tower.", then "Why should I!" (1).
+   Menu path: **to verify**.
+   Why: a professor turned into a worm has lost his memory.
+   `/navi ecl_tdun04 26/39` | done when: `ep14_2_profe >= 1`
+2. **Around him** - walk near `ecl_tdun04 21/41` until something comes
+   back to him (2).
+   `/navi ecl_tdun04 21/41` | done when: `ep14_2_profe >= 2`
+3. **His memories** - "I'll bring them back for you." (3); he wants 20
+   Star Shape Mushroom: no monster drops it and no shop sells it in
+   rathena-pin. Dead end, see guide-deferred.md. (After it: the Diary Frogs
+   No. 3, 6 and 30 and 1,100,000 base / 700,000 job EXP.)
+   `/navi ecl_tdun04 26/39` | done when: `ep14_2_profe >= 3`
+
+## 26. Flame Basin (Episode 14.3)
+
+Every quest here is in `re/quests/quests_14_3_bis.txt`, at the allied base
+in `moro_vol`; Dimensional Travel (`ep14_3_newerabs`) is Episode 14.3
+(Story). The Temple of the Demon God (`re/instances/TempleOfDemonGod.txt`)
+is entered by Guardian Nidhogg at `moro_cav 41/73` as a party leader (a
+party of one counts). Every daily below ends at the next 4:00 server time
+(quest_db `TimeLimit: 4h`).
+
+### Flame Basin dailies (Instructor Igrid and Adjutant Abidal)
+quests 7581-7582, 7594, 7599 | Lv 140 (Igrid), 160 (Abidal) | repeatable.
+
+1. **Eliminating Risks** - Instructor Igrid: "Sure." (7581): kill the three
+   Morroc vassals that appear in the basin (Morocc Twisted Vassal near
+   `moro_vol 278/238`, Fire Vassal near `292/131`, Cold Vassal near
+   `216/245`); back to him (7582).
+   `/navi moro_vol 111/87` | done when: quest 7582 started
+   Reward: 1,000,000 base / 800,000 job EXP.
+2. **Frost Spider and Fire Wolf** - with Demon God Subjugation taken:
+   Adjutant Abidal: "Accept." (7594): kill 1 Brinaranea and 1 Muspellskoll
+   in the Temple of the Demon God; back to him (7599).
+   `/navi moro_vol 110/90` | done when: quest 7599 started
+   Reward: 1 Expedition Award Box.
+
+### Magic Scholar and Hishieh
+quests 7583-7584, 7595, 7600 | Lv 140 (the scholar), 160 (Hishieh) | needs:
+Episode 14.2 at 33 (`ep14_2_mylord`), and for the scholar Eliminating
+Risks taken | repeatable.
+
+1. **The scholar's apology** - at `ep14_2_mylord == 33`: "Why are you
+   here?" (34).
+   `/navi moro_vol 98/107` | done when: `ep14_2_mylord >= 34`
+2. **Collecting Mana** - the Magic Scholar (7583): 3 Mana Crystal from the
+   basin's monsters (quest drop); back to him (7584).
+   `/navi moro_vol 98/107` | done when: quest 7584 started
+   Reward: 350,000 base / 350,000 job EXP.
+3. **Wandering Orb Magic** - with Demon God Subjugation taken: Hishieh:
+   "Gladly." (7595): kill 3 each of the white, red and yellow mana in the
+   Temple of the Demon God; back (7600).
+   `/navi moro_vol 95/108` | done when: quest 7600 started
+   Reward: 1 Expedition Award Box, 1,000,000 base / 500,000 job EXP.
+
+### Jeruth Hesranta
+`ep13_3_secret` 24->27, quests 7578-7580 | Lv 140 (from 25) | needs:
+Episode 13.3 at 24 (Story) | closes: Removing Traces (Ahat's daily, region
+23): his first talk sets `ep13_3_ahtdayq` to 0 | repeatable from 27.
+
+1. **The Sapha envoy** - "Why are you here?" (25).
+   `/navi moro_vol 136/84` | done when: `ep13_3_secret >= 25`
+   Reward: 1 Proof Of Sapha's Honor.
+2. **Rampaging Box** - "What suspicion?", "You're concerned?", "And
+   retrieve the stolen Bradiums as well." (26; 7578: kill 1 Angry Mimic,
+   it drops a Bradium Box); bring the box: "When do I start?" (27).
+   `/navi moro_vol 136/84` | done when: `ep13_3_secret >= 27`
+   Reward: 300,000 base / 300,000 job EXP.
+3. **Collecting Bradiums** (daily) - "I'll get on with it." (7579): 10
+   Angry Mimic and 10 Bradium Box (taken) (7580).
+   `/navi moro_vol 136/84` | done when: quest 7580 started
+   Reward: 800,000 / 800,000 EXP, 1 Proof Of Sapha's Honor.
+
+### Demon God Subjugation / Fall of the False God / Caged God
+quests 7593, 7596-7598 | Lv 160 | needs: Morse's Cave done
+(`ep14_3_mors01`, the memorial `re/instances/MorseCave.txt`, which needs
+`ep14_3_isle`) | opens a place: the Temple of the Demon God (instance) |
+repeatable.
+
+1. **Commander Hibba Agip** - "I'll do it." (7593: defeat the Demon God's
+   apostle in the Temple).
+   Why: Satan Morroc's last body waits in a hidden temple.
+   `/navi moro_vol 108/88` | done when: quest 7593 started
+2. **The Temple** - Guardian Nidhogg at the cave enters it; beat the
+   Demon God (7597 Fall of the False God).
+   `/navi moro_cav 41/73` | done when: quest 7597 started
+3. **Report** - Hibba Agip (7598, the wait; first time also
+   `ep4_3_mockill` 1).
+   `/navi moro_vol 108/88` | done when: quest 7598 started
+   Reward: 1 Expedition Award Box, 1,000,000 base / 500,000 job EXP; the
+   first time also a Darklord Soulpiece.
+4. **Nidhogg's gift** (once) - Guardian Nidhogg in the base: "Give the Soul
+   Shard." (`ep4_3_mockill` 2): an EXP blessing for everyone on the server
+   for an hour.
+   `/navi moro_vol 94/110` | done when: `ep4_3_mockill >= 2`
+
+### Flaming Basin and Doom Prayers
+`ep14_3_fall_bless` 0->13, quests 1264-1275, 1297 | Lv 150 (the
+investigator).
+
+1. **The Base Investigator** - "Do you want me to do it?", "Do you want me
+   to hunt Fire Condors?", "Got it." (1); bring 15 Burning Feather (Fire
+   Condor Lv 141, 20%) (taken) (2).
+   Why: something blesses the basin's monsters, and nobody knows what.
+   `/navi moro_vol 131/103` | done when: `ep14_3_fall_bless >= 2`
+2. **The scout** - "Let's go back with me.", "It does." (3); bring 20
+   Patrol Log (Fire Sandman, 20% while quest 1266 runs) (4).
+   `/navi moro_vol 234/301` | done when: `ep14_3_fall_bless >= 4`
+   Fails: walking onto the camp spots around `moro_vol 227/294` with logs
+   takes 2-3 of them and calls 3 Fire Sandmen.
+3. **Hunt** - the investigator: "I'll do my best." (5; kill 20 Fire
+   Sandman and 20 Fire Frilldora); back (6).
+   `/navi moro_vol 131/103` | done when: `ep14_3_fall_bless >= 6`
+   Reward: 100,000 job EXP.
+4. **The Doom Prayers** - their leader: "What god do you serve?", ... "I'll
+   collect the stones." (7); 40 Stone Of Blessing (Fire Golem Lv 148, 20%)
+   (8); "I'll collect Monster Bloods." (9); 30 Monster Blood (Fire Sandman,
+   Fire Frilldora, 15%) (10).
+   `/navi moro_vol 91/197` | done when: `ep14_3_fall_bless >= 10`
+5. **The second-in-command** - "I'll bring them." (11); 30 Golem's Fiery
+   Stone Tooth and 30 Frilldora's Fiery Nape (taken) (12).
+   `/navi moro_vol 95/195` | done when: `ep14_3_fall_bless >= 12`
+6. **The leader** - (13).
+   `/navi moro_vol 91/197` | done when: `ep14_3_fall_bless >= 13`
+   Reward: 2,000,000 base EXP.
+
+## 27. Verus and the Phantasmagorika (Episode 15)
+
+Story: Episode 15 (`ep15_1_atnad`, the Atnad excavation). Every daily here
+ends at the next 4:00 server time (quest_db `TimeLimit: 4h`). Not quests:
+the Reward Coordinator (`morocc 54/190`) and the Doom Prayers event on
+`verus04`.
+
+### The Wandering Bard
+`re/quests/quests_15_1.txt` | quests 4295-4302 | Lv 99 | guided `ver_bard`
+| needs (one story each): the Cursed Spirit (`lhz_curse >= 31`), the
+President (`lhz_boss >= 43`), Juperos Ruins History (`yuno_hist >= 10`),
+Metto (`metto_q >= 9`), the Biological Weapon (`hg_bio >= 9`), the Odin
+Temple Excavation (`hg_odin >= 60`); his own quest (4295) wants all six.
+
+1. **A song for a story** - he tells one of the six (quest 4297-4302:
+   Some Corporation, The President, a Scholar in Juno, a Mad Scientist,
+   Hugel, Odin Temple).
+   `/navi verus03 129/21` | done when: one of 4297-4302 started
+2. **The ending** - with that quest done, talk to him (its quest done;
+   quest 4296 Take a Break, until 4:00). Not done yet: "Return the
+   quest." and talk again for another (Some Corporation also costs the
+   wait).
+   `/navi verus03 129/21` | done when: that story's quest done
+3. **All six** - the sixth story ends his own quest (4295).
+   `/navi verus03 129/21` | done when: quest 4295 done
+   Reward: 5 Field Manual.
+   Note: Juperos Ruins History needs the four Transparent Plates (very
+   rare drops, see guide-deferred.md).
+
+### The Verus Police
+`re/quests/quests_15_1.txt` | `ep15_1_mang` (counts), quests 5304-5318 | Lv
+140 (Kesler) | repeatable (once a day, quest 5318).
+
+1. **Police Chief Kesler** - "Is there anything I can do to help?",
+   "Sure." (5309).
+   Why: four officers have more trouble than they can handle.
+   `/navi verus04 133/212` | done when: quest 5309 started
+2. **The four officers** - talk to each (5310-5313); each offers a
+   request:
+   - Salgran (`verus03 36/113`): kill 10 Illegal Promotion (5314).
+   - Gerev (`verus03 116/36`): "Examine." 10 cracks in the old city
+     (`verus03 127/36`, `119/17`, `163/33`, ...; 1 time in 2) (5315).
+   - Seiden (`verus03 81/241`): "Pick it up." 10 Stone at the same cracks
+     (5316).
+   - Piffs (`verus04 202/258`): 10 Collected Medicinal Herbs from the
+     Thickets (`verus04 187/219`, ...) (5317).
+   `/navi verus03 36/113` | done when: quests 5310-5313 started
+3. **Report** - Kesler (5318).
+   `/navi verus04 133/212` | done when: quest 5318 started
+   Reward: 200,000 base EXP, plus 200,000 for each request done.
+   Exchange: Token Of Destruction for Packed Envelopes (not a quest).
+
+### New Power Source
+`re/quests/quests_15_1.txt` | quests 7628-7629 | Lv none | needs: Episode
+15 past 16 (`ep15_1_atnad > 16`, Story) | repeatable (until 4:00, 7629).
+
+1. **Machinist Lloyd** - "Sure." (7628).
+   Why: the cat machinist needs energy for his machines.
+   `/navi verus03 103/177` | done when: quest 7628 started
+2. **Condensed energy** - at the Machine Remnant, 1 Empty Bottle gives 1
+   Condensed Energy; bring 10 (taken) (7629).
+   `/navi verus03 127/145` | done when: quest 7629 started
+   Reward: 150,000 base / 1,000,000 job EXP.
+
+### To Phantasmagorika! / Looking for the Traces
+`re/quests/quests_15_1.txt` | `ep15_1_elb` 0->15, quests 11363-11376 | Lv
+none | needs: Episode 15 at 4 (`ep15_1_atnad >= 4`) | opens: Vestige (at
+15).
+
+1. **Guide Elisha** - at the excavation camp on `yuno_fild07`: "Ask for
+   directions." (1, 11363).
+   Why: the Phantasmagorika troupe wants to see the old city of Verus.
+   `/navi yuno_fild07 216/157` | done when: `ep15_1_elb >= 1`
+2. **Leitner** - in Lighthalzen: "Ask about the registration process." (2,
+   11364).
+   `/navi lhz_in01 75/209` | done when: `ep15_1_elb >= 2`
+3. **Elisha** - "Say your name." and "Yes." (3, 11365).
+   `/navi yuno_fild07 216/157` | done when: `ep15_1_elb >= 3`
+4. **Guide Scarlet** - in Verus (4, 11366); bring 30 Used Iron Plate (Old
+   Stove Lv 92, 19%; Dimik 10%): "Push in Used Iron Plates." (5); then
+   "Say your name.", "Yes" (6, 11367).
+   `/navi verus04 119/220` | done when: `ep15_1_elb >= 6`
+5. **The troupe's traces** - follow them through `verus04`: the Fountain
+   (`116/226`, 7), the Sundries (`95/238`, 8), the Tree (`79/249`, 9), the
+   Signboard (`62/255`, 10); then in `verus03`: Du (`46/23`, 11), the
+   Fountain (`44/65`, 12), Mark (`88/237`, 13), Tamarin (`51/256`, 14),
+   Maggi (`35/254`, 15).
+   `/navi verus04 116/226` | done when: `ep15_1_elb >= 15`
+   Reward: 1,000,000 base EXP.
+
+### Monthly Brigan
+`re/quests/quests_15_2.txt` | `ep15_2_brigan` 0->8, quests 13195-13205 | Lv
+none | needs: Episode 15 at 19 (`ep15_1_atnad >= 19`) | repeatable from 8.
+
+1. **Krotzel** - (1); "Look for Probationary reporter" (2).
+   Why: the Brigan's journalists went missing in the ruins.
+   `/navi verus02 79/31` | done when: `ep15_2_brigan >= 2`
+2. **The three journalists** - the Lame Journalist (3), Krotzel (4), the
+   Photo Journalist (5), Krotzel (6), the Exhausted Journalist (7),
+   Krotzel (8).
+   `/navi verus01 172/146`, `/navi verus02 134/169`, `/navi verus01
+   41/103` | done when: `ep15_2_brigan >= 8`
+   Reward: 1,500,000 base / 1,000,000 job EXP.
+3. **Dailies** - each until 4:00: Krotzel "Look for team members" (13198);
+   Trapp (the Lame Journalist): "Help Rookie reporter Trapp", kill 30
+   Green Cenere (13200); Sunny Kim (the Photo Journalist): kill 30 Repair
+   Robot Turbo (13202); Grylls (the Exhausted Journalist): 30 Iron Worm
+   (13204).
+   `/navi verus02 79/31` | done when: the "Complete" quest started
+   Reward: 1,000,000 base / 500,000 job EXP each.
+
+### The Bunker: Restriction on the Journey
+`re/quests/quests_15_2.txt` | `ep15_2_memory`, quests 5341-5370 | Lv none |
+needs: **to verify** (the bunker `un_bunker` is reached from Verus) |
+repeatable: each of the five jobs again 22 hours after you take it.
+
+1. **The Mysterious Device** - in the bunker: "Pull it" takes you into a
+   memory of the bunker (`un_bk_q`) for the job that is running: the head
+   count (Bunker Sayhu `un_bk_q 103/147`, 5341), the air purifiers
+   (Mechanician Mugeosi `56/286`, 5351: Air Cleaner Boxes to zones C-0,
+   F-1, F-2, I-0, Z-0), the grape harvest (Bioengineer Ebrik `220/350`,
+   5358: Fresh Grapes), the hysterical patients (Nurse Lapplad `276/243`,
+   5363), the transport (Executive Ernon `279/294`, 5366).
+   `/navi un_bunker 103/95` | done when: the job's quest done
+   How a job is started, its menus and rewards: **to verify**.
+
+### Vestige / The Final Room
+`re/quests/quests_15_2.txt` | `ep15_2_bslast` 0->9, `ep15_2_bsmemo` 0->16,
+quests 11380-11389 | Lv none | needs: Episode 15 at 19 and To
+Phantasmagorika! at 15 (`ep15_1_elb >= 15`).
+
+1. **Du** - in Verus (1, 11381); the Fruit (2, 11382).
+   Why: the troupe's Du remembers a bunker under the city.
+   `/navi verus01 221/65`, `/navi verus01 151/173` | done when:
+   `ep15_2_bslast >= 2`
+2. **The bunker** - Mark at its entrance (3), Alph (`un_bunker 363/171`,
+   4), Alph again (`388/86`, 5).
+   `/navi un_bunker 100/96` | done when: `ep15_2_bslast >= 5`
+3. **The mystery** - Verity (`un_myst 27/208`, 6); the hall: Du
+   (`100/190`, 7); (8).
+   `/navi un_myst 27/208` | done when: `ep15_2_bslast >= 8`
+4. **The weird pieces** - the three pieces (`un_myst 333/206`, `182/137`,
+   `214/86`) in order (`ep15_2_bsmemo` 1->16), then Tamarin at the last
+   room's door (9, 11389).
+   `/navi un_myst 209/42` | done when: `ep15_2_bslast >= 9`
+   The pieces' menus and the final room: **to verify**.
+
+## 28. Rock Ridge
+
+Every quest here is in `re/quests/quests_rockridge.txt`. Standalone: no
+episode variable. The town's quests all wait for the main line
+(`rock_main_quest == 22`) and are dailies (until 4:00 server time, quest_db
+`TimeLimit: 4h`); most pay Rock Ridge Coins.
+
+### Rock Ridge, Land of Opportunities (main line)
+`rock_main_quest` 0->22, quests 7790-7809 | Lv 100 (Karam Pucci) | opens a
+place: Rock Ridge (`harboro1`). The ship back and forth costs 10,000 zeny
+(Karam Pucci, both ends).
+
+1. **Karam Pucci** - in Alberta: "What can I do for you?", "I'm in! I'm
+   in!", "Why are you looking for adventurers?", "So this is a mission.",
+   "Got it.", "Off we go to Rock Ridge!" (1).
+   Why: a frontier town across the sea needs settlers and a sheriff.
+   `/navi alberta 240/103` | done when: `rock_main_quest >= 1`
+2. **Mayor Costello** - "Mr. Karam Pucci sent me.", "Was it unoccupied
+   until you arrived?", "Who's the sheriff?" (2).
+   `/navi harboro1 80/218` | done when: `rock_main_quest >= 2`
+3. **Sheriff Wyatt Warp** - "I know about the Buffalo Bandits.", "What can
+   I do?", "We should talk to Mayor Costello first." (3); Costello: "You."
+   ... (4); Wyatt (5).
+   `/navi har_in01 20/30` | done when: `rock_main_quest >= 5`
+4. **The freight train** - the Unmoving Freight Train on the plain: "I'm
+   from Headquarters." (6); Wyatt: "He could just tell us where the ores
+   are, and walk out of here free." (7).
+   `/navi rockrdg1 156/312` | done when: `rock_main_quest >= 7`
+5. **The jail** - Ivoka Skudi (8); the prisoner Johnny James: "Albert is
+   the new leader of your gang now.", "He said he'd sell the ores to us
+   for a million Zeny.", ..., "Deal." (9); Wyatt (10).
+   `/navi har_in01 14/24`, `/navi har_in01 89/26`, `/navi har_in01
+   20/30` | done when: `rock_main_quest >= 10`
+6. **Shawn McCurdy** - in town: "What would that be?", "So the mine is
+   useless at the moment.", "Then what are you waiting for?" (11); at the
+   mine (`rockrdg2 347/216`): "Let's do that." (12, into `rockmi2`), (13).
+   `/navi harboro1 288/193` | done when: `rock_main_quest >= 13`
+7. **Albert Ford** - the Concaved Rock first: "Knock, knock, knock." (the
+   signal); Albert: "I came to negotiate with you.", "I'm here to tell you
+   that Johnny is about to betray you.", ..., "Sorry, but can I have a lock
+   of your mane?" (14, Buffalo Bandit Mane).
+   `/navi rockrdg2 279/313`, `/navi rockrdg2 295/309` | done when:
+   `rock_main_quest >= 14`
+8. **Back to the jail** - Johnny: "Show him his mane." (15); Wyatt (16).
+   `/navi har_in01 89/26` | done when: `rock_main_quest >= 16`
+9. **The mine** - Shawn in the mine (17); the Broken Elevator: kill the 3
+   Buffalo Bandits (18), then search it (19, Purple Ore Crate); Shawn (20).
+   `/navi rockmi2 97/120` | done when: `rock_main_quest >= 20`
+10. **Albert** - "Did something happen inside the mine?", ..., "Your threat
+    is not going to work." (21).
+    `/navi rockrdg2 295/309` | done when: `rock_main_quest >= 21`
+11. **Wyatt** - the crate (taken); pick a Vigilante Badge (L or R),
+    "Yes." (22).
+    `/navi har_in01 20/30` | done when: `rock_main_quest >= 22`
+    Reward: 2,500,000 base / 1,200,000 job EXP, 200 Rock Ridge Coin, the
+    badge you chose.
+
+### Cacturon (the Cactus family)
+quests 16078-16088 | Lv none | needs: the main line at 22 | repeatable (the
+coyote hunt, 16079).
+
+1. **Mrs. Cacturon** - "Hello. Is there a problem?", "Sure, I can do
+   that." (16078: kill 30 Coyote); back to her.
+   `/navi rockrdg1 341/133` | done when: quest 16078 done
+   Reward: 55,560 base / 52,710 job EXP, 2 Rock Ridge Coin.
+2. **The juice mix** (once) - Little Lecter's lost juice mix packages:
+   search the Suspicious Sand Mounds (`rockrdg1 182/124`, `286/247`) and
+   ask the Wasteland Cactuten ("Ask if he's seen a juice mix package.",
+   "Persuade him."), the Curious Coyote (`195/183`), the Cactus Girl
+   (`305/200`) and the Absorbed Coyote (`266/219`) (16082-16088).
+   `/navi rockrdg1 339/134` | done when: **to verify** (`rrrem*`
+   variables)
+3. **Again** - after 4:00, "Hunting Coyotes Again" (16080), same reward.
+
+### Collecting Ore Fragments
+quests 9460-9461 | needs: the main line at 22 | repeatable.
+
+1. **The Crouched Horse** - "Sure thing. I'll be right back." (9460); 10
+   Fragment of Purple Ore (from the mine, **to verify** the source) (9461).
+   `/navi rockrdg1 262/90` | done when: quest 9461 started
+   Reward: 25,000 base / 20,000 job EXP, 1 Rock Ridge Coin.
+
+### The town's jobs (food, vigilantes, water, the merchant)
+quests 12381-12411 | Lv 100 (the Steel Vigilante #2: 140) | needs: **to
+verify** (no `rock_main_quest` check found) | repeatable (each until 4:00).
+
+1. **The Exotic Merchant** - "What kinds of things?", "Nothing. Go on."
+   (12410): 5 of the item he names (taken) (12411).
+   `/navi harboro1 231/254` | done when: quest 12411 started
+   Reward: 20,000 base / 18,000 job EXP, 2 Rock Ridge Coin.
+2. **The Food Distributer** - "I'll stand in line.", "What missing
+   shipment?", "Why don't you procure some ingredients from the
+   outside?", "I can help.", "You need food ingredients, don't you?",
+   "Sure thing." (12381): one of six deliveries (sweet potato, meat,
+   carrot, banana, pumpkin, mushroom) (12382).
+   `/navi harboro1 357/163` | done when: quest 12382 started
+   Reward: 16,000 base / 12,800 job EXP, 1 Rock Ridge Coin.
+3. **The Steel Vigilantes** - #1: "No. I'm just a tourist.", "Alright, let
+   me hear it.", "Okay." (12389): one hunt (15 Buffalo Bandits of one gang,
+   20 Coyote, 10 Arclouze, 10 Rat) (12390); #2 (Lv 140): "Sure, why
+   not?": 10 of an elite gang or 10 Gaster (12398).
+   `/navi harboro1 357/155`, `/navi harboro1 357/152` | done when: quest
+   12390 / 12398 started
+   Reward: 6,810-37,040 base EXP by hunt and 2 coins (#1); 50,800-95,970
+   and 3 coins (#2).
+4. **The Desalination Facility** - the manager: "Tell me what this job
+   entails.", "Yes." (12403): maintain the red, blue, yellow and white
+   pipes through the Underground Passage (`harboro1 332/144`, "Move.")
+   (12405-12409) (12404).
+   `/navi harboro1 334/135` | done when: quest 12404 started
+   Reward: 35,000 base / 27,000 job EXP, 2 Rock Ridge Coin.
+
+### Pipe Cleaning
+quests 9458-9459 | needs: the main line at 22 | repeatable.
+
+1. **Donovan** - "I can do that." (9458: kill 20 Sea Anemone in the
+   pipes); back (9459).
+   `/navi harboro1 138/157` | done when: quest 9459 started
+   Reward: 25,000 base / 20,000 job EXP, 1 Rock Ridge Coin.
+
+### Midnight
+quests 14672-14673 | Lv 130 (the Demon), 140 for the daily | needs: the
+main line at 22 | repeatable.
+
+1. **Midnight and the Demon** - in the underground of `harboro2`: "Mister,
+   what are you doing here?", "What business?", "Rob the mine?", "Why did
+   you go to jail?", "So, what can I do to help?" (14672: kill 15 Gaster);
+   bring 10 Deadly Poison Powder (Gaster Lv 141, 25%) and 1 Explosive
+   Powder (taken) (14673).
+   `/navi harboro2 167/82`, `/navi harboro2 164/80` | done when: quest
+   14673 started
+   Reward: 76,200 base / 70,740 job EXP, 3 Rock Ridge Coin.
+
+### Gas! Gas!
+quests 1298-1299 | needs: the main line at 22 | repeatable.
+
+1. **The Frail Ghast** - "Help.", "Yes." (1298: kill 20 Gaster); back
+   (1299).
+   `/navi rockrdg2 295/328` | done when: quest 1299 started
+   Reward: 101,600 base / 94,320 job EXP, 3 Rock Ridge Coin.
+
+### Mrs. McPhy and Spotty
+quests 1321-1330 | Lv 100 | repeatable (after the dream, quest 1329).
+
+1. **Spotty and her ring** - Mrs. McPhy (1321); Mr. McPhy outside town
+   (`rockrdg1 36/250`); the holes Spotty dug (`rockrdg1 170/233`,
+   `43/145`, ...: "Spotty, No!", 1322-1328); back to Mrs. McPhy (1329).
+   `/navi harboro1 347/65` | done when: quest 1329 started
+   Menus and rewards: **to verify**.
+
+### Mr. McPhy: Avenging Spotty
+quests 1331-1332 | Lv none found | repeatable.
+
+1. **Mr. McPhy** - in town (1331: kill 3 of each Buffalo Bandit gang);
+   back (1332).
+   `/navi harboro1 344/61` | done when: quest 1332 started
+   Reward: **to verify**.
+
+Not quests: the Prison (Johnny James and the jail are the main line's),
+the townsfolk (`harboro1` misc NPCs).
+
 ## Entrances without a quest
 
 - **Nightmare Clock Tower** - Belljamin Button in the Clock Tower: "Go to 2nd
@@ -3919,5 +5285,15 @@ Festival (exchange).
   takes you back ("Go back to Thief Guild") and gives the hunts (region 4).
   `/navi moc_prydb1 103/54` (inside: `moc_prydn1 94/98`)
   `re/quests/quests_morocc.txt`
-- Eclage's Teleport Cats (27) and the New World's Cat Paw teleports (25)
-  stay candidates for their own batches.
+- **Teleport Cats** (Cat Paw Addition 14.2) - six cats along the New World,
+  each to its neighbours: Allied camp mid_camp 207/234 (Near Splendide,
+  Manuk Field), spl_fild02 53/242 (Entrance to Mora, Allied camp),
+  man_fild02 135/49 (Allied camp, Near El Dicastes), dic_fild01 161/266,
+  if_fild02 293/325, ecl_fild01 118/311. 10-55 Malangdo Canned
+  Specialties or 1,000 zeny for each can. No condition.
+  
+e/quests/quests_eclage.txt.
+- **Cat Paw Agents** of the New World (mid_camp 62/125, spl_fild02 25/211,
+  man_fild02 132/47): save point, storage and the Cat Warp by the Cat Paw
+  Trading Post's credit (region 23). quests/quests_13_1.txt,
+  quests/quests_13_2.txt.
