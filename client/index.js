@@ -99,6 +99,22 @@ h3.guides { margin: 12px 0 2px; font-size: 13px; color: #6b4a1d; }
 .mvp .wh { display: block; color: #889; font-size: 11px; }
 .mvp .lv { color: #a32f3c; font-weight: bold; white-space: nowrap; }
 .mvp.unknown { color: #99a; font-style: italic; }
+/* Rune-Midgard's quests (Renewal): region > storyline > quest > step */
+.cat details { margin: 4px 0; }
+.cat .story { margin: 8px 0 2px; color: #6b4a1d; }
+.cat .story .intro { margin: 2px 0; }
+.cat details.cq > summary, .cat details.cs > summary { font-weight: normal; }
+.cat details.cq > summary b { font-weight: bold; }
+.cat details.cs { border-color: #eceff6; }
+.cat details.cs.cur { border-color: #e5a15e; background: #fff7ee; }
+.cat .tg { font-size: 10px; padding: 0 5px; border-radius: 8px; background: #e6e9f2; color: #556; font-weight: normal; white-space: nowrap; }
+.cat .tg.warn { background: #f8e0d0; color: #8a3b12; }
+.cat .tg.place { background: #dde9f8; color: #24507a; }
+.cat p { margin: 3px 0; line-height: 1.4; }
+.cat code { font: 11px Consolas, monospace; background: #f1f3f8; padding: 0 3px; border-radius: 3px; }
+.cat .verify { background: #fff0b8; color: #7a5a00; padding: 0 3px; border-radius: 3px; }
+.cat .qlink { color: #24507a; cursor: pointer; text-decoration: underline; }
+.cat .about { color: #667; font-size: 11px; }
 `;
 
 const escape = text => String(text ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -141,6 +157,14 @@ export function parseSides(text) {
     });
 }
 
+/** "17,0,3" -> [17, 0, 3]: how many steps of each catalog quest are done (Renewal's Side Quests tab). */
+export function parseCat(text) {
+    const s = String(text || '').trim();
+    if (!s) return null;
+    const n = s.split(',').map(Number);
+    return n.every(Number.isFinite) ? n : null;
+}
+
 /** "juperos_02 1,3" -> { map, alive: [1, 3] }: watched monsters still standing ("0": none). */
 export function parseWatch(text) {
     const m = /^(\S+) ([\d,]+)$/.exec(String(text || '').trim());
@@ -152,6 +176,39 @@ const mapName = name => String(name || '').replace(/\.(gat|rsw)$/i, '');
 const chapterName = c => c.episode ? `Episode ${c.episode}` : `Chapter ${c.n}`;
 
 const GUIDES = DATA.guides || [];
+// Renewal: every side quest Ragnarok itself has, region > storyline > quest >
+// step (tools/catalog.ps1, from the docs). The server says how many steps of
+// each are done ("@chronicle <n> cat").
+const CATALOG = DATA.catalog || [];
+const CAT_REGION = new Map(CATALOG.flatMap(r => r.storylines.flatMap(s => s.quests.map(q => [q.i, r]))));
+// Quest names in the docs' text ("needs: the Z-Gang past step 8") link to the quest.
+const CAT_NAMES = new Map();
+for (const r of CATALOG) for (const s of r.storylines) for (const q of s.quests) {
+    const base = q.title.replace(/\s*\([^)]*\)/g, '');
+    for (const nm of [q.title, base, base.replace(/^The /, '')]) if (nm.length >= 6 && !CAT_NAMES.has(nm.toLowerCase())) CAT_NAMES.set(nm.toLowerCase(), q.i);
+}
+const CAT_RE = CAT_NAMES.size ? new RegExp(`\\b(${[...CAT_NAMES.keys()].sort((a, b) => b.length - a.length).map(n => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})(?![\\w])`, 'gi') : null;
+
+/**
+ * The docs' text as HTML: `code`, **bold** (**to verify** stands out), and
+ * every `/navi map x/y` (or `map x/y`, or a bare `x/y` after one) a Route
+ * link named after the step. With links, quest names link to the quest.
+ */
+export function catText(text, name, links) {
+    let t = String(text ?? '');
+    if (links && CAT_RE) t = t.replace(CAT_RE, m => `\u0001${CAT_NAMES.get(m.toLowerCase())}\u0002${m}\u0003`);
+    let map = '';
+    const html = t.split('`').map((part, i) => {
+        if (i % 2 === 0) return escape(part).replace(/\*\*(.+?)\*\*/g, (m, b) => /to verify/i.test(b) ? `<b class="verify">${b}</b>` : `<b>${b}</b>`);
+        const m = /^(?:\/navi )?([a-z][a-z0-9_]*) (\d+)[/,](\d+)$/.exec(part);
+        const xy = !m && map ? /^(\d+)\/(\d+)$/.exec(part) : null;
+        if (m) map = m[1];
+        const r = m ? [m[1], m[2], m[3]] : xy ? [map, xy[1], xy[2]] : null;
+        return r ? `<span class="route" data-r="${escape(r.join(','))}" data-n="${escape(name)}" title="Open Navigation with the way there">${escape(part)}</span>`
+            : `<code>${escape(part)}</code>`;
+    }).join('');
+    return html.replace(/\u0001(\d+)\u0002([^\u0003]*)\u0003/g, '<span class="qlink" data-q="$1">$2</span>');
+}
 const STEPS = DATA.chapters.flatMap(c => c.steps.map((s, i) => ({ ...s, ch: c.n, k: i + 1, chapter: c })));
 /** The quest id of the main step at a position: 77000 + the step's fixed id (on Renewal not its position). */
 const mainQuest = step => 77000 + (STEPS[step - 1]?.id ?? step);
@@ -215,6 +272,7 @@ export default function init(parameters, api) {
         folds[k] = event.target.open;
         try { localStorage.setItem(FOLDS, JSON.stringify(folds)); } catch { /* kept for this session only */ }
         if (/^(ch\d+-cur|sq\d+-on)$/.test(k)) { syncTicks(); paintTracker(); }
+        if (/^c[rq]\d+$/.test(k) && event.target.open) render();	// the catalog fills a fold-out when it opens
     }, true);
 
     // 1.4.5: a quest folded in the Journal (its chapter, or its Side Quest)
@@ -468,7 +526,7 @@ export default function init(parameters, api) {
             return `<details data-k="${fk}"${opened(fk, !done) ? ' open' : ''}><summary>${escape(sd.title)} <small>Chapter ${sd.ch}</small>${badge}</summary>
                 <div class="body"><p class="quote">${escape(sd.intro)}</p>${past}${now}</div></details>`;
         }).join('');
-        return pass + '<p class="hint route-note"></p>' + body + '<p class="hint">Side Quests are optional: the next chapter opens either way. Each gives a costume tied to its place, a small reward and a Passport stamp.</p>' + guidesHtml();
+        return pass + '<p class="hint route-note"></p>' + body + '<p class="hint">Side Quests are optional: the next chapter opens either way. Each gives a costume tied to its place, a small reward and a Passport stamp.</p>' + guidesHtml() + catalogHtml();
     }
 
     // Rune-Midgard's own quests on the road: the Journal only shows the way and
@@ -502,6 +560,90 @@ export default function init(parameters, api) {
         }).join('');
         if (!body) return '';
         return `<h3 class="guides">RO quests on your road</h3><p class="hint">Rune-Midgard's own quests. The Chronicle only shows the way: the quest's own people give its rewards, and the Journal follows the quest as it moves on. Each one finished stamps your Passport.</p>${body}`;
+    }
+
+    // ---- Rune-Midgard's quests (Renewal): every side quest RO has, by the
+    // region where it starts. A fold-out is only filled while it is open.
+    let cat = null;	// steps done per catalog quest (quest i at i - 1), null until the server says
+    const catDone = q => cat?.[q.i - 1];
+
+    function catalogHtml() {
+        if (!CATALOG.length) return '';
+        const body = CATALOG.map(r => {
+            const qs = r.storylines.flatMap(s => s.quests);
+            const counted = qs.filter(q => q.steps.length);
+            const done = counted.filter(q => catDone(q) >= q.steps.length).length;
+            const going = counted.filter(q => { const d = catDone(q); return d > 0 && d < q.steps.length; }).length;
+            const rk = `cr${r.n}`;
+            const open = opened(rk, false);
+            const count = r.entrances ? `${qs.length} places`
+                : `${cat ? `${done} of ` : ''}${counted.length} quest${counted.length === 1 ? '' : 's'}${cat ? ' done' : ''}${going ? `, ${going} under way` : ''}`;
+            const inner = open ? r.storylines.map(s => {
+                const head = s.title ? `<div class="story"><b>Storyline: ${catText(s.title, '', true)}</b>${s.intro ? `<p class="intro">${catText(s.intro, s.title)}</p>` : ''}</div>`
+                    : r.storylines.length > 1 ? '<div class="story"><b>Single quests</b></div>' : '';
+                return head + s.quests.map(catQuestHtml).join('');
+            }).join('') : '';
+            return `<details data-k="${rk}"${open ? ' open' : ''}><summary>${r.entrances ? '' : `${r.n}. `}${escape(r.title)} <small>${count}</small></summary><div class="body">${inner}</div></details>`;
+        }).join('');
+        return `<h3 class="guides">Rune-Midgard's quests</h3><p class="hint">Every side quest Ragnarok itself has on Renewal, by the region where it starts. The Journal only shows the way and ticks each step from the quest's own record; the quest's own people give the rewards. These quests don't stamp the Passport.</p><div class="cat">${body}</div>`;
+    }
+
+    function catQuestHtml(q) {
+        const n = q.steps.length;
+        const d = catDone(q);
+        const t = q.tags || {};
+        const k = `cq${q.i}`;
+        const open = opened(k, false);
+        const tags = [
+            n && d != null ? (d >= n ? '<span class="badge">Done</span>' : d > 0 ? `<span class="badge cur">Step ${d + 1} of ${n}</span>` : '<span class="badge lock">Not started</span>') : '',
+            t.players ? `<span class="tg">Players: ${t.players}</span>` : '',
+            t.repeatable ? '<span class="tg">Repeatable</span>' : '',
+            t.place ? '<span class="tg place">Opens a place</span>' : '',
+            t.mod ? '<span class="tg">Needs a mod</span>' : '',
+            t.deadEnd ? '<span class="tg warn">Dead end</span>' : '',
+        ].filter(Boolean).join(' ');
+        let inner = '';
+        if (open) {
+            const guide = t.guided && GUIDES.find(g => g.key === t.guided);
+            const side = t.side && DATA.sides[t.side - 1];
+            const about = (q.about || []).map(a => `<p>${catText(a, q.title, true)}</p>`).join('');
+            inner = [
+                q.line ? `<p class="quote">${catText(q.line, q.title)}</p>` : '',
+                t.players ? `<p class="hint">Needs a party of ${t.players} or more. Party bots count as players.</p>` : '',
+                ...(q.links || []).map(l => `<p>${catText(l.replace(/^([a-z ]+):/, (m, w) => `**${w[0].toUpperCase()}${w.slice(1)}:**`), q.title, true)}</p>`),
+                q.dead ? `<p class="warn"><b>Dead end:</b> ${catText(q.dead, q.title)}</p>` : '',
+                guide ? `<p class="hint">The Chronicle also guides it step by step: ${escape(guide.title)}, under RO quests on your road.</p>` : '',
+                side ? `<p class="hint">The Chronicle's Side Quest ${escape(side.title)} takes you through it too.</p>` : '',
+                !n ? `<div class="about">${about}</div>` : about ? `<details class="how" data-k="${k}-about"${opened(`${k}-about`, false) ? ' open' : ''}><summary>About this quest</summary><div class="body about">${about}</div></details>` : '',
+                q.steps.map(s => catStepHtml(q, s, d)).join(''),
+                ...(q.after || []).map(a => `<p class="about">${catText(a, q.title)}</p>`),
+            ].join('');
+        }
+        return `<details class="cq" data-k="${k}"${open ? ' open' : ''}><summary><b>${escape(q.title)}</b> ${tags}</summary><div class="body">${inner}</div></details>`;
+    }
+
+    function catStepHtml(q, s, d) {
+        const done = d != null && s.k <= d;
+        const cur = d != null && s.k === d + 1;
+        const k = `cs${q.i}-${s.k}`;
+        const name = `${q.title}: ${s.title}`;
+        const lines = s.lines.map(([label, text]) => {
+            const t = label ? text : String(text).replace(/^[a-z]/, c => c.toUpperCase());
+            return `<p>${label === 'Go' ? '<b>Route:</b> ' : label ? `<b>${escape(label)}:</b> ` : ''}${catText(t, name)}</p>`;
+        }).join('');
+        const when = s.done ? `<p class="hint">Done when: ${catText(s.done, name)}${s.check ? '' : '<br>The Journal can\'t check this one by itself: it is ticked once a later step is done.'}</p>` : '';
+        return `<details class="cs${cur ? ' cur' : ''}" data-k="${k}"${opened(k, cur) ? ' open' : ''}><summary>${done ? '<span class="ok">&#10003;</span>' : ''}<b>${s.k}. ${escape(s.title)}</b></summary><div class="body">${lines}${when}<p class="hint route-note"></p></div></details>`;
+    }
+
+    // A quest name clicked in the catalog: open its region and the quest.
+    function showCatQuest(i) {
+        const r = CAT_REGION.get(i);
+        if (!r) return;
+        folds[`cr${r.n}`] = true;
+        folds[`cq${i}`] = true;
+        try { localStorage.setItem(FOLDS, JSON.stringify(folds)); } catch { /* kept for this session only */ }
+        render();
+        list.querySelector(`[data-k="cq${i}"]`)?.scrollIntoView({ block: 'start' });
     }
 
     function ledgerHtml() {
@@ -600,9 +742,15 @@ export default function init(parameters, api) {
             }
         } catch {
             /* no answer: keep what we had */
-        } finally {
-            asking = false;
         }
+        // The catalog's ticks, only while its tab is shown.
+        if (CATALOG.length && tab === 'side') {
+            try {
+                const next = parseCat(await api.server.request('chronicle', 'cat'));
+                if (next) cat = next;
+            } catch { /* keep what we had */ }
+        }
+        asking = false;
         render();
     }
 
@@ -661,14 +809,16 @@ export default function init(parameters, api) {
     win.body.addEventListener('click', event => {
         if (event.target.closest('.qwin')) api.actions.perform('window', { name: 'Quest', open: true });
         const tabButton = event.target.closest('[data-tab]');
-        if (tabButton) { tab = tabButton.dataset.tab; render(); return; }
+        if (tabButton) { tab = tabButton.dataset.tab; render(); if (tab === 'side' && CATALOG.length) refresh(); return; }
+        const qlink = event.target.closest('.qlink');
+        if (qlink) { showCatQuest(Number(qlink.dataset.q)); return; }
         const followButton = event.target.closest('[data-follow]');
         if (followButton) { unfollow(followButton.dataset.follow === 'stop'); return; }
         const link = event.target.closest('.route');
         if (link?.dataset.r) {
             const [map, x, y] = link.dataset.r.split(',');
-            const name = link.textContent.replace(/\s*\([^()]*\)\s*$/, '');
-            const note = list.querySelector('.route-note');
+            const name = link.dataset.n || link.textContent.replace(/\s*\([^()]*\)\s*$/, '');
+            const note = link.closest('details.cs')?.querySelector('.route-note') || list.querySelector('.route-note');
             if (!goRoute({ map, x: Number(x), y: Number(y), name }) && note) note.textContent = `Close the NPC dialog first, or type: /navi ${map} ${x}/${y}`;
             return;
         }

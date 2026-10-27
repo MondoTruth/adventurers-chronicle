@@ -280,6 +280,8 @@ OnInit:
 	setarray $@gds_now$[1401], "RO quest: talk to Priestess Nemma in Rachel's temple (ra_temple, 116, 174).", "RO quest: ask the kid in the south-east of Rachel (243, 37), who saw a way in. Answer Yeah. or Sure, I love the stuff~, and give him a Candy if he asks (Sure.).", "RO quest: climb in through the window at the side of the temple (ra_temple, 67, 209: Enter Through Window), follow the corridors, investigate the bloody spot twice, and push the gate open (Push Gate).", "RO quest: tell Panno inside the temple (ra_temin, 170, 46): Hey, did you open the gate?, The locked gate to the temple!, Explain. Then talk to her once more.", "RO quest: talk to Nemma twice; the second time choose Yes. with 20 Firecrackers.", "RO quest: talk to High Priest Zhed (ra_temin, 277, 159): choose Yes, sure.", "RO quest: the Pope's Office Guard (ra_temin, 134, 128) lets you pass for 40 Glacial Hearts.", "RO quest: walk past the guard (134, 131), then up through (275, 226) to the Pope (ra_temsky, 99, 99). Choose No, not at all...!, type anything twice, then R-really...? and Holy Ground?", "RO quest: tell Zhed about the Holy Ground, listen in at the hidden spot nearby, ask Zhed about Bekento, and pick up the small key (Pick It Up).", "RO quest: open the Sanctuary gate (ra_temin, 28, 319: Use Small Key), walk to the way on at the south of the first hall (ra_san01, 139, 13), then north to the far end of that hall (que_san04, 119, 203).", "RO quest: tell High Priest Zhed what you saw: choose Did something happen?";
 	setarray $@gds_items$[1401], "", "529,1,Candy", "", "", "12018,20,Firecracker", "", "7561,40,Glacial Heart", "", "", "", "";
 	setarray $@gds_parts$[1401], "", "", "", "", "", "", "", "", "18|Tell High Priest Zhed;19|Listen at the hidden spot (ra_temin 288, 151);20|Zhed again: Ask about Bekento;21|Pick up the key (ra_temin 272, 143)", "", "";
+	// ---- RO side quest catalog ----
+	$@cat_n = 168;
 
 	bindatcmd "chronicle", strnpcinfo(3) + "::OnCmd", 0, 99;
 
@@ -509,6 +511,14 @@ OnCmd:
 		@chr_lastmap$ = "";	// bosses and arrivals count again
 		dispbottom "[Chronicle] " + $@sq_title$[.@i] + " is now at step " + .@k + ".";
 		dispbottom "@@event chronicle refresh";
+		end;
+	}
+	if (.@atcmd_numparameters >= 2 && .@atcmd_parameters$[1] == "cat") {
+		.@s$ = callfunc("F_ChronCatState");
+		.@len = getstrlen(.@s$);
+		.@parts = (.@len + 199) / 200;
+		for (.@p = 0; .@p < .@parts; .@p++)
+			dispbottom "@@reply " + .@atcmd_parameters$[0] + " " + (.@p + 1) + "/" + .@parts + " " + substr(.@s$, .@p * 200, min(.@len, .@p * 200 + 200) - 1);
 		end;
 	}
 	if (.@atcmd_numparameters >= 2 && .@atcmd_parameters$[1] == "state") {
@@ -1657,6 +1667,1323 @@ function	script	F_ChronGuideDone	{
 	}
 	dispbottom "@@event chronicle refresh";
 	return;
+}
+
+// ---- generated: RO side quest catalog (catalog.ps1) ----
+function	script	F_ChronCatK	{
+	switch (getarg(0)) {
+	case 1:	// The Geoborg Family Curse
+		if (prt_curse == 36 || prt_curse == 45 || prt_curse == 56 || prt_curse == 61) return 17;
+		if (prt_curse == 35 || prt_curse == 44 || prt_curse == 54) return 16;
+		if (prt_curse == 31 || prt_curse == 40) return 15;
+		if (prt_curse == 30 || prt_curse == 50) return 14;
+		if (prt_curse >= 25) return 13;
+		if (prt_curse >= 24) return 12;
+		if (prt_curse >= 22) return 11;
+		if (prt_curse >= 19) return 10;
+		if (prt_curse >= 17) return 9;
+		if (prt_curse >= 16) return 8;
+		if (prt_curse >= 13) return 7;
+		if (prt_curse >= 12) return 6;
+		if (prt_curse >= 10) return 5;
+		if (prt_curse >= 8) return 4;
+		if (prt_curse >= 6) return 3;
+		if (prt_curse >= 4) return 2;
+		if (prt_curse >= 3) return 1;
+		return 0;
+	case 2:	// The Z-Gang
+		if (zdan_edq >= 19) return 13;
+		if (zdan_edq >= 18) return 12;
+		if (zdan_edq >= 17) return 11;
+		if (zdan_edq >= 16) return 10;
+		if (zdan_edq >= 14) return 9;
+		if (zdan_edq >= 11) return 8;
+		if (zdan_edq >= 9) return 7;
+		if (zdan_edq >= 7) return 6;
+		if (zdan_edq >= 5) return 5;
+		if (zdan_edq >= 4) return 4;
+		if (zdan_edq >= 3) return 3;
+		if (zdan_edq >= 2) return 2;
+		if (zdan_edq >= 1) return 1;
+		return 0;
+	case 3:	// Rogue Guild Investigation
+		if (rumour_nd >= 22) return 11;
+		if (rumour_nd >= 21) return 10;
+		if (rumour_nd >= 20) return 9;
+		if (rumour_nd == 16 || rumour_nd == 18) return 8;
+		if (rumour_nd >= 15) return 7;
+		if (rumour_nd >= 11) return 6;
+		if (rumour_nd >= 8) return 5;
+		if (rumour_nd >= 6) return 4;
+		if (rumour_nd == 4 || rumour_nd == 24) return 3;
+		if (rumour_nd >= 3) return 2;
+		if (rumour_nd >= 1) return 1;
+		return 0;
+	case 4:	// Prontera Culvert
+		if (MISC_QUEST & 8) return 1;
+		return 0;
+	case 5:	// The Spy Quest
+		if (que_sch >= 26) return 16;
+		if (que_sch >= 25) return 15;
+		if (que_sch >= 23) return 14;
+		if (que_sch >= 19) return 13;
+		if (que_sch >= 18) return 12;
+		if (que_sch >= 17) return 11;
+		if (que_sch >= 14) return 10;
+		if (que_sch >= 12) return 9;
+		if (que_sch >= 11) return 8;
+		if (que_sch >= 10) return 7;
+		if (que_sch >= 8) return 6;
+		if (que_sch >= 7) return 5;
+		if (que_sch >= 4) return 4;
+		if (que_sch >= 3) return 3;
+		if (que_sch >= 2) return 2;
+		if (que_sch >= 1) return 1;
+		return 0;
+	case 6:	// Eye of Hellion
+		if (HELLIONQ >= 69) return 17;
+		if (HELLIONQ >= 68) return 15;
+		if (HELLIONQ >= 66) return 14;
+		if (HELLIONQ >= 63) return 13;
+		if (HELLIONQ == 59 || HELLIONQ == 62) return 12;
+		if (HELLIONQ >= 58) return 11;
+		if (HELLIONQ >= 57) return 10;
+		if (HELLIONQ >= 56) return 9;
+		if (HELLIONQ >= 53) return 8;
+		if (HELLIONQ >= 48) return 7;
+		if (HELLIONQ >= 47) return 6;
+		if (HELLIONQ >= 45) return 5;
+		if (HELLIONQ >= 43) return 4;
+		if (HELLIONQ >= 40) return 3;
+		if (HELLIONQ >= 39) return 2;
+		if (HELLIONQ >= 36) return 1;
+		return 0;
+	case 7:	// The Sign
+		if (sign_q >= 144) return 35;
+		if (sign_q >= 142) return 34;
+		if (sign_q == 129 || sign_q == 130) return 33;
+		if (sign_q >= 118) return 32;
+		if (sign_q >= 117) return 31;
+		if (sign_q >= 101 && sign_q <= 104) return 30;
+		if (sign_q >= 96) return 29;
+		if (sign_q >= 92) return 28;
+		if (sign_q >= 86) return 27;
+		if (sign_q == 83 || sign_q == 84) return 26;
+		if (sign_q >= 82) return 25;
+		if (sign_q >= 80) return 24;
+		if (sign_q >= 76) return 23;
+		if (sign_q >= 74) return 22;
+		if (sign_q >= 71) return 21;
+		if (sign_q >= 66) return 20;
+		if (sign_q >= 58) return 19;
+		if (sign_q >= 56) return 18;
+		if (sign_q >= 54) return 17;
+		if (sign_q >= 48) return 16;
+		if (sign_q >= 46) return 15;
+		if (sign_q >= 42) return 14;
+		if (sign_q >= 37) return 13;
+		if (sign_q >= 35) return 12;
+		if (sign_q == 33 || sign_q == 34) return 11;
+		if (sign_q >= 30) return 10;
+		if (sign_q >= 25) return 9;
+		if (sign_q >= 20) return 8;
+		if (sign_q >= 19) return 7;
+		if (sign_q >= 17) return 6;
+		if (sign_q >= 15) return 5;
+		if (sign_q >= 14) return 4;
+		if (sign_q >= 11) return 3;
+		if (sign_q >= 3) return 2;
+		if (sign_q >= 1) return 1;
+		return 0;
+	case 8:	// The Message Delivery
+		if (MISC_QUEST & 16384) return 5;
+		if (nif_revive == 5 || nif_revive == 6) return 4;
+		if (nif_revive >= 4) return 3;
+		if (nif_revive >= 2) return 2;
+		if (nif_revive >= 1) return 1;
+		return 0;
+	case 9:	// Help Me Shorty
+		if (checkquest(14694) >= 0) return 4;
+		if (checkquest(14693) >= 0) return 3;
+		if (checkquest(14689) == 2) return 2;
+		if (checkquest(14688) == 2) return 1;
+		return 0;
+	case 10:	// The Wandering Bard (Minstrel)
+		if (gef_bard_q >= 30) return 9;
+		if (gef_bard_q == 14 || gef_bard_q == 15) return 8;
+		if (gef_bard_q >= 12) return 7;
+		if (gef_bard_q >= 11) return 6;
+		if (gef_bard_q >= 10) return 5;
+		if (gef_bard_q == 4 || gef_bard_q == 24) return 4;
+		if (gef_bard_q == 3 || gef_bard_q == 23) return 3;
+		if (gef_bard_q == 2 || gef_bard_q == 22) return 2;
+		if (gef_bard_q >= 1) return 1;
+		return 0;
+	case 11:	// Orc's Memory
+		if (yong_odun >= 2) return 2;
+		if (mad >= 1) return 1;
+		return 0;
+	case 12:	// The Party Relay
+		if (party_relay >= 32) return 12;
+		if (party_relay >= 30) return 11;
+		if (party_relay >= 28) return 10;
+		if (party_relay >= 23) return 9;
+		if (party_relay >= 22) return 8;
+		if (party_relay >= 20) return 7;
+		if (party_relay >= 17) return 6;
+		if (party_relay >= 12) return 5;
+		if (party_relay >= 11) return 4;
+		if (party_relay >= 9) return 3;
+		if (party_relay >= 6) return 2;
+		if (party_relay >= 2) return 1;
+		return 0;
+	case 13:	// The Crow of Fate
+		if (barmunt_crow >= 16) return 12;
+		if (barmunt_crow >= 15) return 11;
+		if (barmunt_crow >= 14) return 10;
+		if (barmunt_crow >= 12) return 9;
+		if (barmunt_crow >= 11) return 8;
+		if (barmunt_crow >= 10) return 7;
+		if (barmunt_crow >= 9) return 6;
+		if (barmunt_crow >= 8) return 5;
+		if (barmunt_crow >= 7) return 4;
+		if (barmunt_crow >= 3) return 3;
+		if (barmunt_crow >= 2) return 2;
+		if (barmunt_crow >= 1) return 1;
+		return 0;
+	case 14:	// The Unlucky Emerald
+		if (jewel_nd >= 31) return 19;
+		if (jewel_nd >= 29) return 18;
+		if (jewel_nd >= 26) return 17;
+		if (jewel_nd >= 25) return 16;
+		if (jewel_nd >= 23) return 15;
+		if (jewel_nd >= 21) return 14;
+		if (jewel_nd >= 19) return 13;
+		if (jewel_nd >= 18) return 12;
+		if (jewel_nd >= 16) return 11;
+		if (jewel_nd >= 12) return 10;
+		if (jewel_nd == 9 || jewel_nd == 10) return 9;
+		if (jewel_nd == 1 || jewel_nd == 10) return 8;
+		if (treasure_nd == 11 || treasure_nd == 12) return 7;
+		if (treasure_nd == 9 || treasure_nd == 10) return 6;
+		if (treasure_nd == 7 || treasure_nd == 8) return 5;
+		if (treasure_nd >= 6) return 4;
+		if (treasure_nd >= 5) return 3;
+		if (treasure_nd >= 4) return 2;
+		if (treasure_nd >= 2) return 1;
+		return 0;
+	case 15:	// Nightmare Pyramid hunts
+		if (checkquest(2290) >= 0 || checkquest(2291) >= 0) return 3;
+		if (checkquest(2289) >= 0 || checkquest(2292) >= 0) return 2;
+		if (strcharinfo(3) == "moc_prydn1") return 1;
+		return 0;
+	case 16:	// The Turtle Island Quest
+		if (MISC_QUEST & 65536) return 4;
+		if (strcharinfo(3) == "tur_dun01") return 3;
+		if (TURTLE == 2 || TURTLE == 3 || TURTLE == 4) return 2;
+		if (TURTLE >= 1) return 1;
+		return 0;
+	case 17:	// The Alberta Boy
+		if (ep13_2_hiki >= 13) return 9;
+		if (ep13_2_hiki >= 11) return 8;
+		if (ep13_2_hiki >= 10) return 7;
+		if (ep13_2_hiki >= 9) return 6;
+		if (ep13_2_hiki >= 8) return 5;
+		if (ep13_2_hiki >= 7) return 4;
+		if (ep13_2_hiki >= 6) return 3;
+		if (ep13_2_hiki >= 3) return 2;
+		if (ep13_2_hiki >= 1) return 1;
+		return 0;
+	case 18:	// Muff's Loan
+		if (diamond_edq >= 14) return 8;
+		if (diamond_edq >= 12) return 6;
+		if (diamond_edq >= 10) return 5;
+		if (diamond_edq >= 9) return 4;
+		if (diamond_edq >= 6) return 3;
+		if (diamond_edq >= 4) return 2;
+		if (diamond_edq >= 1) return 1;
+		return 0;
+	case 19:	// Broken Diamond
+		if (diamond_edq >= 26) return 7;
+		if (diamond_edq >= 25) return 6;
+		if (diamond_edq == 22 || diamond_edq == 23) return 5;
+		if (diamond_edq >= 22) return 4;
+		if (diamond_edq >= 21) return 3;
+		if (diamond_edq >= 17) return 2;
+		if (diamond_edq >= 15) return 1;
+		return 0;
+	case 20:	// The Umbalian Language
+		if (event_umbala >= 3) return 3;
+		if (event_umbala >= 2) return 2;
+		if (event_umbala >= 1) return 1;
+		return 0;
+	case 21:	// Umbala Domestic Dispute
+		if (MISC_QUEST & 32768) return 6;
+		if (um_wind >= 5) return 5;
+		if (um_wind >= 4) return 4;
+		if (um_wind >= 3) return 3;
+		if (um_wind >= 2) return 2;
+		if (um_wind >= 1) return 1;
+		return 0;
+	case 22:	// The Piano Key Quest
+		if (MISC_QUEST & 32) return 6;
+		if (nif_esc >= 12) return 5;
+		if (nif_esc >= 11) return 4;
+		if (nif_esc == 5 || nif_esc == 4) return 3;
+		if (nif_esc == 3 || nif_esc == 6) return 2;
+		if (nif_esc == 1 || nif_esc == 2) return 1;
+		return 0;
+	case 23:	// The Kiel Hyre Quest
+		if (KielHyreQuest >= 109) return 37;
+		if (KielHyreQuest >= 108) return 36;
+		if (KielHyreQuest >= 106) return 35;
+		if (KielHyreQuest >= 94) return 34;
+		if (KielHyreQuest >= 76) return 32;
+		if (KielHyreQuest >= 74) return 31;
+		if (KielHyreQuest >= 68) return 30;
+		if (KielHyreQuest >= 64) return 29;
+		if (KielHyreQuest >= 62) return 28;
+		if (KielHyreQuest >= 60) return 27;
+		if (KielHyreQuest >= 58) return 25;
+		if (KielHyreQuest >= 56) return 24;
+		if (KielHyreQuest >= 54) return 23;
+		if (KielHyreQuest >= 50) return 22;
+		if (KielHyreQuest >= 46) return 21;
+		if (KielHyreQuest >= 42) return 20;
+		if (KielHyreQuest >= 40) return 19;
+		if (KielHyreQuest >= 38) return 18;
+		if (KielHyreQuest >= 36) return 17;
+		if (KielHyreQuest >= 32) return 16;
+		if (KielHyreQuest >= 30) return 14;
+		if (KHCottagePoem2 >= 2) return 13;
+		if (KHCottagePoem1 >= 4) return 12;
+		if (KielHyreQuest >= 28) return 11;
+		if (KielHyreQuest >= 26) return 10;
+		if (KielHyreQuest >= 20) return 9;
+		if (KielHyreQuest >= 16) return 8;
+		if (KielHyreQuest >= 14) return 7;
+		if (KielHyreQuest >= 12) return 6;
+		if (KielHyreQuest >= 8) return 5;
+		if (KielHyreQuest >= 6) return 4;
+		if (KielHyreQuest >= 4) return 3;
+		if (strcharinfo(3) == "kh_school") return 2;
+		if (KielHyreQuest >= 2) return 1;
+		return 0;
+	case 24:	// The Metto Quest (Scientist Who Trusts Fate)
+		if (metto_q >= 9) return 3;
+		if (metto_q >= 8) return 2;
+		if (metto_q >= 1) return 1;
+		return 0;
+	case 25:	// Juperos Ruins History
+		if (yuno_hist >= 4) return 4;
+		if (yuno_hist >= 3) return 3;
+		if (yuno_hist >= 2) return 2;
+		if (yuno_hist >= 1) return 1;
+		return 0;
+	case 26:	// The Juno Remedy Quest
+		if (hg_ma1 >= 13) return 9;
+		if (hg_ma1 >= 12) return 8;
+		if (hg_ma1 >= 11) return 7;
+		if (hg_ma1 >= 9) return 6;
+		if (hg_ma1 >= 8) return 5;
+		if (hg_ma1 >= 6) return 4;
+		if (hg_ma1 >= 5) return 3;
+		if (hg_ma1 >= 4) return 2;
+		if (hg_ma1 >= 3) return 1;
+		return 0;
+	case 27:	// The Factory Quest
+		if (EinFactory >= 16) return 4;
+		if (EinFactory >= 14) return 3;
+		if (EinFactory >= 12) return 2;
+		if (EinFactory >= 1) return 1;
+		return 0;
+	case 28:	// The Murder Quest
+		if (Shinokas_Quest >= 11) return 10;
+		if (Shinokas_Quest >= 10) return 9;
+		if (Shinokas_Quest >= 9) return 8;
+		if (Shinokas_Quest >= 8) return 7;
+		if (Shinokas_Quest >= 7) return 6;
+		if (Shinokas_Quest >= 5) return 5;
+		if (Shinokas_Quest >= 4) return 4;
+		if (Shinokas_Quest >= 3) return 3;
+		if (Shinokas_Quest >= 2) return 2;
+		if (Shinokas_Quest >= 1) return 1;
+		return 0;
+	case 29:	// The Lovers Quest
+		if (EIN_LOVERQ >= 17) return 10;
+		if (EIN_LOVERQ >= 16) return 9;
+		if (EIN_LOVERQ >= 15) return 8;
+		if (EIN_LOVERQ >= 13) return 7;
+		if (EIN_LOVERQ >= 8) return 6;
+		if (EIN_LOVERQ >= 7) return 5;
+		if (EIN_LOVERQ >= 5) return 4;
+		if (EIN_LOVERQ >= 3) return 3;
+		if (EIN_LOVERQ >= 2) return 2;
+		if (EIN_LOVERQ >= 1) return 1;
+		return 0;
+	case 30:	// Kain's Free Ticket
+		if (kain_ticket >= 15) return 9;
+		if (kain_ticket >= 14) return 8;
+		if (kain_ticket >= 13) return 7;
+		if (kain_ticket >= 12) return 6;
+		if (kain_ticket >= 11) return 5;
+		if (kain_ticket >= 10) return 4;
+		if (kain_ticket >= 7) return 3;
+		if (kain_ticket >= 6) return 2;
+		if (kain_ticket >= 4) return 1;
+		return 0;
+	case 31:	// Captain Tarlock: How the Airship Flies
+		if (lght_air >= 7) return 4;
+		if (lght_air >= 4) return 3;
+		if (lght_air >= 2) return 2;
+		if (lght_air >= 1) return 1;
+		return 0;
+	case 32:	// The Heart Fragment Quest
+		if (lhz_heart >= 13) return 7;
+		if (lhz_heart >= 11) return 6;
+		if (lhz_heart >= 9) return 5;
+		if (lhz_heart == 8 || lhz_heart == 9) return 4;
+		if (lhz_heart >= 6) return 3;
+		if (lhz_heart >= 4) return 2;
+		if (lhz_heart >= 2) return 1;
+		return 0;
+	case 33:	// The Rekenber Job Quest
+		if (lhz_rekenber >= 23) return 8;
+		if (lhz_rekenber >= 22) return 7;
+		if (lhz_rekenber >= 17) return 6;
+		if (lhz_rekenber >= 12) return 5;
+		if (lhz_rekenber >= 8) return 4;
+		if (lhz_rekenber >= 5) return 3;
+		if (lhz_rekenber >= 3) return 2;
+		if (lhz_rekenber >= 1) return 1;
+		return 0;
+	case 35:	// The Cube Room
+		if (MISC_QUEST & 512) return 9;
+		if (lhz_sincube >= 10) return 8;
+		if (lhz_secret03 >= 3) return 7;
+		if (lhz_secret02 >= 4) return 6;
+		if (lhz_secret01 >= 9) return 5;
+		if (lhz_secret01 >= 3 && lhz_secret01 <= 5) return 4;
+		if (lhz_sincube >= 7) return 2;
+		if (lhz_sincube >= 4) return 1;
+		return 0;
+	case 37:	// The President Quest (Schwarzwald Trilogy)
+		if (lhz_boss >= 44) return 17;
+		if (lhz_boss >= 43) return 16;
+		if (lhz_boss >= 40) return 15;
+		if (lhz_boss >= 35) return 14;
+		if (lhz_boss >= 28) return 13;
+		if (lhz_boss >= 27) return 12;
+		if (lhz_boss >= 26) return 11;
+		if (lhz_boss == 23 || lhz_boss == 24) return 10;
+		if (lhz_boss >= 19) return 9;
+		if (lhz_boss >= 18) return 8;
+		if (lhz_boss >= 17) return 7;
+		if (lhz_boss >= 14) return 6;
+		if (lhz_boss >= 11) return 5;
+		if (lhz_boss >= 8) return 4;
+		if (lhz_boss >= 7) return 3;
+		if (lhz_boss >= 6) return 2;
+		if (lhz_boss >= 2) return 1;
+		return 0;
+	case 34:	// The Friendship Quest
+		if (friendship >= 16) return 8;
+		if (friendship >= 12) return 7;
+		if (friendship >= 10) return 6;
+		if (friendship >= 7) return 5;
+		if (friendship >= 5) return 4;
+		if (friendship >= 4) return 3;
+		if (friendship >= 2) return 2;
+		if (friendship >= 1) return 1;
+		return 0;
+	case 36:	// The Cursed Spirit Quest
+		if (lhz_curse >= 32) return 11;
+		if (lhz_curse >= 31) return 10;
+		if (lhz_curse >= 26) return 9;
+		if (lhz_curse >= 24) return 8;
+		if (lhz_curse >= 19) return 7;
+		if (lhz_curse >= 17) return 6;
+		if (lhz_curse >= 16) return 5;
+		if (lhz_curse >= 13) return 4;
+		if (lhz_curse >= 6) return 3;
+		if (lhz_spi01 == 1 && lhz_spi02 == 1 && lhz_spi03 == 1 && lhz_spi04 == 1) return 2;
+		if (lhz_curse >= 1) return 1;
+		return 0;
+	case 38:	// The Medicine Quest
+		if (hg_herb >= 13) return 6;
+		if (hg_herb >= 12) return 5;
+		if (hg_herb >= 9) return 4;
+		if (hg_herb >= 4) return 3;
+		if (hg_herb >= 2) return 2;
+		if (hg_herb >= 1) return 1;
+		return 0;
+	case 39:	// Biological Weapon
+		if (hg_bio >= 9) return 6;
+		if (hg_bio >= 8) return 5;
+		if (hg_bio >= 6) return 4;
+		if (hg_bio >= 4) return 3;
+		if (hg_bio >= 2) return 2;
+		if (hg_bio >= 1) return 1;
+		return 0;
+	case 40:	// The Rebellion Quest
+		if (hg_tre >= 57) return 9;
+		if (hg_tre >= 56) return 8;
+		if (hg_tre >= 55) return 7;
+		if (hg_tre >= 54) return 6;
+		if (hg_tre >= 49) return 5;
+		if (hg_tre >= 47) return 4;
+		if (hg_tre >= 45) return 3;
+		if (hg_tre >= 40) return 2;
+		if (hg_tre == 10 || hg_tre == 20 || hg_tre == 30) return 1;
+		return 0;
+	case 41:	// The Memory Quest
+		if (hg_memory >= 12) return 5;
+		if (hg_memory >= 7) return 4;
+		if (hg_memory >= 6) return 3;
+		if (hg_memory >= 2) return 2;
+		if (hg_memory >= 1) return 1;
+		return 0;
+	case 42:	// Hide and Seek
+		if (hg_ubu01 >= 9) return 4;
+		if (hg_ubu01 >= 5) return 3;
+		if (hg_ubu01 >= 3) return 2;
+		if (hg_ubu01 >= 1) return 1;
+		return 0;
+	case 43:	// The Fish Cake Soup Delivery
+		if (hg_odeng >= 10) return 2;
+		if (hg_odeng >= 1 && hg_odeng <= 4) return 1;
+		return 0;
+	case 44:	// Cow Milking
+		if (hg_milk >= 9) return 5;
+		if (hg_milk >= 8) return 4;
+		if (hg_milk >= 7) return 3;
+		if (hg_milk >= 6) return 2;
+		if (hg_milk >= 2) return 1;
+		return 0;
+	case 45:	// The Odin Temple Excavation
+		if (hg_odin >= 60) return 7;
+		if (hg_odin >= 59) return 6;
+		if (hg_odin >= 23) return 5;
+		if (hg_odin >= 20) return 4;
+		if (hg_odin >= 17) return 3;
+		if (hg_odin >= 2) return 2;
+		if (hg_odin >= 1) return 1;
+		return 0;
+	case 46:	// The Thanatos Tower
+		if (thana_tower >= 10) return 9;
+		if (thana_tower >= 9) return 8;
+		if (thana_tower >= 8) return 7;
+		if (thana_tower >= 7) return 6;
+		if (thana_tower >= 6) return 5;
+		if (thana_tower >= 5) return 4;
+		if (thana_tower >= 4) return 3;
+		if (thana_tower >= 1) return 2;
+		return 0;
+	case 47:	// The Lost Child (The Stolen Gem)
+		if (lost_boy >= 13) return 5;
+		if (lost_boy >= 12) return 4;
+		if (lost_boy >= 7) return 3;
+		if (lost_boy >= 6) return 2;
+		if (lost_boy >= 1) return 1;
+		return 0;
+	case 48:	// The Sanctuary Quest
+		if (MISC_QUEST & 8192) return 11;
+		if (ra_tem_q >= 23) return 10;
+		if (ra_tem_q >= 21) return 9;
+		if (ra_tem_q >= 17) return 8;
+		if (ra_tem_q >= 16) return 7;
+		if (ra_tem_q >= 15) return 6;
+		if (ra_tem_q >= 14) return 5;
+		if (ra_tem_q >= 12) return 4;
+		if (ra_tem_q >= 10) return 3;
+		if (ra_tem_q >= 2) return 2;
+		if (ra_tem_q >= 1) return 1;
+		return 0;
+	case 50:	// The Nameless Island
+		if (aru_monas >= 11) return 6;
+		if (aru_monas >= 8) return 5;
+		if (aru_monas >= 6) return 4;
+		if (aru_monas >= 4) return 3;
+		if (aru_monas >= 2) return 2;
+		if (aru_monas >= 1) return 1;
+		return 0;
+	case 53:	// Bruspetti
+		if (rach_vice >= 24) return 8;
+		if (rach_vice >= 22) return 7;
+		if (rach_vice >= 20) return 6;
+		if (rach_vice >= 16) return 5;
+		if (rach_vice >= 14) return 4;
+		if (rach_vice >= 10) return 3;
+		if (rach_vice >= 5) return 2;
+		if (rach_vice >= 1) return 1;
+		return 0;
+	case 54:	// The Ice Necklace
+		if (ice_necklace_q >= 7) return 6;
+		if (ice_necklace_q >= 6) return 5;
+		if (ice_necklace_q >= 5) return 4;
+		if (ice_necklace_q >= 4) return 3;
+		if (ice_necklace_q >= 2) return 2;
+		if (ice_necklace_q >= 1) return 1;
+		return 0;
+	case 55:	// The Stone Quest
+		if (veins_stone >= 8) return 6;
+		if (veins_stone >= 7) return 5;
+		if (veins_stone >= 5) return 4;
+		if (veins_stone >= 4) return 3;
+		if (veins_stone >= 2) return 2;
+		if (veins_stone >= 1) return 1;
+		return 0;
+	case 56:	// The Amatsu Dungeon Quest
+		if (event_amatsu >= 6) return 6;
+		if (event_amatsu >= 5) return 5;
+		if (event_amatsu >= 4) return 4;
+		if (event_amatsu >= 3) return 3;
+		if (event_amatsu >= 2) return 2;
+		if (event_amatsu >= 1) return 1;
+		return 0;
+	case 57:	// The Momotaro Event
+		if (event_momo >= 4) return 5;
+		if (event_momo == 2 || event_momo == 3) return 4;
+		if (event_momo >= 2) return 3;
+		if (event_momo >= 1) return 2;
+		if (strcharinfo(3) == "ama_test") return 1;
+		return 0;
+	case 58:	// The Broken Sword
+		if (b_sword >= 33) return 19;
+		if (b_sword >= 32) return 18;
+		if (b_sword >= 28) return 17;
+		if (b_sword >= 27) return 16;
+		if (b_sword == 26) return 15;
+		if (b_sword >= 24) return 14;
+		if (b_sword >= 23) return 13;
+		if (b_sword >= 22) return 12;
+		if (b_sword >= 21) return 11;
+		if (b_sword >= 20) return 10;
+		if (b_sword >= 17) return 9;
+		if (b_sword == 14) return 8;
+		if (b_sword >= 10) return 7;
+		if (b_sword >= 7) return 6;
+		if (b_sword >= 6) return 5;
+		if (b_sword >= 4) return 4;
+		if (b_sword >= 3) return 3;
+		if (b_sword >= 2) return 2;
+		if (b_sword >= 1) return 1;
+		return 0;
+	case 59:	// The Lost Knife
+		if (nakha >= 3) return 3;
+		if (nakha >= 2) return 2;
+		if (nakha >= 1) return 1;
+		return 0;
+	case 60:	// The Soup Quest
+		if (ch_tre >= 5) return 4;
+		if (ch_tre >= 4) return 3;
+		if (ch_tre == 2 || ch_tre == 3) return 2;
+		if (ch_tre >= 1) return 1;
+		return 0;
+	case 61:	// The Doctor Quest
+		if (ch_par >= 18) return 8;
+		if (ch_par == 17) return 7;
+		if (ch_par >= 15) return 6;
+		if (ch_par >= 11 && ch_par <= 14) return 5;
+		if (ch_par >= 5 && ch_par <= 8) return 4;
+		if (ch_par >= 3) return 3;
+		if (ch_par >= 2) return 2;
+		if (ch_par >= 1) return 1;
+		return 0;
+	case 62:	// The Poison King
+		if (ch_poison >= 21) return 15;
+		if (ch_poison >= 20) return 14;
+		if (ch_poison >= 19) return 13;
+		if (ch_poison >= 18) return 12;
+		if (ch_poison >= 17) return 11;
+		if (ch_poison >= 16) return 10;
+		if (ch_poison >= 12) return 9;
+		if (ch_poison >= 11) return 8;
+		if (ch_poison >= 9) return 7;
+		if (ch_poison >= 6) return 6;
+		if (ch_poison >= 5) return 5;
+		if (ch_poison >= 4) return 4;
+		if (ch_poison >= 3) return 3;
+		if (ch_poison >= 2) return 2;
+		if (ch_poison >= 1) return 1;
+		return 0;
+	case 63:	// The Revolution Quest
+		if (QL_REVOL >= 9) return 5;
+		if (ch_make == 1) return 4;
+		if (QL_REVOL >= 8) return 3;
+		if (QL_REVOL >= 7) return 2;
+		if (QL_REVOL >= 1) return 1;
+		return 0;
+	case 64:	// The Ayothaya Dungeon Quest
+		if (ayodunquest >= 13) return 7;
+		if (ayodunquest >= 12) return 6;
+		if (ayodunquest >= 11) return 5;
+		if (ayodunquest >= 9) return 4;
+		if (ayodunquest >= 3) return 3;
+		if (ayodunquest >= 2) return 2;
+		if (ayodunquest >= 1) return 1;
+		return 0;
+	case 65:	// The Ayothaya Ring
+		if (thai_find >= 14) return 7;
+		if (thai_find >= 13) return 6;
+		if (thai_find >= 12) return 5;
+		if (thai_find >= 4) return 4;
+		if (thai_find >= 3) return 3;
+		if (thai_find >= 2) return 2;
+		if (thai_find >= 1) return 1;
+		return 0;
+	case 66:	// Tom Yum Goong
+		if (tomyumgoong >= 8) return 5;
+		if (tomyumgoong >= 6) return 4;
+		if (tomyumgoong >= 4) return 3;
+		if (tomyumgoong >= 2) return 2;
+		if (tomyumgoong >= 1) return 1;
+		return 0;
+	case 67:	// The Moving Island
+		if (mos_whale_edq == 41) return 12;
+		if (mos_whale_edq == 38) return 11;
+		if (mos_whale_edq >= 35) return 10;
+		if (mos_whale_edq >= 34) return 9;
+		if (mos_whale_edq >= 32) return 8;
+		if (mos_whale_edq >= 30) return 7;
+		if (mos_whale_edq >= 18) return 6;
+		if (mos_whale_edq >= 15) return 5;
+		if (mos_whale_edq >= 13) return 4;
+		if (mos_whale_edq >= 4) return 3;
+		if (mos_whale_edq >= 3) return 2;
+		if (mos_whale_edq >= 1) return 1;
+		return 0;
+	case 68:	// Koshei the Immortal
+		if (rhea_rus_main >= 53) return 12;
+		if (rhea_rus_main >= 52) return 11;
+		if (rhea_rus_main >= 51) return 10;
+		if (rhea_rus_main >= 49) return 9;
+		if (rhea_rus_main >= 47) return 8;
+		if (rhea_rus_main >= 10) return 7;
+		if (rhea_rus_main >= 9) return 6;
+		if (rhea_rus_main >= 8) return 5;
+		if (rhea_rus_main >= 6) return 4;
+		if (rhea_rus_main >= 5) return 3;
+		if (rhea_rus_main >= 2) return 2;
+		if (rhea_rus_main >= 1) return 1;
+		return 0;
+	case 69:	// The Red Ring
+		if (rhea_rus_ring >= 9) return 6;
+		if (rhea_rus_ring >= 7) return 5;
+		if (rhea_rus_ring >= 5) return 4;
+		if (rhea_rus_ring >= 3) return 3;
+		if (rhea_rus_ring >= 2) return 2;
+		if (rhea_rus_ring >= 1) return 1;
+		return 0;
+	case 70:	// Lusalka's Hair
+		if (rhea_rus_hair >= 9) return 6;
+		if (rhea_rus_hair >= 7) return 5;
+		if (rhea_rus_hair >= 5) return 4;
+		if (rhea_rus_hair >= 4) return 3;
+		if (rhea_rus_hair >= 3) return 2;
+		if (rhea_rus_hair >= 2) return 1;
+		return 0;
+	case 71:	// The Golden Thread
+		if (rhea_rus_quiz >= 30) return 5;
+		if (rhea_rus_quiz >= 29) return 4;
+		if (rhea_rus_quiz >= 3) return 3;
+		if (rhea_rus_quiz >= 2) return 2;
+		if (rhea_rus_quiz >= 1) return 1;
+		return 0;
+	case 72:	// Help Mikhail
+		if (mos_swan >= 101) return 12;
+		if (mos_swan >= 100) return 11;
+		if (mos_swan >= 25) return 10;
+		if (mos_swan >= 24) return 9;
+		if (mos_swan >= 12) return 8;
+		if (mos_swan >= 11) return 7;
+		if (mos_swan >= 10) return 6;
+		if (mos_swan >= 9) return 5;
+		if (mos_swan >= 7) return 4;
+		if (mos_swan >= 3) return 3;
+		if (mos_swan >= 2) return 2;
+		if (mos_swan >= 1) return 1;
+		return 0;
+	case 73:	// Banish Winter
+		if (mos_nowinter >= 21) return 11;
+		if (mos_nowinter >= 20) return 10;
+		if (mos_nowinter >= 19) return 9;
+		if (mos_nowinter >= 18) return 8;
+		if (mos_nowinter >= 16) return 7;
+		if (mos_nowinter >= 14) return 6;
+		if (mos_nowinter >= 11) return 5;
+		if (mos_nowinter >= 9) return 4;
+		if (mos_nowinter >= 8) return 3;
+		if (mos_nowinter >= 5) return 2;
+		if (mos_nowinter >= 2) return 1;
+		return 0;
+	case 74:	// The Brasilis Dungeon Access
+		if (brazil_ghost >= 8) return 8;
+		if (brazil_ghost >= 7) return 7;
+		if (brazil_ghost >= 6) return 6;
+		if (brazil_ghost >= 5) return 5;
+		if (brazil_ghost >= 4) return 4;
+		if (brazil_ghost >= 3) return 3;
+		if (brazil_ghost >= 2) return 2;
+		if (brazil_ghost >= 1) return 1;
+		return 0;
+	case 75:	// The Guarana Candy
+		if (brazil_gua >= 11) return 10;
+		if (brazil_gua >= 10) return 9;
+		if (brazil_gua >= 9) return 8;
+		if (brazil_gua >= 8) return 7;
+		if (brazil_gua >= 7) return 6;
+		if (brazil_gua >= 6) return 5;
+		if (brazil_gua >= 5) return 4;
+		if (brazil_gua >= 4) return 3;
+		if (brazil_gua >= 3) return 2;
+		if (brazil_gua >= 1) return 1;
+		return 0;
+	case 76:	// The Water Lily
+		if (brazil_regia >= 10) return 8;
+		if (brazil_regia >= 9) return 7;
+		if (brazil_regia >= 8) return 6;
+		if (brazil_regia >= 5) return 5;
+		if (brazil_regia >= 4) return 4;
+		if (brazil_regia >= 3) return 3;
+		if (brazil_regia >= 2) return 2;
+		if (brazil_regia >= 1) return 1;
+		return 0;
+	case 77:	// Lost Puppies
+		if (checkquest(9032) >= 1) return 3;
+		if (checkquest(9031) >= 1) return 2;
+		if (checkquest(9030) >= 1) return 1;
+		return 0;
+	case 78:	// The Suspicious Beach
+		if (checkquest(9029) >= 1) return 3;
+		if (checkquest(9028) >= 1) return 1;
+		return 0;
+	case 79:	// Iara
+		if (checkquest(4134) == 2) return 2;
+		if (checkquest(4133) >= 1) return 1;
+		return 0;
+	case 80:	// The Dewata Legend
+		if (dew_legend >= 17) return 7;
+		if (dew_legend >= 16) return 6;
+		if (dew_legend >= 8) return 5;
+		if (dew_legend >= 7) return 4;
+		if (dew_legend >= 5) return 3;
+		if (dew_legend >= 2) return 2;
+		if (dew_legend >= 1) return 1;
+		return 0;
+	case 81:	// Help Out the Old Man
+		if (dew_drink >= 10) return 6;
+		if (dew_drink >= 7) return 5;
+		if (dew_drink >= 5) return 4;
+		if (dew_drink >= 4) return 3;
+		if (dew_drink >= 2) return 2;
+		if (dew_drink >= 1) return 1;
+		return 0;
+	case 82:	// Malangdo Island
+		if (ma_tomas >= 101) return 10;
+		if (ma_tomas >= 100) return 9;
+		if (ma_tomas >= 34) return 8;
+		if (ma_tomas >= 33) return 7;
+		if (ma_tomas >= 28) return 6;
+		if (ma_tomas >= 21) return 5;
+		if (ma_tomas >= 18) return 4;
+		if (ma_tomas >= 13) return 3;
+		if (ma_tomas >= 7) return 2;
+		if (ma_tomas >= 1) return 1;
+		return 0;
+	case 83:	// Help the Bad Cats in Danger
+		if (checkquest(1152) >= 1) return 3;
+		if (checkquest(1151) >= 1) return 2;
+		if (checkquest(1145) >= 1) return 1;
+		return 0;
+	case 85:	// Help Chef Nyas
+		if (checkquest(7276) >= 1) return 1;
+		return 0;
+	case 86:	// Play with Baby Cats
+		if (nyadven >= 14) return 3;
+		if (nyadven >= 13) return 2;
+		if (nyadven >= 1) return 1;
+		return 0;
+	case 87:	// Cat Gamers
+		if (malang_gamer >= 20) return 1;
+		return 0;
+	case 88:	// The Cautious Village
+		if (malaya_hi >= 25) return 9;
+		if (malaya_hi >= 24) return 8;
+		if (malaya_hi >= 23) return 7;
+		if (malaya_hi >= 20) return 6;
+		if (malaya_hi >= 13) return 5;
+		if (malaya_hi >= 12) return 4;
+		if (malaya_hi >= 11) return 3;
+		if (malaya_hi >= 10) return 2;
+		if (malaya_hi >= 1) return 1;
+		return 0;
+	case 89:	// Secret in the Woods
+		if (malaya_buwaya >= 15) return 6;
+		if (malaya_buwaya >= 14) return 5;
+		if (malaya_buwaya >= 10) return 4;
+		if (malaya_buwaya >= 5) return 3;
+		if (malaya_buwaya >= 2) return 2;
+		if (malaya_buwaya >= 1) return 1;
+		return 0;
+	case 90:	// Bakonawa Extermination
+		if (malaya_bakona2 >= 15) return 7;
+		if (malaya_bakona2 >= 14) return 6;
+		if (malaya_bakona2 >= 9) return 5;
+		if (malaya_bakona2 >= 6) return 4;
+		if (malaya_bakona1 >= 7) return 3;
+		if (malaya_bakona1 >= 6) return 2;
+		if (malaya_bakona1 >= 3) return 1;
+		return 0;
+	case 91:	// The Nurse in Port Malaya
+		if (checkquest(11309) == 2) return 3;
+		if (malaya_bang >= 36) return 2;
+		if (malaya_bang >= 20) return 1;
+		return 0;
+	case 92:	// Finding a Fairy & Finding a Giant Tree
+		if (checkquest(2158) == 2 && checkquest(2159) == 2) return 3;
+		if (checkquest(2159) >= 0) return 2;
+		if (checkquest(2158) >= 0) return 1;
+		return 0;
+	case 93:	// The Otherworld Language
+		if (ep13_2_rhea >= 100) return 7;
+		if (ep13_2_rhea >= 11) return 6;
+		if (ep13_2_rhea >= 9) return 5;
+		if (ep13_2_rhea >= 6) return 4;
+		if (ep13_2_rhea >= 5) return 3;
+		if (ep13_2_rhea >= 3) return 2;
+		if (ep13_2_rhea >= 2) return 1;
+		return 0;
+	case 94:	// Monster Suppression
+		if (ep13_2_days01 >= 2) return 2;
+		if (ep13_2_days01 >= 1) return 1;
+		return 0;
+	case 95:	// Manuk and Splendide dailies
+		if (ep13_2_wanted >= 2) return 4;
+		if (ep13_2_dayegg >= 2) return 3;
+		if (checkquest(7082) >= 0) return 2;
+		if (checkquest(7080) >= 0) return 1;
+		return 0;
+	case 96:	// Midgard Ore and Alfheim Perfume
+		if (ep13_2_tre1 == 6) return 2;
+		if (ep13_2_tre == 100) return 1;
+		return 0;
+	case 97:	// Secret Note of Bazett
+		if (ep13_2_busut >= 7) return 3;
+		if (ep13_2_busut >= 4) return 2;
+		if (ep13_2_busut >= 3) return 1;
+		return 0;
+	case 98:	// Sapha's Visit
+		if (ep13_3_invite >= 6) return 4;
+		if (ep13_3_invite >= 5) return 3;
+		if (ep13_3_invite >= 4) return 2;
+		if (ep13_3_invite >= 1) return 1;
+		return 0;
+	case 99:	// Frede's Request
+		if (ep13_3_bra >= 9) return 7;
+		if (checkquest(11165) >= 0 && checkquest(11166) >= 0 && checkquest(11167) >= 0 && checkquest(11168) >= 0 && checkquest(11169) >= 0 && checkquest(11170) >= 0) return 6;
+		if (ep13_3_bra >= 8) return 5;
+		if (ep13_3_bra >= 7) return 4;
+		if (ep13_3_bra >= 5) return 3;
+		if (ep13_3_bra >= 4) return 2;
+		if (ep13_3_bra >= 1) return 1;
+		return 0;
+	case 102:	// Removing Traces (Ahat's daily)
+		if (ep13_3_ahtdayq == 2) return 2;
+		if (ep13_3_ahtdayq >= 1) return 1;
+		return 0;
+	case 103:	// Cat Paw Agent (the passage to the New World)
+		if (ep13_start == 100) return 1;
+		return 0;
+	case 104:	// New Surroundings
+		if (ep13_newbs >= 100) return 10;
+		if (ep13_newbs >= 24) return 9;
+		if (ep13_newbs >= 23) return 8;
+		if (ep13_newbs >= 21) return 7;
+		if (ep13_newbs >= 12) return 6;
+		if (ep13_newbs >= 9) return 5;
+		if (ep13_newbs >= 7) return 4;
+		if (ep13_newbs >= 5) return 3;
+		if (ep13_newbs >= 3) return 2;
+		if (ep13_newbs >= 1) return 1;
+		return 0;
+	case 105:	// Attitude to the New
+		if (ep13_animal >= 100) return 8;
+		if (ep13_animal >= 15) return 7;
+		if (ep13_animal >= 13) return 6;
+		if (ep13_animal >= 10) return 5;
+		if (ep13_animal >= 7) return 4;
+		if (ep13_animal >= 4) return 3;
+		if (ep13_animal >= 2) return 2;
+		if (ep13_animal >= 1) return 1;
+		return 0;
+	case 106:	// The Tripartite Union's Feud
+		if (ep13_1_rhea >= 100) return 10;
+		if (ep13_1_rhea >= 22) return 9;
+		if (ep13_1_rhea >= 18) return 8;
+		if (ep13_1_rhea >= 14) return 7;
+		if (ep13_1_rhea >= 13) return 6;
+		if (ep13_1_rhea >= 11) return 5;
+		if (ep13_1_rhea >= 8) return 4;
+		if (ep13_1_rhea >= 6) return 3;
+		if (ep13_1_rhea >= 4) return 2;
+		if (ep13_1_rhea >= 1) return 1;
+		return 0;
+	case 107:	// Part Time Work
+		if (ep13_alba >= 6) return 2;
+		if (ep13_alba >= 1) return 1;
+		return 0;
+	case 108:	// The Cat Paw Trading Post
+		if (ep13_yong1 >= 40) return 4;
+		if (ep13_yong1 >= 10) return 3;
+		if (ep13_yong1 >= 5) return 2;
+		if (ep13_yong1 >= 2) return 1;
+		return 0;
+	case 109:	// Report from the New World
+		if (ep13_1_edq >= 14) return 5;
+		if (ep13_1_edq >= 13) return 4;
+		if (ep13_1_edq >= 8) return 3;
+		if (ep13_1_edq >= 71) return 2;
+		if (ep13_1_edq >= 3) return 1;
+		return 0;
+	case 110:	// Pursuing Rayan Moore
+		if (mao_morocc2 >= 108) return 11;
+		if (mao_morocc2 >= 100) return 10;
+		if (mao_morocc2 >= 29) return 9;
+		if (mao_morocc2 >= 23) return 8;
+		if (mao_morocc2 >= 20) return 7;
+		if (mao_morocc2 >= 17) return 6;
+		if (mao_morocc2 >= 13) return 5;
+		if (mao_morocc2 >= 9) return 4;
+		if (mao_morocc2 >= 5) return 3;
+		if (mao_morocc2 >= 4) return 2;
+		if (mao_morocc2 >= 1) return 1;
+		return 0;
+	case 111:	// Helping Lope and Euridi
+		if (ep14_1_rope >= 11) return 7;
+		if (ep14_1_rope >= 10) return 6;
+		if (ep14_1_rope >= 9) return 5;
+		if (ep14_1_rope >= 7) return 4;
+		if (ep14_1_rope >= 5) return 3;
+		if (ep14_1_rope >= 3) return 2;
+		if (ep14_1_rope >= 1) return 1;
+		return 0;
+	case 112:	// Knights of the Neighborhood
+		if (ep14_1_rope >= 13) return 2;
+		if (ep14_1_rope >= 12) return 1;
+		return 0;
+	case 113:	// Theore's Request
+		if (ep14_1_bs >= 19) return 11;
+		if (ep14_1_bs >= 18) return 10;
+		if (ep14_1_bs >= 17) return 9;
+		if (ep14_1_bs >= 15) return 8;
+		if (ep14_1_bs >= 14) return 7;
+		if (ep14_1_bs >= 12) return 6;
+		if (ep14_1_bs2 >= 10) return 5;
+		if (checkquest(11186) >= 0) return 4;
+		if (ep14_1_bs >= 3) return 2;
+		if (ep14_1_bs >= 2) return 1;
+		return 0;
+	case 114:	// Find the Research Tools
+		if (ep14_1_muk >= 15) return 8;
+		if (ep14_1_muk >= 14) return 7;
+		if (ep14_1_muk >= 10) return 6;
+		if (ep14_1_muk >= 8) return 5;
+		if (ep14_1_muk >= 6) return 4;
+		if (ep14_1_muk >= 3) return 3;
+		if (ep14_1_muk >= 1) return 1;
+		return 0;
+	case 115:	// Chesire's New Day
+		if (checkquest(7208) >= 0) return 3;
+		if (checkquest(7207) >= 0) return 2;
+		if (checkquest(7206) >= 0) return 1;
+		return 0;
+	case 117:	// Eclage's Entrance
+		if (ep14_2_oliver >= 3) return 3;
+		if (ep14_2_oliver >= 2) return 2;
+		if (ep14_2_oliver >= 1) return 1;
+		return 0;
+	case 118:	// Oliver Wolf Hood (Dreaming Time)
+		if (ep14_2_oliver >= 30) return 10;
+		if (ep14_2_oliver >= 28) return 9;
+		if (ep14_2_oliver >= 27) return 8;
+		if (ep14_2_oliver >= 23) return 7;
+		if (ep14_2_oliver >= 16) return 6;
+		if (ep14_2_oliver >= 14) return 5;
+		if (ep14_2_oliver >= 13) return 4;
+		if (ep14_2_oliver >= 7) return 3;
+		if (ep14_2_oliver >= 5) return 2;
+		if (ep14_2_oliver >= 4) return 1;
+		return 0;
+	case 119:	// Laphines That Love the Land (Lost Adventurers)
+		if (ep14_2_nines >= 6) return 6;
+		if (ep14_2_nines >= 5) return 5;
+		if (ep14_2_nines >= 4) return 4;
+		if (ep14_2_nines >= 3) return 3;
+		if (ep14_2_nines >= 2) return 2;
+		if (ep14_2_nines >= 1) return 1;
+		return 0;
+	case 120:	// Wanted to Be Big and Beautiful
+		if (ep14_2_big >= 26) return 9;
+		if (ep14_2_big >= 25) return 8;
+		if (ep14_2_big >= 23) return 7;
+		if (ep14_2_big >= 20) return 6;
+		if (ep14_2_big >= 17) return 5;
+		if (ep14_2_big >= 14) return 4;
+		if (ep14_2_big >= 9) return 3;
+		if (ep14_2_big >= 7) return 2;
+		if (ep14_2_big >= 2) return 1;
+		return 0;
+	case 121:	// The Mystery Burglary
+		if (ep14_2_detect >= 15) return 5;
+		if (ep14_2_detect >= 10) return 4;
+		if (ep14_2_detect >= 9) return 3;
+		if (ep14_2_detect >= 5) return 2;
+		if (ep14_2_detect >= 4) return 1;
+		return 0;
+	case 122:	// Troublesome Fairies (Prankster of Eclage)
+		if (checkquest(4264) == 2) return 7;
+		if (checkquest(4262) == 2) return 6;
+		if (checkquest(4260) == 2) return 5;
+		if (checkquest(4257) == 2) return 4;
+		if (checkquest(4256) == 2) return 3;
+		if (checkquest(4255) == 2) return 2;
+		if (checkquest(4254) == 2) return 1;
+		return 0;
+	case 123:	// Memory of Professor Worm
+		if (ep14_2_profe >= 3) return 3;
+		if (ep14_2_profe >= 2) return 2;
+		if (ep14_2_profe >= 1) return 1;
+		return 0;
+	case 124:	// Flame Basin dailies (Instructor Igrid and Adjutant Abidal)
+		if (checkquest(7599) >= 0) return 2;
+		if (checkquest(7582) >= 0) return 1;
+		return 0;
+	case 125:	// Magic Scholar and Hishieh
+		if (checkquest(7600) >= 0) return 3;
+		if (checkquest(7584) >= 0) return 2;
+		if (ep14_2_mylord >= 34) return 1;
+		return 0;
+	case 126:	// Jeruth Hesranta
+		if (checkquest(7580) >= 0) return 3;
+		if (ep13_3_secret >= 27) return 2;
+		if (ep13_3_secret >= 25) return 1;
+		return 0;
+	case 127:	// Demon God Subjugation / Fall of the False God / Caged God
+		if (ep4_3_mockill >= 2) return 4;
+		if (checkquest(7598) >= 0) return 3;
+		if (checkquest(7597) >= 0) return 2;
+		if (checkquest(7593) >= 0) return 1;
+		return 0;
+	case 128:	// Flaming Basin and Doom Prayers
+		if (ep14_3_fall_bless >= 13) return 6;
+		if (ep14_3_fall_bless >= 12) return 5;
+		if (ep14_3_fall_bless >= 10) return 4;
+		if (ep14_3_fall_bless >= 6) return 3;
+		if (ep14_3_fall_bless >= 4) return 2;
+		if (ep14_3_fall_bless >= 2) return 1;
+		return 0;
+	case 129:	// The Wandering Bard
+		if (checkquest(4295) == 2) return 3;
+		if (checkquest(4297) >= 0 || checkquest(4298) >= 0 || checkquest(4299) >= 0 || checkquest(4300) >= 0 || checkquest(4301) >= 0 || checkquest(4302) >= 0) return 1;
+		return 0;
+	case 130:	// The Verus Police
+		if (checkquest(5318) >= 0) return 3;
+		if (checkquest(5310) >= 0 && checkquest(5311) >= 0 && checkquest(5312) >= 0 && checkquest(5313) >= 0) return 2;
+		if (checkquest(5309) >= 0) return 1;
+		return 0;
+	case 131:	// New Power Source
+		if (checkquest(7629) >= 0) return 2;
+		if (checkquest(7628) >= 0) return 1;
+		return 0;
+	case 132:	// To Phantasmagorika! / Looking for the Traces
+		if (ep15_1_elb >= 15) return 5;
+		if (ep15_1_elb >= 6) return 4;
+		if (ep15_1_elb >= 3) return 3;
+		if (ep15_1_elb >= 2) return 2;
+		if (ep15_1_elb >= 1) return 1;
+		return 0;
+	case 133:	// Monthly Brigan
+		if (ep15_2_brigan >= 8) return 2;
+		if (ep15_2_brigan >= 2) return 1;
+		return 0;
+	case 135:	// Vestige / The Final Room
+		if (ep15_2_bslast >= 9) return 4;
+		if (ep15_2_bslast >= 8) return 3;
+		if (ep15_2_bslast >= 5) return 2;
+		if (ep15_2_bslast >= 2) return 1;
+		return 0;
+	case 136:	// Rock Ridge, Land of Opportunities (main line)
+		if (rock_main_quest >= 22) return 11;
+		if (rock_main_quest >= 21) return 10;
+		if (rock_main_quest >= 20) return 9;
+		if (rock_main_quest >= 16) return 8;
+		if (rock_main_quest >= 14) return 7;
+		if (rock_main_quest >= 13) return 6;
+		if (rock_main_quest >= 10) return 5;
+		if (rock_main_quest >= 7) return 4;
+		if (rock_main_quest >= 5) return 3;
+		if (rock_main_quest >= 2) return 2;
+		if (rock_main_quest >= 1) return 1;
+		return 0;
+	case 137:	// Cacturon (the Cactus family)
+		if (checkquest(16078) == 2) return 1;
+		return 0;
+	case 138:	// Collecting Ore Fragments
+		if (checkquest(9461) >= 0) return 1;
+		return 0;
+	case 139:	// The town's jobs (food, vigilantes, water, the merchant)
+		if (checkquest(12404) >= 0) return 4;
+		if (checkquest(12390) >= 0 || checkquest(12398) >= 0) return 3;
+		if (checkquest(12382) >= 0) return 2;
+		if (checkquest(12411) >= 0) return 1;
+		return 0;
+	case 140:	// Pipe Cleaning
+		if (checkquest(9459) >= 0) return 1;
+		return 0;
+	case 141:	// Midnight
+		if (checkquest(14673) >= 0) return 1;
+		return 0;
+	case 142:	// Gas! Gas!
+		if (checkquest(1299) >= 0) return 1;
+		return 0;
+	case 143:	// Mrs. McPhy and Spotty
+		if (checkquest(1329) >= 0) return 1;
+		return 0;
+	case 144:	// Mr. McPhy: Avenging Spotty
+		if (checkquest(1332) >= 0) return 1;
+		return 0;
+	case 150:	// Morroc: the old scholar's apprentice
+		if (iq_moc21 >= 14) return 6;
+		if (iq_moc21 >= 10) return 5;
+		if (iq_moc21 >= 7) return 4;
+		if (iq_moc21 >= 5) return 3;
+		if (iq_moc21 >= 3) return 2;
+		if (iq_moc21 >= 1) return 1;
+		return 0;
+	case 151:	// Prontera: the playground, the Orc and Goblin subjugation, Glast Heim
+		if (iq_prt21 & 32) return 3;
+		if (iq_prt21 & 16) return 2;
+		if (iq_prt21 & 4) return 1;
+		return 0;
+	case 152:	// Payon: the well, the grandson and the fox spirit
+		if (checkquest(21024) >= 0) return 4;
+		if (iq_pay21 >= 8) return 3;
+		if (iq_pay21 >= 7) return 2;
+		if (iq_pay21 >= 3) return 1;
+		return 0;
+	case 153:	// Geffen: the tower dungeon
+		if (iq_gef21 & 32) return 3;
+		if (iq_gef21 & 8) return 2;
+		if (iq_gef21 & 4) return 1;
+		return 0;
+	case 154:	// Izlude: Instructor Pontes, Byalan and Leader Maxim
+		if (iq_izl21 & 256) return 6;
+		if (iq_izl21 & 128) return 5;
+		if (iq_izl21 & 16) return 4;
+		if (iq_izl21 & 8) return 3;
+		if (iq_izl21 & 4) return 2;
+		if (iq_izl21 & 2) return 1;
+		return 0;
+	case 155:	// Alberta: the shipwreck and Turtle Island
+		if (iq_alb21t >= 6) return 5;
+		if (iq_alb21t >= 3) return 4;
+		if (iq_alb21 >= 12) return 3;
+		if (iq_alb21 >= 7) return 2;
+		if (iq_alb21 >= 3) return 1;
+		return 0;
+	case 156:	// Comodo: Que Sera, Sera
+		if (iq_cmd21 >= 9) return 3;
+		if (iq_cmd21 >= 7) return 2;
+		if (iq_cmd21 >= 2) return 1;
+		return 0;
+	case 157:	// Aldebaran and the Juno fields
+		if (iq_ald21 & 2) return 2;
+		if (iq_ald21 & 1) return 1;
+		return 0;
+	case 158:	// Einbroch, Einbech and Lighthalzen
+		if (iq_ein21 & 8) return 3;
+		if (iq_ein21 & 2) return 2;
+		if (iq_ein21 & 1) return 1;
+		return 0;
+	case 159:	// Hugel: Abyss Lake and the fishermen
+		if (iq_hu21 >= 3) return 2;
+		if (iq_hu21 >= 2) return 1;
+		return 0;
+	case 160:	// Juperos: Leader Maxim's camp
+		if (checkquest(21356) >= 0 || checkquest(21358) >= 0 || checkquest(21352) >= 0 || checkquest(21354) >= 0) return 1;
+		return 0;
+	case 161:	// Rachel and Veins
+		if (iq_ra21 & 4) return 3;
+		if (iq_ra21 & 2) return 2;
+		if (iq_ra21 & 1) return 1;
+		return 0;
+	case 145:	// Criminal Activities
+		if (iq_crim >= 13) return 9;
+		if (iq_crim_land == 1) return 8;
+		if (iq_crim >= 12) return 7;
+		if (iq_crim >= 10) return 6;
+		if (iq_crim >= 7) return 5;
+		if (iq_crim >= 5) return 4;
+		if (iq_crim >= 3) return 3;
+		if (iq_crim >= 2) return 2;
+		if (iq_crim >= 1) return 1;
+		return 0;
+	case 146:	// Eye of the Beholder
+		if (iq_beho == 1) return 9;
+		if (iq_beho >= 61028) return 8;
+		if (iq_beho >= 61026) return 7;
+		if (iq_beho >= 61024) return 6;
+		if (iq_beho >= 61018) return 5;
+		if (iq_beho >= 61012) return 4;
+		if (iq_beho >= 61009) return 3;
+		if (iq_beho >= 61006) return 2;
+		if (iq_beho >= 61001) return 1;
+		return 0;
+	case 147:	// Seoyeon's Trial
+		if (wsv_sy >= 5) return 5;
+		if (wsv_sy >= 4) return 4;
+		if (wsv_sy >= 3) return 3;
+		if (wsv_sy >= 2) return 2;
+		if (wsv_sy >= 1) return 1;
+		return 0;
+	case 148:	// Fantasy Book "Dungeon Food"
+		if (checkquest(16690) == 2) return 9;
+		if (wsv_df >= 12) return 8;
+		if (wsv_df >= 10) return 7;
+		if (wsv_df >= 8) return 6;
+		if (wsv_df >= 6) return 5;
+		if (wsv_df >= 5) return 4;
+		if (wsv_df >= 3) return 3;
+		if (wsv_df >= 2) return 2;
+		if (wsv_df >= 1) return 1;
+		return 0;
+	case 149:	// Overlook Water Dungeon
+		if (iq_owd_card == 1) return 7;
+		if (iq_owd >= 5) return 6;
+		if (iq_owd >= 4) return 5;
+		if (iq_owd >= 3) return 4;
+		if (iq_owd >= 2) return 3;
+		if (iq_owd >= 1) return 2;
+		if (strcharinfo(3) == "iz_dun00t") return 1;
+		return 0;
+	case 162:	// City Investment (the City Merchant Union)
+		if (checkquest(12370) >= 0) return 1;
+		return 0;
+	case 163:	// Devil in the Box
+		if (checkquest(5970) >= 0) return 6;
+		if (strcharinfo(3) == "clock_01") return 2;
+		if (checkquest(5971) == 2) return 1;
+		return 0;
+	}
+	return 0;
+}
+
+function	script	F_ChronCatState	{
+	.@s$ = "";
+	for (.@i = 1; .@i <= $@cat_n; .@i++)
+		.@s$ += (.@i > 1 ? "," : "") + callfunc("F_ChronCatK", .@i);
+	return .@s$;
 }
 
 // ---- generated: RO quest steps of the main road ----

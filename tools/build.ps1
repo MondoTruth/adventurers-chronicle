@@ -118,6 +118,18 @@ if (Test-Path $guideFile) {
         }
     }
 }
+# Rune-Midgard's own side quests on Renewal (catalog.ps1, read from the docs
+# ro-quest-catalog.md and ro-quest-steps.md): the Side Quests tab lists them
+# all, by region, and ticks each step from RO's own variables. Renewal only.
+$cat = $null
+$catFile = Join-Path $here 'catalog.ps1'
+if ($era -eq 'renewal' -and (Test-Path $catFile)) {
+    $cat = & $catFile
+    foreach ($m in $cat.missing) { Write-Warning "Catalog: no entry in ro-quest-catalog.md for $m (no storyline, tags or links)" }
+}
+$catQuests = @()
+if ($cat) { $catQuests = @($cat.regions | ForEach-Object { $_.storylines } | ForEach-Object { $_.quests }) }
+
 $keys = @{}
 $gi = 0
 foreach ($gd in $guides) {
@@ -709,6 +721,33 @@ function	script	F_ChronGuideDone	{
 
 '@ -split "`r?`n"
 }
+# The catalog: how many steps of quest getarg(0) are done (the last step whose
+# condition holds; a step without one only counts through a later one), and
+# the Journal's line of them, one number per quest, ',' between.
+$catFns = @()
+if ($catQuests.Count) {
+    $d += "// ---- RO side quest catalog ----"
+    $d += "`$@cat_n = $($catQuests.Count);"
+    $catFns += '// ---- generated: RO side quest catalog (catalog.ps1) ----', 'function	script	F_ChronCatK	{', '	switch (getarg(0)) {'
+    foreach ($cq in $catQuests) {
+        $withCond = @($cq.steps | Where-Object { $_.cond })
+        if (-not $withCond.Count) { continue }
+        $catFns += "	case $($cq.i):	// $(Ascii $cq.title 'catalog title')"
+        [array]::Reverse($withCond)
+        foreach ($s in $withCond) { $catFns += "		if ($($s.cond)) return $($s.k);" }
+        $catFns += '		return 0;'
+    }
+    $catFns += '	}', '	return 0;', '}', ''
+    $catFns += @'
+function	script	F_ChronCatState	{
+	.@s$ = "";
+	for (.@i = 1; .@i <= $@cat_n; .@i++)
+		.@s$ += (.@i > 1 ? "," : "") + callfunc("F_ChronCatK", .@i);
+	return .@s$;
+}
+
+'@ -split "`r?`n"
+}
 # Main steps that guide RO's own quest (Renewal's episodes), and the steps
 # retired from the route. Built only into a route that has them.
 $mainFns = @()
@@ -824,7 +863,22 @@ foreach ($gt in $story.gates) {
     $npcs += '}'
 }
 $tpl = Get-Content (Join-Path $here 'chronicle.template.txt') -Raw
-$tpl = $tpl.Replace('//@@DATA@@', ($d -join "`n`t")).Replace('//@@NPCS@@', (($cond + $guideFns + $mainFns + $npcs) -join "`n"))
+$tpl = $tpl.Replace('//@@DATA@@', ($d -join "`n`t")).Replace('//@@NPCS@@', (($cond + $guideFns + $catFns + $mainFns + $npcs) -join "`n"))
+# "@chronicle <n> cat": the catalog's line, in parts of 200 characters (one
+# chat line each; the client joins the parts of a reply).
+$catCmd = @'
+if (.@atcmd_numparameters >= 2 && .@atcmd_parameters$[1] == "cat") {
+		.@s$ = callfunc("F_ChronCatState");
+		.@len = getstrlen(.@s$);
+		.@parts = (.@len + 199) / 200;
+		for (.@p = 0; .@p < .@parts; .@p++)
+			dispbottom "@@reply " + .@atcmd_parameters$[0] + " " + (.@p + 1) + "/" + .@parts + " " + substr(.@s$, .@p * 200, min(.@len, .@p * 200 + 200) - 1);
+		end;
+	}
+'@ -replace "`r", ''
+if (([regex]::Matches($tpl, '//@@CAT_CMD@@')).Count -ne 1) { throw 'Template marker //@@CAT_CMD@@ must be there once' }
+if ($catQuests.Count) { $tpl = $tpl.Replace('//@@CAT_CMD@@', $catCmd.TrimEnd()) }
+else { $tpl = $tpl -replace '[ \t]*//@@CAT_CMD@@\r?\n', '' }
 # The template's guide hooks: the calls on a route with guides, gone without
 # a trace on one without (each marker must be there, once).
 $hooks = [ordered]@{
@@ -923,8 +977,25 @@ if ($guides.Count) {
 $js.mvps = @($side.mvps | ForEach-Object { [ordered]@{ id = $_.id; name = $_.name; where = $_.where; map = $_.map; lv = $_.lv; g = $_.g; side = $_.side; k = $_.k } })
 $rk = 0
 $js.ranks = @($side.ranks | ForEach-Object { $rk++; [ordered]@{ need = $_.need; name = $_.name; item = $rankItem[$rk]; hat = $icons[[int]$_.base].name; stat = $_.stat } })
+# The catalog, as catalog.ps1 read it from the docs. The client gets no
+# conditions, only whether the step has one (check). Written compact, at the
+# end: PowerShell's indented JSON would make it four times the size.
+$catJs = $null
+if ($catQuests.Count) {
+    $catJs = @($cat.regions | ForEach-Object {
+        [ordered]@{ n = $_.n; title = $_.title; entrances = $_.entrances
+            storylines = @($_.storylines | ForEach-Object {
+                [ordered]@{ title = $_.title; intro = $_.intro
+                    quests = @($_.quests | ForEach-Object {
+                        [ordered]@{ i = $_.i; title = $_.title; line = $_.line; tags = $_.tags; links = $_.links; about = $_.about; after = $_.after; dead = $_.dead
+                            steps = @($_.steps | ForEach-Object { [ordered]@{ k = $_.k; title = $_.title; lines = $_.lines; done = $_.done; check = [bool]$_.cond } }) } }) } }) } })
+}
 $json = $js | ConvertTo-Json -Depth 8
+if ($catJs) {
+    $json = $json.TrimEnd()
+    $json = $json.Substring(0, $json.Length - 1).TrimEnd() + ",`n    `"catalog`":  " + (ConvertTo-Json -InputObject $catJs -Depth 12 -Compress) + "`n}"
+}
 [IO.File]::WriteAllText((Join-Path $out 'client\data.js'), "// GENERATED by tools/build.ps1 from tools/story.ps1.`nexport default $json;`n", $utf8)
 
-"Built ${era}: $($steps.Count) steps in $($chapters.Count) chapters, $($sides.Count) Side Quests ($($sideSteps.Count) steps), $($side.mvps.Count) MVPs, $($guides.Count) RO quest guides, items 50100-$id."
+"Built ${era}: $($steps.Count) steps in $($chapters.Count) chapters, $($sides.Count) Side Quests ($($sideSteps.Count) steps), $($side.mvps.Count) MVPs, $($guides.Count) RO quest guides, $($catQuests.Count) catalog quests, items 50100-$id."
 }

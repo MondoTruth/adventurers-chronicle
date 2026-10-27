@@ -259,6 +259,7 @@ OnCmd:
 		dispbottom "@@event chronicle refresh";
 		end;
 	}
+	//@@CAT_CMD@@
 	if (.@atcmd_numparameters >= 2 && .@atcmd_parameters$[1] == "state") {
 		.@g = CHRON_STEP;
 		.@hunt = -1;
