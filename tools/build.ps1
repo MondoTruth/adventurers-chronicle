@@ -127,6 +127,10 @@ if ($era -eq 'renewal' -and (Test-Path $catFile)) {
     $cat = & $catFile
     foreach ($m in $cat.missing) { Write-Warning "Catalog: no entry in ro-quest-catalog.md for $m (no storyline, tags or links)" }
 }
+# With the catalog, the tab is the catalog alone (concept v3, MondoTruth
+# 2026-10-28): no RO quest guides (their quests are in the catalog), and
+# Always's Side Quests are switched off below, after their items.
+if ($cat) { $guides = @() }
 $catQuests = @()
 if ($cat) { $catQuests = @($cat.regions | ForEach-Object { $_.storylines } | ForEach-Object { $_.quests }) }
 
@@ -487,6 +491,17 @@ if ($era -eq 'pre-renewal' -or $eraOnly) {
     [IO.File]::WriteAllLines((Join-Path $out 'db\item_db.yml'), $items, $utf8)
     [IO.File]::WriteAllText((Join-Path $out 'System\itemInfo.lua'), (($info -join "`n") + "`n"), $latin1)
 }
+# Renewal with the catalog: Always's Side Quests are off (concept v3: "his
+# own quests are not used"), and the Passport's ranks give nothing until its
+# rewards are decided (MondoTruth, 2026-10-28). Their items and quest ids stay
+# defined, so whatever a character already has keeps working; the entries of
+# a Side Quest under way leave the quest window at login (ChronSideOff).
+$ranks = $side.ranks
+$sidesOff = @()
+if ($cat) {
+    $sidesOff = @($sideSteps | ForEach-Object { 77100 + $_.sid })
+    $sides = @(); $sideSteps = @(); $ranks = @()
+}
 
 # ---- npc/chronicle.txt ----
 $d = @()
@@ -495,6 +510,8 @@ $d += "`$@chr_steps = $($steps.Count);"
 $d += "`$@chr_chapters = $($chapters.Count);"
 $d += "`$@chr_final = $final;"
 function Arr([string]$name, $values, [switch]$str, [int]$from = 1) {
+    # An empty list (Renewal's Side Quests): nothing to set.
+    if (-not @($values | Where-Object { $null -ne $_ }).Count) { return "// $name`: none" }
     $vals = @($values) | ForEach-Object { if ($str) { Q $_ } else { "$_" } }
     "setarray $name[$from], " + ($vals -join ', ') + ';'
 }
@@ -579,10 +596,10 @@ $cond += '	}', '	return 0;', '}', ''
 $d += "`$@mvp_n = $($side.mvps.Count);"
 $d += Arr '$@mvp_id' ($side.mvps | ForEach-Object { $_.id }) -from 0
 $d += Arr '$@mvp_name$' ($side.mvps | ForEach-Object { Ascii $_.name 'mvp' }) -str -from 0
-$d += "`$@pp_n = $($side.ranks.Count);"
-$d += Arr '$@pp_need' ($side.ranks | ForEach-Object { $_.need })
-$d += Arr '$@pp_name$' ($side.ranks | ForEach-Object { Ascii $_.name 'rank' }) -str
-$d += Arr '$@pp_item' (1..$side.ranks.Count | ForEach-Object { $rankItem[$_] })
+$d += "`$@pp_n = $($ranks.Count);"
+$d += Arr '$@pp_need' ($ranks | ForEach-Object { $_.need })
+$d += Arr '$@pp_name$' ($ranks | ForEach-Object { Ascii $_.name 'rank' }) -str
+$d += Arr '$@pp_item' @(for ($r = 1; $r -le $ranks.Count; $r++) { $rankItem[$r] })
 # RO quest guides: per guide [i], per step [i*100+k]. Built only into a route
 # that has guides, so a route without them is written exactly as before.
 $guideFns = @()
@@ -723,11 +740,16 @@ function	script	F_ChronGuideDone	{
 }
 # The catalog: how many steps of quest getarg(0) are done (the last step whose
 # condition holds; a step without one only counts through a later one), and
-# the Journal's line of them, one number per quest, ',' between.
+# the Journal's line of them, one number per quest, ',' between, then '|' and
+# the Passport's stamps: bit i % 31 of CHRON_CS[i / 31] for quest i, set once
+# the quest is done (its last step holds), so a repeatable one stays stamped.
+# A quest whose last step can't be checked ($@cat_last 999) is never stamped.
 $catFns = @()
 if ($catQuests.Count) {
     $d += "// ---- RO side quest catalog ----"
     $d += "`$@cat_n = $($catQuests.Count);"
+    $d += Arr '$@cat_last' ($catQuests | ForEach-Object { if ($_.steps.Count -and $_.steps[-1].cond) { $_.steps.Count } else { 999 } })
+    $d += Arr '$@cat_title$' ($catQuests | ForEach-Object { Ascii $_.title 'catalog title' }) -str
     $catFns += '// ---- generated: RO side quest catalog (catalog.ps1) ----', 'function	script	F_ChronCatK	{', '	switch (getarg(0)) {'
     foreach ($cq in $catQuests) {
         $withCond = @($cq.steps | Where-Object { $_.cond })
@@ -741,12 +763,36 @@ if ($catQuests.Count) {
     $catFns += @'
 function	script	F_ChronCatState	{
 	.@s$ = "";
-	for (.@i = 1; .@i <= $@cat_n; .@i++)
-		.@s$ += (.@i > 1 ? "," : "") + callfunc("F_ChronCatK", .@i);
+	.@new = 0;
+	for (.@i = 1; .@i <= $@cat_n; .@i++) {
+		.@k = callfunc("F_ChronCatK", .@i);
+		.@s$ += (.@i > 1 ? "," : "") + .@k;
+		.@b = 1 << (.@i % 31);
+		if (.@k >= $@cat_last[.@i] && !(CHRON_CS[.@i / 31] & .@b)) {
+			CHRON_CS[.@i / 31] = CHRON_CS[.@i / 31] | .@b;
+			.@new++;
+			.@t$ = $@cat_title$[.@i];
+		}
+	}
+	if (.@new == 1)
+		dispbottom "[Chronicle] Passport stamped: " + .@t$ + ".", 0xFFDD66;
+	else if (.@new > 1)
+		dispbottom "[Chronicle] Passport stamped: " + .@new + " of Rune-Midgard's quests done.", 0xFFDD66;
+	.@s$ += "|";
+	for (.@j = 0; .@j <= $@cat_n / 31; .@j++)
+		.@s$ += (.@j ? "," : "") + CHRON_CS[.@j];
 	return .@s$;
 }
 
 '@ -split "`r?`n"
+    # Stamps for quests done before the Journal is opened, and Always's Side
+    # Quests leaving the quest window (see $sidesOff), at login.
+    $catFns += '// Renewal: catalog stamps at login; the switched-off Side Quests leave the quest window.', '-	script	ChronSideOff	-1,{', 'OnPCLoginEvent:'
+    if ($sidesOff.Count) {
+        $catFns += Arr '.@q' $sidesOff -from 0 | ForEach-Object { "	$_" }
+        $catFns += '	for (.@i = 0; .@i < getarraysize(.@q); .@i++)', '		if (checkquest(.@q[.@i]) >= 0)', '			erasequest .@q[.@i];'
+    }
+    $catFns += '	freeloop(1);', '	callfunc "F_ChronCatState";', '	freeloop(0);', '	end;', '}', ''
 }
 # Main steps that guide RO's own quest (Renewal's episodes), and the steps
 # retired from the route. Built only into a route that has them.
@@ -979,18 +1025,18 @@ if ($guides.Count) {
 }
 $js.mvps = @($side.mvps | ForEach-Object { [ordered]@{ id = $_.id; name = $_.name; where = $_.where; map = $_.map; lv = $_.lv; g = $_.g; side = $_.side; k = $_.k } })
 $rk = 0
-$js.ranks = @($side.ranks | ForEach-Object { $rk++; [ordered]@{ need = $_.need; name = $_.name; item = $rankItem[$rk]; hat = $icons[[int]$_.base].name; stat = $_.stat } })
+$js.ranks = @($ranks | ForEach-Object { $rk++; [ordered]@{ need = $_.need; name = $_.name; item = $rankItem[$rk]; hat = $icons[[int]$_.base].name; stat = $_.stat } })
 # The catalog, as catalog.ps1 read it from the docs. The client gets no
 # conditions, only whether the step has one (check). Written compact, at the
 # end: PowerShell's indented JSON would make it four times the size.
 $catJs = $null
 if ($catQuests.Count) {
     $catJs = @($cat.regions | ForEach-Object {
-        [ordered]@{ n = $_.n; title = $_.title; entrances = $_.entrances
+        [ordered]@{ n = $_.n; title = $_.title; entrances = $_.entrances; episode = $_.episode
             storylines = @($_.storylines | ForEach-Object {
                 [ordered]@{ title = $_.title; intro = $_.intro
                     quests = @($_.quests | ForEach-Object {
-                        [ordered]@{ i = $_.i; title = $_.title; line = $_.line; tags = $_.tags; links = $_.links; about = $_.about; after = $_.after; dead = $_.dead
+                        [ordered]@{ i = $_.i; title = $_.title; lv = $_.lv; line = $_.line; tags = $_.tags; links = $_.links; about = $_.about; after = $_.after; dead = $_.dead
                             steps = @($_.steps | ForEach-Object { [ordered]@{ k = $_.k; title = $_.title; lines = $_.lines; done = $_.done; check = [bool]$_.cond } }) } }) } }) } })
 }
 $json = $js | ConvertTo-Json -Depth 8

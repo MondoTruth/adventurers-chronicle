@@ -14,8 +14,8 @@
 # stand. $conds gives the condition of the others ('' = the Journal can't
 # check it: the step ticks when a later one is done). The Journal's current
 # step is the one after the last step whose condition holds; a quest is done
-# when its last step holds. Quests here stamp no Passport (MondoTruth,
-# 2026-10-27): RO's own variables are the only record.
+# when its last step holds, and then stamps the Passport once (MondoTruth,
+# 2026-10-28; no rewards for the stamps yet).
 
 # "<region>|<quest title>|<step>" -> rAthena condition ('' = none).
 $conds = @{
@@ -285,6 +285,10 @@ foreach ($R in $regions) {
         # "Players: N" in the steps doc's own text.
         if (-not $tags.Contains('players') -and (($Q.about -join ' ') -match '\*\*Players: (\d+)\*\*')) { $tags.players = [int]$Matches[1] }
         if ($R.n -eq 29) { $tags.mod = $true }
+        # RO's minimum level: the catalog's "Lv: N", else the steps doc's "| Lv N".
+        $lv = $null
+        foreach ($e in $match) { if (-not $lv -and $e.text -match '\bLv: (\d+)') { $lv = [int]$Matches[1] } }
+        if (-not $lv -and (($Q.about -join ' ') -match '\| Lv (\d+)')) { $lv = [int]$Matches[1] }
         $dead = $null
         if ($tags.deadEnd -or (($Q.steps | ForEach-Object { $_.lines | ForEach-Object { $_[1] } }) -join ' ') -match '(?<!not a )\b[Dd]ead end\b') {
             $tags.deadEnd = $true
@@ -303,14 +307,15 @@ foreach ($R in $regions) {
         $sk = $(if ($story) { $story } else { '' })
         if (-not $stories.Contains($sk)) { $stories[$sk] = @{ title = $story; intro = $(if ($Q.group) { $Q.group.intro -join ' ' } else { '' }); quests = @() } }
         $stories[$sk].quests += [ordered]@{
-            i = $Q.i; title = $Q.title; line = $line; tags = $tags; links = @($links | Select-Object -Unique)
+            i = $Q.i; title = $Q.title; lv = $lv; line = $line; tags = $tags; links = @($links | Select-Object -Unique)
             about = @($Q.about); after = @($Q.after); dead = $dead
             steps = @($Q.steps | ForEach-Object { [ordered]@{ k = $_.k; title = (Player $_.title); lines = @($_.lines | ForEach-Object { , @($_[0], $_[1]) }); done = $_.done; cond = $_.cond } })
         }
     }
     # Storylines first, in the order they come; single quests last.
     $keys = @($stories.Keys | Where-Object { $_ }) + @($stories.Keys | Where-Object { -not $_ })
-    $out += [ordered]@{ n = $R.n; title = $R.title; entrances = [bool]$R.entrances
+    # The Story episode of the region ("Eclage (Episode 14.2)"); none = classic Rune-Midgard.
+    $out += [ordered]@{ n = $R.n; title = $R.title; entrances = [bool]$R.entrances; episode = $(if ($R.title -match '\(Episode ([\d.]+)\)') { $Matches[1] } else { $null })
         storylines = @($keys | ForEach-Object { $s = $stories[$_]; [ordered]@{ title = $s.title; intro = $s.intro; quests = @($s.quests) } }) }
 }
 

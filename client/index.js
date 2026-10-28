@@ -115,6 +115,12 @@ h3.guides { margin: 12px 0 2px; font-size: 13px; color: #6b4a1d; }
 .cat .verify { background: #fff0b8; color: #7a5a00; padding: 0 3px; border-radius: 3px; }
 .cat .qlink { color: #24507a; cursor: pointer; text-decoration: underline; }
 .cat .about { color: #667; font-size: 11px; }
+.cat details.cq.low > summary { opacity: .55; }
+.cat .tg.low { background: #eceef3; color: #889; }
+.filters { margin: 4px 0 6px; display: flex; flex-direction: column; gap: 3px; }
+.filters div { display: flex; flex-wrap: wrap; gap: 3px; }
+.chip { font: 11px Tahoma, Arial, sans-serif; padding: 0 7px; border: 1px solid #b8c2dc; border-radius: 9px; background: #f3f5fb; color: #556; cursor: pointer; }
+.chip.on { background: #dde9f8; border-color: #6b8fbf; color: #24507a; font-weight: bold; }
 `;
 
 const escape = text => String(text ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -157,12 +163,17 @@ export function parseSides(text) {
     });
 }
 
-/** "17,0,3" -> [17, 0, 3]: how many steps of each catalog quest are done (Renewal's Side Quests tab). */
+/**
+ * "17,0,3|6,0" -> { done: [17, 0, 3], stamps: [6, 0] }: how many steps of each
+ * catalog quest are done (Renewal's Side Quests tab), and the Passport's
+ * stamps (bit i % 31 of stamps[i / 31] for quest i).
+ */
 export function parseCat(text) {
-    const s = String(text || '').trim();
-    if (!s) return null;
-    const n = s.split(',').map(Number);
-    return n.every(Number.isFinite) ? n : null;
+    const [a, b] = String(text || '').trim().split('|');
+    if (!a) return null;
+    const done = a.split(',').map(Number);
+    const stamps = String(b || '').split(',').filter(Boolean).map(Number);
+    return done.every(Number.isFinite) && stamps.every(Number.isFinite) ? { done, stamps } : null;
 }
 
 /** "juperos_02 1,3" -> { map, alive: [1, 3] }: watched monsters still standing ("0": none). */
@@ -180,6 +191,10 @@ const GUIDES = DATA.guides || [];
 // step (tools/catalog.ps1, from the docs). The server says how many steps of
 // each are done ("@chronicle <n> cat").
 const CATALOG = DATA.catalog || [];
+// With the catalog the tab is the Passport and the catalog alone (concept v3):
+// the build leaves out Always's Side Quests and the guides, and every MVP of
+// the Ledger is open from the start.
+const RE = CATALOG.length > 0;
 const CAT_REGION = new Map(CATALOG.flatMap(r => r.storylines.flatMap(s => s.quests.map(q => [q.i, r]))));
 // Quest names in the docs' text ("needs: the Z-Gang past step 8") link to the quest.
 const CAT_NAMES = new Map();
@@ -453,7 +468,7 @@ export default function init(parameters, api) {
     const sideState = n => state?.sides?.[n - 1] || { step: 0, hunt: -1, have: null, ro: -1 };
     // RO quest guides: index i in DATA.guides, as the server lists them.
     const guideState = i => state?.guides?.[i] || { step: 0, ro: -1, have: null };
-    const sidesOpen = () => DATA.sides.filter(sd => { const k = sideState(sd.n).step; return k >= 1 && k < 100; }).length
+    const sidesOpen = () => RE ? catQuests().filter(q => { const d = catDone(q); return d > 0 && d < q.steps.length; }).length : DATA.sides.filter(sd => { const k = sideState(sd.n).step; return k >= 1 && k < 100; }).length
         + GUIDES.filter((gd, i) => { const k = guideState(i).step; return k >= 1 && k < 100; }).length;
     const routeLink = r => r ? `<span class="route" data-r="${escape(r.map)},${r.x},${r.y}" title="Open Navigation with the way there">${escape(r.name)} (${escape(r.map)} ${r.x}, ${r.y})</span>` : '';
 
@@ -502,6 +517,10 @@ export default function init(parameters, api) {
     }
 
     function sidesHtml() {
+        if (RE) {
+            const n = catQuests().filter(catStamped).length;
+            return `<div class="pass"><b>Adventurer's Passport:</b> ${cat ? `${n} stamp${n === 1 ? '' : 's'}` : 'asking the server...'}. Each of Rune-Midgard's quests below stamps it once, when its last step is done. Rewards for the stamps are still to come.</div>${catalogHtml()}`;
+        }
         const stamps = DATA.sides.filter(sd => sideState(sd.n).step === 100).length + GUIDES.filter((gd, i) => guideState(i).step === 100).length;
         const ranks = DATA.ranks.map(r => stamps >= r.need
             ? `<div><span class="ok">&#10003; ${escape(r.name)}</span>: ${escape(r.hat)} (${escape(r.stat)}), yours.</div>`
@@ -564,28 +583,62 @@ export default function init(parameters, api) {
 
     // ---- Rune-Midgard's quests (Renewal): every side quest RO has, by the
     // region where it starts. A fold-out is only filled while it is open.
-    let cat = null;	// steps done per catalog quest (quest i at i - 1), null until the server says
-    const catDone = q => cat?.[q.i - 1];
+    let cat = null;	// { done: steps done per catalog quest (quest i at i - 1), stamps }, null until the server says
+    const catDone = q => cat?.done[q.i - 1];
+    const catStamped = q => Boolean(cat?.stamps[Math.floor(q.i / 31)] & (1 << (q.i % 31)));
+    const catQuests = () => CATALOG.flatMap(r => r.storylines.flatMap(s => s.quests));
+    // RO's minimum level, when it checks one: "Lv N+", or dimmed "Opens at Lv N" below it.
+    const catLow = q => q.lv && state && state.level < q.lv;
+
+    // The filters (concept v3), kept like the fold-outs. All off: every quest shows.
+    const FILTERS = 'adventurers-chronicle:catfilter';
+    let filt = {};
+    try { filt = JSON.parse(localStorage.getItem(FILTERS)) || {}; } catch { filt = {}; }
+    const EPISODES = [...new Set(CATALOG.map(r => r.episode).filter(Boolean))];
+    const FILTER_TAGS = [['lv', 'For my level'], ['place', 'Opens a place'], ['repeatable', 'Repeatable'], ['mod', 'Needs a mod']];
+    const filtering = () => Boolean(filt.ep || FILTER_TAGS.some(([f]) => filt[f]));
+    function catMatch(r, q) {
+        const t = q.tags || {};
+        if (filt.ep && (filt.ep === 'classic' ? r.episode : r.episode !== filt.ep)) return false;
+        if (filt.lv && catLow(q)) return false;
+        return !['place', 'repeatable', 'mod'].some(f => filt[f] && !t[f]);
+    }
+    function setFilter(f, v) {
+        filt[f] = v;
+        try { localStorage.setItem(FILTERS, JSON.stringify(filt)); } catch { /* kept for this session only */ }
+        render();
+    }
+    function filterHtml() {
+        const chip = (f, v, label) => `<button type="button" class="chip${(filt[f] || '') === v || (v === true && filt[f]) ? ' on' : ''}" data-f="${f}" data-v="${v}">${label}</button>`;
+        return `<div class="filters"><div>${FILTER_TAGS.map(([f, label]) => chip(f, true, label)).join('')}</div>
+            <div>${chip('ep', '', 'Every episode')}${chip('ep', 'classic', 'Classic')}${EPISODES.map(e => chip('ep', e, `Episode ${escape(e)}`)).join('')}</div></div>`;
+    }
 
     function catalogHtml() {
         if (!CATALOG.length) return '';
+        const on = filtering();
         const body = CATALOG.map(r => {
-            const qs = r.storylines.flatMap(s => s.quests);
+            const all = r.storylines.flatMap(s => s.quests);
+            const qs = all.filter(q => catMatch(r, q));
+            if (on && !qs.length) return '';
             const counted = qs.filter(q => q.steps.length);
             const done = counted.filter(q => catDone(q) >= q.steps.length).length;
             const going = counted.filter(q => { const d = catDone(q); return d > 0 && d < q.steps.length; }).length;
             const rk = `cr${r.n}`;
             const open = opened(rk, false);
-            const count = r.entrances ? `${qs.length} places`
+            const count = on ? `${qs.length} of ${all.length} match${cat && done ? `, ${done} done` : ''}${going ? `, ${going} under way` : ''}`
+                : r.entrances ? `${qs.length} places`
                 : `${cat ? `${done} of ` : ''}${counted.length} quest${counted.length === 1 ? '' : 's'}${cat ? ' done' : ''}${going ? `, ${going} under way` : ''}`;
             const inner = open ? r.storylines.map(s => {
+                const sq = s.quests.filter(q => catMatch(r, q));
+                if (!sq.length) return '';
                 const head = s.title ? `<div class="story"><b>Storyline: ${catText(s.title, '', true)}</b>${s.intro ? `<p class="intro">${catText(s.intro, s.title)}</p>` : ''}</div>`
                     : r.storylines.length > 1 ? '<div class="story"><b>Single quests</b></div>' : '';
-                return head + s.quests.map(catQuestHtml).join('');
+                return head + sq.map(catQuestHtml).join('');
             }).join('') : '';
             return `<details data-k="${rk}"${open ? ' open' : ''}><summary>${r.entrances ? '' : `${r.n}. `}${escape(r.title)} <small>${count}</small></summary><div class="body">${inner}</div></details>`;
         }).join('');
-        return `<h3 class="guides">Rune-Midgard's quests</h3><p class="hint">Every side quest Ragnarok itself has on Renewal, by the region where it starts. The Journal only shows the way and ticks each step from the quest's own record; the quest's own people give the rewards. These quests don't stamp the Passport.</p><div class="cat">${body}</div>`;
+        return `<h3 class="guides">Rune-Midgard's quests</h3><p class="hint">Every side quest Ragnarok itself has on Renewal, by the region where it starts. The Journal only shows the way and ticks each step from the quest's own record; the quest's own people give the rewards. Each one done stamps your Passport once.</p>${filterHtml()}<div class="cat">${body || '<p class="hint">No quest matches these filters.</p>'}</div>`;
     }
 
     function catQuestHtml(q) {
@@ -594,8 +647,11 @@ export default function init(parameters, api) {
         const t = q.tags || {};
         const k = `cq${q.i}`;
         const open = opened(k, false);
+        const low = catLow(q);
+        const stamped = catStamped(q);
         const tags = [
-            n && d != null ? (d >= n ? '<span class="badge">Done</span>' : d > 0 ? `<span class="badge cur">Step ${d + 1} of ${n}</span>` : '<span class="badge lock">Not started</span>') : '',
+            q.lv ? (low ? `<span class="tg low">Opens at Lv ${q.lv}</span>` : `<span class="tg">Lv ${q.lv}+</span>`) : '',
+            n && d != null ? (d >= n ? `<span class="badge">${stamped ? 'Done, stamped' : 'Done'}</span>` : `${d > 0 ? `<span class="badge cur">Step ${d + 1} of ${n}</span>` : '<span class="badge lock">Not started</span>'}${stamped ? ' <span class="badge">Stamped</span>' : ''}`) : '',
             t.players ? `<span class="tg">Players: ${t.players}</span>` : '',
             t.repeatable ? '<span class="tg">Repeatable</span>' : '',
             t.place ? '<span class="tg place">Opens a place</span>' : '',
@@ -619,7 +675,7 @@ export default function init(parameters, api) {
                 ...(q.after || []).map(a => `<p class="about">${catText(a, q.title)}</p>`),
             ].join('');
         }
-        return `<details class="cq" data-k="${k}"${open ? ' open' : ''}><summary><b>${escape(q.title)}</b> ${tags}</summary><div class="body">${inner}</div></details>`;
+        return `<details class="cq${low ? ' low' : ''}" data-k="${k}"${open ? ' open' : ''}><summary><b>${escape(q.title)}</b> ${tags}</summary><div class="body">${inner}</div></details>`;
     }
 
     function catStepHtml(q, s, d) {
@@ -649,6 +705,7 @@ export default function init(parameters, api) {
     function ledgerHtml() {
         const step = state ? state.step : 1;
         const known = m => {
+            if (RE) return true;
             if (m.g) return step > m.g;
             const k = sideState(m.side).step;
             return k === 100 || (k >= 1 && k > m.k);
@@ -657,11 +714,13 @@ export default function init(parameters, api) {
         const rows = DATA.mvps.map((m, i) => {
             if (!known(m)) return `<div class="mvp unknown"><span class="box"></span><span class="nm">???<span class="wh">Someone on your road will mention it.</span></span><span class="lv">Lv ??</span></div>`;
             const dead = state && (state.mvpk & (1 << i));
-            const from = m.g ? `Chapter ${Math.floor((m.g - 1) / 5) + 1}` : `Side Quest: ${DATA.sides[m.side - 1].title}`;
+            const from = RE ? '' : m.g ? `Chapter ${Math.floor((m.g - 1) / 5) + 1}` : `Side Quest: ${DATA.sides[m.side - 1].title}`;
             return `<div class="mvp${dead ? ' got' : ''}"><span class="box">${dead ? '&#10003;' : ''}</span><span class="nm"><b>${escape(m.name)}</b>
-                <span class="wh">${escape(m.where)} &middot; ${escape(m.map)} &middot; ${escape(from)}${dead ? '' : '. Bring companions.'}</span></span><span class="lv">Lv ${m.lv}</span></div>`;
+                <span class="wh">${escape(m.where)} &middot; ${escape(m.map)}${from ? ` &middot; ${escape(from)}` : ''}${dead ? '' : '. Bring companions.'}</span></span><span class="lv">Lv ${m.lv}</span></div>`;
         }).join('');
-        return `<div class="pass"><b>MVP Ledger:</b> ${got} of ${DATA.mvps.length} defeated. Nothing here is required: it is a list of reasons to come back stronger. An MVP is written in when someone mentions it, and ticks itself when you or your party defeat it.</div>${rows}`;
+        const how = RE ? 'Every MVP is listed with its level, and ticks itself when you or your party defeat it.'
+            : 'An MVP is written in when someone mentions it, and ticks itself when you or your party defeat it.';
+        return `<div class="pass"><b>MVP Ledger:</b> ${got} of ${DATA.mvps.length} defeated. Nothing here is required: it is a list of reasons to come back stronger. ${how}</div>${rows}`;
     }
 
     function render() {
@@ -810,6 +869,8 @@ export default function init(parameters, api) {
         if (event.target.closest('.qwin')) api.actions.perform('window', { name: 'Quest', open: true });
         const tabButton = event.target.closest('[data-tab]');
         if (tabButton) { tab = tabButton.dataset.tab; render(); if (tab === 'side' && CATALOG.length) refresh(); return; }
+        const chip = event.target.closest('.chip[data-f]');
+        if (chip) { const f = chip.dataset.f; setFilter(f, f === 'ep' ? chip.dataset.v : !filt[f]); return; }
         const qlink = event.target.closest('.qlink');
         if (qlink) { showCatQuest(Number(qlink.dataset.q)); return; }
         const followButton = event.target.closest('[data-follow]');

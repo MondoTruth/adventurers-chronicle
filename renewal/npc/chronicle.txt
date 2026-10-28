@@ -54,234 +54,32 @@ OnInit:
 	setarray $@chr_gift$[1], "501,30", "502,30", "503,30", "504,30;505,10", "504,40;505,20", "504,50;505,20", "607,3;504,50", "504,50;505,30", "504,50;608,3", "607,5", "616,1;607,10", "607,10;608,5", "607,10;608,5", "616,1;607,20";
 	setarray $@chr_cost[1], 50101, 50102, 50103, 50104, 50105, 50106, 50107, 50108, 50109, 50110, 50111, 50112, 50113, 50114, 50115, 50900, 50901, 50902, 50116, 50117, 50118, 50903, 50904, 50905, 50906, 50907, 50908, 50119, 50120, 50121, 50122, 50123, 50124, 50909, 50910, 50911, 50912, 50913, 50914, 50915, 50916, 50917;
 	// ---- side quests ----
-	$@sq_n = 9;
-	setarray $@sq_title$[1], "The Sea Caves of Byalan", "The Drowned Crew", "The Face in the Sand", "The Tiger Across the Sea", "Orc's Memory", "The Fox of the Palace", "The Broken Sword of Kunlun", "The Gears Below", "The Turtle General";
-	setarray $@sq_ch[1], 1, 2, 3, 3, 4, 4, 4, 5, 5;
-	setarray $@sq_hook[1], 5, 8, 13, 15, 18, 20, 20, 21, 23;
-	setarray $@sq_steps[1], 5, 5, 3, 9, 5, 9, 9, 8, 5;
-	setarray $@sq_npc$[1], "Harbour Master Oswin", "Merchant Tolliver", "", "Kasim the Courier", "Scholar Wendel", "Envoy Lise", "Scribe Wang", "", "Navigator Corvin";
-	setarray $@sq_idle$[1], "The sea gives and the sea takes. Lately it mostly takes.", "Cargo, cargo, cargo. Nobody will sail past the old wreck any more.", "", "Nafisa sends her greetings. And her worries.", "The Magister wants every word that machine produces. Every word.", "The lord wrote to the Academy for a healer. I am only a messenger.", "I wrote the chief's letter myself. I did not expect anyone to come.", "", "Turtle Island, eh? My grandfather sailed with Jornadan Niliria. Few came back.";
-	setarray $@sq_after$[1], "The boats sail again, thanks to you. Fair winds, friend.", "My ships pass the wreck again. You have a friend in Alberta.", "", "Nafisa has your letter by now. Safe sailing.", "The Magister read my report twice. He has never done that before.", "Lord Ishida's mother sends her thanks, and so does the Academy.", "The sword hangs in the chief's hall again. Kunlun owes you.", "", "Grandfather would have liked to hear you tell it. Fair winds.";
-	setarray $@sq_cost[1], 50125, 50126, 50127, 50128, 50134, 50136, 50138, 50140, 50142;
-	setarray $@sq_cost2[1], 50130, 50131, 50132, 50133, 50135, 50137, 50139, 50141, 50143;
-	setarray $@sq_kitk[1], 0, 0, 0, 2, 0, 0, 0, 0, 0;
-	setarray $@sq_gift$[1], "502,15;602,3", "502,20;602,5", "503,15;602,5", "504,10;607,1", "504,10;12016,3", "504,10;1029,1", "504,15;607,2", "504,15;602,5", "504,15;607,2";
-	setarray $@sq_kit$[1], "", "", "", "1059,1;1022,1;7190,1;523,1", "", "", "", "", "";
-	setarray $@sq_nokit$[1], "", "", "", "Another thread? Nafisa's vision only showed the shaman asking once, so she packed for once.|Boon-what's-his-name never said anything about more! I am a courier, not a hunter. These you will have to find yourself.|Where to look, at least: Fabric from the Whispers right there in the shrine. Nine Tails from the Nine Tail foxes on the deepest floor of the Payon Cave. Holy Water from an Acolyte. And the Tool Dealer here in Ayothaya sells Yggdrasil Leaves.", "", "", "", "", "";
-	setarray $@sq_zeny[1], 2000, 3000, 5000, 10000, 8000, 10000, 15000, 12000, 12000;
-	setarray $@sqs_type[11], 1, 6, 2, 4, 5;
-	setarray $@sqs_title$[11], "The Harbour Master", "Your First Boat", "The Undersea Tunnel", "Something Bites the Boats", "Fair Winds";
-	setarray $@sqs_now$[11], "Walk south from Prontera to Izlude (prt_fild08) and find Harbour Master Oswin on the Izlude dock (199, 207). The Undersea Tunnel's monsters are Lv 34 to 48: come when you are near Lv 35.", "Ride the Sailor at the end of the Izlude dock (197, 205) to Byalan Island (150 zeny).", "Enter the cave in the middle of Byalan Island (108, 83) and hunt 20 Planktons and 10 Hydras on the first level of the Undersea Tunnel (iz_dun00).", "Go down to the second level of the Undersea Tunnel (iz_dun01). The beast that bites the boats waits there.", "Tell Harbour Master Oswin on the Izlude dock (199, 207) that the caves are quiet.";
-	setarray $@sqs_say$[11], "Leonhart sent you? Bless that man. Sit, sit.|Three boats this month. Holed from below, as if something bit them. The fishermen swear it comes from the caves under Byalan Island.|The Sailor at the end of this dock rows out to the island. Clear the caves, and find what is biting my boats.", "", "", "", "A crab the size of a cart? I believe it. I have seen the holes in my boats.|Whatever is stirring the monsters under Prontera reaches all the way out to sea. I will write to Leonhart tonight.|If you ever need to cross the sea, remember: Izlude is where the ships and the airships leave from.|Now, the fleet owes you. The fishermen chipped in for a hat, and could not agree on which. Pick the one you like.";
-	setarray $@sqs_map$[11], "", "izlu2dun", "iz_dun00", "iz_dun01", "";
-	setarray $@sqs_bmob[11], 0, 0, 0, 1066, 0;
-	setarray $@sqs_bname$[11], "", "", "", "Tidebreaker Vadon", "";
-	setarray $@sqs_bhp[11], 0, 0, 0, 8, 0;
-	setarray $@sqs_var$[11], "", "", "", "", "";
-	setarray $@sqs_val[11], 0, 0, 0, 0, 0;
-	setarray $@sqs_items$[11], "", "", "", "", "";
-	setarray $@sqs_loot$[11], "", "", "", "", "";
-	setarray $@sqs_maxlv[11], 0, 0, 0, 0, 0;
-	setarray $@sqs_altask$[11], "", "", "", "", "";
-	setarray $@sqs_alt$[11], "", "", "", "", "";
-	setarray $@sqs_parts$[11], "", "", "", "", "";
-	setarray $@sqs_type[21], 1, 6, 2, 4, 5;
-	setarray $@sqs_title$[21], "The Port Town", "Out to the Wreck", "The Drowned Crew", "The First Mate", "Calm Waters";
-	setarray $@sqs_now$[21], "Walk west from Payon to the port town of Alberta (pay_fild01, pay_fild02, pay_fild03) and find Merchant Tolliver by the docks (186, 153). The wreck's drowned crew are Lv 48: come when you are near Lv 40.", "Ride with Fisk on the Alberta dock (189, 151) to the Sunken Ship (250 zeny), then walk into the wreck (88, 111).", "Hunt 15 Pirate Skeletons on the first deck of the Sunken Ship (treasure01).", "Someone still gives the crew orders. Face the Drowned First Mate on the first deck of the Sunken Ship (treasure01).", "Tell Merchant Tolliver in Alberta (186, 153) that the crew rests again.";
-	setarray $@sqs_say$[21], "Hwarang's friend! Thank the stars.|There is an old pirate wreck off our coast, the Sunken Ship. It has been quiet for years. Now the dead crew walk its decks at night, and my ships will not sail past it.|Fisk, the old sailor there on the dock, rows out to the wreck. One more thing: they say the ship's captain, Drake, still keeps the lowest deck. Do not go down there. Just stop the crew.", "", "", "", "The crew is quiet? Then my ships sail tomorrow!|You know, the old sailors say the wreck woke the same week the dead started walking out of the Payon Cave. Tell Hwarang that. It is all one sickness.|I have two hats from the wreck's old cargo, and their owners will not be needing them. Take your pick.";
-	setarray $@sqs_map$[21], "", "treasure01", "treasure01", "treasure01", "";
-	setarray $@sqs_bmob[21], 0, 0, 0, 1071, 0;
-	setarray $@sqs_bname$[21], "", "", "", "The Drowned First Mate", "";
-	setarray $@sqs_bhp[21], 0, 0, 0, 10, 0;
-	setarray $@sqs_var$[21], "", "", "", "", "";
-	setarray $@sqs_val[21], 0, 0, 0, 0, 0;
-	setarray $@sqs_items$[21], "", "", "", "", "";
-	setarray $@sqs_loot$[21], "", "", "", "", "";
-	setarray $@sqs_maxlv[21], 0, 0, 0, 0, 0;
-	setarray $@sqs_altask$[21], "", "", "", "", "";
-	setarray $@sqs_alt$[21], "", "", "", "", "";
-	setarray $@sqs_parts$[21], "", "", "", "", "";
-	setarray $@sqs_type[31], 2, 4, 5;
-	setarray $@sqs_title$[31], "Deeper into the Sphinx", "The Warden", "One Seal";
-	setarray $@sqs_now$[31], "Go back to the Sphinx west of Morroc (moc_fild19, the entrance at 98, 99), down to its second floor (in_sphinx2), and hunt 20 Zeroms and 15 Requiems.", "Go down to the third floor of the Sphinx (in_sphinx3). The guardian Nafisa saw waits there.", "Tell Nafisa in Morroc (156, 286) what guards the Sphinx.";
-	setarray $@sqs_say$[31], "", "", "A warden. Of course. The builders left guards at every door.|Then it is as I feared: the Sphinx and the Pyramids share one seal. Pull at one and the other trembles.|Below its fifth floor sleeps Pharaoh, who ruled these sands before Morroc was a city. Leave him be until you are far stronger.|For your trouble: the helm of the jackal-god who guards the dead, or the headdress of a desert prince. Which will it be?";
-	setarray $@sqs_map$[31], "in_sphinx2", "in_sphinx3", "";
-	setarray $@sqs_bmob[31], 0, 1140, 0;
-	setarray $@sqs_bname$[31], "", "Warden of the Sphinx", "";
-	setarray $@sqs_bhp[31], 0, 9, 0;
-	setarray $@sqs_var$[31], "", "", "";
-	setarray $@sqs_val[31], 0, 0, 0;
-	setarray $@sqs_items$[31], "", "", "";
-	setarray $@sqs_loot$[31], "", "", "";
-	setarray $@sqs_maxlv[31], 0, 0, 0;
-	setarray $@sqs_altask$[31], "", "", "";
-	setarray $@sqs_alt$[31], "", "", "";
-	setarray $@sqs_parts$[31], "", "", "";
-	setarray $@sqs_type[41], 6, 1, 7, 7, 7, 7, 7, 7, 5;
-	setarray $@sqs_title$[41], "Your First Ship Overseas", "Nafisa's Courier", "Dusit and the Shaman", "The Holy Thread", "The Six Slates", "A Stronger Thread", "The Second Level", "The Old Letter", "A Letter for Nafisa";
-	setarray $@sqs_now$[41], "Sail to Ayothaya, across the sea: about 11,700 zeny in all. The ship leaves from the Alberta dock (Aibakthing, 246, 29, 10,000 zeny).", "Find Kasim, Nafisa's courier, on the Ayothaya dock (146, 72). He sailed ahead of you with her pouch.", "RO quest: hear Dusit's tale of the Sa-mhing Tiger (83, 132), then find the shaman Boonthom in a house in western Ayothaya (the door at 62, 104).", "RO quest: bring Boonthom 1 Fabric, 1 Nine Tails (a fox tail), 1 Solid Husk and 1 Holy Water. He weaves the Holy Thread that lets you into the Ancient Shrine.", "RO quest: enter the Ancient Shrine and read the six stone slates on its first level, in order.", "RO quest: show Boonthom the slate's message, then bring him 2 Holy Water, 1 Yggdrasil Leaf, 2 Fabric and 2 Nine Tails for a stronger thread.", "RO quest: carrying the stronger thread, go back into the Ancient Shrine, down to its second level, and find the remains of Boonthom's friend (ayo_dun02, 268, 108).", "RO quest: bring the old letter back to Boonthom (ayo_in01, 181, 193).", "Tell Kasim on the Ayothaya dock (146, 72) what you found, so he can write to Nafisa.";
-	setarray $@sqs_say$[41], "", "You made it! Nafisa sent me ahead on the last ship, with this.|She saw a shaman in her sands, asking for these very things: Fabric, Nine Tails, a Solid Husk and Holy Water. I stopped asking how she knows years ago.|The locals say a man called Dusit tells the old tale of the tiger, by the canals. Start with him. I will wait here for your news.", "", "", "", "", "", "", "The remains of Boonthom's friend? And the tiger still sealed below?|Then the seal holds, because one man refused to let it go. Nafisa will want every word of this. I will write tonight.|She asked me to give you something when you came back: a tiger's mask, for the beast you went looking for, or a hat of the leaf cats that prowl the shrine. Which one?";
-	setarray $@sqs_map$[41], "ayothaya", "", "", "", "", "", "", "", "";
-	setarray $@sqs_bmob[41], 0, 0, 0, 0, 0, 0, 0, 0, 0;
-	setarray $@sqs_bname$[41], "", "", "", "", "", "", "", "", "";
-	setarray $@sqs_bhp[41], 0, 0, 0, 0, 0, 0, 0, 0, 0;
-	setarray $@sqs_var$[41], "", "", "ayodunquest", "ayodunquest", "ayodunquest", "ayodunquest", "ayodunquest", "ayodunquest", "";
-	setarray $@sqs_val[41], 0, 0, 2, 3, 9, 11, 12, 13, 0;
-	setarray $@sqs_items$[41], "", "", "", "1059,1,Fabric;1022,1,Nine Tails;7190,1,Solid Husk;523,1,Holy Water", "", "523,2,Holy Water;610,1,Yggdrasil Leaf;1059,2,Fabric;1022,2,Nine Tails", "", "", "";
-	setarray $@sqs_loot$[41], "", "", "", "", "", "", "", "", "";
-	setarray $@sqs_maxlv[41], 0, 0, 0, 0, 0, 0, 0, 0, 0;
-	setarray $@sqs_altask$[41], "", "", "", "", "", "", "", "", "";
-	setarray $@sqs_alt$[41], "", "", "", "", "", "", "", "", "";
-	setarray $@sqs_parts$[41], "", "", "1|Hear Dusit's tale of the tiger;2|Ask the shaman Boonthom for help", "", "4|Read stone slate 1 (198, 164);5|Read stone slate 2 (87, 16);6|Read stone slate 3 (268, 214);7|Read stone slate 4 (147, 274);8|Read stone slate 5 (99, 118);9|Read stone slate 6 (16, 188)", "", "", "", "";
-	setarray $@sqs_type[51], 6, 1, 7, 7, 5;
-	setarray $@sqs_title$[51], "The Orc Village", "The Magister's Scholar", "The Mad Scientist", "An Orc's Memory", "What the Orcs Remember";
-	setarray $@sqs_now$[51], "Walk west from Geffen to the Orc Village (gef_fild10): through gef_fild07, gef_fild13 and gef_fild09.", "Find Scholar Wendel in the Orc Village (234, 199). The Magister sent him to watch the Mad Scientist.", "RO quest: let the Mad Scientist (238, 202) explain his machine. He only talks to Lv 50 and up.", "RO instance: enter Orc's Memory through the statue (242, 202) and live it to the end, until you speak with the dying Kruger.", "Tell Scholar Wendel in the Orc Village (234, 199) what you saw in the orc's memory.";
-	setarray $@sqs_say$[51], "", "You are the one who broke the warband? The Magister said you would come.|That man over there, the Mad Scientist, was thrown out of our Academy for building that statue. He claims it carries you into an orc's memory. Frightening thing is, I believe him.|Speak to him first, he likes to brag. His machine only takes those between level 30 and 80, mind. If you are stronger than that, come back to me: I have his notes.|And keep clear of the Orc Lord: he walks this village, and he is no memory.", "", "", "A shaman who turned on her own tribe, drunk on dark power? And her father could not raise his axe against her...|Then the orcs were not born savage. Something poisoned them, the same kind of power that leaks through the cracks under our tower. The Magister must hear this tonight.|He told me to reward you from the Academy's stores. Two helms from the orc lands. Which will you wear?";
-	setarray $@sqs_map$[51], "gef_fild10", "", "", "", "";
-	setarray $@sqs_bmob[51], 0, 0, 0, 0, 0;
-	setarray $@sqs_bname$[51], "", "", "", "", "";
-	setarray $@sqs_bhp[51], 0, 0, 0, 0, 0;
-	setarray $@sqs_var$[51], "", "", "mad", "yong_odun", "";
-	setarray $@sqs_val[51], 0, 0, 0, 0, 0;
-	setarray $@sqs_items$[51], "", "", "", "", "";
-	setarray $@sqs_loot$[51], "", "", "", "", "";
-	setarray $@sqs_maxlv[51], 0, 0, 0, 80, 0;
-	setarray $@sqs_altask$[51], "", "", "", "You are too strong for the machine, it will not take you. But I copied the scientist's notes on every memory he watched. Shall I read you this one?", "";
-	setarray $@sqs_alt$[51], "", "", "", "The notes tell of Kruger, a great warrior of the orc tribe, long before the orcs turned savage.|His daughter, the shaman Cargalache, found a dark power in the earth and drank from it. It twisted her, and through her, the tribe's champion: the Depraved Orc Hero.|Kruger fought his way through his own corrupted people, lighting the old braziers one by one, to reach the altar where she waited.|He could not raise his axe against his daughter. Others did it for him. When the shaman fell, Kruger lay dying beside the altar, relieved that she was free.|Dark power from the earth, the same kind that leaks under our tower. The orcs were not born savage. Something poisoned them.", "";
-	setarray $@sqs_parts$[51], "", "", "", "", "";
-	setarray $@sqs_type[61], 6, 7, 7, 7, 7, 7, 7, 6, 5;
-	setarray $@sqs_title$[61], "A Ship to Amatsu", "The Sick Mother", "The Lord of the Castle", "A Children's Song", "The North Shrine", "Driving Out the Fox", "Proof for the Lord", "The Gate Beneath", "A Letter for Geffen";
-	setarray $@sqs_now$[61], "Sail to Amatsu: the Sea Captain on the Alberta dock (246, 74) takes you there and back for 10,000 zeny.", "RO quest: ask the Gate Soldiers guarding a house in Amatsu (164, 174 or 171, 174) what is wrong.", "RO quest: climb the castle in north-west Amatsu (the door at 85, 235) to Lord Ishida (200, 176) and offer your help.", "RO quest: listen to Kouji, the boy who sings in the streets of Amatsu (189, 166). His song holds a clue.", "RO quest: find Takehue at the abandoned north shrine (ama_in01, 180, 173) and show him your spirit.", "RO quest: go into the guarded house (the door at 168, 182), face the possessed mother (22, 111) and shout the fox out of her.", "RO quest: bring the fox's tail (Nine Tails) to Lord Ishida at the top of the castle (200, 176). Keep it in your bag: he wants proof.", "Show the Feudal Lord Permit to Jyuro, the soldier on the castle's top floor (115, 177). He opens the hidden gate to the palace dungeon (ama_dun01).", "Tell Envoy Lise on the Amatsu dock (199, 86) how it ended.";
-	setarray $@sqs_say$[61], "", "", "", "", "", "", "", "", "The fox is gone? And the lord's mother is herself again?|A fox does not take revenge without cause. And now you tell me there is a dungeon under his palace, full of caged monsters... The Magister will want to hear about Lord Ishida's hobbies.|Thank you. The Academy sent me with a reward for whoever solved this. A fox's mask, or a fox's tails to wear. Your choice.";
-	setarray $@sqs_map$[61], "amatsu", "", "", "", "", "", "", "ama_dun01", "";
-	setarray $@sqs_bmob[61], 0, 0, 0, 0, 0, 0, 0, 0, 0;
-	setarray $@sqs_bname$[61], "", "", "", "", "", "", "", "", "";
-	setarray $@sqs_bhp[61], 0, 0, 0, 0, 0, 0, 0, 0, 0;
-	setarray $@sqs_var$[61], "", "event_amatsu", "event_amatsu", "event_amatsu", "event_amatsu", "event_amatsu", "event_amatsu", "", "";
-	setarray $@sqs_val[61], 0, 0, 0, 0, 0, 0, 0, 0, 0;
-	setarray $@sqs_items$[61], "", "", "", "", "", "523,1,Holy Water;948,1,Bear's Footskin;1029,1,Tiger Skin", "1022,1,Nine Tails", "", "";
-	setarray $@sqs_loot$[61], "", "", "", "", "", "", "", "", "";
-	setarray $@sqs_maxlv[61], 0, 0, 0, 0, 0, 0, 0, 0, 0;
-	setarray $@sqs_altask$[61], "", "", "", "", "", "", "", "", "";
-	setarray $@sqs_alt$[61], "", "", "", "", "", "", "", "", "";
-	setarray $@sqs_parts$[61], "", "", "", "", "", "", "", "", "";
-	setarray $@sqs_type[71], 6, 7, 7, 7, 7, 7, 7, 7, 5;
-	setarray $@sqs_title$[71], "The Mountain Village", "The Chief's Treasure", "The Drinker's Story", "Traces in the Dark", "A Knife and a Name", "The Smith's Granddaughter", "The Doctor's Cure", "Mending the Sword", "A Letter for Geffen";
-	setarray $@sqs_now$[71], "Sail to Kunlun: the Kunlun Envoy on the Alberta dock (246, 62) takes you for 10,000 zeny. You land on the field below the village: walk north into Kunlun (gonryun).", "RO quest: meet the chief, Shi Yan Wen, then the tavern hostess, and offer the chief your help. The Journal names every answer: NEVER choose any other.", "RO quest: bring the hungover drinker, Xue Bong, a Green Potion in the tavern (165, 16), hear what he saw, and tell the chief.", "RO quest: find the three pieces of the sword in the Kunlun Dungeon, one on each floor (gon_dun01, gon_dun02, gon_dun03). The entrance is in the village (159, 201).", "RO quest: agree to have the sword repaired, help Han Ran Jiao find her lost knife, and ask the stranger Zuo Hei where to find a smith.", "RO quest: win over the grieving smith Aumgarl in Geffen, then search Prontera and Juno for a doctor who can cure his granddaughter, Lyroo.", "RO quest: get the busy doctor Cylrnel (yuno_in01, 99, 101) to listen, answer her questions about Lyroo correctly, and bring the ingredients for the medicine.", "RO quest: give Lyroo her medicine, bring Aumgarl the materials to mend the sword, and carry it home to the chief in Kunlun.", "Tell Scribe Wang in Kunlun (118, 128) that the sword is home.";
-	setarray $@sqs_say$[71], "", "", "", "", "", "", "", "", "The sword is back in the hall? I heard the chief laughing all the way from here.|I will write to your Magister tonight, as I promised. The thief fled towards the old shrine below, and died there... The chief says the shrine has felt wrong for months. Your Magister may want to know that too.|Kunlun pays its debts. Two treasures from the chief's own chests: which will you take?";
-	setarray $@sqs_map$[71], "gonryun", "", "", "", "", "", "", "", "";
-	setarray $@sqs_bmob[71], 0, 0, 0, 0, 0, 0, 0, 0, 0;
-	setarray $@sqs_bname$[71], "", "", "", "", "", "", "", "", "";
-	setarray $@sqs_bhp[71], 0, 0, 0, 0, 0, 0, 0, 0, 0;
-	setarray $@sqs_var$[71], "", "b_sword", "b_sword", "b_sword", "b_sword", "b_sword", "b_sword", "b_sword", "";
-	setarray $@sqs_val[71], 0, 0, 0, 0, 0, 0, 0, 0, 0;
-	setarray $@sqs_items$[71], "", "", "506,1,Green Potion", "", "", "", "608,2,Yggdrasil Seed;704,3,Aloe;748,1,Witherless Rose;1061,10,Witch Starsand;7097,5,Burning Heart;7066,5,Ice Cubic", "986,1,Anvil;756,2,Rough Oridecon;7110,5,Broken Sword;999,2,Steel;1005,1,Hammer of Blacksmith;1000,2,Star Crumb;7098,5,Live Coal", "";
-	setarray $@sqs_loot$[71], "", "", "", "", "", "", "", "", "";
-	setarray $@sqs_maxlv[71], 0, 0, 0, 0, 0, 0, 0, 0, 0;
-	setarray $@sqs_altask$[71], "", "", "", "", "", "", "", "", "";
-	setarray $@sqs_alt$[71], "", "", "", "", "", "", "", "", "";
-	setarray $@sqs_parts$[71], "", "1|Greet the chief (17, 93);2|Hear the hostess's story in the tavern (152, 35);3|Offer the chief your help (3 answers);4|Back to the hostess once more", "6|Give Xue Bong a Green Potion and hear him out (165, 16);7|Tell the chief (17, 93)", "8|Blade piece on floor 1 (gon_dun01);9|Blade piece on floor 2 (gon_dun02);10|Blade piece on floor 3 (gon_dun03)", "14|Agree to have the sword repaired (the chief);17|Return Han Ran Jiao's knife, then ask Zuo Hei about a smith", "18|Tell Aumgarl you came to repair the sword;19|Keep visiting Aumgarl until he gives in (1 in 8);20|Promise to cure his granddaughter (8 answers);21|Ask Neil in Prontera (275, 86);22|Ask Hisa in Juno (208, 164);23|Get let into Cylrnel's house (1 in 10)", "24|Win Cylrnel's attention;26|Describe Lyroo's symptoms correctly;27|Bring the ingredients for the medicine", "28|Give Lyroo her medicine (106, 106);30|Ask Aumgarl to repair the sword;31|Bring Aumgarl the materials;32|Keep talking until the sword is done (1 in 5);33|Give the sword to the chief in Kunlun", "";
-	setarray $@sqs_type[81], 2, 7, 6, 4, 7, 6, 4, 5;
-	setarray $@sqs_title$[81], "Tick and Tock", "The Key of the Tower", "The Gatekeeper Boy", "Wound Too Tight", "The Key Below", "The Gate Below", "The Jester in the Dark", "On Time";
-	setarray $@sqs_now$[81], "Climb the Clock Tower: hunt 15 Clocks on floor 2 (c_tower2) and 15 Alarms on floor 3 (c_tower3).", "Find a Key of Clock Tower. Your best bet: a Clock Tower Manager, the big clock keeper (about 1 in 10). One walks each of floors 1 and 2, four walk floor 3.", "Give the key to the Gatekeeper Boy in the far north-west of floor 3 (10, 249) and go through to floor 4 (c_tower4).", "Somewhere on floor 4 (c_tower4) the tower's keeper has been wound far too tight. Stop it.", "Keep the Key of Underground the Overwound Keeper dropped. Lost it? Elders (about 1 in 7, two walk floors 2 and 4) and Clock Tower Managers (1 in 10) drop one.", "Give the key to the Gatekeeper in basement 3 (alde_dun03, 264, 16) and go down to basement 4 (alde_dun04).", "Something laughs in basement 4 (alde_dun04), where the great gear turns. Silence it.", "Tell Sir Aldric in Al De Baran (142, 63) that the tower keeps time again.";
-	setarray $@sqs_say$[81], "", "", "", "", "", "", "", "Do you hear that? The bells. On the hour, exactly. For the first time in weeks.|The alchemists who built the tower tied its gears to the old seals. As long as it keeps time, the seals hold a little longer.|Take one of these. The tower's keepers left them behind, and you have earned more than a hat.";
-	setarray $@sqs_map$[81], "c_tower2", "", "c_tower4", "c_tower4", "", "alde_dun04", "alde_dun04", "";
-	setarray $@sqs_bmob[81], 0, 0, 0, 1270, 0, 0, 1131, 0;
-	setarray $@sqs_bname$[81], "", "", "", "The Overwound Keeper", "", "", "The Jester of the Deep Gears", "";
-	setarray $@sqs_bhp[81], 0, 0, 0, 6, 0, 0, 7, 0;
-	setarray $@sqs_var$[81], "", "", "", "", "", "", "", "";
-	setarray $@sqs_val[81], 0, 0, 0, 0, 0, 0, 0, 0;
-	setarray $@sqs_items$[81], "", "7026,1,Key of Clock Tower", "", "", "7027,1,Key of Underground", "", "", "";
-	setarray $@sqs_loot$[81], "", "", "", "7027,1", "", "", "", "";
-	setarray $@sqs_maxlv[81], 0, 0, 0, 0, 0, 0, 0, 0;
-	setarray $@sqs_altask$[81], "", "", "", "", "", "", "", "";
-	setarray $@sqs_alt$[81], "", "", "", "", "", "", "", "";
-	setarray $@sqs_parts$[81], "", "", "", "", "", "", "", "";
-	setarray $@sqs_type[91], 7, 7, 6, 7, 5;
-	setarray $@sqs_title$[91], "Grandpa Turtle", "The Voyage Log", "The Only Navigator", "The Island's Secret", "Back from the Fog";
-	setarray $@sqs_now$[91], "RO quest: in Alberta, ask Grandpa Turtle how to reach Turtle Island. His house door is at (65, 233).", "RO quest: read the old Voyage Log lying on the Alberta dock (246, 117).", "Ask Gotanblue, the old sailor on the dock (244, 118), to take you to Turtle Island (10,000 zeny).", "RO quest: follow the page you found in the Voyage Log to one of the island's hidden treasures. The Journal shows your next spot on each floor.", "Tell Navigator Corvin on the Alberta dock (241, 116) what you found on Turtle Island.";
-	setarray $@sqs_say$[91], "", "", "", "", "You came back from Turtle Island? Sit down, sit down. Most do not.|My grandfather sailed with Jornadan Niliria. He said the island has a master, a general of the turtles, who sits on the fourth floor and never sleeps. Leave him be for a few more years.|I keep two things from his sea chest for the next sailor who comes back. Pick one.";
-	setarray $@sqs_map$[91], "", "", "tur_dun01", "", "";
-	setarray $@sqs_bmob[91], 0, 0, 0, 0, 0;
-	setarray $@sqs_bname$[91], "", "", "", "", "";
-	setarray $@sqs_bhp[91], 0, 0, 0, 0, 0;
-	setarray $@sqs_var$[91], "TURTLE", "TURTLE", "", "TURTLE", "";
-	setarray $@sqs_val[91], 0, 0, 0, 0, 0;
-	setarray $@sqs_items$[91], "", "", "", "", "";
-	setarray $@sqs_loot$[91], "", "", "", "", "";
-	setarray $@sqs_maxlv[91], 0, 0, 0, 0, 0;
-	setarray $@sqs_altask$[91], "", "", "", "", "";
-	setarray $@sqs_alt$[91], "", "", "", "", "";
-	setarray $@sqs_parts$[91], "", "", "", "", "";
+	$@sq_n = 0;
+	// $@sq_title$: none
+	// $@sq_ch: none
+	// $@sq_hook: none
+	// $@sq_steps: none
+	// $@sq_npc$: none
+	// $@sq_idle$: none
+	// $@sq_after$: none
+	// $@sq_cost: none
+	// $@sq_cost2: none
+	// $@sq_kitk: none
+	// $@sq_gift$: none
+	// $@sq_kit$: none
+	// $@sq_nokit$: none
+	// $@sq_zeny: none
 	$@mvp_n = 16;
 	setarray $@mvp_id[0], 1086, 1150, 1115, 1112, 1038, 1511, 1688, 1157, 1087, 1389, 1046, 1190, 1492, 1418, 1272, 1312;
 	setarray $@mvp_name$[0], "Golden Thief Bug", "Moonlight Flower", "Eddga", "Drake", "Osiris", "Amon Ra", "Lady Tanee", "Pharaoh", "Orc Hero", "Dracula", "Doppelganger", "Orc Lord", "Samurai Specter", "Evil Snake Lord", "Dark Lord", "Turtle General";
-	$@pp_n = 2;
-	setarray $@pp_need[1], 3, 6;
-	setarray $@pp_name$[1], "Wanderer", "Voyager";
-	setarray $@pp_item[1], 50129, 50144;
-	// ---- RO quest guides ----
-	$@gd_n = 14;
-	setarray $@gd_key$[1], "ein_factory", "yuno_metto", "ep13_language", "ep13_catpaw", "ep13_sapha", "ra_lostchild", "hg_odin", "ep14_eclage", "ep14_nines", "ver_bard", "wse_criminal", "wse_seoyeon", "wse_beholder", "ra_sanctuary";
-	setarray $@gd_title$[1], "The Factory of Einbroch", "The Scientist Who Trusts Fate", "The Otherworld Language", "Cat Trading", "Sapha's Visit", "The Stolen Gem", "The Odin Temple Excavation", "Eclage's Entrance", "Fili and the Lost Adventurers", "The Wandering Bard", "Criminal Activities", "Seoyeon's Trial", "Eye of the Beholder", "The Sanctuary of Rachel";
-	setarray $@gds_title$[101], "Short of Hands", "The Rounds", "Liotzburg", "Spare Parts";
-	setarray $@gds_now$[101], "RO quest: in the Einbroch factory, ask the overseer Zelmeto (ein_in01, 67, 242) about his work: choose You're understaffed?, then I can help you.", "RO quest: make the rounds of the factory floor: click each machine Zelmeto names, then report back to him, six times in all.", "RO quest: report to Zelmeto once more, then find Liotzburg, who stands in the streets of Einbroch (132, 84).", "RO quest: tell Zelmeto what Liotzburg said, then bring him 20 Flexible Tubes, 10 Rusty Screws and 10 Used Iron Plates: choose Give him materials.";
-	setarray $@gds_items$[101], "", "", "", "7325,20,Flexible Tube;7317,10,Rusty Screw;7319,10,Used Iron Plate";
-	setarray $@gds_parts$[101], "", "2|Check the 2nd Control Panel (49, 232);3|Report to Zelmeto;4|Check the 3rd Pressure Governor (108, 217);5|Report to Zelmeto;6|Check the Main Control Panel (62, 258);7|Report to Zelmeto;8|Check the Conveyor (46, 197);9|Report to Zelmeto;10|Check the Pipe (100, 266);11|Report to Zelmeto;12|Check the other Conveyor (95, 239)", "13|Report to Zelmeto;14|Talk to Liotzburg outside (einbroch 132, 84)", "15|Tell Zelmeto what Liotzburg said;16|Bring him the parts (Give him materials.)";
-	setarray $@gds_title$[201], "Wagan's Plan", "Three Warnings", "Fate Decides";
-	setarray $@gds_now$[201], "RO quest: talk to Wagan, indoors in Juno (yuno_in01, 17, 30): choose Leave it to me.", "RO quest: go back and forth between Metto (yuno_in03, 26, 39) and the three scientists whose research is just like his, warning each of them.", "RO quest: tell Wagan (yuno_in01, 17, 30) that Metto has given up.";
-	setarray $@gds_items$[201], "", "", "";
-	setarray $@gds_parts$[201], "", "2|Hear Metto out (yuno_in03 26, 39);3|Stangckle (yuno_in01 17, 95): I'm here to stop your research.;4|Back to Metto;5|Kato (yuno_in01 19, 183): I want to stop you from making a mistake.;6|Back to Metto;7|CiCi (yuno_in03 178, 43): I want to warn you.;8|Back to Metto", "";
-	setarray $@gds_title$[301], "A Translating Device", "Voices in the Wild", "Mr. Dictionary", "Two Half-buried Gems", "Back and Forth", "An Unknown Mineral", "The Wise King's Ring";
-	setarray $@gds_now$[301], "RO quest: talk to the Schwarzwald Mechanic in the Allied camp (197, 237), who dreams of a translating device, then to the Arunafeltz Linguist inside the camp building (168, 82).", "RO quest: find the Small Fairy near Splendide (spl_fild02, 34, 223) and the Tree Giant in Manuk's fields (man_fild03, 236, 105), listen to them, and repeat their words to the Linguist (mid_campin, 168, 82).", "RO quest: talk to the Linguist again (any answers), then to the Rune-Midgarts Magician in the camp (147, 256): choose Uh, Mr. Dictionary sent...", "RO quest: dig out the Red Jewel near Splendide (spl_fild02, 27, 218) and the Blue Jewel in Manuk's fields (man_fild03, 227, 109), then bring both to the Magician (147, 256).", "RO quest: carry the news between the three of them: the Linguist, then the Mechanic, then the Magician.", "RO quest: mine 1 Unidentified Mineral from a Mysterious Rock in Manuk's fields and bring it to the Magician (147, 256). Then keep talking to him until the gem is ready.", "RO quest: give the gem to the Schwarzwald Mechanic (197, 237): choose Give him the Gem. He needs an hour of your play time to build the device; then talk to him again.";
-	setarray $@gds_items$[301], "", "", "", "7575,1,Red Jewel;7576,1,Blue Jewel", "", "6048,1,Unidentified Mineral", "";
-	setarray $@gds_parts$[301], "1|Hear out the Schwarzwald Mechanic (mid_camp 197, 237);2|Meet the Arunafeltz Linguist (mid_campin 168, 82)", "", "4|Talk to the Linguist once more;5|Ask the Rune-Midgarts Magician (mid_camp 147, 256)", "", "7|The Linguist (mid_campin 168, 82);8|The Mechanic (mid_camp 197, 237);9|The Magician (mid_camp 147, 256)", "10|Bring the Magician 1 Unidentified Mineral;11|Keep asking him until the gem is cut (1 in 5)", "12|Give the gem to the Mechanic;100|Come back after an hour for the ring";
-	setarray $@gds_title$[401], "Cat Paw Services", "The First Errand", "Ten Pieces of Fish";
-	setarray $@gds_now$[401], "RO quest: ask the Cat Paw Agent at the west end of the camp (62, 125) about his services, then talk to Fluffy Gyaruk (72, 94).", "RO quest: go back to the Cat Paw Agent (he can now save your location in the camp), then to Gyaruk for an errand, and to Ferocious Gorurug (69, 144), who gives it.", "RO quest: catch 10 Pieces of Fish at a School of Fish and bring them to Ferocious Gorurug (69, 144).";
-	setarray $@gds_items$[401], "", "", "6039,10,Piece of Fish";
-	setarray $@gds_parts$[401], "1|Ask the Cat Paw Agent about his services (mid_camp 62, 125);2|Talk to Fluffy Gyaruk (72, 94)", "3|Back to the Cat Paw Agent (save point);4|Fluffy Gyaruk: What kind of things?, then Sure.;5|Ferocious Gorurug (69, 144): Gyaruk has sent me.", "";
-	setarray $@gds_title$[501], "A Sapha in the Camp", "Vyhannus's Invitation", "The Guard Captain of Manuk", "Into El Dicastes";
-	setarray $@gds_now$[501], "RO quest: talk to Guard Aello inside the camp building (mid_campin, 93, 114). A Sapha from Manuk is asking for you.", "RO quest: wearing the ring, pass the Soldier in the camp building (111, 120: choose I have authorization.) and talk to the Sapha from Manuk (168, 128) or his Hound (168, 125) three times.", "RO quest: show the invitation to Guard Captain Avalanche in Manuk (man_in01, 315, 52): choose I've come with Vyhannus's invitation.", "RO quest: wearing the ring, talk to a Capital City Guard at the gate of El Dicastes (dic_fild01, 146, 281 or 153, 281), choose Yes., and register at the Adventurer Clerk inside the city (dic_in01, 42, 264): choose Register as an adventurer.";
-	setarray $@gds_items$[501], "", "", "", "";
-	setarray $@gds_parts$[501], "", "2|Hear the Sapha and his hound out;3|Talk to them again;4|And once more, for the invitation", "", "";
-	setarray $@gds_title$[601], "The Steward's Secret", "Asking the Servants", "The Suspicious Man", "The Truth in the Mansion", "The High Priest";
-	setarray $@gds_now$[601], "RO quest: talk to Vincent, steward of High Priest Zhed's mansion in Rachel (ra_in01, 384, 246): choose Sure, why not?", "RO quest: follow Phobe's trail through Rachel: the servants Logan and Manson, then Jenny, then two idle merchants in the south of the city. Each points you to the next.", "RO quest: find the Suspicious Man in the field south of Rachel (ra_fild01, 245, 325).", "RO quest: back and forth between Vincent, a kid in the south-east of Rachel and Jenny, until the steward tells you the whole story.", "RO quest: tell High Priest Zhed in the inner temple (ra_temin, 277, 159) what happened: choose I'm here on Vincent's behalf, then Actually... I was just curious., then Tell him your name.";
-	setarray $@gds_items$[601], "", "", "", "", "";
-	setarray $@gds_parts$[601], "", "2|Logan, in the streets (rachel 114, 232);3|Manson, in the mansion (ra_in01 372, 200);4|Jenny (rachel 48, 237);5|An idle merchant (rachel 138, 73);6|Another idle merchant (rachel 120, 47)", "", "8|Back to Vincent (ra_in01 384, 246);9|A kid in the south-east of Rachel (rachel 263, 32);10|Back to Vincent;11|Jenny again (rachel 48, 237);12|Vincent, one last time", "";
-	setarray $@gds_title$[701], "The Recruitment Notice", "Joining a Team", "Runes from the Temple", "Ymir's Heart", "The Hidden Way", "Back at the Dig House", "Ashe in the Desert";
-	setarray $@gds_now$[701], "RO quest: read the recruitment notice on the sign in Hugel (91, 152).", "RO quest: join one of the two excavation teams, indoors in Hugel: Alex (hu_in01, 19, 161) or Laura (hu_in01, 14, 11).", "RO quest: sail to Odin's Temple and back with the Boatman, take your team leader's order, and bring 5 Runes of Darkness. Then talk to Laura.", "RO quest: walk through the door to Alex's room (hu_in01, 15, 108), then talk to Laura (14, 11): choose Ymir's Heart, and any answer after.", "RO quest: on the top floor of Odin's Temple (odin_tem03) find the hidden way into the sealed hall, search it, and come back out.", "RO quest: back in Hugel, walk into the dig house (hugel, 52, 90): it takes you to the team's new room. Talk to Laura (hu_in01, 159, 84), then to Ashe (162, 85).", "RO quest: meet Ashe in the Sograt Desert (moc_fild12, 160, 365): walk to the spot and choose either question.";
-	setarray $@gds_items$[701], "", "", "7511,5,Rune of Darkness", "", "", "", "";
-	setarray $@gds_parts$[701], "", "", "", "", "21|Find the hidden way on the top floor of Odin's Temple;22|Explore the strange object (que_hugel 35, 29);23|Walk onto the way back (que_hugel 163, 178)", "25|Laura (hu_in01 159, 84);59|Ashe (hu_in01 162, 85)", "";
-	setarray $@gds_title$[801], "The Forms", "Immigration", "Through the Gate";
-	setarray $@gds_now$[801], "RO quest: ask a Security Guard at the gate of Eclage (ecl_fild01, 94, 322 or 100, 323) to let you in: choose Fill out the forms. and type anything in each of the three boxes.", "RO quest: wait half a minute while your forms are read, then talk to the Immigration Officer (ecl_fild01, 111, 320).", "RO quest: show your stamped documents to the Security Guard (ecl_fild01, 94, 322). He lets you into Eclage.";
-	setarray $@gds_items$[801], "", "", "";
-	setarray $@gds_parts$[801], "", "", "";
-	setarray $@gds_title$[901], "Fili", "Laphines That Love the Land", "Lost Adventurers";
-	setarray $@gds_now$[901], "RO quest: talk to Fili, the Laphine by the keepers' tower (ecl_fild01, 190, 93): choose See what kind of work it is.", "RO quest: visit the four Laphines in the fields of Eclage, the singing, the watering, the dancing and the cute one, then tell Fili.", "RO quest: Fili asks after three adventurers lost in the keepers' tower. Accept (I'll do it! I'm an adventurer, too!), find Euncheong on floor 1, Rosi on floor 2 and New Oz on floor 3, then tell Fili.";
-	setarray $@gds_items$[901], "", "", "";
-	setarray $@gds_parts$[901], "", "", "";
-	setarray $@gds_title$[1001], "A Song for a Story", "A Story You Lived";
-	setarray $@gds_now$[1001], "RO quest: listen to the Wandering Bard in the old city of Verus (verus03, 129, 21). He tells you a story, and wants to hear how it ended.", "RO quest: tell the Bard the ending of a story you lived. If his story is one you have not lived yet, give it back and ask for another.";
-	setarray $@gds_items$[1001], "", "";
-	setarray $@gds_parts$[1001], "", "";
-	setarray $@gds_title$[1101], "Agent York", "Ling Mynmei's Contract", "Howard Moon's Floods", "The Casino Airship", "Bringing the Ship Down", "Jymmy the Thumb";
-	setarray $@gds_now$[1101], "Quest: talk to Agent York in the Geffen inn (geffen_in, 77, 57): choose I'll talk to Vince.", "Quest: Vince Noir (geffen, 107, 48) gives you a Raccoon Doll for his bandmate Ling Mynmei; she owes her contract to Old Lady Kroot next door. Get the contract and bring Ling the news.", "Quest: talk to Howard Moon (geffen, 183, 80), turn off the four Flood Controls in Geffen (Turn it off), then tell him.", "Quest: on the domestic airship, find Naota (airplane, 102, 62), sabotage Jymmy's casino, then tell the Dealer and Naota.", "Quest: pull the Switch on the airship (18, 62), then fire the cannon (95, 202): Aim at the engines and fire.", "Quest: face Jymmy the Thumb on the airship (232, 157). The ship comes down near Izlude: report to Agent York (izlude_in, 67, 113).";
-	setarray $@gds_items$[1101], "", "", "", "", "", "";
-	setarray $@gds_parts$[1101], "", "2|Vince Noir (geffen 107, 48);3|Give Ling Mynmei the Raccoon Doll (geffen_in 30, 131);4|Win Ling's contract from Old Lady Kroot (geffen_in 33, 131);5|Back to Ling Mynmei", "", "", "", "";
-	setarray $@gds_title$[1201], "Seoyeon", "Three Floors", "Traces of Yeongwi", "Yeongwi", "Seoyeon's Verdict";
-	setarray $@gds_now$[1201], "Quest: talk to Seoyeon in Amatsu (82, 118): choose I'll take your trial.", "Quest: defeat 100 monsters on each floor of the Amatsu Dungeon (ama_dun01, ama_dun02, ama_dun03), then go back to Seoyeon.", "Quest: find the Traces of Yeongwi on the second floor of the Amatsu Dungeon (ama_dun02). Seoyeon told you where: the Journal marks the place.", "Quest: Yeongwi stands by the traces: choose Draw your weapon. and defeat him (60,000 HP).", "Quest: talk to Seoyeon, who came running to the same place.";
-	setarray $@gds_items$[1201], "", "", "", "", "";
-	setarray $@gds_parts$[1201], "", "", "", "", "";
-	setarray $@gds_title$[1301], "A Lovesick Beholder", "Bianca", "White Chocolate", "A Song", "The Necklace", "The Bouquet", "The Pope's Blessing", "Bianca's Answer", "Beho";
-	setarray $@gds_now$[1301], "Quest: the Beholder by Rachel's temple (ra_temple, 104, 185) takes you to Beho: choose Sure, send me to Beho. Then talk to Beho (ra_temin, 268, 321).", "Quest: see what Bianca (ra_temin, 301, 112) thinks of beholders, and tell Beho.", "Quest: ask Kyara (ra_temin, 31, 70) what Bianca likes. She gives you White Chocolate: take it to Beho.", "Quest: Doina (ra_temin, 165, 101) writes Beho a song. Answer her, then take the Blank Scroll to Beho.", "Quest: Lilla (ra_in01, 343, 130) lends a necklace once you have searched four places for it.", "Quest: Kees (rachel, 122, 196) makes a bouquet from four of Rachel's flowerbeds. Visit them, then go back to him.", "Quest: show Beho the gifts, then ask the Pope (ra_temin, 169, 147) for his blessing.", "Quest: bring Bianca (ra_temin, 301, 112) all four gifts and sing Beho's song, then talk to her again.", "Quest: tell Beho, waiting outside the temple (ra_temple, 68, 158).";
-	setarray $@gds_items$[1301], "", "", "561,1,White Chocolate", "7433,1,Blank Scroll", "", "", "", "561,1,White Chocolate;7433,1,Blank Scroll;1007,1,Necklace of Wisdom;744,1,Bouquet", "";
-	setarray $@gds_parts$[1301], "", "61004|Bianca (ra_temin 301, 112);61006|Back to Beho", "61007|Kyara (ra_temin 31, 70): White Chocolate;61008|Kyara again: Beho is gentle and honest.;61009|Give Beho the chocolate", "", "", "", "61025|Beho (he hands you the gifts);61026|The Pope (ra_temin 169, 147)", "", "";
-	setarray $@gds_title$[1401], "Priestess Nemma", "The Candy Kid", "Through the Window", "Panno", "Firecrackers", "High Priest Zhed", "Glacial Hearts", "The Pope", "The Holy Ground", "Into the Sanctuary", "Zhed's Answer";
-	setarray $@gds_now$[1401], "RO quest: talk to Priestess Nemma in Rachel's temple (ra_temple, 116, 174).", "RO quest: ask the kid in the south-east of Rachel (243, 37), who saw a way in. Answer Yeah. or Sure, I love the stuff~, and give him a Candy if he asks (Sure.).", "RO quest: climb in through the window at the side of the temple (ra_temple, 67, 209: Enter Through Window), follow the corridors, investigate the bloody spot twice, and push the gate open (Push Gate).", "RO quest: tell Panno inside the temple (ra_temin, 170, 46): Hey, did you open the gate?, The locked gate to the temple!, Explain. Then talk to her once more.", "RO quest: talk to Nemma twice; the second time choose Yes. with 20 Firecrackers.", "RO quest: talk to High Priest Zhed (ra_temin, 277, 159): choose Yes, sure.", "RO quest: the Pope's Office Guard (ra_temin, 134, 128) lets you pass for 40 Glacial Hearts.", "RO quest: walk past the guard (134, 131), then up through (275, 226) to the Pope (ra_temsky, 99, 99). Choose No, not at all...!, type anything twice, then R-really...? and Holy Ground?", "RO quest: tell Zhed about the Holy Ground, listen in at the hidden spot nearby, ask Zhed about Bekento, and pick up the small key (Pick It Up).", "RO quest: open the Sanctuary gate (ra_temin, 28, 319: Use Small Key), walk to the way on at the south of the first hall (ra_san01, 139, 13), then north to the far end of that hall (que_san04, 119, 203).", "RO quest: tell High Priest Zhed what you saw: choose Did something happen?";
-	setarray $@gds_items$[1401], "", "529,1,Candy", "", "", "12018,20,Firecracker", "", "7561,40,Glacial Heart", "", "", "", "";
-	setarray $@gds_parts$[1401], "", "", "", "", "", "", "", "", "18|Tell High Priest Zhed;19|Listen at the hidden spot (ra_temin 288, 151);20|Zhed again: Ask about Bekento;21|Pick up the key (ra_temin 272, 143)", "", "";
+	$@pp_n = 0;
+	// $@pp_need: none
+	// $@pp_name$: none
+	// $@pp_item: none
 	// ---- RO side quest catalog ----
 	$@cat_n = 168;
+	setarray $@cat_last[1], 17, 13, 11, 1, 16, 17, 35, 5, 999, 9, 2, 999, 12, 19, 3, 4, 9, 8, 7, 3, 6, 6, 37, 3, 999, 9, 4, 10, 10, 9, 4, 7, 8, 9, 17, 8, 11, 6, 6, 9, 5, 4, 999, 5, 7, 9, 5, 11, 999, 999, 999, 999, 8, 6, 6, 6, 5, 19, 3, 4, 8, 15, 5, 7, 7, 5, 12, 12, 6, 6, 5, 12, 11, 8, 10, 8, 3, 3, 999, 7, 6, 10, 3, 999, 1, 3, 1, 9, 6, 7, 3, 3, 7, 2, 4, 2, 3, 4, 7, 999, 999, 2, 999, 10, 8, 10, 2, 4, 5, 11, 7, 2, 11, 8, 3, 999, 3, 10, 6, 9, 5, 7, 3, 2, 3, 3, 4, 6, 3, 3, 2, 5, 999, 999, 4, 11, 999, 1, 4, 1, 1, 1, 1, 1, 6, 3, 4, 3, 6, 5, 3, 2, 3, 2, 1, 3, 9, 9, 5, 9, 7, 999, 6, 999, 999, 999, 999, 999;
+	setarray $@cat_title$[1], "The Geoborg Family Curse", "The Z-Gang", "Rogue Guild Investigation", "Prontera Culvert", "The Spy Quest", "Eye of Hellion", "The Sign", "The Message Delivery", "Help Me Shorty", "The Wandering Bard (Minstrel)", "Orc's Memory", "The Party Relay", "The Crow of Fate", "The Unlucky Emerald", "Nightmare Pyramid hunts", "The Turtle Island Quest", "The Alberta Boy", "Muff's Loan", "Broken Diamond", "The Umbalian Language", "Umbala Domestic Dispute", "The Piano Key Quest", "The Kiel Hyre Quest", "The Metto Quest (Scientist Who Trusts Fate)", "Juperos Ruins History", "The Juno Remedy Quest", "The Factory Quest", "The Murder Quest", "The Lovers Quest", "Kain's Free Ticket", "Captain Tarlock: How the Airship Flies", "The Heart Fragment Quest", "The Rekenber Job Quest", "The Cube Room", "The President Quest (Schwarzwald Trilogy)", "The Friendship Quest", "The Cursed Spirit Quest", "The Medicine Quest", "Biological Weapon", "The Rebellion Quest", "The Memory Quest", "Hide and Seek", "The Fish Cake Soup Delivery", "Cow Milking", "The Odin Temple Excavation", "The Thanatos Tower", "The Lost Child (The Stolen Gem)", "The Sanctuary Quest", "The Siblings Quest", "The Nameless Island", "The Thor Volcano Base", "Peace to Arunafeltz and Rachel Addition", "Bruspetti", "The Ice Necklace", "The Stone Quest", "The Amatsu Dungeon Quest", "The Momotaro Event", "The Broken Sword", "The Lost Knife", "The Soup Quest", "The Doctor Quest", "The Poison King", "The Revolution Quest", "The Ayothaya Dungeon Quest", "The Ayothaya Ring", "Tom Yum Goong", "The Moving Island", "Koshei the Immortal", "The Red Ring", "Lusalka's Hair", "The Golden Thread", "Help Mikhail", "Banish Winter", "The Brasilis Dungeon Access", "The Guarana Candy", "The Water Lily", "Lost Puppies", "The Suspicious Beach", "Iara", "The Dewata Legend", "Help Out the Old Man", "Malangdo Island", "Help the Bad Cats in Danger", "Clean the Ship", "Help Chef Nyas", "Play with Baby Cats", "Cat Gamers", "The Cautious Village", "Secret in the Woods", "Bakonawa Extermination", "The Nurse in Port Malaya", "Finding a Fairy & Finding a Giant Tree", "The Otherworld Language", "Monster Suppression", "Manuk and Splendide dailies", "Midgard Ore and Alfheim Perfume", "Secret Note of Bazett", "Sapha's Visit", "Frede's Request", "El Dicastes requests (the departments)", "Unknown Relics (the document packages)", "Removing Traces (Ahat's daily)", "Cat Paw Agent (the passage to the New World)", "New Surroundings", "Attitude to the New", "The Tripartite Union's Feud", "Part Time Work", "The Cat Paw Trading Post", "Report from the New World", "Pursuing Rayan Moore", "Helping Lope and Euridi", "Knights of the Neighborhood", "Theore's Request", "Find the Research Tools", "Chesire's New Day", "Mora daily quests", "Eclage's Entrance", "Oliver Wolf Hood (Dreaming Time)", "Laphines That Love the Land (Lost Adventurers)", "Wanted to Be Big and Beautiful", "The Mystery Burglary", "Troublesome Fairies (Prankster of Eclage)", "Memory of Professor Worm", "Flame Basin dailies (Instructor Igrid and Adjutant Abidal)", "Magic Scholar and Hishieh", "Jeruth Hesranta", "Demon God Subjugation / Fall of the False God / Caged God", "Flaming Basin and Doom Prayers", "The Wandering Bard", "The Verus Police", "New Power Source", "To Phantasmagorika! / Looking for the Traces", "Monthly Brigan", "The Bunker: Restriction on the Journey", "Vestige / The Final Room", "Rock Ridge, Land of Opportunities (main line)", "Cacturon (the Cactus family)", "Collecting Ore Fragments", "The town's jobs (food, vigilantes, water, the merchant)", "Pipe Cleaning", "Midnight", "Gas! Gas!", "Mrs. McPhy and Spotty", "Mr. McPhy: Avenging Spotty", "Morroc: the old scholar's apprentice", "Prontera: the playground, the Orc and Goblin subjugation, Glast Heim", "Payon: the well, the grandson and the fox spirit", "Geffen: the tower dungeon", "Izlude: Instructor Pontes, Byalan and Leader Maxim", "Alberta: the shipwreck and Turtle Island", "Comodo: Que Sera, Sera", "Aldebaran and the Juno fields", "Einbroch, Einbech and Lighthalzen", "Hugel: Abyss Lake and the fishermen", "Juperos: Leader Maxim's camp", "Rachel and Veins", "Criminal Activities", "Eye of the Beholder", "Seoyeon's Trial", "Fantasy Book \"Dungeon Food\"", "Overlook Water Dungeon", "City Investment (the City Merchant Union)", "Devil in the Box", "Nightmare Clock Tower", "Nightmare Glast Heim", "Nightmare Pyramid", "Teleport Cats", "Cat Paw Agents";
 
 	bindatcmd "chronicle", strnpcinfo(3) + "::OnCmd", 0, 99;
 
@@ -334,7 +132,6 @@ OnTick:
 	}
 	// Side Quests run beside the main road (and after it is finished).
 	callfunc "F_ChronSideTick", .@map$;
-	callfunc "F_ChronGuideTick";
 	callfunc "F_ChronMainRo";
 	.@g = CHRON_STEP;
 	if (.@g < 1 || .@g > $@chr_steps)
@@ -552,7 +349,7 @@ OnCmd:
 				.@fail = callfunc("F_ChronSideFail", .@i);
 			.@sq$ += (.@i > 1 ? ";" : "") + .@k + ":" + .@h + ":" + .@hv$ + ":" + .@ro + ":" + (.@fail ? 1 : 0);
 		}
-		dispbottom "@@reply " + .@atcmd_parameters$[0] + " 1/1 " + .@g + "|" + BaseLevel + "|" + getarraysize(NPCP_WM$) + "|" + CHRON_SKIP + "|" + .@hunt + "|" + .@have$ + "|" + @chr_watch$ + "|" + callfunc("F_ChronCapped") + "|" + .@sq$ + "|" + CHRON_MVPK + "|" + callfunc("F_ChronGuideState") + "|" + callfunc("F_ChronMainState");
+		dispbottom "@@reply " + .@atcmd_parameters$[0] + " 1/1 " + .@g + "|" + BaseLevel + "|" + getarraysize(NPCP_WM$) + "|" + CHRON_SKIP + "|" + .@hunt + "|" + .@have$ + "|" + @chr_watch$ + "|" + callfunc("F_ChronCapped") + "|" + .@sq$ + "|" + CHRON_MVPK + "|" + "|" + callfunc("F_ChronMainState");
 		end;
 	}
 	dispbottom "@@event chronicle open";
@@ -1042,7 +839,6 @@ function	script	F_ChronSideDone	{
 	for (.@j = 1; .@j <= $@sq_n; .@j++)
 		if (CHRON_SQ[.@j] == 100)
 			.@stamps++;
-	.@stamps += callfunc("F_ChronGuideStamps");
 	for (.@r = 1; .@r <= $@pp_n; .@r++) {
 		if (.@stamps < $@pp_need[.@r] || (CHRON_PASS & (1 << .@r)))
 			continue;
@@ -1352,323 +1148,14 @@ function	script	F_ChronKunlun	{
 // ---- generated: RO quest step conditions, Side Quest dead ends ----
 function	script	F_ChronRoCond	{
 	switch (getarg(0)) {
-	case 43: return (ayodunquest >= 2);
-	case 44: return (ayodunquest >= 3);
-	case 45: return (ayodunquest >= 9);
-	case 46: return (ayodunquest >= 11);
-	case 47: return (ayodunquest >= 12);
-	case 48: return (ayodunquest >= 13);
-	case 53: return (mad >= 1);
-	case 54: return (yong_odun >= 2);
-	case 62: return (event_amatsu >= 1);
-	case 63: return (event_amatsu >= 2);
-	case 64: return (event_amatsu >= 3);
-	case 65: return (event_amatsu >= 4);
-	case 66: return (event_amatsu >= 5);
-	case 67: return (event_amatsu >= 6);
-	case 72: return (callfunc("F_ChronKunlun") >= 4);
-	case 73: return (callfunc("F_ChronKunlun") >= 7);
-	case 74: return (callfunc("F_ChronKunlun") >= 10);
-	case 75: return (callfunc("F_ChronKunlun") >= 13);
-	case 76: return (callfunc("F_ChronKunlun") >= 19);
-	case 77: return (callfunc("F_ChronKunlun") >= 22);
-	case 78: return (callfunc("F_ChronKunlun") >= 28);
-	case 82: return (countitem(7026) >= 1);
-	case 85: return (countitem(7027) >= 1);
-	case 91: return (TURTLE >= 1 || (MISC_QUEST & 65536));
-	case 92: return (TURTLE >= 2 || (MISC_QUEST & 65536));
-	case 94: return (MISC_QUEST & 65536);
 	}
 	return 0;
 }
 
 function	script	F_ChronSideFail	{
 	switch (getarg(0)) {
-	case 7: return (b_sword == 11 || b_sword == 12 || b_sword == 13 || b_sword == 15);
 	}
 	return 0;
-}
-
-// ---- generated: RO quest guides ----
-function	script	F_ChronGuideK	{
-	switch (getarg(0)) {
-	case 1:	// ein_factory
-		if (CHRON_STEP <= 26) return 0;
-		if (CHRON_G_ein_factory) return 100;
-		if (!(EinFactory >= 1)) return 1;
-		if (!(EinFactory >= 12)) return 2;
-		if (!(EinFactory >= 14)) return 3;
-		if (!(EinFactory >= 16)) return 4;
-		return 100;
-	case 2:	// yuno_metto
-		if (CHRON_STEP <= 31) return 0;
-		if (CHRON_G_yuno_metto) return 100;
-		if (!(metto_q >= 1)) return 1;
-		if (!(metto_q >= 8)) return 2;
-		if (!(metto_q >= 9)) return 3;
-		return 100;
-	case 3:	// ep13_language
-		if (CHRON_STEP <= 40) return 0;
-		if (CHRON_G_ep13_language) return 100;
-		if (!(ep13_2_rhea >= 2)) return 1;
-		if (!(ep13_2_rhea >= 3)) return 2;
-		if (!(ep13_2_rhea >= 5)) return 3;
-		if (!(ep13_2_rhea >= 6)) return 4;
-		if (!(ep13_2_rhea >= 9)) return 5;
-		if (!(ep13_2_rhea >= 11)) return 6;
-		if (!(ep13_2_rhea >= 100)) return 7;
-		return 100;
-	case 4:	// ep13_catpaw
-		if (CHRON_STEP <= 40) return 0;
-		if (CHRON_G_ep13_catpaw) return 100;
-		if (!(ep13_yong1 >= 2)) return 1;
-		if (!(ep13_yong1 >= 5)) return 2;
-		if (!(ep13_yong1 >= 10)) return 3;
-		return 100;
-	case 5:	// ep13_sapha
-		if (CHRON_STEP <= 40) return 0;
-		if (CHRON_G_ep13_sapha) return 100;
-		if (!(ep13_3_invite >= 1)) return 1;
-		if (!(ep13_3_invite >= 4)) return 2;
-		if (!(ep13_3_invite >= 5)) return 3;
-		if (!(ep13_3_invite >= 6)) return 4;
-		return 100;
-	case 6:	// ra_lostchild
-		if (CHRON_STEP <= 46) return 0;
-		if (CHRON_G_ra_lostchild) return 100;
-		if (!(lost_boy >= 1)) return 1;
-		if (!(lost_boy >= 6)) return 2;
-		if (!(lost_boy >= 7)) return 3;
-		if (!(lost_boy >= 12)) return 4;
-		if (!(lost_boy >= 13)) return 5;
-		return 100;
-	case 7:	// hg_odin
-		if (CHRON_STEP <= 51) return 0;
-		if (CHRON_G_hg_odin) return 100;
-		if (!(hg_odin >= 1)) return 1;
-		if (!(hg_odin >= 2)) return 2;
-		if (!(hg_odin >= 17)) return 3;
-		if (!(hg_odin >= 20)) return 4;
-		if (!(hg_odin >= 23)) return 5;
-		if (!(hg_odin >= 59)) return 6;
-		if (!(hg_odin >= 60)) return 7;
-		return 100;
-	case 8:	// ep14_eclage
-		if (CHRON_STEP <= 60) return 0;
-		if (CHRON_G_ep14_eclage) return 100;
-		if (!(ep14_2_oliver >= 1)) return 1;
-		if (!(ep14_2_oliver >= 2)) return 2;
-		if (!(ep14_2_oliver >= 3)) return 3;
-		return 100;
-	case 9:	// ep14_nines
-		if (CHRON_STEP <= 61) return 0;
-		if (CHRON_G_ep14_nines) return 100;
-		if (!(ep14_2_nines >= 1)) return 1;
-		if (!(ep14_2_nines >= 2)) return 2;
-		if (!(ep14_2_nines >= 3)) return 3;
-		return 100;
-	case 10:	// ver_bard
-		if (CHRON_STEP <= 66) return 0;
-		if (CHRON_G_ver_bard) return 100;
-		if (!(isbegin_quest(4295) || isbegin_quest(4297) || isbegin_quest(4298) || isbegin_quest(4299) || isbegin_quest(4300) || isbegin_quest(4301) || isbegin_quest(4302))) return 1;
-		if (!(isbegin_quest(4295) == 2 || isbegin_quest(4297) == 2 || isbegin_quest(4298) == 2 || isbegin_quest(4299) == 2 || isbegin_quest(4300) == 2 || isbegin_quest(4301) == 2 || isbegin_quest(4302) == 2)) return 2;
-		return 100;
-	case 11:	// wse_criminal
-		if (!getnpcid(0, "Agent York#iqcrim")) return -1;
-		if (CHRON_STEP <= 16) return 0;
-		if (CHRON_G_wse_criminal) return 100;
-		if (!(iq_crim >= 1)) return 1;
-		if (!(iq_crim >= 5)) return 2;
-		if (!(iq_crim >= 7)) return 3;
-		if (!(iq_crim >= 10)) return 4;
-		if (!(iq_crim >= 12)) return 5;
-		if (!(iq_crim >= 13)) return 6;
-		return 100;
-	case 12:	// wse_seoyeon
-		if (!getnpcid(0, "Seoyeon#wsv")) return -1;
-		if (CHRON_STEP <= 21) return 0;
-		if (CHRON_G_wse_seoyeon) return 100;
-		if (!(wsv_sy >= 1)) return 1;
-		if (!(wsv_sy >= 2)) return 2;
-		if (!(wsv_sy >= 3)) return 3;
-		if (!(wsv_sy >= 4)) return 4;
-		if (!(wsv_sy >= 5)) return 5;
-		return 100;
-	case 13:	// wse_beholder
-		if (!getnpcid(0, "Beho#iqbeho")) return -1;
-		if (CHRON_STEP <= 46) return 0;
-		if (CHRON_G_wse_beholder) return 100;
-		if (!(iq_beho == 1 || iq_beho >= 61003)) return 1;
-		if (!(iq_beho == 1 || iq_beho >= 61006)) return 2;
-		if (!(iq_beho == 1 || iq_beho >= 61009)) return 3;
-		if (!(iq_beho == 1 || iq_beho >= 61012)) return 4;
-		if (!(iq_beho == 1 || iq_beho >= 61018)) return 5;
-		if (!(iq_beho == 1 || iq_beho >= 61024)) return 6;
-		if (!(iq_beho == 1 || iq_beho >= 61026)) return 7;
-		if (!(iq_beho == 1 || iq_beho >= 61028)) return 8;
-		if (!(iq_beho == 1)) return 9;
-		return 100;
-	case 14:	// ra_sanctuary
-		if (!getnpcid(0, "solo_community_goals#mod")) return -1;
-		if (CHRON_STEP <= 46) return 0;
-		if (CHRON_G_ra_sanctuary) return 100;
-		if (!((MISC_QUEST & 8192) || ra_tem_q >= 1)) return 1;
-		if (!((MISC_QUEST & 8192) || ra_tem_q >= 2)) return 2;
-		if (!((MISC_QUEST & 8192) || ra_tem_q >= 10)) return 3;
-		if (!((MISC_QUEST & 8192) || ra_tem_q >= 12)) return 4;
-		if (!((MISC_QUEST & 8192) || ra_tem_q >= 14)) return 5;
-		if (!((MISC_QUEST & 8192) || ra_tem_q >= 15)) return 6;
-		if (!((MISC_QUEST & 8192) || ra_tem_q >= 16)) return 7;
-		if (!((MISC_QUEST & 8192) || ra_tem_q >= 17)) return 8;
-		if (!((MISC_QUEST & 8192) || ra_tem_q >= 21)) return 9;
-		if (!((MISC_QUEST & 8192) || ra_tem_q >= 23)) return 10;
-		if (!(MISC_QUEST & 8192)) return 11;
-		return 100;
-	}
-	return 0;
-}
-
-function	script	F_ChronGuideRo	{
-	switch (getarg(0)) {
-	case 102: return EinFactory;
-	case 103: return EinFactory;
-	case 104: return EinFactory;
-	case 202: return metto_q;
-	case 301: return ep13_2_rhea;
-	case 302: return ep13_2_rhea;
-	case 303: return ep13_2_rhea;
-	case 304: return ep13_2_rhea;
-	case 305: return ep13_2_rhea;
-	case 306: return ep13_2_rhea;
-	case 307: return ep13_2_rhea;
-	case 401: return ep13_yong1;
-	case 402: return ep13_yong1;
-	case 502: return ep13_3_invite;
-	case 602: return lost_boy;
-	case 604: return lost_boy;
-	case 703: return hg_odin;
-	case 705: return hg_odin;
-	case 706: return hg_odin;
-	case 1102: return iq_crim;
-	case 1103: return iq_crim;
-	case 1104: return iq_crim;
-	case 1105: return iq_crim;
-	case 1203: return wsv_sys;
-	case 1302: return iq_beho;
-	case 1303: return iq_beho;
-	case 1304: return iq_beho;
-	case 1305: return iq_beho;
-	case 1306: return iq_beho;
-	case 1307: return iq_beho;
-	case 1403: return ra_tem_q;
-	case 1409: return ra_tem_q;
-	case 1410: return ra_tem_q;
-	}
-	return -1;
-}
-
-// The Journal's line for the guides: "k:ro:items" per guide, ';' between.
-function	script	F_ChronGuideState	{
-	.@s$ = "";
-	for (.@i = 1; .@i <= $@gd_n; .@i++) {
-		.@k = callfunc("F_ChronGuideK", .@i);
-		.@v = -1;
-		.@h$ = "";
-		if (.@k >= 1 && .@k < 100) {
-			.@v = callfunc("F_ChronGuideRo", .@i * 100 + .@k);
-			if ($@gds_items$[.@i * 100 + .@k] != "")
-				.@h$ = callfunc("F_ChronHaveList", $@gds_items$[.@i * 100 + .@k]);
-		}
-		.@s$ += (.@i > 1 ? ";" : "") + .@k + ":" + .@v + ":" + .@h$;
-	}
-	return .@s$;
-}
-
-// Every tick: a guide that moved on is announced, one RO finished is stamped.
-// The first look after login only notes where each one stands.
-function	script	F_ChronGuideTick	{
-	for (.@i = 1; .@i <= $@gd_n; .@i++) {
-		if (getd("CHRON_G_" + $@gd_key$[.@i]))
-			continue;
-		.@k = callfunc("F_ChronGuideK", .@i);
-		if (.@k == 100) {
-			callfunc "F_ChronGuideDone", .@i;
-			continue;
-		}
-		.@v = -1;
-		if (.@k >= 1)
-			.@v = callfunc("F_ChronGuideRo", .@i * 100 + .@k);
-		if (@chr_ginit) {
-			.@was = @chr_gk[.@i];
-			if (.@k >= 1 && .@was < 1) {
-				dispbottom "[Chronicle] New on your road: " + $@gd_title$[.@i] + ", one of Rune-Midgard's own quests. The Journal (Alt+B, Side Quests tab) shows the way.", 0xE5A15E;
-				dispbottom "@@event chronicle refresh";
-			} else if (.@k >= 1 && .@was != .@k) {
-				if (.@k > .@was)
-					dispbottom "[Chronicle] " + $@gd_title$[.@i] + ": " + $@gds_title$[.@i * 100 + .@was] + " done. Next: " + $@gds_now$[.@i * 100 + .@k], 0xE5A15E;
-				dispbottom "@@event chronicle refresh";
-			} else if (.@k >= 1 && .@v != @chr_gv[.@i]) {
-				callfunc "F_ChronGuidePart", .@i, .@i * 100 + .@k, .@v;
-				dispbottom "@@event chronicle refresh";
-			}
-		}
-		@chr_gk[.@i] = .@k;
-		@chr_gv[.@i] = .@v;
-	}
-	@chr_ginit = 1;
-	return;
-}
-
-// Guide getarg(0), step getarg(1): RO's variable is now getarg(2). Name the
-// part just done and the next one ($@gds_parts$ "at|name;...").
-function	script	F_ChronGuidePart	{
-	if ($@gds_parts$[getarg(1)] == "")
-		return;
-	explode(.@pt$, $@gds_parts$[getarg(1)], ";");
-	.@done$ = "";
-	.@next$ = "";
-	for (.@j = 0; .@j < getarraysize(.@pt$); .@j++) {
-		explode(.@p$, .@pt$[.@j], "|");
-		.@at = atoi(.@p$[0]);
-		if (.@at == getarg(2))
-			.@done$ = .@p$[1];
-		else if (.@at > getarg(2) && .@next$ == "")
-			.@next$ = .@p$[1];
-	}
-	if (.@done$ != "")
-		dispbottom "[Chronicle] " + $@gd_title$[getarg(0)] + ": done, " + .@done$ + "." + (.@next$ != "" ? " Next: " + .@next$ + "." : ""), 0xE5A15E;
-	return;
-}
-
-// How many guides are done (CHRON_G_<key>): Passport stamps, beside the Side Quests'.
-function	script	F_ChronGuideStamps	{
-	.@n = 0;
-	for (.@i = 1; .@i <= $@gd_n; .@i++)
-		if (getd("CHRON_G_" + $@gd_key$[.@i]))
-			.@n++;
-	return .@n;
-}
-
-// Guide getarg(0) is done: RO's quest gave its own rewards, the Chronicle
-// stamps the Passport (and hands out a rank reached).
-function	script	F_ChronGuideDone	{
-	.@i = getarg(0);
-	setd "CHRON_G_" + $@gd_key$[.@i], 1;
-	specialeffect2 EF_ANGEL2;
-	dispbottom "[Chronicle] " + $@gd_title$[.@i] + " is done. Your Adventurer's Passport is stamped.", 0xFFDD66;
-	.@stamps = callfunc("F_ChronGuideStamps");
-	for (.@j = 1; .@j <= $@sq_n; .@j++)
-		if (CHRON_SQ[.@j] == 100)
-			.@stamps++;
-	for (.@r = 1; .@r <= $@pp_n; .@r++) {
-		if (.@stamps < $@pp_need[.@r] || (CHRON_PASS & (1 << .@r)))
-			continue;
-		CHRON_PASS = CHRON_PASS | (1 << .@r);
-		getitem $@pp_item[.@r], 1;
-		dispbottom "[Chronicle] Passport rank " + $@pp_name$[.@r] + "! You received " + getitemname($@pp_item[.@r]) + ".", 0xFFDD66;
-	}
-	dispbottom "@@event chronicle refresh";
-	return;
 }
 
 // ---- generated: RO side quest catalog (catalog.ps1) ----
@@ -2983,9 +2470,38 @@ function	script	F_ChronCatK	{
 
 function	script	F_ChronCatState	{
 	.@s$ = "";
-	for (.@i = 1; .@i <= $@cat_n; .@i++)
-		.@s$ += (.@i > 1 ? "," : "") + callfunc("F_ChronCatK", .@i);
+	.@new = 0;
+	for (.@i = 1; .@i <= $@cat_n; .@i++) {
+		.@k = callfunc("F_ChronCatK", .@i);
+		.@s$ += (.@i > 1 ? "," : "") + .@k;
+		.@b = 1 << (.@i % 31);
+		if (.@k >= $@cat_last[.@i] && !(CHRON_CS[.@i / 31] & .@b)) {
+			CHRON_CS[.@i / 31] = CHRON_CS[.@i / 31] | .@b;
+			.@new++;
+			.@t$ = $@cat_title$[.@i];
+		}
+	}
+	if (.@new == 1)
+		dispbottom "[Chronicle] Passport stamped: " + .@t$ + ".", 0xFFDD66;
+	else if (.@new > 1)
+		dispbottom "[Chronicle] Passport stamped: " + .@new + " of Rune-Midgard's quests done.", 0xFFDD66;
+	.@s$ += "|";
+	for (.@j = 0; .@j <= $@cat_n / 31; .@j++)
+		.@s$ += (.@j ? "," : "") + CHRON_CS[.@j];
 	return .@s$;
+}
+
+// Renewal: catalog stamps at login; the switched-off Side Quests leave the quest window.
+-	script	ChronSideOff	-1,{
+OnPCLoginEvent:
+	setarray .@q[0], 77111, 77112, 77113, 77114, 77115, 77121, 77122, 77123, 77124, 77125, 77131, 77132, 77133, 77141, 77142, 77143, 77144, 77145, 77146, 77147, 77148, 77149, 77151, 77152, 77153, 77154, 77155, 77161, 77162, 77163, 77164, 77165, 77166, 77167, 77168, 77169, 77171, 77172, 77173, 77174, 77175, 77176, 77177, 77178, 77179, 77181, 77182, 77183, 77184, 77185, 77186, 77187, 77188, 77191, 77192, 77193, 77194, 77195;
+	for (.@i = 0; .@i < getarraysize(.@q); .@i++)
+		if (checkquest(.@q[.@i]) >= 0)
+			erasequest .@q[.@i];
+	freeloop(1);
+	callfunc "F_ChronCatState";
+	freeloop(0);
+	end;
 }
 
 // ---- generated: RO quest steps of the main road ----
@@ -3108,10 +2624,3 @@ hugel,101,56,4	duplicate(ChronNPC)	Brynjar the Herald#c11	4_M_KNIGHT_GOLD
 mora,114,96,4	duplicate(ChronNPC)	Elder Mirrel#c12	4_M_RAFLE_OLD
 ecl_fild01,102,307,4	duplicate(ChronNPC)	Captain Sylwen#c13	4_M_FAIRYSOLDIER
 verus04,190,180,4	duplicate(ChronNPC)	Professor Hendrik#c14	4_M_OLDSCHOLAR
-izlude,199,207,4	duplicate(ChronSide)	Harbour Master Oswin#s1	4W_SAILOR
-alberta,186,153,4	duplicate(ChronSide)	Merchant Tolliver#s2	4_M_04
-ayothaya,146,72,4	duplicate(ChronSide)	Kasim the Courier#s4	4_M_04
-gef_fild10,234,199,4	duplicate(ChronSide)	Scholar Wendel#s5	4_LGTSCIENCE
-amatsu,199,86,4	duplicate(ChronSide)	Envoy Lise#s6	1_F_LIBRARYGIRL
-gonryun,118,128,4	duplicate(ChronSide)	Scribe Wang#s7	4_M_ORIENT02
-alberta,241,116,4	duplicate(ChronSide)	Navigator Corvin#s9	4W_SAILOR
