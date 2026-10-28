@@ -1148,7 +1148,7 @@ $episodes = @(
   # re/instances/HazyForest.txt, the Mistwood Maze: ep14_1_mistwoods 0 -> 10.
   # Loki only talks from Lv 98 (1 = you turned back, 2 = on your way); the
   # maze is an instance for a party.
-  @{ episode = '14.1'; title = 'Mistwood Maze'; lv = 98; more = $true
+  @{ episode = '14.1'; title = 'Mistwood Maze'; lv = 98
      end = 'ep14_1_mistwoods >= 10'
      party = 'The Mistwood Maze lets in a party only (at least 2; party bots count as players).'
      intro = 'Beyond Bifrost, the rainbow bridge, lies the Mistwood: a forest that leads strangers in circles and does not let them go. Someone has gone missing in it, and an assassin is looking for her. This is Ragnarok''s own story: the Chronicle only shows the way, and RO gives its rewards.'
@@ -1166,33 +1166,308 @@ $episodes = @(
             @{ map = '1@mist'; x = 97; y = 30; name = 'Mysterious Young Man' }
           )
           done = 'In the Mistwood you met Loki of the Assassin''s Guild. He asked about a purple-haired guard and left you to find your own way through the forest.' }
+       # The Wandering Purple Dragon (Lost Dragon 2131) stands at one of six
+       # spots; its death shows Loki and the Collapsed Girl (183, 304).
+       @{ title = 'The Wandering Dragon'
+          cond = 'ep14_1_mistwoods >= 3'
+          route = @('1@mist', 183, 304, 'Loki')
+          now = 'RO quest: somewhere in the maze a Wandering Purple Dragon roams. Defeat it, then find Loki beside the girl it leaves behind (1@mist, 183, 304) and talk to him.'
+          hint = @(
+            'Garden Trees block the paths of the maze. Defeat the gardener of a tree (a named monster nearby), then choose Chop down the garden tree.: the way on opens. A gardener still alive makes the tree cry out instead.'
+            'The dragon (Lost Dragon, level 135) stands at one of six places, a different one each time: 77, 240, 147, 261, 182, 263, 194, 350, 268, 183 or 65, 278. When it falls, a voice asks you to save it.'
+          )
+          spots = @(
+            @{ map = '1@mist'; x = 77; y = 240; name = 'Dragon? (one of six spots)' }
+            @{ map = '1@mist'; x = 147; y = 261; name = 'Dragon? (one of six spots)' }
+            @{ map = '1@mist'; x = 182; y = 263; name = 'Dragon? (one of six spots)' }
+            @{ map = '1@mist'; x = 194; y = 350; name = 'Dragon? (one of six spots)' }
+            @{ map = '1@mist'; x = 268; y = 183; name = 'Dragon? (one of six spots)' }
+            @{ map = '1@mist'; x = 65; y = 278; name = 'Dragon? (one of six spots)' }
+            @{ map = '1@mist'; x = 183; y = 304; name = 'Loki' }
+          )
+          done = 'The dragon fell and became a girl: Nydhogg, the Guardian of Yggdrasil, whom Loki had been looking for. He meant to carry her out himself and meet you in Mora.' }
+       @{ title = 'Nydhogg in Mora'
+          cond = 'ep14_1_mistwoods >= 10'; var = 'ep14_1_mistwoods'
+          parts = @(
+            @{ at = 4; name = 'The Flower Smelling Lady in Mora (46, 152)'; route = @('mora', 46, 152, 'Flower Smelling Lady') }
+            @{ at = 10; name = 'The Sharp Eyed Man beside her (48, 152)'; route = @('mora', 48, 152, 'Sharp Eyed Man') }
+          )
+          route = @('mora', 46, 152, 'Flower Smelling Lady')
+          now = 'RO quest: in Mora, the Laphine village, a lady smelling flowers (46, 152) and a sharp-eyed man (48, 152) are waiting for you. Talk to her first, then to him.'
+          hint = @(
+            'Out of the maze: chop down the last tree, the Gardeners'' Tree (1@mist, 345, 186), to reach Bifrost''s second field, or simply leave. Mora is reached through the Small Holes on bif_fild02 (285, 332, 95, 310 or 174, 162): choose Knock-knock.'
+            'Make some room in your bag first. RO pays you Loki''s Muffler, a Pendant Of Guardian and 400,000 base and job EXP; either answer to Nydhogg works.'
+          )
+          spots = @(
+            @{ map = '1@mist'; x = 345; y = 186; name = 'The Gardeners'' Tree (the way out)'; ro = 3 }
+            @{ map = 'bif_fild02'; x = 285; y = 332; name = 'Small Hole into Mora'; ro = 3 }
+            @{ map = 'mora'; x = 46; y = 152; name = 'Flower Smelling Lady'; ro = 3 }
+            @{ map = 'mora'; x = 48; y = 152; name = 'Sharp Eyed Man'; ro = 4 }
+          )
+          done = 'The lady was Nydhogg and the man was Loki. Nydhogg had left her post as Guardian of Yggdrasil; you told her what it meant, and they paid you with Loki''s Muffler and the Pendant of the Guardian.' }
      ) }
 
   # re/quests/quests_eclage.txt, Encounter in a Strange Land: ep14_2_mylord
   # 0 -> 33 (Traveler Fome, Lv 99; 34 on is the Flame Basin's Magic Scholar).
-  @{ episode = '14.2'; title = 'Encounter in a Strange Land'; lv = 99; more = $true
+  # Mayor Jun Kardui only gives the letter (13 -> 14) from Lv 120; the
+  # Eclage Interior (29 -> 30) is an instance for a party.
+  @{ episode = '14.2'; title = 'Encounter in a Strange Land'; lv = 99
      end = 'ep14_2_mylord >= 33'
      needs = 'a way into Eclage: its gate guards let in only visitors the Laphine have registered (Side Quests, Eclage).'
+     party = 'The lighting room (step 14) lets in a party only; from step 8 on, the Mayor wants you at level 120.'
      intro = 'Eclage, the city of the Laphine, is built in the branches of the World Tree. Its king is young and its people doubt him, and a traveler from far away has seen more of the city than its guards would like. This is Ragnarok''s own story: the Chronicle only shows the way, and RO gives its rewards.'
      steps = @(
        @{ title = 'Traveler Fome'
           cond = 'ep14_2_mylord >= 1'
           route = @('eclage', 299, 309, 'Door to Traveler Fome')
-          now = 'RO quest: in Eclage, talk to Fome, a traveler like you (ecl_in01, 32, 52).'
+          now = 'RO quest: in Eclage, three travelers like you are chatting (ecl_in01, 32, 52). Walk up to them and choose Join the group.'
           hint = @(
-            'Fome is inside the building whose door is at 299, 309 in Eclage.'
+            'They are inside the building whose door is at 299, 309 in Eclage.'
           )
           spots = @(
             @{ map = 'eclage'; x = 299; y = 309; name = 'Door to Traveler Fome' }
             @{ map = 'ecl_in01'; x = 32; y = 52; name = 'Traveler Fome' }
           )
-          done = 'You met Fome, a traveler in Eclage, and through her the Laphine''s troubles began to open up to you.' }
+          done = 'You joined three travelers in Eclage: Fome, Litrip and Chiba, who had seen more of the city than most.' }
+       @{ title = 'Travelers'' Tales'
+          cond = 'ep14_2_mylord >= 4'; var = 'ep14_2_mylord'
+          parts = @(
+            @{ at = 2; name = 'Hear each of them: Fome (32, 52), Litrip (32, 51) and Chiba (35, 51)'; route = @('ecl_in01', 32, 52, 'Traveler Fome') }
+            @{ at = 4; name = 'The guard who comes for you: Sure. Let''s go.'; route = @('ecl_in01', 31, 49, 'Eclage Guard') }
+          )
+          route = @('ecl_in01', 32, 52, 'Traveler Fome')
+          now = 'RO quest: hear the three travelers'' stories one by one. When you have heard all three, an Eclage Guard comes to take you to the palace: go with him.'
+          hint = @(
+            'If you told the guard you had no time, Guard Minuel at the east gate (ecl_in01, 82, 70) takes you later: Sure. Let''s go.'
+            'Make some room in your bag: the Laphine of this story refuse a full one.'
+          )
+          spots = @(
+            @{ map = 'ecl_in01'; x = 32; y = 52; name = 'Traveler Fome'; ro = 1 }
+            @{ map = 'ecl_in01'; x = 32; y = 51; name = 'Traveler Litrip'; ro = 1 }
+            @{ map = 'ecl_in01'; x = 35; y = 51; name = 'Traveler Chiba'; ro = 1 }
+            @{ map = 'ecl_in01'; x = 32; y = 52; name = 'Traveler Fome'; ro = 2 }
+            @{ map = 'ecl_in01'; x = 82; y = 70; name = 'Guard Minuel: Sure. Let''s go.'; ro = 3 }
+          )
+          done = 'The travelers told you of Bifrost Tower and of a Laphine king nobody sees. Then a guard came: the palace wanted to see you.' }
+       @{ title = 'The Chief of Staff'
+          cond = 'ep14_2_mylord >= 5'
+          route = @('ecl_in03', 245, 93, 'Chief of Staff')
+          now = 'RO quest: in the palace, the Chief of Staff, Shenime (ecl_in03, 245, 93), wants a word. Promise to keep what you believe to yourself: Yes, I promise. (or Fine, I won''t tell anyone.).'
+          spots = @(
+            @{ map = 'ecl_in03'; x = 245; y = 93; name = 'Chief of Staff Shenime' }
+          )
+          done = 'Shenime asked you to keep quiet about what travelers say of the king, promised you an audience with Mayor Jun, and sent you out to wait.' }
+       @{ title = 'Mayor Jun Kardui'
+          cond = 'ep14_2_mylord >= 7'; var = 'ep14_2_mylord'
+          parts = @(
+            @{ at = 6; name = 'After 10 minutes, Guard Minuel at the east gate (ecl_in01, 82, 70): Yes, please.'; route = @('ecl_in01', 82, 70, 'Guard Minuel') }
+            @{ at = 7; name = 'Mayor Jun Kardui (ecl_in03, 41, 90)'; route = @('ecl_in03', 41, 90, 'Mayor Jun Kardui') }
+          )
+          route = @('ecl_in01', 82, 70, 'Guard Minuel')
+          now = 'RO quest: wait 10 minutes (the quest window counts them down), then Guard Minuel at the east gate takes you to Mayor Jun Kardui. Hear the Mayor out.'
+          hint = @(
+            'Either answer to the Mayor leads on.'
+          )
+          spots = @(
+            @{ map = 'ecl_in01'; x = 82; y = 70; name = 'Guard Minuel'; ro = 5 }
+            @{ map = 'ecl_in03'; x = 41; y = 90; name = 'Mayor Jun Kardui'; ro = 6 }
+          )
+          done = 'Kardui, the Mayor Jun of the Laphine, turned out to be a boy who carries the memories of every Mayor before him. He wanted outside help, and the city had jobs for you first.' }
+       @{ title = 'For Eclage'
+          cond = 'ep14_2_mylord >= 8'
+          items = @(@(6032, 'Horn of Hillslion', 5), @(6023, 'Mystic Horn', 5), @(944, 'Horseshoe', 5), @(12344, 'Pinguicula''s Fruit Jam', 3), @(12345, 'Luciola''s Honey Jam', 3))
+          route = @('ecl_in01', 82, 70, 'Guard Minuel')
+          now = 'RO quest: do three jobs for Eclage. Guard Minuel (ecl_in01, 82, 70) wants horns and horseshoes, Guard Leo (eclage, 112, 40) wants jam, and Messenger Roy (ecl_fild01, 205, 86) a parcel fetched from Splendide.'
+          hint = @(
+            'Minuel: Do they have a job for me?, Sure.; bring 5 Horn of Hillslion, 5 Mystic Horn and 5 Horseshoe.'
+            'Leo: Does he want something?, then any answer; bring 3 Pinguicula''s Fruit Jam and 3 Luciola''s Honey Jam.'
+            'Roy: What is it?, Leave it to me!; the Contact Officer in Splendide (267, 368) hands you the Mail Package for him.'
+            'Each job pays 200,000 base and job EXP. The step is done when the third one is handed in.'
+          )
+          spots = @(
+            @{ map = 'ecl_in01'; x = 82; y = 70; name = 'Guard Minuel' }
+            @{ map = 'eclage'; x = 112; y = 40; name = 'Guard Leo' }
+            @{ map = 'ecl_fild01'; x = 205; y = 86; name = 'Messenger Roy' }
+            @{ map = 'splendide'; x = 267; y = 368; name = 'Contact Officer: the Mail Package' }
+          )
+          done = 'You did three jobs for Eclage, and the city started to trust you.' }
+       @{ title = 'The Mayor''s Story'
+          cond = 'ep14_2_mylord >= 10'; var = 'ep14_2_mylord'
+          parts = @(
+            @{ at = 9; name = 'Mayor Jun Kardui (ecl_in03, 41, 90)'; route = @('ecl_in03', 41, 90, 'Mayor Jun Kardui') }
+            @{ at = 10; name = 'Shenime (ecl_in03, 245, 93): I''m supposed to give you something..'; route = @('ecl_in03', 245, 93, 'Chief of Staff') }
+          )
+          route = @('ecl_in03', 41, 90, 'Mayor Jun Kardui')
+          now = 'RO quest: report to Mayor Jun Kardui, hear his story, then take what he gives you to the Chief of Staff.'
+          spots = @(
+            @{ map = 'ecl_in03'; x = 41; y = 90; name = 'Mayor Jun Kardui'; ro = 8 }
+            @{ map = 'ecl_in03'; x = 245; y = 93; name = 'Chief of Staff Shenime'; ro = 9 }
+          )
+          done = 'Kardui told you how his reign began, and RO paid you 200,000 base and job EXP. Shenime gave you a Fairy Wing.' }
+       @{ title = 'Rumors of the King'
+          cond = 'ep14_2_mylord >= 11'
+          route = @('eclage', 112, 40, 'Guard Leo')
+          now = 'RO quest: find out what people say about the Mayor. Hear four of them: Guard Leo (eclage, 112, 40), Traveler Fome (ecl_in01, 32, 52), two Laphine chatting in Eclage (274, 294) and a resting Laphine in the palace (ecl_in03, 244, 57).'
+          hint = @(
+            'Leo: You don''t like the king? The chatting Laphine and the resting one start talking when you walk up to them; with the chatting pair, either answer works.'
+          )
+          spots = @(
+            @{ map = 'eclage'; x = 112; y = 40; name = 'Guard Leo' }
+            @{ map = 'ecl_in01'; x = 32; y = 52; name = 'Traveler Fome' }
+            @{ map = 'eclage'; x = 274; y = 294; name = 'Laphine chatting' }
+            @{ map = 'ecl_in03'; x = 244; y = 57; name = 'Resting Laphine' }
+          )
+          done = 'The rumors called the young Mayor a tyrant and the cause of the Laphine''s misery.' }
+       @{ title = 'The Mayor''s Brother'
+          cond = 'ep14_2_mylord >= 15'; var = 'ep14_2_mylord'
+          parts = @(
+            @{ at = 12; name = 'Mayor Jun Kardui (ecl_in03, 41, 90): any answer'; route = @('ecl_in03', 41, 90, 'Mayor Jun Kardui') }
+            @{ at = 13; name = 'Kardui again'; route = @('ecl_in03', 41, 90, 'Mayor Jun Kardui') }
+            @{ at = 14; name = 'Kardui, from level 120: Yes, I have. (he gives you a letter)'; route = @('ecl_in03', 41, 90, 'Mayor Jun Kardui') }
+            @{ at = 15; name = 'Hisie on the top floor of Bifrost Tower (ecl_tdun04, 32, 35)'; route = @('ecl_tdun04', 32, 35, 'Hisie') }
+          )
+          route = @('ecl_in03', 41, 90, 'Mayor Jun Kardui')
+          now = 'RO quest: tell Kardui what the people say. He has a letter for his brother Hisie, on the top floor of Bifrost Tower.'
+          hint = @(
+            'Kardui only hands over the letter at level 120 or higher, and not if you answer No, I''ve never thought about it.'
+            'Bifrost Tower: its door is on the field outside Eclage (ecl_fild01, 182, 82). From its top floor a warp (ecl_tdun04, 34, 17) leads back out, and the way in from the field''s top (183, 70) leads straight up to Hisie.'
+          )
+          spots = @(
+            @{ map = 'ecl_in03'; x = 41; y = 90; name = 'Mayor Jun Kardui'; ro = 11 }
+            @{ map = 'ecl_in03'; x = 41; y = 90; name = 'Mayor Jun Kardui'; ro = 12 }
+            @{ map = 'ecl_in03'; x = 41; y = 90; name = 'Mayor Jun Kardui'; ro = 13 }
+            @{ map = 'ecl_fild01'; x = 182; y = 82; name = 'Bifrost Tower'; ro = 14 }
+            @{ map = 'ecl_tdun04'; x = 32; y = 35; name = 'Hisie'; ro = 14 }
+          )
+          done = 'Kardui laughed at the rumors and sent you with a letter to his brother Hisie, who lives at the top of Bifrost Tower.' }
+       @{ title = 'Avant the Scholar'
+          cond = 'ep14_2_mylord >= 16'
+          route = @('ecl_tdun04', 32, 35, 'Hisie')
+          now = 'RO quest: Hisie reads the letter (3 minutes, the quest window counts them down). Then talk to him again (ecl_tdun04, 32, 35).'
+          hint = @(
+            'Any answers lead on.'
+          )
+          spots = @(
+            @{ map = 'ecl_tdun04'; x = 32; y = 35; name = 'Hisie' }
+          )
+          done = 'Hisie told you about Avant, a scholar of magics who vanished, and asked you to look for him.' }
+       @{ title = 'Shenime''s Favor'
+          cond = 'ep14_2_mylord >= 18'; var = 'ep14_2_mylord'
+          items = @(@(6561, 'Dustball', 10), @(6560, 'Leaf Bookmark', 10))
+          parts = @(
+            @{ at = 17; name = 'Shenime (ecl_in03, 245, 93): Sure.'; route = @('ecl_in03', 245, 93, 'Chief of Staff') }
+            @{ at = 18; name = 'Bring her 10 Dustballs and 10 Leaf Bookmarks'; route = @('ecl_in03', 245, 93, 'Chief of Staff') }
+          )
+          route = @('ecl_in03', 245, 93, 'Chief of Staff')
+          now = 'RO quest: Shenime sponsors a scholar of magics who needs materials from Bifrost Tower. Bring her 10 Dustballs and 10 Leaf Bookmarks.'
+          hint = @(
+            'Dustballs drop from Cenere (level 146), Leaf Bookmarks from Antique Books (level 148), both in Bifrost Tower (12.5% each).'
+            'Gather 20 of each: the next step needs 10 more. RO pays 150,000 base and job EXP.'
+          )
+          spots = @(
+            @{ map = 'ecl_in03'; x = 245; y = 93; name = 'Chief of Staff Shenime'; ro = 16 }
+            @{ map = 'ecl_fild01'; x = 182; y = 82; name = 'Bifrost Tower'; ro = 17 }
+            @{ map = 'ecl_in03'; x = 245; y = 93; name = 'Chief of Staff Shenime'; ro = 17 }
+          )
+          done = 'Shenime took the materials but would not say who her scholar was, and said she had never heard of Avant.' }
+       @{ title = 'The Yai in the East'
+          cond = 'ep14_2_mylord >= 21'; var = 'ep14_2_mylord'
+          items = @(@(6561, 'Dustball', 10), @(6560, 'Leaf Bookmark', 10))
+          parts = @(
+            @{ at = 19; name = 'Guard Minuel (ecl_in01, 82, 70): A scholar of magics sponsored by Shenime, then Hisie (ecl_tdun04, 32, 35)'; route = @('ecl_in01', 82, 70, 'Guard Minuel') }
+            @{ at = 20; name = 'The Yai in eastern Eclage (307, 237): Delivery..., with 10 Dustballs and 10 Leaf Bookmarks'; route = @('eclage', 307, 237, 'Normal Yai') }
+            @{ at = 21; name = 'Mayor Jun Kardui (ecl_in03, 41, 90)'; route = @('ecl_in03', 41, 90, 'Mayor Jun Kardui') }
+          )
+          route = @('ecl_in01', 82, 70, 'Guard Minuel')
+          now = 'RO quest: ask Guard Minuel where Shenime goes after work, and tell Hisie. Then take another 10 Dustballs and 10 Leaf Bookmarks to the Yai in the east of Eclage, as if Shenime sent them, and report to Kardui.'
+          spots = @(
+            @{ map = 'ecl_in01'; x = 82; y = 70; name = 'Guard Minuel'; ro = 18 }
+            @{ map = 'ecl_tdun04'; x = 32; y = 35; name = 'Hisie'; ro = 18 }
+            @{ map = 'eclage'; x = 307; y = 237; name = 'Normal Yai'; ro = 19 }
+            @{ map = 'ecl_in03'; x = 41; y = 90; name = 'Mayor Jun Kardui'; ro = 20 }
+          )
+          done = 'Shenime often went east after work, to an ordinary Yai. Someone inside took your delivery, and Kardui wanted to know what is in there.' }
+       @{ title = 'Avant''s Laboratory'
+          cond = 'ep14_2_mylord >= 24'; var = 'ep14_2_mylord'
+          parts = @(
+            @{ at = 22; name = 'The Yai (eclage, 307, 237): Go in right now., then search the desk (que_avan01, 18, 38)'; route = @('eclage', 307, 237, 'Normal Yai') }
+            @{ at = 24; name = 'Kardui (ecl_in03, 41, 90), with the Avant Research Data'; route = @('ecl_in03', 41, 90, 'Mayor Jun Kardui') }
+          )
+          route = @('eclage', 307, 237, 'Normal Yai')
+          now = 'RO quest: slip into the Yai in the east of Eclage, search the desk of the hidden laboratory for Avant''s research, and bring it to Kardui.'
+          hint = @(
+            'One person at a time, for about 6 minutes. At the desk: Look at the book on the bookshelf., Try rearranging the books., then Second, Fourth, First, Third, Fifth. Then Look at the hinged devices..., Input a number. and type 31425. Do not taste the reagent: it costs half your HP.'
+            'When Avant appears: Let Hisie handle it. takes you out; I''m taking care of this place! means fighting his 5 Dark Priests first, for a little more EXP from Kardui (400,000 base and 300,000 job instead of 350,000 and 250,000).'
+          )
+          spots = @(
+            @{ map = 'eclage'; x = 307; y = 237; name = 'Normal Yai'; ro = 21 }
+            @{ map = 'que_avan01'; x = 18; y = 38; name = 'Desk'; ro = 21 }
+            @{ map = 'ecl_in03'; x = 41; y = 90; name = 'Mayor Jun Kardui'; ro = 22 }
+            @{ map = 'ecl_in03'; x = 41; y = 90; name = 'Mayor Jun Kardui'; ro = 23 }
+          )
+          done = 'In the hidden laboratory you found Avant''s research on Yggdrasil and the Orb, and Avant himself. Kardui read the data and asked you to help protect the Orb.' }
+       @{ title = 'Shenime''s Secret'
+          cond = 'ep14_2_mylord >= 27'; var = 'ep14_2_mylord'
+          parts = @(
+            @{ at = 25; name = 'Hisie (ecl_tdun04, 32, 35): About the Chief of Staff'; route = @('ecl_tdun04', 32, 35, 'Hisie') }
+            @{ at = 26; name = 'Shenime (ecl_in03, 245, 93)'; route = @('ecl_in03', 245, 93, 'Chief of Staff') }
+            @{ at = 27; name = 'Kardui (ecl_in03, 41, 90): I''m at your service.'; route = @('ecl_in03', 41, 90, 'Mayor Jun Kardui') }
+          )
+          route = @('ecl_tdun04', 32, 35, 'Hisie')
+          now = 'RO quest: tell Hisie what you found, then question Shenime about her scholar, and report to Kardui.'
+          hint = @(
+            'With Shenime, any answers lead on.'
+          )
+          spots = @(
+            @{ map = 'ecl_tdun04'; x = 32; y = 35; name = 'Hisie'; ro = 24 }
+            @{ map = 'ecl_in03'; x = 245; y = 93; name = 'Chief of Staff Shenime'; ro = 25 }
+            @{ map = 'ecl_in03'; x = 41; y = 90; name = 'Mayor Jun Kardui'; ro = 26 }
+          )
+          done = 'Shenime had sponsored Avant without even knowing his name, and seemed more interested in the Orb than in him. Kardui left Shenime in your hands.' }
+       @{ title = 'The Lighting Room'
+          cond = 'ep14_2_mylord >= 30'; var = 'ep14_2_mylord'
+          parts = @(
+            @{ at = 29; name = 'Shenime (ecl_in03, 245, 93): Hold his hand.'; route = @('ecl_in03', 245, 93, 'Chief of Staff') }
+            @{ at = 30; name = 'With your party: the Chief of Staff (ecl_hub01, 132, 12), Enter it., and inside Shenime, Avant and Hisie'; route = @('ecl_hub01', 132, 12, 'Chief of Staff') }
+          )
+          route = @('ecl_in03', 245, 93, 'Chief of Staff')
+          now = 'RO quest: Shenime takes you to the lighting room under the city. Go in with your party: the room fills with creatures of the king of demons.'
+          hint = @(
+            'Your party''s leader opens the Eclage Interior at the door where Shenime leaves you (ecl_hub01, 132, 12); the others enter there too. It stays open 20 minutes.'
+            'Inside, step forward: 4 Suspicious Creatures, then 8 Incarnations of Morocc (level 100). Then talk to Shenime, to Avant (148, 97) and to Hisie (144, 27).'
+          )
+          spots = @(
+            @{ map = 'ecl_in03'; x = 245; y = 93; name = 'Chief of Staff Shenime'; ro = 27 }
+            @{ map = 'ecl_in03'; x = 245; y = 93; name = 'Chief of Staff Shenime'; ro = 28 }
+            @{ map = 'ecl_hub01'; x = 132; y = 12; name = 'Lighting room: Enter it.'; ro = 29 }
+            @{ map = '1@ecl'; x = 148; y = 97; name = 'Avant'; ro = 29 }
+            @{ map = '1@ecl'; x = 144; y = 27; name = 'Hisie'; ro = 29 }
+          )
+          done = 'In the lighting room Shenime turned on you. Avant, who had served her, showed he had a conscience after all, and Hisie, with Loki and Nydhogg, healed you. Shenime and the Orb were gone.' }
+       @{ title = 'The Chief of Staff''s Body'
+          cond = 'ep14_2_mylord >= 33'; var = 'ep14_2_mylord'
+          parts = @(
+            @{ at = 31; name = 'Kardui (ecl_in03, 41, 90): I''ll go after Shenime!'; route = @('ecl_in03', 41, 90, 'Mayor Jun Kardui') }
+            @{ at = 32; name = 'A dead Laphine on Bifrost''s field (bif_fild02, 311, 91)'; route = @('bif_fild02', 311, 91, 'Dead Laphine') }
+            @{ at = 33; name = 'Kardui once more'; route = @('ecl_in03', 41, 90, 'Mayor Jun Kardui') }
+          )
+          route = @('ecl_in03', 41, 90, 'Mayor Jun Kardui')
+          now = 'RO quest: tell Kardui what happened and go after Shenime. A clue lies somewhere in Bifrost; bring back what you find.'
+          hint = @(
+            'RO pays 500,000 base and 400,000 job EXP at the end. The story of the Laphine goes on with the Magic Scholar in the Flame Basin (Side Quests, Flame Basin).'
+          )
+          spots = @(
+            @{ map = 'ecl_in03'; x = 41; y = 90; name = 'Mayor Jun Kardui'; ro = 30 }
+            @{ map = 'bif_fild02'; x = 311; y = 91; name = 'Dead Laphine'; ro = 31 }
+            @{ map = 'ecl_in03'; x = 41; y = 90; name = 'Mayor Jun Kardui'; ro = 32 }
+          )
+          done = 'On Bifrost''s field lay the real Chief of Staff, long dead: a creature of the king of demons had worn him as Shenime and fled to the rift. Kardui swore to stand against the king of demons, and blessed you as his friend.' }
      ) }
 
   # re/quests/quests_14_3_bis.txt, Dimensional Travel: ep14_3_newerabs 0 -> 24
   # (the Piled Rags in Morroc, Lv 140). Its start checks nothing else; 14.2's
   # own road goes on to the Flame Basin's Magic Scholar.
-  @{ episode = '14.3'; title = 'Dimensional Travel'; lv = 140; more = $true
+  @{ episode = '14.3'; title = 'Dimensional Travel'; lv = 140
      end = 'ep14_3_newerabs >= 24'
      intro = 'In the ruins of Morroc, something lies moaning under a pile of rags. Whoever it is has come a long way, and not only across the desert. This is Ragnarok''s own story: the Chronicle only shows the way, and RO gives its rewards.'
      steps = @(
@@ -1210,6 +1485,108 @@ $episodes = @(
             @{ map = 'morocc'; x = 138; y = 238; name = 'Piled Rags' }
           )
           done = 'Under the rags in Morroc lay a stranger, moaning, and with him your Dimensional Travel began.' }
+       @{ title = 'Tamarin'
+          cond = 'ep14_3_newerabs >= 5'; var = 'ep14_3_newerabs'
+          items = @(, @(528, 'Monster''s Feed', 1))
+          parts = @(
+            @{ at = 2; name = 'Give him a Monster''s Feed'; route = @('morocc', 138, 238, 'Piled Rags') }
+            @{ at = 5; name = 'Hear him out: Introduce yourself., Tell him the place., Accompany him.'; route = @('morocc', 138, 238, 'Piled Rags') }
+          )
+          route = @('morocc', 138, 238, 'Piled Rags')
+          now = 'RO quest: the stranger under the rags is starving. Bring him a Monster''s Feed, then hear his story and go along with him.'
+          hint = @(
+            'Monster''s Feed: the Item Collector in Alberta (alberta_in, 165, 96), the Tool Dealer in Hugel (hu_in01, 252, 368) and a Merchant in Lighthalzen (lhz_in03, 249, 24) sell it.'
+            'If you answer Say you don''t know. or Watch him., talk to him again.'
+          )
+          spots = @(
+            @{ map = 'alberta_in'; x = 165; y = 96; name = 'Item Collector: Monster''s Feed'; ro = 1 }
+            @{ map = 'morocc'; x = 138; y = 238; name = 'Piled Rags'; ro = 1 }
+            @{ map = 'morocc'; x = 138; y = 238; name = 'Tamarin'; ro = 2 }
+            @{ map = 'morocc'; x = 138; y = 238; name = 'Tamarin'; ro = 3 }
+            @{ map = 'morocc'; x = 138; y = 238; name = 'Tamarin'; ro = 4 }
+          )
+          done = 'The stranger was Tamarin, an adventurer who fell through a strange hole, lost his party and his belongings, and came back half-starved.' }
+       @{ title = 'Into the Dimensional Gap'
+          cond = 'ep14_3_newerabs >= 9'; var = 'ep14_3_newerabs'
+          parts = @(
+            @{ at = 7; name = 'Tamarin by the ruins (moc_ruins, 106, 140): I''m listening., then Tell him you want to tag along.'; route = @('moc_ruins', 106, 140, 'Tamarin') }
+            @{ at = 8; name = 'Tamarin in the Dimensional Gap (dali, 112, 69)'; route = @('dali', 112, 69, 'Tamarin') }
+            @{ at = 9; name = 'The Sand Mound in the Gap''s lower floor (dali02, 90, 62): Enter.'; route = @('dali02', 90, 62, 'Sand Mound') }
+          )
+          route = @('moc_ruins', 106, 140, 'Tamarin')
+          now = 'RO quest: Tamarin wants to go back where he fell. Tag along: meet him in the Dimensional Gap, then go down through the Sand Mound.'
+          hint = @(
+            'The Dimensional Gap (dali): a Transport Device at the rift (moc_fild22b, 222, 200) or in the Allied camp (mid_camp, 210, 292): Yes. Its lower floor (dali02) is through the passage at dali 64, 129.'
+            'The Sand Mound drops you into the Flame Basin (moro_vol); the mound beside where you land (137, 136) takes you back.'
+          )
+          spots = @(
+            @{ map = 'moc_ruins'; x = 106; y = 140; name = 'Tamarin'; ro = 5 }
+            @{ map = 'moc_ruins'; x = 106; y = 140; name = 'Tamarin'; ro = 6 }
+            @{ map = 'moc_fild22b'; x = 222; y = 200; name = 'Transport Device: Dimensional Gap'; ro = 7 }
+            @{ map = 'dali'; x = 112; y = 69; name = 'Tamarin'; ro = 7 }
+            @{ map = 'dali'; x = 64; y = 129; name = 'Way down to dali02'; ro = 8 }
+            @{ map = 'dali02'; x = 90; y = 62; name = 'Sand Mound: Enter.'; ro = 8 }
+          )
+          done = 'You followed Tamarin into the Dimensional Gap and down through a mound of sand, into a burning land nobody had mapped: the Flame Basin.' }
+       @{ title = 'Specimens for Barget'
+          cond = 'ep14_3_newerabs >= 17'; var = 'ep14_3_newerabs'
+          items = @(, @(6689, 'Burning Bug Skin', 50))
+          parts = @(
+            @{ at = 15; name = 'Tamarin in the Flame Basin (moro_vol, 132, 140)'; route = @('moro_vol', 132, 140, 'Tamarin') }
+            @{ at = 16; name = 'Barget Tiblack (moro_vol, 142, 131)'; route = @('moro_vol', 142, 131, 'Barget Tiblack') }
+            @{ at = 17; name = 'Kill 20 Fire Pits and bring Barget 50 Burning Bug Skins'; route = @('moro_vol', 142, 131, 'Barget Tiblack') }
+          )
+          route = @('moro_vol', 132, 140, 'Tamarin')
+          now = 'RO quest: in the Flame Basin, Tamarin takes you to Dr. Barget Tiblack, who studies its new insects. Kill 20 Fire Pits and bring her 50 Burning Bug Skins.'
+          hint = @(
+            'Burning Bug Skins drop from Fire Bugs (level 150, 10%) in the Flame Basin. The quest window (Alt+U) counts the Fire Pits.'
+          )
+          spots = @(
+            @{ map = 'moro_vol'; x = 132; y = 140; name = 'Tamarin'; ro = 9 }
+            @{ map = 'moro_vol'; x = 142; y = 131; name = 'Barget Tiblack'; ro = 15 }
+            @{ map = 'moro_vol'; x = 142; y = 131; name = 'Barget Tiblack'; ro = 16 }
+          )
+          done = 'Barget took her specimens. Next she wanted the stems of the Sonia that grow in the basin.' }
+       @{ title = 'Sonia Stems'
+          cond = 'ep14_3_newerabs >= 20'; var = 'ep14_3_newerabs'
+          items = @(, @(6690, 'Yummy Stem', 25))
+          parts = @(
+            @{ at = 18; name = 'Tamarin (moro_vol, 132, 140)'; route = @('moro_vol', 132, 140, 'Tamarin') }
+            @{ at = 19; name = 'Kill 25 Sonia, then meet Tamarin by the big rock (moro_vol, 198, 179)'; route = @('moro_vol', 198, 179, 'Tamarin') }
+            @{ at = 20; name = 'Barget (moro_vol, 142, 131)'; route = @('moro_vol', 142, 131, 'Barget Tiblack') }
+          )
+          route = @('moro_vol', 132, 140, 'Tamarin')
+          now = 'RO quest: with Tamarin, kill 25 Sonia and gather 25 Yummy Stems, meet him by the big rock in the middle of the basin, then show Barget the stems.'
+          hint = @(
+            'Yummy Stems drop from Sonia (10%). Keep all 25: the next step hands them over.'
+          )
+          spots = @(
+            @{ map = 'moro_vol'; x = 132; y = 140; name = 'Tamarin'; ro = 17 }
+            @{ map = 'moro_vol'; x = 198; y = 179; name = 'Tamarin by the big rock'; ro = 18 }
+            @{ map = 'moro_vol'; x = 142; y = 131; name = 'Barget Tiblack'; ro = 19 }
+          )
+          done = 'Barget had forgotten to warn you: the gas from the big rock puts everyone into a coma. You came back unharmed because you had eaten a Sonia stem, and the stems could save the patients the gas had struck.' }
+       @{ title = 'The Antidote'
+          cond = 'ep14_3_newerabs >= 24'; var = 'ep14_3_newerabs'
+          items = @(, @(6690, 'Yummy Stem', 25))
+          parts = @(
+            @{ at = 21; name = 'Instructor Rugen (moro_vol, 105, 71): Talk to him., Give Sonia stems.'; route = @('moro_vol', 105, 71, 'Instructor Rugen') }
+            @{ at = 22; name = 'The Intoxicated Patient beside him (104, 70)'; route = @('moro_vol', 104, 70, 'Intoxicated Patient') }
+            @{ at = 23; name = 'Instructor Rugen again'; route = @('moro_vol', 105, 71, 'Instructor Rugen') }
+            @{ at = 24; name = 'Barget (moro_vol, 142, 131): What cave?'; route = @('moro_vol', 142, 131, 'Barget Tiblack') }
+          )
+          route = @('moro_vol', 105, 71, 'Instructor Rugen')
+          now = 'RO quest: in the south of the Flame Basin, give Instructor Rugen the 25 Yummy Stems for the patients he looks after, see how one of them is doing, and take his report to Barget.'
+          hint = @(
+            'RO pays 1,500,000 job EXP at the end. Afterwards Tamarin by the big rock (198, 179) can take you into a newly found cave.'
+          )
+          spots = @(
+            @{ map = 'moro_vol'; x = 105; y = 71; name = 'Instructor Rugen'; ro = 20 }
+            @{ map = 'moro_vol'; x = 104; y = 70; name = 'Intoxicated Patient'; ro = 21 }
+            @{ map = 'moro_vol'; x = 105; y = 71; name = 'Instructor Rugen'; ro = 22 }
+            @{ map = 'moro_vol'; x = 142; y = 131; name = 'Barget Tiblack'; ro = 23 }
+          )
+          done = 'The Sonia stems brought the patients round. With them, Barget hopes to explore the cave the noxious gas comes from, and the first group has already gone in.' }
      ) }
 
   # re/quests/quests_15_1.txt and quests_15_2.txt, the Atnad excavation:
