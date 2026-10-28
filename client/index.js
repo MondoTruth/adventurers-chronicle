@@ -761,8 +761,11 @@ export default function init(parameters, api) {
                     return `<details class="qnow" data-k="${fk}"${opened(fk, true) ? ' open' : ''}><summary><span class="st going">${k === 1 ? 'Begins here' : 'Ongoing'}</span><span class="tag">RO quest</span><b>Step ${s.k}: ${escape(s.title)}.</b><span class="gist"> ${escape(s.now)}</span></summary>
                         <div class="qcard"><p>${escape(s.now)}</p>${sideObjective(sd, s, { ro: st.ro, have: st.have, hunt: -1 })}<p class="hint route-note"></p></div></details>`;
                 }
-                // Not reached yet: its name, and for the first step where it begins.
-                return `<div class="q locked"><b>Step ${s.k}: ${escape(s.title)}.</b>${s.k === 1 ? ` ${escape(s.now)}${s.route ? ` ${routeLink(s.route)}` : ''}` : ''}</div>`;
+                // Not reached yet: the whole step all the same, folded (concept v3:
+                // every step with its explanation and route, no "???").
+                const fk = `ep${i}-s${s.k}`;
+                return `<details class="how" data-k="${fk}"${opened(fk, false) ? ' open' : ''}><summary>Step ${s.k}: ${escape(s.title)}</summary>
+                    <div class="body"><p>${escape(s.now)}</p>${sideObjective(sd, s, { ro: -1, have: null, hunt: -1 })}<p class="hint route-note"></p></div></details>`;
             }).join('');
             const more = ep.more ? `<p class="hint">${beyond ? 'You are past the steps the Journal has written so far. ' : ''}The Journal guides ${n === 1 ? 'the first step' : `the first ${n} steps`} of this episode for now; the rest are still to be written. RO's quest window (Alt+U) follows the whole quest.</p>` : '';
             const fk = `ep${i}-${low ? 'lock' : done ? 'done' : going || beyond ? 'on' : 'new'}`;
