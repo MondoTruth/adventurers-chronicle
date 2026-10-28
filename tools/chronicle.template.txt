@@ -47,6 +47,7 @@ OnTimer2000:
 	goto OnTick;
 
 OnPCLoginEvent:
+	//@@EP_LOGIN@@
 	if (!CHRON_STEP) {
 		callfunc "F_ChronSet", 1;
 		dispbottom "[Chronicle] Rumours travel fast in Prontera: monsters are stirring all over Rune-Midgard, and the knights are hiring adventurers.", 0xAADDFF;
@@ -82,6 +83,7 @@ OnTick:
 	callfunc "F_ChronSideTick", .@map$;
 	//@@GUIDE_TICK@@
 	//@@MAIN_RO_TICK@@
+	//@@EP_TICK@@
 	.@g = CHRON_STEP;
 	if (.@g < 1 || .@g > $@chr_steps)
 		end;
@@ -289,7 +291,7 @@ OnCmd:
 				.@fail = callfunc("F_ChronSideFail", .@i);
 			.@sq$ += (.@i > 1 ? ";" : "") + .@k + ":" + .@h + ":" + .@hv$ + ":" + .@ro + ":" + (.@fail ? 1 : 0);
 		}
-		dispbottom "@@reply " + .@atcmd_parameters$[0] + " 1/1 " + .@g + "|" + BaseLevel + "|" + getarraysize(NPCP_WM$) + "|" + CHRON_SKIP + "|" + .@hunt + "|" + .@have$ + "|" + @chr_watch$ + "|" + callfunc("F_ChronCapped") + "|" + .@sq$ + "|" + CHRON_MVPK/*@@GUIDE_STATE@@*//*@@MAIN_RO_STATE@@*/;
+		dispbottom "@@reply " + .@atcmd_parameters$[0] + " 1/1 " + .@g + "|" + BaseLevel + "|" + getarraysize(NPCP_WM$) + "|" + CHRON_SKIP + "|" + .@hunt + "|" + .@have$ + "|" + @chr_watch$ + "|" + callfunc("F_ChronCapped") + "|" + .@sq$ + "|" + CHRON_MVPK/*@@GUIDE_STATE@@*//*@@MAIN_RO_STATE@@*//*@@EP_STATE@@*/;
 		end;
 	}
 	dispbottom "@@event chronicle open";

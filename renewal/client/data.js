@@ -3,1878 +3,321 @@ export default {
     "final":  175,
     "soon":  "Episodes 16 to 21 are in development, coming soon.",
     "chapters":  [
+
+                 ],
+    "episodes":  [
                      {
-                         "n":  1,
-                         "title":  "A New Adventurer",
-                         "range":  "1-15",
-                         "town":  "prontera",
-                         "townName":  "Prontera",
-                         "npc":  "Sir Leonhart",
-                         "x":  157,
-                         "y":  190,
-                         "intro":  "Prontera is the capital of the Rune-Midgard Kingdom, seat of King Tristan III and the Prontera Knights. Every adventurer\u0027s road starts somewhere, and yours starts here.",
+                         "episode":  "12",
+                         "title":  "Rebirth of Satan Morocc",
+                         "lv":  80,
+                         "intro":  "Satan Morocc, the demon sealed under Morroc for centuries, has broken free. His rising tore Morroc apart and twisted the Sograt Desert around it, and the Continental Guard of Prontera has closed the desert. Its messengers are asking renowned adventurers to join the fight. This is Ragnarok\u0027s own story: the Chronicle only shows the way, and RO gives its rewards.",
+                         "more":  false,
+                         "needs":  null,
+                         "party":  "Facing Satan Morocc (step 5) needs a party of at least 2 people online.",
                          "steps":  [
                                        {
-                                           "g":  1,
-                                           "id":  1,
-                                           "type":  "talk",
-                                           "lv":  1,
-                                           "title":  "The Knight at the Fountain",
-                                           "now":  "The Prontera Knights are looking for adventurers. Find Sir Leonhart near the central fountain of Prontera (157, 190).",
-                                           "done":  "You met Sir Leonhart of the Prontera Knights. He saw promise in you and offered you work: the fields around the capital are overrun.",
-                                           "map":  null,
-                                           "boss":  null,
+                                           "k":  1,
+                                           "type":  "ro",
+                                           "title":  "The Continental Guard",
+                                           "now":  "RO quest: the Continental Guard is recruiting against Satan Morocc. In ruined Morroc, volunteer with the Continental Official (176, 101): choose I\u0027m here to volunteer.",
+                                           "done":  "In ruined Morroc you volunteered for the Continental Guard, and the Official sent you to its chief, Balrog.",
                                            "route":  {
-                                                         "map":  "prontera",
-                                                         "x":  157,
-                                                         "y":  190,
-                                                         "name":  "Sir Leonhart"
+                                                         "map":  "morocc",
+                                                         "x":  176,
+                                                         "y":  101,
+                                                         "name":  "Continental Official"
                                                      },
-                                           "mobs":  [
-
-                                                    ],
                                            "items":  [
 
                                                      ],
                                            "hint":  [
-
+                                                        "No open road leads into Morroc: a Kafra Employee in Payon (175, 226) or Prontera (146, 89) teleports you there (Teleport Service, then Morocc, 1,200 zeny).",
+                                                        "The Continental Messengers in Prontera (164, 304), Geffen (128, 90), Payon (200, 113), Alberta (127, 64) and Al De Baran (135, 128) tell the story first. Talking to them is not needed."
                                                     ],
                                            "spots":  [
-
-                                                     ]
-                                       },
-                                       {
-                                           "g":  2,
-                                           "id":  2,
-                                           "type":  "hunt",
-                                           "lv":  2,
-                                           "title":  "Clearing the Southern Fields",
-                                           "now":  "Monsters around Prontera have grown bold. Hunt 20 Porings and 15 Lunatics in the fields south of Prontera (prt_fild08). Track the count in the quest window (Alt+U).",
-                                           "done":  "You thinned the Porings and Lunatics south of the capital. The farmers noticed, and so did Leonhart.",
-                                           "map":  "prt_fild08",
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "prt_fild08",
-                                                         "x":  170,
-                                                         "y":  375,
-                                                         "name":  "Hunting ground: prt_fild08"
-                                                     },
-                                           "mobs":  [
-                                                        {
-                                                            "name":  "Poring",
-                                                            "id":  1002,
-                                                            "count":  20
-                                                        },
-                                                        {
-                                                            "name":  "Lunatic",
-                                                            "id":  1063,
-                                                            "count":  15
-                                                        }
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       },
-                                       {
-                                           "g":  3,
-                                           "id":  3,
-                                           "type":  "deliver",
-                                           "lv":  6,
-                                           "title":  "Proof for the Knights",
-                                           "now":  "Leonhart needs proof for the Knight Captain. Bring him 10 Jellopy and 5 Clover in Prontera (157, 190).",
-                                           "done":  "You brought Leonhart his proof. He confided that the monsters are not only multiplying: they are coming up from below the city, out of the Culvert.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "prontera",
-                                                         "x":  157,
-                                                         "y":  190,
-                                                         "name":  "Sir Leonhart"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
                                                          {
-                                                             "name":  "Jellopy",
-                                                             "id":  909,
-                                                             "count":  10
+                                                             "map":  "payon",
+                                                             "x":  175,
+                                                             "y":  226,
+                                                             "name":  "Kafra: Teleport to Morocc (1,200 zeny)",
+                                                             "ro":  null
                                                          },
-                                                         {
-                                                             "name":  "Clover",
-                                                             "id":  705,
-                                                             "count":  5
-                                                         }
-                                                     ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       },
-                                       {
-                                           "g":  4,
-                                           "id":  4,
-                                           "type":  "boss",
-                                           "lv":  10,
-                                           "title":  "Into the Culvert",
-                                           "now":  "Volunteer with the Recruiter in Prontera, then enter the Prontera Culvert and reach its second level (prt_sewb2). Whatever is driving the Thief Bugs waits there.",
-                                           "done":  "Deep in the Culvert you slew the Culvert Brood Lord, a Thief Bug swollen far beyond its kind. Its body reeked of something old and wrong.",
-                                           "map":  "prt_sewb2",
-                                           "boss":  "Culvert Brood Lord",
-                                           "route":  {
-                                                         "map":  "prt_in",
-                                                         "x":  88,
-                                                         "y":  105,
-                                                         "name":  "Culvert Recruiter: prt_in"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "Prontera: go into the north-west building (door at 45, 346). The Recruiter stands inside (88, 105).",
-                                                        "Talk to the Recruiter and choose Volunteer. You get a few potions, and the Recruiter can send you straight to the Culvert entrance (now and any time later).",
-                                                        "Field west of Prontera (prt_fild05): the Culvert Guardian (270, 212) lets volunteers in.",
-                                                        "Culvert level 1: take the stairs in the east (188, 247) down to level 2. The Culvert Brood Lord appears a few seconds after you arrive."
-                                                    ],
-                                           "spots":  [
                                                          {
                                                              "map":  "prontera",
-                                                             "x":  45,
-                                                             "y":  346,
-                                                             "name":  "Door to the Recruiter (north-west)",
-                                                             "sw":  null
+                                                             "x":  146,
+                                                             "y":  89,
+                                                             "name":  "Kafra: Teleport to Morocc (1,200 zeny)",
+                                                             "ro":  null
                                                          },
                                                          {
-                                                             "map":  "prt_in",
-                                                             "x":  88,
-                                                             "y":  105,
-                                                             "name":  "Recruiter: choose Volunteer",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "prt_fild05",
-                                                             "x":  270,
-                                                             "y":  212,
-                                                             "name":  "Culvert Guardian (the way in)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "prt_sewb1",
-                                                             "x":  188,
-                                                             "y":  247,
-                                                             "name":  "Stairs down to level 2",
-                                                             "sw":  null
+                                                             "map":  "morocc",
+                                                             "x":  176,
+                                                             "y":  101,
+                                                             "name":  "Continental Official",
+                                                             "ro":  null
                                                          }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  5,
-                                           "id":  5,
-                                           "type":  "report",
-                                           "lv":  13,
-                                           "title":  "Report to Leonhart",
-                                           "now":  "Tell Sir Leonhart in Prontera (157, 190) what you found in the Culvert.",
-                                           "done":  "Leonhart listened in silence. Reports like yours are arriving from all over Rune-Midgard: monsters stirring where they slept for centuries. He sent you south to Payon, whose archers asked the crown for help.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "prontera",
-                                                         "x":  157,
-                                                         "y":  190,
-                                                         "name":  "Sir Leonhart"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
                                                      ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       }
-                                   ]
-                     },
-                     {
-                         "n":  2,
-                         "title":  "Whispers of Payon",
-                         "range":  "15-35",
-                         "town":  "payon",
-                         "townName":  "Payon",
-                         "npc":  "Captain Hwarang",
-                         "x":  154,
-                         "y":  182,
-                         "intro":  "Payon is a village of archers in the forested mountains, built beside a cave where its ancestors were laid to rest.",
-                         "steps":  [
-                                       {
-                                           "g":  6,
-                                           "id":  6,
-                                           "type":  "talk",
-                                           "lv":  15,
-                                           "title":  "The Archer Captain",
-                                           "now":  "Travel south to Payon, the mountain village of archers, and find Captain Hwarang (154, 182).",
-                                           "done":  "Captain Hwarang told you of the Payon Cave, a sacred burial ground. For weeks the dead have been walking out of it at night.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "payon",
-                                                         "x":  154,
-                                                         "y":  182,
-                                                         "name":  "Captain Hwarang"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
+                                           "parts":  [
 
                                                      ]
                                        },
                                        {
-                                           "g":  7,
-                                           "id":  7,
-                                           "type":  "hunt",
-                                           "lv":  17,
-                                           "title":  "The Restless Dead",
-                                           "now":  "Hunt 25 Zombies and 20 Skeletons on the first level of the Payon Cave (pay_dun00), north of the Archer Village.",
-                                           "done":  "You put the restless dead of the cave\u0027s first level back to rest, for now.",
-                                           "map":  "pay_dun00",
-                                           "boss":  null,
+                                           "k":  2,
+                                           "type":  "ro",
+                                           "title":  "Chief Balrog",
+                                           "now":  "RO quest: Chief Balrog (morocc, 159, 113) leads the Continental Guard. Ask to join, and do not take no for an answer.",
+                                           "done":  "Balrog turned you away three times, then gave you a test: the Guard\u0027s bonfires are short of firewood, and the monsters of the Magma Dungeon carry flames that never go out.",
                                            "route":  {
-                                                         "map":  "pay_dun00",
-                                                         "x":  21,
+                                                         "map":  "morocc",
+                                                         "x":  159,
+                                                         "y":  113,
+                                                         "name":  "Chief Balrog"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "Choose I want to join the Continental Guard., then Ask Again, You\u0027ve just got to let me join!, Give me a chance to prove myself! and No problem."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "morocc",
+                                                             "x":  159,
+                                                             "y":  113,
+                                                             "name":  "Chief Balrog",
+                                                             "ro":  null
+                                                         }
+                                                     ],
+                                           "parts":  [
+
+                                                     ]
+                                       },
+                                       {
+                                           "k":  3,
+                                           "type":  "ro",
+                                           "title":  "Everlasting Flames",
+                                           "now":  "RO quest: bring Chief Balrog in Morroc (159, 113) 30 Live Coals for the Guard\u0027s bonfires.",
+                                           "done":  "Balrog counted all thirty coals and was still not satisfied: the Republic\u0027s mercenaries in the Guard are wilting in the desert heat.",
+                                           "route":  {
+                                                         "map":  "yuno_fild03",
+                                                         "x":  32,
+                                                         "y":  139,
+                                                         "name":  "Entrance to the Magma Dungeon"
+                                                     },
+                                           "items":  [
+                                                         {
+                                                             "name":  "Live Coal",
+                                                             "id":  7098,
+                                                             "count":  30
+                                                         }
+                                                     ],
+                                           "hint":  [
+                                                        "Live Coals drop from Blazers (level 101) on both floors of the Magma Dungeon (mag_dun01 and mag_dun02). Its entrance is on the field south of Juno (yuno_fild03, 32, 139).",
+                                                        "Then back to Morroc: a Kafra Employee in Payon (175, 226) or Prontera (146, 89) teleports you there."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "yuno_fild03",
+                                                             "x":  32,
+                                                             "y":  139,
+                                                             "name":  "Entrance to the Magma Dungeon",
+                                                             "ro":  null
+                                                         },
+                                                         {
+                                                             "map":  "payon",
+                                                             "x":  175,
+                                                             "y":  226,
+                                                             "name":  "Kafra: Teleport to Morocc (1,200 zeny)",
+                                                             "ro":  null
+                                                         },
+                                                         {
+                                                             "map":  "prontera",
+                                                             "x":  146,
+                                                             "y":  89,
+                                                             "name":  "Kafra: Teleport to Morocc (1,200 zeny)",
+                                                             "ro":  null
+                                                         },
+                                                         {
+                                                             "map":  "morocc",
+                                                             "x":  159,
+                                                             "y":  113,
+                                                             "name":  "Chief Balrog",
+                                                             "ro":  null
+                                                         }
+                                                     ],
+                                           "parts":  [
+
+                                                     ]
+                                       },
+                                       {
+                                           "k":  4,
+                                           "type":  "ro",
+                                           "title":  "Hearts of Ice",
+                                           "now":  "RO quest: bring Chief Balrog in Morroc (159, 113) 50 Glacial Hearts to cool the Republic\u0027s mercenaries.",
+                                           "done":  "Balrog made you a member of the Continental Guard and gave you its Certificate. Your mission: Satan Morocc himself, on the desert field he has claimed.",
+                                           "route":  {
+                                                         "map":  "ra_fild01",
+                                                         "x":  233,
+                                                         "y":  333,
+                                                         "name":  "Entrance to the Ice Cave"
+                                                     },
+                                           "items":  [
+                                                         {
+                                                             "name":  "Glacial Heart",
+                                                             "id":  7561,
+                                                             "count":  50
+                                                         }
+                                                     ],
+                                           "hint":  [
+                                                        "Glacial Hearts drop from the monsters of the Ice Cave near Rachel: Siromas (level 98), Snowiers (103), Gazetis (106) and Ice Titans (110). Its entrance is on the field east of Rachel (ra_fild01, 233, 333).",
+                                                        "Then back to Morroc: a Kafra Employee in Payon (175, 226) or Prontera (146, 89) teleports you there."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "ra_fild01",
+                                                             "x":  233,
+                                                             "y":  333,
+                                                             "name":  "Entrance to the Ice Cave",
+                                                             "ro":  null
+                                                         },
+                                                         {
+                                                             "map":  "payon",
+                                                             "x":  175,
+                                                             "y":  226,
+                                                             "name":  "Kafra: Teleport to Morocc (1,200 zeny)",
+                                                             "ro":  null
+                                                         },
+                                                         {
+                                                             "map":  "prontera",
+                                                             "x":  146,
+                                                             "y":  89,
+                                                             "name":  "Kafra: Teleport to Morocc (1,200 zeny)",
+                                                             "ro":  null
+                                                         },
+                                                         {
+                                                             "map":  "morocc",
+                                                             "x":  159,
+                                                             "y":  113,
+                                                             "name":  "Chief Balrog",
+                                                             "ro":  null
+                                                         }
+                                                     ],
+                                           "parts":  [
+
+                                                     ]
+                                       },
+                                       {
+                                           "k":  5,
+                                           "type":  "ro",
+                                           "title":  "Satan Morocc",
+                                           "now":  "RO quest: with your party, face Satan Morocc on the desert field he has claimed (moc_fild21), and bring back proof of his defeat.",
+                                           "done":  "Your party drove Satan Morocc back into the time-space gap, and you took a piece of his skin as proof.",
+                                           "route":  {
+                                                         "map":  "moc_fild20",
+                                                         "x":  38,
                                                          "y":  183,
-                                                         "name":  "Hunting ground: pay_dun00"
+                                                         "name":  "Continental Guard: Enter the Field to Investigate"
                                                      },
-                                           "mobs":  [
-                                                        {
-                                                            "name":  "Zombie",
-                                                            "id":  1015,
-                                                            "count":  25
-                                                        },
-                                                        {
-                                                            "name":  "Skeleton",
-                                                            "id":  1076,
-                                                            "count":  20
-                                                        }
-                                                    ],
                                            "items":  [
 
                                                      ],
                                            "hint":  [
-
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       },
-                                       {
-                                           "g":  8,
-                                           "id":  8,
-                                           "type":  "deliver",
-                                           "lv":  22,
-                                           "title":  "Bones and Nails",
-                                           "now":  "The village shaman wants to study what raises the dead. Bring Captain Hwarang 10 Decayed Nails and 5 Skel-Bones in Payon (154, 182).",
-                                           "done":  "The shaman found traces of an old binding on the bones: a seal laid long ago to keep the cave\u0027s spirits asleep. It is fraying.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "payon",
-                                                         "x":  154,
-                                                         "y":  182,
-                                                         "name":  "Captain Hwarang"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-                                                         {
-                                                             "name":  "Decayed Nail",
-                                                             "id":  957,
-                                                             "count":  10
-                                                         },
-                                                         {
-                                                             "name":  "Skel-Bone",
-                                                             "id":  932,
-                                                             "count":  5
-                                                         }
-                                                     ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       },
-                                       {
-                                           "g":  9,
-                                           "id":  9,
-                                           "type":  "boss",
-                                           "lv":  28,
-                                           "title":  "The Captain Below",
-                                           "now":  "Descend to the second level of the Payon Cave (pay_dun01). The soldiers buried there once had a commander; if he has risen, he must fall again.",
-                                           "done":  "You defeated the Restless Cave Captain, an ancient soldier still loyal to a war long forgotten. As he crumbled, he whispered of the seals breaking in the desert.",
-                                           "map":  "pay_dun01",
-                                           "boss":  "Restless Cave Captain",
-                                           "route":  {
-                                                         "map":  "pay_dun01",
-                                                         "x":  19,
-                                                         "y":  33,
-                                                         "name":  "Restless Cave Captain: pay_dun01"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       },
-                                       {
-                                           "g":  10,
-                                           "id":  10,
-                                           "type":  "report",
-                                           "lv":  32,
-                                           "title":  "Words of the Dead",
-                                           "now":  "Tell Captain Hwarang in Payon (154, 182) what the dead soldier said.",
-                                           "done":  "Hwarang paled. Payon\u0027s elders remember the great seal beneath Morroc, where a demon king was bound long ago, until he tore free and left the city in ruins. He sent you across the desert to Morroc.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "payon",
-                                                         "x":  154,
-                                                         "y":  182,
-                                                         "name":  "Captain Hwarang"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       }
-                                   ]
-                     },
-                     {
-                         "n":  3,
-                         "title":  "Sands of Morroc",
-                         "range":  "35-55",
-                         "town":  "morocc",
-                         "townName":  "Morroc",
-                         "npc":  "Nafisa the Seer",
-                         "x":  156,
-                         "y":  286,
-                         "intro":  "Morroc was the desert city of the Sograt, home to thieves and merchants. When the demon king bound beneath it broke free, the city fell into ruin; its people still live among the rubble.",
-                         "steps":  [
-                                       {
-                                           "g":  11,
-                                           "id":  11,
-                                           "type":  "talk",
-                                           "lv":  35,
-                                           "title":  "The Desert Seer",
-                                           "now":  "Travel to Morroc, now a city in ruins (a Kafra Employee in Payon can teleport you there), and find Nafisa the seer in the north of the city (156, 286).",
-                                           "done":  "Nafisa read your fortune and frowned: your thread is knotted around the old seals of Rune-Midgard. She would say no more, but agreed to help, because the desert has been trembling.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "payon",
-                                                         "x":  175,
-                                                         "y":  226,
-                                                         "name":  "Kafra in Payon: Teleport to Morocc"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "No open road leads into Morroc: the Continental Guard has closed the desert around it. Talk to a Kafra Employee in Payon (175, 226), choose Teleport Service, then Morocc (1,200 zeny). The Kafras in Prontera can send you too.",
-                                                        "In Morroc, Nafisa stands in the north of the city (156, 286). She is marked on your minimap when you arrive.",
-                                                        "Walked into the closed desert (moc_fild20) anyway? Talk to a Continental Guard at its edge and choose Ask What Happened, then Ask About Guard\u0027s Location, then Please do. He sends you to Morroc for free."
+                                                        "Leave Morroc by its east gate (299, 207). A Continental Guard there (moc_fild20, 38, 183) sends members of the Guard onto the field: choose Enter the Field to Investigate. Keep the Continental Guard Certificate in your bag and come in a party of at least 2 people online. Whether party bots count here has not been tested.",
+                                                        "On moc_fild21, the Group of Evil (178, 239) calls up Satan Morocc: level 151, 7,000,000 HP. If he is not defeated within 90 minutes, he leaves.",
+                                                        "When he falls, touch the Time-Space Gap (177, 239) within 30 minutes: you pick up a Piece of Morocc Skin. After that the field stays shut for 6 hours; restarting the game opens it again."
                                                     ],
                                            "spots":  [
                                                          {
                                                              "map":  "morocc",
-                                                             "x":  156,
-                                                             "y":  286,
-                                                             "name":  "Nafisa the Seer",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "payon",
-                                                             "x":  175,
-                                                             "y":  226,
-                                                             "name":  "Kafra: Teleport to Morocc (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "prontera",
-                                                             "x":  146,
-                                                             "y":  89,
-                                                             "name":  "Kafra: Teleport to Morocc (1,200 zeny)",
-                                                             "sw":  null
+                                                             "x":  299,
+                                                             "y":  207,
+                                                             "name":  "East gate of Morroc",
+                                                             "ro":  null
                                                          },
                                                          {
                                                              "map":  "moc_fild20",
-                                                             "x":  203,
-                                                             "y":  336,
-                                                             "name":  "Continental Guard: a free ride to Morroc",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  12,
-                                           "id":  12,
-                                           "type":  "hunt",
-                                           "lv":  40,
-                                           "title":  "Beneath the Sphinx",
-                                           "now":  "Hunt 30 Drainliars and 10 Matyrs on the first level of the Sphinx (in_sphinx1), a short walk west of Morroc.",
-                                           "done":  "The creatures of the sand were fleeing the Sphinx, and the things inside it were restless too. You thinned them out.",
-                                           "map":  "in_sphinx1",
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "in_sphinx1",
-                                                         "x":  288,
-                                                         "y":  9,
-                                                         "name":  "Hunting ground: in_sphinx1"
-                                                     },
-                                           "mobs":  [
-                                                        {
-                                                            "name":  "Drainliar",
-                                                            "id":  1111,
-                                                            "count":  30
-                                                        },
-                                                        {
-                                                            "name":  "Matyr",
-                                                            "id":  1146,
-                                                            "count":  10
-                                                        }
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "Leave Morroc by its west gate (24, 164). In the desert beyond (moc_fild19), the entrance to the Sphinx stands near the middle of the map (98, 99).",
-                                                        "Requiems and Zeroms (level 70) roam the same level and attack on sight. Bring potions, and keep close to the entrance if they swarm you."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "morocc",
-                                                             "x":  26,
-                                                             "y":  164,
-                                                             "name":  "West gate: the way to the Sphinx",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild19",
-                                                             "x":  100,
-                                                             "y":  99,
-                                                             "name":  "Entrance to the Sphinx",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "payon",
-                                                             "x":  175,
-                                                             "y":  226,
-                                                             "name":  "Kafra: Teleport to Morocc (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "prontera",
-                                                             "x":  146,
-                                                             "y":  89,
-                                                             "name":  "Kafra: Teleport to Morocc (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild20",
-                                                             "x":  203,
-                                                             "y":  336,
-                                                             "name":  "Continental Guard: a free ride to Morroc",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  13,
-                                           "id":  13,
-                                           "type":  "deliver",
-                                           "lv":  44,
-                                           "title":  "Omens of the Desert",
-                                           "now":  "Nafisa reads omens in what the Sphinx\u0027s creatures carry. Bring her 8 Wings of Red Bat and 5 Animal Skins in Morroc (156, 286).",
-                                           "done":  "The omens spoke of the Pyramids, the tomb of Osiris, whose priests sealed the desert\u0027s evils. The priests are awake again.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "morocc",
-                                                         "x":  156,
-                                                         "y":  286,
-                                                         "name":  "Nafisa the Seer"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-                                                         {
-                                                             "name":  "Wing of Red Bat",
-                                                             "id":  7006,
-                                                             "count":  8
-                                                         },
-                                                         {
-                                                             "name":  "Animal Skin",
-                                                             "id":  919,
-                                                             "count":  5
-                                                         }
-                                                     ],
-                                           "hint":  [
-                                                        "Away from Morroc? No open road leads back in: a Kafra Employee in Payon (175, 226) or Prontera (146, 89) can teleport you to Morocc (1,200 zeny)."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "payon",
-                                                             "x":  175,
-                                                             "y":  226,
-                                                             "name":  "Kafra: Teleport to Morocc (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "prontera",
-                                                             "x":  146,
-                                                             "y":  89,
-                                                             "name":  "Kafra: Teleport to Morocc (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild20",
-                                                             "x":  203,
-                                                             "y":  336,
-                                                             "name":  "Continental Guard: a free ride to Morroc",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  14,
-                                           "id":  14,
-                                           "type":  "boss",
-                                           "lv":  50,
-                                           "title":  "The Pyramid\u0027s Priest",
-                                           "now":  "Enter the Pyramids northwest of Morroc and reach the third level (moc_pryd03).",
-                                           "done":  "You struck down the Bound Priest of Osiris, a mummy still chanting the ritual of a seal it could no longer hold.",
-                                           "map":  "moc_pryd03",
-                                           "boss":  "Bound Priest of Osiris",
-                                           "route":  {
-                                                         "map":  "moc_pryd03",
-                                                         "x":  100,
-                                                         "y":  92,
-                                                         "name":  "Bound Priest of Osiris: moc_pryd03"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "Away from Morroc? No open road leads back in: a Kafra Employee in Payon (175, 226) or Prontera (146, 89) can teleport you to Morocc (1,200 zeny)."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "payon",
-                                                             "x":  175,
-                                                             "y":  226,
-                                                             "name":  "Kafra: Teleport to Morocc (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "prontera",
-                                                             "x":  146,
-                                                             "y":  89,
-                                                             "name":  "Kafra: Teleport to Morocc (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild20",
-                                                             "x":  203,
-                                                             "y":  336,
-                                                             "name":  "Continental Guard: a free ride to Morroc",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  15,
-                                           "id":  15,
-                                           "type":  "report",
-                                           "lv":  53,
-                                           "title":  "The Seer\u0027s Warning",
-                                           "now":  "Return to Nafisa in Morroc (156, 286) and tell her about the priest.",
-                                           "done":  "Nafisa confirmed it: the seals across Rune-Midgard are weakening together. The oldest of them stands beneath the tower of Geffen, the city of magic. She sent you there with a letter for the magisters.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "morocc",
-                                                         "x":  156,
-                                                         "y":  286,
-                                                         "name":  "Nafisa the Seer"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "Away from Morroc? No open road leads back in: a Kafra Employee in Payon (175, 226) or Prontera (146, 89) can teleport you to Morocc (1,200 zeny)."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "payon",
-                                                             "x":  175,
-                                                             "y":  226,
-                                                             "name":  "Kafra: Teleport to Morocc (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "prontera",
-                                                             "x":  146,
-                                                             "y":  89,
-                                                             "name":  "Kafra: Teleport to Morocc (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild20",
-                                                             "x":  203,
-                                                             "y":  336,
-                                                             "name":  "Continental Guard: a free ride to Morroc",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       }
-                                   ]
-                     },
-                     {
-                         "n":  4,
-                         "title":  "Tower of Geffen",
-                         "range":  "55-75",
-                         "town":  "geffen",
-                         "townName":  "Geffen",
-                         "npc":  "Magister Ivo",
-                         "x":  206,
-                         "y":  116,
-                         "intro":  "Geffen, the city of magic, is built around a great tower. Every mage in the kingdom studied there.",
-                         "steps":  [
-                                       {
-                                           "g":  16,
-                                           "id":  16,
-                                           "type":  "talk",
-                                           "lv":  55,
-                                           "title":  "A Letter for the Magister",
-                                           "now":  "Bring Nafisa\u0027s letter to Magister Ivo in Geffen (206, 116). From Morroc, a Kafra Employee can teleport you to Prontera; Geffen is a walk west from there.",
-                                           "done":  "Ivo read the letter twice. Beneath Geffen\u0027s tower lies the gate to Geffenia, the sealed realm of demons. The orcs to the west have grown savage, and Ivo suspects why.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "geffen",
-                                                         "x":  206,
-                                                         "y":  116,
-                                                         "name":  "Magister Ivo"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "No open road leads out of Morroc. Talk to the Kafra Employee in the north of Morroc (160, 258), choose Teleport Service, then Prontera (1,200 zeny).",
-                                                        "From Prontera, the Route link leads west to Geffen. Magister Ivo stands near the east gate (206, 116) and is marked on your minimap when you arrive."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "morocc",
-                                                             "x":  160,
-                                                             "y":  258,
-                                                             "name":  "Kafra: Teleport to Prontera (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "morocc",
-                                                             "x":  156,
-                                                             "y":  97,
-                                                             "name":  "Kafra (south): Teleport to Prontera (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild20",
-                                                             "x":  203,
-                                                             "y":  336,
-                                                             "name":  "Continental Guard: back to Morroc (then the Kafra)",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  17,
-                                           "id":  17,
-                                           "type":  "hunt",
-                                           "lv":  56,
-                                           "title":  "The Orc Warband",
-                                           "now":  "Hunt 30 Zenorcs and 20 Orc Skeletons on the second level of the Orc Dungeon (orcsdun02), beneath the orc village west of Geffen.",
-                                           "done":  "You broke the orc warband. Its shamans had been drawing power from something below the ground.",
-                                           "map":  "orcsdun02",
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "orcsdun02",
-                                                         "x":  180,
-                                                         "y":  17,
-                                                         "name":  "Hunting ground: orcsdun02"
-                                                     },
-                                           "mobs":  [
-                                                        {
-                                                            "name":  "Zenorc",
-                                                            "id":  1177,
-                                                            "count":  30
-                                                        },
-                                                        {
-                                                            "name":  "Orc Skeleton",
-                                                            "id":  1152,
-                                                            "count":  20
-                                                        }
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "The Kafra Employees in Geffen can teleport you to the Orc Dungeon (1,700 zeny), or the Route link walks you there."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "morocc",
-                                                             "x":  160,
-                                                             "y":  258,
-                                                             "name":  "Kafra: Teleport to Prontera (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "morocc",
-                                                             "x":  156,
-                                                             "y":  97,
-                                                             "name":  "Kafra (south): Teleport to Prontera (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild20",
-                                                             "x":  203,
-                                                             "y":  336,
-                                                             "name":  "Continental Guard: back to Morroc (then the Kafra)",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  18,
-                                           "id":  18,
-                                           "type":  "deliver",
-                                           "lv":  60,
-                                           "title":  "Trophies of War",
-                                           "now":  "Bring Magister Ivo 10 Zenorc\u0027s Fangs and 6 Orc\u0027s Fangs from the orcs, in Geffen (206, 116).",
-                                           "done":  "The trophies hummed with dark mana, the same mana that leaks from Geffenia. The seal under the tower is cracking.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "geffen",
-                                                         "x":  206,
-                                                         "y":  116,
-                                                         "name":  "Magister Ivo"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-                                                         {
-                                                             "name":  "Zenorc\u0027s Fang",
-                                                             "id":  1044,
-                                                             "count":  10
-                                                         },
-                                                         {
-                                                             "name":  "Orc\u0027s Fang",
-                                                             "id":  922,
-                                                             "count":  6
-                                                         }
-                                                     ],
-                                           "hint":  [
-                                                        "Still in Morroc? No open road leads out: its Kafra Employee (160, 258) can teleport you to Prontera (1,200 zeny), and Geffen is a walk west from there."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "morocc",
-                                                             "x":  160,
-                                                             "y":  258,
-                                                             "name":  "Kafra: Teleport to Prontera (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "morocc",
-                                                             "x":  156,
-                                                             "y":  97,
-                                                             "name":  "Kafra (south): Teleport to Prontera (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild20",
-                                                             "x":  203,
-                                                             "y":  336,
-                                                             "name":  "Continental Guard: back to Morroc (then the Kafra)",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  19,
-                                           "id":  19,
-                                           "type":  "boss",
-                                           "lv":  65,
-                                           "title":  "Beneath the Tower",
-                                           "now":  "Enter the Geffen Dungeon beneath the tower and reach its second level (gef_dun01).",
-                                           "done":  "You defeated the Nightmare of the Tower, a demon-touched steed that had slipped through the cracks of the seal.",
-                                           "map":  "gef_dun01",
-                                           "boss":  "Nightmare of the Tower",
-                                           "route":  {
-                                                         "map":  "gef_dun01",
-                                                         "x":  115,
-                                                         "y":  236,
-                                                         "name":  "Nightmare of the Tower: gef_dun01"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "Still in Morroc? No open road leads out: its Kafra Employee (160, 258) can teleport you to Prontera (1,200 zeny), and Geffen is a walk west from there."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "morocc",
-                                                             "x":  160,
-                                                             "y":  258,
-                                                             "name":  "Kafra: Teleport to Prontera (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "morocc",
-                                                             "x":  156,
-                                                             "y":  97,
-                                                             "name":  "Kafra (south): Teleport to Prontera (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild20",
-                                                             "x":  203,
-                                                             "y":  336,
-                                                             "name":  "Continental Guard: back to Morroc (then the Kafra)",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  20,
-                                           "id":  20,
-                                           "type":  "report",
-                                           "lv":  70,
-                                           "title":  "The Fallen Kingdom",
-                                           "now":  "Report to Magister Ivo in Geffen (206, 116).",
-                                           "done":  "Ivo will reinforce the seal, but he warned that Geffen\u0027s wards were built with knowledge from Glast Heim, the fallen kingdom. He sent you to the knights of Al De Baran to learn what happened there.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "geffen",
-                                                         "x":  206,
-                                                         "y":  116,
-                                                         "name":  "Magister Ivo"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "Still in Morroc? No open road leads out: its Kafra Employee (160, 258) can teleport you to Prontera (1,200 zeny), and Geffen is a walk west from there."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "morocc",
-                                                             "x":  160,
-                                                             "y":  258,
-                                                             "name":  "Kafra: Teleport to Prontera (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "morocc",
-                                                             "x":  156,
-                                                             "y":  97,
-                                                             "name":  "Kafra (south): Teleport to Prontera (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild20",
-                                                             "x":  203,
-                                                             "y":  336,
-                                                             "name":  "Continental Guard: back to Morroc (then the Kafra)",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       }
-                                   ]
-                     },
-                     {
-                         "n":  5,
-                         "title":  "Ghosts of Glast Heim",
-                         "range":  "75-90",
-                         "town":  "aldebaran",
-                         "townName":  "Al De Baran",
-                         "npc":  "Sir Aldric",
-                         "x":  142,
-                         "y":  63,
-                         "intro":  "Al De Baran is the city of canals and the great Clock Tower, north of Prontera and close to the ruins of Glast Heim.",
-                         "steps":  [
-                                       {
-                                           "g":  21,
-                                           "id":  21,
-                                           "type":  "talk",
-                                           "lv":  75,
-                                           "title":  "The Last Knight",
-                                           "now":  "Go to Al De Baran, the city of the Clock Tower, and find Sir Aldric near the south gate (142, 63).",
-                                           "done":  "Sir Aldric is the last of an order that once guarded Glast Heim. He told you how the kingdom fell: its king bargained with darkness, and the Dark Lord answered.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "aldebaran",
-                                                         "x":  142,
-                                                         "y":  63,
-                                                         "name":  "Sir Aldric"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       },
-                                       {
-                                           "g":  22,
-                                           "id":  22,
-                                           "type":  "hunt",
-                                           "lv":  76,
-                                           "title":  "Time Out of Joint",
-                                           "now":  "Strange things walk the Clock Tower. Hunt 30 Ridewords and 30 Punks on its first floor (c_tower1).",
-                                           "done":  "The Clock Tower\u0027s haunted books and spores fell silent. Aldric said the tower was built to keep time with the seals.",
-                                           "map":  "c_tower1",
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "c_tower1",
-                                                         "x":  199,
-                                                         "y":  159,
-                                                         "name":  "Hunting ground: c_tower1"
-                                                     },
-                                           "mobs":  [
-                                                        {
-                                                            "name":  "Rideword",
-                                                            "id":  1195,
-                                                            "count":  30
-                                                        },
-                                                        {
-                                                            "name":  "Punk",
-                                                            "id":  1199,
-                                                            "count":  30
-                                                        }
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       },
-                                       {
-                                           "g":  23,
-                                           "id":  23,
-                                           "type":  "deliver",
-                                           "lv":  80,
-                                           "title":  "Pages of the Past",
-                                           "now":  "Bring Sir Aldric 5 Worn Out Pages and 5 Mould Powder in Al De Baran (142, 63); he can piece together the old records.",
-                                           "done":  "The pages spoke of Glast Heim\u0027s knights, cursed to guard their ruined halls forever.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "aldebaran",
-                                                         "x":  142,
-                                                         "y":  63,
-                                                         "name":  "Sir Aldric"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-                                                         {
-                                                             "name":  "Worn Out Page",
-                                                             "id":  1097,
-                                                             "count":  5
-                                                         },
-                                                         {
-                                                             "name":  "Mould Powder",
-                                                             "id":  7001,
-                                                             "count":  5
-                                                         }
-                                                     ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       },
-                                       {
-                                           "g":  24,
-                                           "id":  24,
-                                           "type":  "boss",
-                                           "lv":  84,
-                                           "title":  "The Churchyard",
-                                           "now":  "Travel to Glast Heim, west of Geffen, and enter its churchyard (gl_chyard).",
-                                           "done":  "You laid to rest the Wraith of the Fallen Order, once a knight of Aldric\u0027s own order. Before it faded, it spoke of the machines beneath the floating city.",
-                                           "map":  "gl_chyard",
-                                           "boss":  "Wraith of the Fallen Order",
-                                           "route":  {
-                                                         "map":  "gl_chyard",
-                                                         "x":  147,
-                                                         "y":  284,
-                                                         "name":  "Wraith of the Fallen Order: gl_chyard"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       },
-                                       {
-                                           "g":  25,
-                                           "id":  25,
-                                           "type":  "report",
-                                           "lv":  88,
-                                           "title":  "A Knight\u0027s Salute",
-                                           "now":  "Tell Sir Aldric in Al De Baran (142, 63) what the wraith said.",
-                                           "done":  "Aldric saluted you as a knight would. The machines the wraith spoke of lie in the Schwarzwald Republic, and an old friend of his, the foreman of the Einbech mine, has written of crystals that hum in the dark. Aldric sent you to him.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "aldebaran",
-                                                         "x":  142,
-                                                         "y":  63,
-                                                         "name":  "Sir Aldric"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       }
-                                   ]
-                     },
-                     {
-                         "n":  6,
-                         "title":  "Smoke over the Schwarzwald",
-                         "range":  "90-105",
-                         "town":  "einbech",
-                         "townName":  "Einbech",
-                         "npc":  "Foreman Gustav",
-                         "x":  142,
-                         "y":  244,
-                         "intro":  "Einbech is the mining town of the Schwarzwald Republic, a short train ride from Einbroch, the city of steel and smoke. Its mine runs deep beneath the town.",
-                         "steps":  [
-                                       {
-                                           "g":  26,
-                                           "id":  901,
-                                           "type":  "talk",
-                                           "lv":  90,
-                                           "title":  "The Foreman of Einbech",
-                                           "now":  "Travel to Einbech, the mining town of the Schwarzwald Republic, and find Foreman Gustav by the mine entrance (142, 244).",
-                                           "done":  "Gustav runs the Einbech mine. His miners broke into a seam of black crystal deep under the town; since then poison fills the tunnels and the miners who died there long ago walk again.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "einbech",
-                                                         "x":  142,
-                                                         "y":  244,
-                                                         "name":  "Foreman Gustav"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "From Al De Baran, a Kafra Employee (143, 119) can teleport you to Juno (1,200 zeny).",
-                                                        "In Juno, enter the airport in the west of the city (53, 214). Pay the Airport Staff (1,200 zeny), go through Domestic Boarding and ride the airship until it lands in Einbroch.",
-                                                        "In Einbroch, the Train Station Staff (232, 272) takes you to Einbech for 200 zeny. Gustav stands by the mine entrance in the north of the town (142, 244) and is marked on your minimap when you arrive."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "aldebaran",
-                                                             "x":  143,
-                                                             "y":  119,
-                                                             "name":  "Kafra: Teleport to Juno (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "yuno",
-                                                             "x":  53,
-                                                             "y":  214,
-                                                             "name":  "Juno Airport",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "y_airport",
-                                                             "x":  143,
-                                                             "y":  43,
-                                                             "name":  "Airport Staff: board the airship (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "y_airport",
-                                                             "x":  145,
-                                                             "y":  63,
-                                                             "name":  "Domestic Boarding: Einbroch, Lighthalzen, Hugel",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "einbroch",
-                                                             "x":  232,
-                                                             "y":  272,
-                                                             "name":  "Train Station Staff: to Einbech (200 zeny)",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  27,
-                                           "id":  902,
-                                           "type":  "hunt",
-                                           "lv":  92,
-                                           "title":  "The Restless Mine",
-                                           "now":  "Hunt 30 Pitmen and 20 Noxious on the first level of the Einbech Mine (ein_dun01). Its entrance is in the north of Einbech (138, 252).",
-                                           "done":  "You drove back the dead miners and the poison that drifts with them, for now.",
-                                           "map":  "ein_dun01",
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "ein_dun01",
-                                                         "x":  22,
-                                                         "y":  14,
-                                                         "name":  "Hunting ground: ein_dun01"
-                                                     },
-                                           "mobs":  [
-                                                        {
-                                                            "name":  "Pitman",
-                                                            "id":  1616,
-                                                            "count":  30
-                                                        },
-                                                        {
-                                                            "name":  "Noxious",
-                                                            "id":  1620,
-                                                            "count":  20
-                                                        }
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "The mine entrance is in the north of Einbech (138, 252), next to Foreman Gustav. Pitmen and Noxious fill its first level."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "einbech",
-                                                             "x":  138,
-                                                             "y":  249,
-                                                             "name":  "Entrance to the mine",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "aldebaran",
-                                                             "x":  143,
-                                                             "y":  119,
-                                                             "name":  "Kafra: Teleport to Juno (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "yuno",
-                                                             "x":  53,
-                                                             "y":  214,
-                                                             "name":  "Juno Airport",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "y_airport",
-                                                             "x":  143,
-                                                             "y":  43,
-                                                             "name":  "Airport Staff: board the airship (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "y_airport",
-                                                             "x":  145,
-                                                             "y":  63,
-                                                             "name":  "Domestic Boarding: Einbroch, Lighthalzen, Hugel",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "einbroch",
-                                                             "x":  232,
-                                                             "y":  272,
-                                                             "name":  "Train Station Staff: to Einbech (200 zeny)",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  28,
-                                           "id":  903,
-                                           "type":  "deliver",
-                                           "lv":  95,
-                                           "title":  "Samples for the Foreman",
-                                           "now":  "Gustav wants to know what is poisoning his mine. Bring him 5 Old Picks from the Pitmen and 8 Dust Pollutants from the Noxious, in Einbech (142, 244).",
-                                           "done":  "The picks were black with crystal dust, and the poison came off the crystal itself. Gustav sent you down to its source, on the second level of the mine.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "einbech",
-                                                         "x":  142,
-                                                         "y":  244,
-                                                         "name":  "Foreman Gustav"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-                                                         {
-                                                             "name":  "Old Pick",
-                                                             "id":  7318,
-                                                             "count":  5
-                                                         },
-                                                         {
-                                                             "name":  "Dust Pollutant",
-                                                             "id":  7320,
-                                                             "count":  8
-                                                         }
-                                                     ],
-                                           "hint":  [
-                                                        "Far from Einbech? From Al De Baran, a Kafra Employee (143, 119) teleports you to Juno (1,200 zeny). Juno\u0027s airship stops in Einbroch, and Einbroch\u0027s train (232, 272) runs to Einbech (200 zeny)."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "aldebaran",
-                                                             "x":  143,
-                                                             "y":  119,
-                                                             "name":  "Kafra: Teleport to Juno (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "yuno",
-                                                             "x":  53,
-                                                             "y":  214,
-                                                             "name":  "Juno Airport",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "y_airport",
-                                                             "x":  143,
-                                                             "y":  43,
-                                                             "name":  "Airport Staff: board the airship (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "y_airport",
-                                                             "x":  145,
-                                                             "y":  63,
-                                                             "name":  "Domestic Boarding: Einbroch, Lighthalzen, Hugel",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "einbroch",
-                                                             "x":  232,
-                                                             "y":  272,
-                                                             "name":  "Train Station Staff: to Einbech (200 zeny)",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  29,
-                                           "id":  904,
-                                           "type":  "boss",
-                                           "lv":  98,
-                                           "title":  "The Black Seam",
-                                           "now":  "Descend to the second level of the Einbech Mine (ein_dun02). The way down is at the far north-east end of the first level (261, 255).",
-                                           "done":  "You shattered the Warden of the Black Crystal, a living shard of the seam. At its heart was the same crystal the old seals were made of.",
-                                           "map":  "ein_dun02",
-                                           "boss":  "Warden of the Black Crystal",
-                                           "route":  {
-                                                         "map":  "ein_dun02",
-                                                         "x":  291,
-                                                         "y":  292,
-                                                         "name":  "Warden of the Black Crystal: ein_dun02"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "Enter the mine in the north of Einbech (138, 252).",
-                                                        "Mine level 1: cross to its north-east corner (261, 255) and take the way down to level 2. The Warden of the Black Crystal appears a few seconds after you arrive."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "einbech",
-                                                             "x":  138,
-                                                             "y":  249,
-                                                             "name":  "Entrance to the mine",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "ein_dun01",
-                                                             "x":  261,
-                                                             "y":  258,
-                                                             "name":  "Way down to level 2",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "aldebaran",
-                                                             "x":  143,
-                                                             "y":  119,
-                                                             "name":  "Kafra: Teleport to Juno (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "yuno",
-                                                             "x":  53,
-                                                             "y":  214,
-                                                             "name":  "Juno Airport",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "y_airport",
-                                                             "x":  143,
-                                                             "y":  43,
-                                                             "name":  "Airport Staff: board the airship (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "y_airport",
-                                                             "x":  145,
-                                                             "y":  63,
-                                                             "name":  "Domestic Boarding: Einbroch, Lighthalzen, Hugel",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "einbroch",
-                                                             "x":  232,
-                                                             "y":  272,
-                                                             "name":  "Train Station Staff: to Einbech (200 zeny)",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  30,
-                                           "id":  905,
-                                           "type":  "report",
-                                           "lv":  101,
-                                           "title":  "Crystal and Steel",
-                                           "now":  "Bring Foreman Gustav in Einbech (142, 244) news of the Warden.",
-                                           "done":  "Gustav knew the crystal at once: the ruins of Juperos beneath Juno are built of it, and their machines are waking too. He sent you on to Sage Elisha in Juno.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "einbech",
-                                                         "x":  142,
-                                                         "y":  244,
-                                                         "name":  "Foreman Gustav"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "Far from Einbech? From Al De Baran, a Kafra Employee (143, 119) teleports you to Juno (1,200 zeny). Juno\u0027s airship stops in Einbroch, and Einbroch\u0027s train (232, 272) runs to Einbech (200 zeny)."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "aldebaran",
-                                                             "x":  143,
-                                                             "y":  119,
-                                                             "name":  "Kafra: Teleport to Juno (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "yuno",
-                                                             "x":  53,
-                                                             "y":  214,
-                                                             "name":  "Juno Airport",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "y_airport",
-                                                             "x":  143,
-                                                             "y":  43,
-                                                             "name":  "Airport Staff: board the airship (1,200 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "y_airport",
-                                                             "x":  145,
-                                                             "y":  63,
-                                                             "name":  "Domestic Boarding: Einbroch, Lighthalzen, Hugel",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "einbroch",
-                                                             "x":  232,
-                                                             "y":  272,
-                                                             "name":  "Train Station Staff: to Einbech (200 zeny)",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       }
-                                   ]
-                     },
-                     {
-                         "n":  7,
-                         "title":  "The Floating City",
-                         "range":  "105-120",
-                         "town":  "yuno",
-                         "townName":  "Juno",
-                         "npc":  "Sage Elisha",
-                         "x":  156,
-                         "y":  47,
-                         "intro":  "Juno floats above the clouds as the capital of the Schwarzwald Republic, a land of sages and machines.",
-                         "steps":  [
-                                       {
-                                           "g":  31,
-                                           "id":  26,
-                                           "type":  "talk",
-                                           "lv":  105,
-                                           "title":  "The Sage of Juno",
-                                           "now":  "Travel to Juno, the floating capital of the Schwarzwald Republic, and meet Sage Elisha near the southern entrance (156, 47).",
-                                           "done":  "Elisha studies Juperos, the ruins of an ancient civilization beneath the Republic. Its machines have begun to wake on their own.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "yuno",
-                                                         "x":  156,
-                                                         "y":  47,
-                                                         "name":  "Sage Elisha"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "From Einbech, the Train Station Staff (39, 215) takes you back to Einbroch (200 zeny).",
-                                                        "In Einbroch, enter the airport (64, 207), pay the Airport Staff (1,200 zeny) and ride the airship until it lands in Juno. Sage Elisha stands near Juno\u0027s southern entrance (156, 47)."
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       },
-                                       {
-                                           "g":  32,
-                                           "id":  27,
-                                           "type":  "hunt",
-                                           "lv":  107,
-                                           "title":  "The Waking Machines",
-                                           "now":  "Hunt 40 Venatu in the Juperos ruins (juperos_01).",
-                                           "done":  "You stopped the patrol of waking Venatu machines in the upper ruins.",
-                                           "map":  "juperos_01",
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "juperos_01",
-                                                         "x":  54,
-                                                         "y":  246,
-                                                         "name":  "Hunting ground: juperos_01"
-                                                     },
-                                           "mobs":  [
-                                                        {
-                                                            "name":  "Venatu",
-                                                            "id":  1676,
-                                                            "count":  40
-                                                        }
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       },
-                                       {
-                                           "g":  33,
-                                           "id":  28,
-                                           "type":  "deliver",
-                                           "lv":  110,
-                                           "title":  "Salvage",
-                                           "now":  "Bring Sage Elisha 8 Rusty Screws and 1 Steel from the machines, in Juno (156, 47).",
-                                           "done":  "The machines ran on a crystal energy older than the seals themselves, the same energy the seals were made from.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "yuno",
-                                                         "x":  156,
-                                                         "y":  47,
-                                                         "name":  "Sage Elisha"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-                                                         {
-                                                             "name":  "Rusty Screw",
-                                                             "id":  7317,
-                                                             "count":  8
-                                                         },
-                                                         {
-                                                             "name":  "Steel",
-                                                             "id":  999,
-                                                             "count":  1
-                                                         }
-                                                     ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       },
-                                       {
-                                           "g":  34,
-                                           "id":  29,
-                                           "type":  "boss",
-                                           "lv":  114,
-                                           "title":  "The Core",
-                                           "now":  "Reach the heart of the ruins, the Juperos Core (jupe_core), through the old elevator beneath Juperos. Bring 4 Crest Pieces from Venatu.",
-                                           "done":  "You destroyed the Awakened Core Guardian. Its last broadcast was a map of Arunafeltz, far to the north.",
-                                           "map":  "jupe_core",
-                                           "boss":  "Awakened Core Guardian",
-                                           "route":  {
-                                                         "map":  "juperos_01",
-                                                         "x":  100,
-                                                         "y":  91,
-                                                         "name":  "The way down: juperos_01"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-                                                         {
-                                                             "name":  "Crest Piece (Purple)",
-                                                             "id":  7356,
-                                                             "count":  1
-                                                         },
-                                                         {
-                                                             "name":  "Crest Piece (Green)",
-                                                             "id":  7357,
-                                                             "count":  1
-                                                         },
-                                                         {
-                                                             "name":  "Crest Piece (Orange)",
-                                                             "id":  7358,
-                                                             "count":  1
-                                                         },
-                                                         {
-                                                             "name":  "Crest Piece (Blue)",
-                                                             "id":  7359,
-                                                             "count":  1
-                                                         }
-                                                     ],
-                                           "hint":  [
-                                                        "Collect the 4 Crest Pieces (Purple, Green, Orange, Blue). Only Venatu drop them, in the Juperos ruins. The elevator lever needs all 4.",
-                                                        "Juperos 1: step on the strange spot at (100, 91) and agree, or wait 10 seconds. You drop down to Juperos 2.",
-                                                        "Juperos 2: destroy the 3 Gate Switches on the outer islands, at (24, 275), (240, 29) and (282, 183). The ground shakes, and a portal opens in the centre (130, 149) for about 10 minutes. Broken switches come back after 20 minutes.",
-                                                        "Security halls: each pedestal checks one Crest Piece (it is not taken). Then an alarm sends Venatu and Dimik at you. Survive, and a portal takes you on.",
-                                                        "Elevator room: put all 4 Crest Pieces in the lever (they are used up) and pull it. Defeat the 9 guards within 2 minutes, or you are thrown out.",
-                                                        "Elevator ride: 4 waves of 8 guards, a new wave every 30 seconds. Kill all 32 within about 2 minutes, or you are thrown out to the gate hall (the 4 pieces are lost). When the last one falls, step on the portal at (41, 33), or wait and you are moved to the Core anyway. The Awakened Core Guardian rises a few seconds later.",
-                                                        "If you fall in the elevator, the lever has kept your 4 pieces. Bring a new set of 4 and start again from Juperos 1. The elevator rooms only work while the lever is running, so no Warper or teleport can take you there."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "juperos_01",
-                                                             "x":  100,
-                                                             "y":  91,
-                                                             "name":  "Strange spot: the way down to Juperos 2",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "juperos_02",
-                                                             "x":  24,
-                                                             "y":  275,
-                                                             "name":  "1st Gate Switch",
-                                                             "sw":  1
-                                                         },
-                                                         {
-                                                             "map":  "juperos_02",
-                                                             "x":  240,
-                                                             "y":  29,
-                                                             "name":  "2nd Gate Switch",
-                                                             "sw":  2
-                                                         },
-                                                         {
-                                                             "map":  "juperos_02",
-                                                             "x":  282,
+                                                             "x":  38,
                                                              "y":  183,
-                                                             "name":  "3rd Gate Switch",
-                                                             "sw":  3
+                                                             "name":  "Continental Guard: Enter the Field to Investigate",
+                                                             "ro":  null
                                                          },
                                                          {
-                                                             "map":  "juperos_02",
-                                                             "x":  130,
-                                                             "y":  149,
-                                                             "name":  "Centre portal",
-                                                             "sw":  0
+                                                             "map":  "moc_fild21",
+                                                             "x":  178,
+                                                             "y":  239,
+                                                             "name":  "Group of Evil (calls Satan Morocc)",
+                                                             "ro":  null
                                                          },
                                                          {
-                                                             "map":  "jupe_gate",
-                                                             "x":  28,
-                                                             "y":  145,
-                                                             "name":  "Left hall gate",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "jupe_gate",
-                                                             "x":  71,
-                                                             "y":  145,
-                                                             "name":  "Right hall gate",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "jupe_gate",
-                                                             "x":  49,
-                                                             "y":  55,
-                                                             "name":  "Elevator gate (after a hall\u0027s lever)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "jupe_area1",
-                                                             "x":  88,
-                                                             "y":  224,
-                                                             "name":  "Pedestal 1 (Purple)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "jupe_area1",
-                                                             "x":  25,
-                                                             "y":  238,
-                                                             "name":  "Pedestal 2 (Green)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "jupe_area1",
-                                                             "x":  36,
-                                                             "y":  146,
-                                                             "name":  "Pedestal 3 (Orange)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "jupe_area1",
-                                                             "x":  50,
-                                                             "y":  49,
-                                                             "name":  "Pedestal 4 (Blue)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "jupe_area1",
-                                                             "x":  112,
-                                                             "y":  162,
-                                                             "name":  "Hall lever (back to the gate)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "jupe_area2",
-                                                             "x":  74,
-                                                             "y":  224,
-                                                             "name":  "Pedestal 1 (Purple)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "jupe_area2",
-                                                             "x":  138,
-                                                             "y":  238,
-                                                             "name":  "Pedestal 2 (Green)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "jupe_area2",
-                                                             "x":  127,
-                                                             "y":  146,
-                                                             "name":  "Pedestal 3 (Orange)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "jupe_area2",
-                                                             "x":  113,
-                                                             "y":  49,
-                                                             "name":  "Pedestal 4 (Blue)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "jupe_area2",
-                                                             "x":  51,
-                                                             "y":  162,
-                                                             "name":  "Hall lever (back to the gate)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "jupe_ele_r",
-                                                             "x":  51,
-                                                             "y":  98,
-                                                             "name":  "Elevator lever (uses all 4 Crest Pieces)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "jupe_ele",
-                                                             "x":  41,
-                                                             "y":  33,
-                                                             "name":  "Portal to the Core (after the 4th wave)",
-                                                             "sw":  null
+                                                             "map":  "moc_fild21",
+                                                             "x":  177,
+                                                             "y":  239,
+                                                             "name":  "Time-Space Gap (after his defeat)",
+                                                             "ro":  null
                                                          }
+                                                     ],
+                                           "parts":  [
+
                                                      ]
                                        },
                                        {
-                                           "g":  35,
-                                           "id":  30,
-                                           "type":  "report",
-                                           "lv":  117,
-                                           "title":  "The Guardians\u0027 Purpose",
-                                           "now":  "Report to Sage Elisha in Juno (156, 47).",
-                                           "done":  "Elisha believes the guardians were built to watch over the seals. The Core\u0027s last broadcast showed two places: Arunafeltz, and the rift that opened when Morroc fell. The three kingdoms are sending an expedition through the rift, so she sent you to join it first.",
-                                           "map":  null,
-                                           "boss":  null,
+                                           "k":  6,
+                                           "type":  "ro",
+                                           "title":  "Proof of Victory",
+                                           "now":  "RO quest: bring the Piece of Morocc Skin to Chief Balrog in Morroc (159, 113) and choose your reward: the Seal of the Continental Guard, a Morocc Charm Stone or a Morocc Ring.",
+                                           "done":  "Balrog took the proof, and the Continental Guard paid you with EXP and a reward of your choice. Satan Morocc is not gone, but he is held back.",
                                            "route":  {
-                                                         "map":  "yuno",
-                                                         "x":  156,
-                                                         "y":  47,
-                                                         "name":  "Sage Elisha"
+                                                         "map":  "morocc",
+                                                         "x":  159,
+                                                         "y":  113,
+                                                         "name":  "Chief Balrog"
                                                      },
-                                           "mobs":  [
-
-                                                    ],
                                            "items":  [
-
+                                                         {
+                                                             "name":  "Piece of Morocc Skin",
+                                                             "id":  7820,
+                                                             "count":  1
+                                                         }
                                                      ],
                                            "hint":  [
-
+                                                        "From moc_fild21, the warp at the field\u0027s entrance leads back. Morroc is through its east gate."
                                                     ],
                                            "spots":  [
+                                                         {
+                                                             "map":  "morocc",
+                                                             "x":  159,
+                                                             "y":  113,
+                                                             "name":  "Chief Balrog",
+                                                             "ro":  null
+                                                         }
+                                                     ],
+                                           "parts":  [
 
                                                      ]
                                        }
                                    ]
                      },
                      {
-                         "n":  8,
                          "episode":  "13.1",
                          "title":  "Onward to the Other World",
-                         "range":  "118-124",
-                         "town":  "prt_cas",
-                         "townName":  "Prontera Castle",
-                         "npc":  "the Recruiter for the Brave",
-                         "x":  207,
-                         "y":  165,
+                         "lv":  70,
                          "intro":  "When Morroc fell, a rift opened in its ruins, and beyond it lies a world no map of Rune-Midgard shows. Rune-Midgard, the Schwarzwald Republic and Arunafeltz have joined in an Alliance to send an expedition through it, and its recruiters are looking for adventurers. This is Ragnarok\u0027s own story: the Chronicle only shows the way, and RO gives its rewards.",
+                         "more":  false,
+                         "needs":  null,
+                         "party":  null,
                          "steps":  [
                                        {
-                                           "g":  36,
-                                           "id":  931,
+                                           "k":  1,
                                            "type":  "ro",
-                                           "lv":  118,
                                            "title":  "The Recruiter for the Brave",
                                            "now":  "RO quest: in Prontera Castle, the Recruiter for the Brave (prt_cas, 207, 165) signs up adventurers for the expedition through the rift. Talk to him and choose Yes, I am interested.",
                                            "done":  "In Prontera Castle you signed up for the Alliance\u0027s expedition to the other world. First, the Alliance wanted its word spread.",
-                                           "map":  null,
-                                           "boss":  null,
                                            "route":  {
                                                          "map":  "prontera",
                                                          "x":  156,
                                                          "y":  358,
                                                          "name":  "Gate of Prontera Castle"
                                                      },
-                                           "mobs":  [
-
-                                                    ],
                                            "items":  [
 
                                                      ],
@@ -1888,36 +331,32 @@ export default {
                                                              "x":  156,
                                                              "y":  358,
                                                              "name":  "Gate of Prontera Castle",
-                                                             "sw":  null
+                                                             "ro":  null
                                                          },
                                                          {
                                                              "map":  "prt_cas",
                                                              "x":  207,
                                                              "y":  165,
                                                              "name":  "Recruiter for the Brave",
-                                                             "sw":  null
+                                                             "ro":  null
                                                          }
+                                                     ],
+                                           "parts":  [
+
                                                      ]
                                        },
                                        {
-                                           "g":  37,
-                                           "id":  932,
+                                           "k":  2,
                                            "type":  "ro",
-                                           "lv":  119,
                                            "title":  "The Promotional Staff",
                                            "now":  "RO quest: the Alliance\u0027s Promotional Staff spread the word in three towns. Visit each in turn and bring what they ask for.",
                                            "done":  "You carried the Alliance\u0027s word to Al De Baran, Geffen and Izlude, with 300 Jellopy, an Emerald and a Ruby for its staff.",
-                                           "map":  null,
-                                           "boss":  null,
                                            "route":  {
                                                          "map":  "aldebaran",
                                                          "x":  127,
                                                          "y":  138,
                                                          "name":  "Promotional Staff"
                                                      },
-                                           "mobs":  [
-
-                                                    ],
                                            "items":  [
                                                          {
                                                              "name":  "Jellopy",
@@ -1946,7 +385,6 @@ export default {
                                                              "x":  127,
                                                              "y":  138,
                                                              "name":  "Promotional Staff",
-                                                             "sw":  null,
                                                              "ro":  1
                                                          },
                                                          {
@@ -1954,7 +392,6 @@ export default {
                                                              "x":  127,
                                                              "y":  138,
                                                              "name":  "Promotional Staff",
-                                                             "sw":  null,
                                                              "ro":  2
                                                          },
                                                          {
@@ -1962,7 +399,6 @@ export default {
                                                              "x":  90,
                                                              "y":  67,
                                                              "name":  "Promotional Staff",
-                                                             "sw":  null,
                                                              "ro":  3
                                                          },
                                                          {
@@ -1970,7 +406,6 @@ export default {
                                                              "x":  90,
                                                              "y":  67,
                                                              "name":  "Promotional Staff",
-                                                             "sw":  null,
                                                              "ro":  4
                                                          },
                                                          {
@@ -1978,7 +413,6 @@ export default {
                                                              "x":  90,
                                                              "y":  67,
                                                              "name":  "Promotional Staff",
-                                                             "sw":  null,
                                                              "ro":  5
                                                          },
                                                          {
@@ -1986,7 +420,6 @@ export default {
                                                              "x":  102,
                                                              "y":  171,
                                                              "name":  "Promotional Staff",
-                                                             "sw":  null,
                                                              "ro":  6
                                                          },
                                                          {
@@ -1994,7 +427,6 @@ export default {
                                                              "x":  102,
                                                              "y":  171,
                                                              "name":  "Promotional Staff",
-                                                             "sw":  null,
                                                              "ro":  7
                                                          }
                                                      ],
@@ -2062,24 +494,17 @@ export default {
                                                      ]
                                        },
                                        {
-                                           "g":  38,
-                                           "id":  933,
+                                           "k":  3,
                                            "type":  "ro",
-                                           "lv":  120,
                                            "title":  "Sikaiz of the Alliance",
                                            "now":  "RO quest: report back to the Recruiter in Prontera Castle, then meet Sikaiz, who leads the Alliance from the Rekenber building in Lighthalzen. Talk to him until he has told you everything.",
                                            "done":  "The Recruiter signed you up for good, and RO paid you for it. In Lighthalzen, Sikaiz told you of the three kingdoms and their one mission beyond the rift.",
-                                           "map":  null,
-                                           "boss":  null,
                                            "route":  {
                                                          "map":  "prt_cas",
                                                          "x":  207,
                                                          "y":  165,
                                                          "name":  "Recruiter for the Brave"
                                                      },
-                                           "mobs":  [
-
-                                                    ],
                                            "items":  [
 
                                                      ],
@@ -2093,7 +518,6 @@ export default {
                                                              "x":  156,
                                                              "y":  358,
                                                              "name":  "Gate of Prontera Castle",
-                                                             "sw":  null,
                                                              "ro":  8
                                                          },
                                                          {
@@ -2101,7 +525,6 @@ export default {
                                                              "x":  207,
                                                              "y":  165,
                                                              "name":  "Recruiter for the Brave",
-                                                             "sw":  null,
                                                              "ro":  8
                                                          },
                                                          {
@@ -2109,7 +532,6 @@ export default {
                                                              "x":  101,
                                                              "y":  248,
                                                              "name":  "Door of the Rekenber building",
-                                                             "sw":  null,
                                                              "ro":  9
                                                          },
                                                          {
@@ -2117,7 +539,6 @@ export default {
                                                              "x":  132,
                                                              "y":  259,
                                                              "name":  "Sikaiz",
-                                                             "sw":  null,
                                                              "ro":  9
                                                          },
                                                          {
@@ -2125,7 +546,6 @@ export default {
                                                              "x":  132,
                                                              "y":  259,
                                                              "name":  "Sikaiz",
-                                                             "sw":  null,
                                                              "ro":  10
                                                          },
                                                          {
@@ -2133,7 +553,6 @@ export default {
                                                              "x":  132,
                                                              "y":  259,
                                                              "name":  "Sikaiz",
-                                                             "sw":  null,
                                                              "ro":  11
                                                          }
                                                      ],
@@ -2181,24 +600,17 @@ export default {
                                                      ]
                                        },
                                        {
-                                           "g":  39,
-                                           "id":  934,
+                                           "k":  4,
                                            "type":  "ro",
-                                           "lv":  121,
                                            "title":  "Errands of the Alliance",
                                            "now":  "RO quest: carry the Alliance\u0027s messages between its seats: Prontera Castle, Sikaiz in Lighthalzen, and the temple of Rachel.",
                                            "done":  "You ran the Alliance\u0027s errands from Prontera to Rachel, and Sikaiz put your name on the expedition\u0027s roll.",
-                                           "map":  null,
-                                           "boss":  null,
                                            "route":  {
                                                          "map":  "prt_cas",
                                                          "x":  19,
                                                          "y":  98,
                                                          "name":  "Alliance Manager"
                                                      },
-                                           "mobs":  [
-
-                                                    ],
                                            "items":  [
 
                                                      ],
@@ -2213,7 +625,6 @@ export default {
                                                              "x":  19,
                                                              "y":  98,
                                                              "name":  "Alliance Manager",
-                                                             "sw":  null,
                                                              "ro":  12
                                                          },
                                                          {
@@ -2221,7 +632,6 @@ export default {
                                                              "x":  132,
                                                              "y":  259,
                                                              "name":  "Sikaiz",
-                                                             "sw":  null,
                                                              "ro":  13
                                                          },
                                                          {
@@ -2229,7 +639,6 @@ export default {
                                                              "x":  132,
                                                              "y":  259,
                                                              "name":  "Sikaiz",
-                                                             "sw":  null,
                                                              "ro":  14
                                                          },
                                                          {
@@ -2237,7 +646,6 @@ export default {
                                                              "x":  119,
                                                              "y":  113,
                                                              "name":  "Alliance Manager",
-                                                             "sw":  null,
                                                              "ro":  15
                                                          },
                                                          {
@@ -2245,7 +653,6 @@ export default {
                                                              "x":  132,
                                                              "y":  259,
                                                              "name":  "Sikaiz",
-                                                             "sw":  null,
                                                              "ro":  16
                                                          },
                                                          {
@@ -2253,7 +660,6 @@ export default {
                                                              "x":  132,
                                                              "y":  259,
                                                              "name":  "Sikaiz",
-                                                             "sw":  null,
                                                              "ro":  17
                                                          }
                                                      ],
@@ -2321,24 +727,17 @@ export default {
                                                      ]
                                        },
                                        {
-                                           "g":  40,
-                                           "id":  935,
+                                           "k":  5,
                                            "type":  "ro",
-                                           "lv":  122,
                                            "title":  "Through the Rift",
                                            "now":  "RO quest: two officers of the Alliance argue about Sikaiz. Hear them out, then go to the rift itself, where Munkenro waits with the expedition.",
                                            "done":  "The head of the Alliance sent the expedition through the rift, and you with it. Beyond lies the Allied Forces Post, and a world of Laphine and Sapha who never asked for visitors.",
-                                           "map":  null,
-                                           "boss":  null,
                                            "route":  {
                                                          "map":  "lhz_in01",
                                                          "x":  32,
                                                          "y":  22,
                                                          "name":  "Officer A"
                                                      },
-                                           "mobs":  [
-
-                                                    ],
                                            "items":  [
 
                                                      ],
@@ -2353,7 +752,6 @@ export default {
                                                              "x":  32,
                                                              "y":  22,
                                                              "name":  "Officer A",
-                                                             "sw":  null,
                                                              "ro":  18
                                                          },
                                                          {
@@ -2361,7 +759,6 @@ export default {
                                                              "x":  32,
                                                              "y":  22,
                                                              "name":  "Officer A",
-                                                             "sw":  null,
                                                              "ro":  19
                                                          },
                                                          {
@@ -2369,7 +766,6 @@ export default {
                                                              "x":  130,
                                                              "y":  232,
                                                              "name":  "Guard: Send me there.",
-                                                             "sw":  null,
                                                              "ro":  20
                                                          },
                                                          {
@@ -2377,7 +773,6 @@ export default {
                                                              "x":  349,
                                                              "y":  179,
                                                              "name":  "Rift Guard: Yes, sure.",
-                                                             "sw":  null,
                                                              "ro":  20
                                                          },
                                                          {
@@ -2385,7 +780,6 @@ export default {
                                                              "x":  230,
                                                              "y":  197,
                                                              "name":  "Munkenro",
-                                                             "sw":  null,
                                                              "ro":  20
                                                          },
                                                          {
@@ -2393,7 +787,6 @@ export default {
                                                              "x":  230,
                                                              "y":  197,
                                                              "name":  "Munkenro",
-                                                             "sw":  null,
                                                              "ro":  21
                                                          },
                                                          {
@@ -2401,7 +794,6 @@ export default {
                                                              "x":  230,
                                                              "y":  197,
                                                              "name":  "Munkenro",
-                                                             "sw":  null,
                                                              "ro":  22
                                                          }
                                                      ],
@@ -2461,1768 +853,298 @@ export default {
                                    ]
                      },
                      {
-                         "n":  9,
-                         "title":  "The Sapha\u0027s Gate",
-                         "range":  "124-129",
-                         "town":  "dic_fild01",
-                         "townName":  "El Dicastes",
-                         "npc":  "Warden Kahlis",
-                         "x":  156,
-                         "y":  270,
-                         "intro":  "El Dicastes is the capital of the Sapha, built into the slopes of Kamidal Mountain. Its gates are shut to every other race, and beneath the mountain lies the hive of the Scaraba.",
+                         "episode":  "13.2",
+                         "title":  "Two Tribes",
+                         "lv":  70,
+                         "intro":  "Beyond the rift live two peoples who have never trusted each other: the Laphine of Splendide and the Sapha of Manuk. Their quarrel is older than the rift, and the humans who came through it are caught in the middle. This is Ragnarok\u0027s own story: the Chronicle only shows the way, and RO gives its rewards.",
+                         "more":  true,
+                         "needs":  "the Otherworld Language: the Laphine and Sapha tongues, and the Ring of the Wise King worn (Side Quests, The New World).",
+                         "party":  null,
                          "steps":  [
                                        {
-                                           "g":  41,
-                                           "id":  911,
-                                           "type":  "talk",
-                                           "lv":  124,
-                                           "title":  "The Warden of El Dicastes",
-                                           "now":  "Go to Kamidal Mountain and find Warden Kahlis outside the gate of El Dicastes (dic_fild01, 156, 270).",
-                                           "done":  "Kahlis guards the gate of El Dicastes. Since the rift opened, the Scaraba under Kamidal Mountain have been breeding out of season, and they have begun to dig toward the city.",
-                                           "map":  null,
-                                           "boss":  null,
+                                           "k":  1,
+                                           "type":  "ro",
+                                           "title":  "Arc of the Splendide Guard",
+                                           "now":  "RO quest: wearing the Ring of the Wise King, talk to Arc of the Splendide Guard (spl_in01, 32, 306) and answer Yes.",
+                                           "done":  "Arc understood you. You told him how humans came through the rift, and he saw that you were not sent by the giants of Manuk.",
                                            "route":  {
-                                                         "map":  "dic_fild01",
-                                                         "x":  156,
-                                                         "y":  270,
-                                                         "name":  "Warden Kahlis"
+                                                         "map":  "splendide",
+                                                         "x":  228,
+                                                         "y":  164,
+                                                         "name":  "Door to the Splendide Guard"
                                                      },
-                                           "mobs":  [
-
-                                                    ],
                                            "items":  [
 
                                                      ],
                                            "hint":  [
-                                                        "From the Allied camp, take the Teleport Cat (207, 234) to Manuk Field (10,000 zeny).",
-                                                        "On Manuk Field, the Teleport Cat (135, 49) goes to Near El Dicastes (20,000 zeny). Warden Kahlis stands just south of the city gate (156, 270)."
+                                                        "In Splendide, the door at 228, 164 leads into Arc\u0027s room (spl_in01).",
+                                                        "Without the Otherworld Language and the ring, Arc does not understand you: learn it first (Side Quests, The New World)."
                                                     ],
                                            "spots":  [
                                                          {
-                                                             "map":  "mid_camp",
-                                                             "x":  207,
-                                                             "y":  234,
-                                                             "name":  "Teleport Cat: Manuk Field (10,000 zeny)",
-                                                             "sw":  null
+                                                             "map":  "splendide",
+                                                             "x":  228,
+                                                             "y":  164,
+                                                             "name":  "Door to the Splendide Guard",
+                                                             "ro":  null
                                                          },
                                                          {
-                                                             "map":  "man_fild02",
-                                                             "x":  135,
-                                                             "y":  49,
-                                                             "name":  "Teleport Cat: Near El Dicastes (20,000 zeny)",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  42,
-                                           "id":  912,
-                                           "type":  "hunt",
-                                           "lv":  125,
-                                           "title":  "The Swarm on the Mountain",
-                                           "now":  "Hunt 30 Centipedes and 10 Dolomedes on the slopes of Kamidal Mountain (dic_fild01), outside El Dicastes.",
-                                           "done":  "You thinned the creatures swarming over Kamidal Mountain, and the slopes fell quiet.",
-                                           "map":  "dic_fild01",
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "dic_fild01",
-                                                         "x":  159,
-                                                         "y":  264,
-                                                         "name":  "Hunting ground: dic_fild01"
-                                                     },
-                                           "mobs":  [
-                                                        {
-                                                            "name":  "Centipede",
-                                                            "id":  1987,
-                                                            "count":  30
-                                                        },
-                                                        {
-                                                            "name":  "Dolomedes",
-                                                            "id":  2092,
-                                                            "count":  10
-                                                        }
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "Far from El Dicastes? From the Allied camp, the Teleport Cat (207, 234) goes to Manuk Field, and the Teleport Cat there (135, 49) to Near El Dicastes. Back in Rune-Midgard? The Cat Paw cat by the rift (moc_fild20, 368, 197) helps you over the wall to Tat (moc_fild22b, 182, 179), who sends you to the camp. Any Eden Teleport Officer takes you to Agent Geck in the Eden Group, who sends you to the rift."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "mid_camp",
-                                                             "x":  207,
-                                                             "y":  234,
-                                                             "name":  "Teleport Cat: Manuk Field (10,000 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "man_fild02",
-                                                             "x":  135,
-                                                             "y":  49,
-                                                             "name":  "Teleport Cat: Near El Dicastes (20,000 zeny)",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  43,
-                                           "id":  913,
-                                           "type":  "deliver",
-                                           "lv":  126,
-                                           "title":  "What the Swarm Leaves",
-                                           "now":  "Bring Warden Kahlis 8 Bug Legs from the Centipedes and 5 White Spider Limbs from the Dolomedes, at the gate of El Dicastes (156, 270).",
-                                           "done":  "Kahlis read the remains as the Sapha read omens: the swarm was not hunting, it was fleeing. Something in the Scaraba hive drives them out.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "dic_fild01",
-                                                         "x":  156,
-                                                         "y":  270,
-                                                         "name":  "Warden Kahlis"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-                                                         {
-                                                             "name":  "Bug Leg",
-                                                             "id":  1042,
-                                                             "count":  8
-                                                         },
-                                                         {
-                                                             "name":  "White Spider Limb",
-                                                             "id":  6325,
-                                                             "count":  5
+                                                             "map":  "spl_in01",
+                                                             "x":  32,
+                                                             "y":  306,
+                                                             "name":  "Arc of the Splendide Guard",
+                                                             "ro":  null
                                                          }
                                                      ],
-                                           "hint":  [
-                                                        "Far from El Dicastes? From the Allied camp, the Teleport Cat (207, 234) goes to Manuk Field, and the Teleport Cat there (135, 49) to Near El Dicastes. Back in Rune-Midgard? The Cat Paw cat by the rift (moc_fild20, 368, 197) helps you over the wall to Tat (moc_fild22b, 182, 179), who sends you to the camp. Any Eden Teleport Officer takes you to Agent Geck in the Eden Group, who sends you to the rift."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "mid_camp",
-                                                             "x":  207,
-                                                             "y":  234,
-                                                             "name":  "Teleport Cat: Manuk Field (10,000 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "man_fild02",
-                                                             "x":  135,
-                                                             "y":  49,
-                                                             "name":  "Teleport Cat: Near El Dicastes (20,000 zeny)",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  44,
-                                           "id":  914,
-                                           "type":  "boss",
-                                           "lv":  127,
-                                           "title":  "The Hive Under Kamidal",
-                                           "now":  "Enter the Scaraba Hole under Kamidal Mountain (dic_dun01). Its entrance is at the west end of dic_fild01 (24, 79).",
-                                           "done":  "You slew the Rift-Touched Scaraba. In its shell was a shard of black crystal, the same seal crystal Gustav found in Einbech.",
-                                           "map":  "dic_dun01",
-                                           "boss":  "Rift-Touched Scaraba",
-                                           "route":  {
-                                                         "map":  "dic_dun01",
-                                                         "x":  366,
-                                                         "y":  45,
-                                                         "name":  "Rift-Touched Scaraba: dic_dun01"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "Far from El Dicastes? From the Allied camp, the Teleport Cat (207, 234) goes to Manuk Field, and the Teleport Cat there (135, 49) to Near El Dicastes. Back in Rune-Midgard? The Cat Paw cat by the rift (moc_fild20, 368, 197) helps you over the wall to Tat (moc_fild22b, 182, 179), who sends you to the camp. Any Eden Teleport Officer takes you to Agent Geck in the Eden Group, who sends you to the rift."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "dic_fild01",
-                                                             "x":  24,
-                                                             "y":  79,
-                                                             "name":  "Entrance to the Scaraba Hole",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "mid_camp",
-                                                             "x":  207,
-                                                             "y":  234,
-                                                             "name":  "Teleport Cat: Manuk Field (10,000 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "man_fild02",
-                                                             "x":  135,
-                                                             "y":  49,
-                                                             "name":  "Teleport Cat: Near El Dicastes (20,000 zeny)",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  45,
-                                           "id":  915,
-                                           "type":  "report",
-                                           "lv":  129,
-                                           "title":  "A Shard of the Seal",
-                                           "now":  "Return to Warden Kahlis at the gate of El Dicastes (156, 270).",
-                                           "done":  "Kahlis knew the shard: the Sapha\u0027s oldest songs tell of a seal-fire that broke through from another world. He sent you home, to the Church of Freya in Rachel, whose sisters keep the same songs.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "dic_fild01",
-                                                         "x":  156,
-                                                         "y":  270,
-                                                         "name":  "Warden Kahlis"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "From the Scaraba Hole, the way out (371, 44) leads back to dic_fild01. Kahlis waits by the city gate (156, 270)."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "dic_dun01",
-                                                             "x":  371,
-                                                             "y":  44,
-                                                             "name":  "Way out to dic_fild01",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "mid_camp",
-                                                             "x":  207,
-                                                             "y":  234,
-                                                             "name":  "Teleport Cat: Manuk Field (10,000 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "man_fild02",
-                                                             "x":  135,
-                                                             "y":  49,
-                                                             "name":  "Teleport Cat: Near El Dicastes (20,000 zeny)",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       }
-                                   ]
-                     },
-                     {
-                         "n":  10,
-                         "title":  "Fire and Faith",
-                         "range":  "130-140",
-                         "town":  "rachel",
-                         "townName":  "Rachel",
-                         "npc":  "Sister Ilyana",
-                         "x":  141,
-                         "y":  146,
-                         "intro":  "Rachel is the holy city of the Arunafeltz States, seat of the Church of the goddess Freya.",
-                         "steps":  [
-                                       {
-                                           "g":  46,
-                                           "id":  31,
-                                           "type":  "talk",
-                                           "lv":  130,
-                                           "title":  "The Church of Freya",
-                                           "now":  "Travel to Rachel, holy city of Arunafeltz, and find Sister Ilyana (141, 146).",
-                                           "done":  "Ilyana serves the goddess Freya. The church\u0027s oracles have seen fire under Thor\u0027s Volcano, and an old mark appearing in the cities: the Sign.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "rachel",
-                                                         "x":  141,
-                                                         "y":  146,
-                                                         "name":  "Sister Ilyana"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "From El Dicastes: on dic_fild01, the way south (69, 23) leads to dic_fild02. Its Dimensional Transporter (241, 31) takes you into the Dimensional Gap.",
-                                                        "In the Gap, the way south (122, 48) leads to the rift gorge (moc_fild22b). The Rift Guard there (37, 196) walks you out to Morroc\u0027s fields (moc_fild20).",
-                                                        "From there, follow the Route link to Rachel, holy city of Arunafeltz. Sister Ilyana is at (141, 146)."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "dic_fild01",
-                                                             "x":  69,
-                                                             "y":  23,
-                                                             "name":  "Way south to dic_fild02",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "dic_fild02",
-                                                             "x":  241,
-                                                             "y":  31,
-                                                             "name":  "Dimensional Transporter: into the Gap",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "dali",
-                                                             "x":  122,
-                                                             "y":  48,
-                                                             "name":  "Way to the rift gorge",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild22b",
-                                                             "x":  37,
-                                                             "y":  196,
-                                                             "name":  "Rift Guard: out to Morroc\u0027s fields",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  47,
-                                           "id":  32,
-                                           "type":  "hunt",
-                                           "lv":  131,
-                                           "title":  "Under the Mountain",
-                                           "now":  "Hunt 30 Fire Imps and 15 Kasa in Thor\u0027s Volcano (thor_v01), south of Veins.",
-                                           "done":  "You drove back the fire creatures of the volcano\u0027s first level.",
-                                           "map":  "thor_v01",
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "thor_v01",
-                                                         "x":  21,
-                                                         "y":  229,
-                                                         "name":  "Hunting ground: thor_v01"
-                                                     },
-                                           "mobs":  [
-                                                        {
-                                                            "name":  "Fire Imp",
-                                                            "id":  1837,
-                                                            "count":  30
-                                                        },
-                                                        {
-                                                            "name":  "Kasa",
-                                                            "id":  1833,
-                                                            "count":  15
-                                                        }
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       },
-                                       {
-                                           "g":  48,
-                                           "id":  33,
-                                           "type":  "deliver",
-                                           "lv":  133,
-                                           "title":  "Embers for the Oracles",
-                                           "now":  "Bring Sister Ilyana 3 Burning Hearts and 5 Burning Hair, in Rachel (141, 146).",
-                                           "done":  "The embers were demon fire, Geffenia\u0027s breath, leaking all the way to Arunafeltz.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "rachel",
-                                                         "x":  141,
-                                                         "y":  146,
-                                                         "name":  "Sister Ilyana"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-                                                         {
-                                                             "name":  "Burning Heart",
-                                                             "id":  7097,
-                                                             "count":  3
-                                                         },
-                                                         {
-                                                             "name":  "Burning Hair",
-                                                             "id":  7122,
-                                                             "count":  5
-                                                         }
-                                                     ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       },
-                                       {
-                                           "g":  49,
-                                           "id":  34,
-                                           "type":  "boss",
-                                           "lv":  136,
-                                           "title":  "The Ember Herald",
-                                           "now":  "Descend to the second level of Thor\u0027s Volcano (thor_v02).",
-                                           "done":  "You quenched the Ember Herald, a fire spirit bearing the Sign on its brow.",
-                                           "map":  "thor_v02",
-                                           "boss":  "Ember Herald",
-                                           "route":  {
-                                                         "map":  "thor_v02",
-                                                         "x":  78,
-                                                         "y":  203,
-                                                         "name":  "Ember Herald: thor_v02"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       },
-                                       {
-                                           "g":  50,
-                                           "id":  35,
-                                           "type":  "report",
-                                           "lv":  138,
-                                           "title":  "The Sign",
-                                           "now":  "Return to Sister Ilyana in Rachel (141, 146).",
-                                           "done":  "Ilyana understood at last: the Sign calls the hero who will stand at Geffenia\u0027s gate. Look for the mysterious Sign near Prontera\u0027s north gate (147, 305) to begin The Sign, Rune-Midgard\u0027s own legend. When you are ready, a Valkyrie\u0027s herald waits in Hugel.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "rachel",
-                                                         "x":  141,
-                                                         "y":  146,
-                                                         "name":  "Sister Ilyana"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
+                                           "parts":  [
 
                                                      ]
                                        }
                                    ]
                      },
                      {
-                         "n":  11,
-                         "title":  "Twilight of the Gods",
-                         "range":  "140-146",
-                         "town":  "hugel",
-                         "townName":  "Hugel",
-                         "npc":  "Brynjar the Herald",
-                         "x":  101,
-                         "y":  56,
-                         "intro":  "Hugel is a quiet seaside village in the far north, where boats leave for the temple of Odin.",
+                         "episode":  "13.3",
+                         "title":  "Doha\u0027s Secret Orders",
+                         "lv":  70,
+                         "intro":  "The Sapha of Manuk have sent a delegation to the Allied camp, and they want to meet the humans who helped them. Behind the delegation stands Inspector Doha of El Dicastes, and Doha has orders of his own. This is Ragnarok\u0027s own story: the Chronicle only shows the way, and RO gives its rewards.",
+                         "more":  true,
+                         "needs":  "Episode 13.1, Onward to the Other World (or the Cat Paw passage into the New World).",
+                         "party":  null,
                          "steps":  [
                                        {
-                                           "g":  51,
-                                           "id":  36,
-                                           "type":  "talk",
-                                           "lv":  140,
-                                           "title":  "The Valkyrie\u0027s Herald",
-                                           "now":  "Go to Hugel, the seaside village in the far north, and find Brynjar the Herald (101, 56).",
-                                           "done":  "Brynjar speaks for the Valkyries of Odin\u0027s Temple. The seals were forged with divine power, and as the Twilight of the Gods, Ragnarok, draws near, that power is ebbing.",
-                                           "map":  null,
-                                           "boss":  null,
+                                           "k":  1,
+                                           "type":  "ro",
+                                           "title":  "The Manuk Delegation",
+                                           "now":  "RO quest: in the Allied camp\u0027s command post, Guard Aello (mid_campin, 93, 114) says a delegation from Manuk wants to meet you. Go up to its room and hear the Sapha out.",
+                                           "done":  "The Sapha delegation from Manuk called humans friends, and Hibba Agip sent you to meet Inspector Doha.",
                                            "route":  {
-                                                         "map":  "hugel",
-                                                         "x":  101,
-                                                         "y":  56,
-                                                         "name":  "Brynjar the Herald"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-
-                                                    ],
-                                           "spots":  [
-
-                                                     ]
-                                       },
-                                       {
-                                           "g":  52,
-                                           "id":  37,
-                                           "type":  "hunt",
-                                           "lv":  141,
-                                           "title":  "Fallen Spirits",
-                                           "now":  "Hunt 30 Skogul and 30 Frus on the second floor of Odin\u0027s Temple (odin_tem02). The Boatman in Hugel (209, 109) sails there.",
-                                           "done":  "You cut down the fallen warrior-spirits that once served the Valkyries.",
-                                           "map":  "odin_tem02",
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "hugel",
-                                                         "x":  209,
-                                                         "y":  109,
-                                                         "name":  "Boatman to Odin\u0027s Temple: hugel"
-                                                     },
-                                           "mobs":  [
-                                                        {
-                                                            "name":  "Skogul",
-                                                            "id":  1752,
-                                                            "count":  30
-                                                        },
-                                                        {
-                                                            "name":  "Frus",
-                                                            "id":  1753,
-                                                            "count":  30
-                                                        }
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "Hugel: talk to the Boatman (209, 109) and choose Sure! (800 zeny). He sails you to the first floor of Odin\u0027s Temple (odin_tem01).",
-                                                        "First floor: walk to the east end. The paths at (378, 182) and (383, 334) lead up to the second floor (odin_tem02), the hunting ground.",
-                                                        "To go home, the Boatman on the first floor (93, 146) sails you back to Hugel."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "odin_tem01",
-                                                             "x":  378,
-                                                             "y":  182,
-                                                             "name":  "Way up to the second floor",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "odin_tem01",
-                                                             "x":  383,
-                                                             "y":  334,
-                                                             "name":  "Way up to the second floor (north)",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  53,
-                                           "id":  38,
-                                           "type":  "deliver",
-                                           "lv":  142,
-                                           "title":  "Runes of the Gods",
-                                           "now":  "Bring Brynjar 5 Runes of Darkness in Hugel (101, 56).",
-                                           "done":  "With the runes, Brynjar could read the gods\u0027 own seal-craft: the seals hold only while heroes stand for them.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "hugel",
-                                                         "x":  101,
-                                                         "y":  56,
-                                                         "name":  "Brynjar the Herald"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-                                                         {
-                                                             "name":  "Rune of Darkness",
-                                                             "id":  7511,
-                                                             "count":  5
-                                                         }
-                                                     ],
-                                           "hint":  [
-                                                        "In Odin\u0027s Temple? Go down to the first floor (odin_tem01) and ask the Boatman there (93, 146) to sail you back to Hugel."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "odin_tem03",
-                                                             "x":  121,
-                                                             "y":  49,
-                                                             "name":  "Way down to the second floor",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "odin_tem02",
-                                                             "x":  21,
-                                                             "y":  180,
-                                                             "name":  "Way down to the first floor",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "odin_tem01",
-                                                             "x":  93,
-                                                             "y":  146,
-                                                             "name":  "Boatman: sail back to Hugel",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  54,
-                                           "id":  39,
-                                           "type":  "boss",
-                                           "lv":  144,
-                                           "title":  "The Fallen Valkyrie",
-                                           "now":  "Ascend to the upper hall of Odin\u0027s Temple (odin_tem03). The Boatman in Hugel (209, 109) sails there.",
-                                           "done":  "You defeated the Fallen Valkyrie\u0027s Shade, and the temple fell quiet for the first time in years.",
-                                           "map":  "odin_tem03",
-                                           "boss":  "Fallen Valkyrie\u0027s Shade",
-                                           "route":  {
-                                                         "map":  "hugel",
-                                                         "x":  209,
-                                                         "y":  109,
-                                                         "name":  "Boatman to Odin\u0027s Temple: hugel"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "Hugel: talk to the Boatman (209, 109) and choose Sure! (800 zeny). He sails you to the first floor of Odin\u0027s Temple (odin_tem01).",
-                                                        "First floor: walk to the east end. The paths at (378, 182) and (383, 334) lead up to the second floor (odin_tem02).",
-                                                        "Second floor: the ways up at (153, 349) and (261, 377) lead to the upper hall (odin_tem03). The Fallen Valkyrie\u0027s Shade appears a few seconds after you arrive."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "odin_tem01",
-                                                             "x":  378,
-                                                             "y":  182,
-                                                             "name":  "Way up to the second floor",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "odin_tem01",
-                                                             "x":  383,
-                                                             "y":  334,
-                                                             "name":  "Way up to the second floor (north)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "odin_tem02",
-                                                             "x":  153,
-                                                             "y":  349,
-                                                             "name":  "Way up to the upper hall",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "odin_tem02",
-                                                             "x":  261,
-                                                             "y":  377,
-                                                             "name":  "Way up to the upper hall (east)",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  55,
-                                           "id":  40,
-                                           "type":  "report",
-                                           "lv":  146,
-                                           "title":  "The Light of Bifrost",
-                                           "now":  "Return to Brynjar the Herald in Hugel (101, 56).",
-                                           "done":  "Brynjar thanked you in the Valkyries\u0027 name, but the temple had shown them one more failing light: Bifrost, the rainbow bridge beyond the rift, where the Laphine of Mora live. He sent you there.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "hugel",
-                                                         "x":  101,
-                                                         "y":  56,
-                                                         "name":  "Brynjar the Herald"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "In Odin\u0027s Temple? Go down to the first floor (odin_tem01) and ask the Boatman there (93, 146) to sail you back to Hugel."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "odin_tem03",
-                                                             "x":  121,
-                                                             "y":  49,
-                                                             "name":  "Way down to the second floor",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "odin_tem02",
-                                                             "x":  21,
-                                                             "y":  180,
-                                                             "name":  "Way down to the first floor",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "odin_tem01",
-                                                             "x":  93,
-                                                             "y":  146,
-                                                             "name":  "Boatman: sail back to Hugel",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       }
-                                   ]
-                     },
-                     {
-                         "n":  12,
-                         "title":  "The Light of Bifrost",
-                         "range":  "147-150",
-                         "town":  "mora",
-                         "townName":  "Mora",
-                         "npc":  "Elder Mirrel",
-                         "x":  114,
-                         "y":  96,
-                         "intro":  "Mora is a Laphine village of healers and gardeners, hidden in the hills at the foot of Bifrost, the rainbow bridge beyond the rift. Its Small Holes in the hillside are its only doors.",
-                         "steps":  [
-                                       {
-                                           "g":  56,
-                                           "id":  916,
-                                           "type":  "talk",
-                                           "lv":  147,
-                                           "title":  "The Village Under the Bridge",
-                                           "now":  "Go to Mora, the Laphine village at the foot of Bifrost, and find Elder Mirrel (114, 96).",
-                                           "done":  "Mirrel keeps the light of Bifrost. Since the rift opened, the fairy-folk of the bridge\u0027s fields have turned on the Laphine, and the bridge\u0027s colours are fading.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "hugel",
+                                                         "map":  "mid_campin",
                                                          "x":  93,
-                                                         "y":  153,
-                                                         "name":  "Eden Teleport Officer: hugel"
+                                                         "y":  114,
+                                                         "name":  "Guard Aello"
                                                      },
-                                           "mobs":  [
-
-                                                    ],
                                            "items":  [
 
                                                      ],
                                            "hint":  [
-                                                        "Back through the rift: the Eden Teleport Officer in Hugel (93, 153) takes you to the Eden Group, where Agent Geck (44, 19) sends you to the rift (Send me back). The Cat Paw cat by the wall (moc_fild20, 368, 197) helps you over, and Tat (moc_fild22b, 182, 179) sends you to the Allied camp.",
-                                                        "In the camp, the Teleport Cat (207, 234) goes to Near Splendide (10,000 zeny). On spl_fild02, the Teleport Cat (53, 242) goes to Entrance to Mora (55,000 zeny).",
-                                                        "On bif_fild02, knock on the Small Hole in the hill (285, 332). It opens into Mora. Elder Mirrel stands in the village centre (114, 96)."
+                                                        "The delegation waits in the room on the right of the second floor. Tell the guard at its door that you have authorization.",
+                                                        "This is also how the Invitation to El Dicastes begins (Side Quests, The New World)."
                                                     ],
                                            "spots":  [
                                                          {
-                                                             "map":  "hugel",
+                                                             "map":  "mid_campin",
                                                              "x":  93,
-                                                             "y":  153,
-                                                             "name":  "Eden Teleport Officer: to the Eden Group",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_para01",
-                                                             "x":  44,
-                                                             "y":  19,
-                                                             "name":  "Agent Geck: Send me back (to the rift)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild20",
-                                                             "x":  368,
-                                                             "y":  197,
-                                                             "name":  "Cat Paw cat: over the wall",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild22b",
-                                                             "x":  182,
-                                                             "y":  179,
-                                                             "name":  "Tat: to the Allied camp",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "mid_camp",
-                                                             "x":  207,
-                                                             "y":  234,
-                                                             "name":  "Teleport Cat: Near Splendide (10,000 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "spl_fild02",
-                                                             "x":  53,
-                                                             "y":  242,
-                                                             "name":  "Teleport Cat: Entrance to Mora (55,000 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "bif_fild02",
-                                                             "x":  285,
-                                                             "y":  332,
-                                                             "name":  "Small Hole: into Mora",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  57,
-                                           "id":  917,
-                                           "type":  "hunt",
-                                           "lv":  147,
-                                           "title":  "The Bridge Fields",
-                                           "now":  "Hunt 30 Little Fatum and 20 Miming on the fields of Bifrost outside Mora (bif_fild02).",
-                                           "done":  "You drove the maddened spirits back from Mora\u0027s gardens.",
-                                           "map":  "bif_fild02",
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "bif_fild02",
-                                                         "x":  291,
-                                                         "y":  323,
-                                                         "name":  "Hunting ground: bif_fild02"
-                                                     },
-                                           "mobs":  [
-                                                        {
-                                                            "name":  "Little Fatum",
-                                                            "id":  2136,
-                                                            "count":  30
-                                                        },
-                                                        {
-                                                            "name":  "Miming",
-                                                            "id":  2137,
-                                                            "count":  20
-                                                        }
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "Mora\u0027s east door (182, 74) leads out to bif_fild02, the hunting ground."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "mora",
-                                                             "x":  182,
-                                                             "y":  74,
-                                                             "name":  "Way out to bif_fild02",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "hugel",
-                                                             "x":  93,
-                                                             "y":  153,
-                                                             "name":  "Eden Teleport Officer: to the Eden Group",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_para01",
-                                                             "x":  44,
-                                                             "y":  19,
-                                                             "name":  "Agent Geck: Send me back (to the rift)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild20",
-                                                             "x":  368,
-                                                             "y":  197,
-                                                             "name":  "Cat Paw cat: over the wall",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild22b",
-                                                             "x":  182,
-                                                             "y":  179,
-                                                             "name":  "Tat: to the Allied camp",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "mid_camp",
-                                                             "x":  207,
-                                                             "y":  234,
-                                                             "name":  "Teleport Cat: Near Splendide (10,000 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "spl_fild02",
-                                                             "x":  53,
-                                                             "y":  242,
-                                                             "name":  "Teleport Cat: Entrance to Mora (55,000 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "bif_fild02",
-                                                             "x":  285,
-                                                             "y":  332,
-                                                             "name":  "Small Hole: into Mora",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  58,
-                                           "id":  918,
-                                           "type":  "deliver",
-                                           "lv":  148,
-                                           "title":  "Dust of the Rainbow",
-                                           "now":  "Bring Elder Mirrel 5 Angel Magic Powder from the Little Fatum and 5 Golden Feathers from the Miming, in Mora (114, 96).",
-                                           "done":  "The powder and feathers had lost their colour. Mirrel saw why: the bridge\u0027s light was being drunk by a thorn-hearted mantis in the fields.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "mora",
-                                                         "x":  114,
-                                                         "y":  96,
-                                                         "name":  "Elder Mirrel"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-                                                         {
-                                                             "name":  "Angel Magic Powder",
-                                                             "id":  6395,
-                                                             "count":  5
-                                                         },
-                                                         {
-                                                             "name":  "Golden Feather",
-                                                             "id":  6394,
-                                                             "count":  5
+                                                             "y":  114,
+                                                             "name":  "Guard Aello",
+                                                             "ro":  null
                                                          }
                                                      ],
-                                           "hint":  [
-                                                        "Far from Mora? Through the rift to the Allied camp (an Eden Teleport Officer, then Agent Geck: Send me back; then the Cat Paw cat on moc_fild20, 368, 197, and Tat beyond the wall), its Teleport Cat (207, 234) to Near Splendide, the Teleport Cat there (53, 242) to Entrance to Mora, then knock on the Small Hole (285, 332)."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "hugel",
-                                                             "x":  93,
-                                                             "y":  153,
-                                                             "name":  "Eden Teleport Officer: to the Eden Group",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_para01",
-                                                             "x":  44,
-                                                             "y":  19,
-                                                             "name":  "Agent Geck: Send me back (to the rift)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild20",
-                                                             "x":  368,
-                                                             "y":  197,
-                                                             "name":  "Cat Paw cat: over the wall",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild22b",
-                                                             "x":  182,
-                                                             "y":  179,
-                                                             "name":  "Tat: to the Allied camp",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "mid_camp",
-                                                             "x":  207,
-                                                             "y":  234,
-                                                             "name":  "Teleport Cat: Near Splendide (10,000 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "spl_fild02",
-                                                             "x":  53,
-                                                             "y":  242,
-                                                             "name":  "Teleport Cat: Entrance to Mora (55,000 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "bif_fild02",
-                                                             "x":  285,
-                                                             "y":  332,
-                                                             "name":  "Small Hole: into Mora",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  59,
-                                           "id":  919,
-                                           "type":  "boss",
-                                           "lv":  149,
-                                           "title":  "The Thornheart",
-                                           "now":  "Return to the fields of Bifrost outside Mora (bif_fild02) and slay the Thornheart Mantis.",
-                                           "done":  "You slew the Thornheart Mantis. As it fell, the light it had drunk streamed back up into Bifrost.",
-                                           "map":  "bif_fild02",
-                                           "boss":  "Thornheart Mantis",
-                                           "route":  {
-                                                         "map":  "bif_fild02",
-                                                         "x":  291,
-                                                         "y":  323,
-                                                         "name":  "Thornheart Mantis: bif_fild02"
-                                                     },
-                                           "mobs":  [
+                                           "parts":  [
 
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "Mora\u0027s east door (182, 74) leads out to bif_fild02. The Thornheart Mantis appears a few seconds after you arrive."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "mora",
-                                                             "x":  182,
-                                                             "y":  74,
-                                                             "name":  "Way out to bif_fild02",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "hugel",
-                                                             "x":  93,
-                                                             "y":  153,
-                                                             "name":  "Eden Teleport Officer: to the Eden Group",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_para01",
-                                                             "x":  44,
-                                                             "y":  19,
-                                                             "name":  "Agent Geck: Send me back (to the rift)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild20",
-                                                             "x":  368,
-                                                             "y":  197,
-                                                             "name":  "Cat Paw cat: over the wall",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild22b",
-                                                             "x":  182,
-                                                             "y":  179,
-                                                             "name":  "Tat: to the Allied camp",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "mid_camp",
-                                                             "x":  207,
-                                                             "y":  234,
-                                                             "name":  "Teleport Cat: Near Splendide (10,000 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "spl_fild02",
-                                                             "x":  53,
-                                                             "y":  242,
-                                                             "name":  "Teleport Cat: Entrance to Mora (55,000 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "bif_fild02",
-                                                             "x":  285,
-                                                             "y":  332,
-                                                             "name":  "Small Hole: into Mora",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  60,
-                                           "id":  920,
-                                           "type":  "report",
-                                           "lv":  150,
-                                           "title":  "Seven Colours",
-                                           "now":  "Return to Elder Mirrel in Mora (114, 96).",
-                                           "done":  "Bifrost shone in seven colours again. But Mirrel knew the mantis had not been the cause: the bridge draws its light from the World Tree, and in Eclage, the Laphine city on the tree, it is withering.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "mora",
-                                                         "x":  114,
-                                                         "y":  96,
-                                                         "name":  "Elder Mirrel"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "On bif_fild02, knock on the Small Hole in the hill (285, 332). It opens into Mora."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "bif_fild02",
-                                                             "x":  285,
-                                                             "y":  332,
-                                                             "name":  "Small Hole: into Mora",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "hugel",
-                                                             "x":  93,
-                                                             "y":  153,
-                                                             "name":  "Eden Teleport Officer: to the Eden Group",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_para01",
-                                                             "x":  44,
-                                                             "y":  19,
-                                                             "name":  "Agent Geck: Send me back (to the rift)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild20",
-                                                             "x":  368,
-                                                             "y":  197,
-                                                             "name":  "Cat Paw cat: over the wall",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "moc_fild22b",
-                                                             "x":  182,
-                                                             "y":  179,
-                                                             "name":  "Tat: to the Allied camp",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "mid_camp",
-                                                             "x":  207,
-                                                             "y":  234,
-                                                             "name":  "Teleport Cat: Near Splendide (10,000 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "spl_fild02",
-                                                             "x":  53,
-                                                             "y":  242,
-                                                             "name":  "Teleport Cat: Entrance to Mora (55,000 zeny)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "bif_fild02",
-                                                             "x":  285,
-                                                             "y":  332,
-                                                             "name":  "Small Hole: into Mora",
-                                                             "sw":  null
-                                                         }
                                                      ]
                                        }
                                    ]
                      },
                      {
-                         "n":  13,
-                         "title":  "Under the World Tree",
-                         "range":  "151-158",
-                         "town":  "ecl_fild01",
-                         "townName":  "Eclage",
-                         "npc":  "Captain Sylwen",
-                         "x":  102,
-                         "y":  307,
-                         "intro":  "Eclage is the capital of the Laphine, built in the branches of Yggdrasil, the World Tree. Its gate admits only those the Laphine have registered, and the old tower of the tree\u0027s keepers stands in the field below.",
+                         "episode":  "14.1",
+                         "title":  "Mistwood Maze",
+                         "lv":  98,
+                         "intro":  "Beyond Bifrost, the rainbow bridge, lies the Mistwood: a forest that leads strangers in circles and does not let them go. Someone has gone missing in it, and an assassin is looking for her. This is Ragnarok\u0027s own story: the Chronicle only shows the way, and RO gives its rewards.",
+                         "more":  true,
+                         "needs":  null,
+                         "party":  "The Mistwood Maze lets in a party only (at least 2; party bots count as players).",
                          "steps":  [
                                        {
-                                           "g":  61,
-                                           "id":  921,
-                                           "type":  "talk",
-                                           "lv":  151,
-                                           "title":  "The Gate of Eclage",
-                                           "now":  "Go to the fields of Eclage (ecl_fild01) and find Captain Sylwen outside the city gate (102, 307).",
-                                           "done":  "Sylwen guards the gate of Eclage. The keepers\u0027 tower in the field below the city, where the Laphine once tended the tree\u0027s roots, has filled with ash and walking books, and no keeper has come out of it.",
-                                           "map":  null,
-                                           "boss":  null,
+                                           "k":  1,
+                                           "type":  "ro",
+                                           "title":  "The Young Man in the Mist",
+                                           "now":  "RO quest: with your party, enter the Mistwood Maze through the Log Tunnel on Bifrost\u0027s field (bif_fild01, 161, 355). Inside, a mysterious young man (97, 30) asks whether you mean to pass through: answer Yes, I do.",
+                                           "done":  "In the Mistwood you met Loki of the Assassin\u0027s Guild. He asked about a purple-haired guard and left you to find your own way through the forest.",
                                            "route":  {
-                                                         "map":  "ecl_fild01",
-                                                         "x":  102,
-                                                         "y":  307,
-                                                         "name":  "Captain Sylwen"
+                                                         "map":  "bif_fild01",
+                                                         "x":  158,
+                                                         "y":  340,
+                                                         "name":  "Laphine Soldier: the Mistwood Maze"
                                                      },
-                                           "mobs":  [
-
-                                                    ],
                                            "items":  [
 
                                                      ],
                                            "hint":  [
-                                                        "From Mora, the east door (182, 74) leads out to bif_fild02.",
-                                                        "On bif_fild02, the way in the north-east (292, 351) leads to ecl_fild01. Walk north-west to the city gate; Captain Sylwen stands just outside it (102, 307)."
+                                                        "Your party\u0027s leader asks the Laphine Soldier (bif_fild01, 158, 340) to open the maze. Then everyone enters through the Log Tunnel (161, 355)."
                                                     ],
                                            "spots":  [
                                                          {
-                                                             "map":  "mora",
-                                                             "x":  182,
-                                                             "y":  74,
-                                                             "name":  "Way out to bif_fild02",
-                                                             "sw":  null
+                                                             "map":  "bif_fild01",
+                                                             "x":  158,
+                                                             "y":  340,
+                                                             "name":  "Laphine Soldier: the Mistwood Maze",
+                                                             "ro":  null
                                                          },
                                                          {
-                                                             "map":  "bif_fild02",
-                                                             "x":  292,
-                                                             "y":  351,
-                                                             "name":  "Way north to the fields of Eclage",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  62,
-                                           "id":  922,
-                                           "type":  "hunt",
-                                           "lv":  152,
-                                           "title":  "The Ashen Halls",
-                                           "now":  "Hunt 25 Cenere and 20 Antique Books on the second floor of the keepers\u0027 tower (ecl_tdun02).",
-                                           "done":  "You cleared the ash spirits and the restless books from the tower\u0027s second floor.",
-                                           "map":  "ecl_tdun02",
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "ecl_tdun02",
-                                                         "x":  60,
-                                                         "y":  88,
-                                                         "name":  "Hunting ground: ecl_tdun02"
-                                                     },
-                                           "mobs":  [
-                                                        {
-                                                            "name":  "Cenere",
-                                                            "id":  2365,
-                                                            "count":  25
-                                                        },
-                                                        {
-                                                            "name":  "Antique Book",
-                                                            "id":  2366,
-                                                            "count":  20
-                                                        }
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "The tower\u0027s door is in the south of ecl_fild01 (182, 82).",
-                                                        "Floor 1: the stairs up (67, 106) lead to the second floor (ecl_tdun02), the hunting ground."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "ecl_fild01",
-                                                             "x":  182,
-                                                             "y":  82,
-                                                             "name":  "Door of the keepers\u0027 tower",
-                                                             "sw":  null
+                                                             "map":  "bif_fild01",
+                                                             "x":  161,
+                                                             "y":  355,
+                                                             "name":  "Log Tunnel",
+                                                             "ro":  null
                                                          },
                                                          {
-                                                             "map":  "ecl_tdun01",
-                                                             "x":  67,
-                                                             "y":  106,
-                                                             "name":  "Stairs up to the second floor",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "mora",
-                                                             "x":  182,
-                                                             "y":  74,
-                                                             "name":  "Way out to bif_fild02",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "bif_fild02",
-                                                             "x":  292,
-                                                             "y":  351,
-                                                             "name":  "Way north to the fields of Eclage",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  63,
-                                           "id":  923,
-                                           "type":  "deliver",
-                                           "lv":  154,
-                                           "title":  "Ash and Pages",
-                                           "now":  "Bring Captain Sylwen 5 Mould Powder from the Cenere and 5 Worn Out Pages from the Antique Books, outside the gate of Eclage (102, 307).",
-                                           "done":  "The pages were the keepers\u0027 last records: the roots of the World Tree were rotting, and the keepers\u0027 old steward had gone up to the top floor to stop it, and never come down.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "ecl_fild01",
-                                                         "x":  102,
-                                                         "y":  307,
-                                                         "name":  "Captain Sylwen"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-                                                         {
-                                                             "name":  "Mould Powder",
-                                                             "id":  7001,
-                                                             "count":  5
-                                                         },
-                                                         {
-                                                             "name":  "Worn Out Page",
-                                                             "id":  1097,
-                                                             "count":  5
+                                                             "map":  "1@mist",
+                                                             "x":  97,
+                                                             "y":  30,
+                                                             "name":  "Mysterious Young Man",
+                                                             "ro":  null
                                                          }
                                                      ],
-                                           "hint":  [
-                                                        "Far from Eclage? From Mora, the east door (182, 74) leads to bif_fild02, and its north-east way (292, 351) to ecl_fild01. Captain Sylwen stands outside the city gate (102, 307)."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "mora",
-                                                             "x":  182,
-                                                             "y":  74,
-                                                             "name":  "Way out to bif_fild02",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "bif_fild02",
-                                                             "x":  292,
-                                                             "y":  351,
-                                                             "name":  "Way north to the fields of Eclage",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  64,
-                                           "id":  924,
-                                           "type":  "boss",
-                                           "lv":  156,
-                                           "title":  "The Last Keeper",
-                                           "now":  "Climb to the third floor of the keepers\u0027 tower (ecl_tdun03) and free the Withered Steward.",
-                                           "done":  "You freed the Withered Steward. With his last breath he named what drinks from the roots: an ancient machine city, buried under the Schwarzwald, where the first seal was made.",
-                                           "map":  "ecl_tdun03",
-                                           "boss":  "Withered Steward",
-                                           "route":  {
-                                                         "map":  "ecl_tdun03",
-                                                         "x":  47,
-                                                         "y":  13,
-                                                         "name":  "Withered Steward: ecl_tdun03"
-                                                     },
-                                           "mobs":  [
+                                           "parts":  [
 
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "The tower\u0027s door is in the south of ecl_fild01 (182, 82). Floor 1: the stairs up (67, 106). Floor 2: the stairs up (52, 9) lead to the third floor.",
-                                                        "The Withered Steward appears a few seconds after you arrive."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "ecl_fild01",
-                                                             "x":  182,
-                                                             "y":  82,
-                                                             "name":  "Door of the keepers\u0027 tower",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "ecl_tdun01",
-                                                             "x":  67,
-                                                             "y":  106,
-                                                             "name":  "Stairs up to the second floor",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "ecl_tdun02",
-                                                             "x":  52,
-                                                             "y":  9,
-                                                             "name":  "Stairs up to the third floor",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "mora",
-                                                             "x":  182,
-                                                             "y":  74,
-                                                             "name":  "Way out to bif_fild02",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "bif_fild02",
-                                                             "x":  292,
-                                                             "y":  351,
-                                                             "name":  "Way north to the fields of Eclage",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  65,
-                                           "id":  925,
-                                           "type":  "report",
-                                           "lv":  158,
-                                           "title":  "The Roots Below",
-                                           "now":  "Return to Captain Sylwen outside the gate of Eclage (102, 307).",
-                                           "done":  "Sylwen knew the city the steward named: Verus, the buried city beneath the Juperos ruins. The machines there are digging toward the first seal, and the World Tree\u0027s roots run through it. She sent you back across the rift, to Verus.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "ecl_fild01",
-                                                         "x":  102,
-                                                         "y":  307,
-                                                         "name":  "Captain Sylwen"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
-                                                     ],
-                                           "hint":  [
-                                                        "From the tower, take the stairs down to the first floor and its door (61, 11) back out to ecl_fild01. Sylwen stands outside the city gate (102, 307)."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "ecl_tdun03",
-                                                             "x":  49,
-                                                             "y":  11,
-                                                             "name":  "Stairs down to the second floor",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "ecl_tdun02",
-                                                             "x":  60,
-                                                             "y":  90,
-                                                             "name":  "Stairs down to the first floor",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "ecl_tdun01",
-                                                             "x":  61,
-                                                             "y":  11,
-                                                             "name":  "Door out to ecl_fild01",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "mora",
-                                                             "x":  182,
-                                                             "y":  74,
-                                                             "name":  "Way out to bif_fild02",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "bif_fild02",
-                                                             "x":  292,
-                                                             "y":  351,
-                                                             "name":  "Way north to the fields of Eclage",
-                                                             "sw":  null
-                                                         }
                                                      ]
                                        }
                                    ]
                      },
                      {
-                         "n":  14,
-                         "title":  "The First Seal",
-                         "range":  "160-171",
-                         "town":  "verus04",
-                         "townName":  "Verus",
-                         "npc":  "Professor Hendrik",
-                         "x":  190,
-                         "y":  180,
-                         "intro":  "Verus is a city of the ancients, buried beneath the ruins of Juperos and only now dug out by the Republic\u0027s excavators. Its machines built the seals of Rune-Midgard, and some of them still run.",
+                         "episode":  "14.2",
+                         "title":  "Encounter in a Strange Land",
+                         "lv":  99,
+                         "intro":  "Eclage, the city of the Laphine, is built in the branches of the World Tree. Its king is young and its people doubt him, and a traveler from far away has seen more of the city than its guards would like. This is Ragnarok\u0027s own story: the Chronicle only shows the way, and RO gives its rewards.",
+                         "more":  true,
+                         "needs":  "a way into Eclage: its gate guards let in only visitors the Laphine have registered (Side Quests, Eclage).",
+                         "party":  null,
                          "steps":  [
                                        {
-                                           "g":  66,
-                                           "id":  926,
-                                           "type":  "talk",
-                                           "lv":  160,
-                                           "title":  "The Buried City",
-                                           "now":  "Go to Verus, the buried city beneath Juperos, and find Professor Hendrik at the excavation camp (verus04, 190, 180).",
-                                           "done":  "Hendrik leads the Republic\u0027s dig in Verus. The city\u0027s repair machines have woken and joined its old diggers: all of them are tunnelling down, toward something sealed under the city.",
-                                           "map":  null,
-                                           "boss":  null,
+                                           "k":  1,
+                                           "type":  "ro",
+                                           "title":  "Traveler Fome",
+                                           "now":  "RO quest: in Eclage, talk to Fome, a traveler like you (ecl_in01, 32, 52).",
+                                           "done":  "You met Fome, a traveler in Eclage, and through her the Laphine\u0027s troubles began to open up to you.",
                                            "route":  {
-                                                         "map":  "juperos_01",
-                                                         "x":  245,
-                                                         "y":  87,
-                                                         "name":  "The way to Verus: juperos_01"
+                                                         "map":  "eclage",
+                                                         "x":  299,
+                                                         "y":  309,
+                                                         "name":  "Door to Traveler Fome"
                                                      },
-                                           "mobs":  [
-
-                                                    ],
                                            "items":  [
 
                                                      ],
                                            "hint":  [
-                                                        "From Juno, follow the Route link into the Juperos ruins (juperos_01). Its east tunnel (245, 87) leads to the excavation site (ver_eju).",
-                                                        "On ver_eju, the way south (107, 36) leads into the tunnel (ver_tunn). The tunnel\u0027s west end (10, 36) opens into Verus (verus04). Professor Hendrik works near the excavators\u0027 camp (190, 180)."
+                                                        "Fome is inside the building whose door is at 299, 309 in Eclage."
                                                     ],
                                            "spots":  [
                                                          {
-                                                             "map":  "juperos_01",
-                                                             "x":  245,
-                                                             "y":  87,
-                                                             "name":  "East tunnel: to the excavation (ver_eju)",
-                                                             "sw":  null
+                                                             "map":  "eclage",
+                                                             "x":  299,
+                                                             "y":  309,
+                                                             "name":  "Door to Traveler Fome",
+                                                             "ro":  null
                                                          },
                                                          {
-                                                             "map":  "ver_eju",
-                                                             "x":  107,
-                                                             "y":  36,
-                                                             "name":  "Way down to the tunnel (ver_tunn)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "ver_tunn",
-                                                             "x":  10,
-                                                             "y":  36,
-                                                             "name":  "Way to Verus (verus04)",
-                                                             "sw":  null
+                                                             "map":  "ecl_in01",
+                                                             "x":  32,
+                                                             "y":  52,
+                                                             "name":  "Traveler Fome",
+                                                             "ro":  null
                                                          }
+                                                     ],
+                                           "parts":  [
+
                                                      ]
-                                       },
+                                       }
+                                   ]
+                     },
+                     {
+                         "episode":  "14.3",
+                         "title":  "Dimensional Travel",
+                         "lv":  140,
+                         "intro":  "In the ruins of Morroc, something lies moaning under a pile of rags. Whoever it is has come a long way, and not only across the desert. This is Ragnarok\u0027s own story: the Chronicle only shows the way, and RO gives its rewards.",
+                         "more":  true,
+                         "needs":  null,
+                         "party":  null,
+                         "steps":  [
                                        {
-                                           "g":  67,
-                                           "id":  927,
-                                           "type":  "hunt",
-                                           "lv":  161,
-                                           "title":  "The Waking City",
-                                           "now":  "Hunt 30 Repair Robots and 15 Exploration Rovers in the old city of Verus (verus03).",
-                                           "done":  "You broke the swarm of repair machines and rovers that had woken in the old city.",
-                                           "map":  "verus03",
-                                           "boss":  null,
+                                           "k":  1,
+                                           "type":  "ro",
+                                           "title":  "The Piled Rags",
+                                           "now":  "RO quest: in the ruins of Morroc, a pile of dirty rags lies at 138, 238. Choose Remove it., then Shake the rags.",
+                                           "done":  "Under the rags in Morroc lay a stranger, moaning, and with him your Dimensional Travel began.",
                                            "route":  {
-                                                         "map":  "verus04",
-                                                         "x":  121,
-                                                         "y":  267,
-                                                         "name":  "Way to the old city: verus04"
+                                                         "map":  "morocc",
+                                                         "x":  138,
+                                                         "y":  238,
+                                                         "name":  "Piled Rags"
                                                      },
-                                           "mobs":  [
-                                                        {
-                                                            "name":  "Repair Robot",
-                                                            "id":  3155,
-                                                            "count":  30
-                                                        },
-                                                        {
-                                                            "name":  "Exploration Rover",
-                                                            "id":  3156,
-                                                            "count":  15
-                                                        }
-                                                    ],
                                            "items":  [
 
                                                      ],
                                            "hint":  [
-                                                        "From Professor Hendrik\u0027s camp, the ways north (121, 267) and (44, 267) lead to the old city (verus03), the hunting ground."
+                                                        "No open road leads into Morroc: a Kafra Employee in Payon (175, 226) or Prontera (146, 89) teleports you there (Teleport Service, then Morocc, 1,200 zeny).",
+                                                        "Make some room in your bag first: the quest refuses a full bag."
                                                     ],
                                            "spots":  [
                                                          {
-                                                             "map":  "verus04",
-                                                             "x":  121,
-                                                             "y":  267,
-                                                             "name":  "Way north to the old city (verus03)",
-                                                             "sw":  null
+                                                             "map":  "payon",
+                                                             "x":  175,
+                                                             "y":  226,
+                                                             "name":  "Kafra: Teleport to Morocc (1,200 zeny)",
+                                                             "ro":  null
                                                          },
                                                          {
-                                                             "map":  "juperos_01",
-                                                             "x":  245,
-                                                             "y":  87,
-                                                             "name":  "East tunnel: to the excavation (ver_eju)",
-                                                             "sw":  null
+                                                             "map":  "prontera",
+                                                             "x":  146,
+                                                             "y":  89,
+                                                             "name":  "Kafra: Teleport to Morocc (1,200 zeny)",
+                                                             "ro":  null
                                                          },
                                                          {
-                                                             "map":  "ver_eju",
-                                                             "x":  107,
-                                                             "y":  36,
-                                                             "name":  "Way down to the tunnel (ver_tunn)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "ver_tunn",
-                                                             "x":  10,
-                                                             "y":  36,
-                                                             "name":  "Way to Verus (verus04)",
-                                                             "sw":  null
+                                                             "map":  "morocc",
+                                                             "x":  138,
+                                                             "y":  238,
+                                                             "name":  "Piled Rags",
+                                                             "ro":  null
                                                          }
+                                                     ],
+                                           "parts":  [
+
                                                      ]
-                                       },
+                                       }
+                                   ]
+                     },
+                     {
+                         "episode":  "15",
+                         "title":  "The Atnad Excavation",
+                         "lv":  140,
+                         "intro":  "An ancient site has been found under Juperos, and the Rekenber Corporation is hiring adventurers to dig it out. The Eden Group has signed on, and beneath the ruins lies Verus, a city of the ancients, and something called Phantasmagorika. This is Ragnarok\u0027s own story: the Chronicle only shows the way, and RO gives its rewards.",
+                         "more":  true,
+                         "needs":  "membership of the Eden Group: any town\u0027s Eden Teleport Officer takes you to its headquarters, where you can join.",
+                         "party":  null,
+                         "steps":  [
                                        {
-                                           "g":  68,
-                                           "id":  928,
-                                           "type":  "deliver",
-                                           "lv":  164,
-                                           "title":  "Iron and Orders",
-                                           "now":  "Bring Professor Hendrik 5 Used Iron Plates from the Repair Robots and 10 Iron from the Exploration Rovers, in Verus (190, 180).",
-                                           "done":  "Etched inside the plates were the machines\u0027 orders, older than any kingdom: dig to the first seal and open it. One machine gives those orders, the great Excavator at the dig site above.",
-                                           "map":  null,
-                                           "boss":  null,
+                                           "k":  1,
+                                           "type":  "ro",
+                                           "title":  "Word from the Eden Group",
+                                           "now":  "RO quest: in the Eden Group\u0027s headquarters, Secretary Lime Evenor greets you at the entrance to the central room (moc_para01, 31, 14): an ancient site was found in Juperos, and the Captain wants to see you.",
+                                           "done":  "Lime Evenor told you of the ancient site under Juperos: the Eden Group has joined Rekenber\u0027s excavation, and the Captain wants you on it.",
                                            "route":  {
-                                                         "map":  "verus04",
-                                                         "x":  190,
-                                                         "y":  180,
-                                                         "name":  "Professor Hendrik"
+                                                         "map":  "moc_para01",
+                                                         "x":  31,
+                                                         "y":  14,
+                                                         "name":  "Secretary Lime Evenor"
                                                      },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-                                                         {
-                                                             "name":  "Used Iron Plate",
-                                                             "id":  7319,
-                                                             "count":  5
-                                                         },
-                                                         {
-                                                             "name":  "Iron",
-                                                             "id":  998,
-                                                             "count":  10
-                                                         }
-                                                     ],
-                                           "hint":  [
-                                                        "Far from Verus? From Juno, go down into the Juperos ruins (juperos_01). Its east tunnel (245, 87) leads to the excavation (ver_eju), its south way (107, 36) to the tunnel (ver_tunn), and the tunnel\u0027s west end (10, 36) to Verus (verus04)."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "juperos_01",
-                                                             "x":  245,
-                                                             "y":  87,
-                                                             "name":  "East tunnel: to the excavation (ver_eju)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "ver_eju",
-                                                             "x":  107,
-                                                             "y":  36,
-                                                             "name":  "Way down to the tunnel (ver_tunn)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "ver_tunn",
-                                                             "x":  10,
-                                                             "y":  36,
-                                                             "name":  "Way to Verus (verus04)",
-                                                             "sw":  null
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  69,
-                                           "id":  929,
-                                           "type":  "boss",
-                                           "lv":  167,
-                                           "title":  "The Excavator Prime",
-                                           "now":  "Go back up to the excavation site (ver_eju) and destroy the Excavator Prime.",
-                                           "done":  "You destroyed the Excavator Prime. All through the city the machines fell still, one by one, and far below them the first seal held.",
-                                           "map":  "ver_eju",
-                                           "boss":  "Excavator Prime",
-                                           "route":  {
-                                                         "map":  "ver_eju",
-                                                         "x":  13,
-                                                         "y":  148,
-                                                         "name":  "Excavator Prime: ver_eju"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
                                            "items":  [
 
                                                      ],
                                            "hint":  [
-                                                        "From Verus, the way east (204, 163) leads into the tunnel (ver_tunn), and its north end (84, 86) up to the excavation site (ver_eju). The Excavator Prime appears a few seconds after you arrive."
+                                                        "Any town\u0027s Eden Teleport Officer takes you to the Eden Group (moc_para01). Keep your Eden Group mark in your bag: without it Lime Evenor sends you to join first."
                                                     ],
                                            "spots":  [
                                                          {
-                                                             "map":  "verus04",
-                                                             "x":  204,
-                                                             "y":  163,
-                                                             "name":  "Way to the tunnel (ver_tunn)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "ver_tunn",
-                                                             "x":  84,
-                                                             "y":  86,
-                                                             "name":  "Way up to the excavation site (ver_eju)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "juperos_01",
-                                                             "x":  245,
-                                                             "y":  87,
-                                                             "name":  "East tunnel: to the excavation (ver_eju)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "ver_eju",
-                                                             "x":  107,
-                                                             "y":  36,
-                                                             "name":  "Way down to the tunnel (ver_tunn)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "ver_tunn",
-                                                             "x":  10,
-                                                             "y":  36,
-                                                             "name":  "Way to Verus (verus04)",
-                                                             "sw":  null
+                                                             "map":  "moc_para01",
+                                                             "x":  31,
+                                                             "y":  14,
+                                                             "name":  "Secretary Lime Evenor",
+                                                             "ro":  null
                                                          }
-                                                     ]
-                                       },
-                                       {
-                                           "g":  70,
-                                           "id":  930,
-                                           "type":  "report",
-                                           "lv":  171,
-                                           "title":  "Champion of Rune-Midgard",
-                                           "now":  "Return to Professor Hendrik in Verus (190, 180).",
-                                           "done":  "The first seal holds. From Prontera\u0027s fields to the roots of the World Tree, you stood wherever the seals failed. Your Chronicle is complete for now: you are a Champion of Rune-Midgard. Episodes 16 to 21 are in development, coming soon. Legends still wait: The Sign and Geffenia, Thanatos Tower, the Abyss Lakes and the Endless Tower.",
-                                           "map":  null,
-                                           "boss":  null,
-                                           "route":  {
-                                                         "map":  "verus04",
-                                                         "x":  190,
-                                                         "y":  180,
-                                                         "name":  "Professor Hendrik"
-                                                     },
-                                           "mobs":  [
-
-                                                    ],
-                                           "items":  [
-
                                                      ],
-                                           "hint":  [
-                                                        "From the excavation site, the way south (107, 36) leads into the tunnel (ver_tunn), and its west end (10, 36) to Verus. Hendrik is at his camp (190, 180)."
-                                                    ],
-                                           "spots":  [
-                                                         {
-                                                             "map":  "ver_eju",
-                                                             "x":  107,
-                                                             "y":  36,
-                                                             "name":  "Way down to the tunnel (ver_tunn)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "ver_tunn",
-                                                             "x":  10,
-                                                             "y":  36,
-                                                             "name":  "Way to Verus (verus04)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "juperos_01",
-                                                             "x":  245,
-                                                             "y":  87,
-                                                             "name":  "East tunnel: to the excavation (ver_eju)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "ver_eju",
-                                                             "x":  107,
-                                                             "y":  36,
-                                                             "name":  "Way down to the tunnel (ver_tunn)",
-                                                             "sw":  null
-                                                         },
-                                                         {
-                                                             "map":  "ver_tunn",
-                                                             "x":  10,
-                                                             "y":  36,
-                                                             "name":  "Way to Verus (verus04)",
-                                                             "sw":  null
-                                                         }
+                                           "parts":  [
+
                                                      ]
                                        }
                                    ]
@@ -4238,7 +1160,7 @@ export default {
                      "where":  "Culvert 4F",
                      "map":  "prt_sewb4",
                      "lv":  65,
-                     "g":  3,
+                     "g":  0,
                      "side":  null,
                      "k":  null
                  },
@@ -4248,7 +1170,7 @@ export default {
                      "where":  "Payon Cave 5F",
                      "map":  "pay_dun04",
                      "lv":  79,
-                     "g":  6,
+                     "g":  0,
                      "side":  null,
                      "k":  null
                  },
@@ -4258,7 +1180,7 @@ export default {
                      "where":  "Payon Forest",
                      "map":  "pay_fild10",
                      "lv":  65,
-                     "g":  6,
+                     "g":  0,
                      "side":  null,
                      "k":  null
                  },
@@ -4278,7 +1200,7 @@ export default {
                      "where":  "Pyramid 4F",
                      "map":  "moc_pryd04",
                      "lv":  68,
-                     "g":  13,
+                     "g":  0,
                      "side":  null,
                      "k":  null
                  },
@@ -4288,7 +1210,7 @@ export default {
                      "where":  "Pyramid B2",
                      "map":  "moc_pryd06",
                      "lv":  69,
-                     "g":  15,
+                     "g":  0,
                      "side":  null,
                      "k":  null
                  },
@@ -4318,7 +1240,7 @@ export default {
                      "where":  "Fields east of the Orc Village",
                      "map":  "gef_fild03",
                      "lv":  50,
-                     "g":  16,
+                     "g":  0,
                      "side":  null,
                      "k":  null
                  },
@@ -4328,7 +1250,7 @@ export default {
                      "where":  "Geffen Dungeon 2F",
                      "map":  "gef_dun01",
                      "lv":  75,
-                     "g":  18,
+                     "g":  0,
                      "side":  null,
                      "k":  null
                  },
@@ -4338,7 +1260,7 @@ export default {
                      "where":  "Geffen Dungeon 3F",
                      "map":  "gef_dun02",
                      "lv":  77,
-                     "g":  18,
+                     "g":  0,
                      "side":  null,
                      "k":  null
                  },
@@ -4378,7 +1300,7 @@ export default {
                      "where":  "Glast Heim Churchyard",
                      "map":  "gl_chyard",
                      "lv":  96,
-                     "g":  23,
+                     "g":  0,
                      "side":  null,
                      "k":  null
                  },

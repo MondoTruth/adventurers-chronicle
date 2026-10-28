@@ -59,6 +59,30 @@ $eraOnly = @($chapters | Where-Object { $_.era }).Count -gt 0
 $n = 0
 foreach ($c in $chapters) { $n++; $c.n = $n }
 foreach ($dir in 'db', 'System', 'npc', 'client') { New-Item -ItemType Directory -Force (Join-Path $out $dir) | Out-Null }
+# Renewal's Story is Ragnarok's own episodes (story.ps1's $episodes, concept
+# v3): each opens at its own level and follows RO's own variables. Renewal
+# has no chapters then: no Chronicle steps, NPCs, quest-window entries or
+# chapter costumes (MondoTruth, 2026-10-28), and its own item list.
+$episodes = @()
+if ($era -eq 'renewal' -and $story.episodes) {
+    $episodes = @($story.episodes)
+    $chapters = @()
+    $eraOnly = $true
+}
+$ei = 0
+foreach ($ep in $episodes) {
+    $ei++
+    $ep.i = $ei
+    if (-not $ep.lv -or $ep.steps.Count -lt 1 -or $ep.steps.Count -gt 99) { throw "Episode $($ep.episode) needs a level and 1 to 99 steps" }
+    $k = 0
+    foreach ($s in $ep.steps) {
+        $k++
+        $s.k = $k
+        $s.type = 'ro'
+        if (-not $s.cond) { throw "Episode $($ep.episode) step $k has no cond" }
+    }
+    if (-not $ep.end) { $ep.end = $ep.steps[-1].cond }
+}
 
 # ---- walk the story ----
 $steps = @()
@@ -99,6 +123,9 @@ foreach ($rt in $retired) {
 }
 foreach ($h in @($sides | Where-Object { $_.hook }) + @($side.mvps | Where-Object { $_.g })) {
     $key = $(if ($h.hook) { 'hook' } else { 'g' })
+    # With the episodes, no step opens anything: every MVP is in the Ledger
+    # from the start, and the Side Quests are off (below).
+    if ($episodes.Count) { $h[$key] = 0; continue }
     $p = $posOf[[int]$h[$key]]
     if (-not $p) { throw "No step with id $($h[$key]) in the $era route ($key of $($h.title)$($h.name))" }
     $h[$key] = $p
@@ -130,7 +157,7 @@ if ($era -eq 'renewal' -and (Test-Path $catFile)) {
 # With the catalog, the tab is the catalog alone (concept v3, MondoTruth
 # 2026-10-28): no RO quest guides (their quests are in the catalog), and
 # Always's Side Quests are switched off below, after their items.
-if ($cat) { $guides = @() }
+if ($cat -or $episodes.Count) { $guides = @() }
 $catQuests = @()
 if ($cat) { $catQuests = @($cat.regions | ForEach-Object { $_.storylines } | ForEach-Object { $_.quests }) }
 
@@ -540,7 +567,7 @@ $d += Arr '$@chr_x' ($chapters | ForEach-Object { $_.x })
 $d += Arr '$@chr_y' ($chapters | ForEach-Object { $_.y })
 $d += Arr '$@chr_zeny' ($chapters | ForEach-Object { $_.zeny })
 $d += Arr '$@chr_gift$' ($chapters | ForEach-Object { ($_.gift | ForEach-Object { "$($_[0]),$($_[1])" }) -join ';' }) -str
-$d += Arr '$@chr_cost' (1..($chapters.Count * 3) | ForEach-Object { $costumeIds[$_] })
+$d += Arr '$@chr_cost' @(if ($chapters.Count) { 1..($chapters.Count * 3) | ForEach-Object { $costumeIds[$_] } })
 # Side Quests: per quest [n], per step [n*10+k].
 function ItemList($list) { if ($list) { (@($list) | ForEach-Object { "$($_[0]),$($_[2]),$(Ascii $_[1] 'item')" }) -join ';' } else { '' } }
 function PairList($list) { if ($list) { (@($list) | ForEach-Object { "$($_[0]),$($_[1])" }) -join ';' } else { '' } }
@@ -887,6 +914,120 @@ function	script	F_ChronMainState	{
 
 '@ -split "`r?`n"
 }
+# Ragnarok's episodes (Renewal's Story): per episode [i], per step [i*100+k].
+# Where each stands comes from RO's own variables alone, nothing of the
+# Chronicle's: 0 below its level, 100 done ('end' holds), else the first step
+# whose cond is not true (one past the last written step: under way beyond it).
+$epFns = @()
+if ($episodes.Count) {
+    $d += "// ---- Ragnarok's episodes (Renewal's Story) ----"
+    $d += "`$@ep_n = $($episodes.Count);"
+    $d += Arr '$@ep_name$' ($episodes | ForEach-Object { $_.episode }) -str
+    $d += Arr '$@ep_title$' ($episodes | ForEach-Object { Ascii $_.title 'episode title' }) -str
+    $d += Arr '$@ep_lv' ($episodes | ForEach-Object { $_.lv })
+    $d += Arr '$@ep_steps' ($episodes | ForEach-Object { $_.steps.Count })
+    foreach ($ep in $episodes) {
+        $at = $ep.i * 100 + 1
+        $d += Arr '$@eps_title$' ($ep.steps | ForEach-Object { Ascii $_.title 'episode step' }) -str -from $at
+        $d += Arr '$@eps_now$' ($ep.steps | ForEach-Object { Ascii $_.now 'episode now' }) -str -from $at
+        $d += Arr '$@eps_items$' ($ep.steps | ForEach-Object { ItemList $_.items }) -str -from $at
+        $d += Arr '$@eps_parts$' ($ep.steps | ForEach-Object { if ($_.parts) { (@($_.parts) | ForEach-Object { if ($_.name -match '[|;"]') { throw "Bad character in part $($_.name)" }; "$($_.at)|$(Ascii $_.name 'part')" }) -join ';' } else { '' } }) -str -from $at
+    }
+    $epFns += "// ---- generated: Ragnarok's episodes (Renewal's Story) ----", 'function	script	F_ChronEpK	{', '	switch (getarg(0)) {'
+    foreach ($ep in $episodes) {
+        $epFns += "	case $($ep.i):	// Episode $($ep.episode)"
+        $epFns += "		if (BaseLevel < $($ep.lv)) return 0;"
+        $epFns += "		if ($($ep.end)) return 100;"
+        foreach ($s in $ep.steps) { $epFns += "		if (!($($s.cond))) return $($s.k);" }
+        $epFns += "		return $($ep.steps.Count + 1);"
+    }
+    $epFns += '	}', '	return 0;', '}', ''
+    # The value of RO's variable on step getarg(0) (i*100+k), for its parts and spots.
+    $epFns += 'function	script	F_ChronEpVar	{', '	switch (getarg(0)) {'
+    foreach ($ep in $episodes) { foreach ($s in $ep.steps | Where-Object { $_.var }) { $epFns += "	case $($ep.i * 100 + $s.k): return $($s.var);" } }
+    $epFns += '	}', '	return -1;', '}', ''
+    # Login: the Journal in the bag (the chapters' login, CHRON_STEP, is not run).
+    $epFns += '// Login on Renewal: the Journal in the bag; the episodes need nothing else.', 'function	script	F_ChronEpLogin	{', '	if (!countitem(50100))', '		getitem 50100, 1;', '	return;', '}', ''
+    $epFns += @'
+// The Journal's line for the episodes: "k:ro:items" per episode, ';' between.
+function	script	F_ChronEpState	{
+	.@s$ = "";
+	for (.@i = 1; .@i <= $@ep_n; .@i++) {
+		.@k = callfunc("F_ChronEpK", .@i);
+		.@v = -1;
+		.@h$ = "";
+		if (.@k >= 1 && .@k <= $@ep_steps[.@i]) {
+			.@v = callfunc("F_ChronEpVar", .@i * 100 + .@k);
+			if ($@eps_items$[.@i * 100 + .@k] != "")
+				.@h$ = callfunc("F_ChronHaveList", $@eps_items$[.@i * 100 + .@k]);
+		}
+		.@s$ += (.@i > 1 ? ";" : "") + .@k + ":" + .@v + ":" + .@h$;
+	}
+	return .@s$;
+}
+
+// Every tick: an episode that opened (its level reached), moved on or was
+// finished is announced, and the Journal is told when its counts change.
+// The first look after login only notes where each one stands.
+function	script	F_ChronEpTick	{
+	for (.@i = 1; .@i <= $@ep_n; .@i++) {
+		.@k = callfunc("F_ChronEpK", .@i);
+		.@n = $@ep_steps[.@i];
+		.@v = -1;
+		.@h$ = "";
+		if (.@k >= 1 && .@k <= .@n) {
+			.@v = callfunc("F_ChronEpVar", .@i * 100 + .@k);
+			if ($@eps_items$[.@i * 100 + .@k] != "")
+				.@h$ = callfunc("F_ChronHaveList", $@eps_items$[.@i * 100 + .@k]);
+		}
+		if (@chr_einit) {
+			.@was = @chr_ek[.@i];
+			.@ep$ = "[Chronicle] Episode " + $@ep_name$[.@i] + ", " + $@ep_title$[.@i];
+			if (.@k != .@was) {
+				if (.@k == 100)
+					dispbottom .@ep$ + ", is done!", 0xFFDD66;
+				else if (.@was == 0)
+					dispbottom .@ep$ + ", is open for you now. The Journal (Alt+B) shows where it begins: " + $@eps_now$[.@i * 100 + 1], 0xFFDD66;
+				else if (.@k > .@was && .@was <= .@n)
+					dispbottom .@ep$ + ": " + $@eps_title$[.@i * 100 + .@was] + " done." + (.@k <= .@n ? " Next: " + $@eps_now$[.@i * 100 + .@k] : " The Journal has no further steps of it yet: RO's quest window (Alt+U) follows the rest."), 0xFFDD66;
+				dispbottom "@@event chronicle refresh";
+			} else if (.@k >= 1 && .@k <= .@n && (.@v != @chr_ev[.@i] || .@h$ != @chr_eh$[.@i])) {
+				if (.@v != @chr_ev[.@i])
+					callfunc "F_ChronEpPart", .@i, .@i * 100 + .@k, .@v;
+				dispbottom "@@event chronicle refresh";
+			}
+		}
+		@chr_ek[.@i] = .@k;
+		@chr_ev[.@i] = .@v;
+		@chr_eh$[.@i] = .@h$;
+	}
+	@chr_einit = 1;
+	return;
+}
+
+// Episode getarg(0), step getarg(1): RO's variable is now getarg(2). Name the
+// part just done and the next one ($@eps_parts$ "at|name;...").
+function	script	F_ChronEpPart	{
+	if ($@eps_parts$[getarg(1)] == "")
+		return;
+	explode(.@pt$, $@eps_parts$[getarg(1)], ";");
+	.@done$ = "";
+	.@next$ = "";
+	for (.@j = 0; .@j < getarraysize(.@pt$); .@j++) {
+		explode(.@p$, .@pt$[.@j], "|");
+		.@at = atoi(.@p$[0]);
+		if (.@at == getarg(2))
+			.@done$ = .@p$[1];
+		else if (.@at > getarg(2) && .@next$ == "")
+			.@next$ = .@p$[1];
+	}
+	if (.@done$ != "")
+		dispbottom "[Chronicle] Episode " + $@ep_name$[getarg(0)] + ": done, " + .@done$ + "." + (.@next$ != "" ? " Next: " + .@next$ + "." : ""), 0xFFDD66;
+	return;
+}
+
+'@ -split "`r?`n"
+}
 $npcs = @('// ---- generated NPCs ----')
 foreach ($c in $chapters) {
     # An episode of RO's own story has no Chronicle NPC: RO's own NPCs tell it.
@@ -909,7 +1050,7 @@ foreach ($gt in $story.gates) {
     $npcs += '}'
 }
 $tpl = Get-Content (Join-Path $here 'chronicle.template.txt') -Raw
-$tpl = $tpl.Replace('//@@DATA@@', ($d -join "`n`t")).Replace('//@@NPCS@@', (($cond + $guideFns + $catFns + $mainFns + $npcs) -join "`n"))
+$tpl = $tpl.Replace('//@@DATA@@', ($d -join "`n`t")).Replace('//@@NPCS@@', (($cond + $guideFns + $catFns + $mainFns + $epFns + $npcs) -join "`n"))
 # "@chronicle <n> cat": the catalog's line, in parts of 200 characters (one
 # chat line each; the client joins the parts of a reply). freeloop: the whole
 # catalog is more jumps than rAthena's 2048 allowed per run ("infinity loop").
@@ -952,6 +1093,21 @@ foreach ($m in @($hooks.Keys) + @($mainHooks.Keys)) {
     elseif ($m.StartsWith('//')) { $tpl = $tpl -replace ('[ \t]*' + [regex]::Escape($m) + '\r?\n'), '' }
     else { $tpl = $tpl.Replace($m, '') }
 }
+# The same for Ragnarok's episodes (Renewal's Story): its login replaces the
+# chapters' one, and its state field comes after the guides' and the main
+# road's (empty ones written out, so it is always field 12).
+$bars = 1 + $(if ($guides.Count -or $mainRo.Count) { 0 } else { 1 }) + $(if ($mainRo.Count) { 0 } else { 1 })
+$epHooks = [ordered]@{
+    '//@@EP_LOGIN@@' = "callfunc `"F_ChronEpLogin`";`r`n`tend;"
+    '//@@EP_TICK@@' = 'callfunc "F_ChronEpTick";'
+    '/*@@EP_STATE@@*/' = ' + "' + ('|' * $bars) + '" + callfunc("F_ChronEpState")'
+}
+foreach ($m in $epHooks.Keys) {
+    if (([regex]::Matches($tpl, [regex]::Escape($m))).Count -ne 1) { throw "Template marker $m must be there once" }
+    if ($episodes.Count) { $tpl = $tpl.Replace($m, $epHooks[$m]) }
+    elseif ($m.StartsWith('//')) { $tpl = $tpl -replace ('[ \t]*' + [regex]::Escape($m) + '\r?\n'), '' }
+    else { $tpl = $tpl.Replace($m, '') }
+}
 [IO.File]::WriteAllText((Join-Path $out 'npc\chronicle.txt'), $tpl, $utf8)
 
 # ---- client/data.js ----
@@ -983,6 +1139,25 @@ foreach ($c in $chapters) {
     # An episode of RO's own story: the Journal names it "Episode <n>".
     if ($c.episode) { $jc.Insert(1, 'episode', $c.episode) }
     $js.chapters += $jc
+}
+# Ragnarok's episodes (Renewal's Story): the Journal has all their text, the
+# server only says where each stands (F_ChronEpState).
+if ($episodes.Count) {
+    $js.episodes = @($episodes | ForEach-Object {
+        [ordered]@{
+            episode = $_.episode; title = (Ascii $_.title 'episode title'); lv = $_.lv; intro = (Ascii $_.intro 'episode intro'); more = [bool]$_.more
+            needs = $(if ($_.needs) { Ascii $_.needs 'episode needs' } else { $null }); party = $(if ($_.party) { Ascii $_.party 'episode party' } else { $null })
+            steps = @($_.steps | ForEach-Object {
+                [ordered]@{
+                    k = $_.k; type = 'ro'; title = (Ascii $_.title 'episode step'); now = (Ascii $_.now 'episode now'); done = (Ascii $_.done 'episode done')
+                    route = $(if ($_.route) { [ordered]@{ map = $_.route[0]; x = $_.route[1]; y = $_.route[2]; name = (Ascii $_.route[3] 'route') } } else { $null })
+                    items = @($_.items | Where-Object { $_ } | ForEach-Object { @{ id = $_[0]; name = $_[1]; count = $_[2] } })
+                    hint = @($_.hint | Where-Object { $_ } | ForEach-Object { Ascii $_ 'hint' })
+                    spots = @($_.spots | Where-Object { $_ } | ForEach-Object { [ordered]@{ map = $_.map; x = $_.x; y = $_.y; name = (Ascii $_.name 'spot'); ro = $_.ro } })
+                    parts = @($_.parts | Where-Object { $_ } | ForEach-Object { [ordered]@{ at = $_.at; name = (Ascii $_.name 'part')
+                        route = $(if ($_.route) { [ordered]@{ map = $_.route[0]; x = $_.route[1]; y = $_.route[2]; name = (Ascii $_.route[3] 'part route') } } else { $null }) } })
+                } })
+        } })
 }
 $js.sides = @()
 foreach ($sd in $sides) {
@@ -1046,5 +1221,5 @@ if ($catJs) {
 }
 [IO.File]::WriteAllText((Join-Path $out 'client\data.js'), "// GENERATED by tools/build.ps1 from tools/story.ps1.`nexport default $json;`n", $utf8)
 
-"Built ${era}: $($steps.Count) steps in $($chapters.Count) chapters, $($sides.Count) Side Quests ($($sideSteps.Count) steps), $($side.mvps.Count) MVPs, $($guides.Count) RO quest guides, $($catQuests.Count) catalog quests, items 50100-$id."
+"Built ${era}: $($steps.Count) steps in $($chapters.Count) chapters, $($episodes.Count) episodes, $($sides.Count) Side Quests ($($sideSteps.Count) steps), $($side.mvps.Count) MVPs, $($guides.Count) RO quest guides, $($catQuests.Count) catalog quests, items 50100-$id."
 }

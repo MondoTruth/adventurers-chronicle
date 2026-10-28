@@ -5,7 +5,9 @@
 // "@chronicle <n> state" from npc/chronicle.txt with
 //   <step>|<base level>|<places found>|<chapters skipped>|<hunt state>|<items in bag>|<watched monsters>|<capped>|<side quests>|<MVPs defeated>
 // (places found: the Waykeepers' record, NPCP_WM$; side quests: one
-// "step:hunt:items:ro" per Side Quest, ';' between; MVPs: a bit mask)
+// "step:hunt:items:ro" per Side Quest, ';' between; MVPs: a bit mask),
+// then |<RO quest guides>|<main road's RO quest step>|<episodes> where a
+// route has them (episodes: Renewal's Story, one "step:ro:items" each).
 // Open with Alt+B, the Journal button, the Chronicle book, or @chronicle.
 
 import DATA from './data.js';
@@ -121,6 +123,8 @@ h3.guides { margin: 12px 0 2px; font-size: 13px; color: #6b4a1d; }
 .filters div { display: flex; flex-wrap: wrap; gap: 3px; }
 .chip { font: 11px Tahoma, Arial, sans-serif; padding: 0 7px; border: 1px solid #b8c2dc; border-radius: 9px; background: #f3f5fb; color: #556; cursor: pointer; }
 .chip.on { background: #dde9f8; border-color: #6b8fbf; color: #24507a; font-weight: bold; }
+/* Ragnarok's episodes (Renewal's Story): one below your level is dimmed, never hidden. */
+details.ep.low > summary { opacity: .55; }
 `;
 
 const escape = text => String(text ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -137,7 +141,7 @@ export function parseState(text) {
     const f = raw.map(Number);
     if (f.length < 5 || !Number.isFinite(f[0])) return null;
     return { step: Math.max(1, f[0]), level: f[1], waypoints: f[2], skip: f[3] || 0, hunt: f[4], have: parseHave(raw[5]), watch: parseWatch(raw[6]), capped: f[7] === 1,
-        sides: parseSides(raw[8]), mvpk: Number(raw[9]) || 0, guides: parseGuides(raw[10]), main: parseMain(raw[11]) };
+        sides: parseSides(raw[8]), mvpk: Number(raw[9]) || 0, guides: parseGuides(raw[10]), main: parseMain(raw[11]), episodes: parseGuides(raw[12]) };
 }
 
 /** "12:300,1,0" -> { ro, have }: an RO quest step of the main road (Renewal's episodes): RO's variable, items in the bag. */
@@ -147,7 +151,10 @@ export function parseMain(text) {
     return { ro: Number(ro), have: parseHave(have) };
 }
 
-/** "1:3:0,2;100:-1:" -> [{ step, ro, have }]: where each RO quest guide stands (-1: its mod is not on the server, 0: not open, 100: done). */
+/**
+ * "1:3:0,2;100:-1:" -> [{ step, ro, have }]: where each RO quest guide stands (-1: its mod is not on the server, 0: not open, 100: done).
+ * The episodes' field reads the same (0: below the episode's level).
+ */
 export function parseGuides(text) {
     return String(text || '').split(';').filter(Boolean).map(part => {
         const [step, ro, have] = part.split(':');
@@ -187,6 +194,9 @@ const mapName = name => String(name || '').replace(/\.(gat|rsw)$/i, '');
 const chapterName = c => c.episode ? `Episode ${c.episode}` : `Chapter ${c.n}`;
 
 const GUIDES = DATA.guides || [];
+// Renewal's Story: Ragnarok's own episodes, each open from its own level
+// (concept v3). The route then has no chapters.
+const EPISODES_RO = DATA.episodes || [];
 // Renewal: every side quest Ragnarok itself has, region > storyline > quest >
 // step (tools/catalog.ps1, from the docs). The server says how many steps of
 // each are done ("@chronicle <n> cat").
@@ -723,18 +733,65 @@ export default function init(parameters, api) {
         return `<div class="pass"><b>MVP Ledger:</b> ${got} of ${DATA.mvps.length} defeated. Nothing here is required: it is a list of reasons to come back stronger. ${how}</div>${rows}`;
     }
 
+    // ---- Ragnarok's episodes (Renewal's Story) ----
+    // Each one opens at its own level and stands where RO's own quest stands
+    // (the server: 0 below its level, 100 done, else the step under way; one
+    // past the written steps of an episode not fully written yet: beyond them).
+    const epState = i => state?.episodes?.[i] || { step: 0, ro: -1, have: null };
+    function episodesHtml() {
+        const body = EPISODES_RO.map((ep, i) => {
+            const st = epState(i);
+            const n = ep.steps.length;
+            const k = state ? st.step : -1;
+            const low = state ? state.level < ep.lv : false;
+            const done = k === 100;
+            const beyond = k === n + 1;
+            const going = k >= 2 && k <= n;
+            const badge = !state ? '' : low ? `<span class="badge lock">Opens at Lv ${ep.lv}</span>`
+                : done ? '<span class="badge">Done</span>'
+                : beyond ? '<span class="badge cur">Under way</span>'
+                : going ? `<span class="badge cur">Step ${k}${ep.more ? '' : ` of ${n}`}</span>`
+                : '<span class="badge lock">Not started</span>';
+            const sd = { n: `e${i}`, npc: '', town: '', townMap: '', x: 0, y: 0 };
+            const steps = ep.steps.map(s => {
+                if (done || (k >= 1 && s.k < k)) return `<div class="q"><span class="st done">Done</span><b>Step ${s.k}: ${escape(s.title)}.</b> ${escape(s.done)}</div>`;
+                if (s.k === k && !low) {
+                    const fk = `ep${i}-q${s.k}`;
+                    return `<details class="qnow" data-k="${fk}"${opened(fk, true) ? ' open' : ''}><summary><span class="st going">${k === 1 ? 'Begins here' : 'Ongoing'}</span><span class="tag">RO quest</span><b>Step ${s.k}: ${escape(s.title)}.</b><span class="gist"> ${escape(s.now)}</span></summary>
+                        <div class="qcard"><p>${escape(s.now)}</p>${sideObjective(sd, s, { ro: st.ro, have: st.have, hunt: -1 })}<p class="hint route-note"></p></div></details>`;
+                }
+                // Not reached yet: its name, and for the first step where it begins.
+                return `<div class="q locked"><b>Step ${s.k}: ${escape(s.title)}.</b>${s.k === 1 ? ` ${escape(s.now)}${s.route ? ` ${routeLink(s.route)}` : ''}` : ''}</div>`;
+            }).join('');
+            const more = ep.more ? `<p class="hint">${beyond ? 'You are past the steps the Journal has written so far. ' : ''}The Journal guides ${n === 1 ? 'the first step' : `the first ${n} steps`} of this episode for now; the rest are still to be written. RO's quest window (Alt+U) follows the whole quest.</p>` : '';
+            const fk = `ep${i}-${low ? 'lock' : done ? 'done' : going || beyond ? 'on' : 'new'}`;
+            return `<details class="ep${low ? ' low' : ''}" data-k="${fk}"${opened(fk, going || beyond) ? ' open' : ''}><summary>Episode ${escape(ep.episode)}: ${escape(ep.title)} <small>Lv ${ep.lv}+</small>${badge}</summary>
+                <div class="body"><p class="quote">${escape(ep.intro)}</p>
+                ${low ? `<p class="warn">Opens at level ${ep.lv}: below it, Ragnarok's own quest turns you away. You are level ${state.level}.</p>` : ''}
+                ${ep.needs && !done ? `<p class="warn"><b>Ragnarok asks first:</b> ${escape(ep.needs)}</p>` : ''}
+                ${ep.party && !done ? `<p class="hint">${escape(ep.party)}</p>` : ''}
+                ${steps}${done ? '' : more}</div></details>`;
+        }).join('');
+        return `<p class="hint">Ragnarok's own story, episode by episode. Each one opens as soon as you reach its level, and none waits for another; where Ragnarok itself asks for another quest first, the episode says so. The Journal only shows the way and follows RO's own quest: RO's own people give the rewards.</p>${body}${DATA.soon ? `<p class="hint">${escape(DATA.soon)}</p>` : ''}`;
+    }
+
     function render() {
         const step = state ? state.step : 1;
         const finished = step > LAST;
         const cur = finished ? null : STEPS[step - 1];
         const chNow = cur ? cur.ch : DATA.chapters.length;
 
-        head.innerHTML = `<h2>${finished ? 'Your Chronicle is complete' : `${chapterName(cur.chapter)}: ${escape(cur.chapter.title)}`}</h2>
+        head.innerHTML = `<h2>${EPISODES_RO.length ? 'Ragnarok\'s own episodes' : finished ? 'Your Chronicle is complete' : `${chapterName(cur.chapter)}: ${escape(cur.chapter.title)}`}</h2>
             <div class="meta">${state ? `<span>Level ${state.level}</span>${state.waypoints > 0 ? `<span>Places found: ${state.waypoints}</span>` : ''}` : '<span>Asking the server...</span>'}
             <button type="button" class="qwin" title="The game's quest window, with live kill counts">Quest window</button></div>
             <div class="tabs">${TABS.map(([id, label]) => `<button type="button" data-tab="${id}" class="${tab === id ? 'on' : ''}">${label}${id === 'side' && sidesOpen() ? ` (${sidesOpen()})` : ''}</button>`).join('')}</div>`;
         if (tab !== 'story') {
             list.innerHTML = tab === 'side' ? sidesHtml() : ledgerHtml();
+            win.body.querySelectorAll('img[data-icon]').forEach(img => icon(img, Number(img.dataset.icon)));
+            return;
+        }
+        if (EPISODES_RO.length) {
+            list.innerHTML = episodesHtml();
             win.body.querySelectorAll('img[data-icon]').forEach(img => icon(img, Number(img.dataset.icon)));
             return;
         }

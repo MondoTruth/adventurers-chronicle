@@ -25,6 +25,9 @@
 # take three new item ids from its costumeId (50900 on; the Side Quests'
 # costumes have ids from 50125, see side.ps1). Chapters are numbered
 # by their place in each era's route (n below is the Pre-renewal number).
+# Renewal has no chapters since 2026-10-28 (concept v3): its Story is
+# $episodes, Ragnarok's own episodes (below the chapters). Renewal-only
+# chapters and their costumes (50900-50917) went then; never reuse those ids.
 
 $final = 115   # the level the last step fills toward
 $finalRe = 175 # the same on Renewal (its level cap)
@@ -285,61 +288,6 @@ $chapters = @(
              say = @('He is at peace, then. Thank you. I could never have raised my sword against him.', 'The machines beneath the floating city... that is the Schwarzwald Republic. Juno, and the ruins of Juperos below it.', 'But there is a closer road. An old friend of mine, Gustav, is foreman of the mine in Einbech. His last letter spoke of black crystals that hum in the dark, and of dead miners walking.', 'Go to him first. I have written to the Sages of Juno as well. And... it was an honor, friend.') } }
      ) }
 
-  # Renewal only: the Schwarzwald's mining town, between Glast Heim and Juno.
-  @{ era = 'renewal'; title = 'Smoke over the Schwarzwald'; range = '90-105'
-     town = 'einbech'; townName = 'Einbech'; npc = 'Foreman Gustav'; sprite = '4_M_EINMINER'; x = 142; y = 244
-     costumes = @(5031, 5009, 5679); costumeId = 50900; gift = @(@(504, 50), @(505, 20)); zeny = 50000
-     intro = 'Einbech is the mining town of the Schwarzwald Republic, a short train ride from Einbroch, the city of steel and smoke. Its mine runs deep beneath the town.'
-     # From Al De Baran: a Kafra to Juno, the airship to Einbroch, the train
-     # to Einbech. Shown on every step, for anyone who is still on the way.
-     spots = @(
-       @{ map = 'aldebaran'; x = 143; y = 119; name = 'Kafra: Teleport to Juno (1,200 zeny)' }
-       @{ map = 'yuno'; x = 53; y = 214; name = 'Juno Airport' }
-       @{ map = 'y_airport'; x = 143; y = 43; name = 'Airport Staff: board the airship (1,200 zeny)' }
-       @{ map = 'y_airport'; x = 145; y = 63; name = 'Domestic Boarding: Einbroch, Lighthalzen, Hugel' }
-       @{ map = 'einbroch'; x = 232; y = 272; name = 'Train Station Staff: to Einbech (200 zeny)' }
-     )
-     away = 'Far from Einbech? From Al De Baran, a Kafra Employee (143, 119) teleports you to Juno (1,200 zeny). Juno''s airship stops in Einbroch, and Einbroch''s train (232, 272) runs to Einbech (200 zeny).'
-     steps = @(
-       @{ id = 901; type = 'talk'; lv = 90; title = 'The Foreman of Einbech'
-          now = 'Travel to Einbech, the mining town of the Schwarzwald Republic, and find Foreman Gustav by the mine entrance (142, 244).'
-          hint = @(
-            'From Al De Baran, a Kafra Employee (143, 119) can teleport you to Juno (1,200 zeny).'
-            'In Juno, enter the airport in the west of the city (53, 214). Pay the Airport Staff (1,200 zeny), go through Domestic Boarding and ride the airship until it lands in Einbroch.'
-            'In Einbroch, the Train Station Staff (232, 272) takes you to Einbech for 200 zeny. Gustav stands by the mine entrance in the north of the town (142, 244) and is marked on your minimap when you arrive.'
-          )
-          done = 'Gustav runs the Einbech mine. His miners broke into a seam of black crystal deep under the town; since then poison fills the tunnels and the miners who died there long ago walk again.'
-          say = @('Aldric sent you? Then you are welcome here, smoke and all.', 'Three weeks ago my miners broke into a seam of black crystal, deep under the town. It hums at night. Since then the tunnels have filled with poison, and the miners who died down there long ago have started walking again.', 'Nobody will go down any more. Clear the first level of the mine for me, and we can find out what we woke up.') }
-       @{ id = 902; type = 'hunt'; lv = 92; title = 'The Restless Mine'; where = 'ein_dun01'
-          mobs = @(@(1616, 'Pitman', 30), @(1620, 'Noxious', 20))
-          now = 'Hunt 30 Pitmen and 20 Noxious on the first level of the Einbech Mine (ein_dun01). Its entrance is in the north of Einbech (138, 252).'
-          hint = @(, 'The mine entrance is in the north of Einbech (138, 252), next to Foreman Gustav. Pitmen and Noxious fill its first level.')
-          spots = @(
-            @{ map = 'einbech'; x = 138; y = 249; name = 'Entrance to the mine' }
-          )
-          done = 'You drove back the dead miners and the poison that drifts with them, for now.' }
-       @{ id = 903; type = 'deliver'; lv = 95; title = 'Samples for the Foreman'
-          items = @(@(7318, 'Old Pick', 5), @(7320, 'Dust Pollutant', 8))
-          now = 'Gustav wants to know what is poisoning his mine. Bring him 5 Old Picks from the Pitmen and 8 Dust Pollutants from the Noxious, in Einbech (142, 244).'
-          done = 'The picks were black with crystal dust, and the poison came off the crystal itself. Gustav sent you down to its source, on the second level of the mine.'
-          say = @('These picks... look at the dust on them. Black, and warm to the touch.', 'And this poison is not from the coal. It comes off the crystal itself, like breath. Something down there is alive, or wants to be.', 'The seam is on the second level of the mine. Whatever guards it, put it down.') }
-       @{ id = 904; type = 'boss'; lv = 98; title = 'The Black Seam'; map = 'ein_dun02'; mob = 1615; boss = 'Warden of the Black Crystal'; hp = 10
-          now = 'Descend to the second level of the Einbech Mine (ein_dun02). The way down is at the far north-east end of the first level (261, 255).'
-          hint = @(
-            'Enter the mine in the north of Einbech (138, 252).'
-            'Mine level 1: cross to its north-east corner (261, 255) and take the way down to level 2. The Warden of the Black Crystal appears a few seconds after you arrive.'
-          )
-          spots = @(
-            @{ map = 'einbech'; x = 138; y = 249; name = 'Entrance to the mine' }
-            @{ map = 'ein_dun01'; x = 261; y = 258; name = 'Way down to level 2' }
-          )
-          done = 'You shattered the Warden of the Black Crystal, a living shard of the seam. At its heart was the same crystal the old seals were made of.' }
-       @{ id = 905; type = 'report'; lv = 101; title = 'Crystal and Steel'
-          now = 'Bring Foreman Gustav in Einbech (142, 244) news of the Warden.'
-          done = 'Gustav knew the crystal at once: the ruins of Juperos beneath Juno are built of it, and their machines are waking too. He sent you on to Sage Elisha in Juno.'
-          say = @('A living crystal. My grandfather told stories like that, and I laughed at him.', 'Seal crystal, Aldric would call it. The ruins of Juperos beneath Juno are built from the same stone, and the sages say its old machines are waking.', 'Go to Juno, to Sage Elisha. Aldric has written to her already, and I will send word that you are coming. The airship from Einbroch will take you there.', 'And take this. Every miner in Einbech owes you a drink.') }
-     ) }
-
   @{ n = 6; title = 'The Floating City'; range = '75-90'
      re = @{ range = '105-120' }
      town = 'yuno'; townName = 'Juno'; npc = 'Sage Elisha'; sprite = '4_M_SAGE_C'; x = 156; y = 47
@@ -424,183 +372,6 @@ $chapters = @(
           re = @{ lv = 117
              done = 'Elisha believes the guardians were built to watch over the seals. The Core''s last broadcast showed two places: Arunafeltz, and the rift that opened when Morroc fell. The three kingdoms are sending an expedition through the rift, so she sent you to join it first.'
              say = @('A map of Arunafeltz? And this one... the rift beneath Morroc. Then I was right.', 'The guardians were built to watch over the seals. They woke because the seals are failing, and the deepest wound of all is the rift that opened when Morroc fell.', 'Rune-Midgard, the Republic and Arunafeltz have formed an Alliance to send an expedition through it. Their Recruiter for the Brave is in Prontera Castle. Join them. Rachel can wait until you return.', 'The Eden Group''s Cat Paw Merchants smuggle adventurers across too, for a fee. Their agent Geck can send you, if you would rather not wait for the Alliance.') } }
-     ) }
-
-  # Renewal only: Episode 13.1, RO's own story (rAthena quests_13_1.txt,
-  # Onward to the Other World, ep13_ryu 0 -> 100). The Chronicle adds no NPC:
-  # each step is a part of RO's quest ('ro': done when its cond holds), and RO
-  # gives that quest's rewards. RO's other way in, the Cat Paw Agent (Agent
-  # Geck in the Eden Group, ep13_start = 100), counts for the whole episode.
-  # Until 2026-10-26 this chapter was the Chronicle's own 'Beyond the Rift'
-  # (steps 906-910, see $retired below). Its costume ids stay with it.
-  @{ era = 'renewal'; episode = '13.1'; title = 'Onward to the Other World'; range = '118-124'; noNpc = $true
-     town = 'prt_cas'; townName = 'Prontera Castle'; npc = 'the Recruiter for the Brave'; sprite = '4_M_MANAGER'; x = 207; y = 165
-     costumes = @(5018, 2283, 5378); costumeId = 50903; gift = @(@(504, 50), @(505, 30)); zeny = 70000
-     intro = 'When Morroc fell, a rift opened in its ruins, and beyond it lies a world no map of Rune-Midgard shows. Rune-Midgard, the Schwarzwald Republic and Arunafeltz have joined in an Alliance to send an expedition through it, and its recruiters are looking for adventurers. This is Ragnarok''s own story: the Chronicle only shows the way, and RO gives its rewards.'
-     steps = @(
-       @{ id = 931; type = 'ro'; lv = 118; title = 'The Recruiter for the Brave'
-          cond = 'ep13_ryu >= 1 || ep13_start >= 100'
-          route = @('prontera', 156, 358, 'Gate of Prontera Castle')
-          now = 'RO quest: in Prontera Castle, the Recruiter for the Brave (prt_cas, 207, 165) signs up adventurers for the expedition through the rift. Talk to him and choose Yes, I am interested.'
-          hint = @(
-            'The castle gate is at the north end of Prontera (156, 358). The Recruiter stands a few steps inside, to the north-west.'
-            'The quest window (Alt+U) follows it as Onward to the Other World.'
-          )
-          spots = @(
-            @{ map = 'prontera'; x = 156; y = 358; name = 'Gate of Prontera Castle' }
-            @{ map = 'prt_cas'; x = 207; y = 165; name = 'Recruiter for the Brave' }
-          )
-          done = 'In Prontera Castle you signed up for the Alliance''s expedition to the other world. First, the Alliance wanted its word spread.' }
-       @{ id = 932; type = 'ro'; lv = 119; title = 'The Promotional Staff'
-          cond = 'ep13_ryu >= 8 || ep13_start >= 100'; var = 'ep13_ryu'
-          items = @(@(909, 'Jellopy', 300), @(721, 'Emerald', 1), @(723, 'Ruby', 1))
-          parts = @(
-            @{ at = 2; name = 'Promotional Staff in Al De Baran (127, 138), answer I have something for you'; route = @('aldebaran', 127, 138, 'Promotional Staff') }
-            @{ at = 3; name = 'Bring her 300 Jellopy'; route = @('aldebaran', 127, 138, 'Promotional Staff') }
-            @{ at = 4; name = 'Promotional Staff in Geffen (90, 67), answer The Staff in Aldebaran sent me'; route = @('geffen', 90, 67, 'Promotional Staff') }
-            @{ at = 5; name = 'Bring him an Emerald'; route = @('geffen', 90, 67, 'Promotional Staff') }
-            @{ at = 6; name = 'Bring him a Ruby'; route = @('geffen', 90, 67, 'Promotional Staff') }
-            @{ at = 8; name = 'Promotional Staff in Izlude (102, 171), answer I have something for you'; route = @('izlude', 102, 171, 'Promotional Staff') }
-          )
-          route = @('aldebaran', 127, 138, 'Promotional Staff')
-          now = 'RO quest: the Alliance''s Promotional Staff spread the word in three towns. Visit each in turn and bring what they ask for.'
-          hint = @(
-            'Emerald and Ruby: the Jewelers of Morroc (154, 55 and 166, 54) and of Lighthalzen sell them. Jellopy drops from Porings and most small monsters.'
-            'The Staff in Izlude only lets level 70 and up go on; under 70, come back when you get there.'
-            'The Journal counts the items in your bag; the Staff take them.'
-          )
-          spots = @(
-            @{ map = 'aldebaran'; x = 127; y = 138; name = 'Promotional Staff'; ro = 1 }
-            @{ map = 'aldebaran'; x = 127; y = 138; name = 'Promotional Staff'; ro = 2 }
-            @{ map = 'geffen'; x = 90; y = 67; name = 'Promotional Staff'; ro = 3 }
-            @{ map = 'geffen'; x = 90; y = 67; name = 'Promotional Staff'; ro = 4 }
-            @{ map = 'geffen'; x = 90; y = 67; name = 'Promotional Staff'; ro = 5 }
-            @{ map = 'izlude'; x = 102; y = 171; name = 'Promotional Staff'; ro = 6 }
-            @{ map = 'izlude'; x = 102; y = 171; name = 'Promotional Staff'; ro = 7 }
-          )
-          done = 'You carried the Alliance''s word to Al De Baran, Geffen and Izlude, with 300 Jellopy, an Emerald and a Ruby for its staff.' }
-       @{ id = 933; type = 'ro'; lv = 120; title = 'Sikaiz of the Alliance'
-          cond = 'ep13_ryu >= 12 || ep13_start >= 100'; var = 'ep13_ryu'
-          parts = @(
-            @{ at = 9; name = 'Back to the Recruiter in Prontera Castle, answer Ash-Vacuum?'; route = @('prt_cas', 207, 165, 'Recruiter for the Brave') }
-            @{ at = 10; name = 'Sikaiz in Lighthalzen (lhz_in01, 132, 259)'; route = @('lhz_in01', 132, 259, 'Sikaiz') }
-            @{ at = 11; name = 'Sikaiz again, answer Sure'; route = @('lhz_in01', 132, 259, 'Sikaiz') }
-            @{ at = 12; name = 'Sikaiz again, answer The three kingdoms'; route = @('lhz_in01', 132, 259, 'Sikaiz') }
-          )
-          route = @('prt_cas', 207, 165, 'Recruiter for the Brave')
-          now = 'RO quest: report back to the Recruiter in Prontera Castle, then meet Sikaiz, who leads the Alliance from the Rekenber building in Lighthalzen. Talk to him until he has told you everything.'
-          hint = @(
-            'Prontera Castle: the gate is at the north end of Prontera (156, 358).'
-            'Lighthalzen: the Rekenber building is in the north-west of the city (door at 101, 248); RO''s Guide says Sikaiz is on its 2nd floor. The Route link draws the way through the building.'
-          )
-          spots = @(
-            @{ map = 'prontera'; x = 156; y = 358; name = 'Gate of Prontera Castle'; ro = 8 }
-            @{ map = 'prt_cas'; x = 207; y = 165; name = 'Recruiter for the Brave'; ro = 8 }
-            @{ map = 'lighthalzen'; x = 101; y = 248; name = 'Door of the Rekenber building'; ro = 9 }
-            @{ map = 'lhz_in01'; x = 132; y = 259; name = 'Sikaiz'; ro = 9 }
-            @{ map = 'lhz_in01'; x = 132; y = 259; name = 'Sikaiz'; ro = 10 }
-            @{ map = 'lhz_in01'; x = 132; y = 259; name = 'Sikaiz'; ro = 11 }
-          )
-          done = 'The Recruiter signed you up for good, and RO paid you for it. In Lighthalzen, Sikaiz told you of the three kingdoms and their one mission beyond the rift.' }
-       @{ id = 934; type = 'ro'; lv = 121; title = 'Errands of the Alliance'
-          cond = 'ep13_ryu >= 18 || ep13_start >= 100'; var = 'ep13_ryu'
-          parts = @(
-            @{ at = 13; name = 'Alliance Manager in Prontera Castle (prt_cas, 19, 98)'; route = @('prt_cas', 19, 98, 'Alliance Manager') }
-            @{ at = 14; name = 'Sikaiz in Lighthalzen'; route = @('lhz_in01', 132, 259, 'Sikaiz') }
-            @{ at = 15; name = 'Sikaiz again'; route = @('lhz_in01', 132, 259, 'Sikaiz') }
-            @{ at = 16; name = 'Alliance Manager in the temple of Rachel (ra_temple, 119, 113)'; route = @('ra_temple', 119, 113, 'Alliance Manager') }
-            @{ at = 17; name = 'Sikaiz in Lighthalzen'; route = @('lhz_in01', 132, 259, 'Sikaiz') }
-            @{ at = 18; name = 'Sikaiz: type your character''s name'; route = @('lhz_in01', 132, 259, 'Sikaiz') }
-          )
-          route = @('prt_cas', 19, 98, 'Alliance Manager')
-          now = 'RO quest: carry the Alliance''s messages between its seats: Prontera Castle, Sikaiz in Lighthalzen, and the temple of Rachel.'
-          hint = @(
-            'In Prontera Castle, the Alliance Manager is in the west of the castle (19, 98): the Route link draws the way from the gate.'
-            'Rachel: the Airship from Juno or Izlude. The Alliance Manager is inside the great temple (ra_temple, 119, 113; door at rachel 150, 249).'
-            'At the end Sikaiz asks for your name: type your character''s name exactly as it is spelled, capitals too. A wrong one only ends the talk; ask him again.'
-          )
-          spots = @(
-            @{ map = 'prt_cas'; x = 19; y = 98; name = 'Alliance Manager'; ro = 12 }
-            @{ map = 'lhz_in01'; x = 132; y = 259; name = 'Sikaiz'; ro = 13 }
-            @{ map = 'lhz_in01'; x = 132; y = 259; name = 'Sikaiz'; ro = 14 }
-            @{ map = 'ra_temple'; x = 119; y = 113; name = 'Alliance Manager'; ro = 15 }
-            @{ map = 'lhz_in01'; x = 132; y = 259; name = 'Sikaiz'; ro = 16 }
-            @{ map = 'lhz_in01'; x = 132; y = 259; name = 'Sikaiz'; ro = 17 }
-          )
-          done = 'You ran the Alliance''s errands from Prontera to Rachel, and Sikaiz put your name on the expedition''s roll.' }
-       @{ id = 935; type = 'ro'; lv = 122; title = 'Through the Rift'
-          cond = 'ep13_ryu >= 100 || ep13_start >= 100'; var = 'ep13_ryu'
-          parts = @(
-            @{ at = 19; name = 'Officer A or B in Lighthalzen (lhz_in01, 32, 22)'; route = @('lhz_in01', 32, 22, 'Officer A') }
-            @{ at = 20; name = 'The officers again'; route = @('lhz_in01', 32, 22, 'Officer A') }
-            @{ at = 21; name = 'Munkenro at the rift (moc_fild22b, 230, 197)'; route = @('lhz_in01', 130, 232, 'Guard: Send me there.') }
-            @{ at = 22; name = 'Munkenro: Ready!!, and watch what happens'; route = @('lhz_in01', 130, 232, 'Guard: Send me there.') }
-            @{ at = 100; name = 'Munkenro once more, when it is over'; route = @('lhz_in01', 130, 232, 'Guard: Send me there.') }
-          )
-          route = @('lhz_in01', 32, 22, 'Officer A')
-          now = 'RO quest: two officers of the Alliance argue about Sikaiz. Hear them out, then go to the rift itself, where Munkenro waits with the expedition.'
-          hint = @(
-            'The officers are in a side room of the Rekenber building (lhz_in01, 32, 22): the Route link draws the way.'
-            'To the rift: the Guard in the Rekenber hall (lhz_in01, 130, 232) sends you there (Send me there.). By the rift (moc_fild20), the Rift Guard (349, 179) lets you through (Yes, sure.). Munkenro stands at 230, 197.'
-            'After Ready!! the head of the Alliance arrives and speaks. When it is over, talk to Munkenro again: RO pays you, and he can send you through to the Allied camp (Yes, of course!).'
-          )
-          spots = @(
-            @{ map = 'lhz_in01'; x = 32; y = 22; name = 'Officer A'; ro = 18 }
-            @{ map = 'lhz_in01'; x = 32; y = 22; name = 'Officer A'; ro = 19 }
-            @{ map = 'lhz_in01'; x = 130; y = 232; name = 'Guard: Send me there.'; ro = 20 }
-            @{ map = 'moc_fild20'; x = 349; y = 179; name = 'Rift Guard: Yes, sure.'; ro = 20 }
-            @{ map = 'moc_fild22b'; x = 230; y = 197; name = 'Munkenro'; ro = 20 }
-            @{ map = 'moc_fild22b'; x = 230; y = 197; name = 'Munkenro'; ro = 21 }
-            @{ map = 'moc_fild22b'; x = 230; y = 197; name = 'Munkenro'; ro = 22 }
-          )
-          done = 'The head of the Alliance sent the expedition through the rift, and you with it. Beyond lies the Allied Forces Post, and a world of Laphine and Sapha who never asked for visitors.' }
-     ) }
-
-  # Renewal only: El Dicastes, the Sapha capital. Its gate is quest-locked
-  # (ep13_3_invite and the Bradium Earring), so Kahlis meets you outside it.
-  @{ era = 'renewal'; title = 'The Sapha''s Gate'; range = '124-129'
-     town = 'dic_fild01'; townName = 'El Dicastes'; npc = 'Warden Kahlis'; sprite = '492'; x = 156; y = 270
-     costumes = @(2284, 5002, 2224); costumeId = 50906; gift = @(@(504, 50), @(608, 3)); zeny = 80000
-     intro = 'El Dicastes is the capital of the Sapha, built into the slopes of Kamidal Mountain. Its gates are shut to every other race, and beneath the mountain lies the hive of the Scaraba.'
-     spots = @(
-       @{ map = 'mid_camp'; x = 207; y = 234; name = 'Teleport Cat: Manuk Field (10,000 zeny)' }
-       @{ map = 'man_fild02'; x = 135; y = 49; name = 'Teleport Cat: Near El Dicastes (20,000 zeny)' }
-     )
-     away = 'Far from El Dicastes? From the Allied camp, the Teleport Cat (207, 234) goes to Manuk Field, and the Teleport Cat there (135, 49) to Near El Dicastes. Back in Rune-Midgard? The Cat Paw cat by the rift (moc_fild20, 368, 197) helps you over the wall to Tat (moc_fild22b, 182, 179), who sends you to the camp. Any Eden Teleport Officer takes you to Agent Geck in the Eden Group, who sends you to the rift.'
-     steps = @(
-       @{ id = 911; type = 'talk'; lv = 124; title = 'The Warden of El Dicastes'
-          now = 'Go to Kamidal Mountain and find Warden Kahlis outside the gate of El Dicastes (dic_fild01, 156, 270).'
-          hint = @(
-            'From the Allied camp, take the Teleport Cat (207, 234) to Manuk Field (10,000 zeny).'
-            'On Manuk Field, the Teleport Cat (135, 49) goes to Near El Dicastes (20,000 zeny). Warden Kahlis stands just south of the city gate (156, 270).'
-          )
-          done = 'Kahlis guards the gate of El Dicastes. Since the rift opened, the Scaraba under Kamidal Mountain have been breeding out of season, and they have begun to dig toward the city.'
-          say = @('So you are the human who came through the rift with the Alliance. Kahlis, warden of this gate. I will not ask you in. The law forbids it, and I keep the law.', 'Since your rift opened, the Scaraba under the mountain breed out of season. Their workers swarm the slopes, and the hive digs toward the city.', 'Thin the swarm on the mountain first. Then we will talk about the hive.') }
-       @{ id = 912; type = 'hunt'; lv = 125; title = 'The Swarm on the Mountain'; where = 'dic_fild01'
-          mobs = @(@(1987, 'Centipede', 30), @(2092, 'Dolomedes', 10))
-          now = 'Hunt 30 Centipedes and 10 Dolomedes on the slopes of Kamidal Mountain (dic_fild01), outside El Dicastes.'
-          done = 'You thinned the creatures swarming over Kamidal Mountain, and the slopes fell quiet.' }
-       @{ id = 913; type = 'deliver'; lv = 126; title = 'What the Swarm Leaves'
-          items = @(@(1042, 'Bug Leg', 8), @(6325, 'White Spider Limb', 5))
-          now = 'Bring Warden Kahlis 8 Bug Legs from the Centipedes and 5 White Spider Limbs from the Dolomedes, at the gate of El Dicastes (156, 270).'
-          done = 'Kahlis read the remains as the Sapha read omens: the swarm was not hunting, it was fleeing. Something in the Scaraba hive drives them out.'
-          say = @('Hm. These are not wounds from your weapons alone. Look, the joints are scorched.', 'The swarm was not hunting. It was fleeing. Something in the Scaraba hive is driving everything out of the mountain.', 'The hive''s mouth is at the west end of these slopes. Go in, and find what rules it now.') }
-       @{ id = 914; type = 'boss'; lv = 127; title = 'The Hive Under Kamidal'; map = 'dic_dun01'; mob = 2083; boss = 'Rift-Touched Scaraba'; hp = 8
-          now = 'Enter the Scaraba Hole under Kamidal Mountain (dic_dun01). Its entrance is at the west end of dic_fild01 (24, 79).'
-          spots = @(
-            @{ map = 'dic_fild01'; x = 24; y = 79; name = 'Entrance to the Scaraba Hole' }
-          )
-          done = 'You slew the Rift-Touched Scaraba. In its shell was a shard of black crystal, the same seal crystal Gustav found in Einbech.' }
-       @{ id = 915; type = 'report'; lv = 129; title = 'A Shard of the Seal'
-          now = 'Return to Warden Kahlis at the gate of El Dicastes (156, 270).'
-          hint = @(
-            'From the Scaraba Hole, the way out (371, 44) leads back to dic_fild01. Kahlis waits by the city gate (156, 270).'
-          )
-          spots = @(
-            @{ map = 'dic_dun01'; x = 371; y = 44; name = 'Way out to dic_fild01' }
-          )
-          done = 'Kahlis knew the shard: the Sapha''s oldest songs tell of a seal-fire that broke through from another world. He sent you home, to the Church of Freya in Rachel, whose sisters keep the same songs.'
-          say = @('Seal crystal. The oldest songs of my people tell of it: a fire from another world, sealed away long before there were Sapha or humans.', 'The songs say the priests of the goddess across the rift keep the other half of the story. Your Church of Freya, in Rachel.', 'Go home, human, and take this shard to them. The gate of El Dicastes will remember your name, even if the law will not let you through it.') }
      ) }
 
   @{ n = 7; title = 'Fire and Faith'; range = '90-99'
@@ -717,191 +488,373 @@ $chapters = @(
              say = @('The temple is quiet. The Valkyries thank you.', 'But from the upper hall they saw one more light failing. Bifrost, the rainbow bridge of the gods, stands beyond the rift you crossed, in the land of the Laphine.', 'The Laphine village of Mora lies at its foot. Its elder, Mirrel, has kept the bridge''s light for longer than any human has lived. Go to him.', 'The Cat Paw Merchants will take you back through the rift: their agent Geck in the Eden Group, or the cat by the wall east of Morroc.') } }
      ) }
 
-  # Renewal only: Mora, the Laphine village at the foot of Bifrost. From the
-  # Allied camp: Teleport Cats to Splendide's field, then to Bifrost's.
-  @{ era = 'renewal'; title = 'The Light of Bifrost'; range = '147-150'
-     town = 'mora'; townName = 'Mora'; npc = 'Elder Mirrel'; sprite = '4_M_RAFLE_OLD'; x = 114; y = 96
-     costumes = @(2215, 5064, 2207); costumeId = 50909; gift = @(@(607, 10), @(608, 5)); zeny = 100000
-     intro = 'Mora is a Laphine village of healers and gardeners, hidden in the hills at the foot of Bifrost, the rainbow bridge beyond the rift. Its Small Holes in the hillside are its only doors.'
-     spots = @(
-       @{ map = 'hugel'; x = 93; y = 153; name = 'Eden Teleport Officer: to the Eden Group' }
-       @{ map = 'moc_para01'; x = 44; y = 19; name = 'Agent Geck: Send me back (to the rift)' }
-       @{ map = 'moc_fild20'; x = 368; y = 197; name = 'Cat Paw cat: over the wall' }
-       @{ map = 'moc_fild22b'; x = 182; y = 179; name = 'Tat: to the Allied camp' }
-       @{ map = 'mid_camp'; x = 207; y = 234; name = 'Teleport Cat: Near Splendide (10,000 zeny)' }
-       @{ map = 'spl_fild02'; x = 53; y = 242; name = 'Teleport Cat: Entrance to Mora (55,000 zeny)' }
-       @{ map = 'bif_fild02'; x = 285; y = 332; name = 'Small Hole: into Mora' }
-     )
-     away = 'Far from Mora? Through the rift to the Allied camp (an Eden Teleport Officer, then Agent Geck: Send me back; then the Cat Paw cat on moc_fild20, 368, 197, and Tat beyond the wall), its Teleport Cat (207, 234) to Near Splendide, the Teleport Cat there (53, 242) to Entrance to Mora, then knock on the Small Hole (285, 332).'
+)
+
+# Renewal's Story (concept v3, MondoTruth 2026-10-26 and 2026-10-28): Ragnarok's
+# own episodes, each open as soon as a character reaches the minimum level RO
+# itself checks (lv), none waiting for another. Where RO itself asks for
+# another quest first, 'needs' says what ("Ragnarok asks first"). The Chronicle
+# adds no NPC, quest-window entry or reward: each step is a part of RO's quest,
+# done when its cond holds (RO's own variables; 'var' is the one whose value
+# ticks the step's parts and spots). An episode is done when 'end' holds (by
+# default the last step's cond). An episode whose later steps are not written
+# yet ('more') shows its first ones; past them it is "under way" until 'end'.
+# Levels and starts: rathena-pin, checked 2026-10-28.
+$episodes = @(
+  # quests/quests_morocc.txt (loaded on Renewal too): rebirth_moc_edq 0 -> 8.
+  # The messengers (Lv 80) only tell the story; the Official signs you up.
+  @{ episode = '12'; title = 'Rebirth of Satan Morocc'; lv = 80
+     intro = 'Satan Morocc, the demon sealed under Morroc for centuries, has broken free. His rising tore Morroc apart and twisted the Sograt Desert around it, and the Continental Guard of Prontera has closed the desert. Its messengers are asking renowned adventurers to join the fight. This is Ragnarok''s own story: the Chronicle only shows the way, and RO gives its rewards.'
+     party = 'Facing Satan Morocc (step 5) needs a party of at least 2 people online.'
      steps = @(
-       @{ id = 916; type = 'talk'; lv = 147; title = 'The Village Under the Bridge'
-          route = @('hugel', 93, 153, 'Eden Teleport Officer: hugel')
-          now = 'Go to Mora, the Laphine village at the foot of Bifrost, and find Elder Mirrel (114, 96).'
+       @{ title = 'The Continental Guard'
+          cond = 'rebirth_moc_edq >= 1'
+          route = @('morocc', 176, 101, 'Continental Official')
+          now = 'RO quest: the Continental Guard is recruiting against Satan Morocc. In ruined Morroc, volunteer with the Continental Official (176, 101): choose I''m here to volunteer.'
           hint = @(
-            'Back through the rift: the Eden Teleport Officer in Hugel (93, 153) takes you to the Eden Group, where Agent Geck (44, 19) sends you to the rift (Send me back). The Cat Paw cat by the wall (moc_fild20, 368, 197) helps you over, and Tat (moc_fild22b, 182, 179) sends you to the Allied camp.'
-            'In the camp, the Teleport Cat (207, 234) goes to Near Splendide (10,000 zeny). On spl_fild02, the Teleport Cat (53, 242) goes to Entrance to Mora (55,000 zeny).'
-            'On bif_fild02, knock on the Small Hole in the hill (285, 332). It opens into Mora. Elder Mirrel stands in the village centre (114, 96).'
-          )
-          done = 'Mirrel keeps the light of Bifrost. Since the rift opened, the fairy-folk of the bridge''s fields have turned on the Laphine, and the bridge''s colours are fading.'
-          say = @('A human, with a Valkyrie''s blessing on him? Then Brynjar''s message was true. Sit, sit.', 'I keep the light of Bifrost. For a thousand years it has shone in seven colours. This spring it shines in five.', 'The little spirits of the bridge fields, the Fatum and the Miming, have turned on my people. They were never cruel. Something has made them so.', 'Drive them back from the village, so my gardeners can work again.') }
-       @{ id = 917; type = 'hunt'; lv = 147; title = 'The Bridge Fields'; where = 'bif_fild02'
-          mobs = @(@(2136, 'Little Fatum', 30), @(2137, 'Miming', 20))
-          now = 'Hunt 30 Little Fatum and 20 Miming on the fields of Bifrost outside Mora (bif_fild02).'
-          hint = @(
-            'Mora''s east door (182, 74) leads out to bif_fild02, the hunting ground.'
+            'No open road leads into Morroc: a Kafra Employee in Payon (175, 226) or Prontera (146, 89) teleports you there (Teleport Service, then Morocc, 1,200 zeny).'
+            'The Continental Messengers in Prontera (164, 304), Geffen (128, 90), Payon (200, 113), Alberta (127, 64) and Al De Baran (135, 128) tell the story first. Talking to them is not needed.'
           )
           spots = @(
-            @{ map = 'mora'; x = 182; y = 74; name = 'Way out to bif_fild02' }
+            @{ map = 'payon'; x = 175; y = 226; name = 'Kafra: Teleport to Morocc (1,200 zeny)' }
+            @{ map = 'prontera'; x = 146; y = 89; name = 'Kafra: Teleport to Morocc (1,200 zeny)' }
+            @{ map = 'morocc'; x = 176; y = 101; name = 'Continental Official' }
           )
-          done = 'You drove the maddened spirits back from Mora''s gardens.' }
-       @{ id = 918; type = 'deliver'; lv = 148; title = 'Dust of the Rainbow'
-          items = @(@(6395, 'Angel Magic Powder', 5), @(6394, 'Golden Feather', 5))
-          now = 'Bring Elder Mirrel 5 Angel Magic Powder from the Little Fatum and 5 Golden Feathers from the Miming, in Mora (114, 96).'
-          done = 'The powder and feathers had lost their colour. Mirrel saw why: the bridge''s light was being drunk by a thorn-hearted mantis in the fields.'
-          say = @('Look. Fatum powder should shimmer in every colour, and Miming feathers should be warm as sunlight. These are grey.', 'Something is drinking the light of Bifrost before it reaches them. My gardeners have seen it: a mantis with a heart of thorns, bigger than any they have seen.', 'It hides in the bridge fields. Find it, and the bridge will shine again.') }
-       @{ id = 919; type = 'boss'; lv = 149; title = 'The Thornheart'; map = 'bif_fild02'; mob = 2133; boss = 'Thornheart Mantis'; hp = 10
-          now = 'Return to the fields of Bifrost outside Mora (bif_fild02) and slay the Thornheart Mantis.'
+          done = 'In ruined Morroc you volunteered for the Continental Guard, and the Official sent you to its chief, Balrog.' }
+       @{ title = 'Chief Balrog'
+          cond = 'rebirth_moc_edq >= 2'
+          route = @('morocc', 159, 113, 'Chief Balrog')
+          now = 'RO quest: Chief Balrog (morocc, 159, 113) leads the Continental Guard. Ask to join, and do not take no for an answer.'
           hint = @(
-            'Mora''s east door (182, 74) leads out to bif_fild02. The Thornheart Mantis appears a few seconds after you arrive.'
+            'Choose I want to join the Continental Guard., then Ask Again, You''ve just got to let me join!, Give me a chance to prove myself! and No problem.'
           )
           spots = @(
-            @{ map = 'mora'; x = 182; y = 74; name = 'Way out to bif_fild02' }
+            @{ map = 'morocc'; x = 159; y = 113; name = 'Chief Balrog' }
           )
-          done = 'You slew the Thornheart Mantis. As it fell, the light it had drunk streamed back up into Bifrost.' }
-       @{ id = 920; type = 'report'; lv = 150; title = 'Seven Colours'
-          now = 'Return to Elder Mirrel in Mora (114, 96).'
+          done = 'Balrog turned you away three times, then gave you a test: the Guard''s bonfires are short of firewood, and the monsters of the Magma Dungeon carry flames that never go out.' }
+       @{ title = 'Everlasting Flames'
+          cond = 'rebirth_moc_edq >= 3'
+          items = @(, @(7098, 'Live Coal', 30))
+          route = @('yuno_fild03', 32, 139, 'Entrance to the Magma Dungeon')
+          now = 'RO quest: bring Chief Balrog in Morroc (159, 113) 30 Live Coals for the Guard''s bonfires.'
           hint = @(
-            'On bif_fild02, knock on the Small Hole in the hill (285, 332). It opens into Mora.'
+            'Live Coals drop from Blazers (level 101) on both floors of the Magma Dungeon (mag_dun01 and mag_dun02). Its entrance is on the field south of Juno (yuno_fild03, 32, 139).'
+            'Then back to Morroc: a Kafra Employee in Payon (175, 226) or Prontera (146, 89) teleports you there.'
           )
           spots = @(
-            @{ map = 'bif_fild02'; x = 285; y = 332; name = 'Small Hole: into Mora' }
+            @{ map = 'yuno_fild03'; x = 32; y = 139; name = 'Entrance to the Magma Dungeon' }
+            @{ map = 'payon'; x = 175; y = 226; name = 'Kafra: Teleport to Morocc (1,200 zeny)' }
+            @{ map = 'prontera'; x = 146; y = 89; name = 'Kafra: Teleport to Morocc (1,200 zeny)' }
+            @{ map = 'morocc'; x = 159; y = 113; name = 'Chief Balrog' }
           )
-          done = 'Bifrost shone in seven colours again. But Mirrel knew the mantis had not been the cause: the bridge draws its light from the World Tree, and in Eclage, the Laphine city on the tree, it is withering.'
-          say = @('Seven colours. I had almost forgotten what that looks like. Thank you.', 'But the mantis was a thief, not the cause. Bifrost draws its light from the World Tree itself, Yggdrasil, and the tree is sick.', 'The Laphine of Eclage live on its branches. Their guard captain, Sylwen, keeps watch outside the city gate. Tell her Mirrel sent you, and take this for the road.') }
+          done = 'Balrog counted all thirty coals and was still not satisfied: the Republic''s mercenaries in the Guard are wilting in the desert heat.' }
+       @{ title = 'Hearts of Ice'
+          cond = 'rebirth_moc_edq >= 4'
+          items = @(, @(7561, 'Glacial Heart', 50))
+          route = @('ra_fild01', 233, 333, 'Entrance to the Ice Cave')
+          now = 'RO quest: bring Chief Balrog in Morroc (159, 113) 50 Glacial Hearts to cool the Republic''s mercenaries.'
+          hint = @(
+            'Glacial Hearts drop from the monsters of the Ice Cave near Rachel: Siromas (level 98), Snowiers (103), Gazetis (106) and Ice Titans (110). Its entrance is on the field east of Rachel (ra_fild01, 233, 333).'
+            'Then back to Morroc: a Kafra Employee in Payon (175, 226) or Prontera (146, 89) teleports you there.'
+          )
+          spots = @(
+            @{ map = 'ra_fild01'; x = 233; y = 333; name = 'Entrance to the Ice Cave' }
+            @{ map = 'payon'; x = 175; y = 226; name = 'Kafra: Teleport to Morocc (1,200 zeny)' }
+            @{ map = 'prontera'; x = 146; y = 89; name = 'Kafra: Teleport to Morocc (1,200 zeny)' }
+            @{ map = 'morocc'; x = 159; y = 113; name = 'Chief Balrog' }
+          )
+          done = 'Balrog made you a member of the Continental Guard and gave you its Certificate. Your mission: Satan Morocc himself, on the desert field he has claimed.' }
+       # moc_fild21's event (quests_morocc.txt 894-2085): the Guard lets in a
+       # party of 2+ online with the Certificate (7826); the Group of Evil
+       # calls Satan Morocc (1916) for 90 min; after his death the Time-Space
+       # Gap gives the skin (7820) for 30 min, and the field is shut for 6 h
+       # ($@re_moc, a server variable: a restart opens it again).
+       @{ title = 'Satan Morocc'
+          cond = 'rebirth_moc_edq >= 6'
+          route = @('moc_fild20', 38, 183, 'Continental Guard: Enter the Field to Investigate')
+          now = 'RO quest: with your party, face Satan Morocc on the desert field he has claimed (moc_fild21), and bring back proof of his defeat.'
+          hint = @(
+            'Leave Morroc by its east gate (299, 207). A Continental Guard there (moc_fild20, 38, 183) sends members of the Guard onto the field: choose Enter the Field to Investigate. Keep the Continental Guard Certificate in your bag and come in a party of at least 2 people online. Whether party bots count here has not been tested.'
+            'On moc_fild21, the Group of Evil (178, 239) calls up Satan Morocc: level 151, 7,000,000 HP. If he is not defeated within 90 minutes, he leaves.'
+            'When he falls, touch the Time-Space Gap (177, 239) within 30 minutes: you pick up a Piece of Morocc Skin. After that the field stays shut for 6 hours; restarting the game opens it again.'
+          )
+          spots = @(
+            @{ map = 'morocc'; x = 299; y = 207; name = 'East gate of Morroc' }
+            @{ map = 'moc_fild20'; x = 38; y = 183; name = 'Continental Guard: Enter the Field to Investigate' }
+            @{ map = 'moc_fild21'; x = 178; y = 239; name = 'Group of Evil (calls Satan Morocc)' }
+            @{ map = 'moc_fild21'; x = 177; y = 239; name = 'Time-Space Gap (after his defeat)' }
+          )
+          done = 'Your party drove Satan Morocc back into the time-space gap, and you took a piece of his skin as proof.' }
+       @{ title = 'Proof of Victory'
+          cond = 'rebirth_moc_edq >= 8'
+          items = @(, @(7820, 'Piece of Morocc Skin', 1))
+          route = @('morocc', 159, 113, 'Chief Balrog')
+          now = 'RO quest: bring the Piece of Morocc Skin to Chief Balrog in Morroc (159, 113) and choose your reward: the Seal of the Continental Guard, a Morocc Charm Stone or a Morocc Ring.'
+          hint = @(
+            'From moc_fild21, the warp at the field''s entrance leads back. Morroc is through its east gate.'
+          )
+          spots = @(
+            @{ map = 'morocc'; x = 159; y = 113; name = 'Chief Balrog' }
+          )
+          done = 'Balrog took the proof, and the Continental Guard paid you with EXP and a reward of your choice. Satan Morocc is not gone, but he is held back.' }
      ) }
 
-  # Renewal only: Eclage, the Laphine city on the World Tree. Its gate is
-  # quest-locked (ep14_2_oliver), so Sylwen meets you outside it.
-  @{ era = 'renewal'; title = 'Under the World Tree'; range = '151-158'
-     town = 'ecl_fild01'; townName = 'Eclage'; npc = 'Captain Sylwen'; sprite = '4_M_FAIRYSOLDIER'; x = 102; y = 307
-     costumes = @(5303, 5284, 2254); costumeId = 50912; gift = @(@(607, 10), @(608, 5)); zeny = 120000
-     intro = 'Eclage is the capital of the Laphine, built in the branches of Yggdrasil, the World Tree. Its gate admits only those the Laphine have registered, and the old tower of the tree''s keepers stands in the field below.'
-     spots = @(
-       @{ map = 'mora'; x = 182; y = 74; name = 'Way out to bif_fild02' }
-       @{ map = 'bif_fild02'; x = 292; y = 351; name = 'Way north to the fields of Eclage' }
-     )
-     away = 'Far from Eclage? From Mora, the east door (182, 74) leads to bif_fild02, and its north-east way (292, 351) to ecl_fild01. Captain Sylwen stands outside the city gate (102, 307).'
+  # quests/quests_13_1.txt, Onward to the Other World: ep13_ryu 0 -> 100 (Lv
+  # 70: the Promotional Staff in Izlude). RO's other way in, the Cat Paw
+  # Agent (Agent Geck in the Eden Group, ep13_start = 100), counts for the
+  # whole episode. Renewal's Chapter 8 from 2026-10-26 to 2026-10-28.
+  @{ episode = '13.1'; title = 'Onward to the Other World'; lv = 70
+     intro = 'When Morroc fell, a rift opened in its ruins, and beyond it lies a world no map of Rune-Midgard shows. Rune-Midgard, the Schwarzwald Republic and Arunafeltz have joined in an Alliance to send an expedition through it, and its recruiters are looking for adventurers. This is Ragnarok''s own story: the Chronicle only shows the way, and RO gives its rewards.'
      steps = @(
-       @{ id = 921; type = 'talk'; lv = 151; title = 'The Gate of Eclage'
-          now = 'Go to the fields of Eclage (ecl_fild01) and find Captain Sylwen outside the city gate (102, 307).'
+       @{ title = 'The Recruiter for the Brave'
+          cond = 'ep13_ryu >= 1 || ep13_start >= 100'
+          route = @('prontera', 156, 358, 'Gate of Prontera Castle')
+          now = 'RO quest: in Prontera Castle, the Recruiter for the Brave (prt_cas, 207, 165) signs up adventurers for the expedition through the rift. Talk to him and choose Yes, I am interested.'
           hint = @(
-            'From Mora, the east door (182, 74) leads out to bif_fild02.'
-            'On bif_fild02, the way in the north-east (292, 351) leads to ecl_fild01. Walk north-west to the city gate; Captain Sylwen stands just outside it (102, 307).'
-          )
-          done = 'Sylwen guards the gate of Eclage. The keepers'' tower in the field below the city, where the Laphine once tended the tree''s roots, has filled with ash and walking books, and no keeper has come out of it.'
-          say = @('Mirrel sent you? Then you may stand here. Inside the gate, I am afraid, is another matter: the council lets no stranger in.', 'You see that tower in the field? The keepers of the World Tree lived there. They tended its roots for a thousand years.', 'Since spring it has filled with ash and dust, and their old books walk the halls on their own. No keeper has come out.', 'Go up into the tower. Clear its halls, and we will learn what happened to them.') }
-       @{ id = 922; type = 'hunt'; lv = 152; title = 'The Ashen Halls'; where = 'ecl_tdun02'
-          mobs = @(@(2365, 'Cenere', 25), @(2366, 'Antique Book', 20))
-          now = 'Hunt 25 Cenere and 20 Antique Books on the second floor of the keepers'' tower (ecl_tdun02).'
-          hint = @(
-            'The tower''s door is in the south of ecl_fild01 (182, 82).'
-            'Floor 1: the stairs up (67, 106) lead to the second floor (ecl_tdun02), the hunting ground.'
+            'The castle gate is at the north end of Prontera (156, 358). The Recruiter stands a few steps inside, to the north-west.'
+            'The quest window (Alt+U) follows it as Onward to the Other World.'
           )
           spots = @(
-            @{ map = 'ecl_fild01'; x = 182; y = 82; name = 'Door of the keepers'' tower' }
-            @{ map = 'ecl_tdun01'; x = 67; y = 106; name = 'Stairs up to the second floor' }
+            @{ map = 'prontera'; x = 156; y = 358; name = 'Gate of Prontera Castle' }
+            @{ map = 'prt_cas'; x = 207; y = 165; name = 'Recruiter for the Brave' }
           )
-          done = 'You cleared the ash spirits and the restless books from the tower''s second floor.' }
-       @{ id = 923; type = 'deliver'; lv = 154; title = 'Ash and Pages'
-          items = @(@(7001, 'Mould Powder', 5), @(1097, 'Worn Out Page', 5))
-          now = 'Bring Captain Sylwen 5 Mould Powder from the Cenere and 5 Worn Out Pages from the Antique Books, outside the gate of Eclage (102, 307).'
-          done = 'The pages were the keepers'' last records: the roots of the World Tree were rotting, and the keepers'' old steward had gone up to the top floor to stop it, and never come down.'
-          say = @('Ash from the roots... and these pages are the keepers'' own records. Let me read.', '"The roots are rotting from below. Something under the world is drinking from them." And the last page: "The steward has gone up to stop it."', 'The steward never came down. Go to the top floor, friend. Whatever he has become, end it.') }
-       @{ id = 924; type = 'boss'; lv = 156; title = 'The Last Keeper'; map = 'ecl_tdun03'; mob = 2371; boss = 'Withered Steward'; hp = 8
-          now = 'Climb to the third floor of the keepers'' tower (ecl_tdun03) and free the Withered Steward.'
+          done = 'In Prontera Castle you signed up for the Alliance''s expedition to the other world. First, the Alliance wanted its word spread.' }
+       @{ title = 'The Promotional Staff'
+          cond = 'ep13_ryu >= 8 || ep13_start >= 100'; var = 'ep13_ryu'
+          items = @(@(909, 'Jellopy', 300), @(721, 'Emerald', 1), @(723, 'Ruby', 1))
+          parts = @(
+            @{ at = 2; name = 'Promotional Staff in Al De Baran (127, 138), answer I have something for you'; route = @('aldebaran', 127, 138, 'Promotional Staff') }
+            @{ at = 3; name = 'Bring her 300 Jellopy'; route = @('aldebaran', 127, 138, 'Promotional Staff') }
+            @{ at = 4; name = 'Promotional Staff in Geffen (90, 67), answer The Staff in Aldebaran sent me'; route = @('geffen', 90, 67, 'Promotional Staff') }
+            @{ at = 5; name = 'Bring him an Emerald'; route = @('geffen', 90, 67, 'Promotional Staff') }
+            @{ at = 6; name = 'Bring him a Ruby'; route = @('geffen', 90, 67, 'Promotional Staff') }
+            @{ at = 8; name = 'Promotional Staff in Izlude (102, 171), answer I have something for you'; route = @('izlude', 102, 171, 'Promotional Staff') }
+          )
+          route = @('aldebaran', 127, 138, 'Promotional Staff')
+          now = 'RO quest: the Alliance''s Promotional Staff spread the word in three towns. Visit each in turn and bring what they ask for.'
           hint = @(
-            'The tower''s door is in the south of ecl_fild01 (182, 82). Floor 1: the stairs up (67, 106). Floor 2: the stairs up (52, 9) lead to the third floor.'
-            'The Withered Steward appears a few seconds after you arrive.'
+            'Emerald and Ruby: the Jewelers of Morroc (154, 55 and 166, 54) and of Lighthalzen sell them. Jellopy drops from Porings and most small monsters.'
+            'The Staff in Izlude only lets level 70 and up go on; under 70, come back when you get there.'
+            'The Journal counts the items in your bag; the Staff take them.'
           )
           spots = @(
-            @{ map = 'ecl_fild01'; x = 182; y = 82; name = 'Door of the keepers'' tower' }
-            @{ map = 'ecl_tdun01'; x = 67; y = 106; name = 'Stairs up to the second floor' }
-            @{ map = 'ecl_tdun02'; x = 52; y = 9; name = 'Stairs up to the third floor' }
+            @{ map = 'aldebaran'; x = 127; y = 138; name = 'Promotional Staff'; ro = 1 }
+            @{ map = 'aldebaran'; x = 127; y = 138; name = 'Promotional Staff'; ro = 2 }
+            @{ map = 'geffen'; x = 90; y = 67; name = 'Promotional Staff'; ro = 3 }
+            @{ map = 'geffen'; x = 90; y = 67; name = 'Promotional Staff'; ro = 4 }
+            @{ map = 'geffen'; x = 90; y = 67; name = 'Promotional Staff'; ro = 5 }
+            @{ map = 'izlude'; x = 102; y = 171; name = 'Promotional Staff'; ro = 6 }
+            @{ map = 'izlude'; x = 102; y = 171; name = 'Promotional Staff'; ro = 7 }
           )
-          done = 'You freed the Withered Steward. With his last breath he named what drinks from the roots: an ancient machine city, buried under the Schwarzwald, where the first seal was made.' }
-       @{ id = 925; type = 'report'; lv = 158; title = 'The Roots Below'
-          now = 'Return to Captain Sylwen outside the gate of Eclage (102, 307).'
+          done = 'You carried the Alliance''s word to Al De Baran, Geffen and Izlude, with 300 Jellopy, an Emerald and a Ruby for its staff.' }
+       @{ title = 'Sikaiz of the Alliance'
+          cond = 'ep13_ryu >= 12 || ep13_start >= 100'; var = 'ep13_ryu'
+          parts = @(
+            @{ at = 9; name = 'Back to the Recruiter in Prontera Castle, answer Ash-Vacuum?'; route = @('prt_cas', 207, 165, 'Recruiter for the Brave') }
+            @{ at = 10; name = 'Sikaiz in Lighthalzen (lhz_in01, 132, 259)'; route = @('lhz_in01', 132, 259, 'Sikaiz') }
+            @{ at = 11; name = 'Sikaiz again, answer Sure'; route = @('lhz_in01', 132, 259, 'Sikaiz') }
+            @{ at = 12; name = 'Sikaiz again, answer The three kingdoms'; route = @('lhz_in01', 132, 259, 'Sikaiz') }
+          )
+          route = @('prt_cas', 207, 165, 'Recruiter for the Brave')
+          now = 'RO quest: report back to the Recruiter in Prontera Castle, then meet Sikaiz, who leads the Alliance from the Rekenber building in Lighthalzen. Talk to him until he has told you everything.'
           hint = @(
-            'From the tower, take the stairs down to the first floor and its door (61, 11) back out to ecl_fild01. Sylwen stands outside the city gate (102, 307).'
+            'Prontera Castle: the gate is at the north end of Prontera (156, 358).'
+            'Lighthalzen: the Rekenber building is in the north-west of the city (door at 101, 248); RO''s Guide says Sikaiz is on its 2nd floor. The Route link draws the way through the building.'
           )
           spots = @(
-            @{ map = 'ecl_tdun03'; x = 49; y = 11; name = 'Stairs down to the second floor' }
-            @{ map = 'ecl_tdun02'; x = 60; y = 90; name = 'Stairs down to the first floor' }
-            @{ map = 'ecl_tdun01'; x = 61; y = 11; name = 'Door out to ecl_fild01' }
+            @{ map = 'prontera'; x = 156; y = 358; name = 'Gate of Prontera Castle'; ro = 8 }
+            @{ map = 'prt_cas'; x = 207; y = 165; name = 'Recruiter for the Brave'; ro = 8 }
+            @{ map = 'lighthalzen'; x = 101; y = 248; name = 'Door of the Rekenber building'; ro = 9 }
+            @{ map = 'lhz_in01'; x = 132; y = 259; name = 'Sikaiz'; ro = 9 }
+            @{ map = 'lhz_in01'; x = 132; y = 259; name = 'Sikaiz'; ro = 10 }
+            @{ map = 'lhz_in01'; x = 132; y = 259; name = 'Sikaiz'; ro = 11 }
           )
-          done = 'Sylwen knew the city the steward named: Verus, the buried city beneath the Juperos ruins. The machines there are digging toward the first seal, and the World Tree''s roots run through it. She sent you back across the rift, to Verus.'
-          say = @('A machine city, under the Schwarzwald... the Laphine call it the Iron Root. Your people call it Verus.', 'The ruins of Juperos are its upper floors. Below them, the machines that built the seals are still digging, and the roots of the World Tree run right through their tunnels.', 'If they reach the first seal, there will be no tree, no bridge and no rift left to close. Go to Verus, champion. The Laphine will sing of you either way.') }
+          done = 'The Recruiter signed you up for good, and RO paid you for it. In Lighthalzen, Sikaiz told you of the three kingdoms and their one mission beyond the rift.' }
+       @{ title = 'Errands of the Alliance'
+          cond = 'ep13_ryu >= 18 || ep13_start >= 100'; var = 'ep13_ryu'
+          parts = @(
+            @{ at = 13; name = 'Alliance Manager in Prontera Castle (prt_cas, 19, 98)'; route = @('prt_cas', 19, 98, 'Alliance Manager') }
+            @{ at = 14; name = 'Sikaiz in Lighthalzen'; route = @('lhz_in01', 132, 259, 'Sikaiz') }
+            @{ at = 15; name = 'Sikaiz again'; route = @('lhz_in01', 132, 259, 'Sikaiz') }
+            @{ at = 16; name = 'Alliance Manager in the temple of Rachel (ra_temple, 119, 113)'; route = @('ra_temple', 119, 113, 'Alliance Manager') }
+            @{ at = 17; name = 'Sikaiz in Lighthalzen'; route = @('lhz_in01', 132, 259, 'Sikaiz') }
+            @{ at = 18; name = 'Sikaiz: type your character''s name'; route = @('lhz_in01', 132, 259, 'Sikaiz') }
+          )
+          route = @('prt_cas', 19, 98, 'Alliance Manager')
+          now = 'RO quest: carry the Alliance''s messages between its seats: Prontera Castle, Sikaiz in Lighthalzen, and the temple of Rachel.'
+          hint = @(
+            'In Prontera Castle, the Alliance Manager is in the west of the castle (19, 98): the Route link draws the way from the gate.'
+            'Rachel: the Airship from Juno or Izlude. The Alliance Manager is inside the great temple (ra_temple, 119, 113; door at rachel 150, 249).'
+            'At the end Sikaiz asks for your name: type your character''s name exactly as it is spelled, capitals too. A wrong one only ends the talk; ask him again.'
+          )
+          spots = @(
+            @{ map = 'prt_cas'; x = 19; y = 98; name = 'Alliance Manager'; ro = 12 }
+            @{ map = 'lhz_in01'; x = 132; y = 259; name = 'Sikaiz'; ro = 13 }
+            @{ map = 'lhz_in01'; x = 132; y = 259; name = 'Sikaiz'; ro = 14 }
+            @{ map = 'ra_temple'; x = 119; y = 113; name = 'Alliance Manager'; ro = 15 }
+            @{ map = 'lhz_in01'; x = 132; y = 259; name = 'Sikaiz'; ro = 16 }
+            @{ map = 'lhz_in01'; x = 132; y = 259; name = 'Sikaiz'; ro = 17 }
+          )
+          done = 'You ran the Alliance''s errands from Prontera to Rachel, and Sikaiz put your name on the expedition''s roll.' }
+       @{ title = 'Through the Rift'
+          cond = 'ep13_ryu >= 100 || ep13_start >= 100'; var = 'ep13_ryu'
+          parts = @(
+            @{ at = 19; name = 'Officer A or B in Lighthalzen (lhz_in01, 32, 22)'; route = @('lhz_in01', 32, 22, 'Officer A') }
+            @{ at = 20; name = 'The officers again'; route = @('lhz_in01', 32, 22, 'Officer A') }
+            @{ at = 21; name = 'Munkenro at the rift (moc_fild22b, 230, 197)'; route = @('lhz_in01', 130, 232, 'Guard: Send me there.') }
+            @{ at = 22; name = 'Munkenro: Ready!!, and watch what happens'; route = @('lhz_in01', 130, 232, 'Guard: Send me there.') }
+            @{ at = 100; name = 'Munkenro once more, when it is over'; route = @('lhz_in01', 130, 232, 'Guard: Send me there.') }
+          )
+          route = @('lhz_in01', 32, 22, 'Officer A')
+          now = 'RO quest: two officers of the Alliance argue about Sikaiz. Hear them out, then go to the rift itself, where Munkenro waits with the expedition.'
+          hint = @(
+            'The officers are in a side room of the Rekenber building (lhz_in01, 32, 22): the Route link draws the way.'
+            'To the rift: the Guard in the Rekenber hall (lhz_in01, 130, 232) sends you there (Send me there.). By the rift (moc_fild20), the Rift Guard (349, 179) lets you through (Yes, sure.). Munkenro stands at 230, 197.'
+            'After Ready!! the head of the Alliance arrives and speaks. When it is over, talk to Munkenro again: RO pays you, and he can send you through to the Allied camp (Yes, of course!).'
+          )
+          spots = @(
+            @{ map = 'lhz_in01'; x = 32; y = 22; name = 'Officer A'; ro = 18 }
+            @{ map = 'lhz_in01'; x = 32; y = 22; name = 'Officer A'; ro = 19 }
+            @{ map = 'lhz_in01'; x = 130; y = 232; name = 'Guard: Send me there.'; ro = 20 }
+            @{ map = 'moc_fild20'; x = 349; y = 179; name = 'Rift Guard: Yes, sure.'; ro = 20 }
+            @{ map = 'moc_fild22b'; x = 230; y = 197; name = 'Munkenro'; ro = 20 }
+            @{ map = 'moc_fild22b'; x = 230; y = 197; name = 'Munkenro'; ro = 21 }
+            @{ map = 'moc_fild22b'; x = 230; y = 197; name = 'Munkenro'; ro = 22 }
+          )
+          done = 'The head of the Alliance sent the expedition through the rift, and you with it. Beyond lies the Allied Forces Post, and a world of Laphine and Sapha who never asked for visitors.' }
      ) }
 
-  # Renewal only: the finale in Verus (rAthena Episode 15), under Juperos:
-  # juperos_01's east tunnel leads to the excavation and the city.
-  @{ era = 'renewal'; title = 'The First Seal'; range = '160-171'
-     town = 'verus04'; townName = 'Verus'; npc = 'Professor Hendrik'; sprite = '4_M_OLDSCHOLAR'; x = 190; y = 180
-     costumes = @(5357, 5205, 2235); costumeId = 50915; gift = @(@(616, 1), @(607, 20)); zeny = 200000
-     intro = 'Verus is a city of the ancients, buried beneath the ruins of Juperos and only now dug out by the Republic''s excavators. Its machines built the seals of Rune-Midgard, and some of them still run.'
-     spots = @(
-       @{ map = 'juperos_01'; x = 245; y = 87; name = 'East tunnel: to the excavation (ver_eju)' }
-       @{ map = 'ver_eju'; x = 107; y = 36; name = 'Way down to the tunnel (ver_tunn)' }
-       @{ map = 'ver_tunn'; x = 10; y = 36; name = 'Way to Verus (verus04)' }
-     )
-     away = 'Far from Verus? From Juno, go down into the Juperos ruins (juperos_01). Its east tunnel (245, 87) leads to the excavation (ver_eju), its south way (107, 36) to the tunnel (ver_tunn), and the tunnel''s west end (10, 36) to Verus (verus04).'
+  # quests/quests_13_2.txt, Two Tribes: ep13_mdrama 0 -> 28. No level check of
+  # its own; Arc only understands you with the Ring of the Wise King (2782)
+  # worn and the Otherworld Language done (ep13_2_rhea > 99, Lv 70).
+  @{ episode = '13.2'; title = 'Two Tribes'; lv = 70; more = $true
+     end = 'ep13_mdrama >= 28'
+     needs = 'the Otherworld Language: the Laphine and Sapha tongues, and the Ring of the Wise King worn (Side Quests, The New World).'
+     intro = 'Beyond the rift live two peoples who have never trusted each other: the Laphine of Splendide and the Sapha of Manuk. Their quarrel is older than the rift, and the humans who came through it are caught in the middle. This is Ragnarok''s own story: the Chronicle only shows the way, and RO gives its rewards.'
      steps = @(
-       @{ id = 926; type = 'talk'; lv = 160; title = 'The Buried City'
-          route = @('juperos_01', 245, 87, 'The way to Verus: juperos_01')
-          now = 'Go to Verus, the buried city beneath Juperos, and find Professor Hendrik at the excavation camp (verus04, 190, 180).'
+       @{ title = 'Arc of the Splendide Guard'
+          cond = 'ep13_mdrama >= 1'
+          route = @('splendide', 228, 164, 'Door to the Splendide Guard')
+          now = 'RO quest: wearing the Ring of the Wise King, talk to Arc of the Splendide Guard (spl_in01, 32, 306) and answer Yes.'
           hint = @(
-            'From Juno, follow the Route link into the Juperos ruins (juperos_01). Its east tunnel (245, 87) leads to the excavation site (ver_eju).'
-            'On ver_eju, the way south (107, 36) leads into the tunnel (ver_tunn). The tunnel''s west end (10, 36) opens into Verus (verus04). Professor Hendrik works near the excavators'' camp (190, 180).'
-          )
-          done = 'Hendrik leads the Republic''s dig in Verus. The city''s repair machines have woken and joined its old diggers: all of them are tunnelling down, toward something sealed under the city.'
-          say = @('Careful where you step, this floor is older than the kingdom. Hendrik, of the Juno Academy.', 'Elisha''s letters said you might come. The Laphine one I did not expect. The World Tree''s roots, here? Then it is worse than I feared.', 'This city built the seals. Every crystal in Juperos, in Einbech, under Morroc, was cut here. And its machines have woken, all of them, and they are digging down.', 'Start with the old city south of my camp. Its repair machines and rovers have gone wild. Stop them.') }
-       @{ id = 927; type = 'hunt'; lv = 161; title = 'The Waking City'; where = 'verus03'
-          mobs = @(@(3155, 'Repair Robot', 30), @(3156, 'Exploration Rover', 15))
-          route = @('verus04', 121, 267, 'Way to the old city: verus04')
-          now = 'Hunt 30 Repair Robots and 15 Exploration Rovers in the old city of Verus (verus03).'
-          hint = @(
-            'From Professor Hendrik''s camp, the ways north (121, 267) and (44, 267) lead to the old city (verus03), the hunting ground.'
+            'In Splendide, the door at 228, 164 leads into Arc''s room (spl_in01).'
+            'Without the Otherworld Language and the ring, Arc does not understand you: learn it first (Side Quests, The New World).'
           )
           spots = @(
-            @{ map = 'verus04'; x = 121; y = 267; name = 'Way north to the old city (verus03)' }
+            @{ map = 'splendide'; x = 228; y = 164; name = 'Door to the Splendide Guard' }
+            @{ map = 'spl_in01'; x = 32; y = 306; name = 'Arc of the Splendide Guard' }
           )
-          done = 'You broke the swarm of repair machines and rovers that had woken in the old city.' }
-       @{ id = 928; type = 'deliver'; lv = 164; title = 'Iron and Orders'
-          items = @(@(7319, 'Used Iron Plate', 5), @(998, 'Iron', 10))
-          now = 'Bring Professor Hendrik 5 Used Iron Plates from the Repair Robots and 10 Iron from the Exploration Rovers, in Verus (190, 180).'
-          done = 'Etched inside the plates were the machines'' orders, older than any kingdom: dig to the first seal and open it. One machine gives those orders, the great Excavator at the dig site above.'
-          say = @('Look inside the plate. These marks are orders, burned in by the machines themselves.', '"Dig to the first seal. Open it." Every machine in this city carries the same order. And it comes from one source.', 'The great Excavator, at the dig site you walked through on your way down. It is not one of ours. It woke before we came. Stop it, and the city sleeps.') }
-       @{ id = 929; type = 'boss'; lv = 167; title = 'The Excavator Prime'; map = 'ver_eju'; mob = 3153; boss = 'Excavator Prime'; hp = 10
-          now = 'Go back up to the excavation site (ver_eju) and destroy the Excavator Prime.'
+          done = 'Arc understood you. You told him how humans came through the rift, and he saw that you were not sent by the giants of Manuk.' }
+     ) }
+
+  # re/quests/quests_dicastes.txt, Doha's Secret Orders: ep13_3_secret 0 -> 24
+  # (25-27 come later, in the Flame Basin). It begins in the Invitation to
+  # El Dicastes (ep13_3_invite 1 -> 2), which only opens after 13.1.
+  @{ episode = '13.3'; title = 'Doha''s Secret Orders'; lv = 70; more = $true
+     end = 'ep13_3_secret >= 24'
+     needs = 'Episode 13.1, Onward to the Other World (or the Cat Paw passage into the New World).'
+     intro = 'The Sapha of Manuk have sent a delegation to the Allied camp, and they want to meet the humans who helped them. Behind the delegation stands Inspector Doha of El Dicastes, and Doha has orders of his own. This is Ragnarok''s own story: the Chronicle only shows the way, and RO gives its rewards.'
+     steps = @(
+       @{ title = 'The Manuk Delegation'
+          cond = 'ep13_3_secret >= 1'
+          route = @('mid_campin', 93, 114, 'Guard Aello')
+          now = 'RO quest: in the Allied camp''s command post, Guard Aello (mid_campin, 93, 114) says a delegation from Manuk wants to meet you. Go up to its room and hear the Sapha out.'
           hint = @(
-            'From Verus, the way east (204, 163) leads into the tunnel (ver_tunn), and its north end (84, 86) up to the excavation site (ver_eju). The Excavator Prime appears a few seconds after you arrive.'
+            'The delegation waits in the room on the right of the second floor. Tell the guard at its door that you have authorization.'
+            'This is also how the Invitation to El Dicastes begins (Side Quests, The New World).'
           )
           spots = @(
-            @{ map = 'verus04'; x = 204; y = 163; name = 'Way to the tunnel (ver_tunn)' }
-            @{ map = 'ver_tunn'; x = 84; y = 86; name = 'Way up to the excavation site (ver_eju)' }
+            @{ map = 'mid_campin'; x = 93; y = 114; name = 'Guard Aello' }
           )
-          done = 'You destroyed the Excavator Prime. All through the city the machines fell still, one by one, and far below them the first seal held.' }
-       @{ id = 930; type = 'report'; lv = 171; title = 'Champion of Rune-Midgard'
-          now = 'Return to Professor Hendrik in Verus (190, 180).'
+          done = 'The Sapha delegation from Manuk called humans friends, and Hibba Agip sent you to meet Inspector Doha.' }
+     ) }
+
+  # re/instances/HazyForest.txt, the Mistwood Maze: ep14_1_mistwoods 0 -> 10.
+  # Loki only talks from Lv 98 (1 = you turned back, 2 = on your way); the
+  # maze is an instance for a party.
+  @{ episode = '14.1'; title = 'Mistwood Maze'; lv = 98; more = $true
+     end = 'ep14_1_mistwoods >= 10'
+     party = 'The Mistwood Maze lets in a party only (at least 2; party bots count as players).'
+     intro = 'Beyond Bifrost, the rainbow bridge, lies the Mistwood: a forest that leads strangers in circles and does not let them go. Someone has gone missing in it, and an assassin is looking for her. This is Ragnarok''s own story: the Chronicle only shows the way, and RO gives its rewards.'
+     steps = @(
+       @{ title = 'The Young Man in the Mist'
+          cond = 'ep14_1_mistwoods >= 2'
+          route = @('bif_fild01', 158, 340, 'Laphine Soldier: the Mistwood Maze')
+          now = 'RO quest: with your party, enter the Mistwood Maze through the Log Tunnel on Bifrost''s field (bif_fild01, 161, 355). Inside, a mysterious young man (97, 30) asks whether you mean to pass through: answer Yes, I do.'
           hint = @(
-            'From the excavation site, the way south (107, 36) leads into the tunnel (ver_tunn), and its west end (10, 36) to Verus. Hendrik is at his camp (190, 180).'
+            'Your party''s leader asks the Laphine Soldier (bif_fild01, 158, 340) to open the maze. Then everyone enters through the Log Tunnel (161, 355).'
           )
           spots = @(
-            @{ map = 'ver_eju'; x = 107; y = 36; name = 'Way down to the tunnel (ver_tunn)' }
-            @{ map = 'ver_tunn'; x = 10; y = 36; name = 'Way to Verus (verus04)' }
+            @{ map = 'bif_fild01'; x = 158; y = 340; name = 'Laphine Soldier: the Mistwood Maze' }
+            @{ map = 'bif_fild01'; x = 161; y = 355; name = 'Log Tunnel' }
+            @{ map = '1@mist'; x = 97; y = 30; name = 'Mysterious Young Man' }
           )
-          done = 'The first seal holds. From Prontera''s fields to the roots of the World Tree, you stood wherever the seals failed. Your Chronicle is complete for now: you are a Champion of Rune-Midgard. Episodes 16 to 21 are in development, coming soon. Legends still wait: The Sign and Geffenia, Thanatos Tower, the Abyss Lakes and the Endless Tower.'
-          say = @('Silence. For the first time since we broke ground, the whole city is silent.', 'Under Morroc, in Einbech, beyond the rift, on the World Tree, and now here, at the first seal itself. You stood wherever the seals failed, and they held.', 'The Valkyries have a word for that, I am told. Rise, Champion of Rune-Midgard. Your Chronicle is complete for now, but legends still wait: the Sign, Thanatos Tower, the Abyss Lakes, the Endless Tower.', 'And the world goes on beyond them. When the next chapters of your road are written, Episodes 16 to 21, you will hear of it first.') }
+          done = 'In the Mistwood you met Loki of the Assassin''s Guild. He asked about a purple-haired guard and left you to find your own way through the forest.' }
+     ) }
+
+  # re/quests/quests_eclage.txt, Encounter in a Strange Land: ep14_2_mylord
+  # 0 -> 33 (Traveler Fome, Lv 99; 34 on is the Flame Basin's Magic Scholar).
+  @{ episode = '14.2'; title = 'Encounter in a Strange Land'; lv = 99; more = $true
+     end = 'ep14_2_mylord >= 33'
+     needs = 'a way into Eclage: its gate guards let in only visitors the Laphine have registered (Side Quests, Eclage).'
+     intro = 'Eclage, the city of the Laphine, is built in the branches of the World Tree. Its king is young and its people doubt him, and a traveler from far away has seen more of the city than its guards would like. This is Ragnarok''s own story: the Chronicle only shows the way, and RO gives its rewards.'
+     steps = @(
+       @{ title = 'Traveler Fome'
+          cond = 'ep14_2_mylord >= 1'
+          route = @('eclage', 299, 309, 'Door to Traveler Fome')
+          now = 'RO quest: in Eclage, talk to Fome, a traveler like you (ecl_in01, 32, 52).'
+          hint = @(
+            'Fome is inside the building whose door is at 299, 309 in Eclage.'
+          )
+          spots = @(
+            @{ map = 'eclage'; x = 299; y = 309; name = 'Door to Traveler Fome' }
+            @{ map = 'ecl_in01'; x = 32; y = 52; name = 'Traveler Fome' }
+          )
+          done = 'You met Fome, a traveler in Eclage, and through her the Laphine''s troubles began to open up to you.' }
+     ) }
+
+  # re/quests/quests_14_3_bis.txt, Dimensional Travel: ep14_3_newerabs 0 -> 24
+  # (the Piled Rags in Morroc, Lv 140). Its start checks nothing else; 14.2's
+  # own road goes on to the Flame Basin's Magic Scholar.
+  @{ episode = '14.3'; title = 'Dimensional Travel'; lv = 140; more = $true
+     end = 'ep14_3_newerabs >= 24'
+     intro = 'In the ruins of Morroc, something lies moaning under a pile of rags. Whoever it is has come a long way, and not only across the desert. This is Ragnarok''s own story: the Chronicle only shows the way, and RO gives its rewards.'
+     steps = @(
+       @{ title = 'The Piled Rags'
+          cond = 'ep14_3_newerabs >= 1'
+          route = @('morocc', 138, 238, 'Piled Rags')
+          now = 'RO quest: in the ruins of Morroc, a pile of dirty rags lies at 138, 238. Choose Remove it., then Shake the rags.'
+          hint = @(
+            'No open road leads into Morroc: a Kafra Employee in Payon (175, 226) or Prontera (146, 89) teleports you there (Teleport Service, then Morocc, 1,200 zeny).'
+            'Make some room in your bag first: the quest refuses a full bag.'
+          )
+          spots = @(
+            @{ map = 'payon'; x = 175; y = 226; name = 'Kafra: Teleport to Morocc (1,200 zeny)' }
+            @{ map = 'prontera'; x = 146; y = 89; name = 'Kafra: Teleport to Morocc (1,200 zeny)' }
+            @{ map = 'morocc'; x = 138; y = 238; name = 'Piled Rags' }
+          )
+          done = 'Under the rags in Morroc lay a stranger, moaning, and with him your Dimensional Travel began.' }
+     ) }
+
+  # re/quests/quests_15_1.txt and quests_15_2.txt, the Atnad excavation:
+  # ep15_1_atnad 0 -> 34. Lime Evenor speaks from Lv 140, and only to members
+  # of the Eden Group (item 6219 or 22508).
+  @{ episode = '15'; title = 'The Atnad Excavation'; lv = 140; more = $true
+     end = 'ep15_1_atnad >= 34'
+     needs = 'membership of the Eden Group: any town''s Eden Teleport Officer takes you to its headquarters, where you can join.'
+     intro = 'An ancient site has been found under Juperos, and the Rekenber Corporation is hiring adventurers to dig it out. The Eden Group has signed on, and beneath the ruins lies Verus, a city of the ancients, and something called Phantasmagorika. This is Ragnarok''s own story: the Chronicle only shows the way, and RO gives its rewards.'
+     steps = @(
+       @{ title = 'Word from the Eden Group'
+          cond = 'ep15_1_atnad >= 1'
+          route = @('moc_para01', 31, 14, 'Secretary Lime Evenor')
+          now = 'RO quest: in the Eden Group''s headquarters, Secretary Lime Evenor greets you at the entrance to the central room (moc_para01, 31, 14): an ancient site was found in Juperos, and the Captain wants to see you.'
+          hint = @(
+            'Any town''s Eden Teleport Officer takes you to the Eden Group (moc_para01). Keep your Eden Group mark in your bag: without it Lime Evenor sends you to join first.'
+          )
+          spots = @(
+            @{ map = 'moc_para01'; x = 31; y = 14; name = 'Secretary Lime Evenor' }
+          )
+          done = 'Lime Evenor told you of the ancient site under Juperos: the Eden Group has joined Rekenber''s excavation, and the Captain wants you on it.' }
      ) }
 )
 
@@ -915,10 +868,8 @@ $gates = @()
 # Steps taken out of a route: a character still on one moves to step 'to'
 # (its quest-window entry goes; RO's own quest picks up where it stands), and
 # finished ones keep their quest-window entries (quest_db). Never reuse an id.
-$retired = @(
-  # Renewal's 'Beyond the Rift' (2026-10-21 to 2026-10-26), now Episode 13.1.
-  @{ era = 'renewal'; ch = 8; to = 931; steps = @(
-     @(906, 'Through the Rift'), @(907, 'The Wild Fields'), @(908, 'Proof of Good Faith'), @(909, 'The Rift-Mad Beast'), @(910, 'A Word from the Sapha')) }
-)
+# (Renewal's own chapters and steps 901-935 went on 2026-10-28, with nobody
+# on them: Renewal's Story is $episodes now.)
+$retired = @()
 
-return @{ chapters = $chapters; final = $final; finalRe = $finalRe; soonRe = $soonRe; gates = $gates; retired = $retired }
+return @{ chapters = $chapters; episodes = $episodes; final = $final; finalRe = $finalRe; soonRe = $soonRe; gates = $gates; retired = $retired }
