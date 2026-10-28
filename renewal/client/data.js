@@ -4151,7 +4151,7 @@ export default {
                          "title":  "The Atnad Excavation",
                          "lv":  140,
                          "intro":  "An ancient site has been found under Juperos, and the Rekenber Corporation is hiring adventurers to dig it out. The Eden Group has signed on, and beneath the ruins lies Verus, a city of the ancients, and something called Phantasmagorika. This is Ragnarok\u0027s own story: the Chronicle only shows the way, and RO gives its rewards.",
-                         "more":  true,
+                         "more":  false,
                          "needs":  "membership of the Eden Group: any town\u0027s Eden Teleport Officer takes you to its headquarters, where you can join.",
                          "party":  null,
                          "steps":  [
@@ -4184,6 +4184,990 @@ export default {
                                                      ],
                                            "parts":  [
 
+                                                     ]
+                                       },
+                                       {
+                                           "k":  2,
+                                           "type":  "ro",
+                                           "title":  "Commander Arquien",
+                                           "now":  "RO quest: Commander Arquien of the Eden Group (moc_para01, 133, 170) has a job for you. Hear her out.",
+                                           "done":  "Arquien, who goes by Nile, signed you on to the Atnad Excavation Team: the Eden Group\u0027s part in Rekenber\u0027s dig under Juperos.",
+                                           "route":  {
+                                                         "map":  "moc_para01",
+                                                         "x":  133,
+                                                         "y":  170,
+                                                         "name":  "Commander Arquien"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "Make some room in your bag first: everyone in this episode refuses a full one."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "moc_para01",
+                                                             "x":  133,
+                                                             "y":  170,
+                                                             "name":  "Commander Arquien",
+                                                             "ro":  1
+                                                         },
+                                                         {
+                                                             "map":  "moc_para01",
+                                                             "x":  133,
+                                                             "y":  170,
+                                                             "name":  "Commander Arquien",
+                                                             "ro":  2
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  2,
+                                                             "name":  "Commander Arquien (moc_para01, 133, 170): either answer, then Please continue.",
+                                                             "route":  {
+                                                                           "map":  "moc_para01",
+                                                                           "x":  133,
+                                                                           "y":  170,
+                                                                           "name":  "Commander Arquien"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  3,
+                                                             "name":  "If you asked her to stop, Arquien again: Yes",
+                                                             "route":  {
+                                                                           "map":  "moc_para01",
+                                                                           "x":  133,
+                                                                           "y":  170,
+                                                                           "name":  "Commander Arquien"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  3,
+                                           "type":  "ro",
+                                           "title":  "Registered Excavator",
+                                           "now":  "RO quest: meet the team in the Eden Group\u0027s central room, then travel to the dig at Verus and register with Rekenber\u0027s receptionist as a member of the Atnad Excavation Team.",
+                                           "done":  "You met Archaeologist Aures and Luke Lapez of the team, and Rekenber registered you as an excavator of the Atnad team in Verus, the buried city of the ancients.",
+                                           "route":  {
+                                                         "map":  "moc_para01",
+                                                         "x":  174,
+                                                         "y":  165,
+                                                         "name":  "Lime Evenor"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "To Verus: from Juno to Juperos; in its first level (juperos_01) the way at 245, 87 leads to the excavation\u0027s elevator (ver_eju), then through the tunnel to Verus (verus04).",
+                                                        "Nara asks for your team\u0027s name: type Atnad. RO pays 300,000 base and job EXP."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "moc_para01",
+                                                             "x":  174,
+                                                             "y":  165,
+                                                             "name":  "Lime Evenor",
+                                                             "ro":  3
+                                                         },
+                                                         {
+                                                             "map":  "juperos_01",
+                                                             "x":  245,
+                                                             "y":  87,
+                                                             "name":  "Way to the excavation",
+                                                             "ro":  4
+                                                         },
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  182,
+                                                             "y":  168,
+                                                             "name":  "Receptionist Nara",
+                                                             "ro":  4
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  4,
+                                                             "name":  "Lime Evenor in the central room (moc_para01, 174, 165)",
+                                                             "route":  {
+                                                                           "map":  "moc_para01",
+                                                                           "x":  174,
+                                                                           "y":  165,
+                                                                           "name":  "Lime Evenor"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  5,
+                                                             "name":  "Receptionist Nara in Verus (verus04, 182, 168): I\u0027m from the Eden Group., type Atnad",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  182,
+                                                                           "y":  168,
+                                                                           "name":  "Receptionist Nara"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  4,
+                                           "type":  "ro",
+                                           "title":  "Dr. Ian Atnad",
+                                           "now":  "RO quest: report to the team\u0027s camp in Verus. Its leader, Dr. Ian Atnad, wants to see what you can do: bring him 20 Operation Control Devices from the ancient machines.",
+                                           "done":  "Dr. Ian Atnad tested you with the machines\u0027 control devices, and you passed.",
+                                           "route":  {
+                                                         "map":  "verus04",
+                                                         "x":  141,
+                                                         "y":  193,
+                                                         "name":  "Archaeologist Aures"
+                                                     },
+                                           "items":  [
+                                                         {
+                                                             "name":  "Operation Control Device",
+                                                             "id":  6749,
+                                                             "count":  20
+                                                         }
+                                                     ],
+                                           "hint":  [
+                                                        "While the quest is open, Recon Robots (level 165), Repair Robots (155) and Exploration Rovers (168) in the ruins of Verus drop Operation Control Devices (50%).",
+                                                        "RO pays 750,000 base and 500,000 job EXP."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  141,
+                                                             "y":  193,
+                                                             "name":  "Archaeologist Aures",
+                                                             "ro":  5
+                                                         },
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  144,
+                                                             "y":  193,
+                                                             "name":  "Ian Atnad",
+                                                             "ro":  6
+                                                         },
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  144,
+                                                             "y":  193,
+                                                             "name":  "Ian Atnad",
+                                                             "ro":  7
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  6,
+                                                             "name":  "Aures (verus04, 141, 193): I came to help., or Ian beside him: Just here to help.",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  141,
+                                                                           "y":  193,
+                                                                           "name":  "Archaeologist Aures"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  7,
+                                                             "name":  "Dr. Ian Atnad (verus04, 144, 193)",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  144,
+                                                                           "y":  193,
+                                                                           "name":  "Ian Atnad"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  8,
+                                                             "name":  "Bring Ian 20 Operation Control Devices",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  144,
+                                                                           "y":  193,
+                                                                           "name":  "Ian Atnad"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  5,
+                                           "type":  "ro",
+                                           "title":  "Lloyd\u0027s Energy",
+                                           "now":  "RO quest: Aures sends you to Lloyd, a cat machinist in the old city (verus03). Fill bottles with the energy of a machine remnant for him, then go back to Aures.",
+                                           "done":  "With the energy you bottled, Lloyd hopes he and Ian can bring the robots of Verus back to life. Aures handed you the team\u0027s report for Rekenber.",
+                                           "route":  {
+                                                         "map":  "verus04",
+                                                         "x":  141,
+                                                         "y":  193,
+                                                         "name":  "Archaeologist Aures"
+                                                     },
+                                           "items":  [
+                                                         {
+                                                             "name":  "Cohesive Energy",
+                                                             "id":  6756,
+                                                             "count":  10
+                                                         }
+                                                     ],
+                                           "hint":  [
+                                                        "verus03 is north of the camp (verus04, 121, 267). The Machine Remnant (verus03, 127, 145) fills 1 Empty Bottle with 1 Cohesive Energy each time: bring 10 Empty Bottles."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  141,
+                                                             "y":  193,
+                                                             "name":  "Archaeologist Aures",
+                                                             "ro":  8
+                                                         },
+                                                         {
+                                                             "map":  "verus03",
+                                                             "x":  103,
+                                                             "y":  177,
+                                                             "name":  "Machinist Lloyd",
+                                                             "ro":  9
+                                                         },
+                                                         {
+                                                             "map":  "verus03",
+                                                             "x":  127,
+                                                             "y":  145,
+                                                             "name":  "Machine Remnant (1 Empty Bottle each)",
+                                                             "ro":  10
+                                                         },
+                                                         {
+                                                             "map":  "verus03",
+                                                             "x":  103,
+                                                             "y":  177,
+                                                             "name":  "Machinist Lloyd",
+                                                             "ro":  10
+                                                         },
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  141,
+                                                             "y":  193,
+                                                             "name":  "Archaeologist Aures",
+                                                             "ro":  11
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  9,
+                                                             "name":  "Aures (verus04, 141, 193)",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  141,
+                                                                           "y":  193,
+                                                                           "name":  "Archaeologist Aures"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  10,
+                                                             "name":  "Machinist Lloyd (verus03, 103, 177): Are you Lloyd?, Sure.",
+                                                             "route":  {
+                                                                           "map":  "verus03",
+                                                                           "x":  103,
+                                                                           "y":  177,
+                                                                           "name":  "Machinist Lloyd"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  11,
+                                                             "name":  "Bring Lloyd 10 Cohesive Energy",
+                                                             "route":  {
+                                                                           "map":  "verus03",
+                                                                           "x":  103,
+                                                                           "y":  177,
+                                                                           "name":  "Machinist Lloyd"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  12,
+                                                             "name":  "Aures (verus04, 141, 193): he gives you the team\u0027s report",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  141,
+                                                                           "y":  193,
+                                                                           "name":  "Archaeologist Aures"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  6,
+                                           "type":  "ro",
+                                           "title":  "The Report",
+                                           "now":  "RO quest: hand the report to Rekenber\u0027s Commander Louis by the entrance of Verus, then see what Ian wants.",
+                                           "done":  "Rekenber had its report. Ian, meanwhile, had something else on his mind.",
+                                           "route":  {
+                                                         "map":  "verus04",
+                                                         "x":  179,
+                                                         "y":  165,
+                                                         "name":  "Commander Louis"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "Louis pays 300,000 base and job EXP."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  179,
+                                                             "y":  165,
+                                                             "name":  "Commander Louis",
+                                                             "ro":  12
+                                                         },
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  144,
+                                                             "y":  193,
+                                                             "name":  "Ian Atnad",
+                                                             "ro":  13
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  13,
+                                                             "name":  "Commander Louis (verus04, 179, 165): Report excavation results.",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  179,
+                                                                           "y":  165,
+                                                                           "name":  "Commander Louis"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  14,
+                                                             "name":  "Ian (verus04, 144, 193)",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  144,
+                                                                           "y":  193,
+                                                                           "name":  "Ian Atnad"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  7,
+                                           "type":  "ro",
+                                           "title":  "A Delicacy for Ian",
+                                           "now":  "RO quest: Ian will only talk over a good meal. Ask Luke Lapez to cook him a Beef Toast, and bring him the ingredients.",
+                                           "done":  "Over Luke\u0027s Beef Toast, Ian opened up: he wants to know about the Last Exploration, the ancients\u0027 final expedition.",
+                                           "route":  {
+                                                         "map":  "verus03",
+                                                         "x":  107,
+                                                         "y":  177,
+                                                         "name":  "Luke Lapez"
+                                                     },
+                                           "items":  [
+                                                         {
+                                                             "name":  "Meat",
+                                                             "id":  517,
+                                                             "count":  2
+                                                         },
+                                                         {
+                                                             "name":  "Mora Mandar",
+                                                             "id":  11520,
+                                                             "count":  1
+                                                         },
+                                                         {
+                                                             "name":  "Banana",
+                                                             "id":  513,
+                                                             "count":  1
+                                                         }
+                                                     ],
+                                           "hint":  [
+                                                        "Meat and Banana: most towns\u0027 food sellers. Mora Mandar: Pom Spiders (level 145, 5%), or the Eden Group\u0027s market (Market Group Hustler, moc_para01, 106, 38) when in stock."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "verus03",
+                                                             "x":  107,
+                                                             "y":  177,
+                                                             "name":  "Luke Lapez",
+                                                             "ro":  14
+                                                         },
+                                                         {
+                                                             "map":  "verus03",
+                                                             "x":  107,
+                                                             "y":  177,
+                                                             "name":  "Luke Lapez",
+                                                             "ro":  15
+                                                         },
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  144,
+                                                             "y":  193,
+                                                             "name":  "Ian Atnad",
+                                                             "ro":  16
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  15,
+                                                             "name":  "Luke Lapez (verus03, 107, 177)",
+                                                             "route":  {
+                                                                           "map":  "verus03",
+                                                                           "x":  107,
+                                                                           "y":  177,
+                                                                           "name":  "Luke Lapez"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  16,
+                                                             "name":  "Bring Luke 2 Meat, 1 Mora Mandar and 1 Banana: he makes a Beef Toast",
+                                                             "route":  {
+                                                                           "map":  "verus03",
+                                                                           "x":  107,
+                                                                           "y":  177,
+                                                                           "name":  "Luke Lapez"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  17,
+                                                             "name":  "Give Ian the Beef Toast (verus04, 144, 193)",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  144,
+                                                                           "y":  193,
+                                                                           "name":  "Ian Atnad"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  8,
+                                           "type":  "ro",
+                                           "title":  "The Last Exploration",
+                                           "now":  "RO quest: Ian gets you permission to explore the ancients\u0027 research facilities (verus02). Search the strewn papers there and bring him what you find.",
+                                           "done":  "Among the papers lay a strange piece, a Memory Record of the ancients. Ian looked at you as if you should know what plays it.",
+                                           "route":  {
+                                                         "map":  "verus04",
+                                                         "x":  144,
+                                                         "y":  193,
+                                                         "name":  "Ian Atnad"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "The research facilities are through the north-east of the old city (verus03, 169, 259); the guard there lets you through once Ian has. Strewn papers lie at 60, 30, 178, 32, 102, 135, 42, 37 and more."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  144,
+                                                             "y":  193,
+                                                             "name":  "Ian Atnad",
+                                                             "ro":  17
+                                                         },
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  144,
+                                                             "y":  193,
+                                                             "name":  "Ian Atnad",
+                                                             "ro":  18
+                                                         },
+                                                         {
+                                                             "map":  "verus03",
+                                                             "x":  169,
+                                                             "y":  259,
+                                                             "name":  "Way to the research facilities",
+                                                             "ro":  19
+                                                         },
+                                                         {
+                                                             "map":  "verus02",
+                                                             "x":  60,
+                                                             "y":  30,
+                                                             "name":  "Strewn paper",
+                                                             "ro":  19
+                                                         },
+                                                         {
+                                                             "map":  "verus02",
+                                                             "x":  178,
+                                                             "y":  32,
+                                                             "name":  "Strewn paper",
+                                                             "ro":  19
+                                                         },
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  144,
+                                                             "y":  193,
+                                                             "name":  "Ian Atnad",
+                                                             "ro":  20
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  18,
+                                                             "name":  "Ian (verus04, 144, 193): Converse, What about the Last Exploration!",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  144,
+                                                                           "y":  193,
+                                                                           "name":  "Ian Atnad"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  19,
+                                                             "name":  "Ian again: Converse (you may now enter the research facilities)",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  144,
+                                                                           "y":  193,
+                                                                           "name":  "Ian Atnad"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  20,
+                                                             "name":  "A Strewn paper in the research facilities (verus02, 60, 30): Check adequately.",
+                                                             "route":  {
+                                                                           "map":  "verus02",
+                                                                           "x":  60,
+                                                                           "y":  30,
+                                                                           "name":  "Strewn paper"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  21,
+                                                             "name":  "Ian, with what you found",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  144,
+                                                                           "y":  193,
+                                                                           "name":  "Ian Atnad"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  9,
+                                           "type":  "ro",
+                                           "title":  "The Record Player",
+                                           "now":  "RO quest: ask Commander Arquien at the Eden Group what could play the ancients\u0027 record, and show it to her.",
+                                           "done":  "Nile knew of a record player, but one piece was not enough: she wanted five.",
+                                           "route":  {
+                                                         "map":  "moc_para01",
+                                                         "x":  133,
+                                                         "y":  170,
+                                                         "name":  "Commander Arquien"
+                                                     },
+                                           "items":  [
+                                                         {
+                                                             "name":  "The Memory Recorder",
+                                                             "id":  6757,
+                                                             "count":  1
+                                                         }
+                                                     ],
+                                           "hint":  [
+                                                        "She asks what such a thing is called: type Record Player."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "moc_para01",
+                                                             "x":  133,
+                                                             "y":  170,
+                                                             "name":  "Commander Arquien",
+                                                             "ro":  21
+                                                         },
+                                                         {
+                                                             "map":  "moc_para01",
+                                                             "x":  133,
+                                                             "y":  170,
+                                                             "name":  "Commander Arquien",
+                                                             "ro":  22
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  22,
+                                                             "name":  "Commander Arquien in the Eden Group (moc_para01, 133, 170): type Record Player",
+                                                             "route":  {
+                                                                           "map":  "moc_para01",
+                                                                           "x":  133,
+                                                                           "y":  170,
+                                                                           "name":  "Commander Arquien"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  23,
+                                                             "name":  "Arquien again, with the record",
+                                                             "route":  {
+                                                                           "map":  "moc_para01",
+                                                                           "x":  133,
+                                                                           "y":  170,
+                                                                           "name":  "Commander Arquien"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  10,
+                                           "type":  "ro",
+                                           "title":  "Memory Records",
+                                           "now":  "RO quest: gather 5 records from the strewn papers in the research facilities (verus02), bring them to Nile at the camp in Verus, and play them.",
+                                           "done":  "The records spoke: voices of the people of Verus, from the days before their city was buried.",
+                                           "route":  {
+                                                         "map":  "verus02",
+                                                         "x":  60,
+                                                         "y":  30,
+                                                         "name":  "Strewn paper"
+                                                     },
+                                           "items":  [
+                                                         {
+                                                             "name":  "The Memory Recorder",
+                                                             "id":  6757,
+                                                             "count":  5
+                                                         }
+                                                     ],
+                                           "hint":  [
+                                                        "Each strewn paper gives one record, then rests a minute. RO pays 750,000 base and 500,000 job EXP."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "verus02",
+                                                             "x":  60,
+                                                             "y":  30,
+                                                             "name":  "Strewn paper",
+                                                             "ro":  23
+                                                         },
+                                                         {
+                                                             "map":  "verus02",
+                                                             "x":  178,
+                                                             "y":  32,
+                                                             "name":  "Strewn paper",
+                                                             "ro":  23
+                                                         },
+                                                         {
+                                                             "map":  "verus02",
+                                                             "x":  102,
+                                                             "y":  135,
+                                                             "name":  "Strewn paper",
+                                                             "ro":  23
+                                                         },
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  172,
+                                                             "y":  149,
+                                                             "name":  "Commander Arquien",
+                                                             "ro":  23
+                                                         },
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  170,
+                                                             "y":  150,
+                                                             "name":  "Record player",
+                                                             "ro":  24
+                                                         },
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  172,
+                                                             "y":  149,
+                                                             "name":  "Commander Arquien",
+                                                             "ro":  25
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  24,
+                                                             "name":  "Bring Arquien at the camp (verus04, 172, 149) 5 records from the strewn papers",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  172,
+                                                                           "y":  149,
+                                                                           "name":  "Commander Arquien"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  25,
+                                                             "name":  "The record player beside her (verus04, 170, 150)",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  170,
+                                                                           "y":  150,
+                                                                           "name":  "Record player"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  26,
+                                                             "name":  "Arquien again",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  172,
+                                                                           "y":  149,
+                                                                           "name":  "Commander Arquien"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  11,
+                                           "type":  "ro",
+                                           "title":  "The Laboratories",
+                                           "now":  "RO quest: tell Ian what the records said. He wants the records of the ancients\u0027 laboratories next: search the bunker under Verus for 5 of them and play them at Nile\u0027s.",
+                                           "done":  "The laboratories\u0027 records told of the ancients\u0027 experiments, and the record broke apart as they always do. Nile began to wonder who wanted them found.",
+                                           "route":  {
+                                                         "map":  "verus04",
+                                                         "x":  144,
+                                                         "y":  193,
+                                                         "name":  "Ian Atnad"
+                                                     },
+                                           "items":  [
+                                                         {
+                                                             "name":  "Experimental Dong Memory Record",
+                                                             "id":  6824,
+                                                             "count":  5
+                                                         }
+                                                     ],
+                                           "hint":  [
+                                                        "The bunker (un_bunker): Verity in verus01 (123, 181) takes you down: Yes. verus01 is through the north-west of the old city (verus03, 52, 254). Boxes, desks, machine remains, thickets, food trays and document piles each give one record.",
+                                                        "The record player leaves you a Record Fragment: show it to Nile. RO pays 750,000 base and 500,000 job EXP."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  144,
+                                                             "y":  193,
+                                                             "name":  "Ian Atnad",
+                                                             "ro":  26
+                                                         },
+                                                         {
+                                                             "map":  "verus03",
+                                                             "x":  52,
+                                                             "y":  254,
+                                                             "name":  "Way to verus01",
+                                                             "ro":  27
+                                                         },
+                                                         {
+                                                             "map":  "verus01",
+                                                             "x":  123,
+                                                             "y":  181,
+                                                             "name":  "Verity: down to the bunker",
+                                                             "ro":  27
+                                                         },
+                                                         {
+                                                             "map":  "un_bunker",
+                                                             "x":  382,
+                                                             "y":  335,
+                                                             "name":  "Box",
+                                                             "ro":  27
+                                                         },
+                                                         {
+                                                             "map":  "un_bunker",
+                                                             "x":  87,
+                                                             "y":  167,
+                                                             "name":  "Under desk",
+                                                             "ro":  27
+                                                         },
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  172,
+                                                             "y":  149,
+                                                             "name":  "Commander Arquien",
+                                                             "ro":  27
+                                                         },
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  170,
+                                                             "y":  150,
+                                                             "name":  "Record player",
+                                                             "ro":  28
+                                                         },
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  172,
+                                                             "y":  149,
+                                                             "name":  "Commander Arquien: Show piece.",
+                                                             "ro":  29
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  27,
+                                                             "name":  "Ian (verus04, 144, 193): tell him what the records said",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  144,
+                                                                           "y":  193,
+                                                                           "name":  "Ian Atnad"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  28,
+                                                             "name":  "Bring Arquien 5 records from the laboratories (the bunker)",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  172,
+                                                                           "y":  149,
+                                                                           "name":  "Commander Arquien"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  29,
+                                                             "name":  "The record player (verus04, 170, 150)",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  170,
+                                                                           "y":  150,
+                                                                           "name":  "Record player"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  30,
+                                                             "name":  "Arquien: Show piece.",
+                                                             "route":  {
+                                                                           "map":  "verus04",
+                                                                           "x":  172,
+                                                                           "y":  149,
+                                                                           "name":  "Commander Arquien"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  12,
+                                           "type":  "ro",
+                                           "title":  "A Record a Day",
+                                           "now":  "RO quest: keep playing the research facilities\u0027 records with Nile, one set a day, until someone comes to visit the team. Then talk to Ian (verus04, 144, 193).",
+                                           "done":  "Day after day the records gave up the past of Verus, until Chairman Rekenber\u0027s secretary came to the camp: the chairman wanted to see you.",
+                                           "route":  {
+                                                         "map":  "verus04",
+                                                         "x":  172,
+                                                         "y":  149,
+                                                         "name":  "Commander Arquien"
+                                                     },
+                                           "items":  [
+                                                         {
+                                                             "name":  "The Memory Recorder",
+                                                             "id":  6757,
+                                                             "count":  5
+                                                         }
+                                                     ],
+                                           "hint":  [
+                                                        "Nile (verus04, 172, 149): Research facilities Memory Records, Accept.; gather 5 records from the strewn papers (verus02), give them to her, and play them at the record player (170, 150). Once a day: the next set waits until 4:00 server time.",
+                                                        "After the fourth day\u0027s records Nile notices a visitor at the team\u0027s tent. Ian then answers: Is there something wrong?, Chairman Rekenber\u0027s secretary?, Me?",
+                                                        "Each play pays 1,500,000 base and 1,000,000 job EXP."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  172,
+                                                             "y":  149,
+                                                             "name":  "Commander Arquien",
+                                                             "ro":  null
+                                                         },
+                                                         {
+                                                             "map":  "verus02",
+                                                             "x":  60,
+                                                             "y":  30,
+                                                             "name":  "Strewn paper",
+                                                             "ro":  null
+                                                         },
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  170,
+                                                             "y":  150,
+                                                             "name":  "Record player",
+                                                             "ro":  null
+                                                         },
+                                                         {
+                                                             "map":  "verus04",
+                                                             "x":  144,
+                                                             "y":  193,
+                                                             "name":  "Ian Atnad",
+                                                             "ro":  null
+                                                         }
+                                                     ],
+                                           "parts":  [
+
+                                                     ]
+                                       },
+                                       {
+                                           "k":  13,
+                                           "type":  "ro",
+                                           "title":  "Chairman Rekenber",
+                                           "now":  "RO quest: go to the Rekenber building in Lighthalzen with the team and hear what the chairman wants from you.",
+                                           "done":  "The chairman wanted the Memory Records kept quiet. Then his Chief Secretary showed who he is: Tatio, the last survivor of Verus, a machine made by Lasse Atnad, Ian\u0027s great-grandfather, and the one who attacked Ian at the Juperos dig. The team keeps sole rights to the records, and the secret stays between them.",
+                                           "route":  {
+                                                         "map":  "lhz_in01",
+                                                         "x":  277,
+                                                         "y":  234,
+                                                         "name":  "Rekenber Guard"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "The Rekenber building is in the north-west of Lighthalzen (door at 101, 248). The guard at lhz_in01, 277, 234 lets you through to the chairman\u0027s room.",
+                                                        "RO pays 4,500,000 base and 3,000,000 job EXP at the end."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "lighthalzen",
+                                                             "x":  101,
+                                                             "y":  248,
+                                                             "name":  "Door of the Rekenber building",
+                                                             "ro":  31
+                                                         },
+                                                         {
+                                                             "map":  "lhz_in01",
+                                                             "x":  277,
+                                                             "y":  234,
+                                                             "name":  "Rekenber Guard",
+                                                             "ro":  31
+                                                         },
+                                                         {
+                                                             "map":  "lhz_in01",
+                                                             "x":  270,
+                                                             "y":  257,
+                                                             "name":  "Chairman Rekenber",
+                                                             "ro":  31
+                                                         },
+                                                         {
+                                                             "map":  "lhz_in01",
+                                                             "x":  272,
+                                                             "y":  255,
+                                                             "name":  "Ian Atnad",
+                                                             "ro":  32
+                                                         },
+                                                         {
+                                                             "map":  "lhz_in01",
+                                                             "x":  267,
+                                                             "y":  257,
+                                                             "name":  "Chief Secretary Tatio",
+                                                             "ro":  33
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  32,
+                                                             "name":  "In the Rekenber building, past the guard (lhz_in01, 277, 234): the Chairman (270, 257)",
+                                                             "route":  {
+                                                                           "map":  "lhz_in01",
+                                                                           "x":  277,
+                                                                           "y":  234,
+                                                                           "name":  "Rekenber Guard"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  33,
+                                                             "name":  "Ian (272, 255) or Arquien (272, 251): Should the table be turned over?",
+                                                             "route":  {
+                                                                           "map":  "lhz_in01",
+                                                                           "x":  272,
+                                                                           "y":  255,
+                                                                           "name":  "Ian Atnad"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  34,
+                                                             "name":  "Chief Secretary Tatio (267, 257)",
+                                                             "route":  {
+                                                                           "map":  "lhz_in01",
+                                                                           "x":  267,
+                                                                           "y":  257,
+                                                                           "name":  "Chief Secretary"
+                                                                       }
+                                                         }
                                                      ]
                                        }
                                    ]

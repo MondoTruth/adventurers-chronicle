@@ -84,7 +84,7 @@ OnInit:
 	setarray $@ep_name$[1], "12", "13.1", "13.2", "13.3", "14.1", "14.2", "14.3", "15";
 	setarray $@ep_title$[1], "Rebirth of Satan Morocc", "Onward to the Other World", "Two Tribes", "Doha's Secret Orders", "Mistwood Maze", "Encounter in a Strange Land", "Dimensional Travel", "The Atnad Excavation";
 	setarray $@ep_lv[1], 80, 70, 70, 70, 98, 99, 140, 140;
-	setarray $@ep_steps[1], 6, 5, 11, 11, 3, 15, 6, 1;
+	setarray $@ep_steps[1], 6, 5, 11, 11, 3, 15, 6, 13;
 	setarray $@eps_title$[101], "The Continental Guard", "Chief Balrog", "Everlasting Flames", "Hearts of Ice", "Satan Morocc", "Proof of Victory";
 	setarray $@eps_now$[101], "RO quest: the Continental Guard is recruiting against Satan Morocc. In ruined Morroc, volunteer with the Continental Official (176, 101): choose I'm here to volunteer.", "RO quest: Chief Balrog (morocc, 159, 113) leads the Continental Guard. Ask to join, and do not take no for an answer.", "RO quest: bring Chief Balrog in Morroc (159, 113) 30 Live Coals for the Guard's bonfires.", "RO quest: bring Chief Balrog in Morroc (159, 113) 50 Glacial Hearts to cool the Republic's mercenaries.", "RO quest: with your party, face Satan Morocc on the desert field he has claimed (moc_fild21), and bring back proof of his defeat.", "RO quest: bring the Piece of Morocc Skin to Chief Balrog in Morroc (159, 113) and choose your reward: the Seal of the Continental Guard, a Morocc Charm Stone or a Morocc Ring.";
 	setarray $@eps_items$[101], "", "", "7098,30,Live Coal", "7561,50,Glacial Heart", "", "7820,1,Piece of Morocc Skin";
@@ -113,10 +113,10 @@ OnInit:
 	setarray $@eps_now$[701], "RO quest: in the ruins of Morroc, a pile of dirty rags lies at 138, 238. Choose Remove it., then Shake the rags.", "RO quest: the stranger under the rags is starving. Bring him a Monster's Feed, then hear his story and go along with him.", "RO quest: Tamarin wants to go back where he fell. Tag along: meet him in the Dimensional Gap, then go down through the Sand Mound.", "RO quest: in the Flame Basin, Tamarin takes you to Dr. Barget Tiblack, who studies its new insects. Kill 20 Fire Pits and bring her 50 Burning Bug Skins.", "RO quest: with Tamarin, kill 25 Sonia and gather 25 Yummy Stems, meet him by the big rock in the middle of the basin, then show Barget the stems.", "RO quest: in the south of the Flame Basin, give Instructor Rugen the 25 Yummy Stems for the patients he looks after, see how one of them is doing, and take his report to Barget.";
 	setarray $@eps_items$[701], "", "528,1,Monster's Feed", "", "6689,50,Burning Bug Skin", "6690,25,Yummy Stem", "6690,25,Yummy Stem";
 	setarray $@eps_parts$[701], "", "2|Give him a Monster's Feed;5|Hear him out: Introduce yourself., Tell him the place., Accompany him.", "7|Tamarin by the ruins (moc_ruins, 106, 140): I'm listening., then Tell him you want to tag along.;8|Tamarin in the Dimensional Gap (dali, 112, 69);9|The Sand Mound in the Gap's lower floor (dali02, 90, 62): Enter.", "15|Tamarin in the Flame Basin (moro_vol, 132, 140);16|Barget Tiblack (moro_vol, 142, 131);17|Kill 20 Fire Pits and bring Barget 50 Burning Bug Skins", "18|Tamarin (moro_vol, 132, 140);19|Kill 25 Sonia, then meet Tamarin by the big rock (moro_vol, 198, 179);20|Barget (moro_vol, 142, 131)", "21|Instructor Rugen (moro_vol, 105, 71): Talk to him., Give Sonia stems.;22|The Intoxicated Patient beside him (104, 70);23|Instructor Rugen again;24|Barget (moro_vol, 142, 131): What cave?";
-	setarray $@eps_title$[801], "Word from the Eden Group";
-	setarray $@eps_now$[801], "RO quest: in the Eden Group's headquarters, Secretary Lime Evenor greets you at the entrance to the central room (moc_para01, 31, 14): an ancient site was found in Juperos, and the Captain wants to see you.";
-	setarray $@eps_items$[801], "";
-	setarray $@eps_parts$[801], "";
+	setarray $@eps_title$[801], "Word from the Eden Group", "Commander Arquien", "Registered Excavator", "Dr. Ian Atnad", "Lloyd's Energy", "The Report", "A Delicacy for Ian", "The Last Exploration", "The Record Player", "Memory Records", "The Laboratories", "A Record a Day", "Chairman Rekenber";
+	setarray $@eps_now$[801], "RO quest: in the Eden Group's headquarters, Secretary Lime Evenor greets you at the entrance to the central room (moc_para01, 31, 14): an ancient site was found in Juperos, and the Captain wants to see you.", "RO quest: Commander Arquien of the Eden Group (moc_para01, 133, 170) has a job for you. Hear her out.", "RO quest: meet the team in the Eden Group's central room, then travel to the dig at Verus and register with Rekenber's receptionist as a member of the Atnad Excavation Team.", "RO quest: report to the team's camp in Verus. Its leader, Dr. Ian Atnad, wants to see what you can do: bring him 20 Operation Control Devices from the ancient machines.", "RO quest: Aures sends you to Lloyd, a cat machinist in the old city (verus03). Fill bottles with the energy of a machine remnant for him, then go back to Aures.", "RO quest: hand the report to Rekenber's Commander Louis by the entrance of Verus, then see what Ian wants.", "RO quest: Ian will only talk over a good meal. Ask Luke Lapez to cook him a Beef Toast, and bring him the ingredients.", "RO quest: Ian gets you permission to explore the ancients' research facilities (verus02). Search the strewn papers there and bring him what you find.", "RO quest: ask Commander Arquien at the Eden Group what could play the ancients' record, and show it to her.", "RO quest: gather 5 records from the strewn papers in the research facilities (verus02), bring them to Nile at the camp in Verus, and play them.", "RO quest: tell Ian what the records said. He wants the records of the ancients' laboratories next: search the bunker under Verus for 5 of them and play them at Nile's.", "RO quest: keep playing the research facilities' records with Nile, one set a day, until someone comes to visit the team. Then talk to Ian (verus04, 144, 193).", "RO quest: go to the Rekenber building in Lighthalzen with the team and hear what the chairman wants from you.";
+	setarray $@eps_items$[801], "", "", "", "6749,20,Operation Control Device", "6756,10,Cohesive Energy", "", "517,2,Meat;11520,1,Mora Mandar;513,1,Banana", "", "6757,1,The Memory Recorder", "6757,5,The Memory Recorder", "6824,5,Experimental Dong Memory Record", "6757,5,The Memory Recorder", "";
+	setarray $@eps_parts$[801], "", "2|Commander Arquien (moc_para01, 133, 170): either answer, then Please continue.;3|If you asked her to stop, Arquien again: Yes", "4|Lime Evenor in the central room (moc_para01, 174, 165);5|Receptionist Nara in Verus (verus04, 182, 168): I'm from the Eden Group., type Atnad", "6|Aures (verus04, 141, 193): I came to help., or Ian beside him: Just here to help.;7|Dr. Ian Atnad (verus04, 144, 193);8|Bring Ian 20 Operation Control Devices", "9|Aures (verus04, 141, 193);10|Machinist Lloyd (verus03, 103, 177): Are you Lloyd?, Sure.;11|Bring Lloyd 10 Cohesive Energy;12|Aures (verus04, 141, 193): he gives you the team's report", "13|Commander Louis (verus04, 179, 165): Report excavation results.;14|Ian (verus04, 144, 193)", "15|Luke Lapez (verus03, 107, 177);16|Bring Luke 2 Meat, 1 Mora Mandar and 1 Banana: he makes a Beef Toast;17|Give Ian the Beef Toast (verus04, 144, 193)", "18|Ian (verus04, 144, 193): Converse, What about the Last Exploration!;19|Ian again: Converse (you may now enter the research facilities);20|A Strewn paper in the research facilities (verus02, 60, 30): Check adequately.;21|Ian, with what you found", "22|Commander Arquien in the Eden Group (moc_para01, 133, 170): type Record Player;23|Arquien again, with the record", "24|Bring Arquien at the camp (verus04, 172, 149) 5 records from the strewn papers;25|The record player beside her (verus04, 170, 150);26|Arquien again", "27|Ian (verus04, 144, 193): tell him what the records said;28|Bring Arquien 5 records from the laboratories (the bunker);29|The record player (verus04, 170, 150);30|Arquien: Show piece.", "", "32|In the Rekenber building, past the guard (lhz_in01, 277, 234): the Chairman (270, 257);33|Ian (272, 255) or Arquien (272, 251): Should the table be turned over?;34|Chief Secretary Tatio (267, 257)";
 
 	bindatcmd "chronicle", strnpcinfo(3) + "::OnCmd", 0, 99;
 
@@ -2639,7 +2639,19 @@ function	script	F_ChronEpK	{
 		if (BaseLevel < 140) return 0;
 		if (ep15_1_atnad >= 34) return 100;
 		if (!(ep15_1_atnad >= 1)) return 1;
-		return 2;
+		if (!(ep15_1_atnad >= 3)) return 2;
+		if (!(ep15_1_atnad >= 5)) return 3;
+		if (!(ep15_1_atnad >= 8)) return 4;
+		if (!(ep15_1_atnad >= 12)) return 5;
+		if (!(ep15_1_atnad >= 14)) return 6;
+		if (!(ep15_1_atnad >= 17)) return 7;
+		if (!(ep15_1_atnad >= 21)) return 8;
+		if (!(ep15_1_atnad >= 23)) return 9;
+		if (!(ep15_1_atnad >= 26)) return 10;
+		if (!(ep15_1_atnad >= 30)) return 11;
+		if (!(ep15_1_atnad >= 31)) return 12;
+		if (!(ep15_1_atnad >= 34)) return 13;
+		return 14;
 	}
 	return 0;
 }
@@ -2682,6 +2694,17 @@ function	script	F_ChronEpVar	{
 	case 704: return ep14_3_newerabs;
 	case 705: return ep14_3_newerabs;
 	case 706: return ep14_3_newerabs;
+	case 802: return ep15_1_atnad;
+	case 803: return ep15_1_atnad;
+	case 804: return ep15_1_atnad;
+	case 805: return ep15_1_atnad;
+	case 806: return ep15_1_atnad;
+	case 807: return ep15_1_atnad;
+	case 808: return ep15_1_atnad;
+	case 809: return ep15_1_atnad;
+	case 810: return ep15_1_atnad;
+	case 811: return ep15_1_atnad;
+	case 813: return ep15_1_atnad;
 	}
 	return -1;
 }

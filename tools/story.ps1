@@ -1592,7 +1592,9 @@ $episodes = @(
   # re/quests/quests_15_1.txt and quests_15_2.txt, the Atnad excavation:
   # ep15_1_atnad 0 -> 34. Lime Evenor speaks from Lv 140, and only to members
   # of the Eden Group (item 6219 or 22508).
-  @{ episode = '15'; title = 'The Atnad Excavation'; lv = 140; more = $true
+  # From 30 Ian waits for ep15_2_permit 6: four plays of the research
+  # facilities' records (one a day, quests 7650/7654/7651) at Nile's camp.
+  @{ episode = '15'; title = 'The Atnad Excavation'; lv = 140
      end = 'ep15_1_atnad >= 34'
      needs = 'membership of the Eden Group: any town''s Eden Teleport Officer takes you to its headquarters, where you can join.'
      intro = 'An ancient site has been found under Juperos, and the Rekenber Corporation is hiring adventurers to dig it out. The Eden Group has signed on, and beneath the ruins lies Verus, a city of the ancients, and something called Phantasmagorika. This is Ragnarok''s own story: the Chronicle only shows the way, and RO gives its rewards.'
@@ -1608,6 +1610,242 @@ $episodes = @(
             @{ map = 'moc_para01'; x = 31; y = 14; name = 'Secretary Lime Evenor' }
           )
           done = 'Lime Evenor told you of the ancient site under Juperos: the Eden Group has joined Rekenber''s excavation, and the Captain wants you on it.' }
+       @{ title = 'Commander Arquien'
+          cond = 'ep15_1_atnad >= 3'; var = 'ep15_1_atnad'
+          parts = @(
+            @{ at = 2; name = 'Commander Arquien (moc_para01, 133, 170): either answer, then Please continue.'; route = @('moc_para01', 133, 170, 'Commander Arquien') }
+            @{ at = 3; name = 'If you asked her to stop, Arquien again: Yes'; route = @('moc_para01', 133, 170, 'Commander Arquien') }
+          )
+          route = @('moc_para01', 133, 170, 'Commander Arquien')
+          now = 'RO quest: Commander Arquien of the Eden Group (moc_para01, 133, 170) has a job for you. Hear her out.'
+          hint = @(
+            'Make some room in your bag first: everyone in this episode refuses a full one.'
+          )
+          spots = @(
+            @{ map = 'moc_para01'; x = 133; y = 170; name = 'Commander Arquien'; ro = 1 }
+            @{ map = 'moc_para01'; x = 133; y = 170; name = 'Commander Arquien'; ro = 2 }
+          )
+          done = 'Arquien, who goes by Nile, signed you on to the Atnad Excavation Team: the Eden Group''s part in Rekenber''s dig under Juperos.' }
+       @{ title = 'Registered Excavator'
+          cond = 'ep15_1_atnad >= 5'; var = 'ep15_1_atnad'
+          parts = @(
+            @{ at = 4; name = 'Lime Evenor in the central room (moc_para01, 174, 165)'; route = @('moc_para01', 174, 165, 'Lime Evenor') }
+            @{ at = 5; name = 'Receptionist Nara in Verus (verus04, 182, 168): I''m from the Eden Group., type Atnad'; route = @('verus04', 182, 168, 'Receptionist Nara') }
+          )
+          route = @('moc_para01', 174, 165, 'Lime Evenor')
+          now = 'RO quest: meet the team in the Eden Group''s central room, then travel to the dig at Verus and register with Rekenber''s receptionist as a member of the Atnad Excavation Team.'
+          hint = @(
+            'To Verus: from Juno to Juperos; in its first level (juperos_01) the way at 245, 87 leads to the excavation''s elevator (ver_eju), then through the tunnel to Verus (verus04).'
+            'Nara asks for your team''s name: type Atnad. RO pays 300,000 base and job EXP.'
+          )
+          spots = @(
+            @{ map = 'moc_para01'; x = 174; y = 165; name = 'Lime Evenor'; ro = 3 }
+            @{ map = 'juperos_01'; x = 245; y = 87; name = 'Way to the excavation'; ro = 4 }
+            @{ map = 'verus04'; x = 182; y = 168; name = 'Receptionist Nara'; ro = 4 }
+          )
+          done = 'You met Archaeologist Aures and Luke Lapez of the team, and Rekenber registered you as an excavator of the Atnad team in Verus, the buried city of the ancients.' }
+       @{ title = 'Dr. Ian Atnad'
+          cond = 'ep15_1_atnad >= 8'; var = 'ep15_1_atnad'
+          items = @(, @(6749, 'Operation Control Device', 20))
+          parts = @(
+            @{ at = 6; name = 'Aures (verus04, 141, 193): I came to help., or Ian beside him: Just here to help.'; route = @('verus04', 141, 193, 'Archaeologist Aures') }
+            @{ at = 7; name = 'Dr. Ian Atnad (verus04, 144, 193)'; route = @('verus04', 144, 193, 'Ian Atnad') }
+            @{ at = 8; name = 'Bring Ian 20 Operation Control Devices'; route = @('verus04', 144, 193, 'Ian Atnad') }
+          )
+          route = @('verus04', 141, 193, 'Archaeologist Aures')
+          now = 'RO quest: report to the team''s camp in Verus. Its leader, Dr. Ian Atnad, wants to see what you can do: bring him 20 Operation Control Devices from the ancient machines.'
+          hint = @(
+            'While the quest is open, Recon Robots (level 165), Repair Robots (155) and Exploration Rovers (168) in the ruins of Verus drop Operation Control Devices (50%).'
+            'RO pays 750,000 base and 500,000 job EXP.'
+          )
+          spots = @(
+            @{ map = 'verus04'; x = 141; y = 193; name = 'Archaeologist Aures'; ro = 5 }
+            @{ map = 'verus04'; x = 144; y = 193; name = 'Ian Atnad'; ro = 6 }
+            @{ map = 'verus04'; x = 144; y = 193; name = 'Ian Atnad'; ro = 7 }
+          )
+          done = 'Dr. Ian Atnad tested you with the machines'' control devices, and you passed.' }
+       @{ title = 'Lloyd''s Energy'
+          cond = 'ep15_1_atnad >= 12'; var = 'ep15_1_atnad'
+          items = @(, @(6756, 'Cohesive Energy', 10))
+          parts = @(
+            @{ at = 9; name = 'Aures (verus04, 141, 193)'; route = @('verus04', 141, 193, 'Archaeologist Aures') }
+            @{ at = 10; name = 'Machinist Lloyd (verus03, 103, 177): Are you Lloyd?, Sure.'; route = @('verus03', 103, 177, 'Machinist Lloyd') }
+            @{ at = 11; name = 'Bring Lloyd 10 Cohesive Energy'; route = @('verus03', 103, 177, 'Machinist Lloyd') }
+            @{ at = 12; name = 'Aures (verus04, 141, 193): he gives you the team''s report'; route = @('verus04', 141, 193, 'Archaeologist Aures') }
+          )
+          route = @('verus04', 141, 193, 'Archaeologist Aures')
+          now = 'RO quest: Aures sends you to Lloyd, a cat machinist in the old city (verus03). Fill bottles with the energy of a machine remnant for him, then go back to Aures.'
+          hint = @(
+            'verus03 is north of the camp (verus04, 121, 267). The Machine Remnant (verus03, 127, 145) fills 1 Empty Bottle with 1 Cohesive Energy each time: bring 10 Empty Bottles.'
+          )
+          spots = @(
+            @{ map = 'verus04'; x = 141; y = 193; name = 'Archaeologist Aures'; ro = 8 }
+            @{ map = 'verus03'; x = 103; y = 177; name = 'Machinist Lloyd'; ro = 9 }
+            @{ map = 'verus03'; x = 127; y = 145; name = 'Machine Remnant (1 Empty Bottle each)'; ro = 10 }
+            @{ map = 'verus03'; x = 103; y = 177; name = 'Machinist Lloyd'; ro = 10 }
+            @{ map = 'verus04'; x = 141; y = 193; name = 'Archaeologist Aures'; ro = 11 }
+          )
+          done = 'With the energy you bottled, Lloyd hopes he and Ian can bring the robots of Verus back to life. Aures handed you the team''s report for Rekenber.' }
+       @{ title = 'The Report'
+          cond = 'ep15_1_atnad >= 14'; var = 'ep15_1_atnad'
+          parts = @(
+            @{ at = 13; name = 'Commander Louis (verus04, 179, 165): Report excavation results.'; route = @('verus04', 179, 165, 'Commander Louis') }
+            @{ at = 14; name = 'Ian (verus04, 144, 193)'; route = @('verus04', 144, 193, 'Ian Atnad') }
+          )
+          route = @('verus04', 179, 165, 'Commander Louis')
+          now = 'RO quest: hand the report to Rekenber''s Commander Louis by the entrance of Verus, then see what Ian wants.'
+          hint = @(
+            'Louis pays 300,000 base and job EXP.'
+          )
+          spots = @(
+            @{ map = 'verus04'; x = 179; y = 165; name = 'Commander Louis'; ro = 12 }
+            @{ map = 'verus04'; x = 144; y = 193; name = 'Ian Atnad'; ro = 13 }
+          )
+          done = 'Rekenber had its report. Ian, meanwhile, had something else on his mind.' }
+       @{ title = 'A Delicacy for Ian'
+          cond = 'ep15_1_atnad >= 17'; var = 'ep15_1_atnad'
+          items = @(@(517, 'Meat', 2), @(11520, 'Mora Mandar', 1), @(513, 'Banana', 1))
+          parts = @(
+            @{ at = 15; name = 'Luke Lapez (verus03, 107, 177)'; route = @('verus03', 107, 177, 'Luke Lapez') }
+            @{ at = 16; name = 'Bring Luke 2 Meat, 1 Mora Mandar and 1 Banana: he makes a Beef Toast'; route = @('verus03', 107, 177, 'Luke Lapez') }
+            @{ at = 17; name = 'Give Ian the Beef Toast (verus04, 144, 193)'; route = @('verus04', 144, 193, 'Ian Atnad') }
+          )
+          route = @('verus03', 107, 177, 'Luke Lapez')
+          now = 'RO quest: Ian will only talk over a good meal. Ask Luke Lapez to cook him a Beef Toast, and bring him the ingredients.'
+          hint = @(
+            'Meat and Banana: most towns'' food sellers. Mora Mandar: Pom Spiders (level 145, 5%), or the Eden Group''s market (Market Group Hustler, moc_para01, 106, 38) when in stock.'
+          )
+          spots = @(
+            @{ map = 'verus03'; x = 107; y = 177; name = 'Luke Lapez'; ro = 14 }
+            @{ map = 'verus03'; x = 107; y = 177; name = 'Luke Lapez'; ro = 15 }
+            @{ map = 'verus04'; x = 144; y = 193; name = 'Ian Atnad'; ro = 16 }
+          )
+          done = 'Over Luke''s Beef Toast, Ian opened up: he wants to know about the Last Exploration, the ancients'' final expedition.' }
+       @{ title = 'The Last Exploration'
+          cond = 'ep15_1_atnad >= 21'; var = 'ep15_1_atnad'
+          parts = @(
+            @{ at = 18; name = 'Ian (verus04, 144, 193): Converse, What about the Last Exploration!'; route = @('verus04', 144, 193, 'Ian Atnad') }
+            @{ at = 19; name = 'Ian again: Converse (you may now enter the research facilities)'; route = @('verus04', 144, 193, 'Ian Atnad') }
+            @{ at = 20; name = 'A Strewn paper in the research facilities (verus02, 60, 30): Check adequately.'; route = @('verus02', 60, 30, 'Strewn paper') }
+            @{ at = 21; name = 'Ian, with what you found'; route = @('verus04', 144, 193, 'Ian Atnad') }
+          )
+          route = @('verus04', 144, 193, 'Ian Atnad')
+          now = 'RO quest: Ian gets you permission to explore the ancients'' research facilities (verus02). Search the strewn papers there and bring him what you find.'
+          hint = @(
+            'The research facilities are through the north-east of the old city (verus03, 169, 259); the guard there lets you through once Ian has. Strewn papers lie at 60, 30, 178, 32, 102, 135, 42, 37 and more.'
+          )
+          spots = @(
+            @{ map = 'verus04'; x = 144; y = 193; name = 'Ian Atnad'; ro = 17 }
+            @{ map = 'verus04'; x = 144; y = 193; name = 'Ian Atnad'; ro = 18 }
+            @{ map = 'verus03'; x = 169; y = 259; name = 'Way to the research facilities'; ro = 19 }
+            @{ map = 'verus02'; x = 60; y = 30; name = 'Strewn paper'; ro = 19 }
+            @{ map = 'verus02'; x = 178; y = 32; name = 'Strewn paper'; ro = 19 }
+            @{ map = 'verus04'; x = 144; y = 193; name = 'Ian Atnad'; ro = 20 }
+          )
+          done = 'Among the papers lay a strange piece, a Memory Record of the ancients. Ian looked at you as if you should know what plays it.' }
+       @{ title = 'The Record Player'
+          cond = 'ep15_1_atnad >= 23'; var = 'ep15_1_atnad'
+          items = @(, @(6757, 'The Memory Recorder', 1))
+          parts = @(
+            @{ at = 22; name = 'Commander Arquien in the Eden Group (moc_para01, 133, 170): type Record Player'; route = @('moc_para01', 133, 170, 'Commander Arquien') }
+            @{ at = 23; name = 'Arquien again, with the record'; route = @('moc_para01', 133, 170, 'Commander Arquien') }
+          )
+          route = @('moc_para01', 133, 170, 'Commander Arquien')
+          now = 'RO quest: ask Commander Arquien at the Eden Group what could play the ancients'' record, and show it to her.'
+          hint = @(
+            'She asks what such a thing is called: type Record Player.'
+          )
+          spots = @(
+            @{ map = 'moc_para01'; x = 133; y = 170; name = 'Commander Arquien'; ro = 21 }
+            @{ map = 'moc_para01'; x = 133; y = 170; name = 'Commander Arquien'; ro = 22 }
+          )
+          done = 'Nile knew of a record player, but one piece was not enough: she wanted five.' }
+       @{ title = 'Memory Records'
+          cond = 'ep15_1_atnad >= 26'; var = 'ep15_1_atnad'
+          items = @(, @(6757, 'The Memory Recorder', 5))
+          parts = @(
+            @{ at = 24; name = 'Bring Arquien at the camp (verus04, 172, 149) 5 records from the strewn papers'; route = @('verus04', 172, 149, 'Commander Arquien') }
+            @{ at = 25; name = 'The record player beside her (verus04, 170, 150)'; route = @('verus04', 170, 150, 'Record player') }
+            @{ at = 26; name = 'Arquien again'; route = @('verus04', 172, 149, 'Commander Arquien') }
+          )
+          route = @('verus02', 60, 30, 'Strewn paper')
+          now = 'RO quest: gather 5 records from the strewn papers in the research facilities (verus02), bring them to Nile at the camp in Verus, and play them.'
+          hint = @(
+            'Each strewn paper gives one record, then rests a minute. RO pays 750,000 base and 500,000 job EXP.'
+          )
+          spots = @(
+            @{ map = 'verus02'; x = 60; y = 30; name = 'Strewn paper'; ro = 23 }
+            @{ map = 'verus02'; x = 178; y = 32; name = 'Strewn paper'; ro = 23 }
+            @{ map = 'verus02'; x = 102; y = 135; name = 'Strewn paper'; ro = 23 }
+            @{ map = 'verus04'; x = 172; y = 149; name = 'Commander Arquien'; ro = 23 }
+            @{ map = 'verus04'; x = 170; y = 150; name = 'Record player'; ro = 24 }
+            @{ map = 'verus04'; x = 172; y = 149; name = 'Commander Arquien'; ro = 25 }
+          )
+          done = 'The records spoke: voices of the people of Verus, from the days before their city was buried.' }
+       @{ title = 'The Laboratories'
+          cond = 'ep15_1_atnad >= 30'; var = 'ep15_1_atnad'
+          items = @(, @(6824, 'Experimental Dong Memory Record', 5))
+          parts = @(
+            @{ at = 27; name = 'Ian (verus04, 144, 193): tell him what the records said'; route = @('verus04', 144, 193, 'Ian Atnad') }
+            @{ at = 28; name = 'Bring Arquien 5 records from the laboratories (the bunker)'; route = @('verus04', 172, 149, 'Commander Arquien') }
+            @{ at = 29; name = 'The record player (verus04, 170, 150)'; route = @('verus04', 170, 150, 'Record player') }
+            @{ at = 30; name = 'Arquien: Show piece.'; route = @('verus04', 172, 149, 'Commander Arquien') }
+          )
+          route = @('verus04', 144, 193, 'Ian Atnad')
+          now = 'RO quest: tell Ian what the records said. He wants the records of the ancients'' laboratories next: search the bunker under Verus for 5 of them and play them at Nile''s.'
+          hint = @(
+            'The bunker (un_bunker): Verity in verus01 (123, 181) takes you down: Yes. verus01 is through the north-west of the old city (verus03, 52, 254). Boxes, desks, machine remains, thickets, food trays and document piles each give one record.'
+            'The record player leaves you a Record Fragment: show it to Nile. RO pays 750,000 base and 500,000 job EXP.'
+          )
+          spots = @(
+            @{ map = 'verus04'; x = 144; y = 193; name = 'Ian Atnad'; ro = 26 }
+            @{ map = 'verus03'; x = 52; y = 254; name = 'Way to verus01'; ro = 27 }
+            @{ map = 'verus01'; x = 123; y = 181; name = 'Verity: down to the bunker'; ro = 27 }
+            @{ map = 'un_bunker'; x = 382; y = 335; name = 'Box'; ro = 27 }
+            @{ map = 'un_bunker'; x = 87; y = 167; name = 'Under desk'; ro = 27 }
+            @{ map = 'verus04'; x = 172; y = 149; name = 'Commander Arquien'; ro = 27 }
+            @{ map = 'verus04'; x = 170; y = 150; name = 'Record player'; ro = 28 }
+            @{ map = 'verus04'; x = 172; y = 149; name = 'Commander Arquien: Show piece.'; ro = 29 }
+          )
+          done = 'The laboratories'' records told of the ancients'' experiments, and the record broke apart as they always do. Nile began to wonder who wanted them found.' }
+       @{ title = 'A Record a Day'
+          cond = 'ep15_1_atnad >= 31'
+          items = @(, @(6757, 'The Memory Recorder', 5))
+          route = @('verus04', 172, 149, 'Commander Arquien')
+          now = 'RO quest: keep playing the research facilities'' records with Nile, one set a day, until someone comes to visit the team. Then talk to Ian (verus04, 144, 193).'
+          hint = @(
+            'Nile (verus04, 172, 149): Research facilities Memory Records, Accept.; gather 5 records from the strewn papers (verus02), give them to her, and play them at the record player (170, 150). Once a day: the next set waits until 4:00 server time.'
+            'After the fourth day''s records Nile notices a visitor at the team''s tent. Ian then answers: Is there something wrong?, Chairman Rekenber''s secretary?, Me?'
+            'Each play pays 1,500,000 base and 1,000,000 job EXP.'
+          )
+          spots = @(
+            @{ map = 'verus04'; x = 172; y = 149; name = 'Commander Arquien' }
+            @{ map = 'verus02'; x = 60; y = 30; name = 'Strewn paper' }
+            @{ map = 'verus04'; x = 170; y = 150; name = 'Record player' }
+            @{ map = 'verus04'; x = 144; y = 193; name = 'Ian Atnad' }
+          )
+          done = 'Day after day the records gave up the past of Verus, until Chairman Rekenber''s secretary came to the camp: the chairman wanted to see you.' }
+       @{ title = 'Chairman Rekenber'
+          cond = 'ep15_1_atnad >= 34'; var = 'ep15_1_atnad'
+          parts = @(
+            @{ at = 32; name = 'In the Rekenber building, past the guard (lhz_in01, 277, 234): the Chairman (270, 257)'; route = @('lhz_in01', 277, 234, 'Rekenber Guard') }
+            @{ at = 33; name = 'Ian (272, 255) or Arquien (272, 251): Should the table be turned over?'; route = @('lhz_in01', 272, 255, 'Ian Atnad') }
+            @{ at = 34; name = 'Chief Secretary Tatio (267, 257)'; route = @('lhz_in01', 267, 257, 'Chief Secretary') }
+          )
+          route = @('lhz_in01', 277, 234, 'Rekenber Guard')
+          now = 'RO quest: go to the Rekenber building in Lighthalzen with the team and hear what the chairman wants from you.'
+          hint = @(
+            'The Rekenber building is in the north-west of Lighthalzen (door at 101, 248). The guard at lhz_in01, 277, 234 lets you through to the chairman''s room.'
+            'RO pays 4,500,000 base and 3,000,000 job EXP at the end.'
+          )
+          spots = @(
+            @{ map = 'lighthalzen'; x = 101; y = 248; name = 'Door of the Rekenber building'; ro = 31 }
+            @{ map = 'lhz_in01'; x = 277; y = 234; name = 'Rekenber Guard'; ro = 31 }
+            @{ map = 'lhz_in01'; x = 270; y = 257; name = 'Chairman Rekenber'; ro = 31 }
+            @{ map = 'lhz_in01'; x = 272; y = 255; name = 'Ian Atnad'; ro = 32 }
+            @{ map = 'lhz_in01'; x = 267; y = 257; name = 'Chief Secretary Tatio'; ro = 33 }
+          )
+          done = 'The chairman wanted the Memory Records kept quiet. Then his Chief Secretary showed who he is: Tatio, the last survivor of Verus, a machine made by Lasse Atnad, Ian''s great-grandfather, and the one who attacked Ian at the Juperos dig. The team keeps sole rights to the records, and the secret stays between them.' }
      ) }
 )
 
