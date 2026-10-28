@@ -857,7 +857,7 @@ export default {
                          "title":  "Two Tribes",
                          "lv":  70,
                          "intro":  "Beyond the rift live two peoples who have never trusted each other: the Laphine of Splendide and the Sapha of Manuk. Their quarrel is older than the rift, and the humans who came through it are caught in the middle. This is Ragnarok\u0027s own story: the Chronicle only shows the way, and RO gives its rewards.",
-                         "more":  true,
+                         "more":  false,
                          "needs":  "the Otherworld Language: the Laphine and Sapha tongues, and the Ring of the Wise King worn (Side Quests, The New World).",
                          "party":  null,
                          "steps":  [
@@ -877,10 +877,24 @@ export default {
 
                                                      ],
                                            "hint":  [
-                                                        "In Splendide, the door at 228, 164 leads into Arc\u0027s room (spl_in01).",
-                                                        "Without the Otherworld Language and the ring, Arc does not understand you: learn it first (Side Quests, The New World)."
+                                                        "To Splendide: the Teleport Cat in the Allied camp (mid_camp, 207, 234) goes to Near Splendide (spl_fild02); the town is through the field\u0027s west edge (6, 241). In Splendide, the door at 228, 164 leads into Arc\u0027s room (spl_in01).",
+                                                        "Without the Otherworld Language and the ring, Arc does not understand you: learn it first (Side Quests, The New World). Keep the ring on for the whole episode: every Laphine and Sapha in it needs it."
                                                     ],
                                            "spots":  [
+                                                         {
+                                                             "map":  "mid_camp",
+                                                             "x":  207,
+                                                             "y":  234,
+                                                             "name":  "Teleport Cat: Near Splendide",
+                                                             "ro":  null
+                                                         },
+                                                         {
+                                                             "map":  "spl_fild02",
+                                                             "x":  6,
+                                                             "y":  241,
+                                                             "name":  "Way into Splendide",
+                                                             "ro":  null
+                                                         },
                                                          {
                                                              "map":  "splendide",
                                                              "x":  228,
@@ -899,6 +913,775 @@ export default {
                                            "parts":  [
 
                                                      ]
+                                       },
+                                       {
+                                           "k":  2,
+                                           "type":  "ro",
+                                           "title":  "A Favor for Arc",
+                                           "now":  "RO quest: Arc has something on his mind. Talk to him again (spl_in01, 32, 306): pick your name, then What favor? and Sure, I will do it.",
+                                           "done":  "Arc\u0027s friend Terra left without leave to look at the humans\u0027 camp and never came back. She knots plants to mark her way, and Arc asked you, quietly, to follow them.",
+                                           "route":  {
+                                                         "map":  "spl_in01",
+                                                         "x":  32,
+                                                         "y":  306,
+                                                         "name":  "Arc of the Splendide Guard"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "Make some room in your bag first: Arc and the Sapha refuse a full or heavy bag."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "spl_in01",
+                                                             "x":  32,
+                                                             "y":  306,
+                                                             "name":  "Arc of the Splendide Guard",
+                                                             "ro":  null
+                                                         }
+                                                     ],
+                                           "parts":  [
+
+                                                     ]
+                                       },
+                                       {
+                                           "k":  3,
+                                           "type":  "ro",
+                                           "title":  "Terra\u0027s Trail",
+                                           "now":  "RO quest: follow Terra\u0027s knotted plants and the footprints after them, from the field outside Splendide to the roots of a huge tree.",
+                                           "done":  "The knots and the footprints led you to the roots of a huge tree, and you slipped through them into a cave nobody had mapped.",
+                                           "route":  {
+                                                         "map":  "spl_fild02",
+                                                         "x":  45,
+                                                         "y":  214,
+                                                         "name":  "Knotted weed"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "Near Splendide (spl_fild02): the knotted weed is close to the town (45, 214). Two more knots (122, 106 and 329, 191) only point the way. The footprints are at 328, 323.",
+                                                        "spl_fild01 is north of spl_fild02 (its exit at 293, 379). Step onto the roots at 375, 109 and choose Follow the trace.: you slip into a cave below and lose 30% of your HP."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "spl_fild02",
+                                                             "x":  45,
+                                                             "y":  214,
+                                                             "name":  "Knotted weed",
+                                                             "ro":  2
+                                                         },
+                                                         {
+                                                             "map":  "spl_fild02",
+                                                             "x":  328,
+                                                             "y":  323,
+                                                             "name":  "Footprints",
+                                                             "ro":  3
+                                                         },
+                                                         {
+                                                             "map":  "spl_fild02",
+                                                             "x":  293,
+                                                             "y":  379,
+                                                             "name":  "Way north to spl_fild01",
+                                                             "ro":  4
+                                                         },
+                                                         {
+                                                             "map":  "spl_fild01",
+                                                             "x":  341,
+                                                             "y":  109,
+                                                             "name":  "Signs of a fight",
+                                                             "ro":  4
+                                                         },
+                                                         {
+                                                             "map":  "spl_fild01",
+                                                             "x":  375,
+                                                             "y":  109,
+                                                             "name":  "Roots of a huge tree: Follow the trace.",
+                                                             "ro":  5
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  3,
+                                                             "name":  "A knotted weed near Splendide (spl_fild02, 45, 214)",
+                                                             "route":  {
+                                                                           "map":  "spl_fild02",
+                                                                           "x":  45,
+                                                                           "y":  214,
+                                                                           "name":  "Knotted weed"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  4,
+                                                             "name":  "Footprints in the south-east (spl_fild02, 328, 323)",
+                                                             "route":  {
+                                                                           "map":  "spl_fild02",
+                                                                           "x":  328,
+                                                                           "y":  323,
+                                                                           "name":  "Footprints"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  5,
+                                                             "name":  "Signs of a fight on the next field north (spl_fild01, 341, 109)",
+                                                             "route":  {
+                                                                           "map":  "spl_fild01",
+                                                                           "x":  341,
+                                                                           "y":  109,
+                                                                           "name":  "Signs of a fight"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  6,
+                                                             "name":  "The roots of a huge tree (spl_fild01, 375, 109): Follow the trace.",
+                                                             "route":  {
+                                                                           "map":  "spl_fild01",
+                                                                           "x":  375,
+                                                                           "y":  109,
+                                                                           "name":  "Roots of a huge tree"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  4,
+                                           "type":  "ro",
+                                           "title":  "The Petrified Sapha",
+                                           "now":  "RO quest: in the cave under the roots (nyd_dun01), look at the statue where the sunlight falls (58, 223).",
+                                           "done":  "In the cave stood a scarred Sapha giant turned to stone, wearing a muffler and holding something in his arms. Terra\u0027s trail ended there.",
+                                           "route":  {
+                                                         "map":  "nyd_dun01",
+                                                         "x":  58,
+                                                         "y":  223,
+                                                         "name":  "Petrified Sapha"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "Back into the cave: the roots on spl_fild01 (375, 109), Go inside.",
+                                                        "The way out is the Trunk of a Tree beside the statue (62, 233): Climb up. It leaves you on spl_fild01 (376, 65)."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "spl_fild01",
+                                                             "x":  375,
+                                                             "y":  109,
+                                                             "name":  "Roots of a huge tree (into the cave)",
+                                                             "ro":  null
+                                                         },
+                                                         {
+                                                             "map":  "nyd_dun01",
+                                                             "x":  58,
+                                                             "y":  223,
+                                                             "name":  "Petrified Sapha",
+                                                             "ro":  null
+                                                         },
+                                                         {
+                                                             "map":  "nyd_dun01",
+                                                             "x":  62,
+                                                             "y":  233,
+                                                             "name":  "Trunk of a Tree (the way out)",
+                                                             "ro":  null
+                                                         }
+                                                     ],
+                                           "parts":  [
+
+                                                     ]
+                                       },
+                                       {
+                                           "k":  5,
+                                           "type":  "ro",
+                                           "title":  "Terra Took the Bradium",
+                                           "now":  "RO quest: tell Arc what you found. Terra came back while you were away, and left again; go and look for her in the cave.",
+                                           "done":  "Terra had come back wounded, taken the Laphine\u0027s Bradium and gone. In the cave you found Bradium powder around the stone giant, but no Terra.",
+                                           "route":  {
+                                                         "map":  "spl_in01",
+                                                         "x":  32,
+                                                         "y":  306,
+                                                         "name":  "Arc of the Splendide Guard"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "The cave: the roots on spl_fild01 (375, 109), Go inside. Out again by the Trunk of a Tree (62, 233)."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "spl_in01",
+                                                             "x":  32,
+                                                             "y":  306,
+                                                             "name":  "Arc of the Splendide Guard",
+                                                             "ro":  7
+                                                         },
+                                                         {
+                                                             "map":  "spl_in01",
+                                                             "x":  32,
+                                                             "y":  306,
+                                                             "name":  "Arc of the Splendide Guard",
+                                                             "ro":  8
+                                                         },
+                                                         {
+                                                             "map":  "spl_fild01",
+                                                             "x":  375,
+                                                             "y":  109,
+                                                             "name":  "Roots of a huge tree (into the cave)",
+                                                             "ro":  9
+                                                         },
+                                                         {
+                                                             "map":  "nyd_dun01",
+                                                             "x":  58,
+                                                             "y":  223,
+                                                             "name":  "Petrified Sapha",
+                                                             "ro":  9
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  8,
+                                                             "name":  "Arc (spl_in01, 32, 306): hear what happened",
+                                                             "route":  {
+                                                                           "map":  "spl_in01",
+                                                                           "x":  32,
+                                                                           "y":  306,
+                                                                           "name":  "Arc of the Splendide Guard"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  9,
+                                                             "name":  "Arc again: offer to go in his place",
+                                                             "route":  {
+                                                                           "map":  "spl_in01",
+                                                                           "x":  32,
+                                                                           "y":  306,
+                                                                           "name":  "Arc of the Splendide Guard"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  10,
+                                                             "name":  "The Petrified Sapha in the cave (nyd_dun01, 58, 223)",
+                                                             "route":  {
+                                                                           "map":  "nyd_dun01",
+                                                                           "x":  58,
+                                                                           "y":  223,
+                                                                           "name":  "Petrified Sapha"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  6,
+                                           "type":  "ro",
+                                           "title":  "The Sapha\u0027s Prisoner",
+                                           "now":  "RO quest: go to Manuk, the Sapha\u0027s town, and listen for news of a wounded Laphine. Then find Snorren, who wants a word with her.",
+                                           "done":  "A wounded Laphine is held in Manuk\u0027s prison. Snorren\u0027s friend Ogen is missing, and he wants to know what she has to do with it. Her jailer Luik needs something to treat her wounds, and you said you would find it.",
+                                           "route":  {
+                                                         "map":  "manuk",
+                                                         "x":  278,
+                                                         "y":  177,
+                                                         "name":  "Villagers"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "To Manuk: the Teleport Cat in the Allied camp (mid_camp, 207, 234) goes to Manuk Field (man_fild02); the town is just south of where you land.",
+                                                        "At the villagers, either answer works. Snorren stands outside the prison (man_in01, 175, 59): the Route link draws the way in from the town."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "mid_camp",
+                                                             "x":  207,
+                                                             "y":  234,
+                                                             "name":  "Teleport Cat: Manuk Field",
+                                                             "ro":  null
+                                                         },
+                                                         {
+                                                             "map":  "manuk",
+                                                             "x":  278,
+                                                             "y":  177,
+                                                             "name":  "Villagers",
+                                                             "ro":  10
+                                                         },
+                                                         {
+                                                             "map":  "man_in01",
+                                                             "x":  175,
+                                                             "y":  59,
+                                                             "name":  "Snorren",
+                                                             "ro":  11
+                                                         },
+                                                         {
+                                                             "map":  "man_in01",
+                                                             "x":  175,
+                                                             "y":  59,
+                                                             "name":  "Snorren",
+                                                             "ro":  12
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  11,
+                                                             "name":  "Two villagers in Manuk (278, 177): listen",
+                                                             "route":  {
+                                                                           "map":  "manuk",
+                                                                           "x":  278,
+                                                                           "y":  177,
+                                                                           "name":  "Villagers"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  12,
+                                                             "name":  "Snorren by the prison (man_in01, 175, 59): About the Captured Fairy.",
+                                                             "route":  {
+                                                                           "map":  "man_in01",
+                                                                           "x":  175,
+                                                                           "y":  59,
+                                                                           "name":  "Snorren"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  13,
+                                                             "name":  "Snorren again",
+                                                             "route":  {
+                                                                           "map":  "man_in01",
+                                                                           "x":  175,
+                                                                           "y":  59,
+                                                                           "name":  "Snorren"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  7,
+                                           "type":  "ro",
+                                           "title":  "Yggdrasil Berries",
+                                           "now":  "RO quest: ask Arc what heals a Laphine: Yggdrasil Berries. He has 3; pick 3 more where the World Tree\u0027s roots come up on spl_fild01, and bring all 6 to Snorren in Manuk.",
+                                           "done":  "Arc gave you his last Yggdrasil Berries, the World Tree\u0027s roots gave you three more, and Snorren carried them to the prison.",
+                                           "route":  {
+                                                         "map":  "spl_in01",
+                                                         "x":  32,
+                                                         "y":  306,
+                                                         "name":  "Arc of the Splendide Guard"
+                                                     },
+                                           "items":  [
+                                                         {
+                                                             "name":  "Yggdrasil Berry",
+                                                             "id":  607,
+                                                             "count":  6
+                                                         }
+                                                     ],
+                                           "hint":  [
+                                                        "The three berry spots open one after another, each from the last. Touching them again afterwards may cost you 30% of your HP.",
+                                                        "Snorren takes every Yggdrasil Berry in your bag, so keep your own elsewhere."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "spl_in01",
+                                                             "x":  32,
+                                                             "y":  306,
+                                                             "name":  "Arc of the Splendide Guard",
+                                                             "ro":  13
+                                                         },
+                                                         {
+                                                             "map":  "spl_fild01",
+                                                             "x":  357,
+                                                             "y":  44,
+                                                             "name":  "Great root: berry",
+                                                             "ro":  14
+                                                         },
+                                                         {
+                                                             "map":  "spl_fild01",
+                                                             "x":  312,
+                                                             "y":  79,
+                                                             "name":  "Great root: berry",
+                                                             "ro":  15
+                                                         },
+                                                         {
+                                                             "map":  "spl_fild01",
+                                                             "x":  329,
+                                                             "y":  29,
+                                                             "name":  "Great root: berry",
+                                                             "ro":  16
+                                                         },
+                                                         {
+                                                             "map":  "mid_camp",
+                                                             "x":  207,
+                                                             "y":  234,
+                                                             "name":  "Teleport Cat: Manuk Field",
+                                                             "ro":  17
+                                                         },
+                                                         {
+                                                             "map":  "man_in01",
+                                                             "x":  175,
+                                                             "y":  59,
+                                                             "name":  "Snorren",
+                                                             "ro":  17
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  14,
+                                                             "name":  "Arc (spl_in01, 32, 306): he gives you 3 Yggdrasil Berries",
+                                                             "route":  {
+                                                                           "map":  "spl_in01",
+                                                                           "x":  32,
+                                                                           "y":  306,
+                                                                           "name":  "Arc of the Splendide Guard"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  15,
+                                                             "name":  "A berry at the great root (spl_fild01, 357, 44)",
+                                                             "route":  {
+                                                                           "map":  "spl_fild01",
+                                                                           "x":  357,
+                                                                           "y":  44,
+                                                                           "name":  "Great root"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  16,
+                                                             "name":  "Another berry (spl_fild01, 312, 79)",
+                                                             "route":  {
+                                                                           "map":  "spl_fild01",
+                                                                           "x":  312,
+                                                                           "y":  79,
+                                                                           "name":  "Great root"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  17,
+                                                             "name":  "The third berry (spl_fild01, 329, 29)",
+                                                             "route":  {
+                                                                           "map":  "spl_fild01",
+                                                                           "x":  329,
+                                                                           "y":  29,
+                                                                           "name":  "Great root"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  18,
+                                                             "name":  "Snorren in Manuk (man_in01, 175, 59) takes the berries",
+                                                             "route":  {
+                                                                           "map":  "man_in01",
+                                                                           "x":  175,
+                                                                           "y":  59,
+                                                                           "name":  "Snorren"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  8,
+                                           "type":  "ro",
+                                           "title":  "The Captured Laphine",
+                                           "now":  "RO quest: with Snorren, go into the prison and interpret between the Captured Laphine and her jailer, Luik.",
+                                           "done":  "The prisoner was Terra. She had tried to save the Sapha in the cave with the Bradium she took. Luik would not believe it without proof.",
+                                           "route":  {
+                                                         "map":  "man_in01",
+                                                         "x":  183,
+                                                         "y":  58,
+                                                         "name":  "Prison door"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "The prison door is beside Snorren\u0027s old spot (man_in01, 183, 58); it opens for you now.",
+                                                        "Luik does not believe that a Sapha is lying stone-dead in a Laphine cave. He wants proof."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "man_in01",
+                                                             "x":  183,
+                                                             "y":  58,
+                                                             "name":  "Prison door",
+                                                             "ro":  18
+                                                         },
+                                                         {
+                                                             "map":  "man_in01",
+                                                             "x":  17,
+                                                             "y":  128,
+                                                             "name":  "Snorren",
+                                                             "ro":  18
+                                                         },
+                                                         {
+                                                             "map":  "man_in01",
+                                                             "x":  22,
+                                                             "y":  126,
+                                                             "name":  "Captured Laphine",
+                                                             "ro":  19
+                                                         },
+                                                         {
+                                                             "map":  "man_in01",
+                                                             "x":  19,
+                                                             "y":  126,
+                                                             "name":  "Luik",
+                                                             "ro":  20
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  19,
+                                                             "name":  "Snorren inside the prison (man_in01, 17, 128): pick your name",
+                                                             "route":  {
+                                                                           "map":  "man_in01",
+                                                                           "x":  17,
+                                                                           "y":  128,
+                                                                           "name":  "Snorren"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  20,
+                                                             "name":  "The Captured Laphine (22, 126)",
+                                                             "route":  {
+                                                                           "map":  "man_in01",
+                                                                           "x":  22,
+                                                                           "y":  126,
+                                                                           "name":  "Captured Laphine"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  21,
+                                                             "name":  "Luik the jailer (19, 126)",
+                                                             "route":  {
+                                                                           "map":  "man_in01",
+                                                                           "x":  19,
+                                                                           "y":  126,
+                                                                           "name":  "Luik"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  9,
+                                           "type":  "ro",
+                                           "title":  "Proof from the Cave",
+                                           "now":  "RO quest: bring Luik proof from the cave: take the stone giant\u0027s muffler and a fragment of Bradium, and show them in Manuk\u0027s prison.",
+                                           "done":  "The muffler was Ogen\u0027s. Snorren knew it at once and set out for the cave.",
+                                           "route":  {
+                                                         "map":  "spl_fild01",
+                                                         "x":  375,
+                                                         "y":  109,
+                                                         "name":  "Roots of a huge tree (into the cave)"
+                                                     },
+                                           "items":  [
+                                                         {
+                                                             "name":  "Shaggy Muffler",
+                                                             "id":  6085,
+                                                             "count":  1
+                                                         },
+                                                         {
+                                                             "name":  "Bradium Fragments",
+                                                             "id":  6084,
+                                                             "count":  1
+                                                         }
+                                                     ],
+                                           "hint":  [
+                                                        "At the statue, choose Muffler and Fragment of Bradium, in either order. Hair and Pants do not come off.",
+                                                        "The cave: the roots on spl_fild01 (375, 109), Go inside. The prison: man_in01, door at 183, 58."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "spl_fild01",
+                                                             "x":  375,
+                                                             "y":  109,
+                                                             "name":  "Roots of a huge tree (into the cave)",
+                                                             "ro":  21
+                                                         },
+                                                         {
+                                                             "map":  "nyd_dun01",
+                                                             "x":  58,
+                                                             "y":  223,
+                                                             "name":  "Petrified Sapha",
+                                                             "ro":  21
+                                                         },
+                                                         {
+                                                             "map":  "man_in01",
+                                                             "x":  183,
+                                                             "y":  58,
+                                                             "name":  "Prison door",
+                                                             "ro":  22
+                                                         },
+                                                         {
+                                                             "map":  "man_in01",
+                                                             "x":  17,
+                                                             "y":  128,
+                                                             "name":  "Snorren",
+                                                             "ro":  22
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  22,
+                                                             "name":  "The Petrified Sapha (nyd_dun01, 58, 223): take the Muffler and a Fragment of Bradium",
+                                                             "route":  {
+                                                                           "map":  "nyd_dun01",
+                                                                           "x":  58,
+                                                                           "y":  223,
+                                                                           "name":  "Petrified Sapha"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  23,
+                                                             "name":  "Snorren or Luik in the prison (man_in01, 17, 128)",
+                                                             "route":  {
+                                                                           "map":  "man_in01",
+                                                                           "x":  17,
+                                                                           "y":  128,
+                                                                           "name":  "Snorren"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  10,
+                                           "type":  "ro",
+                                           "title":  "Ogen",
+                                           "now":  "RO quest: meet Snorren at the stone giant in the cave, then see him again in Manuk.",
+                                           "done":  "Ogen had turned himself to stone shielding Terra. Snorren mourned him by the statue, Luik set Terra free, and Snorren gave you 15 Manuk Coins.",
+                                           "route":  {
+                                                         "map":  "spl_fild01",
+                                                         "x":  375,
+                                                         "y":  109,
+                                                         "name":  "Roots of a huge tree (into the cave)"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "Wear the ring at the statue, or the scene does not start.",
+                                                        "Snorren pays you 15 Manuk Coins."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "spl_fild01",
+                                                             "x":  375,
+                                                             "y":  109,
+                                                             "name":  "Roots of a huge tree (into the cave)",
+                                                             "ro":  23
+                                                         },
+                                                         {
+                                                             "map":  "nyd_dun01",
+                                                             "x":  58,
+                                                             "y":  223,
+                                                             "name":  "Petrified Sapha",
+                                                             "ro":  23
+                                                         },
+                                                         {
+                                                             "map":  "man_in01",
+                                                             "x":  175,
+                                                             "y":  59,
+                                                             "name":  "Snorren",
+                                                             "ro":  24
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  24,
+                                                             "name":  "The Petrified Sapha, with Snorren (nyd_dun01, 58, 223)",
+                                                             "route":  {
+                                                                           "map":  "nyd_dun01",
+                                                                           "x":  58,
+                                                                           "y":  223,
+                                                                           "name":  "Petrified Sapha"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  25,
+                                                             "name":  "Snorren back in Manuk (man_in01, 175, 59)",
+                                                             "route":  {
+                                                                           "map":  "man_in01",
+                                                                           "x":  175,
+                                                                           "y":  59,
+                                                                           "name":  "Snorren"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  11,
+                                           "type":  "ro",
+                                           "title":  "Terra\u0027s Yai",
+                                           "now":  "RO quest: Terra is home. Tell Arc, then visit Terra\u0027s Yai, her house in Splendide, and hear what happened.",
+                                           "done":  "Terra told how she and Ogen met, and how he gave his life for her. The Laphine, who keep strangers out, made you welcome in Splendide.",
+                                           "route":  {
+                                                         "map":  "spl_in01",
+                                                         "x":  32,
+                                                         "y":  306,
+                                                         "name":  "Arc of the Splendide Guard"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "Terra\u0027s Yai: the door at splendide 287, 140, south-east of Arc\u0027s room. It lets you in once Arc has sent you.",
+                                                        "RO pays you 25 Splendide Coins and 120,000 base and 10,000 job EXP."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "spl_in01",
+                                                             "x":  32,
+                                                             "y":  306,
+                                                             "name":  "Arc of the Splendide Guard",
+                                                             "ro":  25
+                                                         },
+                                                         {
+                                                             "map":  "splendide",
+                                                             "x":  287,
+                                                             "y":  140,
+                                                             "name":  "Door to Terra\u0027s Yai",
+                                                             "ro":  26
+                                                         },
+                                                         {
+                                                             "map":  "spl_in02",
+                                                             "x":  236,
+                                                             "y":  92,
+                                                             "name":  "Arc and Terra",
+                                                             "ro":  26
+                                                         },
+                                                         {
+                                                             "map":  "spl_in02",
+                                                             "x":  236,
+                                                             "y":  92,
+                                                             "name":  "Arc and Terra",
+                                                             "ro":  27
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  26,
+                                                             "name":  "Arc (spl_in01, 32, 306): Terra is home",
+                                                             "route":  {
+                                                                           "map":  "spl_in01",
+                                                                           "x":  32,
+                                                                           "y":  306,
+                                                                           "name":  "Arc of the Splendide Guard"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  27,
+                                                             "name":  "Arc and Terra in Terra\u0027s Yai (spl_in02, 236, 92)",
+                                                             "route":  {
+                                                                           "map":  "spl_in02",
+                                                                           "x":  236,
+                                                                           "y":  92,
+                                                                           "name":  "Arc"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  28,
+                                                             "name":  "Talk to them once more",
+                                                             "route":  {
+                                                                           "map":  "spl_in02",
+                                                                           "x":  236,
+                                                                           "y":  92,
+                                                                           "name":  "Arc"
+                                                                       }
+                                                         }
+                                                     ]
                                        }
                                    ]
                      },
@@ -907,8 +1690,8 @@ export default {
                          "title":  "Doha\u0027s Secret Orders",
                          "lv":  70,
                          "intro":  "The Sapha of Manuk have sent a delegation to the Allied camp, and they want to meet the humans who helped them. Behind the delegation stands Inspector Doha of El Dicastes, and Doha has orders of his own. This is Ragnarok\u0027s own story: the Chronicle only shows the way, and RO gives its rewards.",
-                         "more":  true,
-                         "needs":  "Episode 13.1, Onward to the Other World (or the Cat Paw passage into the New World).",
+                         "more":  false,
+                         "needs":  "Episode 13.1, Onward to the Other World (or the Cat Paw passage into the New World); from step 3 on, Sapha\u0027s Visit done to the end (registered in El Dicastes) and the Ring of the Wise King worn (Side Quests, The New World).",
                          "party":  null,
                          "steps":  [
                                        {
@@ -941,6 +1724,738 @@ export default {
                                                      ],
                                            "parts":  [
 
+                                                     ]
+                                       },
+                                       {
+                                           "k":  2,
+                                           "type":  "ro",
+                                           "title":  "Inspector Doha",
+                                           "now":  "RO quest: in the camp\u0027s command post, Inspector Doha of El Dicastes (mid_campin, 168, 170) has a case for you. Hear him out, twice.",
+                                           "done":  "Someone stole the expedition\u0027s report, and a witness saw a man with animal ears. Doha took Manuk and Splendide and sent you to El Dicastes, the Sapha capital, to find him.",
+                                           "route":  {
+                                                         "map":  "mid_campin",
+                                                         "x":  168,
+                                                         "y":  170,
+                                                         "name":  "Inspector Doha"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "Every answer in his talk leads on. Make some room in your bag first: Doha refuses a heavy one."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "mid_campin",
+                                                             "x":  168,
+                                                             "y":  170,
+                                                             "name":  "Inspector Doha",
+                                                             "ro":  1
+                                                         },
+                                                         {
+                                                             "map":  "mid_campin",
+                                                             "x":  168,
+                                                             "y":  170,
+                                                             "name":  "Inspector Doha",
+                                                             "ro":  2
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  2,
+                                                             "name":  "Inspector Doha (mid_campin, 168, 170): Came to meet the inspector.",
+                                                             "route":  {
+                                                                           "map":  "mid_campin",
+                                                                           "x":  168,
+                                                                           "y":  170,
+                                                                           "name":  "Inspector Doha"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  3,
+                                                             "name":  "Doha again",
+                                                             "route":  {
+                                                                           "map":  "mid_campin",
+                                                                           "x":  168,
+                                                                           "y":  170,
+                                                                           "name":  "Inspector Doha"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  3,
+                                           "type":  "ro",
+                                           "title":  "The Man with Cat Ears",
+                                           "now":  "RO quest: in El Dicastes, ask Shay, who keeps the adventurers\u0027 pub, about a man with cat ears. Then ask around the city, and tell Shay what you heard.",
+                                           "done":  "Every Sapha was talking about Ahat, the new minister. Shay, a retired Assassin, sent you to BK, the Cat Merchants\u0027 information collector, with a password.",
+                                           "route":  {
+                                                         "map":  "dic_in01",
+                                                         "x":  245,
+                                                         "y":  119,
+                                                         "name":  "Shay"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "Shay only talks about it once Sapha\u0027s Visit is done (you registered as an adventurer in El Dicastes, Side Quests). To El Dicastes: the Teleport Cat in the Allied camp (mid_camp, 207, 234) goes to Manuk Field, and the Teleport Cat there (man_fild02, 135, 49) on to Near El Dicastes (dic_fild01). The city gate is at the north end of that field.",
+                                                        "The three Sapha: Walking Knit by the square (dicastes01, 207, 210: Are there races other than humans?), Resting Piom (112, 248) and Training Galten (249, 140): About a human with cat ears.",
+                                                        "Shay\u0027s new pie ends up in your face: it costs 30% of your HP."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "dic_in01",
+                                                             "x":  245,
+                                                             "y":  119,
+                                                             "name":  "Shay",
+                                                             "ro":  3
+                                                         },
+                                                         {
+                                                             "map":  "dicastes01",
+                                                             "x":  207,
+                                                             "y":  210,
+                                                             "name":  "Walking Knit",
+                                                             "ro":  4
+                                                         },
+                                                         {
+                                                             "map":  "dicastes01",
+                                                             "x":  112,
+                                                             "y":  248,
+                                                             "name":  "Resting Piom",
+                                                             "ro":  4
+                                                         },
+                                                         {
+                                                             "map":  "dicastes01",
+                                                             "x":  249,
+                                                             "y":  140,
+                                                             "name":  "Training Galten",
+                                                             "ro":  4
+                                                         },
+                                                         {
+                                                             "map":  "dic_in01",
+                                                             "x":  245,
+                                                             "y":  119,
+                                                             "name":  "Shay",
+                                                             "ro":  4
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  4,
+                                                             "name":  "Shay in the pub (dic_in01, 245, 119): Talk., About other races, With cat ears.",
+                                                             "route":  {
+                                                                           "map":  "dic_in01",
+                                                                           "x":  245,
+                                                                           "y":  119,
+                                                                           "name":  "Shay"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  5,
+                                                             "name":  "Ask three Sapha in the city, then Shay again",
+                                                             "route":  {
+                                                                           "map":  "dic_in01",
+                                                                           "x":  245,
+                                                                           "y":  119,
+                                                                           "name":  "Shay"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  4,
+                                           "type":  "ro",
+                                           "title":  "BK of the Cat Merchants",
+                                           "now":  "RO quest: BK camps with the Cat Merchants outside El Dicastes (dic_fild01, 231, 174). Give him Shay\u0027s password, then pay for his news with 3 Proofs Of Sapha\u0027s Honor.",
+                                           "done":  "BK talked, for a price: nobody knows where the new minister Ahat came from, and BK doubts he is a Sapha at all.",
+                                           "route":  {
+                                                         "map":  "dic_fild01",
+                                                         "x":  231,
+                                                         "y":  174,
+                                                         "name":  "BK"
+                                                     },
+                                           "items":  [
+                                                         {
+                                                             "name":  "Proof Of Sapha\u0027s Honor",
+                                                             "id":  6304,
+                                                             "count":  3
+                                                         }
+                                                     ],
+                                           "hint":  [
+                                                        "The password, typed exactly: Shay\u0027s special drink will be delivered",
+                                                        "Proofs Of Sapha\u0027s Honor: one for each El Dicastes request, or from Papyrus in the archive for 3 Unidentified Relics (Side Quests, The New World). The Clerk asks for 3 more later in this episode: 6 in all."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "dic_fild01",
+                                                             "x":  231,
+                                                             "y":  174,
+                                                             "name":  "BK",
+                                                             "ro":  5
+                                                         },
+                                                         {
+                                                             "map":  "dic_fild01",
+                                                             "x":  231,
+                                                             "y":  174,
+                                                             "name":  "BK",
+                                                             "ro":  6
+                                                         },
+                                                         {
+                                                             "map":  "dic_fild01",
+                                                             "x":  231,
+                                                             "y":  174,
+                                                             "name":  "BK",
+                                                             "ro":  7
+                                                         },
+                                                         {
+                                                             "map":  "dic_fild01",
+                                                             "x":  231,
+                                                             "y":  174,
+                                                             "name":  "BK",
+                                                             "ro":  8
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  6,
+                                                             "name":  "BK outside the city (dic_fild01, 231, 174): type the password",
+                                                             "route":  {
+                                                                           "map":  "dic_fild01",
+                                                                           "x":  231,
+                                                                           "y":  174,
+                                                                           "name":  "BK"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  7,
+                                                             "name":  "BK: About other feline races, then Give. (a Proof Of Sapha\u0027s Honor)",
+                                                             "route":  {
+                                                                           "map":  "dic_fild01",
+                                                                           "x":  231,
+                                                                           "y":  174,
+                                                                           "name":  "BK"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  8,
+                                                             "name":  "BK: Give a certification. (another one)",
+                                                             "route":  {
+                                                                           "map":  "dic_fild01",
+                                                                           "x":  231,
+                                                                           "y":  174,
+                                                                           "name":  "BK"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  9,
+                                                             "name":  "BK: a third Proof for the last of it",
+                                                             "route":  {
+                                                                           "map":  "dic_fild01",
+                                                                           "x":  231,
+                                                                           "y":  174,
+                                                                           "name":  "BK"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  5,
+                                           "type":  "ro",
+                                           "title":  "Traces at the Crack",
+                                           "now":  "RO quest: tell Shay what BK said, then search the ground around the dimensional crack (dic_fild02) for traces, and bring Shay what you find.",
+                                           "done":  "Around the crack you found traces full of an evil energy. Shay told you the only way to Ahat is through the city\u0027s officials, and they want proof of your service.",
+                                           "route":  {
+                                                         "map":  "dic_in01",
+                                                         "x":  245,
+                                                         "y":  119,
+                                                         "name":  "Shay"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "dic_fild02 lies south of El Dicastes: dic_fild01\u0027s south-west exit (69, 23). Rock Piles, Dirt Piles and Split Earth are scattered around the crack, for example 269, 55, 215, 85 and 194, 86.",
+                                                        "At a pile, take the second choice (Study the pile closely. or Poke around in the dirt pile.). The first one only flattens it."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "dic_in01",
+                                                             "x":  245,
+                                                             "y":  119,
+                                                             "name":  "Shay",
+                                                             "ro":  9
+                                                         },
+                                                         {
+                                                             "map":  "dic_fild01",
+                                                             "x":  69,
+                                                             "y":  23,
+                                                             "name":  "Way south to dic_fild02",
+                                                             "ro":  10
+                                                         },
+                                                         {
+                                                             "map":  "dic_fild02",
+                                                             "x":  215,
+                                                             "y":  85,
+                                                             "name":  "Dirt Pile",
+                                                             "ro":  10
+                                                         },
+                                                         {
+                                                             "map":  "dic_fild02",
+                                                             "x":  269,
+                                                             "y":  55,
+                                                             "name":  "Rock Pile",
+                                                             "ro":  10
+                                                         },
+                                                         {
+                                                             "map":  "dic_fild02",
+                                                             "x":  194,
+                                                             "y":  86,
+                                                             "name":  "Split Earth",
+                                                             "ro":  10
+                                                         },
+                                                         {
+                                                             "map":  "dic_in01",
+                                                             "x":  245,
+                                                             "y":  119,
+                                                             "name":  "Shay",
+                                                             "ro":  11
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  10,
+                                                             "name":  "Shay in the pub (dic_in01, 245, 119)",
+                                                             "route":  {
+                                                                           "map":  "dic_in01",
+                                                                           "x":  245,
+                                                                           "y":  119,
+                                                                           "name":  "Shay"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  11,
+                                                             "name":  "A Rock Pile, Dirt Pile or Split Earth near the crack (dic_fild02, 215, 85)",
+                                                             "route":  {
+                                                                           "map":  "dic_fild02",
+                                                                           "x":  215,
+                                                                           "y":  85,
+                                                                           "name":  "Dirt Pile"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  12,
+                                                             "name":  "Shay again, with what you found",
+                                                             "route":  {
+                                                                           "map":  "dic_in01",
+                                                                           "x":  245,
+                                                                           "y":  119,
+                                                                           "name":  "Shay"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  6,
+                                           "type":  "ro",
+                                           "title":  "An Audience with Ahat",
+                                           "now":  "RO quest: ask Clerk Rhawyne for an audience with Minister Ahat (3 Proofs Of Sapha\u0027s Honor), then go up through the Diel Guards into his hall.",
+                                           "done":  "In the minister\u0027s hall a ringing voice reached into your head. Ahat was waiting for you.",
+                                           "route":  {
+                                                         "map":  "dic_in01",
+                                                         "x":  42,
+                                                         "y":  264,
+                                                         "name":  "Adventurer Clerk"
+                                                     },
+                                           "items":  [
+                                                         {
+                                                             "name":  "Proof Of Sapha\u0027s Honor",
+                                                             "id":  6304,
+                                                             "count":  3
+                                                         }
+                                                     ],
+                                           "hint":  [
+                                                        "Clerk Rhawyne is the Adventurer Clerk who registered you. She takes 3 Proofs Of Sapha\u0027s Honor.",
+                                                        "The Diel Guard at 138, 225 checks the list and takes you up; the guard at 263, 193 lets you on. Step into the hall (299, 268)."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "dic_in01",
+                                                             "x":  42,
+                                                             "y":  264,
+                                                             "name":  "Clerk Rhawyne",
+                                                             "ro":  12
+                                                         },
+                                                         {
+                                                             "map":  "dic_in01",
+                                                             "x":  138,
+                                                             "y":  225,
+                                                             "name":  "Diel Guard: I have permission.",
+                                                             "ro":  13
+                                                         },
+                                                         {
+                                                             "map":  "dic_in01",
+                                                             "x":  263,
+                                                             "y":  193,
+                                                             "name":  "Diel Guard",
+                                                             "ro":  13
+                                                         },
+                                                         {
+                                                             "map":  "dic_in01",
+                                                             "x":  299,
+                                                             "y":  268,
+                                                             "name":  "Minister\u0027s hall",
+                                                             "ro":  13
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  13,
+                                                             "name":  "Clerk Rhawyne (dic_in01, 42, 264): Talk., I want to meet the minister., Ahat",
+                                                             "route":  {
+                                                                           "map":  "dic_in01",
+                                                                           "x":  42,
+                                                                           "y":  264,
+                                                                           "name":  "Adventurer Clerk"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  14,
+                                                             "name":  "Diel Guard (dic_in01, 138, 225): I have permission., then up into the minister\u0027s hall",
+                                                             "route":  {
+                                                                           "map":  "dic_in01",
+                                                                           "x":  138,
+                                                                           "y":  225,
+                                                                           "name":  "Diel Guard"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  7,
+                                           "type":  "ro",
+                                           "title":  "Under Ahat\u0027s Spell",
+                                           "now":  "RO quest: Minister Ahat tries to charm you. Play along as his loyal servant, then meet his Secret Adjutant, Cheshire.",
+                                           "done":  "You pretended to be Ahat\u0027s servant. His adjutant Cheshire, who hides a tail, gave you his first errand: wipe out the traces around the crack.",
+                                           "route":  {
+                                                         "map":  "dic_in01",
+                                                         "x":  300,
+                                                         "y":  280,
+                                                         "name":  "Minister Ahat"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "Whatever you answer Ahat, you end up pretending to be under his spell, and the story goes on.",
+                                                        "The way back up to the hall: the Diel Guards on the admin floor (dic_in01, 138, 225, then 263, 193)."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "dic_in01",
+                                                             "x":  300,
+                                                             "y":  280,
+                                                             "name":  "Minister Ahat",
+                                                             "ro":  14
+                                                         },
+                                                         {
+                                                             "map":  "dic_in01",
+                                                             "x":  300,
+                                                             "y":  280,
+                                                             "name":  "Minister Ahat",
+                                                             "ro":  15
+                                                         },
+                                                         {
+                                                             "map":  "dic_in01",
+                                                             "x":  294,
+                                                             "y":  276,
+                                                             "name":  "Cheshire, the Secret Adjutant",
+                                                             "ro":  16
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  15,
+                                                             "name":  "Minister Ahat (dic_in01, 300, 280)",
+                                                             "route":  {
+                                                                           "map":  "dic_in01",
+                                                                           "x":  300,
+                                                                           "y":  280,
+                                                                           "name":  "Minister Ahat"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  16,
+                                                             "name":  "Ahat again",
+                                                             "route":  {
+                                                                           "map":  "dic_in01",
+                                                                           "x":  300,
+                                                                           "y":  280,
+                                                                           "name":  "Minister Ahat"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  17,
+                                                             "name":  "Cheshire, the Secret Adjutant (294, 276): Tail?, then Have you ever been near the triangle?",
+                                                             "route":  {
+                                                                           "map":  "dic_in01",
+                                                                           "x":  294,
+                                                                           "y":  276,
+                                                                           "name":  "Secret Adjutant"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  8,
+                                           "type":  "ro",
+                                           "title":  "Cheshire\u0027s Errand",
+                                           "now":  "RO quest: around the crack (dic_fild02), gather 10 each of bloodstains (Dirt Piles), frozen skin (Split Earth) and cursed stones (Rock Piles) for Cheshire, plus one of each to keep as evidence for Doha. Bring them to Cheshire (dic_in01, 294, 276).",
+                                           "done":  "You cleared the traces for Cheshire, and kept one of each for yourself.",
+                                           "route":  {
+                                                         "map":  "dic_fild02",
+                                                         "x":  215,
+                                                         "y":  85,
+                                                         "name":  "Dirt Pile"
+                                                     },
+                                           "items":  [
+                                                         {
+                                                             "name":  "Hard Bloodstain",
+                                                             "id":  6306,
+                                                             "count":  11
+                                                         },
+                                                         {
+                                                             "name":  "Frozen Piece Of Skin",
+                                                             "id":  6305,
+                                                             "count":  11
+                                                         },
+                                                         {
+                                                             "name":  "Cursed Magical Stone",
+                                                             "id":  6307,
+                                                             "count":  11
+                                                         }
+                                                     ],
+                                           "hint":  [
+                                                        "Each pile gives one, then rests a while. Rock Piles: 269, 55, 236, 29, 228, 55, 210, 75. Dirt Piles: 215, 85, 207, 41, 232, 41, 245, 68. Split Earth: 194, 86, 240, 51, 176, 65, 254, 45.",
+                                                        "Cheshire takes 10 of each; the 11th stays in your bag for Doha."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "dic_fild02",
+                                                             "x":  269,
+                                                             "y":  55,
+                                                             "name":  "Rock Pile",
+                                                             "ro":  null
+                                                         },
+                                                         {
+                                                             "map":  "dic_fild02",
+                                                             "x":  215,
+                                                             "y":  85,
+                                                             "name":  "Dirt Pile",
+                                                             "ro":  null
+                                                         },
+                                                         {
+                                                             "map":  "dic_fild02",
+                                                             "x":  194,
+                                                             "y":  86,
+                                                             "name":  "Split Earth",
+                                                             "ro":  null
+                                                         },
+                                                         {
+                                                             "map":  "dic_in01",
+                                                             "x":  294,
+                                                             "y":  276,
+                                                             "name":  "Cheshire, the Secret Adjutant",
+                                                             "ro":  null
+                                                         }
+                                                     ],
+                                           "parts":  [
+
+                                                     ]
+                                       },
+                                       {
+                                           "k":  9,
+                                           "type":  "ro",
+                                           "title":  "Ahat\u0027s Gift",
+                                           "now":  "RO quest: Minister Ahat (dic_in01, 300, 280) is pleased with his servant. Ask him What are those?",
+                                           "done":  "Ahat gave you a Bradium Brooch for your service.",
+                                           "route":  {
+                                                         "map":  "dic_in01",
+                                                         "x":  300,
+                                                         "y":  280,
+                                                         "name":  "Minister Ahat"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "dic_in01",
+                                                             "x":  300,
+                                                             "y":  280,
+                                                             "name":  "Minister Ahat",
+                                                             "ro":  null
+                                                         }
+                                                     ],
+                                           "parts":  [
+
+                                                     ]
+                                       },
+                                       {
+                                           "k":  10,
+                                           "type":  "ro",
+                                           "title":  "Jarute HesLanta",
+                                           "now":  "RO quest: Jarute HesLanta of El Dicastes also watches Ahat. Let him pull you aside on the admin floor, tell him what you know, and work out with him who stole the report.",
+                                           "done":  "The thief was Cheshire, Ahat\u0027s servant. Ahat came out of the crack that Satan Morocc tore open, and he is hiding something there. You had to tell Doha.",
+                                           "route":  {
+                                                         "map":  "dic_in01",
+                                                         "x":  138,
+                                                         "y":  188,
+                                                         "name":  "Jarute HesLanta\u0027s hall"
+                                                     },
+                                           "items":  [
+
+                                                     ],
+                                           "hint":  [
+                                                        "Walking into the hall at dic_in01, 138, 188 takes you to him. Wear the ring.",
+                                                        "To piece it together: Cheshire; either answer; Ahat must be ordering him.; either answer; Content about evil lord Morocc.. A wrong one asks again."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "dic_in01",
+                                                             "x":  138,
+                                                             "y":  188,
+                                                             "name":  "Hall of Jarute HesLanta",
+                                                             "ro":  19
+                                                         },
+                                                         {
+                                                             "map":  "dic_in01",
+                                                             "x":  158,
+                                                             "y":  188,
+                                                             "name":  "Jarute HesLanta",
+                                                             "ro":  19
+                                                         },
+                                                         {
+                                                             "map":  "dic_in01",
+                                                             "x":  158,
+                                                             "y":  188,
+                                                             "name":  "Jarute HesLanta",
+                                                             "ro":  20
+                                                         },
+                                                         {
+                                                             "map":  "dic_in01",
+                                                             "x":  158,
+                                                             "y":  188,
+                                                             "name":  "Jarute HesLanta",
+                                                             "ro":  21
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  20,
+                                                             "name":  "On the admin floor, walk to the hall at 138, 188 and meet HesLanta (158, 188)",
+                                                             "route":  {
+                                                                           "map":  "dic_in01",
+                                                                           "x":  158,
+                                                                           "y":  188,
+                                                                           "name":  "Jarute HesLanta"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  21,
+                                                             "name":  "HesLanta again: tell him the truth about Ahat",
+                                                             "route":  {
+                                                                           "map":  "dic_in01",
+                                                                           "x":  158,
+                                                                           "y":  188,
+                                                                           "name":  "Jarute HesLanta"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  22,
+                                                             "name":  "HesLanta once more: piece it all together",
+                                                             "route":  {
+                                                                           "map":  "dic_in01",
+                                                                           "x":  158,
+                                                                           "y":  188,
+                                                                           "name":  "Jarute HesLanta"
+                                                                       }
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "k":  11,
+                                           "type":  "ro",
+                                           "title":  "Back to Doha",
+                                           "now":  "RO quest: report to Inspector Doha in the Allied camp and give him the evidence: a bloodstain, a frozen skin and a cursed stone. Then step outside.",
+                                           "done":  "Doha took your report and gave you a Dragon Manteau. Outside, a man in black asked what the new minister looks like, said you had found it at last, and vanished.",
+                                           "route":  {
+                                                         "map":  "mid_campin",
+                                                         "x":  168,
+                                                         "y":  170,
+                                                         "name":  "Inspector Doha"
+                                                     },
+                                           "items":  [
+                                                         {
+                                                             "name":  "Hard Bloodstain",
+                                                             "id":  6306,
+                                                             "count":  1
+                                                         },
+                                                         {
+                                                             "name":  "Frozen Piece Of Skin",
+                                                             "id":  6305,
+                                                             "count":  1
+                                                         },
+                                                         {
+                                                             "name":  "Cursed Magical Stone",
+                                                             "id":  6307,
+                                                             "count":  1
+                                                         }
+                                                     ],
+                                           "hint":  [
+                                                        "If you have none of one left, the piles around the crack give more (dic_fild02).",
+                                                        "Doha gives you a Dragon Manteau."
+                                                    ],
+                                           "spots":  [
+                                                         {
+                                                             "map":  "mid_campin",
+                                                             "x":  168,
+                                                             "y":  170,
+                                                             "name":  "Inspector Doha",
+                                                             "ro":  22
+                                                         },
+                                                         {
+                                                             "map":  "mid_camp",
+                                                             "x":  216,
+                                                             "y":  246,
+                                                             "name":  "A man in black",
+                                                             "ro":  23
+                                                         }
+                                                     ],
+                                           "parts":  [
+                                                         {
+                                                             "at":  23,
+                                                             "name":  "Inspector Doha (mid_campin, 168, 170), with the evidence",
+                                                             "route":  {
+                                                                           "map":  "mid_campin",
+                                                                           "x":  168,
+                                                                           "y":  170,
+                                                                           "name":  "Inspector Doha"
+                                                                       }
+                                                         },
+                                                         {
+                                                             "at":  24,
+                                                             "name":  "Outside in the camp, walk past the spot at mid_camp 216, 246",
+                                                             "route":  {
+                                                                           "map":  "mid_camp",
+                                                                           "x":  216,
+                                                                           "y":  246,
+                                                                           "name":  "A man in black"
+                                                                       }
+                                                         }
                                                      ]
                                        }
                                    ]

@@ -727,7 +727,8 @@ $episodes = @(
   # quests/quests_13_2.txt, Two Tribes: ep13_mdrama 0 -> 28. No level check of
   # its own; Arc only understands you with the Ring of the Wise King (2782)
   # worn and the Otherworld Language done (ep13_2_rhea > 99, Lv 70).
-  @{ episode = '13.2'; title = 'Two Tribes'; lv = 70; more = $true
+  # Every Laphine and Sapha here talks only to a wearer of the ring (2782).
+  @{ episode = '13.2'; title = 'Two Tribes'; lv = 70
      end = 'ep13_mdrama >= 28'
      needs = 'the Otherworld Language: the Laphine and Sapha tongues, and the Ring of the Wise King worn (Side Quests, The New World).'
      intro = 'Beyond the rift live two peoples who have never trusted each other: the Laphine of Splendide and the Sapha of Manuk. Their quarrel is older than the rift, and the humans who came through it are caught in the middle. This is Ragnarok''s own story: the Chronicle only shows the way, and RO gives its rewards.'
@@ -737,22 +738,215 @@ $episodes = @(
           route = @('splendide', 228, 164, 'Door to the Splendide Guard')
           now = 'RO quest: wearing the Ring of the Wise King, talk to Arc of the Splendide Guard (spl_in01, 32, 306) and answer Yes.'
           hint = @(
-            'In Splendide, the door at 228, 164 leads into Arc''s room (spl_in01).'
-            'Without the Otherworld Language and the ring, Arc does not understand you: learn it first (Side Quests, The New World).'
+            'To Splendide: the Teleport Cat in the Allied camp (mid_camp, 207, 234) goes to Near Splendide (spl_fild02); the town is through the field''s west edge (6, 241). In Splendide, the door at 228, 164 leads into Arc''s room (spl_in01).'
+            'Without the Otherworld Language and the ring, Arc does not understand you: learn it first (Side Quests, The New World). Keep the ring on for the whole episode: every Laphine and Sapha in it needs it.'
           )
           spots = @(
+            @{ map = 'mid_camp'; x = 207; y = 234; name = 'Teleport Cat: Near Splendide' }
+            @{ map = 'spl_fild02'; x = 6; y = 241; name = 'Way into Splendide' }
             @{ map = 'splendide'; x = 228; y = 164; name = 'Door to the Splendide Guard' }
             @{ map = 'spl_in01'; x = 32; y = 306; name = 'Arc of the Splendide Guard' }
           )
           done = 'Arc understood you. You told him how humans came through the rift, and he saw that you were not sent by the giants of Manuk.' }
+       @{ title = 'A Favor for Arc'
+          cond = 'ep13_mdrama >= 2'
+          route = @('spl_in01', 32, 306, 'Arc of the Splendide Guard')
+          now = 'RO quest: Arc has something on his mind. Talk to him again (spl_in01, 32, 306): pick your name, then What favor? and Sure, I will do it.'
+          hint = @(
+            'Make some room in your bag first: Arc and the Sapha refuse a full or heavy bag.'
+          )
+          spots = @(
+            @{ map = 'spl_in01'; x = 32; y = 306; name = 'Arc of the Splendide Guard' }
+          )
+          done = 'Arc''s friend Terra left without leave to look at the humans'' camp and never came back. She knots plants to mark her way, and Arc asked you, quietly, to follow them.' }
+       @{ title = 'Terra''s Trail'
+          cond = 'ep13_mdrama >= 6'; var = 'ep13_mdrama'
+          parts = @(
+            @{ at = 3; name = 'A knotted weed near Splendide (spl_fild02, 45, 214)'; route = @('spl_fild02', 45, 214, 'Knotted weed') }
+            @{ at = 4; name = 'Footprints in the south-east (spl_fild02, 328, 323)'; route = @('spl_fild02', 328, 323, 'Footprints') }
+            @{ at = 5; name = 'Signs of a fight on the next field north (spl_fild01, 341, 109)'; route = @('spl_fild01', 341, 109, 'Signs of a fight') }
+            @{ at = 6; name = 'The roots of a huge tree (spl_fild01, 375, 109): Follow the trace.'; route = @('spl_fild01', 375, 109, 'Roots of a huge tree') }
+          )
+          route = @('spl_fild02', 45, 214, 'Knotted weed')
+          now = 'RO quest: follow Terra''s knotted plants and the footprints after them, from the field outside Splendide to the roots of a huge tree.'
+          hint = @(
+            'Near Splendide (spl_fild02): the knotted weed is close to the town (45, 214). Two more knots (122, 106 and 329, 191) only point the way. The footprints are at 328, 323.'
+            'spl_fild01 is north of spl_fild02 (its exit at 293, 379). Step onto the roots at 375, 109 and choose Follow the trace.: you slip into a cave below and lose 30% of your HP.'
+          )
+          spots = @(
+            @{ map = 'spl_fild02'; x = 45; y = 214; name = 'Knotted weed'; ro = 2 }
+            @{ map = 'spl_fild02'; x = 328; y = 323; name = 'Footprints'; ro = 3 }
+            @{ map = 'spl_fild02'; x = 293; y = 379; name = 'Way north to spl_fild01'; ro = 4 }
+            @{ map = 'spl_fild01'; x = 341; y = 109; name = 'Signs of a fight'; ro = 4 }
+            @{ map = 'spl_fild01'; x = 375; y = 109; name = 'Roots of a huge tree: Follow the trace.'; ro = 5 }
+          )
+          done = 'The knots and the footprints led you to the roots of a huge tree, and you slipped through them into a cave nobody had mapped.' }
+       @{ title = 'The Petrified Sapha'
+          cond = 'ep13_mdrama >= 7'
+          route = @('nyd_dun01', 58, 223, 'Petrified Sapha')
+          now = 'RO quest: in the cave under the roots (nyd_dun01), look at the statue where the sunlight falls (58, 223).'
+          hint = @(
+            'Back into the cave: the roots on spl_fild01 (375, 109), Go inside.'
+            'The way out is the Trunk of a Tree beside the statue (62, 233): Climb up. It leaves you on spl_fild01 (376, 65).'
+          )
+          spots = @(
+            @{ map = 'spl_fild01'; x = 375; y = 109; name = 'Roots of a huge tree (into the cave)' }
+            @{ map = 'nyd_dun01'; x = 58; y = 223; name = 'Petrified Sapha' }
+            @{ map = 'nyd_dun01'; x = 62; y = 233; name = 'Trunk of a Tree (the way out)' }
+          )
+          done = 'In the cave stood a scarred Sapha giant turned to stone, wearing a muffler and holding something in his arms. Terra''s trail ended there.' }
+       @{ title = 'Terra Took the Bradium'
+          cond = 'ep13_mdrama >= 10'; var = 'ep13_mdrama'
+          parts = @(
+            @{ at = 8; name = 'Arc (spl_in01, 32, 306): hear what happened'; route = @('spl_in01', 32, 306, 'Arc of the Splendide Guard') }
+            @{ at = 9; name = 'Arc again: offer to go in his place'; route = @('spl_in01', 32, 306, 'Arc of the Splendide Guard') }
+            @{ at = 10; name = 'The Petrified Sapha in the cave (nyd_dun01, 58, 223)'; route = @('nyd_dun01', 58, 223, 'Petrified Sapha') }
+          )
+          route = @('spl_in01', 32, 306, 'Arc of the Splendide Guard')
+          now = 'RO quest: tell Arc what you found. Terra came back while you were away, and left again; go and look for her in the cave.'
+          hint = @(
+            'The cave: the roots on spl_fild01 (375, 109), Go inside. Out again by the Trunk of a Tree (62, 233).'
+          )
+          spots = @(
+            @{ map = 'spl_in01'; x = 32; y = 306; name = 'Arc of the Splendide Guard'; ro = 7 }
+            @{ map = 'spl_in01'; x = 32; y = 306; name = 'Arc of the Splendide Guard'; ro = 8 }
+            @{ map = 'spl_fild01'; x = 375; y = 109; name = 'Roots of a huge tree (into the cave)'; ro = 9 }
+            @{ map = 'nyd_dun01'; x = 58; y = 223; name = 'Petrified Sapha'; ro = 9 }
+          )
+          done = 'Terra had come back wounded, taken the Laphine''s Bradium and gone. In the cave you found Bradium powder around the stone giant, but no Terra.' }
+       @{ title = 'The Sapha''s Prisoner'
+          cond = 'ep13_mdrama >= 13'; var = 'ep13_mdrama'
+          parts = @(
+            @{ at = 11; name = 'Two villagers in Manuk (278, 177): listen'; route = @('manuk', 278, 177, 'Villagers') }
+            @{ at = 12; name = 'Snorren by the prison (man_in01, 175, 59): About the Captured Fairy.'; route = @('man_in01', 175, 59, 'Snorren') }
+            @{ at = 13; name = 'Snorren again'; route = @('man_in01', 175, 59, 'Snorren') }
+          )
+          route = @('manuk', 278, 177, 'Villagers')
+          now = 'RO quest: go to Manuk, the Sapha''s town, and listen for news of a wounded Laphine. Then find Snorren, who wants a word with her.'
+          hint = @(
+            'To Manuk: the Teleport Cat in the Allied camp (mid_camp, 207, 234) goes to Manuk Field (man_fild02); the town is just south of where you land.'
+            'At the villagers, either answer works. Snorren stands outside the prison (man_in01, 175, 59): the Route link draws the way in from the town.'
+          )
+          spots = @(
+            @{ map = 'mid_camp'; x = 207; y = 234; name = 'Teleport Cat: Manuk Field' }
+            @{ map = 'manuk'; x = 278; y = 177; name = 'Villagers'; ro = 10 }
+            @{ map = 'man_in01'; x = 175; y = 59; name = 'Snorren'; ro = 11 }
+            @{ map = 'man_in01'; x = 175; y = 59; name = 'Snorren'; ro = 12 }
+          )
+          done = 'A wounded Laphine is held in Manuk''s prison. Snorren''s friend Ogen is missing, and he wants to know what she has to do with it. Her jailer Luik needs something to treat her wounds, and you said you would find it.' }
+       @{ title = 'Yggdrasil Berries'
+          cond = 'ep13_mdrama >= 18'; var = 'ep13_mdrama'
+          items = @(, @(607, 'Yggdrasil Berry', 6))
+          parts = @(
+            @{ at = 14; name = 'Arc (spl_in01, 32, 306): he gives you 3 Yggdrasil Berries'; route = @('spl_in01', 32, 306, 'Arc of the Splendide Guard') }
+            @{ at = 15; name = 'A berry at the great root (spl_fild01, 357, 44)'; route = @('spl_fild01', 357, 44, 'Great root') }
+            @{ at = 16; name = 'Another berry (spl_fild01, 312, 79)'; route = @('spl_fild01', 312, 79, 'Great root') }
+            @{ at = 17; name = 'The third berry (spl_fild01, 329, 29)'; route = @('spl_fild01', 329, 29, 'Great root') }
+            @{ at = 18; name = 'Snorren in Manuk (man_in01, 175, 59) takes the berries'; route = @('man_in01', 175, 59, 'Snorren') }
+          )
+          route = @('spl_in01', 32, 306, 'Arc of the Splendide Guard')
+          now = 'RO quest: ask Arc what heals a Laphine: Yggdrasil Berries. He has 3; pick 3 more where the World Tree''s roots come up on spl_fild01, and bring all 6 to Snorren in Manuk.'
+          hint = @(
+            'The three berry spots open one after another, each from the last. Touching them again afterwards may cost you 30% of your HP.'
+            'Snorren takes every Yggdrasil Berry in your bag, so keep your own elsewhere.'
+          )
+          spots = @(
+            @{ map = 'spl_in01'; x = 32; y = 306; name = 'Arc of the Splendide Guard'; ro = 13 }
+            @{ map = 'spl_fild01'; x = 357; y = 44; name = 'Great root: berry'; ro = 14 }
+            @{ map = 'spl_fild01'; x = 312; y = 79; name = 'Great root: berry'; ro = 15 }
+            @{ map = 'spl_fild01'; x = 329; y = 29; name = 'Great root: berry'; ro = 16 }
+            @{ map = 'mid_camp'; x = 207; y = 234; name = 'Teleport Cat: Manuk Field'; ro = 17 }
+            @{ map = 'man_in01'; x = 175; y = 59; name = 'Snorren'; ro = 17 }
+          )
+          done = 'Arc gave you his last Yggdrasil Berries, the World Tree''s roots gave you three more, and Snorren carried them to the prison.' }
+       @{ title = 'The Captured Laphine'
+          cond = 'ep13_mdrama >= 21'; var = 'ep13_mdrama'
+          parts = @(
+            @{ at = 19; name = 'Snorren inside the prison (man_in01, 17, 128): pick your name'; route = @('man_in01', 17, 128, 'Snorren') }
+            @{ at = 20; name = 'The Captured Laphine (22, 126)'; route = @('man_in01', 22, 126, 'Captured Laphine') }
+            @{ at = 21; name = 'Luik the jailer (19, 126)'; route = @('man_in01', 19, 126, 'Luik') }
+          )
+          route = @('man_in01', 183, 58, 'Prison door')
+          now = 'RO quest: with Snorren, go into the prison and interpret between the Captured Laphine and her jailer, Luik.'
+          hint = @(
+            'The prison door is beside Snorren''s old spot (man_in01, 183, 58); it opens for you now.'
+            'Luik does not believe that a Sapha is lying stone-dead in a Laphine cave. He wants proof.'
+          )
+          spots = @(
+            @{ map = 'man_in01'; x = 183; y = 58; name = 'Prison door'; ro = 18 }
+            @{ map = 'man_in01'; x = 17; y = 128; name = 'Snorren'; ro = 18 }
+            @{ map = 'man_in01'; x = 22; y = 126; name = 'Captured Laphine'; ro = 19 }
+            @{ map = 'man_in01'; x = 19; y = 126; name = 'Luik'; ro = 20 }
+          )
+          done = 'The prisoner was Terra. She had tried to save the Sapha in the cave with the Bradium she took. Luik would not believe it without proof.' }
+       @{ title = 'Proof from the Cave'
+          cond = 'ep13_mdrama >= 23'; var = 'ep13_mdrama'
+          items = @(@(6085, 'Shaggy Muffler', 1), @(6084, 'Bradium Fragments', 1))
+          parts = @(
+            @{ at = 22; name = 'The Petrified Sapha (nyd_dun01, 58, 223): take the Muffler and a Fragment of Bradium'; route = @('nyd_dun01', 58, 223, 'Petrified Sapha') }
+            @{ at = 23; name = 'Snorren or Luik in the prison (man_in01, 17, 128)'; route = @('man_in01', 17, 128, 'Snorren') }
+          )
+          route = @('spl_fild01', 375, 109, 'Roots of a huge tree (into the cave)')
+          now = 'RO quest: bring Luik proof from the cave: take the stone giant''s muffler and a fragment of Bradium, and show them in Manuk''s prison.'
+          hint = @(
+            'At the statue, choose Muffler and Fragment of Bradium, in either order. Hair and Pants do not come off.'
+            'The cave: the roots on spl_fild01 (375, 109), Go inside. The prison: man_in01, door at 183, 58.'
+          )
+          spots = @(
+            @{ map = 'spl_fild01'; x = 375; y = 109; name = 'Roots of a huge tree (into the cave)'; ro = 21 }
+            @{ map = 'nyd_dun01'; x = 58; y = 223; name = 'Petrified Sapha'; ro = 21 }
+            @{ map = 'man_in01'; x = 183; y = 58; name = 'Prison door'; ro = 22 }
+            @{ map = 'man_in01'; x = 17; y = 128; name = 'Snorren'; ro = 22 }
+          )
+          done = 'The muffler was Ogen''s. Snorren knew it at once and set out for the cave.' }
+       @{ title = 'Ogen'
+          cond = 'ep13_mdrama >= 25'; var = 'ep13_mdrama'
+          parts = @(
+            @{ at = 24; name = 'The Petrified Sapha, with Snorren (nyd_dun01, 58, 223)'; route = @('nyd_dun01', 58, 223, 'Petrified Sapha') }
+            @{ at = 25; name = 'Snorren back in Manuk (man_in01, 175, 59)'; route = @('man_in01', 175, 59, 'Snorren') }
+          )
+          route = @('spl_fild01', 375, 109, 'Roots of a huge tree (into the cave)')
+          now = 'RO quest: meet Snorren at the stone giant in the cave, then see him again in Manuk.'
+          hint = @(
+            'Wear the ring at the statue, or the scene does not start.'
+            'Snorren pays you 15 Manuk Coins.'
+          )
+          spots = @(
+            @{ map = 'spl_fild01'; x = 375; y = 109; name = 'Roots of a huge tree (into the cave)'; ro = 23 }
+            @{ map = 'nyd_dun01'; x = 58; y = 223; name = 'Petrified Sapha'; ro = 23 }
+            @{ map = 'man_in01'; x = 175; y = 59; name = 'Snorren'; ro = 24 }
+          )
+          done = 'Ogen had turned himself to stone shielding Terra. Snorren mourned him by the statue, Luik set Terra free, and Snorren gave you 15 Manuk Coins.' }
+       @{ title = 'Terra''s Yai'
+          cond = 'ep13_mdrama >= 28'; var = 'ep13_mdrama'
+          parts = @(
+            @{ at = 26; name = 'Arc (spl_in01, 32, 306): Terra is home'; route = @('spl_in01', 32, 306, 'Arc of the Splendide Guard') }
+            @{ at = 27; name = 'Arc and Terra in Terra''s Yai (spl_in02, 236, 92)'; route = @('spl_in02', 236, 92, 'Arc') }
+            @{ at = 28; name = 'Talk to them once more'; route = @('spl_in02', 236, 92, 'Arc') }
+          )
+          route = @('spl_in01', 32, 306, 'Arc of the Splendide Guard')
+          now = 'RO quest: Terra is home. Tell Arc, then visit Terra''s Yai, her house in Splendide, and hear what happened.'
+          hint = @(
+            'Terra''s Yai: the door at splendide 287, 140, south-east of Arc''s room. It lets you in once Arc has sent you.'
+            'RO pays you 25 Splendide Coins and 120,000 base and 10,000 job EXP.'
+          )
+          spots = @(
+            @{ map = 'spl_in01'; x = 32; y = 306; name = 'Arc of the Splendide Guard'; ro = 25 }
+            @{ map = 'splendide'; x = 287; y = 140; name = 'Door to Terra''s Yai'; ro = 26 }
+            @{ map = 'spl_in02'; x = 236; y = 92; name = 'Arc and Terra'; ro = 26 }
+            @{ map = 'spl_in02'; x = 236; y = 92; name = 'Arc and Terra'; ro = 27 }
+          )
+          done = 'Terra told how she and Ogen met, and how he gave his life for her. The Laphine, who keep strangers out, made you welcome in Splendide.' }
      ) }
 
   # re/quests/quests_dicastes.txt, Doha's Secret Orders: ep13_3_secret 0 -> 24
   # (25-27 come later, in the Flame Basin). It begins in the Invitation to
   # El Dicastes (ep13_3_invite 1 -> 2), which only opens after 13.1.
-  @{ episode = '13.3'; title = 'Doha''s Secret Orders'; lv = 70; more = $true
+  # Shay and every Sapha after him want the invitation done (ep13_3_invite
+  # 6: registered in El Dicastes) and the ring (2782) worn.
+  @{ episode = '13.3'; title = 'Doha''s Secret Orders'; lv = 70
      end = 'ep13_3_secret >= 24'
-     needs = 'Episode 13.1, Onward to the Other World (or the Cat Paw passage into the New World).'
+     needs = 'Episode 13.1, Onward to the Other World (or the Cat Paw passage into the New World); from step 3 on, Sapha''s Visit done to the end (registered in El Dicastes) and the Ring of the Wise King worn (Side Quests, The New World).'
      intro = 'The Sapha of Manuk have sent a delegation to the Allied camp, and they want to meet the humans who helped them. Behind the delegation stands Inspector Doha of El Dicastes, and Doha has orders of his own. This is Ragnarok''s own story: the Chronicle only shows the way, and RO gives its rewards.'
      steps = @(
        @{ title = 'The Manuk Delegation'
@@ -767,6 +961,188 @@ $episodes = @(
             @{ map = 'mid_campin'; x = 93; y = 114; name = 'Guard Aello' }
           )
           done = 'The Sapha delegation from Manuk called humans friends, and Hibba Agip sent you to meet Inspector Doha.' }
+       @{ title = 'Inspector Doha'
+          cond = 'ep13_3_secret >= 3'; var = 'ep13_3_secret'
+          parts = @(
+            @{ at = 2; name = 'Inspector Doha (mid_campin, 168, 170): Came to meet the inspector.'; route = @('mid_campin', 168, 170, 'Inspector Doha') }
+            @{ at = 3; name = 'Doha again'; route = @('mid_campin', 168, 170, 'Inspector Doha') }
+          )
+          route = @('mid_campin', 168, 170, 'Inspector Doha')
+          now = 'RO quest: in the camp''s command post, Inspector Doha of El Dicastes (mid_campin, 168, 170) has a case for you. Hear him out, twice.'
+          hint = @(
+            'Every answer in his talk leads on. Make some room in your bag first: Doha refuses a heavy one.'
+          )
+          spots = @(
+            @{ map = 'mid_campin'; x = 168; y = 170; name = 'Inspector Doha'; ro = 1 }
+            @{ map = 'mid_campin'; x = 168; y = 170; name = 'Inspector Doha'; ro = 2 }
+          )
+          done = 'Someone stole the expedition''s report, and a witness saw a man with animal ears. Doha took Manuk and Splendide and sent you to El Dicastes, the Sapha capital, to find him.' }
+       @{ title = 'The Man with Cat Ears'
+          cond = 'ep13_3_secret >= 5'; var = 'ep13_3_secret'
+          parts = @(
+            @{ at = 4; name = 'Shay in the pub (dic_in01, 245, 119): Talk., About other races, With cat ears.'; route = @('dic_in01', 245, 119, 'Shay') }
+            @{ at = 5; name = 'Ask three Sapha in the city, then Shay again'; route = @('dic_in01', 245, 119, 'Shay') }
+          )
+          route = @('dic_in01', 245, 119, 'Shay')
+          now = 'RO quest: in El Dicastes, ask Shay, who keeps the adventurers'' pub, about a man with cat ears. Then ask around the city, and tell Shay what you heard.'
+          hint = @(
+            'Shay only talks about it once Sapha''s Visit is done (you registered as an adventurer in El Dicastes, Side Quests). To El Dicastes: the Teleport Cat in the Allied camp (mid_camp, 207, 234) goes to Manuk Field, and the Teleport Cat there (man_fild02, 135, 49) on to Near El Dicastes (dic_fild01). The city gate is at the north end of that field.'
+            'The three Sapha: Walking Knit by the square (dicastes01, 207, 210: Are there races other than humans?), Resting Piom (112, 248) and Training Galten (249, 140): About a human with cat ears.'
+            'Shay''s new pie ends up in your face: it costs 30% of your HP.'
+          )
+          spots = @(
+            @{ map = 'dic_in01'; x = 245; y = 119; name = 'Shay'; ro = 3 }
+            @{ map = 'dicastes01'; x = 207; y = 210; name = 'Walking Knit'; ro = 4 }
+            @{ map = 'dicastes01'; x = 112; y = 248; name = 'Resting Piom'; ro = 4 }
+            @{ map = 'dicastes01'; x = 249; y = 140; name = 'Training Galten'; ro = 4 }
+            @{ map = 'dic_in01'; x = 245; y = 119; name = 'Shay'; ro = 4 }
+          )
+          done = 'Every Sapha was talking about Ahat, the new minister. Shay, a retired Assassin, sent you to BK, the Cat Merchants'' information collector, with a password.' }
+       @{ title = 'BK of the Cat Merchants'
+          cond = 'ep13_3_secret >= 9'; var = 'ep13_3_secret'
+          items = @(, @(6304, 'Proof Of Sapha''s Honor', 3))
+          parts = @(
+            @{ at = 6; name = 'BK outside the city (dic_fild01, 231, 174): type the password'; route = @('dic_fild01', 231, 174, 'BK') }
+            @{ at = 7; name = 'BK: About other feline races, then Give. (a Proof Of Sapha''s Honor)'; route = @('dic_fild01', 231, 174, 'BK') }
+            @{ at = 8; name = 'BK: Give a certification. (another one)'; route = @('dic_fild01', 231, 174, 'BK') }
+            @{ at = 9; name = 'BK: a third Proof for the last of it'; route = @('dic_fild01', 231, 174, 'BK') }
+          )
+          route = @('dic_fild01', 231, 174, 'BK')
+          now = 'RO quest: BK camps with the Cat Merchants outside El Dicastes (dic_fild01, 231, 174). Give him Shay''s password, then pay for his news with 3 Proofs Of Sapha''s Honor.'
+          hint = @(
+            'The password, typed exactly: Shay''s special drink will be delivered'
+            'Proofs Of Sapha''s Honor: one for each El Dicastes request, or from Papyrus in the archive for 3 Unidentified Relics (Side Quests, The New World). The Clerk asks for 3 more later in this episode: 6 in all.'
+          )
+          spots = @(
+            @{ map = 'dic_fild01'; x = 231; y = 174; name = 'BK'; ro = 5 }
+            @{ map = 'dic_fild01'; x = 231; y = 174; name = 'BK'; ro = 6 }
+            @{ map = 'dic_fild01'; x = 231; y = 174; name = 'BK'; ro = 7 }
+            @{ map = 'dic_fild01'; x = 231; y = 174; name = 'BK'; ro = 8 }
+          )
+          done = 'BK talked, for a price: nobody knows where the new minister Ahat came from, and BK doubts he is a Sapha at all.' }
+       @{ title = 'Traces at the Crack'
+          cond = 'ep13_3_secret >= 12'; var = 'ep13_3_secret'
+          parts = @(
+            @{ at = 10; name = 'Shay in the pub (dic_in01, 245, 119)'; route = @('dic_in01', 245, 119, 'Shay') }
+            @{ at = 11; name = 'A Rock Pile, Dirt Pile or Split Earth near the crack (dic_fild02, 215, 85)'; route = @('dic_fild02', 215, 85, 'Dirt Pile') }
+            @{ at = 12; name = 'Shay again, with what you found'; route = @('dic_in01', 245, 119, 'Shay') }
+          )
+          route = @('dic_in01', 245, 119, 'Shay')
+          now = 'RO quest: tell Shay what BK said, then search the ground around the dimensional crack (dic_fild02) for traces, and bring Shay what you find.'
+          hint = @(
+            'dic_fild02 lies south of El Dicastes: dic_fild01''s south-west exit (69, 23). Rock Piles, Dirt Piles and Split Earth are scattered around the crack, for example 269, 55, 215, 85 and 194, 86.'
+            'At a pile, take the second choice (Study the pile closely. or Poke around in the dirt pile.). The first one only flattens it.'
+          )
+          spots = @(
+            @{ map = 'dic_in01'; x = 245; y = 119; name = 'Shay'; ro = 9 }
+            @{ map = 'dic_fild01'; x = 69; y = 23; name = 'Way south to dic_fild02'; ro = 10 }
+            @{ map = 'dic_fild02'; x = 215; y = 85; name = 'Dirt Pile'; ro = 10 }
+            @{ map = 'dic_fild02'; x = 269; y = 55; name = 'Rock Pile'; ro = 10 }
+            @{ map = 'dic_fild02'; x = 194; y = 86; name = 'Split Earth'; ro = 10 }
+            @{ map = 'dic_in01'; x = 245; y = 119; name = 'Shay'; ro = 11 }
+          )
+          done = 'Around the crack you found traces full of an evil energy. Shay told you the only way to Ahat is through the city''s officials, and they want proof of your service.' }
+       @{ title = 'An Audience with Ahat'
+          cond = 'ep13_3_secret >= 14'; var = 'ep13_3_secret'
+          items = @(, @(6304, 'Proof Of Sapha''s Honor', 3))
+          parts = @(
+            @{ at = 13; name = 'Clerk Rhawyne (dic_in01, 42, 264): Talk., I want to meet the minister., Ahat'; route = @('dic_in01', 42, 264, 'Adventurer Clerk') }
+            @{ at = 14; name = 'Diel Guard (dic_in01, 138, 225): I have permission., then up into the minister''s hall'; route = @('dic_in01', 138, 225, 'Diel Guard') }
+          )
+          route = @('dic_in01', 42, 264, 'Adventurer Clerk')
+          now = 'RO quest: ask Clerk Rhawyne for an audience with Minister Ahat (3 Proofs Of Sapha''s Honor), then go up through the Diel Guards into his hall.'
+          hint = @(
+            'Clerk Rhawyne is the Adventurer Clerk who registered you. She takes 3 Proofs Of Sapha''s Honor.'
+            'The Diel Guard at 138, 225 checks the list and takes you up; the guard at 263, 193 lets you on. Step into the hall (299, 268).'
+          )
+          spots = @(
+            @{ map = 'dic_in01'; x = 42; y = 264; name = 'Clerk Rhawyne'; ro = 12 }
+            @{ map = 'dic_in01'; x = 138; y = 225; name = 'Diel Guard: I have permission.'; ro = 13 }
+            @{ map = 'dic_in01'; x = 263; y = 193; name = 'Diel Guard'; ro = 13 }
+            @{ map = 'dic_in01'; x = 299; y = 268; name = 'Minister''s hall'; ro = 13 }
+          )
+          done = 'In the minister''s hall a ringing voice reached into your head. Ahat was waiting for you.' }
+       @{ title = 'Under Ahat''s Spell'
+          cond = 'ep13_3_secret >= 17'; var = 'ep13_3_secret'
+          parts = @(
+            @{ at = 15; name = 'Minister Ahat (dic_in01, 300, 280)'; route = @('dic_in01', 300, 280, 'Minister Ahat') }
+            @{ at = 16; name = 'Ahat again'; route = @('dic_in01', 300, 280, 'Minister Ahat') }
+            @{ at = 17; name = 'Cheshire, the Secret Adjutant (294, 276): Tail?, then Have you ever been near the triangle?'; route = @('dic_in01', 294, 276, 'Secret Adjutant') }
+          )
+          route = @('dic_in01', 300, 280, 'Minister Ahat')
+          now = 'RO quest: Minister Ahat tries to charm you. Play along as his loyal servant, then meet his Secret Adjutant, Cheshire.'
+          hint = @(
+            'Whatever you answer Ahat, you end up pretending to be under his spell, and the story goes on.'
+            'The way back up to the hall: the Diel Guards on the admin floor (dic_in01, 138, 225, then 263, 193).'
+          )
+          spots = @(
+            @{ map = 'dic_in01'; x = 300; y = 280; name = 'Minister Ahat'; ro = 14 }
+            @{ map = 'dic_in01'; x = 300; y = 280; name = 'Minister Ahat'; ro = 15 }
+            @{ map = 'dic_in01'; x = 294; y = 276; name = 'Cheshire, the Secret Adjutant'; ro = 16 }
+          )
+          done = 'You pretended to be Ahat''s servant. His adjutant Cheshire, who hides a tail, gave you his first errand: wipe out the traces around the crack.' }
+       @{ title = 'Cheshire''s Errand'
+          cond = 'ep13_3_secret >= 18'
+          items = @(@(6306, 'Hard Bloodstain', 11), @(6305, 'Frozen Piece Of Skin', 11), @(6307, 'Cursed Magical Stone', 11))
+          route = @('dic_fild02', 215, 85, 'Dirt Pile')
+          now = 'RO quest: around the crack (dic_fild02), gather 10 each of bloodstains (Dirt Piles), frozen skin (Split Earth) and cursed stones (Rock Piles) for Cheshire, plus one of each to keep as evidence for Doha. Bring them to Cheshire (dic_in01, 294, 276).'
+          hint = @(
+            'Each pile gives one, then rests a while. Rock Piles: 269, 55, 236, 29, 228, 55, 210, 75. Dirt Piles: 215, 85, 207, 41, 232, 41, 245, 68. Split Earth: 194, 86, 240, 51, 176, 65, 254, 45.'
+            'Cheshire takes 10 of each; the 11th stays in your bag for Doha.'
+          )
+          spots = @(
+            @{ map = 'dic_fild02'; x = 269; y = 55; name = 'Rock Pile' }
+            @{ map = 'dic_fild02'; x = 215; y = 85; name = 'Dirt Pile' }
+            @{ map = 'dic_fild02'; x = 194; y = 86; name = 'Split Earth' }
+            @{ map = 'dic_in01'; x = 294; y = 276; name = 'Cheshire, the Secret Adjutant' }
+          )
+          done = 'You cleared the traces for Cheshire, and kept one of each for yourself.' }
+       @{ title = 'Ahat''s Gift'
+          cond = 'ep13_3_secret >= 19'
+          route = @('dic_in01', 300, 280, 'Minister Ahat')
+          now = 'RO quest: Minister Ahat (dic_in01, 300, 280) is pleased with his servant. Ask him What are those?'
+          spots = @(
+            @{ map = 'dic_in01'; x = 300; y = 280; name = 'Minister Ahat' }
+          )
+          done = 'Ahat gave you a Bradium Brooch for your service.' }
+       @{ title = 'Jarute HesLanta'
+          cond = 'ep13_3_secret >= 22'; var = 'ep13_3_secret'
+          parts = @(
+            @{ at = 20; name = 'On the admin floor, walk to the hall at 138, 188 and meet HesLanta (158, 188)'; route = @('dic_in01', 158, 188, 'Jarute HesLanta') }
+            @{ at = 21; name = 'HesLanta again: tell him the truth about Ahat'; route = @('dic_in01', 158, 188, 'Jarute HesLanta') }
+            @{ at = 22; name = 'HesLanta once more: piece it all together'; route = @('dic_in01', 158, 188, 'Jarute HesLanta') }
+          )
+          route = @('dic_in01', 138, 188, 'Jarute HesLanta''s hall')
+          now = 'RO quest: Jarute HesLanta of El Dicastes also watches Ahat. Let him pull you aside on the admin floor, tell him what you know, and work out with him who stole the report.'
+          hint = @(
+            'Walking into the hall at dic_in01, 138, 188 takes you to him. Wear the ring.'
+            'To piece it together: Cheshire; either answer; Ahat must be ordering him.; either answer; Content about evil lord Morocc.. A wrong one asks again.'
+          )
+          spots = @(
+            @{ map = 'dic_in01'; x = 138; y = 188; name = 'Hall of Jarute HesLanta'; ro = 19 }
+            @{ map = 'dic_in01'; x = 158; y = 188; name = 'Jarute HesLanta'; ro = 19 }
+            @{ map = 'dic_in01'; x = 158; y = 188; name = 'Jarute HesLanta'; ro = 20 }
+            @{ map = 'dic_in01'; x = 158; y = 188; name = 'Jarute HesLanta'; ro = 21 }
+          )
+          done = 'The thief was Cheshire, Ahat''s servant. Ahat came out of the crack that Satan Morocc tore open, and he is hiding something there. You had to tell Doha.' }
+       @{ title = 'Back to Doha'
+          cond = 'ep13_3_secret >= 24'; var = 'ep13_3_secret'
+          items = @(@(6306, 'Hard Bloodstain', 1), @(6305, 'Frozen Piece Of Skin', 1), @(6307, 'Cursed Magical Stone', 1))
+          parts = @(
+            @{ at = 23; name = 'Inspector Doha (mid_campin, 168, 170), with the evidence'; route = @('mid_campin', 168, 170, 'Inspector Doha') }
+            @{ at = 24; name = 'Outside in the camp, walk past the spot at mid_camp 216, 246'; route = @('mid_camp', 216, 246, 'A man in black') }
+          )
+          route = @('mid_campin', 168, 170, 'Inspector Doha')
+          now = 'RO quest: report to Inspector Doha in the Allied camp and give him the evidence: a bloodstain, a frozen skin and a cursed stone. Then step outside.'
+          hint = @(
+            'If you have none of one left, the piles around the crack give more (dic_fild02).'
+            'Doha gives you a Dragon Manteau.'
+          )
+          spots = @(
+            @{ map = 'mid_campin'; x = 168; y = 170; name = 'Inspector Doha'; ro = 22 }
+            @{ map = 'mid_camp'; x = 216; y = 246; name = 'A man in black'; ro = 23 }
+          )
+          done = 'Doha took your report and gave you a Dragon Manteau. Outside, a man in black asked what the new minister looks like, said you had found it at last, and vanished.' }
      ) }
 
   # re/instances/HazyForest.txt, the Mistwood Maze: ep14_1_mistwoods 0 -> 10.
