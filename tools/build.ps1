@@ -159,7 +159,9 @@ if ($era -eq 'renewal' -and (Test-Path $catFile)) {
 # Always's Side Quests are switched off below, after their items.
 if ($cat -or $episodes.Count) { $guides = @() }
 $catQuests = @()
-if ($cat) { $catQuests = @($cat.regions | ForEach-Object { $_.storylines } | ForEach-Object { $_.quests }) }
+# By number (i): the server's arrays and the Journal's line are indexed by it,
+# whatever region the tab shows a quest in.
+if ($cat) { $catQuests = @($cat.regions | ForEach-Object { $_.storylines } | ForEach-Object { $_.quests } | Sort-Object { $_.i }) }
 
 $keys = @{}
 $gi = 0
@@ -819,6 +821,9 @@ function	script	F_ChronCatState	{
         $catFns += Arr '.@q' $sidesOff -from 0 | ForEach-Object { "	$_" }
         $catFns += '	for (.@i = 0; .@i < getarraysize(.@q); .@i++)', '		if (checkquest(.@q[.@i]) >= 0)', '			erasequest .@q[.@i];'
     }
+    # 7f990e9 filled $@cat_last in the tab's order, not by quest number: the
+    # stamps it gave are cleared once and counted again from RO's own record.
+    $catFns += '	if (CHRON_CSV < 1) {', '		for (.@j = 0; .@j <= $@cat_n / 31; .@j++)', '			CHRON_CS[.@j] = 0;', '		CHRON_CSV = 1;', '	}'
     $catFns += '	freeloop(1);', '	callfunc "F_ChronCatState";', '	freeloop(0);', '	end;', '}', ''
 }
 # Main steps that guide RO's own quest (Renewal's episodes), and the steps
