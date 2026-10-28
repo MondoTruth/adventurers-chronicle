@@ -519,7 +519,7 @@ export default function init(parameters, api) {
     function sidesHtml() {
         if (RE) {
             const n = catQuests().filter(catStamped).length;
-            return `<div class="pass"><b>Adventurer's Passport:</b> ${cat ? `${n} stamp${n === 1 ? '' : 's'}` : 'asking the server...'}. Each of Rune-Midgard's quests below stamps it once, when its last step is done. Rewards for the stamps are still to come.</div>${catalogHtml()}`;
+            return `<div class="pass"><b>Adventurer's Passport:</b> ${cat ? `${n} stamp${n === 1 ? '' : 's'}` : 'asking the server...'}. Every quest you finish stamps it once.</div>${catalogHtml()}`;
         }
         const stamps = DATA.sides.filter(sd => sideState(sd.n).step === 100).length + GUIDES.filter((gd, i) => guideState(i).step === 100).length;
         const ranks = DATA.ranks.map(r => stamps >= r.need
@@ -638,7 +638,7 @@ export default function init(parameters, api) {
             }).join('') : '';
             return `<details data-k="${rk}"${open ? ' open' : ''}><summary>${r.entrances ? '' : `${r.n}. `}${escape(r.title)} <small>${count}</small></summary><div class="body">${inner}</div></details>`;
         }).join('');
-        return `<h3 class="guides">Rune-Midgard's quests</h3><p class="hint">Every side quest Ragnarok itself has on Renewal, by the region where it starts. The Journal only shows the way and ticks each step from the quest's own record; the quest's own people give the rewards. Each one done stamps your Passport once.</p>${filterHtml()}<div class="cat">${body || '<p class="hint">No quest matches these filters.</p>'}</div>`;
+        return `<h3 class="guides">Rune-Midgard's quests</h3><p class="hint">Every side quest of Ragnarok, by the region where it starts. Steps tick themselves as you go.</p>${filterHtml()}<div class="cat">${body || '<p class="hint">No quest matches these filters.</p>'}</div>`;
     }
 
     function catQuestHtml(q) {
@@ -651,7 +651,7 @@ export default function init(parameters, api) {
         const stamped = catStamped(q);
         const tags = [
             q.lv ? (low ? `<span class="tg low">Opens at Lv ${q.lv}</span>` : `<span class="tg">Lv ${q.lv}+</span>`) : '',
-            n && d != null ? (d >= n ? `<span class="badge">${stamped ? 'Done, stamped' : 'Done'}</span>` : `${d > 0 ? `<span class="badge cur">Step ${d + 1} of ${n}</span>` : '<span class="badge lock">Not started</span>'}${stamped ? ' <span class="badge">Stamped</span>' : ''}`) : '',
+            n && d != null ? (d >= n ? `<span class="badge">${stamped ? 'Done, stamped' : 'Done'}</span>` : `${d > 0 ? `<span class="badge cur">Step ${d + 1} of ${n}</span>` : ''}${stamped ? ' <span class="badge">Stamped</span>' : ''}`) : '',
             t.players ? `<span class="tg">Players: ${t.players}</span>` : '',
             t.repeatable ? '<span class="tg">Repeatable</span>' : '',
             t.place ? '<span class="tg place">Opens a place</span>' : '',
@@ -666,6 +666,7 @@ export default function init(parameters, api) {
             inner = [
                 q.line ? `<p class="quote">${catText(q.line, q.title)}</p>` : '',
                 t.players ? `<p class="hint">Needs a party of ${t.players} or more. Party bots count as players.</p>` : '',
+                t.mod ? `<p class="hint">Needs a mod${typeof t.mod === 'string' ? `: ${escape(t.mod)}` : ''}. Install it from the game's Settings: Mods.</p>` : '',
                 ...(q.links || []).map(l => `<p>${catText(l.replace(/^([a-z ]+):/, (m, w) => `**${w[0].toUpperCase()}${w.slice(1)}:**`), q.title, true)}</p>`),
                 q.dead ? `<p class="warn"><b>Dead end:</b> ${catText(q.dead, q.title)}</p>` : '',
                 guide ? `<p class="hint">The Chronicle also guides it step by step: ${escape(guide.title)}, under RO quests on your road.</p>` : '',
@@ -687,7 +688,7 @@ export default function init(parameters, api) {
             const t = label ? text : String(text).replace(/^[a-z]/, c => c.toUpperCase());
             return `<p>${label === 'Go' ? '<b>Route:</b> ' : label ? `<b>${escape(label)}:</b> ` : ''}${catText(t, name)}</p>`;
         }).join('');
-        const when = s.done ? `<p class="hint">Done when: ${catText(s.done, name)}${s.check ? '' : '<br>The Journal can\'t check this one by itself: it is ticked once a later step is done.'}</p>` : '';
+        const when = s.done ? `<p class="hint">Done when: ${catText(s.done, name)}</p>` : '';
         return `<details class="cs${cur ? ' cur' : ''}" data-k="${k}"${opened(k, cur) ? ' open' : ''}><summary>${done ? '<span class="ok">&#10003;</span>' : ''}<b>${s.k}. ${escape(s.title)}</b></summary><div class="body">${lines}${when}<p class="hint route-note"></p></div></details>`;
     }
 

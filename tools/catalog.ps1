@@ -43,6 +43,57 @@ function Words([string]$t) { (@($t.ToLower() -replace '\([^)]*\)', '' -split '[^
 # the quest's own dead-end note.
 function Player([string]$t) { $t -replace ',? see guide-deferred\.md', ', see the dead-end note of this quest' -replace 'guide-deferred\.md', 'the dead-end note of this quest' }
 
+# What the tab shows is for the player, not for whoever checks the docs
+# (MondoTruth, 2026-10-28: "зачем пользователю видеть куски кода"). Script
+# files, variables, quest ids, checks and notes on rAthena or the docs go;
+# /navi spots, map names ($maps, every map a spot names) and lines to type stay.
+$maps = @{}
+$meta = 'rAthena|rathena|mockup|MondoTruth|concept v\d|quest_db|the script\b|\bscripts?\b|\bthe docs?\b|to verify|\.ps1\b|\bvalues\b|\b[Ss]ide \d+\b'
+function IsCode([string]$c) {
+    if ($c -match '^(?:/navi )?[a-z][a-z0-9_]* \d+[/,]\d+$' -or $c -match '^\d+/\d+$' -or $maps.ContainsKey($c)) { return $false }
+    $c -match '[<>=&|()\[\]]|->|\.(txt|yml|conf)\b|^-?\d|_|^[A-Z][A-Z0-9_]*$|^[a-z][a-z0-9]*$'
+}
+function Clean([string]$t) {
+    if (-not $t) { return $t }
+    $t = $t -replace '\*\*to verify\*\*:?', ''
+    # Brackets and sentences about rAthena or the docs, not about the game.
+    $t = $t -replace "\s*\([^()]*(?:$meta)[^()]*\)", ''
+    $t = ((($t -split '(?<=[.!?])\s+(?=[A-Z"(])') | Where-Object { $_ -notmatch $meta }) -join ' ')
+    # Code, with the word that leads into it ("while `prt_curse == 3`").
+    $t = [regex]::Replace($t, '(?<w>\s*\b(?:while|when|if|once|until|unless|at|as|via|then|is|or|and|with|from|to)\b)?\s*`(?<c>[^`]*)`', [Text.RegularExpressions.MatchEvaluator] {
+        param($m)
+        $c = $m.Groups['c'].Value
+        if (IsCode $c) { '' } elseif ($maps.ContainsKey($c)) { $m.Value -replace '`', '' } else { $m.Value }
+    })
+    # Values and ids: "(11)", "Unknown Fish (6451)", "(61001; he warps you ...)",
+    # "(bit 8)", "(quest 12059 ...)", "quests/quests_rachel.txt line 5280",
+    # "(MISC_QUEST 8192)", "; quests 40012-40015 count them", "while quest 21023 is open".
+    $t = $t -replace ',?\s*[\w/]+\.(?:txt|yml|ps1)(?: line \d+)?', '' -replace ',?\s*\(?\blines? \d+(?:-\d+)?\)?', '' -replace ',\s*,', ',' -replace '\s*\((?:quests?|bits?) [\d-]+[^()]*\)', '' -replace '\s*\([A-Z][A-Z0-9_]+ \d+\)', ''
+    $t = $t -replace '[;,]\s*quests? [\d-]+[^;,.)]*', '' -replace '\bquests? \d+(?:-\d+)?', 'the quest'
+    $t = $t -replace '\s*\(\d+(?:[,/-]\d+)*\)', '' -replace '\((?:\d+|bits? \d+|[A-Z][A-Z0-9_]+ \d+)[;,]\s*', '(' -replace '\s+sets -?\d+\b', ''
+    # A value after a comma ("1 White Potion, 62.)"), and a branch's values ("- 54 (EXP ...): ...").
+    $t = $t -replace ',\s+\d+(?:-\d+)?(?=\.?\s*[),;])', '' -replace '^-\s+-?\d+(?:\s*(?:/|,|-|or)\s*-?\d+)*\s*', '- ' -replace '\(\s*[;,]\s*', '('
+    $t = $t -replace '\(\s*[;,:]?\s*\)', '' -replace '\s+([.,;:!?)])', '$1' -replace '\(\s+', '(' -replace '\s{2,}', ' ' -replace '([;,])\s*([.)])', '$2' -replace '^[\s;,.:]+', ''
+    # A quoted line that ends its own sentence: "I can help you.".  ->  "I can help you."
+    ($t -replace '([.!?])"\.', '$1"').Trim()
+}
+# "Done when" for the player: what you can see (the words in brackets), or
+# nothing when it is only a variable or a quest id.
+function CleanDone([string]$d) {
+    if (-not $d) { return $null }
+    $seen = @([regex]::Matches($d, '\(([^()]+)\)') | ForEach-Object { $_.Groups[1].Value } | Where-Object { $_ -notmatch '`|^\s*\d' -and $_ -notmatch $meta })
+    $t = $(if ($seen.Count) { Clean ($seen -join '; ') } else { Clean $d })
+    if ($t -and $t -match '[a-z]{3} \S' -and $t -notmatch '\b(quests?|bit|started|done|active|back to)\b') { $t } else { $null }
+}
+# The script's header of a quest ("`file` | `var` 0->N | Lv 60 (...). Every NPC ..."): only what follows it.
+function CleanAbout([string]$a) {
+    if ($a -match '^(?:`[^`]+`|quests? \d|[A-Z][A-Z0-9_]+ ).*\s\|\s') {
+        $a = ($a -split '\s\|\s')[-1]
+        while ($a -match '^(?:Lv|guided|repeatable|opens|needs|party|side|dead end)\b[^.(]*(?:\([^()]*\))?[^.]*\.\s*(.*)$') { $a = $Matches[1] }
+    }
+    Clean $a
+}
+
 # ---- ro-quest-catalog.md: storylines, tags, links ----
 $catalog = @{}	# region n -> list of entries { names, storyline, text }
 $region = 0; $story = $null; $cur = $null
@@ -233,7 +284,10 @@ foreach ($R in $regions) {
             $first = $true
             foreach ($l in $S.raw) {
                 $t = $l.Trim()
-                $new = $first -or $t -match $labels -or $t -match '^(`/navi|\| done when|done when:)' -or $t -match '^- '
+                # A /navi line is the step's own line unless the text before it
+                # runs on into it ("the spot at" / "`/navi payon 101/190` (49), ...").
+                $runsOn = $logical.Count -and $logical[$logical.Count - 1][-1] -notmatch '[.!?:;)"]$'
+                $new = $first -or $t -match $labels -or $t -match '^(\| done when|done when:)' -or ($t -match '^`/navi' -and -not $runsOn) -or $t -match '^- '
                 if ($new) { [void]$logical.Add(@($t)) } else { $logical[$logical.Count - 1] += $t }
                 $first = $false
             }
@@ -256,14 +310,30 @@ foreach ($R in $regions) {
     }
 }
 
+# Region 29 (the quests of World Sync Extras) is not a region of the tab: each
+# quest goes to the region where it starts, tagged "Needs a mod" (MondoTruth,
+# 2026-10-28). Title (start) -> region.
+$modHome = [ordered]@{
+    '^(Fantasy Book|Prontera:|Izlude:|City Investment)' = 1
+    '^(Criminal Activities|Overlook Water|Geffen:)' = 2
+    '^Payon:' = 3; '^Morroc:' = 4; '^Alberta:' = 5; '^Comodo:' = 6
+    '^(Aldebaran|Devil in the Box|Juperos:|Einbroch)' = 9	# Einbroch's line starts at the Kiel Hyre Academy
+    '^Hugel:' = 12; '^(Eye of the Beholder|Rachel and Veins)' = 13; "^Seoyeon's Trial" = 14
+}
+$modName = 'World Sync Extras'
+
+# The maps a spot names: these stay readable in the text.
+foreach ($m in [regex]::Matches((Get-Content (Join-Path $here 'ro-quest-steps.md') -Raw), '`(?:/navi )?([a-z][a-z0-9_]*) \d+[/,]\d+`')) { $maps[$m.Groups[1].Value] = $true }
+
 # Storylines, tags and links from the catalog; dead-end notes; conditions.
 $out = @()
 $qi = 0
 $missing = @()
 $used = @{}
+$regionStories = @{}	# region n -> its storylines (title -> quests)
+foreach ($R in $regions) { $regionStories[$R.n] = [ordered]@{} }
 foreach ($R in $regions) {
     $entries = $(if ($catalog.ContainsKey($R.n)) { $catalog[$R.n] } else { @() })
-    $stories = [ordered]@{}
     foreach ($Q in $R.quests) {
         $qi++
         $Q.i = $qi
@@ -284,7 +354,16 @@ foreach ($R in $regions) {
         if (-not $match.Count -and -not $R.entrances) { $missing += "$($R.n): $($Q.title)" }
         # "Players: N" in the steps doc's own text.
         if (-not $tags.Contains('players') -and (($Q.about -join ' ') -match '\*\*Players: (\d+)\*\*')) { $tags.players = [int]$Matches[1] }
-        if ($R.n -eq 29) { $tags.mod = $true }
+        # The mod a quest needs (its name, shown in the quest).
+        $to = $R.n
+        if ($R.n -eq 29) {
+            $tags.mod = $modName
+            $to = @($modHome.Keys | Where-Object { $Q.title -match $_ } | ForEach-Object { $modHome[$_] })[0]
+            if (-not $to) { throw "Region 29: no home region for $($Q.title) (`$modHome)" }
+            $story = ''
+        } elseif ($tags.mod) {
+            $tags.mod = $(if ((($match | ForEach-Object { $_.text }) -join ' ') -match '\bwithout ([a-z][a-z0-9-]+)') { $Matches[1] } else { $true })
+        }
         # RO's minimum level: the catalog's "Lv: N", else the steps doc's "| Lv N".
         $lv = $null
         foreach ($e in $match) { if (-not $lv -and $e.text -match '\bLv: (\d+)') { $lv = [int]$Matches[1] } }
@@ -293,7 +372,7 @@ foreach ($R in $regions) {
         if ($tags.deadEnd -or (($Q.steps | ForEach-Object { $_.lines | ForEach-Object { $_[1] } }) -join ' ') -match '(?<!not a )\b[Dd]ead end\b') {
             $tags.deadEnd = $true
             $d = $deferred | Where-Object { $dn = $_.names; @($dn | Where-Object { $n.Contains($_) -or $_.Contains($n) }).Count } | Select-Object -First 1
-            if ($d) { $dead = "$(Player $d.why) Could open it: $(Player $d.fix)" -replace '`', '' }
+            if ($d) { $dead = Clean "$(Player $d.why) Could open it: $(Player $d.fix)" }
         }
         $k = 0
         foreach ($S in $Q.steps) {
@@ -304,14 +383,26 @@ foreach ($R in $regions) {
             elseif ($S.done) { $S.cond = AutoCond $S.done }
             if (-not $S.cond) { $S.cond = '' }
         }
+        $stories = $regionStories[$to]
         $sk = $(if ($story) { $story } else { '' })
-        if (-not $stories.Contains($sk)) { $stories[$sk] = @{ title = $story; intro = $(if ($Q.group) { $Q.group.intro -join ' ' } else { '' }); quests = @() } }
+        if (-not $stories.Contains($sk)) { $stories[$sk] = @{ title = (Clean $story); intro = $(if ($Q.group -and $story) { Clean ($Q.group.intro -join ' ') } else { '' }); quests = @() } }
+        # Every text the player reads, cleaned; a line left empty goes.
+        $lines = { param($S) @($S.lines | Where-Object { $_[0] -notmatch '^To verify' } | ForEach-Object { $t = Clean $_[1]; if ($t) { , @($_[0], $t) } }) }
         $stories[$sk].quests += [ordered]@{
-            i = $Q.i; title = $Q.title; lv = $lv; line = $line; tags = $tags; links = @($links | Select-Object -Unique)
-            about = @($Q.about); after = @($Q.after); dead = $dead
-            steps = @($Q.steps | ForEach-Object { [ordered]@{ k = $_.k; title = (Player $_.title); lines = @($_.lines | ForEach-Object { , @($_[0], $_[1]) }); done = $_.done; cond = $_.cond } })
+            i = $Q.i; title = $Q.title; lv = $lv; line = (Clean $line); tags = $tags
+            # A Story episode by its number ("needs: 13.3 past 22" -> "needs: Episode 13.3"),
+            # and no quest's inner values ("Koshei at 8"; "past step 8" stays).
+            links = @($links | Select-Object -Unique | ForEach-Object {
+                (Clean $_) -replace '((?::|\band|\bor)\s+)(1[2-9](?:\.\d)?)\b(?![\d,%])', '$1Episode $2' -replace '\bStory (1[2-9](?:\.\d)?)\b', 'Episode $1' -replace '\s(?:at|past) \d+\b(?![:\d%]|[.,]\d)(?:\s+\d+\b)?', '' -replace '\s{2,}', ' '
+            } | Where-Object { $_ -match '^[a-z ]+:\s*[A-Za-z]' })
+            about = @($Q.about | ForEach-Object { CleanAbout $_ } | Where-Object { $_ }); after = @($Q.after | ForEach-Object { Clean $_ } | Where-Object { $_ }); dead = $dead
+            steps = @($Q.steps | ForEach-Object { [ordered]@{ k = $_.k; title = (Clean (Player $_.title)); lines = (& $lines $_); done = (CleanDone $_.done); cond = $_.cond } })
         }
     }
+}
+foreach ($R in $regions) {
+    $stories = $regionStories[$R.n]
+    if (-not $stories.Count) { continue }	# region 29, now spread out
     # Storylines first, in the order they come; single quests last.
     $keys = @($stories.Keys | Where-Object { $_ }) + @($stories.Keys | Where-Object { -not $_ })
     # The Story episode of the region ("Eclage (Episode 14.2)"); none = classic Rune-Midgard.

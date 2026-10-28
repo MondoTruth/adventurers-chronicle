@@ -54,7 +54,7 @@ Anything not read in the script itself says **to verify**.
 6. Comodo
 7. Umbala
 8. Niflheim
-9. Juno, Juperos and the Kiel Hyre area
+9. Aldebaran, Juno, Juperos and the Kiel Hyre area
 10. Einbroch and Einbech
 11. Lighthalzen
 12. Hugel
@@ -233,7 +233,7 @@ shaman's room (`#Skulldoor`, umbala 221,193): a gemstone test, or open at
   (the spot at nif_in 118,151 works at any time once done).
 - The Message Delivery starts in Prontera (1).
 
-## 9. Juno, Juperos and the Kiel Hyre area
+## 9. Aldebaran, Juno, Juperos and the Kiel Hyre area
 
 ### Storyline: Kiel Hyre (continues in Lighthalzen)
 - **The Kiel Hyre Quest** - Juno's pub master, Elly of the academy, the
@@ -860,7 +860,7 @@ quests (`criminal_activities.txt`, `eye_of_the_beholder.txt`,
 `seoyeon_trial.txt`) are unchanged; every coordinate of `wse_criminal`,
 `wse_seoyeon` and `wse_beholder` in guide.ps1 is an NPC header in 2.1.5 and
 their variables (`iq_crim`, `iq_beho`, `wsv_sy`, `wsv_sys`) are still used.
-Every entry: `needs a mod` (World Sync Extras, block named). File paths are
+In the tab each entry sits in the region where it starts (catalog.ps1, `$modHome`; MondoTruth, 2026-10-28). Every entry: `needs a mod` (World Sync Extras, block named). File paths are
 relative to the mod's `npc/when/`. Story lines of the mod (Episodes 20 and
 21, Varmundt chapters 1 and 2) are Story candidates for "Episodes 16-21",
 not side quests. Steps: `ro-quest-steps.md` region 29 (batch 5, read in the

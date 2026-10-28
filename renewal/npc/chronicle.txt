@@ -78,8 +78,8 @@ OnInit:
 	// $@pp_item: none
 	// ---- RO side quest catalog ----
 	$@cat_n = 168;
-	setarray $@cat_last[1], 17, 13, 11, 1, 16, 17, 35, 5, 999, 9, 2, 999, 12, 19, 3, 4, 9, 8, 7, 3, 6, 6, 37, 3, 999, 9, 4, 10, 10, 9, 4, 7, 8, 9, 17, 8, 11, 6, 6, 9, 5, 4, 999, 5, 7, 9, 5, 11, 999, 999, 999, 999, 8, 6, 6, 6, 5, 19, 3, 4, 8, 15, 5, 7, 7, 5, 12, 12, 6, 6, 5, 12, 11, 8, 10, 8, 3, 3, 999, 7, 6, 10, 3, 999, 1, 3, 1, 9, 6, 7, 3, 3, 7, 2, 4, 2, 3, 4, 7, 999, 999, 2, 999, 10, 8, 10, 2, 4, 5, 11, 7, 2, 11, 8, 3, 999, 3, 10, 6, 9, 5, 7, 3, 2, 3, 3, 4, 6, 3, 3, 2, 5, 999, 999, 4, 11, 999, 1, 4, 1, 1, 1, 1, 1, 6, 3, 4, 3, 6, 5, 3, 2, 3, 2, 1, 3, 9, 9, 5, 9, 7, 999, 6, 999, 999, 999, 999, 999;
-	setarray $@cat_title$[1], "The Geoborg Family Curse", "The Z-Gang", "Rogue Guild Investigation", "Prontera Culvert", "The Spy Quest", "Eye of Hellion", "The Sign", "The Message Delivery", "Help Me Shorty", "The Wandering Bard (Minstrel)", "Orc's Memory", "The Party Relay", "The Crow of Fate", "The Unlucky Emerald", "Nightmare Pyramid hunts", "The Turtle Island Quest", "The Alberta Boy", "Muff's Loan", "Broken Diamond", "The Umbalian Language", "Umbala Domestic Dispute", "The Piano Key Quest", "The Kiel Hyre Quest", "The Metto Quest (Scientist Who Trusts Fate)", "Juperos Ruins History", "The Juno Remedy Quest", "The Factory Quest", "The Murder Quest", "The Lovers Quest", "Kain's Free Ticket", "Captain Tarlock: How the Airship Flies", "The Heart Fragment Quest", "The Rekenber Job Quest", "The Cube Room", "The President Quest (Schwarzwald Trilogy)", "The Friendship Quest", "The Cursed Spirit Quest", "The Medicine Quest", "Biological Weapon", "The Rebellion Quest", "The Memory Quest", "Hide and Seek", "The Fish Cake Soup Delivery", "Cow Milking", "The Odin Temple Excavation", "The Thanatos Tower", "The Lost Child (The Stolen Gem)", "The Sanctuary Quest", "The Siblings Quest", "The Nameless Island", "The Thor Volcano Base", "Peace to Arunafeltz and Rachel Addition", "Bruspetti", "The Ice Necklace", "The Stone Quest", "The Amatsu Dungeon Quest", "The Momotaro Event", "The Broken Sword", "The Lost Knife", "The Soup Quest", "The Doctor Quest", "The Poison King", "The Revolution Quest", "The Ayothaya Dungeon Quest", "The Ayothaya Ring", "Tom Yum Goong", "The Moving Island", "Koshei the Immortal", "The Red Ring", "Lusalka's Hair", "The Golden Thread", "Help Mikhail", "Banish Winter", "The Brasilis Dungeon Access", "The Guarana Candy", "The Water Lily", "Lost Puppies", "The Suspicious Beach", "Iara", "The Dewata Legend", "Help Out the Old Man", "Malangdo Island", "Help the Bad Cats in Danger", "Clean the Ship", "Help Chef Nyas", "Play with Baby Cats", "Cat Gamers", "The Cautious Village", "Secret in the Woods", "Bakonawa Extermination", "The Nurse in Port Malaya", "Finding a Fairy & Finding a Giant Tree", "The Otherworld Language", "Monster Suppression", "Manuk and Splendide dailies", "Midgard Ore and Alfheim Perfume", "Secret Note of Bazett", "Sapha's Visit", "Frede's Request", "El Dicastes requests (the departments)", "Unknown Relics (the document packages)", "Removing Traces (Ahat's daily)", "Cat Paw Agent (the passage to the New World)", "New Surroundings", "Attitude to the New", "The Tripartite Union's Feud", "Part Time Work", "The Cat Paw Trading Post", "Report from the New World", "Pursuing Rayan Moore", "Helping Lope and Euridi", "Knights of the Neighborhood", "Theore's Request", "Find the Research Tools", "Chesire's New Day", "Mora daily quests", "Eclage's Entrance", "Oliver Wolf Hood (Dreaming Time)", "Laphines That Love the Land (Lost Adventurers)", "Wanted to Be Big and Beautiful", "The Mystery Burglary", "Troublesome Fairies (Prankster of Eclage)", "Memory of Professor Worm", "Flame Basin dailies (Instructor Igrid and Adjutant Abidal)", "Magic Scholar and Hishieh", "Jeruth Hesranta", "Demon God Subjugation / Fall of the False God / Caged God", "Flaming Basin and Doom Prayers", "The Wandering Bard", "The Verus Police", "New Power Source", "To Phantasmagorika! / Looking for the Traces", "Monthly Brigan", "The Bunker: Restriction on the Journey", "Vestige / The Final Room", "Rock Ridge, Land of Opportunities (main line)", "Cacturon (the Cactus family)", "Collecting Ore Fragments", "The town's jobs (food, vigilantes, water, the merchant)", "Pipe Cleaning", "Midnight", "Gas! Gas!", "Mrs. McPhy and Spotty", "Mr. McPhy: Avenging Spotty", "Morroc: the old scholar's apprentice", "Prontera: the playground, the Orc and Goblin subjugation, Glast Heim", "Payon: the well, the grandson and the fox spirit", "Geffen: the tower dungeon", "Izlude: Instructor Pontes, Byalan and Leader Maxim", "Alberta: the shipwreck and Turtle Island", "Comodo: Que Sera, Sera", "Aldebaran and the Juno fields", "Einbroch, Einbech and Lighthalzen", "Hugel: Abyss Lake and the fishermen", "Juperos: Leader Maxim's camp", "Rachel and Veins", "Criminal Activities", "Eye of the Beholder", "Seoyeon's Trial", "Fantasy Book \"Dungeon Food\"", "Overlook Water Dungeon", "City Investment (the City Merchant Union)", "Devil in the Box", "Nightmare Clock Tower", "Nightmare Glast Heim", "Nightmare Pyramid", "Teleport Cats", "Cat Paw Agents";
+	setarray $@cat_last[1], 17, 13, 11, 1, 16, 17, 35, 5, 999, 9, 2, 999, 12, 19, 3, 4, 9, 8, 7, 3, 6, 6, 37, 3, 999, 9, 4, 10, 10, 9, 4, 7, 8, 8, 9, 11, 17, 6, 6, 9, 5, 4, 999, 5, 7, 9, 5, 11, 999, 999, 999, 999, 8, 6, 6, 6, 5, 19, 3, 4, 8, 15, 5, 7, 7, 5, 12, 12, 6, 6, 5, 12, 11, 8, 10, 8, 3, 3, 999, 7, 6, 10, 3, 999, 1, 3, 1, 9, 6, 7, 3, 3, 7, 2, 4, 2, 3, 4, 7, 999, 999, 2, 999, 10, 8, 10, 2, 4, 5, 11, 7, 2, 11, 8, 3, 999, 3, 10, 6, 9, 5, 7, 3, 2, 3, 3, 4, 6, 3, 3, 2, 5, 999, 999, 4, 11, 999, 1, 4, 1, 1, 1, 1, 1, 9, 9, 5, 9, 7, 6, 3, 4, 3, 6, 5, 3, 2, 3, 2, 1, 3, 999, 6, 999, 999, 999, 999, 999;
+	setarray $@cat_title$[1], "The Geoborg Family Curse", "The Z-Gang", "Rogue Guild Investigation", "Prontera Culvert", "The Spy Quest", "Eye of Hellion", "The Sign", "The Message Delivery", "Help Me Shorty", "The Wandering Bard (Minstrel)", "Orc's Memory", "The Party Relay", "The Crow of Fate", "The Unlucky Emerald", "Nightmare Pyramid hunts", "The Turtle Island Quest", "The Alberta Boy", "Muff's Loan", "Broken Diamond", "The Umbalian Language", "Umbala Domestic Dispute", "The Piano Key Quest", "The Kiel Hyre Quest", "The Metto Quest (Scientist Who Trusts Fate)", "Juperos Ruins History", "The Juno Remedy Quest", "The Factory Quest", "The Murder Quest", "The Lovers Quest", "Kain's Free Ticket", "Captain Tarlock: How the Airship Flies", "The Heart Fragment Quest", "The Rekenber Job Quest", "The Friendship Quest", "The Cube Room", "The Cursed Spirit Quest", "The President Quest (Schwarzwald Trilogy)", "The Medicine Quest", "Biological Weapon", "The Rebellion Quest", "The Memory Quest", "Hide and Seek", "The Fish Cake Soup Delivery", "Cow Milking", "The Odin Temple Excavation", "The Thanatos Tower", "The Lost Child (The Stolen Gem)", "The Sanctuary Quest", "The Siblings Quest", "The Nameless Island", "The Thor Volcano Base", "Peace to Arunafeltz and Rachel Addition", "Bruspetti", "The Ice Necklace", "The Stone Quest", "The Amatsu Dungeon Quest", "The Momotaro Event", "The Broken Sword", "The Lost Knife", "The Soup Quest", "The Doctor Quest", "The Poison King", "The Revolution Quest", "The Ayothaya Dungeon Quest", "The Ayothaya Ring", "Tom Yum Goong", "The Moving Island", "Koshei the Immortal", "The Red Ring", "Lusalka's Hair", "The Golden Thread", "Help Mikhail", "Banish Winter", "The Brasilis Dungeon Access", "The Guarana Candy", "The Water Lily", "Lost Puppies", "The Suspicious Beach", "Iara", "The Dewata Legend", "Help Out the Old Man", "Malangdo Island", "Help the Bad Cats in Danger", "Clean the Ship", "Help Chef Nyas", "Play with Baby Cats", "Cat Gamers", "The Cautious Village", "Secret in the Woods", "Bakonawa Extermination", "The Nurse in Port Malaya", "Finding a Fairy & Finding a Giant Tree", "The Otherworld Language", "Monster Suppression", "Manuk and Splendide dailies", "Midgard Ore and Alfheim Perfume", "Secret Note of Bazett", "Sapha's Visit", "Frede's Request", "El Dicastes requests (the departments)", "Unknown Relics (the document packages)", "Removing Traces (Ahat's daily)", "Cat Paw Agent (the passage to the New World)", "New Surroundings", "Attitude to the New", "The Tripartite Union's Feud", "Part Time Work", "The Cat Paw Trading Post", "Report from the New World", "Pursuing Rayan Moore", "Helping Lope and Euridi", "Knights of the Neighborhood", "Theore's Request", "Find the Research Tools", "Chesire's New Day", "Mora daily quests", "Eclage's Entrance", "Oliver Wolf Hood (Dreaming Time)", "Laphines That Love the Land (Lost Adventurers)", "Wanted to Be Big and Beautiful", "The Mystery Burglary", "Troublesome Fairies (Prankster of Eclage)", "Memory of Professor Worm", "Flame Basin dailies (Instructor Igrid and Adjutant Abidal)", "Magic Scholar and Hishieh", "Jeruth Hesranta", "Demon God Subjugation / Fall of the False God / Caged God", "Flaming Basin and Doom Prayers", "The Wandering Bard", "The Verus Police", "New Power Source", "To Phantasmagorika! / Looking for the Traces", "Monthly Brigan", "The Bunker: Restriction on the Journey", "Vestige / The Final Room", "Rock Ridge, Land of Opportunities (main line)", "Cacturon (the Cactus family)", "Collecting Ore Fragments", "The town's jobs (food, vigilantes, water, the merchant)", "Pipe Cleaning", "Midnight", "Gas! Gas!", "Mrs. McPhy and Spotty", "Mr. McPhy: Avenging Spotty", "Criminal Activities", "Eye of the Beholder", "Seoyeon's Trial", "Fantasy Book \"Dungeon Food\"", "Overlook Water Dungeon", "Morroc: the old scholar's apprentice", "Prontera: the playground, the Orc and Goblin subjugation, Glast Heim", "Payon: the well, the grandson and the fox spirit", "Geffen: the tower dungeon", "Izlude: Instructor Pontes, Byalan and Leader Maxim", "Alberta: the shipwreck and Turtle Island", "Comodo: Que Sera, Sera", "Aldebaran and the Juno fields", "Einbroch, Einbech and Lighthalzen", "Hugel: Abyss Lake and the fishermen", "Juperos: Leader Maxim's camp", "Rachel and Veins", "City Investment (the City Merchant Union)", "Devil in the Box", "Nightmare Clock Tower", "Nightmare Glast Heim", "Nightmare Pyramid", "Teleport Cats", "Cat Paw Agents";
 
 	bindatcmd "chronicle", strnpcinfo(3) + "::OnCmd", 0, 99;
 
@@ -1546,6 +1546,16 @@ function	script	F_ChronCatK	{
 		if (lhz_rekenber >= 3) return 2;
 		if (lhz_rekenber >= 1) return 1;
 		return 0;
+	case 34:	// The Friendship Quest
+		if (friendship >= 16) return 8;
+		if (friendship >= 12) return 7;
+		if (friendship >= 10) return 6;
+		if (friendship >= 7) return 5;
+		if (friendship >= 5) return 4;
+		if (friendship >= 4) return 3;
+		if (friendship >= 2) return 2;
+		if (friendship >= 1) return 1;
+		return 0;
 	case 35:	// The Cube Room
 		if (MISC_QUEST & 512) return 9;
 		if (lhz_sincube >= 10) return 8;
@@ -1555,6 +1565,19 @@ function	script	F_ChronCatK	{
 		if (lhz_secret01 >= 3 && lhz_secret01 <= 5) return 4;
 		if (lhz_sincube >= 7) return 2;
 		if (lhz_sincube >= 4) return 1;
+		return 0;
+	case 36:	// The Cursed Spirit Quest
+		if (lhz_curse >= 32) return 11;
+		if (lhz_curse >= 31) return 10;
+		if (lhz_curse >= 26) return 9;
+		if (lhz_curse >= 24) return 8;
+		if (lhz_curse >= 19) return 7;
+		if (lhz_curse >= 17) return 6;
+		if (lhz_curse >= 16) return 5;
+		if (lhz_curse >= 13) return 4;
+		if (lhz_curse >= 6) return 3;
+		if (lhz_spi01 == 1 && lhz_spi02 == 1 && lhz_spi03 == 1 && lhz_spi04 == 1) return 2;
+		if (lhz_curse >= 1) return 1;
 		return 0;
 	case 37:	// The President Quest (Schwarzwald Trilogy)
 		if (lhz_boss >= 44) return 17;
@@ -1574,29 +1597,6 @@ function	script	F_ChronCatK	{
 		if (lhz_boss >= 7) return 3;
 		if (lhz_boss >= 6) return 2;
 		if (lhz_boss >= 2) return 1;
-		return 0;
-	case 34:	// The Friendship Quest
-		if (friendship >= 16) return 8;
-		if (friendship >= 12) return 7;
-		if (friendship >= 10) return 6;
-		if (friendship >= 7) return 5;
-		if (friendship >= 5) return 4;
-		if (friendship >= 4) return 3;
-		if (friendship >= 2) return 2;
-		if (friendship >= 1) return 1;
-		return 0;
-	case 36:	// The Cursed Spirit Quest
-		if (lhz_curse >= 32) return 11;
-		if (lhz_curse >= 31) return 10;
-		if (lhz_curse >= 26) return 9;
-		if (lhz_curse >= 24) return 8;
-		if (lhz_curse >= 19) return 7;
-		if (lhz_curse >= 17) return 6;
-		if (lhz_curse >= 16) return 5;
-		if (lhz_curse >= 13) return 4;
-		if (lhz_curse >= 6) return 3;
-		if (lhz_spi01 == 1 && lhz_spi02 == 1 && lhz_spi03 == 1 && lhz_spi04 == 1) return 2;
-		if (lhz_curse >= 1) return 1;
 		return 0;
 	case 38:	// The Medicine Quest
 		if (hg_herb >= 13) return 6;
@@ -2342,6 +2342,55 @@ function	script	F_ChronCatK	{
 	case 144:	// Mr. McPhy: Avenging Spotty
 		if (checkquest(1332) >= 0) return 1;
 		return 0;
+	case 145:	// Criminal Activities
+		if (iq_crim >= 13) return 9;
+		if (iq_crim_land == 1) return 8;
+		if (iq_crim >= 12) return 7;
+		if (iq_crim >= 10) return 6;
+		if (iq_crim >= 7) return 5;
+		if (iq_crim >= 5) return 4;
+		if (iq_crim >= 3) return 3;
+		if (iq_crim >= 2) return 2;
+		if (iq_crim >= 1) return 1;
+		return 0;
+	case 146:	// Eye of the Beholder
+		if (iq_beho == 1) return 9;
+		if (iq_beho >= 61028) return 8;
+		if (iq_beho >= 61026) return 7;
+		if (iq_beho >= 61024) return 6;
+		if (iq_beho >= 61018) return 5;
+		if (iq_beho >= 61012) return 4;
+		if (iq_beho >= 61009) return 3;
+		if (iq_beho >= 61006) return 2;
+		if (iq_beho >= 61001) return 1;
+		return 0;
+	case 147:	// Seoyeon's Trial
+		if (wsv_sy >= 5) return 5;
+		if (wsv_sy >= 4) return 4;
+		if (wsv_sy >= 3) return 3;
+		if (wsv_sy >= 2) return 2;
+		if (wsv_sy >= 1) return 1;
+		return 0;
+	case 148:	// Fantasy Book "Dungeon Food"
+		if (checkquest(16690) == 2) return 9;
+		if (wsv_df >= 12) return 8;
+		if (wsv_df >= 10) return 7;
+		if (wsv_df >= 8) return 6;
+		if (wsv_df >= 6) return 5;
+		if (wsv_df >= 5) return 4;
+		if (wsv_df >= 3) return 3;
+		if (wsv_df >= 2) return 2;
+		if (wsv_df >= 1) return 1;
+		return 0;
+	case 149:	// Overlook Water Dungeon
+		if (iq_owd_card == 1) return 7;
+		if (iq_owd >= 5) return 6;
+		if (iq_owd >= 4) return 5;
+		if (iq_owd >= 3) return 4;
+		if (iq_owd >= 2) return 3;
+		if (iq_owd >= 1) return 2;
+		if (strcharinfo(3) == "iz_dun00t") return 1;
+		return 0;
 	case 150:	// Morroc: the old scholar's apprentice
 		if (iq_moc21 >= 14) return 6;
 		if (iq_moc21 >= 10) return 5;
@@ -2407,55 +2456,6 @@ function	script	F_ChronCatK	{
 		if (iq_ra21 & 2) return 2;
 		if (iq_ra21 & 1) return 1;
 		return 0;
-	case 145:	// Criminal Activities
-		if (iq_crim >= 13) return 9;
-		if (iq_crim_land == 1) return 8;
-		if (iq_crim >= 12) return 7;
-		if (iq_crim >= 10) return 6;
-		if (iq_crim >= 7) return 5;
-		if (iq_crim >= 5) return 4;
-		if (iq_crim >= 3) return 3;
-		if (iq_crim >= 2) return 2;
-		if (iq_crim >= 1) return 1;
-		return 0;
-	case 146:	// Eye of the Beholder
-		if (iq_beho == 1) return 9;
-		if (iq_beho >= 61028) return 8;
-		if (iq_beho >= 61026) return 7;
-		if (iq_beho >= 61024) return 6;
-		if (iq_beho >= 61018) return 5;
-		if (iq_beho >= 61012) return 4;
-		if (iq_beho >= 61009) return 3;
-		if (iq_beho >= 61006) return 2;
-		if (iq_beho >= 61001) return 1;
-		return 0;
-	case 147:	// Seoyeon's Trial
-		if (wsv_sy >= 5) return 5;
-		if (wsv_sy >= 4) return 4;
-		if (wsv_sy >= 3) return 3;
-		if (wsv_sy >= 2) return 2;
-		if (wsv_sy >= 1) return 1;
-		return 0;
-	case 148:	// Fantasy Book "Dungeon Food"
-		if (checkquest(16690) == 2) return 9;
-		if (wsv_df >= 12) return 8;
-		if (wsv_df >= 10) return 7;
-		if (wsv_df >= 8) return 6;
-		if (wsv_df >= 6) return 5;
-		if (wsv_df >= 5) return 4;
-		if (wsv_df >= 3) return 3;
-		if (wsv_df >= 2) return 2;
-		if (wsv_df >= 1) return 1;
-		return 0;
-	case 149:	// Overlook Water Dungeon
-		if (iq_owd_card == 1) return 7;
-		if (iq_owd >= 5) return 6;
-		if (iq_owd >= 4) return 5;
-		if (iq_owd >= 3) return 4;
-		if (iq_owd >= 2) return 3;
-		if (iq_owd >= 1) return 2;
-		if (strcharinfo(3) == "iz_dun00t") return 1;
-		return 0;
 	case 162:	// City Investment (the City Merchant Union)
 		if (checkquest(12370) >= 0) return 1;
 		return 0;
@@ -2498,6 +2498,11 @@ OnPCLoginEvent:
 	for (.@i = 0; .@i < getarraysize(.@q); .@i++)
 		if (checkquest(.@q[.@i]) >= 0)
 			erasequest .@q[.@i];
+	if (CHRON_CSV < 1) {
+		for (.@j = 0; .@j <= $@cat_n / 31; .@j++)
+			CHRON_CS[.@j] = 0;
+		CHRON_CSV = 1;
+	}
 	freeloop(1);
 	callfunc "F_ChronCatState";
 	freeloop(0);

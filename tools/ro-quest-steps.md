@@ -1330,7 +1330,7 @@ two orders at random (`nif_esc` 1 or 2); the steps say which way.
 
 The Message Delivery (`nif_revive`, the same file) starts in Prontera
 (region 1).
-## 9. Juno, Juperos and the Kiel Hyre area
+## 9. Aldebaran, Juno, Juperos and the Kiel Hyre area
 
 ### The Kiel Hyre Quest
 `quests/kiel_hyre_quest.txt` | `KielHyreQuest` 0->109 (side values
